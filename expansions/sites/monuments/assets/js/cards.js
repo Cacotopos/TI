@@ -25,7 +25,7 @@
     ['cost', 'combat', 'move', 'capacity'].forEach(key => {
       const stat = stats?.[key];
       if (!stat || !stat.enabled) return;
-      parts.push(`<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs">${labels[key]} ${stat.value == null ? '-' : escapeHtml(String(stat.value))}</span>`);
+      parts.push(`<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs whitespace-nowrap">${labels[key]} ${stat.value == null ? '-' : escapeHtml(String(stat.value))}</span>`);
     });
     return parts.join('');
   }
@@ -45,7 +45,8 @@
       const roll = abilities[key];
       if (!roll) return;
       const multiText = roll.multi > 1 ? ` (${roll.multi})` : '';
-      parts.push(`<span class="px-2 py-1 rounded-md bg-blue-600 text-white text-xs font-semibold">${label} ${roll.target}${multiText}</span>`);
+      const val = roll.value != null ? roll.value : roll.target;
+      parts.push(`<span class="px-2 py-1 rounded-md bg-blue-600 text-white text-xs font-semibold">${label} ${val}${multiText}</span>`);
     });
     return parts.join('');
   }

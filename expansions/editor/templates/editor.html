@@ -59,7 +59,9 @@
   .unit-abilities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
   .unit-roll-abilities-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
   .unit-roll-ability { display: flex; align-items: center; gap: 0.5rem; background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem; }
-  .unit-roll-ability input { width: 4rem; margin-bottom: 0; padding: 0.35rem 0.5rem; }
+  .unit-roll-ability .toggle { flex: 1; }
+  .unit-roll-ability input { width: 4rem; margin-bottom: 0; padding: 0.35rem 0.5rem; text-align: right; }
+  .asset-stat-line { display: flex; flex-wrap: nowrap; gap: 0.35rem; }
   .asset-cell .title { font-size: 0.85rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .asset-cell .group { font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .toolbar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
@@ -355,7 +357,7 @@
             <span class="switch"></span>
             <span class="label-text">Bombardment</span>
           </label>
-          <input id="ability-bombardment-target" type="number" min="1" max="10" placeholder="Target"/>
+          <input id="ability-bombardment-value" type="number" min="1" max="10" placeholder="Value"/>
           <input id="ability-bombardment-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
         </div>
         <div class="unit-roll-ability">
@@ -364,7 +366,7 @@
             <span class="switch"></span>
             <span class="label-text">Anti-Fighter Barrage</span>
           </label>
-          <input id="ability-anti-fighter-barrage-target" type="number" min="1" max="10" placeholder="Target"/>
+          <input id="ability-anti-fighter-barrage-value" type="number" min="1" max="10" placeholder="Value"/>
           <input id="ability-anti-fighter-barrage-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
         </div>
         <div class="unit-roll-ability">
@@ -373,7 +375,7 @@
             <span class="switch"></span>
             <span class="label-text">Space Cannon</span>
           </label>
-          <input id="ability-space-cannon-target" type="number" min="1" max="10" placeholder="Target"/>
+          <input id="ability-space-cannon-value" type="number" min="1" max="10" placeholder="Value"/>
           <input id="ability-space-cannon-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
         </div>
         <div class="unit-roll-ability">
@@ -382,7 +384,7 @@
             <span class="switch"></span>
             <span class="label-text">Production</span>
           </label>
-          <input id="ability-production-target" type="number" min="1" max="10" placeholder="Target"/>
+          <input id="ability-production-value" type="number" min="1" max="10" placeholder="Value"/>
           <input id="ability-production-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
         </div>
       </div>
@@ -661,19 +663,19 @@ function getUnitStatsInput() {
   };
 }
 function getUnitAbilitiesInput() {
-  const roll = (toggleId, targetId, multiId) => {
+  const roll = (toggleId, valueId, multiId) => {
     const enabled = document.getElementById(toggleId).checked;
     if (!enabled) return null;
-    return { target: parseInt(document.getElementById(targetId).value) || 1, multi: parseInt(document.getElementById(multiId).value) || 1 };
+    return { value: parseInt(document.getElementById(valueId).value) || 1, multi: parseInt(document.getElementById(multiId).value) || 1 };
   };
   return {
     deploy: document.getElementById('ability-deploy').checked,
     planetaryShield: document.getElementById('ability-planetary-shield').checked,
     sustainDamage: document.getElementById('ability-sustain-damage').checked,
-    bombardment: roll('ability-bombardment', 'ability-bombardment-target', 'ability-bombardment-multi'),
-    antiFighterBarrage: roll('ability-anti-fighter-barrage', 'ability-anti-fighter-barrage-target', 'ability-anti-fighter-barrage-multi'),
-    spaceCannon: roll('ability-space-cannon', 'ability-space-cannon-target', 'ability-space-cannon-multi'),
-    production: roll('ability-production', 'ability-production-target', 'ability-production-multi'),
+    bombardment: roll('ability-bombardment', 'ability-bombardment-value', 'ability-bombardment-multi'),
+    antiFighterBarrage: roll('ability-anti-fighter-barrage', 'ability-anti-fighter-barrage-value', 'ability-anti-fighter-barrage-multi'),
+    spaceCannon: roll('ability-space-cannon', 'ability-space-cannon-value', 'ability-space-cannon-multi'),
+    production: roll('ability-production', 'ability-production-value', 'ability-production-multi'),
   };
 }
 function setUnitStatsInput(stats) {
@@ -694,7 +696,7 @@ function setUnitAbilitiesInput(abilities) {
   document.getElementById('ability-sustain-damage').checked = abilities.sustainDamage || false;
   const setRoll = (name, ability) => {
     document.getElementById(`ability-${name}`).checked = !!ability;
-    document.getElementById(`ability-${name}-target`).value = ability ? (ability.target || 1) : '';
+    document.getElementById(`ability-${name}-value`).value = ability ? (ability.value || ability.target || 1) : '';
     document.getElementById(`ability-${name}-multi`).value = ability ? (ability.multi || 1) : '1';
   };
   setRoll('bombardment', abilities.bombardment);
@@ -730,7 +732,7 @@ function formatUnitStats(stats) {
     if (!stat || !stat.enabled) return;
     parts.push(`<span class="asset-badge">${labels[key]} ${stat.value == null ? '-' : stat.value}</span>`);
   });
-  return parts.join('');
+  return parts.length ? `<div class="asset-stat-line">${parts.join('')}</div>` : '';
 }
 function formatUnitAbilities(abilities) {
   if (!abilities) return '';
@@ -748,7 +750,8 @@ function formatUnitAbilities(abilities) {
     const roll = abilities[key];
     if (!roll) return;
     const multiText = roll.multi > 1 ? ` (${roll.multi})` : '';
-    parts.push(`<span class="asset-badge accent">${label} ${roll.target}${multiText}</span>`);
+    const val = roll.value != null ? roll.value : roll.target;
+    parts.push(`<span class="asset-badge accent">${label} ${val}${multiText}</span>`);
   });
   return parts.join('');
 }
