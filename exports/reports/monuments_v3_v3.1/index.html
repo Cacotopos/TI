@@ -1,0 +1,2067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Card Diff &mdash; Monuments v3 vs v3.1</title>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Card Diff &mdash; Monuments <em>v3</em> vs <em>v3.1</em></h1>
+    <div class="subtitle">89 cards compared &bull; 0 deleted &bull; 9 new &bull; 22 changed &bull; 58 same</div>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-num red">0</div><div class="stat-label">Deleted</div></div>
+    <div class="stat"><div class="stat-num red">9</div><div class="stat-label">New</div></div>
+    <div class="stat"><div class="stat-num red">22</div><div class="stat-label">Changed</div></div>
+    <div class="stat"><div class="stat-num green">58</div><div class="stat-label">Same</div></div>
+  </div>
+  <div style="display:flex;gap:0.5rem">
+    <button class="export-btn" onclick="exportJson()">Export JSON</button>
+    <button class="export-btn" onclick="exportCsv()">Export CSV</button>
+  </div>
+</header>
+<div class="filters">
+  <div class="filter-section">
+    <span class="filter-section-label">Status</span>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="changed">Changed</button>
+    <button class="filter-btn" data-filter="ability-minor">Minor</button>
+    <button class="filter-btn" data-filter="ability-moderate">Moderate</button>
+    <button class="filter-btn" data-filter="ability-major">Major</button>
+    <button class="filter-btn" data-filter="flavour">Flavour</button>
+    <button class="filter-btn" data-filter="title">Title</button>
+    <button class="filter-btn" data-filter="art">Art</button>
+    <button class="filter-btn" data-filter="placement">Placement &#x21C4;</button>
+    <button class="filter-btn" data-filter="new">New</button>
+    <button class="filter-btn" data-filter="deleted">Deleted</button>
+    <button class="filter-btn" data-filter="same">Same</button>
+  </div>
+  <div class="filter-section">
+    <span class="filter-section-label">Icons</span>
+    <button class="filter-btn" data-filter="icon-legendary">Leg</button>
+    <button class="filter-btn" data-filter="icon-mecatol">MR</button>
+    <button class="filter-btn" data-filter="icon-relic">Relic</button>
+    <button class="filter-btn" data-filter="icon-hazardous">Haz</button>
+    <button class="filter-btn" data-filter="icon-industrial">Ind</button>
+    <button class="filter-btn" data-filter="icon-cultural">Cul</button>
+    <button class="filter-btn" data-filter="icon-frontier">Frontier</button>
+    <button class="filter-btn" data-filter="icon-tech">Tech</button>
+  </div>
+  <div class="filter-section">
+    <span class="filter-section-label">Abilities</span>
+    <button class="filter-btn" data-filter="action">ACTION</button>
+    <button class="filter-btn" data-filter="ability-PRODUCTION">PROD</button><button class="filter-btn" data-filter="ability-PLANETARY SHIELD">SHIELD</button><button class="filter-btn" data-filter="ability-SUSTAIN DAMAGE">SUSTAIN</button><button class="filter-btn" data-filter="ability-DEPLOY">DEPLOY</button><button class="filter-btn" data-filter="ability-SPACE CANNON">CANNON</button>
+  </div>
+</div>
+<main>
+
+        <div class="folder-section">
+          <div class="folder-header" onclick="toggleFolder(this)">
+            <span class="folder-chevron open">▶</span>
+            <span class="folder-name">BR</span>
+            <span class="folder-count">10 cards</span>
+            <span class="badge ability-moderate">3 changes</span>
+          </div>
+          <div class="folder-body">
+            
+              <div class="card same-card" data-icons="hazardous industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Atokera.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Atokera.jpg" alt="Atokera.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Atokera.jpg" alt="Atokera.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural hazardous industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Belkosea.jpg</span>
+                  <span class="badge ability-moderate">Moderate</span><span class="badge flavour">Flavour</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Belkosea.jpg" alt="Belkosea.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Belkosea.jpg" alt="Belkosea.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="" data-abilities="DEPLOY" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Kaltrim.jpg</span>
+                  <span class="badge same">Same</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-deploy">DEPLOY</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Kaltrim.jpg" alt="Kaltrim.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Kaltrim.jpg" alt="Kaltrim.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="hazardous legendary" data-abilities="DEPLOY|SUSTAIN DAMAGE" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Pharad'n.jpg</span>
+                  <span class="badge ability-major">Major</span><span class="badge flavour">Flavour</span><span class="spacer"></span><span class="badge icon-pill icon-legendary" title="Leg">Leg</span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Leg  Haz</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-sustain-damage">SUSTAIN</span><span class="badge ability-pill ability-deploy">DEPLOY</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Pharad'n.jpg" alt="Pharad'n.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Pharad'n.jpg" alt="Pharad'n.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Qhet.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Qhet.jpg" alt="Qhet.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Qhet.jpg" alt="Qhet.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural hazardous" data-abilities="PRODUCTION" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Sarcosa.jpg</span>
+                  <span class="badge ability-minor">Minor</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-production">PROD</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Sarcosa.jpg" alt="Sarcosa.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Sarcosa.jpg" alt="Sarcosa.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural legendary" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Toldar - Dishonor.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-legendary" title="Leg">Leg</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Leg  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Toldar - Dishonor.jpg" alt="Toldar - Dishonor.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Toldar - Dishonor.jpg" alt="Toldar - Dishonor.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural legendary" data-abilities="PRODUCTION|SPACE CANNON" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Toldar - Honor.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-legendary" title="Leg">Leg</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Leg  Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-production">PROD</span><span class="badge ability-pill ability-space-cannon">CANNON</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Toldar - Honor.jpg" alt="Toldar - Honor.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Toldar - Honor.jpg" alt="Toldar - Honor.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural hazardous" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Uydai.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Uydai.jpg" alt="Uydai.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Uydai.jpg" alt="Uydai.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="legendary tech" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Xin.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-legendary" title="Leg">Leg</span><span class="badge icon-pill icon-tech" title="Tech">Tech</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Leg  Tech</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Xin.jpg" alt="Xin.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Xin.jpg" alt="Xin.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="folder-section">
+          <div class="folder-header" onclick="toggleFolder(this)">
+            <span class="folder-chevron open">▶</span>
+            <span class="folder-name">Base M</span>
+            <span class="folder-count">3 cards</span>
+            <span class="badge ability-moderate">1 change</span>
+          </div>
+          <div class="folder-body">
+            
+              <div class="card same-card" data-icons="cultural industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Creuss Base.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Creuss Base.jpg" alt="Creuss Base.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Creuss Base.jpg" alt="Creuss Base.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural hazardous industrial legendary" data-abilities="PRODUCTION" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">L1Z1X Base.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-legendary" title="Leg">Leg</span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Leg  Haz  Ind  Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-production">PROD</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/L1Z1X Base.jpg" alt="L1Z1X Base.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/L1Z1X Base.jpg" alt="L1Z1X Base.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Saar Base.jpg</span>
+                  <span class="badge ability-minor">Minor</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Saar Base.jpg" alt="Saar Base.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Saar Base.jpg" alt="Saar Base.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="folder-section">
+          <div class="folder-header" onclick="toggleFolder(this)">
+            <span class="folder-chevron open">▶</span>
+            <span class="folder-name">Base+PoK</span>
+            <span class="folder-count">24 cards</span>
+            <span class="badge ability-moderate">5 changes</span>
+          </div>
+          <div class="folder-body">
+            
+              <div class="card changed-card" data-icons="cultural hazardous" data-abilities="SPACE CANNON" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Arborec.jpg</span>
+                  <span class="badge ability-minor">Minor</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-space-cannon">CANNON</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Arborec.jpg" alt="Arborec.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Arborec.jpg" alt="Arborec.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="hazardous relic" data-abilities="" data-action="true">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Argent.jpg</span>
+                  <span class="badge ability-major">Major</span><span class="spacer"></span><span class="badge icon-pill icon-invalid" title="Not Relic">Not Relic</span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Not Relic  Haz</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge action-pill">ACTION</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Argent.jpg" alt="Argent.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Argent.jpg" alt="Argent.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Creuss.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Creuss.jpg" alt="Creuss.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Creuss.jpg" alt="Creuss.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="frontier" data-abilities="PRODUCTION" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Empyrean.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-frontier" title="Frontier">Frontier</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Frontier</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-production">PROD</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Empyrean.jpg" alt="Empyrean.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Empyrean.jpg" alt="Empyrean.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Hacan.jpg</span>
+                  <span class="badge ability-moderate">Moderate</span><span class="badge art">Art</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Hacan.jpg" alt="Hacan.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Hacan.jpg" alt="Hacan.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="tech" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Jol-Nar.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-tech" title="Tech">Tech</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Tech</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Jol-Nar.jpg" alt="Jol-Nar.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Jol-Nar.jpg" alt="Jol-Nar.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural hazardous industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">L1Z1X.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/L1Z1X.jpg" alt="L1Z1X.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/L1Z1X.jpg" alt="L1Z1X.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="hazardous industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Letnev.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Letnev.jpg" alt="Letnev.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Letnev.jpg" alt="Letnev.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural hazardous industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Mahact.jpg</span>
+                  <span class="badge ability-minor">Minor</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Mahact.jpg" alt="Mahact.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Mahact.jpg" alt="Mahact.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural hazardous" data-abilities="PRODUCTION" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Mentak.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-production">PROD</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Mentak.jpg" alt="Mentak.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Mentak.jpg" alt="Mentak.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="hazardous" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Muaat.jpg</span>
+                  <span class="badge ability-minor">Minor</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Muaat.jpg" alt="Muaat.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Muaat.jpg" alt="Muaat.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="hazardous industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">N'Orr.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/N'Orr.jpg" alt="N'Orr.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/N'Orr.jpg" alt="N'Orr.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="hazardous industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">NRA.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/NRA.jpg" alt="NRA.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/NRA.jpg" alt="NRA.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Naalu.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Naalu.jpg" alt="Naalu.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Naalu.jpg" alt="Naalu.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural hazardous industrial legendary" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Nekro.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-legendary" title="Leg">Leg</span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Leg  Haz  Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Nekro.jpg" alt="Nekro.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Nekro.jpg" alt="Nekro.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural hazardous industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Nomad.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Nomad.jpg" alt="Nomad.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Nomad.jpg" alt="Nomad.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="industrial" data-abilities="PRODUCTION|SPACE CANNON" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Saar.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-production">PROD</span><span class="badge ability-pill ability-space-cannon">CANNON</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Saar.jpg" alt="Saar.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Saar.jpg" alt="Saar.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Sol.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Sol.jpg" alt="Sol.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Sol.jpg" alt="Sol.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="legendary" data-abilities="" data-action="true">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Titans.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-legendary" title="Leg">Leg</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Leg</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge action-pill">ACTION</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Titans.jpg" alt="Titans.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Titans.jpg" alt="Titans.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural hazardous industrial legendary" data-abilities="DEPLOY|PRODUCTION" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Vuil'Raith.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-legendary" title="Leg">Leg</span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Leg  Haz  Ind  Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-production">PROD</span><span class="badge ability-pill ability-deploy">DEPLOY</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Vuil'Raith.jpg" alt="Vuil'Raith.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Vuil'Raith.jpg" alt="Vuil'Raith.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="mecatol" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Winnu.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-mecatol" title="MR">MR</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>MR</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Winnu.jpg" alt="Winnu.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Winnu.jpg" alt="Winnu.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Xxcha.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Xxcha.jpg" alt="Xxcha.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Xxcha.jpg" alt="Xxcha.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="hazardous industrial" data-abilities="PLANETARY SHIELD" data-action="true">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Yin.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge action-pill">ACTION</span><span class="badge ability-pill ability-planetary-shield">SHIELD</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Yin.jpg" alt="Yin.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Yin.jpg" alt="Yin.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Yssaril.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Yssaril.jpg" alt="Yssaril.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Yssaril.jpg" alt="Yssaril.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="folder-section">
+          <div class="folder-header" onclick="toggleFolder(this)">
+            <span class="folder-chevron open">▶</span>
+            <span class="folder-name">DS</span>
+            <span class="folder-count">35 cards</span>
+            <span class="badge ability-moderate">12 changes</span>
+          </div>
+          <div class="folder-body">
+            
+              <div class="card same-card" data-icons="tech" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Augurs.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-tech" title="Tech">Tech</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Tech</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Augurs.jpg" alt="Augurs.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Augurs.jpg" alt="Augurs.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="industrial" data-abilities="PRODUCTION" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Axis.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-production">PROD</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Axis.jpg" alt="Axis.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Axis.jpg" alt="Axis.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural industrial" data-abilities="DEPLOY|PRODUCTION" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Bentor.jpg</span>
+                  <span class="badge ability-moderate">Moderate</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind  Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-production">PROD</span><span class="badge ability-pill ability-deploy">DEPLOY</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Bentor.jpg" alt="Bentor.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Bentor.jpg" alt="Bentor.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Celdauri.jpg</span>
+                  <span class="badge ability-minor">Minor</span><span class="spacer"></span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Celdauri.jpg" alt="Celdauri.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Celdauri.jpg" alt="Celdauri.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural" data-abilities="PRODUCTION" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Cheiran.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-production">PROD</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Cheiran.jpg" alt="Cheiran.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Cheiran.jpg" alt="Cheiran.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="hazardous industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Cymiae.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Cymiae.jpg" alt="Cymiae.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Cymiae.jpg" alt="Cymiae.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="hazardous industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Dih-Mohn.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Dih-Mohn.jpg" alt="Dih-Mohn.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Dih-Mohn.jpg" alt="Dih-Mohn.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="legendary" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Edyn.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-legendary" title="Leg">Leg</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Leg</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Edyn.jpg" alt="Edyn.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Edyn.jpg" alt="Edyn.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">FSC.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/FSC.jpg" alt="FSC.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/FSC.jpg" alt="FSC.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Florzen.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Florzen.jpg" alt="Florzen.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Florzen.jpg" alt="Florzen.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural hazardous industrial" data-abilities="PRODUCTION" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">GLEdge.jpg</span>
+                  <span class="badge ability-major">Major</span><span class="badge flavour">Flavour</span><span class="badge title">Title</span><span class="badge art">Art</span><span class="badge placement">Placement &#x21C4;</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff">Placement &#x21C4;: <b>Haz  Ind</b> → <b>Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-production">PROD</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/GLEdge.jpg" alt="GLEdge.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/GLEdge.jpg" alt="GLEdge.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural hazardous industrial" data-abilities="PLANETARY SHIELD|SPACE CANNON" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Ghemina.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind  Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-planetary-shield">SHIELD</span><span class="badge ability-pill ability-space-cannon">CANNON</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Ghemina.jpg" alt="Ghemina.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Ghemina.jpg" alt="Ghemina.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="tech" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Ghoti.jpg</span>
+                  <span class="badge ability-moderate">Moderate</span><span class="spacer"></span><span class="badge icon-pill icon-tech" title="Tech">Tech</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Tech</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Ghoti.jpg" alt="Ghoti.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Ghoti.jpg" alt="Ghoti.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="legendary" data-abilities="SUSTAIN DAMAGE" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Khrask.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-legendary" title="Leg">Leg</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Leg</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-sustain-damage">SUSTAIN</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Khrask.jpg" alt="Khrask.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Khrask.jpg" alt="Khrask.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural hazardous" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Kjalengard.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Kjalengard.jpg" alt="Kjalengard.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Kjalengard.jpg" alt="Kjalengard.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="legendary" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Kollecc.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-legendary" title="Leg">Leg</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Leg</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Kollecc.jpg" alt="Kollecc.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Kollecc.jpg" alt="Kollecc.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="industrial" data-abilities="SPACE CANNON" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Kolume.jpg</span>
+                  <span class="badge ability-major">Major</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-space-cannon">CANNON</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Kolume.jpg" alt="Kolume.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Kolume.jpg" alt="Kolume.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="legendary" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Kortali.jpg</span>
+                  <span class="badge ability-major">Major</span><span class="badge flavour">Flavour</span><span class="spacer"></span><span class="badge icon-pill icon-legendary" title="Leg">Leg</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Leg</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Kortali.jpg" alt="Kortali.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Kortali.jpg" alt="Kortali.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="hazardous" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Kyro.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Kyro.jpg" alt="Kyro.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Kyro.jpg" alt="Kyro.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural hazardous industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Lanefir.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Lanefir.jpg" alt="Lanefir.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Lanefir.jpg" alt="Lanefir.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="hazardous industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Li-Zho.jpg</span>
+                  <span class="badge title">Title</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Li-Zho.jpg" alt="Li-Zho.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Li-Zho.jpg" alt="Li-Zho.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural hazardous industrial" data-abilities="PLANETARY SHIELD" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Mirveda.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind  Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-planetary-shield">SHIELD</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Mirveda.jpg" alt="Mirveda.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Mirveda.jpg" alt="Mirveda.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="hazardous" data-abilities="" data-action="true">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Mortheus.jpg</span>
+                  <span class="badge ability-moderate">Moderate</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge action-pill">ACTION</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Mortheus.jpg" alt="Mortheus.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Mortheus.jpg" alt="Mortheus.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Myko.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Myko.jpg" alt="Myko.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Myko.jpg" alt="Myko.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="tech" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Nivyn.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-tech" title="Tech">Tech</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Tech</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Nivyn.jpg" alt="Nivyn.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Nivyn.jpg" alt="Nivyn.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural industrial" data-abilities="PRODUCTION" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Nokar.jpg</span>
+                  <span class="badge ability-minor">Minor</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind  Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-production">PROD</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Nokar.jpg" alt="Nokar.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Nokar.jpg" alt="Nokar.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural hazardous industrial" data-abilities="PLANETARY SHIELD" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Olradin.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind  Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-planetary-shield">SHIELD</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Olradin.jpg" alt="Olradin.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Olradin.jpg" alt="Olradin.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="tech" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Rhodun Back.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-tech" title="Tech">Tech</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Tech</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Rhodun Back.jpg" alt="Rhodun Back.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Rhodun Back.jpg" alt="Rhodun Back.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="tech" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Rhodun Front.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-tech" title="Tech">Tech</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Tech</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Rhodun Front.jpg" alt="Rhodun Front.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Rhodun Front.jpg" alt="Rhodun Front.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="industrial" data-abilities="SPACE CANNON" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Roh'Dhna.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-space-cannon">CANNON</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Roh'Dhna.jpg" alt="Roh'Dhna.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Roh'Dhna.jpg" alt="Roh'Dhna.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural hazardous" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Tnelis.jpg</span>
+                  <span class="badge ability-moderate">Moderate</span><span class="badge flavour">Flavour</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Tnelis.jpg" alt="Tnelis.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Tnelis.jpg" alt="Tnelis.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Vaden.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Vaden.jpg" alt="Vaden.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Vaden.jpg" alt="Vaden.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural hazardous" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Vaylerian.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Vaylerian.jpg" alt="Vaylerian.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Vaylerian.jpg" alt="Vaylerian.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural hazardous" data-abilities="SPACE CANNON" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Veldyr.jpg</span>
+                  <span class="badge flavour">Flavour</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-space-cannon">CANNON</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Veldyr.jpg" alt="Veldyr.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Veldyr.jpg" alt="Veldyr.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="hazardous" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Zelian.jpg</span>
+                  <span class="badge ability-minor">Minor</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Zelian.jpg" alt="Zelian.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Zelian.jpg" alt="Zelian.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="folder-section">
+          <div class="folder-header" onclick="toggleFolder(this)">
+            <span class="folder-chevron ">▶</span>
+            <span class="folder-name">Other</span>
+            <span class="folder-count">1 card</span>
+            <span class="badge same">all same</span>
+          </div>
+          <div class="folder-body" style="display:none">
+            
+              <div class="card same-card" data-icons="cultural industrial" data-abilities="SPACE CANNON" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Drahn.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind  Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-space-cannon">CANNON</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Drahn.jpg" alt="Drahn.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Drahn.jpg" alt="Drahn.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="folder-section">
+          <div class="folder-header" onclick="toggleFolder(this)">
+            <span class="folder-chevron open">▶</span>
+            <span class="folder-name">TE</span>
+            <span class="folder-count">7 cards</span>
+            <span class="badge ability-moderate">3 changes</span>
+          </div>
+          <div class="folder-body">
+            
+              <div class="card changed-card" data-icons="frontier" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Bastion.jpg</span>
+                  <span class="badge ability-moderate">Moderate</span><span class="spacer"></span><span class="badge icon-pill icon-frontier" title="Frontier">Frontier</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Frontier</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Bastion.jpg" alt="Bastion.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Bastion.jpg" alt="Bastion.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural hazardous" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Crimson Rebellion.jpg</span>
+                  <span class="badge ability-minor">Minor</span><span class="badge flavour">Flavour</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Crimson Rebellion.jpg" alt="Crimson Rebellion.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Crimson Rebellion.jpg" alt="Crimson Rebellion.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Deepwrought.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Deepwrought.jpg" alt="Deepwrought.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Deepwrought.jpg" alt="Deepwrought.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural hazardous industrial" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Firmament.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Haz  Ind  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Firmament.jpg" alt="Firmament.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Firmament.jpg" alt="Firmament.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="cultural legendary mecatol" data-abilities="PRODUCTION" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Keleres.jpg</span>
+                  <span class="badge same">Same</span><span class="spacer"></span><span class="badge icon-pill icon-legendary" title="Leg">Leg</span><span class="badge icon-pill icon-invalid" title="Not MR">Not MR</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Not MR  Leg  Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-production">PROD</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Keleres.jpg" alt="Keleres.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Keleres.jpg" alt="Keleres.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card same-card" data-icons="" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Obsidian.jpg</span>
+                  <span class="badge same">Same</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Obsidian.jpg" alt="Obsidian.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Obsidian.jpg" alt="Obsidian.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural industrial" data-abilities="PRODUCTION" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">Ral-Nel.jpg</span>
+                  <span class="badge ability-minor">Minor</span><span class="badge art">Art</span><span class="spacer"></span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Ind  Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-production">PROD</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3</div>
+                      <img src="images/a/Ral-Nel.jpg" alt="Ral-Nel.jpg" />
+                    </div>
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/Ral-Nel.jpg" alt="Ral-Nel.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="folder-section">
+          <div class="folder-header" onclick="toggleFolder(this)">
+            <span class="folder-chevron open">▶</span>
+            <span class="folder-name">TF</span>
+            <span class="folder-count">9 cards</span>
+            <span class="badge ability-moderate">9 changes</span>
+          </div>
+          <div class="folder-body">
+            
+              <div class="card changed-card" data-icons="hazardous industrial legendary" data-abilities="PRODUCTION" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">King Black.jpg</span>
+                  <span class="badge new-badge">New</span><span class="badge icon-pill icon-invalid" title="Not Leg">Not Leg</span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-industrial" title="Ind">Ind</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Not Leg  Haz  Ind</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-production">PROD</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/King Black.jpg" alt="King Black.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="hazardous legendary relic" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">King Blue.jpg</span>
+                  <span class="badge new-badge">New</span><span class="badge icon-pill icon-invalid" title="Not Leg">Not Leg</span><span class="badge icon-pill icon-relic" title="Relic">Relic</span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Not Leg  Relic  Haz</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/King Blue.jpg" alt="King Blue.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural legendary relic" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">King Green.jpg</span>
+                  <span class="badge new-badge">New</span><span class="badge icon-pill icon-invalid" title="Not Leg">Not Leg</span><span class="badge icon-pill icon-relic" title="Relic">Relic</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Not Leg  Relic  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/King Green.jpg" alt="King Green.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="hazardous legendary relic" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">King Orange.jpg</span>
+                  <span class="badge new-badge">New</span><span class="badge icon-pill icon-legendary" title="Leg">Leg</span><span class="badge icon-pill icon-relic" title="Relic">Relic</span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Leg  Relic  Haz</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/King Orange.jpg" alt="King Orange.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural hazardous legendary relic" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">King Pink.jpg</span>
+                  <span class="badge new-badge">New</span><span class="badge icon-pill icon-invalid" title="Not Leg">Not Leg</span><span class="badge icon-pill icon-relic" title="Relic">Relic</span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Not Leg  Relic  Haz  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/King Pink.jpg" alt="King Pink.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="frontier" data-abilities="PRODUCTION" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">King Purple.jpg</span>
+                  <span class="badge new-badge">New</span><span class="badge icon-pill icon-frontier" title="Frontier">Frontier</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Frontier</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-production">PROD</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/King Purple.jpg" alt="King Purple.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="hazardous legendary relic" data-abilities="DEPLOY" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">King Red.jpg</span>
+                  <span class="badge new-badge">New</span><span class="badge icon-pill icon-invalid" title="Not Leg">Not Leg</span><span class="badge icon-pill icon-relic" title="Relic">Relic</span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Not Leg  Relic  Haz</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-deploy">DEPLOY</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/King Red.jpg" alt="King Red.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural legendary relic" data-abilities="SPACE CANNON" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">King White.jpg</span>
+                  <span class="badge new-badge">New</span><span class="badge icon-pill icon-invalid" title="Not Leg">Not Leg</span><span class="badge icon-pill icon-relic" title="Relic">Relic</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Not Leg  Relic  Cul</b></div>
+                  <div class="unit-abilities">Abilities: <span class="badge ability-pill ability-space-cannon">CANNON</span></div>
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/King White.jpg" alt="King White.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card changed-card" data-icons="cultural hazardous legendary relic" data-abilities="" data-action="false">
+                <div class="card-header" onclick="toggleCard(this)">
+                  <span class="card-name">King Yellow.jpg</span>
+                  <span class="badge new-badge">New</span><span class="badge icon-pill icon-invalid" title="Not Leg">Not Leg</span><span class="badge icon-pill icon-relic" title="Relic">Relic</span><span class="badge icon-pill icon-hazardous" title="Haz">Haz</span><span class="badge icon-pill icon-cultural" title="Cul">Cul</span>
+                  <span class="chevron">▶</span>
+                </div>
+                <div class="card-body" style="display:none">
+                  <div class="placement-diff" style="opacity:0.5">Placement: <b>Not Leg  Relic  Haz  Cul</b></div>
+                  
+                  <div class="images">
+                    <div class="img-col">
+                      <div class="img-label">v3.1</div>
+                      <img src="images/b/King Yellow.jpg" alt="King Yellow.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+</main>
+<script>
+  const data = [{"name":"BR/Atokera.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind","placement_b":"Haz  Ind","icons_a":"hazardous industrial","icons_b":"hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"BR/Belkosea.jpg","ability_changed":true,"flavour_changed":true,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind  Cul","placement_b":"Haz  Ind  Cul","icons_a":"cultural hazardous industrial","icons_b":"cultural hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"armageddon project this card has the text abilities of each superweapon card in your play area","text_b":"armageddon project at the end of the strategy phase choose and place 1 control token on a superweapon card in your play area this card has the text abilities of each superweapon card in your play area that has 1 of your control tokens"},{"name":"BR/Kaltrim.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"","placement_b":"","icons_a":"","icons_b":"","negated_a":"","negated_b":"","unit_abilities_b":"DEPLOY","has_action_b":false,"text_a":"","text_b":""},{"name":"BR/Pharad'n.jpg","ability_changed":true,"flavour_changed":true,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Leg  Haz","placement_b":"Leg  Haz","icons_a":"hazardous legendary","icons_b":"hazardous legendary","negated_a":"","negated_b":"","unit_abilities_b":"DEPLOY SUSTAIN DAMAGE","has_action_b":false,"text_a":"buack pyramid capture all other players infantry destroyed in or adjacent to this system","text_b":"buack pyramid this unit is treated as a structure and a ground force deploy during the commit ground forces step place this unit on a planet in a system adjacent 8 to a planet you control combat sustain damage"},{"name":"BR/Qhet.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind  Cul","placement_b":"Ind  Cul","icons_a":"cultural industrial","icons_b":"cultural industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"BR/Sarcosa.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Cul","placement_b":"Haz  Cul","icons_a":"cultural hazardous","icons_b":"cultural hazardous","negated_a":"","negated_b":"","unit_abilities_b":"PRODUCTION","has_action_b":false,"text_a":"raider stronghold you may place this structure into coexistence planet on a non home adjacent to a system that contains your or neutral produce units you can units on this planet production 2","text_b":"raider stronghold you may place this structure into coexistence on a non home non fracture planet adjacent to system that contains your a or neutral units production 2"},{"name":"BR/Toldar - Dishonor.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Leg  Cul","placement_b":"Leg  Cul","icons_a":"cultural legendary","icons_b":"cultural legendary","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"BR/Toldar - Honor.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Leg  Cul","placement_b":"Leg  Cul","icons_a":"cultural legendary","icons_b":"cultural legendary","negated_a":"","negated_b":"","unit_abilities_b":"PRODUCTION SPACE CANNON","has_action_b":false,"text_a":"","text_b":""},{"name":"BR/Uydai.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Cul","placement_b":"Haz  Cul","icons_a":"cultural hazardous","icons_b":"cultural hazardous","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"BR/Xin.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Leg  Tech","placement_b":"Leg  Tech","icons_a":"legendary tech","icons_b":"legendary tech","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"Base M/Creuss Base.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind  Cul","placement_b":"Ind  Cul","icons_a":"cultural industrial","icons_b":"cultural industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"Base M/L1Z1X Base.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Leg  Haz  Ind  Cul","placement_b":"Leg  Haz  Ind  Cul","icons_a":"cultural hazardous industrial legendary","icons_b":"cultural hazardous industrial legendary","negated_a":"","negated_b":"","unit_abilities_b":"PRODUCTION","has_action_b":false,"text_a":"","text_b":""},{"name":"Base M/Saar Base.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind  Cul","placement_b":"Ind  Cul","icons_a":"cultural industrial","icons_b":"cultural industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"daughter of ragh after you place this unit choose an adjacent system that does not contain a planet or delta wormhole that system is an asteroid field place the saar asteroid field token in that system as a reminder","text_b":"daughter of ragh after you place this unit system adjacent to choose a this planet that does not planet or delta contain a wormhole that system is an asteroid field place the saar asteroid field token in that system as a reminder"},{"name":"Base+PoK/Arborec.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Cul","placement_b":"Haz  Cul","icons_a":"cultural hazardous","icons_b":"cultural hazardous","negated_a":"","negated_b":"","unit_abilities_b":"SPACE CANNON","has_action_b":false,"text_a":"flaah orbitals when you pass place 1 infantry on a planet in or adjacent to this system other than mecatol rex if that planet is controlled by another player place that unit into coexistence space cannon 8","text_b":"flaah orbitals when you pass place 1 infantry on a planet in or adjacent to this system other than mecatol rex if that planet contains another player s units place that unit into coexistence space cannon 8"},{"name":"Base+PoK/Argent.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Not Relic  Haz","placement_b":"Not Relic  Haz","icons_a":"hazardous relic","icons_b":"hazardous relic","negated_a":"relic","negated_b":"relic","unit_abilities_b":"","has_action_b":true,"text_a":"phoenix cauldron action exhaust this card ship thathas to choose 1 sustain damage in or adjacent to this system if that ship is damaged destroyit else that ship becomes damaged","text_b":"phoenix cauldron action exhaust this card to choose this or an adjacent system that does not contain 1or more ofyour ships produce a hit against each ship in that system thathas sustain damage"},{"name":"Base+PoK/Creuss.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind  Cul","placement_b":"Ind  Cul","icons_a":"cultural industrial","icons_b":"cultural industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"Base+PoK/Empyrean.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Frontier","placement_b":"Frontier","icons_a":"frontier","icons_b":"frontier","negated_a":"","negated_b":"","unit_abilities_b":"PRODUCTION","has_action_b":false,"text_a":"","text_b":""},{"name":"Base+PoK/Hacan.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":true,"placement_changed":false,"placement_a":"Ind  Cul","placement_b":"Ind  Cul","icons_a":"cultural industrial","icons_b":"cultural industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"mowshir freeport when negotiating transactions units in the space area of this and adjacent systems may be exchanged as part ofthat transaction a player who gains ships this way then moves them toa system that contains their ships and 1 of their command tokens if able otherwise destroy those ships","text_b":"mowshir freeport outside of combat players may trade their units in the space area of this and adjacent systems as part of a transaction aplayer who gained units this way then replaces them and moves them to a system that contains their ships and 1 of their command tokens if able otherwise remove those units"},{"name":"Base+PoK/Jol-Nar.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Tech","placement_b":"Tech","icons_a":"tech","icons_b":"tech","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"Base+PoK/L1Z1X.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind  Cul","placement_b":"Haz  Ind  Cul","icons_a":"cultural hazardous industrial","icons_b":"cultural hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"Base+PoK/Letnev.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind","placement_b":"Haz  Ind","icons_a":"hazardous industrial","icons_b":"hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"Base+PoK/Mahact.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind  Cul","placement_b":"Haz  Ind  Cul","icons_a":"cultural hazardous industrial","icons_b":"cultural hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"spire of ixth at the start of the status phase the mahact player may place command 1 token in this system into their fleet pool if it does not already contain that player s token visitors report only joy here","text_b":"spire of ixth at the start of the status phase the mahact player may place 1 command token in this system into their fleet pool visitors report only joy here"},{"name":"Base+PoK/Mentak.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Cul","placement_b":"Haz  Cul","icons_a":"cultural hazardous","icons_b":"cultural hazardous","negated_a":"","negated_b":"","unit_abilities_b":"PRODUCTION","has_action_b":false,"text_a":"","text_b":""},{"name":"Base+PoK/Muaat.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz","placement_b":"Haz","icons_a":"hazardous","icons_b":"hazardous","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"glory furnace when you exhaust this planet to cast votes for each war sun or flagship you control in this system and for each adjacent supernova choose cast 3 additional votes produce a hit against or another player s shipsin a system adjacent to this planet","text_b":"glory furnace when you exhaust this planet to cast votes for each war sun or flagship you control in this system and for each supernova adjacent to this system choose cast 3 additional votes or produce a hit against another player s ships in this or an adjacent system"},{"name":"Base+PoK/N'Orr.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind","placement_b":"Haz  Ind","icons_a":"hazardous industrial","icons_b":"hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"Base+PoK/NRA.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind","placement_b":"Haz  Ind","icons_a":"hazardous industrial","icons_b":"hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"Base+PoK/Naalu.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Cul","placement_b":"Cul","icons_a":"cultural","icons_b":"cultural","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"nefishh projector infantry that you commit to planets in this and adjacent systems may be committed into coexistence if able","text_b":"nefishh projector infantry that you commit to planets in this and adjacent systems may be committed into coexistence if able"},{"name":"Base+PoK/Nekro.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Leg  Haz  Ind  Cul","placement_b":"Leg  Haz  Ind  Cul","icons_a":"cultural hazardous industrial legendary","icons_b":"cultural hazardous industrial legendary","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"Base+PoK/Nomad.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind  Cul","placement_b":"Haz  Ind  Cul","icons_a":"cultural hazardous industrial","icons_b":"cultural hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"Base+PoK/Saar.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind","placement_b":"Ind","icons_a":"industrial","icons_b":"industrial","negated_a":"","negated_b":"","unit_abilities_b":"PRODUCTION SPACE CANNON","has_action_b":false,"text_a":"","text_b":""},{"name":"Base+PoK/Sol.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind  Cul","placement_b":"Ind  Cul","icons_a":"cultural industrial","icons_b":"cultural industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"Base+PoK/Titans.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Leg","placement_b":"Leg","icons_a":"legendary","icons_b":"legendary","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":true,"text_a":"","text_b":""},{"name":"Base+PoK/Vuil'Raith.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Leg  Haz  Ind  Cul","placement_b":"Leg  Haz  Ind  Cul","icons_a":"cultural hazardous industrial legendary","icons_b":"cultural hazardous industrial legendary","negated_a":"","negated_b":"","unit_abilities_b":"DEPLOY PRODUCTION","has_action_b":false,"text_a":"","text_b":""},{"name":"Base+PoK/Winnu.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"MR","placement_b":"MR","icons_a":"mecatol","icons_b":"mecatol","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"Base+PoK/Xxcha.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind  Cul","placement_b":"Ind  Cul","icons_a":"cultural industrial","icons_b":"cultural industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"Base+PoK/Yin.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind","placement_b":"Haz  Ind","icons_a":"hazardous industrial","icons_b":"hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"PLANETARY SHIELD","has_action_b":true,"text_a":"","text_b":""},{"name":"Base+PoK/Yssaril.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind","placement_b":"Ind","icons_a":"industrial","icons_b":"industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Augurs.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Tech","placement_b":"Tech","icons_a":"tech","icons_b":"tech","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Axis.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind","placement_b":"Ind","icons_a":"industrial","icons_b":"industrial","negated_a":"","negated_b":"","unit_abilities_b":"PRODUCTION","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Bentor.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind  Cul","placement_b":"Ind  Cul","icons_a":"cultural industrial","icons_b":"cultural industrial","negated_a":"","negated_b":"","unit_abilities_b":"DEPLOY PRODUCTION","has_action_b":false,"text_a":"tucc academy deploy after another player exploresa planet thatis not adjacent to a home system you may place this unit on that planet into coexistence even ifit is not your turn then you may explore this planet production 1","text_b":"tucc academy deploy after another player exploresa planet thatis not adjacent to ahome system you may place this unit into coexistence on that planet and explore it production 1"},{"name":"DS/Celdauri.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Cul","placement_b":"Cul","icons_a":"cultural","icons_b":"cultural","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"hyperuane reuay during your tactical action you may commit ground forces on this planet to planets that contain your space docks an accident turned into an asset","text_b":"during each ofyour tactical actions you may commit ground forces on this planet to planets that contain your an accident turned into an asset"},{"name":"DS/Cheiran.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Cul","placement_b":"Cul","icons_a":"cultural","icons_b":"cultural","negated_a":"","negated_b":"","unit_abilities_b":"PRODUCTION","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Cymiae.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind","placement_b":"Haz  Ind","icons_a":"hazardous industrial","icons_b":"hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Dih-Mohn.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind","placement_b":"Haz  Ind","icons_a":"hazardous industrial","icons_b":"hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Edyn.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Leg","placement_b":"Leg","icons_a":"legendary","icons_b":"legendary","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/FSC.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Cul","placement_b":"Cul","icons_a":"cultural","icons_b":"cultural","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Florzen.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind  Cul","placement_b":"Ind  Cul","icons_a":"cultural industrial","icons_b":"cultural industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/GLEdge.jpg","ability_changed":true,"flavour_changed":true,"title_changed":true,"art_changed":true,"placement_changed":true,"placement_a":"Haz  Ind","placement_b":"Cul","icons_a":"hazardous industrial","icons_b":"cultural","negated_a":"","negated_b":"","unit_abilities_b":"PRODUCTION","has_action_b":false,"text_a":"central mining hub when a player places 1 or more units on a planet with an attachment in this or an adjacent system you may allow that player to gain 1 trade good","text_b":"verdant halo atthe start ofyour turn you may exhaust 2 planets you controlthat contain a core token 1 player treats all laws as blank untilthe end ofthis turn production 1"},{"name":"DS/Ghemina.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind  Cul","placement_b":"Haz  Ind  Cul","icons_a":"cultural hazardous industrial","icons_b":"cultural hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"PLANETARY SHIELD SPACE CANNON","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Ghoti.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Tech","placement_b":"Tech","icons_a":"tech","icons_b":"tech","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"ghoti anchorpoint at any time you may choose to treat this system as ifit contains no planets and contains a frontier token","text_b":"ghoti anchorpoint during movement you may choose to treat this system as if it contains no you treat this system as though it contains a frontier token"},{"name":"DS/Khrask.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Leg","placement_b":"Leg","icons_a":"legendary","icons_b":"legendary","negated_a":"","negated_b":"","unit_abilities_b":"SUSTAIN DAMAGE","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Kjalengard.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Cul","placement_b":"Haz  Cul","icons_a":"cultural hazardous","icons_b":"cultural hazardous","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Kollecc.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Leg","placement_b":"Leg","icons_a":"legendary","icons_b":"legendary","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Kolume.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind","placement_b":"Ind","icons_a":"industrial","icons_b":"industrial","negated_a":"","negated_b":"","unit_abilities_b":"SPACE CANNON","has_action_b":false,"text_a":"wonells bastion when this unit produces 1 or more hits against another player s ships you may exhaust this card to gain 1 command token for each hit produced","text_b":"wonells bastion when another player passes choose this or an adjacent system that containsa unit with space cannon either use this unit s space cannon against another player s ships in that system or repeat this space cannon 6 x2"},{"name":"DS/Kortali.jpg","ability_changed":true,"flavour_changed":true,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Leg","placement_b":"Leg","icons_a":"legendary","icons_b":"legendary","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"queens rest at the start of each round of space combat in this system repair 1 ship you control in this system","text_b":"queens rest when a non fighter non infantry unit you control is destroyed in this system roll a die ifyou roll equal to or higher than that units combat value or 8 ifthat unit has no combat value produce 1 hit against another player s ships in this system"},{"name":"DS/Kyro.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz","placement_b":"Haz","icons_a":"hazardous","icons_b":"hazardous","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Lanefir.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind  Cul","placement_b":"Haz  Ind  Cul","icons_a":"cultural hazardous industrial","icons_b":"cultural hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Li-Zho.jpg","ability_changed":false,"flavour_changed":false,"title_changed":true,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind","placement_b":"Haz  Ind","icons_a":"hazardous industrial","icons_b":"hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Mirveda.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind  Cul","placement_b":"Haz  Ind  Cul","icons_a":"cultural hazardous industrial","icons_b":"cultural hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"PLANETARY SHIELD","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Mortheus.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz","placement_b":"Haz","icons_a":"hazardous","icons_b":"hazardous","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":true,"text_a":"mirrorforge action exhaust this card and choose an adjacent system that contains another player s ships that player moves 1 of those ships into this system if able then resolve a space combat in this system it is a piece ofthe great outside","text_b":"mirrorforge action exhaust this card and choose an adjacent system that contains another player s non fighter ships that player moves those ships into this moved at least 4 resources worth of ships or all ships then resolve a space combat"},{"name":"DS/Myko.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind  Cul","placement_b":"Ind  Cul","icons_a":"cultural industrial","icons_b":"cultural industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Nivyn.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Tech","placement_b":"Tech","icons_a":"tech","icons_b":"tech","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Nokar.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind  Cul","placement_b":"Ind  Cul","icons_a":"cultural industrial","icons_b":"cultural industrial","negated_a":"","negated_b":"","unit_abilities_b":"PRODUCTION","has_action_b":false,"text_a":"freehold starport your ships may move out of this system even ifit contains ofyour command tokens 1","text_b":"freehold starport your ships may move out of this system and transport units even ifit contains 1 of your command tokens production 3"},{"name":"DS/Olradin.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind  Cul","placement_b":"Haz  Ind  Cul","icons_a":"cultural hazardous industrial","icons_b":"cultural hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"PLANETARY SHIELD","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Rhodun Back.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Tech","placement_b":"Tech","icons_a":"tech","icons_b":"tech","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Rhodun Front.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Tech","placement_b":"Tech","icons_a":"tech","icons_b":"tech","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Roh'Dhna.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind","placement_b":"Ind","icons_a":"industrial","icons_b":"industrial","negated_a":"","negated_b":"","unit_abilities_b":"SPACE CANNON","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Tnelis.jpg","ability_changed":true,"flavour_changed":true,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Cul","placement_b":"Haz  Cul","icons_a":"cultural hazardous","icons_b":"cultural hazardous","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"dawnstar hq when you lose a ground combat on this planet you may destroy each unit on this planet","text_b":"dawnstar hq when you lose a ground combat on this planet you may destroy each unit on this planet ofyour turn you at the start may destroy 1 other player s coexisting unit in this system it abandons principle for practicality"},{"name":"DS/Vaden.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind  Cul","placement_b":"Ind  Cul","icons_a":"cultural industrial","icons_b":"cultural industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"bounty brokerage after another player with ships in a system adjacent to this planet replenishes commodities ifthat player has control tokens on the vaden player s faction sheet you may take one oftheir commodities","text_b":"bounty brokerage after another player with ships in this or an adjacent system replenishes commodities if that player has control tokens on the vaden player s faction sheet you may take one oftheir commodities"},{"name":"DS/Vaylerian.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Cul","placement_b":"Haz  Cul","icons_a":"cultural hazardous","icons_b":"cultural hazardous","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"DS/Veldyr.jpg","ability_changed":false,"flavour_changed":true,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Cul","placement_b":"Haz  Cul","icons_a":"cultural hazardous","icons_b":"cultural hazardous","negated_a":"","negated_b":"","unit_abilities_b":"SPACE CANNON","has_action_b":false,"text_a":"perdition array during movement hits produced by the space cannon abilities ofyour units in this system cannot be canceled","text_b":"perdition array during movement hits produced by the space cannon abilities ofyour units in this system cannot be canceled"},{"name":"DS/Zelian.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz","placement_b":"Haz","icons_a":"hazardous","icons_b":"hazardous","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"this system countsas an asteroid field units can move into this system asifit were a non anomaly tile place the zelian asteroid field token in this system asa reminder ilaugh at their weaponsi","text_b":"this system is treated asan asteroid field units can move into this system asifit were non anomaly tile a place the zelian asteroid field token in this system asa reminder ilaugh at their weaponsi"},{"name":"Other/Drahn.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind  Cul","placement_b":"Ind  Cul","icons_a":"cultural industrial","icons_b":"cultural industrial","negated_a":"","negated_b":"","unit_abilities_b":"SPACE CANNON","has_action_b":false,"text_a":"","text_b":""},{"name":"TE/Bastion.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Frontier","placement_b":"Frontier","icons_a":"frontier","icons_b":"frontier","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"seraph data center this unit is a space station and is placed in the space area of a system that contains your ships and a planet another player controls take the matching station card when another player would gain control of this station destroy it and produce 2 hits","text_b":"seraph data center this unit is a station and placed in the space area of a system that contains your ships and exactly 1 non legendary planet take its matching station card while you control it when you lose control of this station destroy it and produce 2 hits against ships in this system"},{"name":"TE/Crimson Rebellion.jpg","ability_changed":true,"flavour_changed":true,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Cul","placement_b":"Haz  Cul","icons_a":"cultural hazardous","icons_b":"cultural hazardous","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"veils of lost creuss after a breach becomes or is placed active side up in any system ifthat system is adjacent to this planet you may produce 1 hit in that system","text_b":"veils of lost creuss after a breach becomes or is placed active side up in any system if that system is adjacent to this planet you may produce 1 hit in that system against another player s ships more mausoleum than monument"},{"name":"TE/Deepwrought.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Ind  Cul","placement_b":"Ind  Cul","icons_a":"cultural industrial","icons_b":"cultural industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"TE/Firmament.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Haz  Ind  Cul","placement_b":"Haz  Ind  Cul","icons_a":"cultural hazardous industrial","icons_b":"cultural hazardous industrial","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"TE/Keleres.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"Not MR  Leg  Cul","placement_b":"Not MR  Leg  Cul","icons_a":"cultural legendary mecatol","icons_b":"cultural legendary mecatol","negated_a":"mecatol","negated_b":"mecatol","unit_abilities_b":"PRODUCTION","has_action_b":false,"text_a":"","text_b":""},{"name":"TE/Obsidian.jpg","ability_changed":false,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"","placement_b":"","icons_a":"","icons_b":"","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"TE/Ral-Nel.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":true,"placement_changed":false,"placement_a":"Ind  Cul","placement_b":"Ind  Cul","icons_a":"cultural industrial","icons_b":"cultural industrial","negated_a":"","negated_b":"","unit_abilities_b":"PRODUCTION","has_action_b":false,"text_a":"sor tekk linkhub at the end of your tactical action if this unit is on a planet you may move 1 structure in the space area of this or an adjacent system to the space area of an adjacent system the most practical of edifices","text_b":"sor tekk linkhub at the end of your tactical action you may move 1 structure in the space area of this or an adjacent system to the space area of a system adjacent to that structure production 1 the most practical of edifices"},{"name":"TF/King Black.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"","placement_b":"Not Leg  Haz  Ind","icons_a":"","icons_b":"hazardous industrial legendary","negated_a":"","negated_b":"legendary","unit_abilities_b":"PRODUCTION","has_action_b":false,"text_a":"","text_b":""},{"name":"TF/King Blue.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"","placement_b":"Not Leg  Relic  Haz","icons_a":"","icons_b":"hazardous legendary relic","negated_a":"","negated_b":"legendary","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"TF/King Green.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"","placement_b":"Not Leg  Relic  Cul","icons_a":"","icons_b":"cultural legendary relic","negated_a":"","negated_b":"legendary","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"TF/King Orange.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"","placement_b":"Leg  Relic  Haz","icons_a":"","icons_b":"hazardous legendary relic","negated_a":"","negated_b":"","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"TF/King Pink.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"","placement_b":"Not Leg  Relic  Haz  Cul","icons_a":"","icons_b":"cultural hazardous legendary relic","negated_a":"","negated_b":"legendary","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""},{"name":"TF/King Purple.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"","placement_b":"Frontier","icons_a":"","icons_b":"frontier","negated_a":"","negated_b":"","unit_abilities_b":"PRODUCTION","has_action_b":false,"text_a":"","text_b":""},{"name":"TF/King Red.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"","placement_b":"Not Leg  Relic  Haz","icons_a":"","icons_b":"hazardous legendary relic","negated_a":"","negated_b":"legendary","unit_abilities_b":"DEPLOY","has_action_b":false,"text_a":"","text_b":""},{"name":"TF/King White.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"","placement_b":"Not Leg  Relic  Cul","icons_a":"","icons_b":"cultural legendary relic","negated_a":"","negated_b":"legendary","unit_abilities_b":"SPACE CANNON","has_action_b":false,"text_a":"","text_b":""},{"name":"TF/King Yellow.jpg","ability_changed":true,"flavour_changed":false,"title_changed":false,"art_changed":false,"placement_changed":false,"placement_a":"","placement_b":"Not Leg  Relic  Haz  Cul","icons_a":"","icons_b":"cultural hazardous legendary relic","negated_a":"","negated_b":"legendary","unit_abilities_b":"","has_action_b":false,"text_a":"","text_b":""}];
+
+  function toggleCard(header) {
+    const body = header.nextElementSibling;
+    const chevron = header.querySelector('.chevron');
+    if (!body) return;
+    const hidden = getComputedStyle(body).display === 'none';
+    body.style.display = hidden ? 'block' : 'none';
+    chevron.classList.toggle('open', hidden);
+  }
+
+  function toggleFolder(header) {
+    const body = header.nextElementSibling;
+    const chevron = header.querySelector('.folder-chevron');
+    if (!body) return;
+    const hidden = getComputedStyle(body).display === 'none';
+    body.style.display = hidden ? 'block' : 'none';
+    chevron.classList.toggle('open', hidden);
+  }
+
+  let activeFilter = 'all';
+
+  function cardMatchesFilter(card, filter) {
+    if (filter === 'all') return true;
+    if (filter === 'same') return card.classList.contains('same-card');
+    if (filter === 'changed') return card.classList.contains('changed-card');
+    if (filter === 'new') return !!card.querySelector('.new-badge');
+    if (filter === 'deleted') return !!card.querySelector('.deleted-badge');
+    if (filter === 'ability-minor' || filter === 'ability-moderate' || filter === 'ability-major')
+      return !!card.querySelector(`.badge.${filter}`);
+    if (filter === 'action') return card.dataset.action === 'true';
+    if (filter.startsWith('ability-')) {
+      const abilities = (card.dataset.abilities || '').split('|').filter(Boolean);
+      const abilityName = filter.replace('ability-', '');
+      return abilities.includes(abilityName);
+    }
+    if (filter.startsWith('icon-')) {
+      const icons = (card.dataset.icons || '').split(' ');
+      const iconName = filter.replace('icon-', '');
+      return icons.includes(iconName);
+    }
+    return !!card.querySelector(`.badge.${filter}`);
+  }
+
+  function applyFilter(filter) {
+    activeFilter = filter;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
+    document.querySelectorAll('.folder-section').forEach(section => {
+      const body = section.querySelector('.folder-body');
+      const header = section.querySelector('.folder-header');
+      const chevron = header.querySelector('.folder-chevron');
+      const cards = body.querySelectorAll('.card');
+      let visible = 0;
+      cards.forEach(card => {
+        const show = cardMatchesFilter(card, filter);
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+      section.classList.toggle('hidden', visible === 0);
+      if (visible > 0) {
+        body.style.display = 'block';
+        chevron.classList.add('open');
+      }
+    });
+  }
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+  });
+
+  function exportJson() {
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'card_diff.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function exportCsv() {
+    const header = ['name', 'ability_changed', 'flavour_changed', 'title_changed', 'art_changed', 'placement_changed', 'placement_a', 'placement_b', 'icons_a', 'icons_b', 'negated_a', 'negated_b', 'unit_abilities_b', 'has_action_b', 'text_a', 'text_b'];
+    const escape = v => '"' + String(v).replace(/"/g, '""') + '"';
+    const rows = [header.join(','), ...data.map(r => header.map(k => escape(r[k])).join(','))];
+    const blob = new Blob([rows.join('\n')], {type: 'text/csv'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'card_diff.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+</script>
+</body>
+</html>

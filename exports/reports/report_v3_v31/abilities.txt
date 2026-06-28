@@ -1,0 +1,51 @@
+UNIT ABILITIES:
+
+DEPLOY: 5 cards
+  Monuments/BR/Kaltrim.jpg
+  Monuments/BR/Pharad'n.jpg
+  Monuments/Base+PoK/Vuil'Raith.jpg
+  Monuments/DS/Bentor.jpg
+  Monuments/TF/King Red.jpg
+PLANETARY SHIELD: 4 cards
+  Monuments/Base+PoK/Yin.jpg
+  Monuments/DS/Ghemina.jpg
+  Monuments/DS/Mirveda.jpg
+  Monuments/DS/Olradin.jpg
+PRODUCTION: 16 cards
+  Monuments/BR/Sarcosa.jpg
+  Monuments/BR/Toldar - Honor.jpg
+  Monuments/Base M/L1Z1X Base.jpg
+  Monuments/Base+PoK/Empyrean.jpg
+  Monuments/Base+PoK/Mentak.jpg
+  Monuments/Base+PoK/Saar.jpg
+  Monuments/Base+PoK/Vuil'Raith.jpg
+  Monuments/DS/Axis.jpg
+  Monuments/DS/Bentor.jpg
+  Monuments/DS/Cheiran.jpg
+  Monuments/DS/GLEdge.jpg
+  Monuments/DS/Nokar.jpg
+  Monuments/TE/Keleres.jpg
+  Monuments/TE/Ral-Nel.jpg
+  Monuments/TF/King Black.jpg
+  Monuments/TF/King Purple.jpg
+SPACE CANNON: 9 cards
+  Monuments/BR/Toldar - Honor.jpg
+  Monuments/Base+PoK/Arborec.jpg
+  Monuments/Base+PoK/Saar.jpg
+  Monuments/DS/Ghemina.jpg
+  Monuments/DS/Kolume.jpg
+  Monuments/DS/Roh'Dhna.jpg
+  Monuments/DS/Veldyr.jpg
+  Monuments/Other/Drahn.jpg
+  Monuments/TF/King White.jpg
+SUSTAIN DAMAGE: 3 cards
+  Monuments/BR/Pharad'n.jpg
+  Monuments/Base+PoK/Mentak.jpg
+  Monuments/DS/Khrask.jpg
+
+ACTION:
+
+  Monuments/Base+PoK/Argent.jpg
+  Monuments/Base+PoK/Titans.jpg
+  Monuments/Base+PoK/Yin.jpg
+  Monuments/DS/Mortheus.jpg

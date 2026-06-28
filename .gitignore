@@ -1,0 +1,6 @@
+.venv/
+.DS_Store
+__pycache__/
+*.pyc
+*.ocr.json
+exports/s3-upload/.env
