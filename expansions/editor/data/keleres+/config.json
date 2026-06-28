@@ -314,7 +314,52 @@
       "path": "Drahn/Drahn Monument.jpg",
       "section": "drahn",
       "title": "Koldan's Outpost",
-      "type": "Unit"
+      "type": "Unit - Structure - Monument",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": "",
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "stats": {
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        },
+        "capacity": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "abilities": {
+        "deploy": false,
+        "planetaryShield": false,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
+        "spaceCannon": {
+          "value": 8,
+          "multi": 2
+        },
+        "production": null
+      },
+      "color": ""
     },
     "Drahn/Drahn Nevermore Ability Back.jpg": {
       "back": "",
@@ -389,12 +434,12 @@
       "source": {
         "enabled": true,
         "influence": 2,
-        "resource": 2,
-        "trait": "",
         "legendary": true,
+        "linkedAbility": "Drahn/Drahn Nevermore Ability Front.jpg",
         "relic": false,
+        "resource": 2,
         "techSpeciality": "",
-        "linkedAbility": "Drahn/Drahn Nevermore Ability Front.jpg"
+        "trait": ""
       },
       "title": "Nevermore",
       "type": "Planet"
