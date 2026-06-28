@@ -9,18 +9,18 @@
   .stat-num.red { color: #f87171; }
   .stat-num.green { color: #4ade80; }
   .stat-label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
-  .export-btn { background: #3b82f6; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 0.5rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: background 0.15s; }
+  .export-btn { background: #3b82f6; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 1rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: background 0.15s; }
   .export-btn:hover { background: #2563eb; }
   main { max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; }
   .folder-section { margin-bottom: 1.25rem; }
-  .folder-header { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 1.25rem; background: #12151f; border: 1px solid #2d3148; border-radius: 0.75rem; cursor: pointer; user-select: none; }
+  .folder-header { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 1.25rem; background: #12151f; border: 1px solid #2d3148; border-radius: 1.5rem; cursor: pointer; user-select: none; }
   .folder-header:hover { background: #1a1d2e; }
   .folder-chevron { font-size: 0.7rem; color: #64748b; transition: transform 0.2s; }
   .folder-chevron.open { transform: rotate(90deg); }
   .folder-name { font-weight: 700; font-size: 1rem; flex: 1; }
   .folder-count { font-size: 0.8rem; color: #64748b; }
   .folder-body { padding: 0.75rem 0 0 1.5rem; }
-  .card { background: #1a1d27; border: 1px solid #2d3148; border-radius: 0.75rem; margin-bottom: 0.6rem; overflow: hidden; }
+  .card { background: #1a1d27; border: 1px solid #2d3148; border-radius: 1.5rem; margin-bottom: 0.6rem; overflow: hidden; }
   .changed-card { border-color: #f87171; }
   .card-header { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 1.25rem; cursor: pointer; user-select: none; }
   .card-header:hover { background: #1e2235; }
@@ -57,7 +57,7 @@
   .images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .img-col { display: flex; flex-direction: column; gap: 0.5rem; }
   .img-label { font-size: 0.8rem; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
-  .img-col img { width: 100%; border-radius: 0.5rem; border: 1px solid #2d3148; }
+  .img-col img { width: 100%; border-radius: 1rem; border: 1px solid #2d3148; }
   .missing { opacity: 0.5; }
   .filters { display: flex; flex-direction: column; gap: 0.75rem; padding: 1rem 1.5rem; background: #12151f; border-bottom: 1px solid #2d3148; }
   .filter-section { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
