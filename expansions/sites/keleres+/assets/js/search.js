@@ -35,10 +35,10 @@
       abilities.deploy ? 'Deploy' : '',
       abilities.planetaryShield ? 'Planetary Shield' : '',
       abilities.sustainDamage ? 'Sustain Damage' : '',
-      abilities.bombardment ? `Bombardment ${abilities.bombardment.value != null ? abilities.bombardment.value : abilities.bombardment.target} ${abilities.bombardment.multi}` : '',
-      abilities.antiFighterBarrage ? `Anti-Fighter Barrage ${abilities.antiFighterBarrage.value != null ? abilities.antiFighterBarrage.value : abilities.antiFighterBarrage.target} ${abilities.antiFighterBarrage.multi}` : '',
-      abilities.spaceCannon ? `Space Cannon ${abilities.spaceCannon.value != null ? abilities.spaceCannon.value : abilities.spaceCannon.target} ${abilities.spaceCannon.multi}` : '',
-      abilities.production ? `Production ${abilities.production.value != null ? abilities.production.value : abilities.production.target} ${abilities.production.multi}` : '',
+      abilities.bombardment ? `Bombardment ${abilities.bombardment.value != null ? abilities.bombardment.value : abilities.bombardment.target} (x${abilities.bombardment.multi || 1})` : '',
+      abilities.antiFighterBarrage ? `Anti-Fighter Barrage ${abilities.antiFighterBarrage.value != null ? abilities.antiFighterBarrage.value : abilities.antiFighterBarrage.target} (x${abilities.antiFighterBarrage.multi || 1})` : '',
+      abilities.spaceCannon ? `Space Cannon ${abilities.spaceCannon.value != null ? abilities.spaceCannon.value : abilities.spaceCannon.target} (x${abilities.spaceCannon.multi || 1})` : '',
+      abilities.production ? `Production ${abilities.production.value != null ? abilities.production.value : abilities.production.target} (x${abilities.production.multi || 1})` : '',
     ].join(' ');
     const prereqText = img.prereq && img.prereq.enabled ? img.prereq.value : '';
     const colorText = img.color || '';
