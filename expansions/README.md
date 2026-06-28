@@ -11,6 +11,8 @@ cd /Users/kangarootime/Source/RiderProjects/TI/expansions
 # Run the local editor to collect expansion data
 python3 editor/app.py
 
+# Then open http://localhost:3030
+
 # Generate the static site
 python3 generator/site.py examples/example_monuments/config.json --output sites/example_monuments
 
