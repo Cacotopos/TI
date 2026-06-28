@@ -83,15 +83,22 @@ def _load_mask_crop_box(mask_path: Path) -> tuple[float, float, float, float]:
 
 
 def _crop_card_image(path: Path, mask_path: Path) -> bytes:
-    """Crop a source image to the card mask bounding box and return JPEG bytes."""
+    """Crop a source image to the card mask bounding box and return JPEG bytes.
+
+    Portrait images are rotated to landscape before cropping so all cards are
+    displayed at a consistent size.
+    """
     global _MASK_CROP_BOX
     if _MASK_CROP_BOX is None:
         _MASK_CROP_BOX = _load_mask_crop_box(mask_path)
 
     with Image.open(path) as img:
         img = img.convert("RGB")
-        left, top, right, bottom = _MASK_CROP_BOX
         w, h = img.size
+        if h > w:
+            img = img.rotate(-90, expand=True)
+            w, h = img.size
+        left, top, right, bottom = _MASK_CROP_BOX
         crop = (int(left * w), int(top * h), int(right * w), int(bottom * h))
         img = img.crop(crop)
         buffer = io.BytesIO()
@@ -133,6 +140,7 @@ def _collect_assets(config: dict) -> list[dict]:
             "abilities": asset.get("abilities", {}),
             "prereq": asset.get("prereq", {}),
             "color": asset.get("color", ""),
+            "source": asset.get("source", {}),
         })
     return images
 

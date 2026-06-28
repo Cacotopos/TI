@@ -8,11 +8,15 @@
     "images": "expansions/source/monuments"
   },
   "s3_path": "monuments",
+  "banner": {
+    "path": "banner.jpg"
+  },
   "sections": [
     {
       "id": "overview",
       "title": "Overview",
-      "type": "markdown"
+      "type": "markdown",
+      "blocks": []
     },
     {
       "id": "cards",
@@ -22,12 +26,14 @@
     {
       "id": "faq",
       "title": "FAQ",
-      "type": "markdown"
+      "type": "markdown",
+      "blocks": []
     },
     {
       "id": "design",
       "title": "Design Your Own",
-      "type": "markdown"
+      "type": "markdown",
+      "blocks": []
     }
   ],
   "assets": {
@@ -1384,7 +1390,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Belkosea",
@@ -1402,7 +1409,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Kaltrim",
@@ -1420,7 +1428,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Pharad'n",
@@ -1438,7 +1447,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Qhet",
@@ -1456,7 +1466,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Sarcosa",
@@ -1474,7 +1485,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Toldar - Dishonor",
@@ -1492,7 +1504,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Toldar - Honor",
@@ -1510,7 +1523,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Uydai",
@@ -1528,7 +1542,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Xin",
@@ -1546,7 +1561,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Creuss Base",
@@ -1564,7 +1580,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "L1Z1X Base",
@@ -1582,7 +1599,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Saar Base",
@@ -1600,7 +1618,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Arborec",
@@ -1618,7 +1637,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Argent",
@@ -1636,7 +1656,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Creuss",
@@ -1654,7 +1675,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Empyrean",
@@ -1672,7 +1694,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Hacan",
@@ -1690,7 +1713,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Jol-Nar",
@@ -1708,7 +1732,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "L1Z1X",
@@ -1726,7 +1751,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Letnev",
@@ -1744,7 +1770,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Mahact",
@@ -1762,7 +1789,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Mentak",
@@ -1780,7 +1808,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Muaat",
@@ -1798,7 +1827,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "N'Orr",
@@ -1816,7 +1846,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "NRA",
@@ -1834,7 +1865,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Naalu",
@@ -1852,7 +1884,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Nekro",
@@ -1870,7 +1903,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Nomad",
@@ -1888,7 +1922,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Saar",
@@ -1906,7 +1941,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Sol",
@@ -1924,7 +1960,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Titans",
@@ -1942,7 +1979,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Vuil'Raith",
@@ -1960,7 +1998,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Winnu",
@@ -1978,7 +2017,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Xxcha",
@@ -1996,7 +2036,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Yin",
@@ -2014,7 +2055,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Yssaril",
@@ -2032,7 +2074,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Augurs",
@@ -2050,7 +2093,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Axis",
@@ -2068,7 +2112,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Bentor",
@@ -2086,7 +2131,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Celdauri",
@@ -2104,7 +2150,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Cheiran",
@@ -2122,7 +2169,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Cymiae",
@@ -2140,7 +2188,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Dih-Mohn",
@@ -2158,7 +2207,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Edyn",
@@ -2176,7 +2226,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "FSC",
@@ -2194,7 +2245,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Florzen",
@@ -2212,7 +2264,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "GLEdge",
@@ -2230,7 +2283,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Ghemina",
@@ -2248,7 +2302,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Ghoti",
@@ -2266,7 +2321,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Khrask",
@@ -2284,7 +2340,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Kjalengard",
@@ -2302,7 +2359,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Kollecc",
@@ -2320,7 +2378,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Kolume",
@@ -2338,7 +2397,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Kortali",
@@ -2356,7 +2416,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Kyro",
@@ -2374,7 +2435,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Lanefir",
@@ -2392,7 +2454,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Li-Zho",
@@ -2410,7 +2473,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Mirveda",
@@ -2428,7 +2492,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Mortheus",
@@ -2446,7 +2511,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Myko",
@@ -2464,7 +2530,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Nivyn",
@@ -2482,7 +2549,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Nokar",
@@ -2500,7 +2568,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Olradin",
@@ -2518,7 +2587,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Rhodun Back",
@@ -2536,7 +2606,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Rhodun Front",
@@ -2554,7 +2625,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Roh'Dhna",
@@ -2572,7 +2644,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Tnelis",
@@ -2590,7 +2663,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Vaden",
@@ -2608,7 +2682,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Vaylerian",
@@ -2626,7 +2701,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Veldyr",
@@ -2644,7 +2720,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Zelian",
@@ -2662,7 +2739,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Drahn",
@@ -2680,7 +2758,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Bastion",
@@ -2698,7 +2777,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Crimson Rebellion",
@@ -2716,7 +2796,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Deepwrought",
@@ -2734,7 +2815,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Firmament",
@@ -2752,7 +2834,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Keleres",
@@ -2770,7 +2853,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Obsidian",
@@ -2788,7 +2872,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "Ral-Nel",
@@ -2806,7 +2891,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "King Black",
@@ -2824,7 +2910,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "King Blue",
@@ -2842,7 +2929,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "King Green",
@@ -2860,7 +2948,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "King Orange",
@@ -2878,7 +2967,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "King Pink",
@@ -2896,7 +2986,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "King Purple",
@@ -2914,7 +3005,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "King Red",
@@ -2932,7 +3024,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "King White",
@@ -2950,7 +3043,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     },
     {
       "id": "King Yellow",
@@ -2968,7 +3062,8 @@
       "stats": {},
       "abilities": {},
       "prereq": {},
-      "color": ""
+      "color": "",
+      "source": {}
     }
   ],
   "banner_path": null
