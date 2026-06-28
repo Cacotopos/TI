@@ -157,6 +157,11 @@
           <span class="switch"></span>
           <span class="label-text">Hidden</span>
         </label>
+        <label class="toggle">
+          <input id="show-hidden-only" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Hidden only</span>
+        </label>
         <span id="asset-count" class="text-muted" style="font-size: 0.85rem; color: var(--muted);"></span>
       </div>
       <div id="assets-grid" class="asset-grid"></div>
@@ -240,7 +245,8 @@
     <label>FAQ (one Q&A per line: Q: ... | A: ...)</label>
     <textarea id="asset-edit-faq" placeholder="Q: Does this stack? | A: Yes."></textarea>
     <label>Back Image</label>
-    <select id="asset-edit-back">
+    <input id="asset-edit-back-filter" type="text" placeholder="Filter back images..."/>
+    <select id="asset-edit-back" size="6">
       <option value="">None</option>
     </select>
     <div class="modal-footer">
@@ -465,16 +471,21 @@ function renderAssets() {
   const filter = document.getElementById('asset-filter').value.toLowerCase();
   const showUnconfigured = document.getElementById('show-unconfigured').checked;
   const showHidden = document.getElementById('show-hidden').checked;
+  const showHiddenOnly = document.getElementById('show-hidden-only').checked;
 
   let list = assetValues();
-  if (showUnconfigured) {
-    list = list.filter(a => !a.configured);
-  }
-  if (!showHidden) {
-    list = list.filter(a => !a.hidden);
+  if (showHiddenOnly) {
+    list = list.filter(a => a.hidden);
+  } else {
+    if (showUnconfigured) {
+      list = list.filter(a => !a.configured);
+    }
+    if (!showHidden) {
+      list = list.filter(a => !a.hidden);
+    }
   }
   if (filter) {
-    list = list.filter(a => (a.title + ' ' + a.path + ' ' + a.group).toLowerCase().includes(filter));
+    list = list.filter(a => (a.title + ' ' + a.path + ' ' + a.group + ' ' + (a.type || '') + ' ' + (a.faction || '')).toLowerCase().includes(filter));
   }
 
   document.getElementById('asset-count').textContent = `${list.length} shown / ${assetValues().length} total`;
@@ -511,6 +522,27 @@ function updateFactionDatalist() {
   });
 }
 
+let currentBackOptions = [];
+
+function populateBackOptions(path, currentBack, filterText) {
+  const backSelect = document.getElementById('asset-edit-back');
+  backSelect.innerHTML = '<option value="">None</option>';
+  const filter = filterText.toLowerCase();
+  currentBackOptions = assetValues().filter(a => {
+    if (a.path === path) return false;
+    if (!filter) return true;
+    return (a.path + ' ' + a.title + ' ' + a.group).toLowerCase().includes(filter);
+  });
+  currentBackOptions.forEach(a => {
+    const option = document.createElement('option');
+    option.value = a.path;
+    option.textContent = a.path;
+    backSelect.appendChild(option);
+  });
+  const stillAvailable = currentBack === '' || currentBackOptions.some(a => a.path === currentBack);
+  backSelect.value = stillAvailable ? currentBack : '';
+}
+
 function openAssetEditor(path) {
   const asset = assets[path];
   if (!asset) return;
@@ -528,7 +560,7 @@ function openAssetEditor(path) {
   document.getElementById('asset-edit-group').value = asset.group || '';
   document.getElementById('asset-edit-description').value = asset.description || '';
   document.getElementById('asset-edit-faq').value = (asset.faq || []).map(qa => `Q: ${qa.q} | A: ${qa.a}`).join('\n');
-  document.getElementById('asset-edit-back').value = asset.back || '';
+  document.getElementById('asset-edit-back-filter').value = '';
 
   updateFactionDatalist();
   document.getElementById('asset-edit-faction').value = asset.faction || '';
@@ -536,17 +568,7 @@ function openAssetEditor(path) {
   const sectionSelect = document.getElementById('asset-edit-section');
   sectionSelect.innerHTML = sections.map(s => `<option value="${s.id}" ${s.id === asset.section ? 'selected' : ''}>${s.title}</option>`).join('');
 
-  const backSelect = document.getElementById('asset-edit-back');
-  const currentBack = backSelect.value;
-  backSelect.innerHTML = '<option value="">None</option>';
-  assetValues().forEach(a => {
-    if (a.path === path) return;
-    const option = document.createElement('option');
-    option.value = a.path;
-    option.textContent = a.path;
-    backSelect.appendChild(option);
-  });
-  backSelect.value = currentBack;
+  populateBackOptions(path, asset.back || '', '');
 
   document.getElementById('asset-modal').classList.add('visible');
 }
@@ -730,6 +752,11 @@ document.getElementById('add-section-btn').addEventListener('click', () => {
 document.getElementById('inspect-btn').addEventListener('click', inspectFolder);
 document.getElementById('asset-edit-save').addEventListener('click', saveAssetEditor);
 document.getElementById('asset-edit-cancel').addEventListener('click', closeAssetEditor);
+document.getElementById('asset-edit-back-filter').addEventListener('input', e => {
+  const path = document.getElementById('asset-edit-path').value;
+  const currentBack = document.getElementById('asset-edit-back').value;
+  populateBackOptions(path, currentBack, e.target.value);
+});
 document.getElementById('asset-modal-close').addEventListener('click', closeAssetEditor);
 document.getElementById('asset-modal').addEventListener('click', e => {
   if (e.target.id === 'asset-modal') closeAssetEditor();
@@ -737,6 +764,7 @@ document.getElementById('asset-modal').addEventListener('click', e => {
 document.getElementById('asset-filter').addEventListener('input', renderAssets);
 document.getElementById('show-unconfigured').addEventListener('change', renderAssets);
 document.getElementById('show-hidden').addEventListener('change', renderAssets);
+document.getElementById('show-hidden-only').addEventListener('change', renderAssets);
 document.getElementById('choose-banner-btn').addEventListener('click', openBannerPicker);
 document.getElementById('clear-banner-btn').addEventListener('click', clearBanner);
 document.getElementById('banner-cancel').addEventListener('click', closeBannerPicker);
