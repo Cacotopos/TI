@@ -100,6 +100,14 @@
   #asset-edit-prereq-inputs input, #asset-edit-prereq-inputs select { margin-bottom: 0; }
   #asset-edit-prereq { text-transform: uppercase; font-family: monospace; letter-spacing: 0.15em; }
   #asset-edit-color { width: auto; flex: 1; }
+  #source-section { width: 100%; }
+  #source-section label.toggle { margin-bottom: 0; }
+  .source-inputs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 0.5rem; }
+  .source-inputs input, .source-inputs select { margin-bottom: 0; }
+  .source-scores { display: flex; gap: 0.5rem; }
+  .source-scores input { flex: 1; }
+  .source-toggles { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .source-toggles .toggle { margin-bottom: 0; }
   .asset-cell .title { font-size: 0.85rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .asset-cell .group { font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .toolbar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
@@ -330,7 +338,7 @@
           <option value="Legendary Ability">Legendary Ability</option>
           <option value="Other Component" selected>Other Component</option>
           <option value="Planet">Planet</option>
-          <option value="Planet Ability">Planet Ability</option>
+          <option value="Additional Ability">Additional Ability</option>
           <option value="Promissory Note">Promissory Note</option>
           <option value="Public Objective">Public Objective</option>
           <option value="Relic">Relic</option>
@@ -372,6 +380,42 @@
             <option value="R">Red</option>
             <option value="B">Blue</option>
           </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="source-section">
+        <label class="toggle">
+          <input id="asset-edit-source-toggle" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Source</span>
+        </label>
+        <div id="asset-edit-source-inputs" class="hidden source-inputs">
+          <div class="source-scores">
+            <input id="asset-edit-source-influence" type="number" min="0" max="10" placeholder="Influence"/>
+            <input id="asset-edit-source-resource" type="number" min="0" max="10" placeholder="Resource"/>
+          </div>
+          <select id="asset-edit-source-trait" class="source-planet-only">
+            <option value="">Planetary trait</option>
+            <option value="hazardous">Hazardous</option>
+            <option value="cultural">Cultural</option>
+            <option value="industrial">Industrial</option>
+          </select>
+          <div class="source-toggles">
+            <label class="toggle">
+              <input id="asset-edit-source-legendary" type="checkbox"/>
+              <span class="switch"></span>
+              <span class="label-text">Legendary</span>
+            </label>
+            <label class="toggle source-planet-only">
+              <input id="asset-edit-source-relic" type="checkbox"/>
+              <span class="switch"></span>
+              <span class="label-text">Relic</span>
+            </label>
+          </div>
+          <input id="asset-edit-source-tech" class="source-planet-only" type="text" placeholder="Tech speciality e.g. RRYY" maxlength="4"/>
+          <input id="asset-edit-source-linked" class="source-planet-only" type="text" placeholder="Linked ability card path"/>
         </div>
       </div>
     </div>
@@ -1040,6 +1084,50 @@ function updatePrereqDefaults(type) {
   toggle.checked = prereq.enabled;
   if (!value.value) value.value = prereq.value;
 }
+function defaultSource(type) {
+  return { enabled: type === 'Planet' || type === 'Station', influence: 0, resource: 0, trait: '', legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
+}
+function applySourceDefaultsIfNeeded(asset) {
+  if (!asset.source) asset.source = defaultSource(asset.type);
+}
+function getSourceInput() {
+  const enabled = document.getElementById('asset-edit-source-toggle').checked;
+  const influence = parseInt(document.getElementById('asset-edit-source-influence').value) || 0;
+  const resource = parseInt(document.getElementById('asset-edit-source-resource').value) || 0;
+  const trait = document.getElementById('asset-edit-source-trait').value;
+  const legendary = document.getElementById('asset-edit-source-legendary').checked;
+  const relic = document.getElementById('asset-edit-source-relic').checked;
+  const techSpeciality = document.getElementById('asset-edit-source-tech').value.toUpperCase().replace(/[^GYRB]/g, '').slice(0, 4);
+  const linkedAbility = document.getElementById('asset-edit-source-linked').value;
+  if (!enabled) return { enabled: false, influence: 0, resource: 0, trait: '', legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
+  const isStation = document.getElementById('asset-edit-type').value === 'Station';
+  return { enabled, influence, resource, trait: isStation ? '' : trait, legendary, relic: isStation ? false : relic, techSpeciality: isStation ? '' : techSpeciality, linkedAbility: isStation ? '' : linkedAbility };
+}
+function setSourceInput(source) {
+  const s = source || { enabled: false, influence: 0, resource: 0, trait: '', legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
+  document.getElementById('asset-edit-source-toggle').checked = s.enabled;
+  document.getElementById('asset-edit-source-influence').value = s.influence || '';
+  document.getElementById('asset-edit-source-resource').value = s.resource || '';
+  document.getElementById('asset-edit-source-trait').value = s.trait || '';
+  document.getElementById('asset-edit-source-legendary').checked = s.legendary || false;
+  document.getElementById('asset-edit-source-relic').checked = s.relic || false;
+  document.getElementById('asset-edit-source-tech').value = s.techSpeciality || '';
+  document.getElementById('asset-edit-source-linked').value = s.linkedAbility || '';
+}
+function updateSourceSectionVisibility() {
+  const enabled = document.getElementById('asset-edit-source-toggle').checked;
+  document.getElementById('asset-edit-source-inputs').classList.toggle('hidden', !enabled);
+  const isStation = document.getElementById('asset-edit-type').value === 'Station';
+  document.querySelectorAll('.source-planet-only').forEach(el => el.classList.toggle('hidden', isStation));
+}
+function updateSourceDefaults(type) {
+  const source = defaultSource(type);
+  const toggle = document.getElementById('asset-edit-source-toggle');
+  if (!toggle.checked) {
+    toggle.checked = source.enabled;
+    setSourceInput(source);
+  }
+}
 function applyUnitDefaultsIfNeeded(asset) {
   const category = unitCategory(asset.type);
   if (!category) return;
@@ -1052,6 +1140,8 @@ function updateUnitInputs() {
   updateUnitSectionVisibility();
   updatePrereqSectionVisibility();
   updatePrereqDefaults(type);
+  updateSourceSectionVisibility();
+  updateSourceDefaults(type);
   if (wasHidden && isUnitType(type)) {
     const category = unitCategory(type);
     setUnitStatsInput(defaultUnitStats(category));
@@ -1168,6 +1258,7 @@ function openAssetEditor(path) {
   document.getElementById('asset-edit-hidden').checked = asset.hidden;
   document.getElementById('asset-edit-configured').checked = asset.configured;
   document.getElementById('asset-edit-title').value = asset.title || '';
+  if (asset.type === 'Planet Ability') asset.type = 'Additional Ability';
   document.getElementById('asset-edit-type').value = asset.type || 'Other Component';
   document.getElementById('asset-edit-group').value = asset.group || '';
   document.getElementById('asset-edit-description').value = asset.description || '';
@@ -1179,12 +1270,15 @@ function openAssetEditor(path) {
 
   applyUnitDefaultsIfNeeded(asset);
   applyPrereqDefaultsIfNeeded(asset);
+  applySourceDefaultsIfNeeded(asset);
   setUnitStatsInput(asset.stats);
   setUnitAbilitiesInput(asset.abilities);
   setPrereqInput(asset.prereq);
   document.getElementById('asset-edit-color').value = asset.color || '';
+  setSourceInput(asset.source);
   updateUnitSectionVisibility();
   updatePrereqSectionVisibility();
+  updateSourceSectionVisibility();
   updateBackRowVisibility();
 
   const sectionSelect = document.getElementById('asset-edit-section');
@@ -1237,6 +1331,7 @@ function saveAssetEditor() {
 
   asset.prereq = getPrereqInput();
   asset.color = asset.type === 'Technology' ? document.getElementById('asset-edit-color').value : '';
+  asset.source = getSourceInput();
 
   assets[path] = asset;
   renderAssets();
@@ -1407,6 +1502,7 @@ document.getElementById('asset-edit-save-top').addEventListener('click', saveAss
 document.getElementById('asset-edit-type').addEventListener('change', updateUnitInputs);
 document.getElementById('asset-edit-iscard').addEventListener('change', updateBackRowVisibility);
 document.getElementById('asset-edit-prereq-toggle').addEventListener('change', updatePrereqSectionVisibility);
+document.getElementById('asset-edit-source-toggle').addEventListener('change', updateSourceSectionVisibility);
 document.getElementById('asset-edit-back-filter').addEventListener('input', e => {
   const path = document.getElementById('asset-edit-path').value;
   const currentBack = document.getElementById('asset-edit-back').value;

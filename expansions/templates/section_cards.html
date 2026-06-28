@@ -31,6 +31,7 @@
              data-card-abilities="{{ img.abilities | tojson | forceescape }}"
              data-card-prereq="{{ img.prereq | tojson | forceescape }}"
              data-card-color="{{ img.color }}"
+             data-card-source="{{ img.source | tojson | forceescape }}"
              data-card-back="{{ img.back }}"
              data-card-front-path="{{ img.path }}">
           <img src="{{ img.path }}" alt="{{ img.name }}" class="w-full rounded-lg"/>
@@ -60,6 +61,7 @@
     <div id="card-modal-stats" class="flex flex-nowrap gap-2 mb-4 hidden overflow-x-auto"></div>
     <div id="card-modal-abilities" class="flex flex-wrap gap-2 mb-4 hidden"></div>
     <div id="card-modal-prereq" class="flex flex-wrap gap-2 mb-4 hidden"></div>
+    <div id="card-modal-source" class="flex flex-wrap gap-2 mb-4 hidden"></div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
       <img id="card-modal-front" src="" alt="" class="w-full rounded-lg"/>
       <img id="card-modal-back" src="" alt="" class="w-full rounded-lg hidden"/>

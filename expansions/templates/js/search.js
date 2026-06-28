@@ -42,7 +42,9 @@
     ].join(' ');
     const prereqText = img.prereq && img.prereq.enabled ? img.prereq.value : '';
     const colorText = img.color || '';
-    const text = `${img.name || ''} ${img.folder || ''} ${img.group || ''} ${img.type || ''} ${img.faction || ''} ${img.description || ''} ${faqText} ${statsText} ${abilityText} ${prereqText} ${colorText}`;
+    const source = img.source || {};
+    const sourceText = source.enabled ? `${source.influence || ''} ${source.resource || ''} ${source.trait || ''} ${source.legendary ? 'Legendary' : ''} ${source.relic ? 'Relic' : ''} ${source.techSpeciality || ''} ${source.linkedAbility || ''}` : '';
+    const text = `${img.name || ''} ${img.folder || ''} ${img.group || ''} ${img.type || ''} ${img.faction || ''} ${img.description || ''} ${faqText} ${statsText} ${abilityText} ${prereqText} ${colorText} ${sourceText}`;
     const url = `${img.section || 'cards'}.html`;
     addDoc(`image-${i}`, text, img.name || img.id, url, 'card');
   });

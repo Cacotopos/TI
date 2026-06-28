@@ -6,6 +6,7 @@
   const statsContainer = document.getElementById('card-modal-stats');
   const abilitiesContainer = document.getElementById('card-modal-abilities');
   const prereqContainer = document.getElementById('card-modal-prereq');
+  const sourceContainer = document.getElementById('card-modal-source');
   const frontImg = document.getElementById('card-modal-front');
   const backImg = document.getElementById('card-modal-back');
   const description = document.getElementById('card-modal-description');
@@ -62,6 +63,28 @@
     }
     return parts.join('');
   }
+  function formatSource(source, type) {
+    if (!source || !source.enabled) return '';
+    const parts = [];
+    if (source.influence !== undefined && source.influence !== null && source.influence !== '') {
+      parts.push(`<span class="px-2 py-1 rounded-md bg-purple-600 text-white text-xs font-semibold whitespace-nowrap">Influence ${escapeHtml(String(source.influence))}</span>`);
+    }
+    if (source.resource !== undefined && source.resource !== null && source.resource !== '') {
+      parts.push(`<span class="px-2 py-1 rounded-md bg-yellow-600 text-white text-xs font-semibold whitespace-nowrap">Resource ${escapeHtml(String(source.resource))}</span>`);
+    }
+    if (type === 'Station') {
+      parts.push('<span class="px-2 py-1 rounded-md bg-blue-600 text-white text-xs font-semibold whitespace-nowrap">Station</span>');
+    } else if (source.trait) {
+      const traitColors = { hazardous: 'bg-red-600', cultural: 'bg-green-600', industrial: 'bg-yellow-500 text-black' };
+      const color = traitColors[source.trait] || 'bg-gray-700';
+      parts.push(`<span class="px-2 py-1 rounded-md ${color} text-xs font-semibold whitespace-nowrap capitalize">${escapeHtml(source.trait)}</span>`);
+    }
+    if (source.legendary) parts.push('<span class="px-2 py-1 rounded-md bg-orange-500 text-white text-xs font-semibold whitespace-nowrap">Legendary</span>');
+    if (source.relic) parts.push('<span class="px-2 py-1 rounded-md bg-teal-600 text-white text-xs font-semibold whitespace-nowrap">Relic</span>');
+    if (source.techSpeciality) parts.push(`<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs whitespace-nowrap">Tech: ${escapeHtml(source.techSpeciality)}</span>`);
+    if (source.linkedAbility) parts.push(`<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs whitespace-nowrap">Ability: ${escapeHtml(source.linkedAbility)}</span>`);
+    return parts.join('');
+  }
 
   function renderMarkdown(text) {
     if (!text) return '';
@@ -96,6 +119,7 @@
     try { card.stats = JSON.parse(card.stats || '{}'); } catch (e) { card.stats = {}; }
     try { card.abilities = JSON.parse(card.abilities || '{}'); } catch (e) { card.abilities = {}; }
     try { card.prereq = JSON.parse(card.prereq || '{}'); } catch (e) { card.prereq = {}; }
+    try { card.source = JSON.parse(card.source || '{}'); } catch (e) { card.source = {}; }
 
     const badgeList = [
       card.type ? `<span class="px-2 py-1 rounded-md bg-blue-600 text-white text-xs font-semibold">${escapeHtml(card.type)}</span>` : '',
@@ -116,6 +140,10 @@
     const prereqHtml = formatPrereq(card.prereq, card.color);
     prereqContainer.innerHTML = prereqHtml;
     prereqContainer.classList.toggle('hidden', !prereqHtml);
+
+    const sourceHtml = formatSource(card.source, card.type);
+    sourceContainer.innerHTML = sourceHtml;
+    sourceContainer.classList.toggle('hidden', !sourceHtml);
 
     if (card.description) {
       description.innerHTML = renderMarkdown(card.description);
@@ -171,6 +199,7 @@
         abilities: item.dataset.cardAbilities,
         prereq: item.dataset.cardPrereq,
         color: item.dataset.cardColor,
+        source: item.dataset.cardSource,
         back: item.dataset.cardBack,
         frontPath: item.dataset.cardFrontPath,
       });

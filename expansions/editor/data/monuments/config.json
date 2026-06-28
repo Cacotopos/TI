@@ -8,11 +8,15 @@
     "images": "expansions/source/monuments"
   },
   "s3_path": "monuments",
+  "banner": {
+    "path": "banner.jpg"
+  },
   "sections": [
     {
       "id": "overview",
       "title": "Overview",
-      "type": "markdown"
+      "type": "markdown",
+      "blocks": []
     },
     {
       "id": "cards",
@@ -22,12 +26,14 @@
     {
       "id": "faq",
       "title": "FAQ",
-      "type": "markdown"
+      "type": "markdown",
+      "blocks": []
     },
     {
       "id": "design",
       "title": "Design Your Own",
-      "type": "markdown"
+      "type": "markdown",
+      "blocks": []
     }
   ],
   "assets": {
