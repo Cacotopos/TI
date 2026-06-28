@@ -11,11 +11,11 @@
   .container { max-width: 900px; margin: 0 auto; }
   h1 { margin-bottom: 0.5rem; }
   .subtitle { color: var(--muted); margin-bottom: 1.5rem; }
-  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 1.5rem; padding: 1.25rem; margin-bottom: 1rem; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1rem; }
   label { display: block; color: var(--muted); font-size: 0.85rem; margin-bottom: 0.25rem; }
-  input, textarea, select { width: 100%; background: #12151f; color: var(--text); border: 1px solid var(--border); border-radius: 1rem; padding: 0.6rem; margin-bottom: 1rem; }
+  input, textarea, select { width: 100%; background: #12151f; color: var(--text); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.6rem; margin-bottom: 1rem; }
   textarea { min-height: 200px; }
-  button { background: #3b82f6; color: #fff; border: none; border-radius: 1rem; padding: 0.6rem 1.2rem; font-weight: 600; cursor: pointer; }
+  button { background: #3b82f6; color: #fff; border: none; border-radius: 0.5rem; padding: 0.6rem 1.2rem; font-weight: 600; cursor: pointer; }
   button:hover { background: #2563eb; }
   .row { display: flex; gap: 1rem; }
   .row > div { flex: 1; }
@@ -103,7 +103,11 @@ async function save() {
     imageFolder = imageFolder.slice(1);
   }
 
+  // Load existing config so we preserve sections and other fields not in the form.
+  const existing = await fetch(`/api/config/${id}`).then(r => r.json());
+
   const body = {
+    ...existing,
     id,
     name,
     version,

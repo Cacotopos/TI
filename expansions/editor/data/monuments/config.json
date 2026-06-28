@@ -9,25 +9,9 @@
   },
   "s3_path": "monuments",
   "sections": [
-    {
-      "id": "overview",
-      "title": "Overview",
-      "type": "markdown"
-    },
-    {
-      "id": "cards",
-      "title": "Cards",
-      "type": "cards"
-    },
-    {
-      "id": "faq",
-      "title": "FAQ",
-      "type": "markdown"
-    },
-    {
-      "id": "design",
-      "title": "Design Your Own",
-      "type": "markdown"
-    }
+    { "id": "overview", "title": "Overview", "type": "markdown" },
+    { "id": "cards", "title": "Cards", "type": "cards" },
+    { "id": "faq", "title": "FAQ", "type": "markdown" },
+    { "id": "design", "title": "Design Your Own", "type": "markdown" }
   ]
 }
