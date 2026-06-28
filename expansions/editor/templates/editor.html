@@ -264,7 +264,19 @@
           <option value="Technology">Technology</option>
           <option value="Tile">Tile</option>
           <option value="Token">Token</option>
-          <option value="Unit">Unit</option>
+          <option value="Unit - War sun">Unit - War sun</option>
+          <option value="Unit - Dreadnought">Unit - Dreadnought</option>
+          <option value="Unit - Flagship">Unit - Flagship</option>
+          <option value="Unit - Special">Unit - Special</option>
+          <option value="Unit - Fighter">Unit - Fighter</option>
+          <option value="Unit - Mech">Unit - Mech</option>
+          <option value="Unit - Carrier">Unit - Carrier</option>
+          <option value="Unit - Cruiser">Unit - Cruiser</option>
+          <option value="Unit - Destroyer">Unit - Destroyer</option>
+          <option value="Unit - Monument">Unit - Monument</option>
+          <option value="Unit - Basic Structure">Unit - Basic Structure</option>
+          <option value="Unit - Advanced Structure">Unit - Advanced Structure</option>
+          <option value="Unit - Infantry">Unit - Infantry</option>
         </select>
       </div>
       <div>
@@ -596,15 +608,9 @@ function populateBackOptions(path, currentBack, filterText) {
 }
 
 function renderAssetPreview(asset) {
-  const sectionTitle = (sections.find(s => s.id === asset.section) || {}).title || asset.section || 'cards';
   const badges = [
     asset.type ? `<span class="asset-badge accent">${asset.type}</span>` : '',
     asset.faction ? `<span class="asset-badge">${asset.faction}</span>` : '',
-    `<span class="asset-badge">${sectionTitle}</span>`,
-    asset.group ? `<span class="asset-badge">${asset.group}</span>` : '',
-    asset.back ? `<span class="asset-badge">Back: ${asset.back}</span>` : '',
-    asset.hidden ? `<span class="asset-badge danger">Excluded</span>` : '',
-    asset.configured ? `<span class="asset-badge accent">Configured</span>` : `<span class="asset-badge">Not configured</span>`,
   ].filter(Boolean).join('');
   document.getElementById('asset-badges').innerHTML = badges;
 
