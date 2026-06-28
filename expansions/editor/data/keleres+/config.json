@@ -58,6 +58,7 @@
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Alliance Back.jpg",
       "folder": "Drahn",
@@ -68,13 +69,13 @@
       "path": "Drahn/Drahn Alliance Back.jpg",
       "section": "drahn",
       "title": "Drahn Alliance Back",
-      "type": "Other Component",
-      "faction": ""
+      "type": "Other Component"
     },
     "Drahn/Drahn Alliance Front.jpg": {
       "back": "Drahn/Drahn Alliance Back.jpg",
       "configured": true,
       "description": "After you perform a tactical action:\n\nYou may spend 3 trade goods to move 1 of your ships from the active system to an adjacent system that does not contain another player's ships.",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Alliance Front.jpg",
       "folder": "Drahn",
@@ -85,13 +86,13 @@
       "path": "Drahn/Drahn Alliance Front.jpg",
       "section": "drahn",
       "title": "Drahn Alliance",
-      "type": "Alliance",
-      "faction": "Drahn"
+      "type": "Alliance"
     },
     "Drahn/Drahn Alliance.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Alliance.jpg",
       "folder": "Drahn",
@@ -102,13 +103,13 @@
       "path": "Drahn/Drahn Alliance.jpg",
       "section": "drahn",
       "title": "Drahn Alliance",
-      "type": "Other Component",
-      "faction": ""
+      "type": "Other Component"
     },
     "Drahn/Drahn Breakthrough BR Back.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Breakthrough BR Back.jpg",
       "folder": "Drahn",
@@ -119,13 +120,13 @@
       "path": "Drahn/Drahn Breakthrough BR Back.jpg",
       "section": "drahn",
       "title": "Drahn Breakthrough BR Back",
-      "type": "Other Component",
-      "faction": ""
+      "type": "Other Component"
     },
     "Drahn/Drahn Breakthrough BR.jpg": {
       "back": "Drahn/Drahn Breakthrough BR Back.jpg",
       "configured": true,
       "description": "When you gain this card, gain the Nevermore planet card and its legendary planet card.\n\nYou are neighbors with all palyers who have units on anomalies that do not contain planets.",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Breakthrough BR.jpg",
       "folder": "Drahn",
@@ -135,14 +136,14 @@
       "isCard": true,
       "path": "Drahn/Drahn Breakthrough BR.jpg",
       "section": "drahn",
-      "title": "Drahn Breakthrough BR",
-      "type": "Breakthrough",
-      "faction": "Drahn"
+      "title": "V.D.H.Q. Consolidation",
+      "type": "Breakthrough"
     },
     "Drahn/Drahn Commander Back.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Commander Back.jpg",
       "folder": "Drahn",
@@ -153,13 +154,13 @@
       "path": "Drahn/Drahn Commander Back.jpg",
       "section": "drahn",
       "title": "Drahn Commander Back",
-      "type": "Other Component",
-      "faction": ""
+      "type": "Other Component"
     },
     "Drahn/Drahn Commander Front.jpg": {
       "back": "Drahn/Drahn Commander Back.jpg",
       "configured": true,
       "description": "After you resolve a tactical action:\n\nYou may spend 3 trade goods to move 1 of your ships from the active system to an adjacent system that does not contain another player's ships.",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Commander Front.jpg",
       "folder": "Drahn",
@@ -170,8 +171,7 @@
       "path": "Drahn/Drahn Commander Front.jpg",
       "section": "drahn",
       "title": "Kip Lok Sil",
-      "type": "Commander",
-      "faction": "Drahn"
+      "type": "Commander"
     },
     "Drahn/Drahn Faction Sheet Back.jpg": {
       "back": "",
@@ -410,12 +410,14 @@
       "filename": "Drahn Tokens.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": false,
+      "hidden": true,
       "id": "Drahn Tokens",
       "isCard": true,
       "path": "Drahn/Drahn Tokens.jpg",
-      "section": "cards",
-      "title": "Drahn Tokens"
+      "section": "drahn",
+      "title": "Drahn Tokens",
+      "type": "Other Component",
+      "faction": ""
     },
     "Drahn/Drahn Tokens.png": {
       "back": "",
@@ -1550,27 +1552,31 @@
       "filename": "CV - Back.jpg",
       "folder": "Keleres",
       "group": "Keleres",
-      "hidden": false,
+      "hidden": true,
       "id": "CV - Back",
       "isCard": true,
       "path": "Keleres/CV - Back.jpg",
-      "section": "cards",
-      "title": "CV - Back"
+      "section": "drahn",
+      "title": "CV - Back",
+      "type": "Other Component",
+      "faction": ""
     },
     "Keleres/CV - Front.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "back": "Keleres/CV - Back.jpg",
+      "configured": true,
+      "description": "Resources 1\nInfluence 2",
       "faq": [],
       "filename": "CV - Front.jpg",
       "folder": "Keleres",
       "group": "Keleres",
-      "hidden": false,
+      "hidden": true,
       "id": "CV - Front",
       "isCard": true,
       "path": "Keleres/CV - Front.jpg",
-      "section": "cards",
-      "title": "CV - Front"
+      "section": "keleres",
+      "title": "Custodia Vigilia",
+      "type": "Planet",
+      "faction": "Keleres"
     },
     "Keleres/Heroes/Active/Argent.jpg": {
       "back": "",
@@ -2675,12 +2681,14 @@
       "filename": "Keleres CV Ability Back.jpg",
       "folder": "Keleres",
       "group": "Keleres",
-      "hidden": false,
+      "hidden": true,
       "id": "Keleres CV Ability Back",
       "isCard": true,
       "path": "Keleres/Keleres CV Ability Back.jpg",
-      "section": "cards",
-      "title": "Keleres CV Ability Back"
+      "section": "drahn",
+      "title": "Keleres CV Ability Back",
+      "type": "Other Component",
+      "faction": ""
     },
     "Keleres/Keleres CV Ability Front.jpg": {
       "back": "",
@@ -2690,12 +2698,14 @@
       "filename": "Keleres CV Ability Front.jpg",
       "folder": "Keleres",
       "group": "Keleres",
-      "hidden": false,
+      "hidden": true,
       "id": "Keleres CV Ability Front",
       "isCard": true,
       "path": "Keleres/Keleres CV Ability Front.jpg",
-      "section": "cards",
-      "title": "Keleres CV Ability Front"
+      "section": "drahn",
+      "title": "Custodia Vigilia",
+      "type": "Other Component",
+      "faction": ""
     },
     "Keleres/Keleres Faction Back.jpg": {
       "back": "",
