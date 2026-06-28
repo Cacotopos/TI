@@ -1,0 +1,25 @@
+{
+  "id": "monuments",
+  "name": "Monuments",
+  "version": "3.1",
+  "description": "Example expansion site for the Monuments expansion.",
+  "release_date": "2026-06-01",
+  "source": {
+    "images": "src/images",
+    "icons": "src/icons"
+  },
+  "sections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "type": "markdown",
+      "content": "overview.md"
+    },
+    {
+      "id": "factions",
+      "title": "Factions",
+      "type": "cards",
+      "items": []
+    }
+  ]
+}

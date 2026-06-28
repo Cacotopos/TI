@@ -1,0 +1,7 @@
+{
+  "_comment": "Manual overrides. Keys can be full card paths or filenames. Placement actions: add_icons, remove_icons, add_negated, remove_negated. Ability suppression: suppress_abilities (list of strings), suppress_action (bool).",
+  "Xin.jpg": { "add_icons": ["legendary"] },
+  "Argent.jpg": { "suppress_abilities": ["SUSTAIN DAMAGE"] },
+  "Letnev.jpg": { "suppress_abilities": ["PRODUCTION"] },
+  "Mentak.jpg": { "suppress_abilities": ["SUSTAIN DAMAGE"] }
+}
