@@ -8,7 +8,7 @@ from pathlib import Path
 
 import jinja2
 
-from .config import load_config
+from expansions.generator.config import load_config
 
 
 TEMPLATE_DIR = Path(__file__).parent.parent / "templates"

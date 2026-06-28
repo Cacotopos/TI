@@ -1,0 +1,11 @@
+{
+  "id": "monuments",
+  "name": "",
+  "version": "",
+  "description": "A structures expansion for Twilight Imperium 4th edition, including Prophecy of Kings, Thunder's Edge, Discordant Stars and Blue Reveries expansions.",
+  "overview": "An introduction page and overview, a page to explore all the cards, an FAQ page that links back to the cards, and a 'how to design your own monuments' page for other players who want to support this in their home-brew factions.",
+  "source": {
+    "images": "/expansions/examples/monuments-v3.1"
+  },
+  "s3_path": "monuments"
+}
