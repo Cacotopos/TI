@@ -89,12 +89,12 @@
   .unit-roll-ability .toggle { flex: 1; }
   .unit-roll-ability input { width: 4rem; margin-bottom: 0; padding: 0.35rem 0.5rem; text-align: right; }
   .asset-stat-line { display: flex; flex-wrap: nowrap; gap: 0.35rem; }
-  #prereq-section { margin: 0.75rem 0; }
-  #asset-edit-prereq-inputs { margin-top: 0.5rem; }
-  #asset-edit-prereq-inputs label { font-size: 0.85rem; color: var(--muted); }
+  #prereq-section { display: flex; flex-direction: column; justify-content: flex-start; flex: 0 0 45%; }
+  #prereq-section label.toggle { margin-bottom: 0; }
+  #asset-edit-prereq-inputs { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+  #asset-edit-prereq-inputs input, #asset-edit-prereq-inputs select { margin-bottom: 0; }
   #asset-edit-prereq { text-transform: uppercase; font-family: monospace; letter-spacing: 0.15em; }
-  #asset-edit-color-row { margin-top: 0.5rem; }
-  #asset-edit-color { width: 100%; }
+  #asset-edit-color { width: auto; flex: 1; }
   .asset-cell .title { font-size: 0.85rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .asset-cell .group { font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .toolbar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
@@ -345,32 +345,34 @@
           <option value="Unit - Structure - Advanced Structure">Unit - Structure - Advanced Structure</option>
         </select>
       </div>
-      <div>
-        <label>Faction</label>
-        <input id="asset-edit-faction" type="text" list="asset-edit-faction-list" placeholder="Type or select a faction"/>
-        <datalist id="asset-edit-faction-list"></datalist>
-      </div>
-    </div>
-
-    <div id="prereq-section">
-      <label class="toggle">
-        <input id="asset-edit-prereq-toggle" type="checkbox"/>
-        <span class="switch"></span>
-        <span class="label-text">Prerequisite</span>
-      </label>
-      <div id="asset-edit-prereq-inputs" class="hidden">
-        <label>Prerequisite colors</label>
-        <input id="asset-edit-prereq" type="text" placeholder="e.g. RRYY" maxlength="4"/>
-        <div id="asset-edit-color-row">
-          <label>Technology color</label>
+      <div id="prereq-section" class="prereq-inline">
+        <label class="toggle">
+          <input id="asset-edit-prereq-toggle" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Prerequisite</span>
+        </label>
+        <div id="asset-edit-prereq-inputs" class="hidden prereq-inputs">
+          <input id="asset-edit-prereq" type="text" placeholder="e.g. RRYY" maxlength="4"/>
           <select id="asset-edit-color">
-            <option value="">None</option>
+            <option value="">Tech color</option>
             <option value="G">Green</option>
             <option value="Y">Yellow</option>
             <option value="R">Red</option>
             <option value="B">Blue</option>
           </select>
         </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label>Faction</label>
+        <input id="asset-edit-faction" type="text" list="asset-edit-faction-list" placeholder="Type or select a faction"/>
+        <datalist id="asset-edit-faction-list"></datalist>
+      </div>
+      <div>
+        <label>Group</label>
+        <input id="asset-edit-group" type="text"/>
       </div>
     </div>
 
@@ -1012,7 +1014,9 @@ function updatePrereqSectionVisibility() {
   const enabled = document.getElementById('asset-edit-prereq-toggle').checked;
   document.getElementById('asset-edit-prereq-inputs').classList.toggle('hidden', !enabled);
   const type = document.getElementById('asset-edit-type').value;
-  document.getElementById('asset-edit-color-row').classList.toggle('hidden', type !== 'Technology');
+  const colorSelect = document.getElementById('asset-edit-color');
+  colorSelect.classList.toggle('hidden', type !== 'Technology');
+  if (type !== 'Technology') colorSelect.value = '';
 }
 function updatePrereqDefaults(type) {
   const prereq = defaultPrereq(type);
