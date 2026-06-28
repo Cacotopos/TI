@@ -21,6 +21,10 @@
         <div class="card-item bg-panel border border-border rounded-xl p-3 shadow-lg hover:border-accent transition-colors cursor-pointer"
              data-card-id="{{ img.id }}"
              data-card-name="{{ img.name }}"
+             data-card-type="{{ img.type }}"
+             data-card-faction="{{ img.faction }}"
+             data-card-section="{{ section.title }}"
+             data-card-group="{{ img.group }}"
              data-card-description="{{ img.description }}"
              data-card-faq="{{ img.faq | tojson | forceescape }}"
              data-card-back="{{ img.back }}"
@@ -48,12 +52,16 @@
       <h2 id="card-modal-title" class="text-2xl font-bold"></h2>
       <button id="card-modal-close" class="text-muted hover:text-white text-2xl">&times;</button>
     </div>
+    <div id="card-modal-badges" class="flex flex-wrap gap-2 mb-4"></div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
       <img id="card-modal-front" src="" alt="" class="w-full rounded-lg"/>
       <img id="card-modal-back" src="" alt="" class="w-full rounded-lg hidden"/>
     </div>
-    <p id="card-modal-description" class="text-gray-100 mb-4"></p>
-    <div id="card-modal-faq" class="space-y-3"></div>
+    <div id="card-modal-description" class="text-gray-100 mb-4 prose prose-invert max-w-none"></div>
+    <details id="card-modal-faq" class="hidden">
+      <summary class="cursor-pointer text-accent font-semibold mb-2">FAQ</summary>
+      <div id="card-modal-faq-content" class="space-y-3"></div>
+    </details>
   </div>
 </div>
 

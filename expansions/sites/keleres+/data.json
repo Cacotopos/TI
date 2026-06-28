@@ -8,16 +8,22 @@
     "images": "expansions/source/keleres+"
   },
   "s3_path": "keleres+",
+  "banner": null,
   "sections": [
     {
       "id": "drahn",
-      "title": "Drahn",
+      "title": "Drahn Cards",
       "type": "cards"
     },
     {
       "id": "keleres",
-      "title": "Keleres",
+      "title": "Keleres Cards",
       "type": "cards"
+    },
+    {
+      "id": "drahn-overview",
+      "title": "Drahn Overview",
+      "type": "markdown"
     }
   ],
   "assets": {
@@ -25,6 +31,7 @@
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Agent Back.jpg",
       "folder": "Drahn",
@@ -34,12 +41,14 @@
       "isCard": true,
       "path": "Drahn/Drahn Agent Back.jpg",
       "section": "drahn",
-      "title": "Drahn Agent Back"
+      "title": "Drahn Agent Back",
+      "type": "Other Component"
     },
     "Drahn/Drahn Agent Front.jpg": {
       "back": "Drahn/Drahn Agent Back.jpg",
       "configured": true,
-      "description": "Get some cash",
+      "description": "*Aldo Graf* /Contract Broker/\nYou may exhaust this card at the start of a player's turn; that player may either gain 1 command token or draw 1 secret objective. If they do, end that player's turn.",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Agent Front.jpg",
       "folder": "Drahn",
@@ -49,27 +58,31 @@
       "isCard": true,
       "path": "Drahn/Drahn Agent Front.jpg",
       "section": "drahn",
-      "title": "Drahn Agent"
+      "title": "Drahn Agent",
+      "type": "Agent"
     },
     "Drahn/Drahn Alliance Back.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Alliance Back.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": false,
+      "hidden": true,
       "id": "Drahn Alliance Back",
       "isCard": true,
       "path": "Drahn/Drahn Alliance Back.jpg",
-      "section": "cards",
-      "title": "Drahn Alliance Back"
+      "section": "drahn",
+      "title": "Drahn Alliance Back",
+      "type": "Other Component"
     },
     "Drahn/Drahn Alliance Front.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "back": "Drahn/Drahn Alliance Back.jpg",
+      "configured": true,
+      "description": "After you perform a tactical action:\n\nYou may spend 3 trade goods to move 1 of your ships from the active system to an adjacent system that does not contain another player's ships.",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Alliance Front.jpg",
       "folder": "Drahn",
@@ -78,43 +91,49 @@
       "id": "Drahn Alliance Front",
       "isCard": true,
       "path": "Drahn/Drahn Alliance Front.jpg",
-      "section": "cards",
-      "title": "Drahn Alliance Front"
+      "section": "drahn",
+      "title": "Drahn Alliance",
+      "type": "Alliance"
     },
     "Drahn/Drahn Alliance.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Alliance.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": false,
+      "hidden": true,
       "id": "Drahn Alliance",
       "isCard": true,
       "path": "Drahn/Drahn Alliance.jpg",
-      "section": "cards",
-      "title": "Drahn Alliance"
+      "section": "drahn",
+      "title": "Drahn Alliance",
+      "type": "Other Component"
     },
     "Drahn/Drahn Breakthrough BR Back.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Breakthrough BR Back.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": false,
+      "hidden": true,
       "id": "Drahn Breakthrough BR Back",
       "isCard": true,
       "path": "Drahn/Drahn Breakthrough BR Back.jpg",
-      "section": "cards",
-      "title": "Drahn Breakthrough BR Back"
+      "section": "drahn",
+      "title": "Drahn Breakthrough BR Back",
+      "type": "Other Component"
     },
     "Drahn/Drahn Breakthrough BR.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "back": "Drahn/Drahn Breakthrough BR Back.jpg",
+      "configured": true,
+      "description": "When you gain this card, gain the Nevermore planet card and its legendary planet card.\n\nYou are neighbors with all palyers who have units on anomalies that do not contain planets.",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Breakthrough BR.jpg",
       "folder": "Drahn",
@@ -123,28 +142,32 @@
       "id": "Drahn Breakthrough BR",
       "isCard": true,
       "path": "Drahn/Drahn Breakthrough BR.jpg",
-      "section": "cards",
-      "title": "Drahn Breakthrough BR"
+      "section": "drahn",
+      "title": "V.D.H.Q. Consolidation",
+      "type": "Breakthrough"
     },
     "Drahn/Drahn Commander Back.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Commander Back.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": false,
+      "hidden": true,
       "id": "Drahn Commander Back",
       "isCard": true,
       "path": "Drahn/Drahn Commander Back.jpg",
-      "section": "cards",
-      "title": "Drahn Commander Back"
+      "section": "drahn",
+      "title": "Drahn Commander Back",
+      "type": "Other Component"
     },
     "Drahn/Drahn Commander Front.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "back": "Drahn/Drahn Commander Back.jpg",
+      "configured": true,
+      "description": "After you resolve a tactical action:\n\nYou may spend 3 trade goods to move 1 of your ships from the active system to an adjacent system that does not contain another player's ships.",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Commander Front.jpg",
       "folder": "Drahn",
@@ -153,13 +176,15 @@
       "id": "Drahn Commander Front",
       "isCard": true,
       "path": "Drahn/Drahn Commander Front.jpg",
-      "section": "cards",
-      "title": "Drahn Commander Front"
+      "section": "drahn",
+      "title": "Kip Lok Sil",
+      "type": "Commander"
     },
     "Drahn/Drahn Faction Sheet Back.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Faction Sheet Back.jpg",
       "folder": "Drahn",
@@ -169,12 +194,14 @@
       "isCard": true,
       "path": "Drahn/Drahn Faction Sheet Back.jpg",
       "section": "cards",
-      "title": "Drahn Faction Sheet Back"
+      "title": "Drahn Faction Sheet Back",
+      "type": "Other Component"
     },
     "Drahn/Drahn Faction Sheet Front.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Faction Sheet Front.jpg",
       "folder": "Drahn",
@@ -184,12 +211,14 @@
       "isCard": true,
       "path": "Drahn/Drahn Faction Sheet Front.jpg",
       "section": "cards",
-      "title": "Drahn Faction Sheet Front"
+      "title": "Drahn Faction Sheet Front",
+      "type": "Other Component"
     },
     "Drahn/Drahn Mech Back.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Mech Back.jpg",
       "folder": "Drahn",
@@ -199,12 +228,14 @@
       "isCard": true,
       "path": "Drahn/Drahn Mech Back.jpg",
       "section": "cards",
-      "title": "Drahn Mech Back"
+      "title": "Drahn Mech Back",
+      "type": "Other Component"
     },
     "Drahn/Drahn Mech.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Mech.jpg",
       "folder": "Drahn",
@@ -214,12 +245,14 @@
       "isCard": true,
       "path": "Drahn/Drahn Mech.jpg",
       "section": "cards",
-      "title": "Drahn Mech"
+      "title": "Drahn Mech",
+      "type": "Other Component"
     },
     "Drahn/Drahn Monument.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Monument.jpg",
       "folder": "Drahn",
@@ -229,12 +262,14 @@
       "isCard": true,
       "path": "Drahn/Drahn Monument.jpg",
       "section": "cards",
-      "title": "Drahn Monument"
+      "title": "Drahn Monument",
+      "type": "Other Component"
     },
     "Drahn/Drahn Nevermore Ability Back.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Nevermore Ability Back.jpg",
       "folder": "Drahn",
@@ -244,12 +279,14 @@
       "isCard": true,
       "path": "Drahn/Drahn Nevermore Ability Back.jpg",
       "section": "cards",
-      "title": "Drahn Nevermore Ability Back"
+      "title": "Drahn Nevermore Ability Back",
+      "type": "Other Component"
     },
     "Drahn/Drahn Nevermore Ability Front.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Nevermore Ability Front.jpg",
       "folder": "Drahn",
@@ -259,12 +296,14 @@
       "isCard": true,
       "path": "Drahn/Drahn Nevermore Ability Front.jpg",
       "section": "cards",
-      "title": "Drahn Nevermore Ability Front"
+      "title": "Drahn Nevermore Ability Front",
+      "type": "Other Component"
     },
     "Drahn/Drahn Nevermore Back.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Nevermore Back.jpg",
       "folder": "Drahn",
@@ -274,12 +313,14 @@
       "isCard": true,
       "path": "Drahn/Drahn Nevermore Back.jpg",
       "section": "cards",
-      "title": "Drahn Nevermore Back"
+      "title": "Drahn Nevermore Back",
+      "type": "Other Component"
     },
     "Drahn/Drahn Nevermore Front.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Nevermore Front.jpg",
       "folder": "Drahn",
@@ -289,12 +330,14 @@
       "isCard": true,
       "path": "Drahn/Drahn Nevermore Front.jpg",
       "section": "cards",
-      "title": "Drahn Nevermore Front"
+      "title": "Drahn Nevermore Front",
+      "type": "Other Component"
     },
     "Drahn/Drahn Promissory Note.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Promissory Note.jpg",
       "folder": "Drahn",
@@ -304,12 +347,14 @@
       "isCard": true,
       "path": "Drahn/Drahn Promissory Note.jpg",
       "section": "cards",
-      "title": "Drahn Promissory Note"
+      "title": "Drahn Promissory Note",
+      "type": "Other Component"
     },
     "Drahn/Drahn Reference.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Reference.jpg",
       "folder": "Drahn",
@@ -319,12 +364,14 @@
       "isCard": true,
       "path": "Drahn/Drahn Reference.jpg",
       "section": "cards",
-      "title": "Drahn Reference"
+      "title": "Drahn Reference",
+      "type": "Other Component"
     },
     "Drahn/Drahn Tech - Green Back.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Tech - Green Back.jpg",
       "folder": "Drahn",
@@ -334,12 +381,14 @@
       "isCard": true,
       "path": "Drahn/Drahn Tech - Green Back.jpg",
       "section": "cards",
-      "title": "Drahn Tech - Green Back"
+      "title": "Drahn Tech - Green Back",
+      "type": "Other Component"
     },
     "Drahn/Drahn Tech - Guild Fund.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Tech - Guild Fund.jpg",
       "folder": "Drahn",
@@ -349,12 +398,14 @@
       "isCard": true,
       "path": "Drahn/Drahn Tech - Guild Fund.jpg",
       "section": "cards",
-      "title": "Drahn Tech - Guild Fund"
+      "title": "Drahn Tech - Guild Fund",
+      "type": "Other Component"
     },
     "Drahn/Drahn Tech - Special Forces.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "back": "Drahn/Drahn Tech - Yellow Back.jpg",
+      "configured": true,
+      "description": "YY\n\nAt the start of space combat in which you are the defender:\n\nYou may exhaust this card and spend 1 token from your strategy pool to force your opponent to declare a retreat.",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Tech - Special Forces.jpg",
       "folder": "Drahn",
@@ -363,43 +414,49 @@
       "id": "Drahn Tech - Special Forces",
       "isCard": true,
       "path": "Drahn/Drahn Tech - Special Forces.jpg",
-      "section": "cards",
-      "title": "Drahn Tech - Special Forces"
+      "section": "drahn",
+      "title": "Special Forces",
+      "type": "Other Component"
     },
     "Drahn/Drahn Tech - Yellow Back.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Tech - Yellow Back.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": false,
+      "hidden": true,
       "id": "Drahn Tech - Yellow Back",
       "isCard": true,
       "path": "Drahn/Drahn Tech - Yellow Back.jpg",
-      "section": "cards",
-      "title": "Drahn Tech - Yellow Back"
+      "section": "drahn",
+      "title": "Drahn Tech - Yellow Back",
+      "type": "Other Component"
     },
     "Drahn/Drahn Tokens.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Tokens.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": false,
+      "hidden": true,
       "id": "Drahn Tokens",
       "isCard": true,
       "path": "Drahn/Drahn Tokens.jpg",
-      "section": "cards",
-      "title": "Drahn Tokens"
+      "section": "drahn",
+      "title": "Drahn Tokens",
+      "type": "Other Component"
     },
     "Drahn/Drahn Tokens.png": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Tokens.png",
       "folder": "Drahn",
@@ -409,12 +466,14 @@
       "isCard": true,
       "path": "Drahn/Drahn Tokens.png",
       "section": "cards",
-      "title": "Drahn Tokens"
+      "title": "Drahn Tokens",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Arborec.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Arborec.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -424,12 +483,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Arborec.jpg",
       "section": "cards",
-      "title": "Arborec"
+      "title": "Arborec",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Belkosea.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Belkosea.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -439,12 +500,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Belkosea.jpg",
       "section": "cards",
-      "title": "Belkosea"
+      "title": "Belkosea",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Creuss.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Creuss.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -454,12 +517,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Creuss.jpg",
       "section": "cards",
-      "title": "Creuss"
+      "title": "Creuss",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Crimson.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Crimson.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -469,12 +534,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Crimson.jpg",
       "section": "cards",
-      "title": "Crimson"
+      "title": "Crimson",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Deepwrought.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Deepwrought.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -484,12 +551,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Deepwrought.jpg",
       "section": "cards",
-      "title": "Deepwrought"
+      "title": "Deepwrought",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Empyrean.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Empyrean.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -499,12 +568,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Empyrean.jpg",
       "section": "cards",
-      "title": "Empyrean"
+      "title": "Empyrean",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/FSC.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "FSC.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -514,12 +585,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/FSC.jpg",
       "section": "cards",
-      "title": "FSC"
+      "title": "FSC",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Firmament.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Firmament.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -529,12 +602,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Firmament.jpg",
       "section": "cards",
-      "title": "Firmament"
+      "title": "Firmament",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Florzen.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Florzen.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -544,12 +619,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Florzen.jpg",
       "section": "cards",
-      "title": "Florzen"
+      "title": "Florzen",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Ghemina.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Ghemina.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -559,12 +636,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Ghemina.jpg",
       "section": "cards",
-      "title": "Ghemina"
+      "title": "Ghemina",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Ghoti.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Ghoti.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -574,12 +653,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Ghoti.jpg",
       "section": "cards",
-      "title": "Ghoti"
+      "title": "Ghoti",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Gledge.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Gledge.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -589,12 +670,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Gledge.jpg",
       "section": "cards",
-      "title": "Gledge"
+      "title": "Gledge",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Glimmer.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Glimmer.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -604,12 +687,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Glimmer.jpg",
       "section": "cards",
-      "title": "Glimmer"
+      "title": "Glimmer",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Kollecc.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Kollecc.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -619,12 +704,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Kollecc.jpg",
       "section": "cards",
-      "title": "Kollecc"
+      "title": "Kollecc",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Kortali.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Kortali.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -634,12 +721,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Kortali.jpg",
       "section": "cards",
-      "title": "Kortali"
+      "title": "Kortali",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Kyro.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Kyro.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -649,12 +738,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Kyro.jpg",
       "section": "cards",
-      "title": "Kyro"
+      "title": "Kyro",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Lanefir.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Lanefir.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -664,12 +755,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Lanefir.jpg",
       "section": "cards",
-      "title": "Lanefir"
+      "title": "Lanefir",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Li-Zho.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Li-Zho.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -679,12 +772,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Li-Zho.jpg",
       "section": "cards",
-      "title": "Li-Zho"
+      "title": "Li-Zho",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Mahact.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Mahact.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -694,12 +789,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Mahact.jpg",
       "section": "cards",
-      "title": "Mahact"
+      "title": "Mahact",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Muaat.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Muaat.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -709,12 +806,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Muaat.jpg",
       "section": "cards",
-      "title": "Muaat"
+      "title": "Muaat",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Naalu.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Naalu.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -724,12 +823,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Naalu.jpg",
       "section": "cards",
-      "title": "Naalu"
+      "title": "Naalu",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Nekro.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Nekro.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -739,12 +840,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Nekro.jpg",
       "section": "cards",
-      "title": "Nekro"
+      "title": "Nekro",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Nivyn.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Nivyn.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -754,12 +857,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Nivyn.jpg",
       "section": "cards",
-      "title": "Nivyn"
+      "title": "Nivyn",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Nokar.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Nokar.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -769,12 +874,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Nokar.jpg",
       "section": "cards",
-      "title": "Nokar"
+      "title": "Nokar",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Olradin.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Olradin.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -784,12 +891,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Olradin.jpg",
       "section": "cards",
-      "title": "Olradin"
+      "title": "Olradin",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Pharad'n.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Pharad'n.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -799,12 +908,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Pharad'n.jpg",
       "section": "cards",
-      "title": "Pharad'n"
+      "title": "Pharad'n",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Saar.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Saar.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -814,12 +925,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Saar.jpg",
       "section": "cards",
-      "title": "Saar"
+      "title": "Saar",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Savages.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Savages.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -829,12 +942,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Savages.jpg",
       "section": "cards",
-      "title": "Savages"
+      "title": "Savages",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Tnelis.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Tnelis.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -844,12 +959,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Tnelis.jpg",
       "section": "cards",
-      "title": "Tnelis"
+      "title": "Tnelis",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Vaden.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Vaden.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -859,12 +976,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Vaden.jpg",
       "section": "cards",
-      "title": "Vaden"
+      "title": "Vaden",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Vaylerian.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Vaylerian.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -874,12 +993,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Vaylerian.jpg",
       "section": "cards",
-      "title": "Vaylerian"
+      "title": "Vaylerian",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Vuil'Raith.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Vuil'Raith.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -889,12 +1010,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Vuil'Raith.jpg",
       "section": "cards",
-      "title": "Vuil'Raith"
+      "title": "Vuil'Raith",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Xin.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Xin.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -904,12 +1027,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Xin.jpg",
       "section": "cards",
-      "title": "Xin"
+      "title": "Xin",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Yin.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Yin.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -919,12 +1044,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Yin.jpg",
       "section": "cards",
-      "title": "Yin"
+      "title": "Yin",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Yssaril.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Yssaril.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -934,12 +1061,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Yssaril.jpg",
       "section": "cards",
-      "title": "Yssaril"
+      "title": "Yssaril",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Active/Zelian.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Zelian.jpg",
       "folder": "Drahn/Heroes/Active",
@@ -949,12 +1078,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Active/Zelian.jpg",
       "section": "cards",
-      "title": "Zelian"
+      "title": "Zelian",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Arborec.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Arborec.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -964,12 +1095,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Arborec.jpg",
       "section": "cards",
-      "title": "Arborec"
+      "title": "Arborec",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Belkosea.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Belkosea.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -979,12 +1112,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Belkosea.jpg",
       "section": "cards",
-      "title": "Belkosea"
+      "title": "Belkosea",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Creuss.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Creuss.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -994,12 +1129,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Creuss.jpg",
       "section": "cards",
-      "title": "Creuss"
+      "title": "Creuss",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Crimson Rebellion.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Crimson Rebellion.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1009,12 +1146,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Crimson Rebellion.jpg",
       "section": "cards",
-      "title": "Crimson Rebellion"
+      "title": "Crimson Rebellion",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Crimson.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Crimson.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1024,12 +1163,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Crimson.jpg",
       "section": "cards",
-      "title": "Crimson"
+      "title": "Crimson",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Deepwrought.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Deepwrought.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1039,12 +1180,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Deepwrought.jpg",
       "section": "cards",
-      "title": "Deepwrought"
+      "title": "Deepwrought",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Empyrean.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Empyrean.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1054,12 +1197,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Empyrean.jpg",
       "section": "cards",
-      "title": "Empyrean"
+      "title": "Empyrean",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/FSC.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "FSC.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1069,12 +1214,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/FSC.jpg",
       "section": "cards",
-      "title": "FSC"
+      "title": "FSC",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Firmament.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Firmament.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1084,12 +1231,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Firmament.jpg",
       "section": "cards",
-      "title": "Firmament"
+      "title": "Firmament",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Florzen.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Florzen.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1099,12 +1248,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Florzen.jpg",
       "section": "cards",
-      "title": "Florzen"
+      "title": "Florzen",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Ghemina.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Ghemina.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1114,12 +1265,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Ghemina.jpg",
       "section": "cards",
-      "title": "Ghemina"
+      "title": "Ghemina",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Ghoti.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Ghoti.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1129,12 +1282,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Ghoti.jpg",
       "section": "cards",
-      "title": "Ghoti"
+      "title": "Ghoti",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Gledge.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Gledge.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1144,12 +1299,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Gledge.jpg",
       "section": "cards",
-      "title": "Gledge"
+      "title": "Gledge",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Glimmer.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Glimmer.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1159,12 +1316,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Glimmer.jpg",
       "section": "cards",
-      "title": "Glimmer"
+      "title": "Glimmer",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Heroes+.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Heroes+.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1174,12 +1333,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Heroes+.jpg",
       "section": "cards",
-      "title": "Heroes+"
+      "title": "Heroes+",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Kollecc.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Kollecc.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1189,12 +1350,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Kollecc.jpg",
       "section": "cards",
-      "title": "Kollecc"
+      "title": "Kollecc",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Kortali.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Kortali.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1204,12 +1367,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Kortali.jpg",
       "section": "cards",
-      "title": "Kortali"
+      "title": "Kortali",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Kyro.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Kyro.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1219,12 +1384,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Kyro.jpg",
       "section": "cards",
-      "title": "Kyro"
+      "title": "Kyro",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Lanefir.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Lanefir.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1234,12 +1401,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Lanefir.jpg",
       "section": "cards",
-      "title": "Lanefir"
+      "title": "Lanefir",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Li-Zho.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Li-Zho.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1249,12 +1418,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Li-Zho.jpg",
       "section": "cards",
-      "title": "Li-Zho"
+      "title": "Li-Zho",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Mahact.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Mahact.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1264,12 +1435,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Mahact.jpg",
       "section": "cards",
-      "title": "Mahact"
+      "title": "Mahact",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Muaat.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Muaat.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1279,12 +1452,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Muaat.jpg",
       "section": "cards",
-      "title": "Muaat"
+      "title": "Muaat",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Naalu.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Naalu.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1294,12 +1469,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Naalu.jpg",
       "section": "cards",
-      "title": "Naalu"
+      "title": "Naalu",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Nekro.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Nekro.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1309,12 +1486,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Nekro.jpg",
       "section": "cards",
-      "title": "Nekro"
+      "title": "Nekro",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Nivyn.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Nivyn.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1324,12 +1503,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Nivyn.jpg",
       "section": "cards",
-      "title": "Nivyn"
+      "title": "Nivyn",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Nokar.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Nokar.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1339,12 +1520,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Nokar.jpg",
       "section": "cards",
-      "title": "Nokar"
+      "title": "Nokar",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Olradin.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Olradin.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1354,12 +1537,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Olradin.jpg",
       "section": "cards",
-      "title": "Olradin"
+      "title": "Olradin",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Pharad'n.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Pharad'n.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1369,12 +1554,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Pharad'n.jpg",
       "section": "cards",
-      "title": "Pharad'n"
+      "title": "Pharad'n",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Saar.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Saar.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1384,12 +1571,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Saar.jpg",
       "section": "cards",
-      "title": "Saar"
+      "title": "Saar",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Savages.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Savages.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1399,12 +1588,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Savages.jpg",
       "section": "cards",
-      "title": "Savages"
+      "title": "Savages",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Tnelis.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Tnelis.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1414,12 +1605,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Tnelis.jpg",
       "section": "cards",
-      "title": "Tnelis"
+      "title": "Tnelis",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Vaden.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Vaden.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1429,12 +1622,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Vaden.jpg",
       "section": "cards",
-      "title": "Vaden"
+      "title": "Vaden",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Vaylerian.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Vaylerian.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1444,12 +1639,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Vaylerian.jpg",
       "section": "cards",
-      "title": "Vaylerian"
+      "title": "Vaylerian",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Vuil'Raith.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Vuil'Raith.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1459,12 +1656,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Vuil'Raith.jpg",
       "section": "cards",
-      "title": "Vuil'Raith"
+      "title": "Vuil'Raith",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Xin.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Xin.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1474,12 +1673,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Xin.jpg",
       "section": "cards",
-      "title": "Xin"
+      "title": "Xin",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Yin.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Yin.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1489,12 +1690,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Yin.jpg",
       "section": "cards",
-      "title": "Yin"
+      "title": "Yin",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Yssaril.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Yssaril.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1504,12 +1707,14 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Yssaril.jpg",
       "section": "cards",
-      "title": "Yssaril"
+      "title": "Yssaril",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Zelian.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Zelian.jpg",
       "folder": "Drahn/Heroes/Inactive",
@@ -1519,42 +1724,48 @@
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Zelian.jpg",
       "section": "cards",
-      "title": "Zelian"
+      "title": "Zelian",
+      "type": "Other Component"
     },
     "Keleres/CV - Back.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "CV - Back.jpg",
       "folder": "Keleres",
       "group": "Keleres",
-      "hidden": false,
+      "hidden": true,
       "id": "CV - Back",
       "isCard": true,
       "path": "Keleres/CV - Back.jpg",
-      "section": "cards",
-      "title": "CV - Back"
+      "section": "drahn",
+      "title": "CV - Back",
+      "type": "Other Component"
     },
     "Keleres/CV - Front.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "back": "Keleres/CV - Back.jpg",
+      "configured": true,
+      "description": "Resources 1\nInfluence 2",
+      "faction": "Keleres",
       "faq": [],
       "filename": "CV - Front.jpg",
       "folder": "Keleres",
       "group": "Keleres",
-      "hidden": false,
+      "hidden": true,
       "id": "CV - Front",
       "isCard": true,
       "path": "Keleres/CV - Front.jpg",
-      "section": "cards",
-      "title": "CV - Front"
+      "section": "keleres",
+      "title": "Custodia Vigilia",
+      "type": "Planet"
     },
     "Keleres/Heroes/Active/Argent.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Argent.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1564,12 +1775,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Argent.jpg",
       "section": "cards",
-      "title": "Argent"
+      "title": "Argent",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Atokera.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Atokera.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1579,12 +1792,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Atokera.jpg",
       "section": "cards",
-      "title": "Atokera"
+      "title": "Atokera",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Augurs.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Augurs.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1594,12 +1809,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Augurs.jpg",
       "section": "cards",
-      "title": "Augurs"
+      "title": "Augurs",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Bentor.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Bentor.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1609,12 +1826,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Bentor.jpg",
       "section": "cards",
-      "title": "Bentor"
+      "title": "Bentor",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Berserkers.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Berserkers.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1624,12 +1843,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Berserkers.jpg",
       "section": "cards",
-      "title": "Berserkers"
+      "title": "Berserkers",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Celdauri.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Celdauri.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1639,12 +1860,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Celdauri.jpg",
       "section": "cards",
-      "title": "Celdauri"
+      "title": "Celdauri",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Cheiran.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Cheiran.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1654,12 +1877,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Cheiran.jpg",
       "section": "cards",
-      "title": "Cheiran"
+      "title": "Cheiran",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Dih-Mohn.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Dih-Mohn.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1669,12 +1894,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Dih-Mohn.jpg",
       "section": "cards",
-      "title": "Dih-Mohn"
+      "title": "Dih-Mohn",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Edyn.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Edyn.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1684,12 +1911,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Edyn.jpg",
       "section": "cards",
-      "title": "Edyn"
+      "title": "Edyn",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Hacan.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Hacan.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1699,12 +1928,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Hacan.jpg",
       "section": "cards",
-      "title": "Hacan"
+      "title": "Hacan",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Jol-Nar.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Jol-Nar.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1714,12 +1945,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Jol-Nar.jpg",
       "section": "cards",
-      "title": "Jol-Nar"
+      "title": "Jol-Nar",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Kaltrim.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Kaltrim.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1729,12 +1962,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Kaltrim.jpg",
       "section": "cards",
-      "title": "Kaltrim"
+      "title": "Kaltrim",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Khrask.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Khrask.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1744,12 +1979,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Khrask.jpg",
       "section": "cards",
-      "title": "Khrask"
+      "title": "Khrask",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Kolume.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Kolume.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1759,12 +1996,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Kolume.jpg",
       "section": "cards",
-      "title": "Kolume"
+      "title": "Kolume",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/L1Z1X copy.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "L1Z1X copy.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1774,12 +2013,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/L1Z1X copy.jpg",
       "section": "cards",
-      "title": "L1Z1X copy"
+      "title": "L1Z1X copy",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Last Bastion ?.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Last Bastion ?.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1789,12 +2030,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Last Bastion ?.jpg",
       "section": "cards",
-      "title": "Last Bastion ?"
+      "title": "Last Bastion ?",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Last Bastion.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Last Bastion.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1804,12 +2047,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Last Bastion.jpg",
       "section": "cards",
-      "title": "Last Bastion"
+      "title": "Last Bastion",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Letnev.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Letnev.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1819,12 +2064,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Letnev.jpg",
       "section": "cards",
-      "title": "Letnev"
+      "title": "Letnev",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Mentak.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Mentak.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1834,12 +2081,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Mentak.jpg",
       "section": "cards",
-      "title": "Mentak"
+      "title": "Mentak",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Mirveda.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Mirveda.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1849,12 +2098,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Mirveda.jpg",
       "section": "cards",
-      "title": "Mirveda"
+      "title": "Mirveda",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Myko-Mentori.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Myko-Mentori.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1864,12 +2115,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Myko-Mentori.jpg",
       "section": "cards",
-      "title": "Myko-Mentori"
+      "title": "Myko-Mentori",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/N'orr.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "N'orr.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1879,12 +2132,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/N'orr.jpg",
       "section": "cards",
-      "title": "N'orr"
+      "title": "N'orr",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Naaz-Rokha.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Naaz-Rokha.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1894,12 +2149,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Naaz-Rokha.jpg",
       "section": "cards",
-      "title": "Naaz-Rokha"
+      "title": "Naaz-Rokha",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Nomad.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Nomad.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1909,12 +2166,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Nomad.jpg",
       "section": "cards",
-      "title": "Nomad"
+      "title": "Nomad",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Qhet.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Qhet.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1924,12 +2183,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Qhet.jpg",
       "section": "cards",
-      "title": "Qhet"
+      "title": "Qhet",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Ral-Nel.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Ral-Nel.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1939,12 +2200,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Ral-Nel.jpg",
       "section": "cards",
-      "title": "Ral-Nel"
+      "title": "Ral-Nel",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Roh'Dhna.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Roh'Dhna.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1954,12 +2217,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Roh'Dhna.jpg",
       "section": "cards",
-      "title": "Roh'Dhna"
+      "title": "Roh'Dhna",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Sarcosa.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Sarcosa.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1969,12 +2234,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Sarcosa.jpg",
       "section": "cards",
-      "title": "Sarcosa"
+      "title": "Sarcosa",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Shipwrights.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Shipwrights.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1984,12 +2251,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Shipwrights.jpg",
       "section": "cards",
-      "title": "Shipwrights"
+      "title": "Shipwrights",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Sol.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Sol.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -1999,12 +2268,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Sol.jpg",
       "section": "cards",
-      "title": "Sol"
+      "title": "Sol",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Toldar.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Toldar.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -2014,12 +2285,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Toldar.jpg",
       "section": "cards",
-      "title": "Toldar"
+      "title": "Toldar",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Ul.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Ul.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -2029,12 +2302,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Ul.jpg",
       "section": "cards",
-      "title": "Ul"
+      "title": "Ul",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Uydai.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Uydai.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -2044,12 +2319,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Uydai.jpg",
       "section": "cards",
-      "title": "Uydai"
+      "title": "Uydai",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Veldyr.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Veldyr.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -2059,12 +2336,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Veldyr.jpg",
       "section": "cards",
-      "title": "Veldyr"
+      "title": "Veldyr",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Winnu.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Winnu.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -2074,12 +2353,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Winnu.jpg",
       "section": "cards",
-      "title": "Winnu"
+      "title": "Winnu",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Xxcha.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Xxcha.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -2089,12 +2370,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Xxcha.jpg",
       "section": "cards",
-      "title": "Xxcha"
+      "title": "Xxcha",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Active/Zealots of Rhodun.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Zealots of Rhodun.jpg",
       "folder": "Keleres/Heroes/Active",
@@ -2104,12 +2387,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Active/Zealots of Rhodun.jpg",
       "section": "cards",
-      "title": "Zealots of Rhodun"
+      "title": "Zealots of Rhodun",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Argent.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Argent.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2119,12 +2404,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Argent.jpg",
       "section": "cards",
-      "title": "Argent"
+      "title": "Argent",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Atokera.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Atokera.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2134,12 +2421,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Atokera.jpg",
       "section": "cards",
-      "title": "Atokera"
+      "title": "Atokera",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Augurs.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Augurs.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2149,12 +2438,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Augurs.jpg",
       "section": "cards",
-      "title": "Augurs"
+      "title": "Augurs",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Bentor.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Bentor.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2164,12 +2455,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Bentor.jpg",
       "section": "cards",
-      "title": "Bentor"
+      "title": "Bentor",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Celdauri.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Celdauri.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2179,12 +2472,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Celdauri.jpg",
       "section": "cards",
-      "title": "Celdauri"
+      "title": "Celdauri",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Cheiran.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Cheiran.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2194,12 +2489,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Cheiran.jpg",
       "section": "cards",
-      "title": "Cheiran"
+      "title": "Cheiran",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Dih-Mohn.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Dih-Mohn.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2209,12 +2506,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Dih-Mohn.jpg",
       "section": "cards",
-      "title": "Dih-Mohn"
+      "title": "Dih-Mohn",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Edyn.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Edyn.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2224,12 +2523,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Edyn.jpg",
       "section": "cards",
-      "title": "Edyn"
+      "title": "Edyn",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Hacan.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Hacan.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2239,12 +2540,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Hacan.jpg",
       "section": "cards",
-      "title": "Hacan"
+      "title": "Hacan",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Jol-Nar.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Jol-Nar.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2254,12 +2557,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Jol-Nar.jpg",
       "section": "cards",
-      "title": "Jol-Nar"
+      "title": "Jol-Nar",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Kaltrim.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Kaltrim.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2269,12 +2574,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Kaltrim.jpg",
       "section": "cards",
-      "title": "Kaltrim"
+      "title": "Kaltrim",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Kjalengard.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Kjalengard.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2284,12 +2591,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Kjalengard.jpg",
       "section": "cards",
-      "title": "Kjalengard"
+      "title": "Kjalengard",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Kolume.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Kolume.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2299,12 +2608,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Kolume.jpg",
       "section": "cards",
-      "title": "Kolume"
+      "title": "Kolume",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/L'Tokk.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "L'Tokk.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2314,12 +2625,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/L'Tokk.jpg",
       "section": "cards",
-      "title": "L'Tokk"
+      "title": "L'Tokk",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/L1Z1X.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "L1Z1X.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2329,12 +2642,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/L1Z1X.jpg",
       "section": "cards",
-      "title": "L1Z1X"
+      "title": "L1Z1X",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Last Bastion.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Last Bastion.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2344,12 +2659,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Last Bastion.jpg",
       "section": "cards",
-      "title": "Last Bastion"
+      "title": "Last Bastion",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Letnev.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Letnev.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2359,12 +2676,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Letnev.jpg",
       "section": "cards",
-      "title": "Letnev"
+      "title": "Letnev",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Mentak.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Mentak.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2374,12 +2693,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Mentak.jpg",
       "section": "cards",
-      "title": "Mentak"
+      "title": "Mentak",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Mirveda.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Mirveda.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2389,12 +2710,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Mirveda.jpg",
       "section": "cards",
-      "title": "Mirveda"
+      "title": "Mirveda",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Myko-Mentori.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Myko-Mentori.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2404,12 +2727,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Myko-Mentori.jpg",
       "section": "cards",
-      "title": "Myko-Mentori"
+      "title": "Myko-Mentori",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/N'Orr.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "N'Orr.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2419,12 +2744,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/N'Orr.jpg",
       "section": "cards",
-      "title": "N'Orr"
+      "title": "N'Orr",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/NRA.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "NRA.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2434,12 +2761,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/NRA.jpg",
       "section": "cards",
-      "title": "NRA"
+      "title": "NRA",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Nomad.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Nomad.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2449,12 +2778,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Nomad.jpg",
       "section": "cards",
-      "title": "Nomad"
+      "title": "Nomad",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Qhet.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Qhet.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2464,12 +2795,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Qhet.jpg",
       "section": "cards",
-      "title": "Qhet"
+      "title": "Qhet",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Ral-Nel.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Ral-Nel.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2479,12 +2812,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Ral-Nel.jpg",
       "section": "cards",
-      "title": "Ral-Nel"
+      "title": "Ral-Nel",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Rhodun.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Rhodun.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2494,12 +2829,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Rhodun.jpg",
       "section": "cards",
-      "title": "Rhodun"
+      "title": "Rhodun",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Roh'Dhna.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Roh'Dhna.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2509,12 +2846,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Roh'Dhna.jpg",
       "section": "cards",
-      "title": "Roh'Dhna"
+      "title": "Roh'Dhna",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Sarcosa.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Sarcosa.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2524,12 +2863,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Sarcosa.jpg",
       "section": "cards",
-      "title": "Sarcosa"
+      "title": "Sarcosa",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Shipwrights.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Shipwrights.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2539,12 +2880,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Shipwrights.jpg",
       "section": "cards",
-      "title": "Shipwrights"
+      "title": "Shipwrights",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Sol.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Sol.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2554,12 +2897,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Sol.jpg",
       "section": "cards",
-      "title": "Sol"
+      "title": "Sol",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Titans.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Titans.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2569,12 +2914,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Titans.jpg",
       "section": "cards",
-      "title": "Titans"
+      "title": "Titans",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Toldar.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Toldar.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2584,12 +2931,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Toldar.jpg",
       "section": "cards",
-      "title": "Toldar"
+      "title": "Toldar",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Uydai.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Uydai.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2599,12 +2948,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Uydai.jpg",
       "section": "cards",
-      "title": "Uydai"
+      "title": "Uydai",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Veldyr.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Veldyr.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2614,12 +2965,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Veldyr.jpg",
       "section": "cards",
-      "title": "Veldyr"
+      "title": "Veldyr",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Winnu.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Winnu.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2629,12 +2982,14 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Winnu.jpg",
       "section": "cards",
-      "title": "Winnu"
+      "title": "Winnu",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Xxcha.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Xxcha.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -2644,42 +2999,48 @@
       "isCard": true,
       "path": "Keleres/Heroes/Inactive/Xxcha.jpg",
       "section": "cards",
-      "title": "Xxcha"
+      "title": "Xxcha",
+      "type": "Other Component"
     },
     "Keleres/Keleres CV Ability Back.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Keleres CV Ability Back.jpg",
       "folder": "Keleres",
       "group": "Keleres",
-      "hidden": false,
+      "hidden": true,
       "id": "Keleres CV Ability Back",
       "isCard": true,
       "path": "Keleres/Keleres CV Ability Back.jpg",
-      "section": "cards",
-      "title": "Keleres CV Ability Back"
+      "section": "drahn",
+      "title": "Keleres CV Ability Back",
+      "type": "Other Component"
     },
     "Keleres/Keleres CV Ability Front.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Keleres CV Ability Front.jpg",
       "folder": "Keleres",
       "group": "Keleres",
-      "hidden": false,
+      "hidden": true,
       "id": "Keleres CV Ability Front",
       "isCard": true,
       "path": "Keleres/Keleres CV Ability Front.jpg",
-      "section": "cards",
-      "title": "Keleres CV Ability Front"
+      "section": "drahn",
+      "title": "Custodia Vigilia",
+      "type": "Other Component"
     },
     "Keleres/Keleres Faction Back.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Keleres Faction Back.jpg",
       "folder": "Keleres",
@@ -2689,12 +3050,14 @@
       "isCard": true,
       "path": "Keleres/Keleres Faction Back.jpg",
       "section": "cards",
-      "title": "Keleres Faction Back"
+      "title": "Keleres Faction Back",
+      "type": "Other Component"
     },
     "Keleres/Keleres Faction Front.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Keleres Faction Front.jpg",
       "folder": "Keleres",
@@ -2704,12 +3067,14 @@
       "isCard": true,
       "path": "Keleres/Keleres Faction Front.jpg",
       "section": "cards",
-      "title": "Keleres Faction Front"
+      "title": "Keleres Faction Front",
+      "type": "Other Component"
     },
     "Keleres/Keleres+ Reference.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Keleres+ Reference.jpg",
       "folder": "Keleres",
@@ -2719,12 +3084,14 @@
       "isCard": true,
       "path": "Keleres/Keleres+ Reference.jpg",
       "section": "cards",
-      "title": "Keleres+ Reference"
+      "title": "Keleres+ Reference",
+      "type": "Other Component"
     },
     "Keleres/Tech - Agency Supply Network.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Tech - Agency Supply Network.jpg",
       "folder": "Keleres",
@@ -2734,12 +3101,14 @@
       "isCard": true,
       "path": "Keleres/Tech - Agency Supply Network.jpg",
       "section": "cards",
-      "title": "Tech - Agency Supply Network"
+      "title": "Tech - Agency Supply Network",
+      "type": "Other Component"
     },
     "Keleres/Tech - Special Clearances.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Tech - Special Clearances.jpg",
       "folder": "Keleres",
@@ -2749,7 +3118,8 @@
       "isCard": true,
       "path": "Keleres/Tech - Special Clearances.jpg",
       "section": "cards",
-      "title": "Tech - Special Clearances"
+      "title": "Tech - Special Clearances",
+      "type": "Other Component"
     }
   },
   "images": [
@@ -2761,109 +3131,53 @@
       "section": "drahn",
       "group": "Drahn",
       "back": "Drahn/Drahn Agent Back.jpg",
-      "description": "Get some cash",
+      "description": "*Aldo Graf* /Contract Broker/\nYou may exhaust this card at the start of a player's turn; that player may either gain 1 command token or draw 1 secret objective. If they do, end that player's turn.",
       "faq": [],
-      "type": "",
-      "faction": "",
+      "type": "Agent",
+      "faction": "Drahn",
       "configured": true
-    },
-    {
-      "id": "Drahn Alliance Back",
-      "path": "assets/images/Drahn/Drahn Alliance Back.jpg",
-      "folder": "Drahn",
-      "name": "Drahn Alliance Back",
-      "section": "cards",
-      "group": "Drahn",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "",
-      "faction": "",
-      "configured": false
     },
     {
       "id": "Drahn Alliance Front",
       "path": "assets/images/Drahn/Drahn Alliance Front.jpg",
       "folder": "Drahn",
-      "name": "Drahn Alliance Front",
-      "section": "cards",
-      "group": "Drahn",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "",
-      "faction": "",
-      "configured": false
-    },
-    {
-      "id": "Drahn Alliance",
-      "path": "assets/images/Drahn/Drahn Alliance.jpg",
-      "folder": "Drahn",
       "name": "Drahn Alliance",
-      "section": "cards",
+      "section": "drahn",
       "group": "Drahn",
-      "back": "",
-      "description": "",
+      "back": "Drahn/Drahn Alliance Back.jpg",
+      "description": "After you perform a tactical action:\n\nYou may spend 3 trade goods to move 1 of your ships from the active system to an adjacent system that does not contain another player's ships.",
       "faq": [],
-      "type": "",
-      "faction": "",
-      "configured": false
-    },
-    {
-      "id": "Drahn Breakthrough BR Back",
-      "path": "assets/images/Drahn/Drahn Breakthrough BR Back.jpg",
-      "folder": "Drahn",
-      "name": "Drahn Breakthrough BR Back",
-      "section": "cards",
-      "group": "Drahn",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "",
-      "faction": "",
-      "configured": false
+      "type": "Alliance",
+      "faction": "Drahn",
+      "configured": true
     },
     {
       "id": "Drahn Breakthrough BR",
       "path": "assets/images/Drahn/Drahn Breakthrough BR.jpg",
       "folder": "Drahn",
-      "name": "Drahn Breakthrough BR",
-      "section": "cards",
+      "name": "V.D.H.Q. Consolidation",
+      "section": "drahn",
       "group": "Drahn",
-      "back": "",
-      "description": "",
+      "back": "Drahn/Drahn Breakthrough BR Back.jpg",
+      "description": "When you gain this card, gain the Nevermore planet card and its legendary planet card.\n\nYou are neighbors with all palyers who have units on anomalies that do not contain planets.",
       "faq": [],
-      "type": "",
-      "faction": "",
-      "configured": false
-    },
-    {
-      "id": "Drahn Commander Back",
-      "path": "assets/images/Drahn/Drahn Commander Back.jpg",
-      "folder": "Drahn",
-      "name": "Drahn Commander Back",
-      "section": "cards",
-      "group": "Drahn",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "",
-      "faction": "",
-      "configured": false
+      "type": "Breakthrough",
+      "faction": "Drahn",
+      "configured": true
     },
     {
       "id": "Drahn Commander Front",
       "path": "assets/images/Drahn/Drahn Commander Front.jpg",
       "folder": "Drahn",
-      "name": "Drahn Commander Front",
-      "section": "cards",
+      "name": "Kip Lok Sil",
+      "section": "drahn",
       "group": "Drahn",
-      "back": "",
-      "description": "",
+      "back": "Drahn/Drahn Commander Back.jpg",
+      "description": "After you resolve a tactical action:\n\nYou may spend 3 trade goods to move 1 of your ships from the active system to an adjacent system that does not contain another player's ships.",
       "faq": [],
-      "type": "",
-      "faction": "",
-      "configured": false
+      "type": "Commander",
+      "faction": "Drahn",
+      "configured": true
     },
     {
       "id": "Drahn Faction Sheet Back",
@@ -2875,7 +3189,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -2889,7 +3203,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -2903,7 +3217,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -2917,7 +3231,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -2931,7 +3245,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -2945,7 +3259,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -2959,7 +3273,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -2973,7 +3287,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -2987,7 +3301,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3001,7 +3315,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3015,7 +3329,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3029,7 +3343,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3043,7 +3357,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3051,43 +3365,15 @@
       "id": "Drahn Tech - Special Forces",
       "path": "assets/images/Drahn/Drahn Tech - Special Forces.jpg",
       "folder": "Drahn",
-      "name": "Drahn Tech - Special Forces",
-      "section": "cards",
+      "name": "Special Forces",
+      "section": "drahn",
       "group": "Drahn",
-      "back": "",
-      "description": "",
+      "back": "Drahn/Drahn Tech - Yellow Back.jpg",
+      "description": "YY\n\nAt the start of space combat in which you are the defender:\n\nYou may exhaust this card and spend 1 token from your strategy pool to force your opponent to declare a retreat.",
       "faq": [],
-      "type": "",
-      "faction": "",
-      "configured": false
-    },
-    {
-      "id": "Drahn Tech - Yellow Back",
-      "path": "assets/images/Drahn/Drahn Tech - Yellow Back.jpg",
-      "folder": "Drahn",
-      "name": "Drahn Tech - Yellow Back",
-      "section": "cards",
-      "group": "Drahn",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "",
-      "faction": "",
-      "configured": false
-    },
-    {
-      "id": "Drahn Tokens",
-      "path": "assets/images/Drahn/Drahn Tokens.jpg",
-      "folder": "Drahn",
-      "name": "Drahn Tokens",
-      "section": "cards",
-      "group": "Drahn",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "",
-      "faction": "",
-      "configured": false
+      "type": "Other Component",
+      "faction": "Drahn",
+      "configured": true
     },
     {
       "id": "Drahn Tokens",
@@ -3099,7 +3385,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3113,7 +3399,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3127,7 +3413,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3141,7 +3427,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3155,7 +3441,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3169,7 +3455,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3183,7 +3469,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3197,7 +3483,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3211,7 +3497,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3225,7 +3511,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3239,7 +3525,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3253,7 +3539,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3267,7 +3553,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3281,7 +3567,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3295,7 +3581,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3309,7 +3595,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3323,7 +3609,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3337,7 +3623,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3351,7 +3637,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3365,7 +3651,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3379,7 +3665,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3393,7 +3679,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3407,7 +3693,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3421,7 +3707,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3435,7 +3721,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3449,7 +3735,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3463,7 +3749,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3477,7 +3763,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3491,7 +3777,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3505,7 +3791,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3519,7 +3805,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3533,7 +3819,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3547,7 +3833,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3561,7 +3847,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3575,7 +3861,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3589,7 +3875,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3603,7 +3889,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3617,7 +3903,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3631,7 +3917,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3645,7 +3931,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3659,7 +3945,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3673,7 +3959,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3687,7 +3973,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3701,7 +3987,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3715,7 +4001,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3729,7 +4015,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3743,7 +4029,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3757,7 +4043,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3771,7 +4057,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3785,7 +4071,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3799,7 +4085,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3813,7 +4099,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3827,7 +4113,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3841,7 +4127,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3855,7 +4141,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3869,7 +4155,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3883,7 +4169,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3897,7 +4183,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3911,7 +4197,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3925,7 +4211,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3939,7 +4225,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3953,7 +4239,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3967,7 +4253,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3981,7 +4267,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -3995,7 +4281,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4009,7 +4295,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4023,7 +4309,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4037,7 +4323,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4051,7 +4337,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4065,7 +4351,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4079,7 +4365,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4093,7 +4379,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4107,7 +4393,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4121,7 +4407,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4135,35 +4421,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
-      "faction": "",
-      "configured": false
-    },
-    {
-      "id": "CV - Back",
-      "path": "assets/images/Keleres/CV - Back.jpg",
-      "folder": "Keleres",
-      "name": "CV - Back",
-      "section": "cards",
-      "group": "Keleres",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "",
-      "faction": "",
-      "configured": false
-    },
-    {
-      "id": "CV - Front",
-      "path": "assets/images/Keleres/CV - Front.jpg",
-      "folder": "Keleres",
-      "name": "CV - Front",
-      "section": "cards",
-      "group": "Keleres",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4177,7 +4435,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4191,7 +4449,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4205,7 +4463,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4219,7 +4477,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4233,7 +4491,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4247,7 +4505,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4261,7 +4519,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4275,7 +4533,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4289,7 +4547,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4303,7 +4561,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4317,7 +4575,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4331,7 +4589,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4345,7 +4603,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4359,7 +4617,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4373,7 +4631,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4387,7 +4645,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4401,7 +4659,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4415,7 +4673,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4429,7 +4687,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4443,7 +4701,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4457,7 +4715,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4471,7 +4729,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4485,7 +4743,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4499,7 +4757,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4513,7 +4771,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4527,7 +4785,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4541,7 +4799,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4555,7 +4813,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4569,7 +4827,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4583,7 +4841,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4597,7 +4855,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4611,7 +4869,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4625,7 +4883,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4639,7 +4897,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4653,7 +4911,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4667,7 +4925,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4681,7 +4939,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4695,7 +4953,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4709,7 +4967,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4723,7 +4981,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4737,7 +4995,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4751,7 +5009,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4765,7 +5023,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4779,7 +5037,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4793,7 +5051,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4807,7 +5065,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4821,7 +5079,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4835,7 +5093,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4849,7 +5107,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4863,7 +5121,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4877,7 +5135,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4891,7 +5149,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4905,7 +5163,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4919,7 +5177,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4933,7 +5191,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4947,7 +5205,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4961,7 +5219,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4975,7 +5233,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -4989,7 +5247,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5003,7 +5261,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5017,7 +5275,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5031,7 +5289,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5045,7 +5303,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5059,7 +5317,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5073,7 +5331,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5087,7 +5345,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5101,7 +5359,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5115,7 +5373,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5129,7 +5387,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5143,7 +5401,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5157,7 +5415,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5171,7 +5429,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5185,35 +5443,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
-      "faction": "",
-      "configured": false
-    },
-    {
-      "id": "Keleres CV Ability Back",
-      "path": "assets/images/Keleres/Keleres CV Ability Back.jpg",
-      "folder": "Keleres",
-      "name": "Keleres CV Ability Back",
-      "section": "cards",
-      "group": "Keleres",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "",
-      "faction": "",
-      "configured": false
-    },
-    {
-      "id": "Keleres CV Ability Front",
-      "path": "assets/images/Keleres/Keleres CV Ability Front.jpg",
-      "folder": "Keleres",
-      "name": "Keleres CV Ability Front",
-      "section": "cards",
-      "group": "Keleres",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5227,7 +5457,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5241,7 +5471,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5255,7 +5485,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5269,7 +5499,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     },
@@ -5283,7 +5513,7 @@
       "back": "",
       "description": "",
       "faq": [],
-      "type": "",
+      "type": "Other Component",
       "faction": "",
       "configured": false
     }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Drahn | keleres+ v1.0</title>
+<title>Drahn Cards | keleres+ v1.0</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -29,9 +29,11 @@
     <a href="index.html" class="font-bold text-lg hover:text-accent">keleres+</a>
     <div class="flex-1 flex gap-2 overflow-x-auto">
       
-      <a href="drahn.html" class="px-3 py-1 rounded-lg hover:bg-bg text-sm text-muted hover:text-gray-100 transition-colors">Drahn</a>
+      <a href="drahn.html" class="px-3 py-1 rounded-lg hover:bg-bg text-sm text-muted hover:text-gray-100 transition-colors">Drahn Cards</a>
       
-      <a href="keleres.html" class="px-3 py-1 rounded-lg hover:bg-bg text-sm text-muted hover:text-gray-100 transition-colors">Keleres</a>
+      <a href="keleres.html" class="px-3 py-1 rounded-lg hover:bg-bg text-sm text-muted hover:text-gray-100 transition-colors">Keleres Cards</a>
+      
+      <a href="drahn-overview.html" class="px-3 py-1 rounded-lg hover:bg-bg text-sm text-muted hover:text-gray-100 transition-colors">Drahn Overview</a>
       
     </div>
     <a href="search.html" class="px-3 py-1 rounded-lg bg-accent text-white text-sm font-semibold hover:bg-blue-600">Search</a>
@@ -41,8 +43,8 @@
 
 <header class="bg-panel border-b border-border p-6">
   <div class="max-w-6xl mx-auto">
-    <h1 class="text-3xl font-bold">Drahn</h1>
-    <p class="text-muted mt-2"><a href="index.html" class="text-accent hover:underline">keleres+</a> &rarr; 1 cards</p>
+    <h1 class="text-3xl font-bold">Drahn Cards</h1>
+    <p class="text-muted mt-2"><a href="index.html" class="text-accent hover:underline">keleres+</a> &rarr; 5 cards</p>
   </div>
 </header>
 
@@ -56,12 +58,99 @@
         <div class="card-item bg-panel border border-border rounded-xl p-3 shadow-lg hover:border-accent transition-colors cursor-pointer"
              data-card-id="Drahn Agent Front"
              data-card-name="Drahn Agent"
-             data-card-description="Get some cash"
+             data-card-type="Agent"
+             data-card-faction="Drahn"
+             data-card-section="Drahn Cards"
+             data-card-group="Drahn"
+             data-card-description="*Aldo Graf* /Contract Broker/
+You may exhaust this card at the start of a player's turn; that player may either gain 1 command token or draw 1 secret objective. If they do, end that player's turn."
              data-card-faq="[]"
              data-card-back="Drahn/Drahn Agent Back.jpg"
              data-card-front-path="assets/images/Drahn/Drahn Agent Front.jpg">
           <img src="assets/images/Drahn/Drahn Agent Front.jpg" alt="Drahn Agent" class="w-full rounded-lg"/>
           <p class="text-sm text-center mt-2 font-medium truncate" title="Drahn Agent">Drahn Agent</p>
+          
+          <p class="text-xs text-center text-muted truncate">Drahn</p>
+          
+        </div>
+        
+        <div class="card-item bg-panel border border-border rounded-xl p-3 shadow-lg hover:border-accent transition-colors cursor-pointer"
+             data-card-id="Drahn Alliance Front"
+             data-card-name="Drahn Alliance"
+             data-card-type="Alliance"
+             data-card-faction="Drahn"
+             data-card-section="Drahn Cards"
+             data-card-group="Drahn"
+             data-card-description="After you perform a tactical action:
+
+You may spend 3 trade goods to move 1 of your ships from the active system to an adjacent system that does not contain another player's ships."
+             data-card-faq="[]"
+             data-card-back="Drahn/Drahn Alliance Back.jpg"
+             data-card-front-path="assets/images/Drahn/Drahn Alliance Front.jpg">
+          <img src="assets/images/Drahn/Drahn Alliance Front.jpg" alt="Drahn Alliance" class="w-full rounded-lg"/>
+          <p class="text-sm text-center mt-2 font-medium truncate" title="Drahn Alliance">Drahn Alliance</p>
+          
+          <p class="text-xs text-center text-muted truncate">Drahn</p>
+          
+        </div>
+        
+        <div class="card-item bg-panel border border-border rounded-xl p-3 shadow-lg hover:border-accent transition-colors cursor-pointer"
+             data-card-id="Drahn Breakthrough BR"
+             data-card-name="V.D.H.Q. Consolidation"
+             data-card-type="Breakthrough"
+             data-card-faction="Drahn"
+             data-card-section="Drahn Cards"
+             data-card-group="Drahn"
+             data-card-description="When you gain this card, gain the Nevermore planet card and its legendary planet card.
+
+You are neighbors with all palyers who have units on anomalies that do not contain planets."
+             data-card-faq="[]"
+             data-card-back="Drahn/Drahn Breakthrough BR Back.jpg"
+             data-card-front-path="assets/images/Drahn/Drahn Breakthrough BR.jpg">
+          <img src="assets/images/Drahn/Drahn Breakthrough BR.jpg" alt="V.D.H.Q. Consolidation" class="w-full rounded-lg"/>
+          <p class="text-sm text-center mt-2 font-medium truncate" title="V.D.H.Q. Consolidation">V.D.H.Q. Consolidation</p>
+          
+          <p class="text-xs text-center text-muted truncate">Drahn</p>
+          
+        </div>
+        
+        <div class="card-item bg-panel border border-border rounded-xl p-3 shadow-lg hover:border-accent transition-colors cursor-pointer"
+             data-card-id="Drahn Commander Front"
+             data-card-name="Kip Lok Sil"
+             data-card-type="Commander"
+             data-card-faction="Drahn"
+             data-card-section="Drahn Cards"
+             data-card-group="Drahn"
+             data-card-description="After you resolve a tactical action:
+
+You may spend 3 trade goods to move 1 of your ships from the active system to an adjacent system that does not contain another player's ships."
+             data-card-faq="[]"
+             data-card-back="Drahn/Drahn Commander Back.jpg"
+             data-card-front-path="assets/images/Drahn/Drahn Commander Front.jpg">
+          <img src="assets/images/Drahn/Drahn Commander Front.jpg" alt="Kip Lok Sil" class="w-full rounded-lg"/>
+          <p class="text-sm text-center mt-2 font-medium truncate" title="Kip Lok Sil">Kip Lok Sil</p>
+          
+          <p class="text-xs text-center text-muted truncate">Drahn</p>
+          
+        </div>
+        
+        <div class="card-item bg-panel border border-border rounded-xl p-3 shadow-lg hover:border-accent transition-colors cursor-pointer"
+             data-card-id="Drahn Tech - Special Forces"
+             data-card-name="Special Forces"
+             data-card-type="Other Component"
+             data-card-faction="Drahn"
+             data-card-section="Drahn Cards"
+             data-card-group="Drahn"
+             data-card-description="YY
+
+At the start of space combat in which you are the defender:
+
+You may exhaust this card and spend 1 token from your strategy pool to force your opponent to declare a retreat."
+             data-card-faq="[]"
+             data-card-back="Drahn/Drahn Tech - Yellow Back.jpg"
+             data-card-front-path="assets/images/Drahn/Drahn Tech - Special Forces.jpg">
+          <img src="assets/images/Drahn/Drahn Tech - Special Forces.jpg" alt="Special Forces" class="w-full rounded-lg"/>
+          <p class="text-sm text-center mt-2 font-medium truncate" title="Special Forces">Special Forces</p>
           
           <p class="text-xs text-center text-muted truncate">Drahn</p>
           
@@ -79,12 +168,16 @@
       <h2 id="card-modal-title" class="text-2xl font-bold"></h2>
       <button id="card-modal-close" class="text-muted hover:text-white text-2xl">&times;</button>
     </div>
+    <div id="card-modal-badges" class="flex flex-wrap gap-2 mb-4"></div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
       <img id="card-modal-front" src="" alt="" class="w-full rounded-lg"/>
       <img id="card-modal-back" src="" alt="" class="w-full rounded-lg hidden"/>
     </div>
-    <p id="card-modal-description" class="text-gray-100 mb-4"></p>
-    <div id="card-modal-faq" class="space-y-3"></div>
+    <div id="card-modal-description" class="text-gray-100 mb-4 prose prose-invert max-w-none"></div>
+    <details id="card-modal-faq" class="hidden">
+      <summary class="cursor-pointer text-accent font-semibold mb-2">FAQ</summary>
+      <div id="card-modal-faq-content" class="space-y-3"></div>
+    </details>
   </div>
 </div>
 
