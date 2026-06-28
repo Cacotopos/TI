@@ -44,9 +44,8 @@
     rolls.forEach(([key, label]) => {
       const roll = abilities[key];
       if (!roll) return;
-      const multiText = roll.multi > 1 ? ` (${roll.multi})` : '';
       const val = roll.value != null ? roll.value : roll.target;
-      parts.push(`<span class="px-2 py-1 rounded-md bg-blue-600 text-white text-xs font-semibold">${label} ${val}${multiText}</span>`);
+      parts.push(`<span class="px-2 py-1 rounded-md bg-blue-600 text-white text-xs font-semibold">${label} ${val} x (${roll.multi || 1})</span>`);
     });
     return parts.join('');
   }
