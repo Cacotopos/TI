@@ -5,6 +5,7 @@ import argparse
 import hashlib
 import io
 import json
+import re
 import shutil
 from pathlib import Path
 
@@ -18,6 +19,34 @@ from expansions.generator.config import load_config
 ROOT = Path(__file__).parent.parent.parent
 TEMPLATE_DIR = ROOT / "expansions" / "templates"
 MIN_BANNER_WIDTH = 1152 + 400
+
+
+def _markdown_filter(text: str) -> str:
+    """Render a small subset of Markdown to HTML."""
+    if not text:
+        return ""
+    html = (
+        text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    )
+    # Bold
+    html = re.sub(r"\*\*(.*?)\*\*", r"<strong>\1</strong>", html)
+    # Italic
+    html = re.sub(r"\*(.*?)\*", r"<em>\1</em>", html)
+    # Headers
+    for i in range(6, 0, -1):
+        html = re.sub(rf"^#{i} (.*$)", rf"<h{i}>\1</h{i}>", html, flags=re.MULTILINE)
+    # Inline code
+    html = re.sub(r"`([^`]+)`", r"<code>\1</code>", html)
+    # Links
+    html = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2" target="_blank">\1</a>', html)
+    # Lists
+    html = re.sub(r"^\s*-\s+(.*$)", r"<li>\1</li>", html, flags=re.MULTILINE)
+    html = re.sub(r"(<li>.*</li>)", r"<ul>\1</ul>", html, flags=re.DOTALL)
+    # Paragraphs
+    paragraphs = html.split("\n\n")
+    html = "\n\n".join(f"<p>{p.replace(chr(10), '<br>')}</p>" if p.strip() else p for p in paragraphs)
+    return html
+
 
 
 def _copy_assets(output_dir: Path) -> None:
@@ -190,6 +219,7 @@ def build_site(config_path: Path, output_dir: Path) -> None:
     }
 
     env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_DIR))
+    env.filters["markdown"] = _markdown_filter
 
     # Index page
     index = env.get_template("index.html")

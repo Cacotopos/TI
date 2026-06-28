@@ -35,6 +35,29 @@
   .tab { padding: 0.5rem 1rem; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; }
   .tab.active { color: var(--text); border-bottom-color: var(--accent); }
   .section-row { background: #12151f; border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 0.75rem; }
+  .section-blocks { margin-top: 0.75rem; }
+  .blocks-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 0.75rem; }
+  .block-row { background: var(--bg); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; }
+  .block-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+  .block-type { font-size: 0.8rem; font-weight: 600; color: var(--accent); text-transform: uppercase; }
+  .block-actions { display: flex; gap: 0.25rem; }
+  .block-actions button { padding: 0.25rem 0.5rem; font-size: 0.8rem; }
+  .block-content { width: 100%; min-height: 100px; margin-bottom: 0; }
+  .block-asset { width: 100%; margin-bottom: 0.5rem; }
+  .block-asset-filter { margin-bottom: 0.5rem; }
+  .block-subtitle { margin-bottom: 0.5rem; }
+  .block-width-row { display: flex; align-items: center; gap: 0.5rem; }
+  .block-width-row input[type="range"] { flex: 1; margin-bottom: 0; }
+  .block-width-row label { font-size: 0.85rem; color: var(--muted); }
+  .block-width-value { font-size: 0.85rem; color: var(--muted); min-width: 2.5rem; }
+  .block-add-buttons { display: flex; gap: 0.5rem; }
+  .block-asset-preview { margin: 0.5rem 0; }
+  .markdown-label { display: flex; align-items: center; justify-content: space-between; }
+  .markdown-help-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); border-radius: 50%; width: 1.5rem; height: 1.5rem; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; padding: 0; cursor: pointer; margin-left: 0.5rem; }
+  .markdown-help-btn:hover { background: var(--accent); color: white; }
+  .markdown-help-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+  .markdown-snippet { background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.6rem; color: var(--text); cursor: pointer; text-align: left; font-size: 0.85rem; }
+  .markdown-snippet:hover { border-color: var(--accent); background: var(--bg); }
   .asset-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
   @media (min-width: 768px) { .asset-grid { grid-template-columns: repeat(4, 1fr); } }
   .asset-cell { background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; cursor: pointer; text-align: center; }
@@ -136,7 +159,7 @@
       </div>
       <label for="description">Description</label>
       <input id="description" type="text" placeholder="Short description"/>
-      <label for="overview">Overview Markdown</label>
+      <label for="overview" class="markdown-label">Overview Markdown <button type="button" class="markdown-help-btn" data-target="overview">?</button></label>
       <textarea id="overview" placeholder="Full overview..."></textarea>
       <div class="row">
         <div>
@@ -194,6 +217,30 @@
       <button id="save-btn" type="button">Save Config</button>
       <button id="generate-btn" type="button" class="secondary">Generate Site</button>
       <button id="deploy-btn" type="button" class="secondary">Deploy to S3</button>
+    </div>
+  </div>
+</div>
+
+<div id="markdown-help-modal" class="modal-overlay">
+  <div class="modal" style="max-width: 420px;">
+    <div class="modal-header">
+      <h2>Markdown Cheat Sheet</h2>
+      <button id="markdown-help-close" type="button" class="secondary">&times;</button>
+    </div>
+    <p class="hint" style="margin-bottom: 0.75rem;">Click a snippet to insert it at the cursor.</p>
+    <div class="markdown-help-grid">
+      <button type="button" class="markdown-snippet" data-snippet="**bold**"><strong>Bold</strong> **bold**</button>
+      <button type="button" class="markdown-snippet" data-snippet="*italic*"><em>Italic</em> *italic*</button>
+      <button type="button" class="markdown-snippet" data-snippet="<u>underline</u>"><u>Underline</u> &lt;u&gt;...&lt;/u&gt;</button>
+      <button type="button" class="markdown-snippet" data-snippet="# Heading 1">Heading 1 #</button>
+      <button type="button" class="markdown-snippet" data-snippet="## Heading 2">Heading 2 ##</button>
+      <button type="button" class="markdown-snippet" data-snippet="### Heading 3">Heading 3 ###</button>
+      <button type="button" class="markdown-snippet" data-snippet="- item">Bullet list -</button>
+      <button type="button" class="markdown-snippet" data-snippet="1. item">Numbered list 1.</button>
+      <button type="button" class="markdown-snippet" data-snippet="[text](url)">Link [text](url)</button>
+      <button type="button" class="markdown-snippet" data-snippet="`code`">Inline code `code`</button>
+      <button type="button" class="markdown-snippet" data-snippet="```\ncode\n```">Code block ```</button>
+      <button type="button" class="markdown-snippet" data-snippet="&gt; quote">Quote &gt;</button>
     </div>
   </div>
 </div>
@@ -526,6 +573,56 @@ idInput.addEventListener('input', () => {
 
 loadBtn.addEventListener('click', () => tryLoadConfig(idInput.value.trim()));
 
+function renderSectionBlockHtml(block, sectionIndex, blockIndex, sectionId) {
+  const sectionAssets = assetValues().filter(a => a.section === sectionId && !a.hidden && a.isCard !== false);
+  const options = sectionAssets.map(a => `<option value="${a.path}" ${a.path === block.asset ? 'selected' : ''}>${a.title || a.path}</option>`).join('');
+  if (block.type === 'markdown') {
+    return `
+      <div class="block-row" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">
+        <div class="block-header">
+          <span class="block-type">Markdown</span>
+          <div class="block-actions">
+            <button type="button" class="markdown-help-btn" data-target="block" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">?</button>
+            <button type="button" class="move-block-up" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">↑</button>
+            <button type="button" class="move-block-down" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">↓</button>
+            <button type="button" class="remove-block" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">×</button>
+          </div>
+        </div>
+        <textarea class="block-content" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" rows="5" placeholder="Markdown content...">${escapeHtml(block.content || '')}</textarea>
+      </div>
+    `;
+  }
+  return `
+    <div class="block-row" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">
+      <div class="block-header">
+        <span class="block-type">Asset</span>
+        <div class="block-actions">
+          <button type="button" class="move-block-up" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">↑</button>
+          <button type="button" class="move-block-down" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">↓</button>
+          <button type="button" class="remove-block" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">×</button>
+        </div>
+      </div>
+      <input type="text" class="block-asset-filter" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" placeholder="Filter assets..." value=""/>
+      <select class="block-asset" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" size="4">
+        <option value="">None</option>
+        ${options}
+      </select>
+      <img class="block-asset-preview hidden" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" src="" alt="" style="max-width: 120px; max-height: 80px; border-radius: 0.35rem; border: 1px solid var(--border);"/>
+      <input type="text" class="block-subtitle" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" placeholder="Subtitle (e.g. Fig a. a sample blah)" value="${escapeHtml(block.subtitle || '')}"/>
+      <div class="block-width-row">
+        <label>Width %</label>
+        <input type="range" class="block-width" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" min="10" max="100" value="${block.width || 100}"/>
+        <span class="block-width-value">${block.width || 100}%</span>
+      </div>
+    </div>
+  `;
+}
+
+function escapeHtml(text) {
+  if (!text) return '';
+  return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
 function renderSections() {
   const container = document.getElementById('sections-container');
   container.innerHTML = '';
@@ -533,6 +630,10 @@ function renderSections() {
     container.innerHTML = '<p class="empty-state">No sections yet. Click Add Section or inspect the image folder to auto-suggest sections.</p>';
   }
   sections.forEach((section, index) => {
+    const blocks = section.blocks || [];
+    const blocksHtml = section.type === 'markdown'
+      ? blocks.map((block, bi) => renderSectionBlockHtml(block, index, bi, section.id)).join('')
+      : '';
     const div = document.createElement('div');
     div.className = 'section-row';
     div.innerHTML = `
@@ -555,6 +656,13 @@ function renderSections() {
         </div>
       </div>
       <button type="button" class="remove-section-btn danger" data-index="${index}">Remove</button>
+      <div class="section-blocks ${section.type === 'markdown' ? '' : 'hidden'}" data-section-index="${index}">
+        <div class="blocks-list" data-section-index="${index}">${blocksHtml}</div>
+        <div class="block-add-buttons">
+          <button type="button" class="add-block-btn secondary" data-section-index="${index}" data-block-type="markdown">Add Markdown Block</button>
+          <button type="button" class="add-block-btn secondary" data-section-index="${index}" data-block-type="asset">Add Asset Block</button>
+        </div>
+      </div>
     `;
     container.appendChild(div);
   });
@@ -568,17 +676,129 @@ function renderSections() {
       renderSections();
     });
   });
+  document.querySelectorAll('.add-block-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const si = parseInt(this.dataset.sectionIndex);
+      const type = this.dataset.blockType;
+      updateSectionsFromForm();
+      sections[si].blocks = sections[si].blocks || [];
+      sections[si].blocks.push(type === 'markdown' ? { type: 'markdown', content: '' } : { type: 'asset', asset: '', subtitle: '', width: 100 });
+      renderSections();
+    });
+  });
+  document.querySelectorAll('.remove-block').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const si = parseInt(this.dataset.sectionIndex);
+      const bi = parseInt(this.dataset.blockIndex);
+      updateSectionsFromForm();
+      sections[si].blocks.splice(bi, 1);
+      renderSections();
+    });
+  });
+  document.querySelectorAll('.move-block-up').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const si = parseInt(this.dataset.sectionIndex);
+      const bi = parseInt(this.dataset.blockIndex);
+      if (bi <= 0) return;
+      updateSectionsFromForm();
+      const blocks = sections[si].blocks;
+      [blocks[bi - 1], blocks[bi]] = [blocks[bi], blocks[bi - 1]];
+      renderSections();
+    });
+  });
+  document.querySelectorAll('.move-block-down').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const si = parseInt(this.dataset.sectionIndex);
+      const bi = parseInt(this.dataset.blockIndex);
+      updateSectionsFromForm();
+      const blocks = sections[si].blocks;
+      if (bi >= blocks.length - 1) return;
+      [blocks[bi], blocks[bi + 1]] = [blocks[bi + 1], blocks[bi]];
+      renderSections();
+    });
+  });
+  document.querySelectorAll('.block-asset-filter').forEach(input => {
+    input.addEventListener('input', function() {
+      const si = parseInt(this.dataset.sectionIndex);
+      const bi = parseInt(this.dataset.blockIndex);
+      const sectionId = sections[si].id;
+      const filter = this.value.toLowerCase();
+      const select = document.querySelector(`.block-asset[data-section-index="${si}"][data-block-index="${bi}"]`);
+      if (!select) return;
+      const sectionAssets = assetValues().filter(a => a.section === sectionId && !a.hidden && a.isCard !== false);
+      select.innerHTML = '<option value="">None</option>' + sectionAssets.filter(a => {
+        const text = `${a.title || ''} ${a.path}`.toLowerCase();
+        return !filter || text.includes(filter);
+      }).map(a => `<option value="${a.path}">${a.title || a.path}</option>`).join('');
+    });
+  });
+  document.querySelectorAll('.block-asset').forEach(select => {
+    select.addEventListener('change', function() {
+      const si = parseInt(this.dataset.sectionIndex);
+      const bi = parseInt(this.dataset.blockIndex);
+      const expansionId = idInput.value.trim();
+      const preview = document.querySelector(`.block-asset-preview[data-section-index="${si}"][data-block-index="${bi}"]`);
+      if (this.value && preview) {
+        preview.src = `/api/image/${expansionId}/${this.value}`;
+        preview.classList.remove('hidden');
+      } else if (preview) {
+        preview.classList.add('hidden');
+      }
+      updateSectionsFromForm();
+    });
+  });
+  document.querySelectorAll('.block-width').forEach(input => {
+    input.addEventListener('input', function() {
+      const row = this.closest('.block-width-row');
+      if (row) row.querySelector('.block-width-value').textContent = `${this.value}%`;
+      updateSectionsFromForm();
+    });
+  });
+  document.querySelectorAll('.block-content, .block-subtitle').forEach(input => {
+    input.addEventListener('input', updateSectionsFromForm);
+  });
+  document.querySelectorAll('.block-asset-preview').forEach(preview => {
+    const si = parseInt(preview.dataset.sectionIndex);
+    const bi = parseInt(preview.dataset.blockIndex);
+    const select = document.querySelector(`.block-asset[data-section-index="${si}"][data-block-index="${bi}"]`);
+    if (select && select.value) {
+      const expansionId = idInput.value.trim();
+      preview.src = `/api/image/${expansionId}/${select.value}`;
+      preview.classList.remove('hidden');
+    }
+  });
 }
 
 function updateSectionsFromForm() {
   const ids = Array.from(document.querySelectorAll('.section-id')).map(el => el.value.trim());
   const titles = Array.from(document.querySelectorAll('.section-title')).map(el => el.value.trim());
   const types = Array.from(document.querySelectorAll('.section-type')).map(el => el.value);
-  sections = ids.map((id, i) => ({
-    id: id || `section-${i}`,
-    title: titles[i] || id || `Section ${i + 1}`,
-    type: types[i] || 'markdown'
-  }));
+  sections = ids.map((id, i) => {
+    const section = {
+      id: id || `section-${i}`,
+      title: titles[i] || id || `Section ${i + 1}`,
+      type: types[i] || 'markdown',
+    };
+    if (section.type === 'markdown') {
+      const blocks = [];
+      document.querySelectorAll(`.block-row[data-section-index="${i}"]`).forEach(row => {
+        const bi = parseInt(row.dataset.blockIndex);
+        const typeEl = row.querySelector('.block-type');
+        const type = typeEl ? typeEl.textContent.trim() : 'Markdown';
+        if (type === 'Markdown') {
+          const content = row.querySelector('.block-content')?.value || '';
+          blocks.push({ type: 'markdown', content });
+        } else {
+          const asset = row.querySelector('.block-asset')?.value || '';
+          const subtitle = row.querySelector('.block-subtitle')?.value || '';
+          const width = parseInt(row.querySelector('.block-width')?.value) || 100;
+          blocks.push({ type: 'asset', asset, subtitle, width });
+        }
+      });
+      section.blocks = blocks;
+    }
+    return section;
+  });
 }
 
 async function inspectFolder() {
@@ -724,38 +944,6 @@ function updateUnitInputs() {
     setUnitAbilitiesInput(defaultUnitAbilities());
   }
 }
-function formatUnitStats(stats) {
-  const labels = { cost: 'Cost', combat: 'Combat', move: 'Move', capacity: 'Capacity' };
-  const parts = [];
-  ['cost', 'combat', 'move', 'capacity'].forEach(key => {
-    const stat = stats?.[key];
-    if (!stat || !stat.enabled) return;
-    parts.push(`<span class="asset-badge">${labels[key]} ${stat.value == null ? '-' : stat.value}</span>`);
-  });
-  return parts.length ? `<div class="asset-stat-line">${parts.join('')}</div>` : '';
-}
-function formatUnitAbilities(abilities) {
-  if (!abilities) return '';
-  const parts = [];
-  if (abilities.deploy) parts.push('<span class="asset-badge">Deploy</span>');
-  if (abilities.planetaryShield) parts.push('<span class="asset-badge">Planetary Shield</span>');
-  if (abilities.sustainDamage) parts.push('<span class="asset-badge">Sustain Damage</span>');
-  const rolls = [
-    ['bombardment', 'Bombardment'],
-    ['antiFighterBarrage', 'Anti-Fighter Barrage'],
-    ['spaceCannon', 'Space Cannon'],
-    ['production', 'Production'],
-  ];
-  rolls.forEach(([key, label]) => {
-    const roll = abilities[key];
-    if (!roll) return;
-    const multiText = roll.multi > 1 ? ` (${roll.multi})` : '';
-    const val = roll.value != null ? roll.value : roll.target;
-    parts.push(`<span class="asset-badge accent">${label} ${val}${multiText}</span>`);
-  });
-  return parts.join('');
-}
-
 function renderAssets() {
   const grid = document.getElementById('assets-grid');
   const empty = document.getElementById('assets-empty');
@@ -836,13 +1024,7 @@ function populateBackOptions(path, currentBack, filterText) {
 }
 
 function renderAssetPreview(asset) {
-  const badges = [
-    asset.type ? `<span class="asset-badge accent">${asset.type}</span>` : '',
-    asset.faction ? `<span class="asset-badge">${asset.faction}</span>` : '',
-    isUnitType(asset.type) ? formatUnitStats(asset.stats) : '',
-    isUnitType(asset.type) ? formatUnitAbilities(asset.abilities) : '',
-  ].filter(Boolean).join('');
-  document.getElementById('asset-badges').innerHTML = badges;
+  document.getElementById('asset-badges').innerHTML = '';
 
   document.getElementById('asset-description-preview').innerHTML = renderMarkdown(asset.description || '');
   document.getElementById('asset-description-preview').classList.toggle('hidden', !(asset.description || '').trim());
@@ -1116,6 +1298,50 @@ document.getElementById('banner-modal').addEventListener('click', e => {
   if (e.target.id === 'banner-modal') closeBannerPicker();
 });
 document.getElementById('banner-path').addEventListener('input', updateBannerPreview);
+
+let activeMarkdownTextarea = null;
+function openMarkdownHelp(textarea) {
+  activeMarkdownTextarea = textarea;
+  document.getElementById('markdown-help-modal').classList.add('visible');
+}
+function closeMarkdownHelp() {
+  document.getElementById('markdown-help-modal').classList.remove('visible');
+  activeMarkdownTextarea = null;
+}
+function insertMarkdownSnippet(snippet) {
+  if (!activeMarkdownTextarea) return;
+  const start = activeMarkdownTextarea.selectionStart;
+  const end = activeMarkdownTextarea.selectionEnd;
+  const text = activeMarkdownTextarea.value;
+  activeMarkdownTextarea.value = text.slice(0, start) + snippet + text.slice(end);
+  activeMarkdownTextarea.focus();
+  activeMarkdownTextarea.selectionStart = activeMarkdownTextarea.selectionEnd = start + snippet.length;
+  activeMarkdownTextarea.dispatchEvent(new Event('input'));
+}
+
+document.body.addEventListener('click', e => {
+  const btn = e.target.closest('.markdown-help-btn');
+  if (!btn) return;
+  if (btn.dataset.target === 'overview') {
+    openMarkdownHelp(document.getElementById('overview'));
+  } else {
+    const si = btn.dataset.sectionIndex;
+    const bi = btn.dataset.blockIndex;
+    const textarea = document.querySelector(`.block-content[data-section-index="${si}"][data-block-index="${bi}"]`);
+    openMarkdownHelp(textarea);
+  }
+});
+
+document.body.addEventListener('click', e => {
+  const snippet = e.target.closest('.markdown-snippet');
+  if (!snippet) return;
+  insertMarkdownSnippet(snippet.dataset.snippet);
+});
+
+document.getElementById('markdown-help-close').addEventListener('click', closeMarkdownHelp);
+document.getElementById('markdown-help-modal').addEventListener('click', e => {
+  if (e.target.id === 'markdown-help-modal') closeMarkdownHelp();
+});
 
 loadSettings();
 loadExpansionList();
