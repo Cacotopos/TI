@@ -4,4 +4,4 @@ header { background: #1a1d27; border-bottom: 1px solid #2d3148; padding: 1.5rem 
 header h1 { font-size: 1.4rem; font-weight: 700; }
 header h1 span { color: #64748b; font-weight: 500; }
 main { padding: 2rem; }
-.card { background: #1a1d27; border: 1px solid #2d3148; border-radius: 1.5rem; padding: 1rem; }
+.card { background: #1a1d27; border: 1px solid #2d3148; border-radius: 0.75rem; padding: 1rem; }
