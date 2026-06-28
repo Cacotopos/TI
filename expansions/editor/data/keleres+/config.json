@@ -40,6 +40,12 @@
         {
           "type": "markdown",
           "content": "The **Drahn Cartel** is an expansion faction for the Twilight Imperium 4th Edition boardgame."
+        },
+        {
+          "type": "asset",
+          "asset": "Drahn/Drahn Tokens.png",
+          "subtitle": "Command and control tokens",
+          "width": 50
         }
       ]
     }
@@ -319,19 +325,19 @@
       "filename": "Drahn Nevermore Ability Back.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": false,
+      "hidden": true,
       "id": "Drahn Nevermore Ability Back",
       "isCard": true,
       "path": "Drahn/Drahn Nevermore Ability Back.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Drahn Nevermore Ability Back",
       "type": "Other Component"
     },
     "Drahn/Drahn Nevermore Ability Front.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Drahn/Drahn Nevermore Ability Back.jpg",
+      "configured": true,
+      "description": "When another player activates a system adjacent to Mecatol Rex, gain 1 trade good.\n\nGain 2 command tokens when another players draws a secret objective using the second bullet of \"Imperial\".",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Nevermore Ability Front.jpg",
       "folder": "Drahn",
@@ -340,9 +346,9 @@
       "id": "Drahn Nevermore Ability Front",
       "isCard": true,
       "path": "Drahn/Drahn Nevermore Ability Front.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Drahn Nevermore Ability Front",
-      "type": "Other Component"
+      "type": "Legendary Ability"
     },
     "Drahn/Drahn Nevermore Back.jpg": {
       "back": "",
@@ -353,19 +359,19 @@
       "filename": "Drahn Nevermore Back.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": false,
+      "hidden": true,
       "id": "Drahn Nevermore Back",
       "isCard": true,
       "path": "Drahn/Drahn Nevermore Back.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Drahn Nevermore Back",
-      "type": "Other Component"
+      "type": "Planet"
     },
     "Drahn/Drahn Nevermore Front.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Drahn/Drahn Nevermore Back.jpg",
+      "configured": true,
+      "description": "Resources 2, Influence 2",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Nevermore Front.jpg",
       "folder": "Drahn",
@@ -374,9 +380,9 @@
       "id": "Drahn Nevermore Front",
       "isCard": true,
       "path": "Drahn/Drahn Nevermore Front.jpg",
-      "section": "cards",
-      "title": "Drahn Nevermore Front",
-      "type": "Other Component"
+      "section": "drahn",
+      "title": "Nevermore",
+      "type": "Planet"
     },
     "Drahn/Drahn Promissory Note.jpg": {
       "back": "",
@@ -499,9 +505,9 @@
     },
     "Drahn/Drahn Tokens.png": {
       "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "Command and control tokens.",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Tokens.png",
       "folder": "Drahn",
@@ -510,9 +516,9 @@
       "id": "Drahn Tokens",
       "isCard": true,
       "path": "Drahn/Drahn Tokens.png",
-      "section": "cards",
+      "section": "drahn-overview",
       "title": "Drahn Tokens",
-      "type": "Other Component"
+      "type": "Token"
     },
     "Drahn/Heroes/Active/Arborec.jpg": {
       "back": "",

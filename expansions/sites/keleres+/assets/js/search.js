@@ -40,7 +40,9 @@
       abilities.spaceCannon ? `Space Cannon ${abilities.spaceCannon.value != null ? abilities.spaceCannon.value : abilities.spaceCannon.target} ${abilities.spaceCannon.multi}` : '',
       abilities.production ? `Production ${abilities.production.value != null ? abilities.production.value : abilities.production.target} ${abilities.production.multi}` : '',
     ].join(' ');
-    const text = `${img.name || ''} ${img.folder || ''} ${img.group || ''} ${img.type || ''} ${img.faction || ''} ${img.description || ''} ${faqText} ${statsText} ${abilityText}`;
+    const prereqText = img.prereq && img.prereq.enabled ? img.prereq.value : '';
+    const colorText = img.color || '';
+    const text = `${img.name || ''} ${img.folder || ''} ${img.group || ''} ${img.type || ''} ${img.faction || ''} ${img.description || ''} ${faqText} ${statsText} ${abilityText} ${prereqText} ${colorText}`;
     const url = `${img.section || 'cards'}.html`;
     addDoc(`image-${i}`, text, img.name || img.id, url, 'card');
   });

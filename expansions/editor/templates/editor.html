@@ -87,6 +87,12 @@
   .unit-roll-ability .toggle { flex: 1; }
   .unit-roll-ability input { width: 4rem; margin-bottom: 0; padding: 0.35rem 0.5rem; text-align: right; }
   .asset-stat-line { display: flex; flex-wrap: nowrap; gap: 0.35rem; }
+  #prereq-section { margin: 0.75rem 0; }
+  #asset-edit-prereq-inputs { margin-top: 0.5rem; }
+  #asset-edit-prereq-inputs label { font-size: 0.85rem; color: var(--muted); }
+  #asset-edit-prereq { text-transform: uppercase; font-family: monospace; letter-spacing: 0.15em; }
+  #asset-edit-color-row { margin-top: 0.5rem; }
+  #asset-edit-color { width: 100%; }
   .asset-cell .title { font-size: 0.85rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .asset-cell .group { font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .toolbar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
@@ -341,6 +347,28 @@
         <label>Faction</label>
         <input id="asset-edit-faction" type="text" list="asset-edit-faction-list" placeholder="Type or select a faction"/>
         <datalist id="asset-edit-faction-list"></datalist>
+      </div>
+    </div>
+
+    <div id="prereq-section">
+      <label class="toggle">
+        <input id="asset-edit-prereq-toggle" type="checkbox"/>
+        <span class="switch"></span>
+        <span class="label-text">Prerequisite</span>
+      </label>
+      <div id="asset-edit-prereq-inputs" class="hidden">
+        <label>Prerequisite colors</label>
+        <input id="asset-edit-prereq" type="text" placeholder="e.g. RRYY" maxlength="4"/>
+        <div id="asset-edit-color-row">
+          <label>Technology color</label>
+          <select id="asset-edit-color">
+            <option value="">None</option>
+            <option value="G">Green</option>
+            <option value="Y">Yellow</option>
+            <option value="R">Red</option>
+            <option value="B">Blue</option>
+          </select>
+        </div>
       </div>
     </div>
 
@@ -958,6 +986,39 @@ function updateBackRowVisibility() {
   const isCard = document.getElementById('asset-edit-iscard').checked;
   document.getElementById('asset-back-row').classList.toggle('hidden', !isCard);
 }
+function defaultPrereq(type) {
+  if (type === 'Technology') return { enabled: true, value: '' };
+  if (!isUnitType(type)) return { enabled: false, value: '' };
+  const noPrereq = type.includes('Monument') || type.includes('Structure') || type.includes('Flagship');
+  return { enabled: !noPrereq, value: '' };
+}
+function applyPrereqDefaultsIfNeeded(asset) {
+  if (!asset.prereq) asset.prereq = defaultPrereq(asset.type);
+  if (asset.type === 'Technology' && !asset.color) asset.color = '';
+}
+function getPrereqInput() {
+  const enabled = document.getElementById('asset-edit-prereq-toggle').checked;
+  const value = document.getElementById('asset-edit-prereq').value.toUpperCase().replace(/[^GYRB]/g, '').slice(0, 4);
+  return { enabled, value: enabled ? value : '' };
+}
+function setPrereqInput(prereq) {
+  const p = prereq || { enabled: false, value: '' };
+  document.getElementById('asset-edit-prereq-toggle').checked = p.enabled;
+  document.getElementById('asset-edit-prereq').value = p.value || '';
+}
+function updatePrereqSectionVisibility() {
+  const enabled = document.getElementById('asset-edit-prereq-toggle').checked;
+  document.getElementById('asset-edit-prereq-inputs').classList.toggle('hidden', !enabled);
+  const type = document.getElementById('asset-edit-type').value;
+  document.getElementById('asset-edit-color-row').classList.toggle('hidden', type !== 'Technology');
+}
+function updatePrereqDefaults(type) {
+  const prereq = defaultPrereq(type);
+  const toggle = document.getElementById('asset-edit-prereq-toggle');
+  const value = document.getElementById('asset-edit-prereq');
+  toggle.checked = prereq.enabled;
+  if (!value.value) value.value = prereq.value;
+}
 function applyUnitDefaultsIfNeeded(asset) {
   const category = unitCategory(asset.type);
   if (!category) return;
@@ -968,6 +1029,8 @@ function updateUnitInputs() {
   const type = document.getElementById('asset-edit-type').value;
   const wasHidden = document.getElementById('unit-section').classList.contains('hidden');
   updateUnitSectionVisibility();
+  updatePrereqSectionVisibility();
+  updatePrereqDefaults(type);
   if (wasHidden && isUnitType(type)) {
     const category = unitCategory(type);
     setUnitStatsInput(defaultUnitStats(category));
@@ -1094,9 +1157,13 @@ function openAssetEditor(path) {
   document.getElementById('asset-edit-faction').value = asset.faction || '';
 
   applyUnitDefaultsIfNeeded(asset);
+  applyPrereqDefaultsIfNeeded(asset);
   setUnitStatsInput(asset.stats);
   setUnitAbilitiesInput(asset.abilities);
+  setPrereqInput(asset.prereq);
+  document.getElementById('asset-edit-color').value = asset.color || '';
   updateUnitSectionVisibility();
+  updatePrereqSectionVisibility();
   updateBackRowVisibility();
 
   const sectionSelect = document.getElementById('asset-edit-section');
@@ -1146,6 +1213,9 @@ function saveAssetEditor() {
   if (!asset.isCard) {
     asset.back = '';
   }
+
+  asset.prereq = getPrereqInput();
+  asset.color = asset.type === 'Technology' ? document.getElementById('asset-edit-color').value : '';
 
   assets[path] = asset;
   renderAssets();
@@ -1313,6 +1383,7 @@ document.getElementById('inspect-btn').addEventListener('click', inspectFolder);
 document.getElementById('asset-edit-save-top').addEventListener('click', saveAssetEditor);
 document.getElementById('asset-edit-type').addEventListener('change', updateUnitInputs);
 document.getElementById('asset-edit-iscard').addEventListener('change', updateBackRowVisibility);
+document.getElementById('asset-edit-prereq-toggle').addEventListener('change', updatePrereqSectionVisibility);
 document.getElementById('asset-edit-back-filter').addEventListener('input', e => {
   const path = document.getElementById('asset-edit-path').value;
   const currentBack = document.getElementById('asset-edit-back').value;

@@ -5,6 +5,7 @@
   const badges = document.getElementById('card-modal-badges');
   const statsContainer = document.getElementById('card-modal-stats');
   const abilitiesContainer = document.getElementById('card-modal-abilities');
+  const prereqContainer = document.getElementById('card-modal-prereq');
   const frontImg = document.getElementById('card-modal-front');
   const backImg = document.getElementById('card-modal-back');
   const description = document.getElementById('card-modal-description');
@@ -49,6 +50,18 @@
     });
     return parts.join('');
   }
+  function formatPrereq(prereq, color) {
+    const parts = [];
+    const colorNames = { G: 'Green', Y: 'Yellow', R: 'Red', B: 'Blue' };
+    if (prereq && prereq.enabled && prereq.value) {
+      parts.push(`<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs whitespace-nowrap">Prerequisite: ${escapeHtml(prereq.value)}</span>`);
+    }
+    if (color && colorNames[color]) {
+      const colorClasses = { G: 'bg-green-600', Y: 'bg-yellow-500 text-black', R: 'bg-red-600', B: 'bg-blue-600' };
+      parts.push(`<span class="px-2 py-1 rounded-md ${colorClasses[color]} text-xs font-semibold whitespace-nowrap">${colorNames[color]}</span>`);
+    }
+    return parts.join('');
+  }
 
   function renderMarkdown(text) {
     if (!text) return '';
@@ -82,6 +95,7 @@
 
     try { card.stats = JSON.parse(card.stats || '{}'); } catch (e) { card.stats = {}; }
     try { card.abilities = JSON.parse(card.abilities || '{}'); } catch (e) { card.abilities = {}; }
+    try { card.prereq = JSON.parse(card.prereq || '{}'); } catch (e) { card.prereq = {}; }
 
     const badgeList = [
       card.type ? `<span class="px-2 py-1 rounded-md bg-blue-600 text-white text-xs font-semibold">${escapeHtml(card.type)}</span>` : '',
@@ -98,6 +112,10 @@
     const abilitiesHtml = isUnitType(card.type) ? formatAbilities(card.abilities) : '';
     abilitiesContainer.innerHTML = abilitiesHtml;
     abilitiesContainer.classList.toggle('hidden', !abilitiesHtml);
+
+    const prereqHtml = formatPrereq(card.prereq, card.color);
+    prereqContainer.innerHTML = prereqHtml;
+    prereqContainer.classList.toggle('hidden', !prereqHtml);
 
     if (card.description) {
       description.innerHTML = renderMarkdown(card.description);
@@ -151,6 +169,8 @@
         faq: item.dataset.cardFaq,
         stats: item.dataset.cardStats,
         abilities: item.dataset.cardAbilities,
+        prereq: item.dataset.cardPrereq,
+        color: item.dataset.cardColor,
         back: item.dataset.cardBack,
         frontPath: item.dataset.cardFrontPath,
       });
