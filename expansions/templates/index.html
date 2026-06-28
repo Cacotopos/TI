@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block body %}
+<header class="bg-panel border-b border-border p-6">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold">{{ config.name }} <span class="text-muted text-xl font-normal">v{{ config.version }}</span></h1>
+    <p class="text-muted mt-2">{{ config.description or '' }}</p>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto p-6 space-y-6">
+  <div class="bg-panel border border-border rounded-xl p-4 shadow-lg flex items-center gap-3">
+    <input id="search-input" type="text" placeholder="Search expansion..."
+           class="bg-bg border border-border rounded-lg px-4 py-2 w-full text-gray-100 focus:outline-none focus:border-accent"/>
+  </div>
+
+  <div id="search-results" class="hidden bg-panel border border-border rounded-xl p-6 shadow-lg">
+    <h2 class="text-xl font-semibold mb-4">Search Results</h2>
+    <ul id="search-results-list" class="space-y-2"></ul>
+  </div>
+
+  <section class="bg-panel border border-border rounded-xl p-6 shadow-lg">
+    <h2 class="text-xl font-semibold mb-4">Overview</h2>
+    <div class="prose prose-invert max-w-none">
+      {% if config.overview %}
+        {{ config.overview | replace('\n', '<br>') | safe }}
+      {% else %}
+        <p class="text-muted">No overview provided.</p>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="bg-panel border border-border rounded-xl p-6 shadow-lg">
+    <h2 class="text-xl font-semibold mb-4">Sections</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {% for section in config.sections %}
+      <div class="bg-bg border border-border rounded-lg p-4 hover:border-accent transition-colors">
+        <h3 class="font-semibold">{{ section.title }}</h3>
+        <p class="text-muted text-sm mt-1">Type: {{ section.type }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+</main>
+{% endblock %}
