@@ -109,6 +109,82 @@ def deploy(expansion_id: str):
     })
 
 
+@app.route("/api/images/<expansion_id>")
+def list_images(expansion_id: str):
+    config = _load_config(expansion_id)
+    images_path = config.get("source", {}).get("images", "")
+    if not images_path:
+        return jsonify([])
+    images_src = ROOT / images_path
+    if not images_src.exists():
+        return jsonify([])
+    images = []
+    for p in sorted(images_src.rglob("*")):
+        if p.is_file() and p.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp"}:
+            rel = p.relative_to(images_src)
+            images.append({
+                "id": p.stem,
+                "filename": p.name,
+                "path": str(rel).replace("\\", "/"),
+                "folder": str(rel.parent) if rel.parent != Path(".") else "",
+            })
+    return jsonify(images)
+
+
+@app.route("/api/inspect/<expansion_id>", methods=["POST"])
+def inspect(expansion_id: str):
+    """Scan the source image folder and build an assets map from detected images.
+
+    Preserves existing asset config where present, and marks newly detected
+    assets as not configured.
+    """
+    config = _load_config(expansion_id)
+    images_path = config.get("source", {}).get("images", "")
+    if not images_path:
+        return jsonify({"error": "no image folder configured"}), 400
+    images_src = ROOT / images_path
+    if not images_src.exists():
+        return jsonify({"error": f"image folder not found: {images_src}"}), 400
+
+    existing_assets = config.get("assets", {})
+    assets = {}
+    folders = set()
+
+    for p in sorted(images_src.rglob("*")):
+        if p.is_file() and p.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp"}:
+            rel = p.relative_to(images_src)
+            path = str(rel).replace("\\", "/")
+            folder = str(rel.parent) if rel.parent != Path(".") else ""
+            folders.add(folder.split("/")[0] if folder else "General")
+
+            if path in existing_assets:
+                assets[path] = existing_assets[path]
+            else:
+                assets[path] = {
+                    "id": p.stem,
+                    "path": path,
+                    "filename": p.name,
+                    "folder": folder,
+                    "configured": False,
+                    "hidden": False,
+                    "isCard": True,
+                    "title": p.stem,
+                    "description": "",
+                    "faq": [],
+                    "section": "cards",
+                    "group": folder,
+                    "back": "",
+                }
+
+    # Suggest sections from top-level folders.
+    suggested = []
+    for f in sorted(folders):
+        section_id = f.lower().replace(" ", "-")
+        suggested.append({"id": section_id, "title": f, "type": "cards"})
+
+    return jsonify({"assets": assets, "suggested_sections": suggested})
+
+
 @app.route("/api/settings")
 def settings():
     return jsonify({

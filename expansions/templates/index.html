@@ -9,16 +9,6 @@
 </header>
 
 <main class="max-w-6xl mx-auto p-6 space-y-6">
-  <div class="bg-panel border border-border rounded-xl p-4 shadow-lg flex items-center gap-3">
-    <input id="search-input" type="text" placeholder="Search expansion..."
-           class="bg-bg border border-border rounded-lg px-4 py-2 w-full text-gray-100 focus:outline-none focus:border-accent"/>
-  </div>
-
-  <div id="search-results" class="hidden bg-panel border border-border rounded-xl p-6 shadow-lg">
-    <h2 class="text-xl font-semibold mb-4">Search Results</h2>
-    <ul id="search-results-list" class="space-y-2"></ul>
-  </div>
-
   <section class="bg-panel border border-border rounded-xl p-6 shadow-lg">
     <h2 class="text-xl font-semibold mb-4">Overview</h2>
     <div class="prose prose-invert max-w-none">
@@ -33,13 +23,21 @@
   <section class="bg-panel border border-border rounded-xl p-6 shadow-lg">
     <h2 class="text-xl font-semibold mb-4">Sections</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {% for section in config.sections %}
-      <div class="bg-bg border border-border rounded-lg p-4 hover:border-accent transition-colors">
+      {% for section in site.sections %}
+      <a href="{{ section.id }}.html" class="block bg-bg border border-border rounded-lg p-4 hover:border-accent transition-colors">
         <h3 class="font-semibold">{{ section.title }}</h3>
-        <p class="text-muted text-sm mt-1">Type: {{ section.type }}</p>
-      </div>
+        <p class="text-muted text-sm mt-1">{{ section.type | capitalize }}</p>
+      </a>
       {% endfor %}
     </div>
   </section>
+
+  {% set card_count = site.images | length %}
+  {% if card_count %}
+  <section class="bg-panel border border-border rounded-xl p-6 shadow-lg">
+    <h2 class="text-xl font-semibold mb-4">{{ card_count }} Cards</h2>
+    <p class="text-muted mb-4">Browse all cards in the <a href="cards.html" class="text-accent hover:underline">Cards section</a>.</p>
+  </section>
+  {% endif %}
 </main>
 {% endblock %}

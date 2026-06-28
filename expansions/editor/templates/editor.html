@@ -63,12 +63,64 @@
     <div id="sections-container" class="space-y-3"></div>
     <button id="add-section-btn" type="button" class="mt-3">Add Section</button>
 
+    <h2 class="text-lg font-semibold mt-6 mb-3">Assets</h2>
+    <div class="flex gap-2 mb-3">
+      <button id="inspect-btn" type="button">Inspect Folder</button>
+      <span id="asset-count" class="text-muted text-sm self-center"></span>
+    </div>
+    <div class="flex gap-3 mb-3 items-center">
+      <input id="asset-filter" type="text" placeholder="Filter assets..." class="flex-1 mb-0"/>
+      <label class="flex items-center gap-2 text-sm text-muted mb-0">
+        <input id="show-unconfigured" type="checkbox" checked/> Not configured
+      </label>
+      <label class="flex items-center gap-2 text-sm text-muted mb-0">
+        <input id="show-hidden" type="checkbox"/> Hidden
+      </label>
+    </div>
+    <div id="assets-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
+
     <div class="mt-6">
       <button id="save-btn" type="button">Save Config</button>
       <button id="generate-btn" type="button">Generate Site</button>
       <button id="deploy-btn" type="button">Deploy to S3</button>
     </div>
     <div class="status" id="status"></div>
+  </div>
+</div>
+
+<div id="asset-modal" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-4">
+  <div class="bg-panel border border-border rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6">
+    <h2 id="asset-modal-title" class="text-xl font-bold mb-4">Asset Details</h2>
+    <input id="asset-edit-path" type="hidden"/>
+    <div class="flex gap-4 mb-3">
+      <label class="flex items-center gap-2 text-sm text-muted">
+        <input id="asset-edit-iscard" type="checkbox" checked/> Is card
+      </label>
+      <label class="flex items-center gap-2 text-sm text-muted">
+        <input id="asset-edit-hidden" type="checkbox"/> Hidden
+      </label>
+      <label class="flex items-center gap-2 text-sm text-muted">
+        <input id="asset-edit-configured" type="checkbox" checked/> Configured
+      </label>
+    </div>
+    <label>Title</label>
+    <input id="asset-edit-title" type="text" class="mb-3"/>
+    <label>Section</label>
+    <select id="asset-edit-section" class="mb-3"></select>
+    <label>Group</label>
+    <input id="asset-edit-group" type="text" class="mb-3"/>
+    <label>Description</label>
+    <textarea id="asset-edit-description" class="mb-3"></textarea>
+    <label>FAQ (one Q&A per line, format: Q: ... | A: ...)</label>
+    <textarea id="asset-edit-faq" class="mb-3" placeholder="Q: Does this ability stack? | A: Yes, it stacks."></textarea>
+    <label>Back Image (filename for two-sided cards)</label>
+    <select id="asset-edit-back" class="mb-3">
+      <option value="">None</option>
+    </select>
+    <div class="flex gap-2 justify-end">
+      <button id="asset-edit-cancel" type="button">Cancel</button>
+      <button id="asset-edit-save" type="button">Save Asset</button>
+    </div>
   </div>
 </div>
 
@@ -137,7 +189,9 @@ async function load() {
   if (Object.keys(data).length === 0) {
     statusEl.textContent = 'No existing config found. Starting fresh.';
     sections = [];
+    assets = {};
     renderSections();
+    renderAssets();
     return;
   }
   document.getElementById('name').value = data.name || '';
@@ -147,8 +201,138 @@ async function load() {
   document.getElementById('image-folder').value = (data.source && data.source.images) || '';
   document.getElementById('s3-path').value = data.s3_path || data.id || '';
   sections = data.sections || [];
+  assets = data.assets || {};
   renderSections();
+  renderAssets();
   statusEl.textContent = 'Config loaded.';
+}
+
+let assets = {};
+
+async function inspectFolder() {
+  const id = idInput.value.trim();
+  if (!id) {
+    statusEl.textContent = 'Expansion ID is required.';
+    return;
+  }
+  statusEl.textContent = 'Inspecting folder...';
+  const res = await fetch(`/api/inspect/${id}`, { method: 'POST' });
+  const data = await res.json();
+  if (data.error) {
+    statusEl.textContent = `Inspect failed: ${data.error}`;
+    return;
+  }
+  assets = data.assets;
+  if (data.suggested_sections && sections.length === 0) {
+    sections = data.suggested_sections;
+  }
+  renderSections();
+  renderAssets();
+  statusEl.textContent = `Found ${Object.keys(assets).length} assets.`;
+}
+
+function assetValues() {
+  return Object.values(assets);
+}
+
+function renderAssets() {
+  const grid = document.getElementById('assets-grid');
+  grid.innerHTML = '';
+  const filter = document.getElementById('asset-filter').value.toLowerCase();
+  const showUnconfigured = document.getElementById('show-unconfigured').checked;
+  const showHidden = document.getElementById('show-hidden').checked;
+
+  let list = assetValues();
+  if (showUnconfigured) {
+    list = list.filter(a => !a.configured);
+  }
+  if (!showHidden) {
+    list = list.filter(a => !a.hidden);
+  }
+  if (filter) {
+    list = list.filter(a => (a.title + ' ' + a.path + ' ' + a.group).toLowerCase().includes(filter));
+  }
+
+  document.getElementById('asset-count').textContent = `${list.length} shown / ${assetValues().length} total`;
+
+  list.forEach(asset => {
+    const div = document.createElement('div');
+    const border = asset.configured ? 'border-accent' : 'border-border';
+    const opacity = asset.hidden ? 'opacity-50' : '';
+    div.className = `bg-panel border ${border} ${opacity} rounded-lg p-2 cursor-pointer hover:border-accent transition-colors`;
+    div.innerHTML = `
+      <p class="text-sm font-medium truncate text-center" title="${asset.path}">${asset.title}</p>
+      <p class="text-xs text-muted truncate text-center">${asset.group || asset.folder}</p>
+      ${asset.hidden ? '<p class="text-xs text-red-400 text-center">hidden</p>' : ''}
+    `;
+    div.addEventListener('click', () => openAssetEditor(asset.path));
+    grid.appendChild(div);
+  });
+}
+
+function openAssetEditor(path) {
+  const asset = assets[path];
+  if (!asset) return;
+  document.getElementById('asset-edit-path').value = path;
+  document.getElementById('asset-modal-title').textContent = `Asset: ${asset.filename}`;
+  document.getElementById('asset-edit-iscard').checked = asset.isCard;
+  document.getElementById('asset-edit-hidden').checked = asset.hidden;
+  document.getElementById('asset-edit-configured').checked = asset.configured;
+  document.getElementById('asset-edit-title').value = asset.title || '';
+  document.getElementById('asset-edit-group').value = asset.group || '';
+  document.getElementById('asset-edit-description').value = asset.description || '';
+  document.getElementById('asset-edit-faq').value = (asset.faq || []).map(qa => `Q: ${qa.q} | A: ${qa.a}`).join('\n');
+  document.getElementById('asset-edit-back').value = asset.back || '';
+
+  const sectionSelect = document.getElementById('asset-edit-section');
+  sectionSelect.innerHTML = sections.map(s => `<option value="${s.id}" ${s.id === asset.section ? 'selected' : ''}>${s.title}</option>`).join('');
+
+  const backSelect = document.getElementById('asset-edit-back');
+  const currentBack = backSelect.value;
+  backSelect.innerHTML = '<option value="">None</option>';
+  assetValues().forEach(a => {
+    if (a.path === path) return;
+    const option = document.createElement('option');
+    option.value = a.path;
+    option.textContent = a.path;
+    backSelect.appendChild(option);
+  });
+  backSelect.value = currentBack;
+
+  document.getElementById('asset-modal').classList.remove('hidden');
+  document.getElementById('asset-modal').classList.add('flex');
+}
+
+function closeAssetEditor() {
+  document.getElementById('asset-modal').classList.add('hidden');
+  document.getElementById('asset-modal').classList.remove('flex');
+}
+
+function saveAssetEditor() {
+  const path = document.getElementById('asset-edit-path').value;
+  const asset = assets[path];
+  if (!asset) return;
+
+  const faqText = document.getElementById('asset-edit-faq').value.trim();
+  const faq = faqText ? faqText.split('\n').map(line => {
+    const match = line.match(/^Q:\s*(.+?)\s*\|\s*A:\s*(.+)$/);
+    return match ? { q: match[1].trim(), a: match[2].trim() } : { q: line, a: '' };
+  }) : [];
+
+  asset.isCard = document.getElementById('asset-edit-iscard').checked;
+  asset.hidden = document.getElementById('asset-edit-hidden').checked;
+  asset.configured = document.getElementById('asset-edit-configured').checked;
+  asset.title = document.getElementById('asset-edit-title').value.trim() || asset.id;
+  asset.section = document.getElementById('asset-edit-section').value;
+  asset.group = document.getElementById('asset-edit-group').value.trim() || asset.folder;
+  asset.description = document.getElementById('asset-edit-description').value.trim();
+  asset.faq = faq;
+  asset.back = document.getElementById('asset-edit-back').value;
+
+  assets[path] = asset;
+  renderAssets();
+  closeAssetEditor();
+  statusEl.textContent = `Asset ${asset.id} updated. Save config to persist.`;
 }
 
 async function save() {
@@ -178,6 +362,7 @@ async function save() {
     source: { images: imageFolder },
     s3_path: document.getElementById('s3-path').value,
     sections,
+    assets,
   };
   const res = await fetch(`/api/config/${id}`, {
     method: 'POST',
@@ -226,7 +411,17 @@ document.getElementById('add-section-btn').addEventListener('click', () => {
   updateSectionsFromForm();
   sections.push({ id: '', title: '', type: 'markdown' });
   renderSections();
+  renderAssets();
 });
+document.getElementById('inspect-btn').addEventListener('click', inspectFolder);
+document.getElementById('asset-edit-save').addEventListener('click', saveAssetEditor);
+document.getElementById('asset-edit-cancel').addEventListener('click', closeAssetEditor);
+document.getElementById('asset-modal').addEventListener('click', e => {
+  if (e.target.id === 'asset-modal') closeAssetEditor();
+});
+document.getElementById('asset-filter').addEventListener('input', renderAssets);
+document.getElementById('show-unconfigured').addEventListener('change', renderAssets);
+document.getElementById('show-hidden').addEventListener('change', renderAssets);
 
 loadSettings();
 load();
