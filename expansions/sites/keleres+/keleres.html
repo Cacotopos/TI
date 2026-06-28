@@ -40,6 +40,11 @@
   </div>
 </nav>
 
+<style>
+  .card-image { height: 280px; width: auto; object-fit: contain; display: block; margin: 0 auto; }
+  .card-landscape { max-width: 100%; }
+  .card-portrait { max-width: 100%; }
+</style>
 
 <header class="bg-panel border-b border-border p-6">
   <div class="max-w-6xl mx-auto">
@@ -68,8 +73,8 @@
     <div id="card-modal-prereq" class="flex flex-wrap gap-2 mb-4 hidden"></div>
     <div id="card-modal-source" class="flex flex-wrap gap-2 mb-4 hidden"></div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-      <img id="card-modal-front" src="" alt="" class="w-full rounded-lg"/>
-      <img id="card-modal-back" src="" alt="" class="w-full rounded-lg hidden"/>
+      <img id="card-modal-front" src="" alt="" class="rounded-lg mx-auto" style="max-height: 420px; width: auto; object-fit: contain;"/>
+      <img id="card-modal-back" src="" alt="" class="rounded-lg mx-auto hidden" style="max-height: 420px; width: auto; object-fit: contain;"/>
     </div>
     <div id="card-modal-description" class="text-gray-100 mb-4 prose prose-invert max-w-none"></div>
     <details id="card-modal-faq" class="hidden">

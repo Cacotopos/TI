@@ -85,8 +85,9 @@ def _load_mask_crop_box(mask_path: Path) -> tuple[float, float, float, float]:
 def _crop_card_image(path: Path, mask_path: Path) -> bytes:
     """Crop a source image to the card mask bounding box and return JPEG bytes.
 
-    Portrait images are rotated to landscape before cropping so all cards are
-    displayed at a consistent size.
+    Portrait images are rotated to landscape before cropping, then rotated back
+    so they are displayed in their natural orientation while keeping the same
+    crop area.
     """
     global _MASK_CROP_BOX
     if _MASK_CROP_BOX is None:
@@ -95,12 +96,15 @@ def _crop_card_image(path: Path, mask_path: Path) -> bytes:
     with Image.open(path) as img:
         img = img.convert("RGB")
         w, h = img.size
-        if h > w:
+        portrait = h > w
+        if portrait:
             img = img.rotate(-90, expand=True)
             w, h = img.size
         left, top, right, bottom = _MASK_CROP_BOX
         crop = (int(left * w), int(top * h), int(right * w), int(bottom * h))
         img = img.crop(crop)
+        if portrait:
+            img = img.rotate(90, expand=True)
         buffer = io.BytesIO()
         img.save(buffer, format="JPEG", quality=92)
         return buffer.getvalue()
@@ -123,6 +127,16 @@ def _collect_assets(config: dict) -> list[dict]:
         if not asset.get("isCard", True):
             continue
         rel = Path(path)
+        src_path = images_src / rel
+        orientation = "landscape"
+        if src_path.exists():
+            try:
+                with Image.open(src_path) as img:
+                    w, h = img.size
+                    if h > w:
+                        orientation = "portrait"
+            except Exception:
+                pass
         images.append({
             "id": asset.get("id", rel.stem),
             "path": str(Path("assets/images") / rel).replace("\\", "/"),
@@ -141,6 +155,7 @@ def _collect_assets(config: dict) -> list[dict]:
             "prereq": asset.get("prereq", {}),
             "color": asset.get("color", ""),
             "source": asset.get("source", {}),
+            "orientation": orientation,
         })
     return images
 
@@ -188,7 +203,13 @@ def _prepare_banner(config: dict, output_dir: Path) -> str | None:
     banner_path = banner_config.get("path", "")
     if not banner_path:
         return None
-    banner_file = ROOT / banner_path
+    images_path = config.get("source", {}).get("images", "")
+    if images_path:
+        banner_file = ROOT / images_path / banner_path
+        if not banner_file.exists():
+            banner_file = ROOT / banner_path
+    else:
+        banner_file = ROOT / banner_path
     if not banner_file.exists():
         print(f"Warning: banner not found: {banner_file}")
         return None
@@ -205,18 +226,19 @@ def _prepare_banner(config: dict, output_dir: Path) -> str | None:
         return None
 
     images_path = config.get("source", {}).get("images", "")
-    if not images_path:
-        return None
-    try:
-        rel = Path(banner_path).relative_to(Path(images_path))
-        return str(Path("assets/images") / rel).replace("\\", "/")
-    except ValueError:
-        # Banner is outside the source image folder; copy it to the root.
-        ext = Path(banner_path).suffix or ".jpg"
-        dest = output_dir / "assets" / "images" / f"banner{ext}"
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(banner_file, dest)
-        return str(Path("assets/images") / dest.name).replace("\\", "/")
+    images_src = ROOT / images_path if images_path else None
+    if images_src and images_src.exists():
+        try:
+            rel = banner_file.relative_to(images_src)
+            return str(Path("assets/images") / rel).replace("\\", "/")
+        except ValueError:
+            pass
+    # Banner is outside the source image folder; copy it to the root.
+    ext = Path(banner_path).suffix or ".jpg"
+    dest = output_dir / "assets" / "images" / f"banner{ext}"
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(banner_file, dest)
+    return str(Path("assets/images") / dest.name).replace("\\", "/")
 
 
 def build_site(config_path: Path, output_dir: Path) -> None:

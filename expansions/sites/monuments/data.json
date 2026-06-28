@@ -1391,7 +1391,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Belkosea",
@@ -1410,7 +1411,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Kaltrim",
@@ -1429,7 +1431,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Pharad'n",
@@ -1448,7 +1451,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Qhet",
@@ -1467,7 +1471,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Sarcosa",
@@ -1486,7 +1491,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Toldar - Dishonor",
@@ -1505,7 +1511,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Toldar - Honor",
@@ -1524,7 +1531,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Uydai",
@@ -1543,7 +1551,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Xin",
@@ -1562,7 +1571,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Creuss Base",
@@ -1581,7 +1591,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "L1Z1X Base",
@@ -1600,7 +1611,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Saar Base",
@@ -1619,7 +1631,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Arborec",
@@ -1638,7 +1651,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Argent",
@@ -1657,7 +1671,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Creuss",
@@ -1676,7 +1691,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Empyrean",
@@ -1695,7 +1711,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Hacan",
@@ -1714,7 +1731,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Jol-Nar",
@@ -1733,7 +1751,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "L1Z1X",
@@ -1752,7 +1771,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Letnev",
@@ -1771,7 +1791,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Mahact",
@@ -1790,7 +1811,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Mentak",
@@ -1809,7 +1831,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Muaat",
@@ -1828,7 +1851,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "N'Orr",
@@ -1847,7 +1871,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "NRA",
@@ -1866,7 +1891,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Naalu",
@@ -1885,7 +1911,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Nekro",
@@ -1904,7 +1931,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Nomad",
@@ -1923,7 +1951,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Saar",
@@ -1942,7 +1971,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Sol",
@@ -1961,7 +1991,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Titans",
@@ -1980,7 +2011,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Vuil'Raith",
@@ -1999,7 +2031,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Winnu",
@@ -2018,7 +2051,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Xxcha",
@@ -2037,7 +2071,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Yin",
@@ -2056,7 +2091,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Yssaril",
@@ -2075,7 +2111,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Augurs",
@@ -2094,7 +2131,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Axis",
@@ -2113,7 +2151,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Bentor",
@@ -2132,7 +2171,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Celdauri",
@@ -2151,7 +2191,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Cheiran",
@@ -2170,7 +2211,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Cymiae",
@@ -2189,7 +2231,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Dih-Mohn",
@@ -2208,7 +2251,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Edyn",
@@ -2227,7 +2271,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "FSC",
@@ -2246,7 +2291,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Florzen",
@@ -2265,7 +2311,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "GLEdge",
@@ -2284,7 +2331,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Ghemina",
@@ -2303,7 +2351,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Ghoti",
@@ -2322,7 +2371,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Khrask",
@@ -2341,7 +2391,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Kjalengard",
@@ -2360,7 +2411,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Kollecc",
@@ -2379,7 +2431,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Kolume",
@@ -2398,7 +2451,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Kortali",
@@ -2417,7 +2471,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Kyro",
@@ -2436,7 +2491,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Lanefir",
@@ -2455,7 +2511,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Li-Zho",
@@ -2474,7 +2531,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Mirveda",
@@ -2493,7 +2551,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Mortheus",
@@ -2512,7 +2571,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Myko",
@@ -2531,7 +2591,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Nivyn",
@@ -2550,7 +2611,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Nokar",
@@ -2569,7 +2631,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Olradin",
@@ -2588,7 +2651,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Rhodun Back",
@@ -2607,7 +2671,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Rhodun Front",
@@ -2626,7 +2691,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Roh'Dhna",
@@ -2645,7 +2711,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Tnelis",
@@ -2664,7 +2731,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Vaden",
@@ -2683,7 +2751,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Vaylerian",
@@ -2702,7 +2771,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Veldyr",
@@ -2721,7 +2791,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Zelian",
@@ -2740,7 +2811,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Drahn",
@@ -2759,7 +2831,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Bastion",
@@ -2778,7 +2851,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Crimson Rebellion",
@@ -2797,7 +2871,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Deepwrought",
@@ -2816,7 +2891,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Firmament",
@@ -2835,7 +2911,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Keleres",
@@ -2854,7 +2931,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Obsidian",
@@ -2873,7 +2951,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "Ral-Nel",
@@ -2892,7 +2971,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "King Black",
@@ -2911,7 +2991,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "King Blue",
@@ -2930,7 +3011,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "King Green",
@@ -2949,7 +3031,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "King Orange",
@@ -2968,7 +3051,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "King Pink",
@@ -2987,7 +3071,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "King Purple",
@@ -3006,7 +3091,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "King Red",
@@ -3025,7 +3111,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "King White",
@@ -3044,7 +3131,8 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     },
     {
       "id": "King Yellow",
@@ -3063,8 +3151,9 @@
       "abilities": {},
       "prereq": {},
       "color": "",
-      "source": {}
+      "source": {},
+      "orientation": "landscape"
     }
   ],
-  "banner_path": null
+  "banner_path": "assets/images/banner.jpg"
 }

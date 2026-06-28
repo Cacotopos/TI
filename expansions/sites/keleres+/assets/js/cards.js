@@ -67,10 +67,10 @@
     if (!source || !source.enabled) return '';
     const parts = [];
     if (source.influence !== undefined && source.influence !== null && source.influence !== '') {
-      parts.push(`<span class="px-2 py-1 rounded-md bg-purple-600 text-white text-xs font-semibold whitespace-nowrap">Influence ${escapeHtml(String(source.influence))}</span>`);
+      parts.push(`<span class="px-2 py-1 rounded-md bg-blue-200 text-black text-xs font-semibold whitespace-nowrap">Influence ${escapeHtml(String(source.influence))}</span>`);
     }
     if (source.resource !== undefined && source.resource !== null && source.resource !== '') {
-      parts.push(`<span class="px-2 py-1 rounded-md bg-yellow-600 text-white text-xs font-semibold whitespace-nowrap">Resource ${escapeHtml(String(source.resource))}</span>`);
+      parts.push(`<span class="px-2 py-1 rounded-md bg-yellow-400 text-black text-xs font-semibold whitespace-nowrap">Resource ${escapeHtml(String(source.resource))}</span>`);
     }
     if (type === 'Station') {
       parts.push('<span class="px-2 py-1 rounded-md bg-blue-600 text-white text-xs font-semibold whitespace-nowrap">Station</span>');
@@ -79,8 +79,8 @@
       const color = traitColors[source.trait] || 'bg-gray-700';
       parts.push(`<span class="px-2 py-1 rounded-md ${color} text-xs font-semibold whitespace-nowrap capitalize">${escapeHtml(source.trait)}</span>`);
     }
-    if (source.legendary) parts.push('<span class="px-2 py-1 rounded-md bg-orange-500 text-white text-xs font-semibold whitespace-nowrap">Legendary</span>');
-    if (source.relic) parts.push('<span class="px-2 py-1 rounded-md bg-teal-600 text-white text-xs font-semibold whitespace-nowrap">Relic</span>');
+    if (source.legendary) parts.push('<span class="px-2 py-1 rounded-md bg-pink-400 text-black text-xs font-semibold whitespace-nowrap">Legendary</span>');
+    if (source.relic) parts.push('<span class="px-2 py-1 rounded-md bg-orange-300 text-black text-xs font-semibold whitespace-nowrap">Relic</span>');
     if (source.techSpeciality) parts.push(`<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs whitespace-nowrap">Tech: ${escapeHtml(source.techSpeciality)}</span>`);
     if (source.linkedAbility) parts.push(`<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs whitespace-nowrap">Ability: ${escapeHtml(source.linkedAbility)}</span>`);
     return parts.join('');
