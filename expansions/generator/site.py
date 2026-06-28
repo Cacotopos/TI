@@ -97,6 +97,8 @@ def _collect_assets(config: dict) -> list[dict]:
             "back": asset.get("back", ""),
             "description": asset.get("description", ""),
             "faq": asset.get("faq", []),
+            "type": asset.get("type", ""),
+            "faction": asset.get("faction", ""),
             "configured": asset.get("configured", False),
         })
     return images
