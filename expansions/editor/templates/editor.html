@@ -38,7 +38,7 @@
   .asset-cell { background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; cursor: pointer; text-align: center; }
   .asset-cell:hover { border-color: var(--accent); }
   .asset-cell.configured { border-color: var(--accent); }
-  .asset-cell.hidden { opacity: 0.5; }
+  .asset-cell.excluded { opacity: 0.5; }
   .asset-cell .title { font-size: 0.85rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .asset-cell .group { font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .toolbar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
@@ -493,7 +493,7 @@ function renderAssets() {
 
   list.forEach(asset => {
     const div = document.createElement('div');
-    div.className = `asset-cell ${asset.configured ? 'configured' : ''} ${asset.hidden ? 'hidden' : ''}`;
+    div.className = `asset-cell ${asset.configured ? 'configured' : ''} ${asset.hidden ? 'excluded' : ''}`;
     div.innerHTML = `
       <div class="title" title="${asset.path}">${asset.title}</div>
       <div class="group" title="${asset.group || asset.folder}">${asset.group || asset.folder}</div>
@@ -536,7 +536,7 @@ function populateBackOptions(path, currentBack, filterText) {
   currentBackOptions.forEach(a => {
     const option = document.createElement('option');
     option.value = a.path;
-    option.textContent = a.path;
+    option.textContent = a.hidden ? `${a.path} [hidden]` : a.path;
     backSelect.appendChild(option);
   });
   const stillAvailable = currentBack === '' || currentBackOptions.some(a => a.path === currentBack);
