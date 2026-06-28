@@ -16,9 +16,10 @@
   label { display: block; color: var(--muted); font-size: 0.85rem; margin-bottom: 0.25rem; }
   input, textarea, select { width: 100%; background: #12151f; color: var(--text); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.6rem; margin-bottom: 1rem; }
   input, select { min-height: 2.5rem; line-height: 1.25; }
-  select { padding: 0.5rem 0.6rem; }
-  input[type="checkbox"] { width: auto; margin-bottom: 0; min-height: auto; }
-  textarea { min-height: 120px; }
+  select:not([size]) { height: 2.5rem; }
+  select[size] { height: auto; }
+  input[type="checkbox"] { width: auto; margin-bottom: 0; min-height: auto; height: auto; }
+  textarea { min-height: 120px; height: auto; }
   button { background: var(--accent); color: #fff; border: none; border-radius: 0.5rem; padding: 0.6rem 1.2rem; font-weight: 600; cursor: pointer; }
   button:hover { background: #2563eb; }
   button.secondary { background: transparent; border: 1px solid var(--border); color: var(--text); }
