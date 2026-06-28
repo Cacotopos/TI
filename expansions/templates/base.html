@@ -23,6 +23,9 @@
 <link rel="stylesheet" href="assets/css/styles.css"/>
 </head>
 <body class="bg-bg text-gray-100 min-h-screen">
+{% if site.banner_path %}
+<div class="site-banner" style="background-image: url('{{ site.banner_path }}');"></div>
+{% endif %}
 <nav class="bg-panel border-b border-border sticky top-0 z-50">
   <div class="max-w-6xl mx-auto px-6 py-3 flex items-center gap-4">
     <a href="index.html" class="font-bold text-lg hover:text-accent">{{ config.name }}</a>

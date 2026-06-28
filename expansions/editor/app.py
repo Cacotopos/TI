@@ -11,7 +11,7 @@ import subprocess
 from pathlib import Path
 
 from dotenv import load_dotenv
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, send_from_directory
 
 app = Flask(__name__)
 
@@ -109,6 +109,19 @@ def deploy(expansion_id: str):
     })
 
 
+@app.route("/api/image/<expansion_id>/<path:filename>")
+def serve_image(expansion_id: str, filename: str):
+    """Serve a source image file for preview."""
+    config = _load_config(expansion_id)
+    images_path = config.get("source", {}).get("images", "")
+    if not images_path:
+        return "", 404
+    images_src = ROOT / images_path
+    if not images_src.exists():
+        return "", 404
+    return send_from_directory(images_src, filename)
+
+
 @app.route("/api/images/<expansion_id>")
 def list_images(expansion_id: str):
     config = _load_config(expansion_id)
@@ -122,11 +135,18 @@ def list_images(expansion_id: str):
     for p in sorted(images_src.rglob("*")):
         if p.is_file() and p.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp"}:
             rel = p.relative_to(images_src)
+            try:
+                with Image.open(p) as img:
+                    width, height = img.size
+            except Exception:
+                width, height = 0, 0
             images.append({
                 "id": p.stem,
                 "filename": p.name,
                 "path": str(rel).replace("\\", "/"),
                 "folder": str(rel.parent) if rel.parent != Path(".") else "",
+                "width": width,
+                "height": height,
             })
     return jsonify(images)
 
@@ -159,6 +179,10 @@ def inspect(expansion_id: str):
 
             if path in existing_assets:
                 assets[path] = existing_assets[path]
+                if "type" not in assets[path]:
+                    assets[path]["type"] = "other component"
+                if "faction" not in assets[path]:
+                    assets[path]["faction"] = ""
             else:
                 assets[path] = {
                     "id": p.stem,
@@ -174,7 +198,15 @@ def inspect(expansion_id: str):
                     "section": "cards",
                     "group": folder,
                     "back": "",
+                    "type": "other component",
+                    "faction": "",
                 }
+
+    # Remove assets whose source files no longer exist (e.g. renamed files).
+    detected_paths = set(assets.keys())
+    for path in list(existing_assets.keys()):
+        if path not in detected_paths:
+            assets.pop(path, None)
 
     # Suggest sections from top-level folders.
     suggested = []

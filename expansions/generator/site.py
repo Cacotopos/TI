@@ -17,6 +17,7 @@ from expansions.generator.config import load_config
 
 ROOT = Path(__file__).parent.parent.parent
 TEMPLATE_DIR = ROOT / "expansions" / "templates"
+MIN_BANNER_WIDTH = 1152 + 400
 
 
 def _copy_assets(output_dir: Path) -> None:
@@ -127,6 +128,46 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
                 shutil.copy2(p, dest)
 
 
+def _prepare_banner(config: dict, output_dir: Path) -> str | None:
+    """Validate and return the output-relative path for the banner image.
+
+    The banner is copied alongside other source images; this just confirms it
+    meets the minimum width requirement and resolves its output URL.
+    """
+    banner_path = config.get("banner", {}).get("path", "")
+    if not banner_path:
+        return None
+    banner_file = ROOT / banner_path
+    if not banner_file.exists():
+        print(f"Warning: banner not found: {banner_file}")
+        return None
+
+    try:
+        with Image.open(banner_file) as img:
+            width = img.width
+    except Exception as e:
+        print(f"Warning: could not read banner: {e}")
+        return None
+
+    if width < MIN_BANNER_WIDTH:
+        print(f"Warning: banner is {width}px wide, minimum is {MIN_BANNER_WIDTH}px")
+        return None
+
+    images_path = config.get("source", {}).get("images", "")
+    if not images_path:
+        return None
+    try:
+        rel = Path(banner_path).relative_to(Path(images_path))
+        return str(Path("assets/images") / rel).replace("\\", "/")
+    except ValueError:
+        # Banner is outside the source image folder; copy it to the root.
+        ext = Path(banner_path).suffix or ".jpg"
+        dest = output_dir / "assets" / "images" / f"banner{ext}"
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(banner_file, dest)
+        return str(Path("assets/images") / dest.name).replace("\\", "/")
+
+
 def build_site(config_path: Path, output_dir: Path) -> None:
     """Generate a standalone static site at output_dir."""
     config = load_config(config_path)
@@ -140,6 +181,7 @@ def build_site(config_path: Path, output_dir: Path) -> None:
         **config,
         "images": images,
         "sections": config.get("sections", []),
+        "banner_path": _prepare_banner(config, output_dir),
     }
 
     env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_DIR))

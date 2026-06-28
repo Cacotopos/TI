@@ -60,6 +60,17 @@
   .checkbox-row { display: flex; gap: 1.5rem; margin-bottom: 1rem; }
   .checkbox-row label { display: flex; align-items: center; gap: 0.35rem; }
   .empty-state { color: var(--muted); text-align: center; padding: 2rem; }
+  .banner-row { display: flex; gap: 0.75rem; align-items: flex-end; }
+  .banner-row input { margin-bottom: 0; }
+  .banner-row .hint { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; }
+  .banner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .banner-option { border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem; cursor: pointer; text-align: center; }
+  .banner-option:hover { border-color: var(--accent); }
+  .banner-option.selected { border-color: var(--accent); background: rgba(59, 130, 246, 0.1); }
+  .banner-option.disabled { opacity: 0.4; cursor: not-allowed; }
+  .banner-option img { width: 100%; height: 100px; object-fit: cover; border-radius: 0.35rem; margin-bottom: 0.5rem; }
+  .banner-option .dim { font-size: 0.75rem; color: var(--muted); }
+  .banner-preview { width: 100%; height: 120px; background-position: center; background-repeat: repeat-x; background-size: auto 100%; border-radius: 0.5rem; border: 1px solid var(--border); margin-bottom: 0.75rem; }
 </style>
 </head>
 <body>
@@ -115,6 +126,14 @@
           <input id="s3-path" type="text" placeholder="monuments"/>
         </div>
       </div>
+      <label>Banner image</label>
+      <div class="banner-row">
+        <input id="banner-path" type="text" placeholder="expansions/source/monuments/banner.jpg" style="flex:1"/>
+        <button id="choose-banner-btn" type="button" class="secondary">Choose</button>
+        <button id="clear-banner-btn" type="button" class="danger">Clear</button>
+      </div>
+      <p class="hint">Optional. Must be at least 1552px wide to cover the central column plus 200px on each side.</p>
+      <div id="banner-preview" class="banner-preview hidden"></div>
     </div>
 
     <div class="card">
@@ -159,6 +178,10 @@
       <button id="asset-modal-close" type="button" class="secondary">&times;</button>
     </div>
     <input id="asset-edit-path" type="hidden"/>
+    <div id="asset-preview-container" class="mb-4">
+      <img id="asset-preview" src="" alt="" style="max-width: 100%; max-height: 200px; border-radius: 0.5rem; border: 1px solid var(--border);"/>
+      <p id="asset-filename" class="hint" style="margin-top: 0.5rem; margin-bottom: 0;"></p>
+    </div>
     <div class="checkbox-row">
       <label><input id="asset-edit-iscard" type="checkbox" checked/> Is card</label>
       <label><input id="asset-edit-hidden" type="checkbox"/> Hidden</label>
@@ -174,6 +197,38 @@
         <select id="asset-edit-section"></select>
       </div>
     </div>
+    <div class="row">
+      <div>
+        <label>Type</label>
+        <select id="asset-edit-type">
+          <option value="public objective">public objective</option>
+          <option value="secret objective">secret objective</option>
+          <option value="promissory note">promissory note</option>
+          <option value="agent">agent</option>
+          <option value="commander">commander</option>
+          <option value="hero">hero</option>
+          <option value="alliance">alliance</option>
+          <option value="action card">action card</option>
+          <option value="scenario">scenario</option>
+          <option value="other component" selected>other component</option>
+          <option value="agenda">agenda</option>
+          <option value="relic">relic</option>
+          <option value="planet">planet</option>
+          <option value="tile">tile</option>
+          <option value="token">token</option>
+          <option value="relic fragment">relic fragment</option>
+          <option value="legendary ability">legendary ability</option>
+          <option value="planet ability">planet ability</option>
+          <option value="station">station</option>
+          <option value="rulebook">rulebook</option>
+        </select>
+      </div>
+      <div>
+        <label>Faction</label>
+        <input id="asset-edit-faction" type="text" list="asset-edit-faction-list" placeholder="Type or select a faction"/>
+        <datalist id="asset-edit-faction-list"></datalist>
+      </div>
+    </div>
     <label>Group</label>
     <input id="asset-edit-group" type="text"/>
     <label>Description</label>
@@ -187,6 +242,21 @@
     <div class="modal-footer">
       <button id="asset-edit-cancel" type="button" class="secondary">Cancel</button>
       <button id="asset-edit-save" type="button">Save Asset</button>
+    </div>
+  </div>
+</div>
+
+<div id="banner-modal" class="modal-overlay">
+  <div class="modal" style="max-width: 900px;">
+    <div class="modal-header">
+      <h2>Choose Banner Image</h2>
+      <button id="banner-modal-close" type="button" class="secondary">&times;</button>
+    </div>
+    <p class="hint">Only images at least 1552px wide can be used as a banner.</p>
+    <div id="banner-grid" class="banner-grid"></div>
+    <div id="banner-none" class="empty-state hidden">No wide enough images found in the source folder.</div>
+    <div class="modal-footer">
+      <button id="banner-cancel" type="button" class="secondary">Cancel</button>
     </div>
   </div>
 </div>
@@ -227,6 +297,8 @@ function resetForm() {
   document.getElementById('overview').value = '';
   document.getElementById('image-folder').value = '';
   document.getElementById('s3-path').value = '';
+  document.getElementById('banner-path').value = '';
+  updateBannerPreview();
   sections = [];
   assets = {};
   renderSections();
@@ -247,6 +319,8 @@ async function tryLoadConfig(id) {
   document.getElementById('overview').value = data.overview || '';
   document.getElementById('image-folder').value = (data.source && data.source.images) || '';
   document.getElementById('s3-path').value = data.s3_path || data.id || '';
+  document.getElementById('banner-path').value = (data.banner && data.banner.path) || '';
+  updateBannerPreview();
   sections = data.sections || [];
   assets = data.assets || {};
   editorForm.classList.remove('hidden');
@@ -415,19 +489,45 @@ function renderAssets() {
   });
 }
 
+function distinctFactions() {
+  const set = new Set();
+  assetValues().forEach(a => {
+    if (a.faction && a.faction.trim()) set.add(a.faction.trim());
+  });
+  return Array.from(set).sort();
+}
+
+function updateFactionDatalist() {
+  const list = document.getElementById('asset-edit-faction-list');
+  list.innerHTML = '';
+  distinctFactions().forEach(f => {
+    const opt = document.createElement('option');
+    opt.value = f;
+    list.appendChild(opt);
+  });
+}
+
 function openAssetEditor(path) {
   const asset = assets[path];
   if (!asset) return;
+  const expansionId = idInput.value.trim();
   document.getElementById('asset-edit-path').value = path;
   document.getElementById('asset-modal-title').textContent = `Asset: ${asset.filename}`;
+  document.getElementById('asset-preview').src = `/api/image/${expansionId}/${asset.path}`;
+  document.getElementById('asset-preview').alt = asset.title || asset.filename;
+  document.getElementById('asset-filename').textContent = asset.path;
   document.getElementById('asset-edit-iscard').checked = asset.isCard;
   document.getElementById('asset-edit-hidden').checked = asset.hidden;
   document.getElementById('asset-edit-configured').checked = asset.configured;
   document.getElementById('asset-edit-title').value = asset.title || '';
+  document.getElementById('asset-edit-type').value = asset.type || 'other component';
   document.getElementById('asset-edit-group').value = asset.group || '';
   document.getElementById('asset-edit-description').value = asset.description || '';
   document.getElementById('asset-edit-faq').value = (asset.faq || []).map(qa => `Q: ${qa.q} | A: ${qa.a}`).join('\n');
   document.getElementById('asset-edit-back').value = asset.back || '';
+
+  updateFactionDatalist();
+  document.getElementById('asset-edit-faction').value = asset.faction || '';
 
   const sectionSelect = document.getElementById('asset-edit-section');
   sectionSelect.innerHTML = sections.map(s => `<option value="${s.id}" ${s.id === asset.section ? 'selected' : ''}>${s.title}</option>`).join('');
@@ -466,6 +566,8 @@ function saveAssetEditor() {
   asset.hidden = document.getElementById('asset-edit-hidden').checked;
   asset.configured = document.getElementById('asset-edit-configured').checked;
   asset.title = document.getElementById('asset-edit-title').value.trim() || asset.id;
+  asset.type = document.getElementById('asset-edit-type').value;
+  asset.faction = document.getElementById('asset-edit-faction').value.trim();
   asset.section = document.getElementById('asset-edit-section').value;
   asset.group = document.getElementById('asset-edit-group').value.trim() || asset.folder;
   asset.description = document.getElementById('asset-edit-description').value.trim();
@@ -483,6 +585,7 @@ async function save() {
   let name = document.getElementById('name').value.trim();
   let version = document.getElementById('version').value.trim();
   let imageFolder = document.getElementById('image-folder').value.trim();
+  let bannerPath = document.getElementById('banner-path').value.trim();
 
   if (!id) {
     statusEl.textContent = 'Expansion ID is required.';
@@ -492,6 +595,9 @@ async function save() {
   if (!version) version = '1.0';
   if (imageFolder.startsWith('/')) {
     imageFolder = imageFolder.slice(1);
+  }
+  if (bannerPath.startsWith('/')) {
+    bannerPath = bannerPath.slice(1);
   }
 
   updateSectionsFromForm();
@@ -504,6 +610,7 @@ async function save() {
     overview: document.getElementById('overview').value,
     source: { images: imageFolder },
     s3_path: document.getElementById('s3-path').value,
+    banner: bannerPath ? { path: bannerPath } : null,
     sections,
     assets,
   };
@@ -545,6 +652,68 @@ async function deploy() {
     : `Deploy failed:\n${data.stderr}`;
 }
 
+const MIN_BANNER_WIDTH = 1552;
+
+function updateBannerPreview() {
+  const path = document.getElementById('banner-path').value.trim();
+  const preview = document.getElementById('banner-preview');
+  if (path) {
+    preview.classList.remove('hidden');
+    preview.style.backgroundImage = `url('/api/image/${idInput.value.trim()}/${path}')`;
+  } else {
+    preview.classList.add('hidden');
+    preview.style.backgroundImage = '';
+  }
+}
+
+function openBannerPicker() {
+  document.getElementById('banner-modal').classList.add('visible');
+  renderBannerOptions();
+}
+
+function closeBannerPicker() {
+  document.getElementById('banner-modal').classList.remove('visible');
+}
+
+async function renderBannerOptions() {
+  const id = idInput.value.trim();
+  const grid = document.getElementById('banner-grid');
+  const none = document.getElementById('banner-none');
+  grid.innerHTML = '';
+  if (!id) {
+    none.classList.remove('hidden');
+    return;
+  }
+  const res = await fetch(`/api/images/${id}`);
+  const images = await res.json();
+  const currentPath = document.getElementById('banner-path').value.trim();
+  const wide = images.filter(img => img.width >= MIN_BANNER_WIDTH);
+  none.classList.toggle('hidden', wide.length > 0);
+  wide.forEach(img => {
+    const div = document.createElement('div');
+    div.className = `banner-option ${img.path === currentPath ? 'selected' : ''}`;
+    div.innerHTML = `
+      <img src="/api/image/${id}/${img.path}" alt="${img.filename}" loading="lazy"/>
+      <div class="title" title="${img.path}">${img.filename}</div>
+      <div class="dim">${img.width} x ${img.height}</div>
+    `;
+    div.addEventListener('click', () => selectBanner(img.path));
+    grid.appendChild(div);
+  });
+}
+
+function selectBanner(path) {
+  document.getElementById('banner-path').value = path;
+  updateBannerPreview();
+  closeBannerPicker();
+  statusEl.textContent = `Banner set to ${path}.`;
+}
+
+function clearBanner() {
+  document.getElementById('banner-path').value = '';
+  updateBannerPreview();
+}
+
 document.getElementById('save-btn').addEventListener('click', save);
 document.getElementById('generate-btn').addEventListener('click', generate);
 document.getElementById('deploy-btn').addEventListener('click', deploy);
@@ -564,6 +733,14 @@ document.getElementById('asset-modal').addEventListener('click', e => {
 document.getElementById('asset-filter').addEventListener('input', renderAssets);
 document.getElementById('show-unconfigured').addEventListener('change', renderAssets);
 document.getElementById('show-hidden').addEventListener('change', renderAssets);
+document.getElementById('choose-banner-btn').addEventListener('click', openBannerPicker);
+document.getElementById('clear-banner-btn').addEventListener('click', clearBanner);
+document.getElementById('banner-cancel').addEventListener('click', closeBannerPicker);
+document.getElementById('banner-modal-close').addEventListener('click', closeBannerPicker);
+document.getElementById('banner-modal').addEventListener('click', e => {
+  if (e.target.id === 'banner-modal') closeBannerPicker();
+});
+document.getElementById('banner-path').addEventListener('input', updateBannerPreview);
 
 loadSettings();
 loadExpansionList();
