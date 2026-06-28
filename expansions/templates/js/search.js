@@ -29,7 +29,18 @@
 
   (site.images || []).forEach((img, i) => {
     const faqText = (img.faq || []).map(qa => `${qa.q} ${qa.a}`).join(' ');
-    const text = `${img.name || ''} ${img.folder || ''} ${img.group || ''} ${img.type || ''} ${img.faction || ''} ${img.description || ''} ${faqText}`;
+    const statsText = img.stats ? Object.values(img.stats).map(s => s.enabled ? (s.value || '-') : '').join(' ') : '';
+    const abilities = img.abilities || {};
+    const abilityText = [
+      abilities.deploy ? 'Deploy' : '',
+      abilities.planetaryShield ? 'Planetary Shield' : '',
+      abilities.sustainDamage ? 'Sustain Damage' : '',
+      abilities.bombardment ? `Bombardment ${abilities.bombardment.target} ${abilities.bombardment.multi}` : '',
+      abilities.antiFighterBarrage ? `Anti-Fighter Barrage ${abilities.antiFighterBarrage.target} ${abilities.antiFighterBarrage.multi}` : '',
+      abilities.spaceCannon ? `Space Cannon ${abilities.spaceCannon.target} ${abilities.spaceCannon.multi}` : '',
+      abilities.production ? `Production ${abilities.production.target} ${abilities.production.multi}` : '',
+    ].join(' ');
+    const text = `${img.name || ''} ${img.folder || ''} ${img.group || ''} ${img.type || ''} ${img.faction || ''} ${img.description || ''} ${faqText} ${statsText} ${abilityText}`;
     const url = `${img.section || 'cards'}.html`;
     addDoc(`image-${i}`, text, img.name || img.id, url, 'card');
   });

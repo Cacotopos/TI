@@ -3,6 +3,8 @@
   const modal = document.getElementById('card-modal');
   const title = document.getElementById('card-modal-title');
   const badges = document.getElementById('card-modal-badges');
+  const statsContainer = document.getElementById('card-modal-stats');
+  const abilitiesContainer = document.getElementById('card-modal-abilities');
   const frontImg = document.getElementById('card-modal-front');
   const backImg = document.getElementById('card-modal-back');
   const description = document.getElementById('card-modal-description');
@@ -14,6 +16,38 @@
 
   function escapeHtml(text) {
     return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function isUnitType(type) { return type && type.startsWith('Unit -'); }
+  function formatStats(stats) {
+    const labels = { cost: 'Cost', combat: 'Combat', move: 'Move', capacity: 'Capacity' };
+    const parts = [];
+    ['cost', 'combat', 'move', 'capacity'].forEach(key => {
+      const stat = stats?.[key];
+      if (!stat || !stat.enabled) return;
+      parts.push(`<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs">${labels[key]} ${stat.value == null ? '-' : escapeHtml(String(stat.value))}</span>`);
+    });
+    return parts.join('');
+  }
+  function formatAbilities(abilities) {
+    if (!abilities) return '';
+    const parts = [];
+    if (abilities.deploy) parts.push('<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs">Deploy</span>');
+    if (abilities.planetaryShield) parts.push('<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs">Planetary Shield</span>');
+    if (abilities.sustainDamage) parts.push('<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs">Sustain Damage</span>');
+    const rolls = [
+      ['bombardment', 'Bombardment'],
+      ['antiFighterBarrage', 'Anti-Fighter Barrage'],
+      ['spaceCannon', 'Space Cannon'],
+      ['production', 'Production'],
+    ];
+    rolls.forEach(([key, label]) => {
+      const roll = abilities[key];
+      if (!roll) return;
+      const multiText = roll.multi > 1 ? ` (${roll.multi})` : '';
+      parts.push(`<span class="px-2 py-1 rounded-md bg-blue-600 text-white text-xs font-semibold">${label} ${roll.target}${multiText}</span>`);
+    });
+    return parts.join('');
   }
 
   function renderMarkdown(text) {
@@ -46,6 +80,9 @@
     frontImg.src = card.frontPath;
     frontImg.alt = card.name || card.id;
 
+    try { card.stats = JSON.parse(card.stats || '{}'); } catch (e) { card.stats = {}; }
+    try { card.abilities = JSON.parse(card.abilities || '{}'); } catch (e) { card.abilities = {}; }
+
     const badgeList = [
       card.type ? `<span class="px-2 py-1 rounded-md bg-blue-600 text-white text-xs font-semibold">${escapeHtml(card.type)}</span>` : '',
       card.faction ? `<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs">${escapeHtml(card.faction)}</span>` : '',
@@ -53,6 +90,14 @@
       card.group ? `<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs">${escapeHtml(card.group)}</span>` : '',
     ].filter(Boolean).join('');
     badges.innerHTML = badgeList;
+
+    const statsHtml = isUnitType(card.type) ? formatStats(card.stats) : '';
+    statsContainer.innerHTML = statsHtml;
+    statsContainer.classList.toggle('hidden', !statsHtml);
+
+    const abilitiesHtml = isUnitType(card.type) ? formatAbilities(card.abilities) : '';
+    abilitiesContainer.innerHTML = abilitiesHtml;
+    abilitiesContainer.classList.toggle('hidden', !abilitiesHtml);
 
     if (card.description) {
       description.innerHTML = renderMarkdown(card.description);
@@ -104,6 +149,8 @@
         group: item.dataset.cardGroup,
         description: item.dataset.cardDescription,
         faq: item.dataset.cardFaq,
+        stats: item.dataset.cardStats,
+        abilities: item.dataset.cardAbilities,
         back: item.dataset.cardBack,
         frontPath: item.dataset.cardFrontPath,
       });

@@ -53,6 +53,13 @@
   .asset-faq-preview .faq-item { margin-bottom: 0.5rem; }
   .asset-faq-preview .faq-q { font-weight: 600; }
   .asset-faq-preview .faq-a { color: var(--muted); }
+  .unit-stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 1rem; }
+  .unit-stat { display: flex; align-items: center; gap: 0.5rem; background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem; }
+  .unit-stat input { width: 4rem; margin-bottom: 0; padding: 0.35rem 0.5rem; }
+  .unit-abilities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
+  .unit-roll-abilities-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
+  .unit-roll-ability { display: flex; align-items: center; gap: 0.5rem; background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem; }
+  .unit-roll-ability input { width: 4rem; margin-bottom: 0; padding: 0.35rem 0.5rem; }
   .asset-cell .title { font-size: 0.85rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .asset-cell .group { font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .toolbar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
@@ -264,19 +271,19 @@
           <option value="Technology">Technology</option>
           <option value="Tile">Tile</option>
           <option value="Token">Token</option>
-          <option value="Unit - War sun">Unit - War sun</option>
-          <option value="Unit - Dreadnought">Unit - Dreadnought</option>
-          <option value="Unit - Flagship">Unit - Flagship</option>
-          <option value="Unit - Special">Unit - Special</option>
-          <option value="Unit - Fighter">Unit - Fighter</option>
-          <option value="Unit - Mech">Unit - Mech</option>
-          <option value="Unit - Carrier">Unit - Carrier</option>
-          <option value="Unit - Cruiser">Unit - Cruiser</option>
-          <option value="Unit - Destroyer">Unit - Destroyer</option>
-          <option value="Unit - Monument">Unit - Monument</option>
-          <option value="Unit - Basic Structure">Unit - Basic Structure</option>
-          <option value="Unit - Advanced Structure">Unit - Advanced Structure</option>
-          <option value="Unit - Infantry">Unit - Infantry</option>
+          <option value="Unit - Ship - War sun">Unit - Ship - War sun</option>
+          <option value="Unit - Ship - Dreadnought">Unit - Ship - Dreadnought</option>
+          <option value="Unit - Ship - Flagship">Unit - Ship - Flagship</option>
+          <option value="Unit - Ship - Special">Unit - Ship - Special</option>
+          <option value="Unit - Ship - Fighter">Unit - Ship - Fighter</option>
+          <option value="Unit - Ship - Carrier">Unit - Ship - Carrier</option>
+          <option value="Unit - Ship - Cruiser">Unit - Ship - Cruiser</option>
+          <option value="Unit - Ship - Destroyer">Unit - Ship - Destroyer</option>
+          <option value="Unit - Ground Force - Infantry">Unit - Ground Force - Infantry</option>
+          <option value="Unit - Ground Force - Mech">Unit - Ground Force - Mech</option>
+          <option value="Unit - Structure - Monument">Unit - Structure - Monument</option>
+          <option value="Unit - Structure - Basic Structure">Unit - Structure - Basic Structure</option>
+          <option value="Unit - Structure - Advanced Structure">Unit - Structure - Advanced Structure</option>
         </select>
       </div>
       <div>
@@ -285,6 +292,102 @@
         <datalist id="asset-edit-faction-list"></datalist>
       </div>
     </div>
+
+    <div id="unit-section" class="hidden">
+      <label>Unit Stats</label>
+      <div class="unit-stats-grid">
+        <div class="unit-stat">
+          <label class="toggle">
+            <input id="unit-stat-cost-toggle" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Cost</span>
+          </label>
+          <input id="unit-stat-cost" type="number" min="1" max="20" placeholder="-"/>
+        </div>
+        <div class="unit-stat">
+          <label class="toggle">
+            <input id="unit-stat-combat-toggle" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Combat</span>
+          </label>
+          <input id="unit-stat-combat" type="number" min="1" max="10" placeholder="-"/>
+        </div>
+        <div class="unit-stat">
+          <label class="toggle">
+            <input id="unit-stat-move-toggle" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Move</span>
+          </label>
+          <input id="unit-stat-move" type="number" min="1" max="10" placeholder="-"/>
+        </div>
+        <div class="unit-stat">
+          <label class="toggle">
+            <input id="unit-stat-capacity-toggle" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Capacity</span>
+          </label>
+          <input id="unit-stat-capacity" type="number" min="1" max="20" placeholder="-"/>
+        </div>
+      </div>
+
+      <label>Unit Abilities</label>
+      <div class="unit-abilities-grid">
+        <label class="toggle">
+          <input id="ability-deploy" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Deploy</span>
+        </label>
+        <label class="toggle">
+          <input id="ability-planetary-shield" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Planetary Shield</span>
+        </label>
+        <label class="toggle">
+          <input id="ability-sustain-damage" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Sustain Damage</span>
+        </label>
+      </div>
+      <div class="unit-roll-abilities-grid">
+        <div class="unit-roll-ability">
+          <label class="toggle">
+            <input id="ability-bombardment" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Bombardment</span>
+          </label>
+          <input id="ability-bombardment-target" type="number" min="1" max="10" placeholder="Target"/>
+          <input id="ability-bombardment-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+        </div>
+        <div class="unit-roll-ability">
+          <label class="toggle">
+            <input id="ability-anti-fighter-barrage" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Anti-Fighter Barrage</span>
+          </label>
+          <input id="ability-anti-fighter-barrage-target" type="number" min="1" max="10" placeholder="Target"/>
+          <input id="ability-anti-fighter-barrage-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+        </div>
+        <div class="unit-roll-ability">
+          <label class="toggle">
+            <input id="ability-space-cannon" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Space Cannon</span>
+          </label>
+          <input id="ability-space-cannon-target" type="number" min="1" max="10" placeholder="Target"/>
+          <input id="ability-space-cannon-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+        </div>
+        <div class="unit-roll-ability">
+          <label class="toggle">
+            <input id="ability-production" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Production</span>
+          </label>
+          <input id="ability-production-target" type="number" min="1" max="10" placeholder="Target"/>
+          <input id="ability-production-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+        </div>
+      </div>
+    </div>
+
     <label>Group</label>
     <input id="asset-edit-group" type="text"/>
     <label>Description (Markdown)</label>
@@ -528,6 +631,128 @@ function renderMarkdown(text) {
   return `<p>${html}</p>`;
 }
 
+function isUnitType(type) { return type && type.startsWith('Unit -'); }
+function unitCategory(type) {
+  if (!type) return null;
+  if (type.startsWith('Unit - Ship')) return 'ship';
+  if (type.startsWith('Unit - Ground Force')) return 'ground';
+  if (type.startsWith('Unit - Structure')) return 'structure';
+  return null;
+}
+function defaultUnitStats(category) {
+  if (category === 'structure') {
+    return { cost: { enabled: false, value: null }, combat: { enabled: false, value: null }, move: { enabled: false, value: null }, capacity: { enabled: false, value: null } };
+  }
+  if (category === 'ground') {
+    return { cost: { enabled: true, value: null }, combat: { enabled: true, value: null }, move: { enabled: false, value: null }, capacity: { enabled: false, value: null } };
+  }
+  // ship
+  return { cost: { enabled: true, value: null }, combat: { enabled: true, value: null }, move: { enabled: true, value: null }, capacity: { enabled: false, value: null } };
+}
+function defaultUnitAbilities() {
+  return { deploy: false, planetaryShield: false, sustainDamage: false, bombardment: null, antiFighterBarrage: null, spaceCannon: null, production: null };
+}
+function getUnitStatsInput() {
+  return {
+    cost: { enabled: document.getElementById('unit-stat-cost-toggle').checked, value: parseInt(document.getElementById('unit-stat-cost').value) || null },
+    combat: { enabled: document.getElementById('unit-stat-combat-toggle').checked, value: parseInt(document.getElementById('unit-stat-combat').value) || null },
+    move: { enabled: document.getElementById('unit-stat-move-toggle').checked, value: parseInt(document.getElementById('unit-stat-move').value) || null },
+    capacity: { enabled: document.getElementById('unit-stat-capacity-toggle').checked, value: parseInt(document.getElementById('unit-stat-capacity').value) || null },
+  };
+}
+function getUnitAbilitiesInput() {
+  const roll = (toggleId, targetId, multiId) => {
+    const enabled = document.getElementById(toggleId).checked;
+    if (!enabled) return null;
+    return { target: parseInt(document.getElementById(targetId).value) || 1, multi: parseInt(document.getElementById(multiId).value) || 1 };
+  };
+  return {
+    deploy: document.getElementById('ability-deploy').checked,
+    planetaryShield: document.getElementById('ability-planetary-shield').checked,
+    sustainDamage: document.getElementById('ability-sustain-damage').checked,
+    bombardment: roll('ability-bombardment', 'ability-bombardment-target', 'ability-bombardment-multi'),
+    antiFighterBarrage: roll('ability-anti-fighter-barrage', 'ability-anti-fighter-barrage-target', 'ability-anti-fighter-barrage-multi'),
+    spaceCannon: roll('ability-space-cannon', 'ability-space-cannon-target', 'ability-space-cannon-multi'),
+    production: roll('ability-production', 'ability-production-target', 'ability-production-multi'),
+  };
+}
+function setUnitStatsInput(stats) {
+  stats = stats || { cost: {}, combat: {}, move: {}, capacity: {} };
+  document.getElementById('unit-stat-cost-toggle').checked = stats.cost?.enabled || false;
+  document.getElementById('unit-stat-cost').value = stats.cost?.value || '';
+  document.getElementById('unit-stat-combat-toggle').checked = stats.combat?.enabled || false;
+  document.getElementById('unit-stat-combat').value = stats.combat?.value || '';
+  document.getElementById('unit-stat-move-toggle').checked = stats.move?.enabled || false;
+  document.getElementById('unit-stat-move').value = stats.move?.value || '';
+  document.getElementById('unit-stat-capacity-toggle').checked = stats.capacity?.enabled || false;
+  document.getElementById('unit-stat-capacity').value = stats.capacity?.value || '';
+}
+function setUnitAbilitiesInput(abilities) {
+  abilities = abilities || {};
+  document.getElementById('ability-deploy').checked = abilities.deploy || false;
+  document.getElementById('ability-planetary-shield').checked = abilities.planetaryShield || false;
+  document.getElementById('ability-sustain-damage').checked = abilities.sustainDamage || false;
+  const setRoll = (name, ability) => {
+    document.getElementById(`ability-${name}`).checked = !!ability;
+    document.getElementById(`ability-${name}-target`).value = ability ? (ability.target || 1) : '';
+    document.getElementById(`ability-${name}-multi`).value = ability ? (ability.multi || 1) : '1';
+  };
+  setRoll('bombardment', abilities.bombardment);
+  setRoll('anti-fighter-barrage', abilities.antiFighterBarrage);
+  setRoll('space-cannon', abilities.spaceCannon);
+  setRoll('production', abilities.production);
+}
+function updateUnitSectionVisibility() {
+  const type = document.getElementById('asset-edit-type').value;
+  document.getElementById('unit-section').classList.toggle('hidden', !isUnitType(type));
+}
+function applyUnitDefaultsIfNeeded(asset) {
+  const category = unitCategory(asset.type);
+  if (!category) return;
+  if (!asset.stats) asset.stats = defaultUnitStats(category);
+  if (!asset.abilities) asset.abilities = defaultUnitAbilities();
+}
+function updateUnitInputs() {
+  const type = document.getElementById('asset-edit-type').value;
+  const wasHidden = document.getElementById('unit-section').classList.contains('hidden');
+  updateUnitSectionVisibility();
+  if (wasHidden && isUnitType(type)) {
+    const category = unitCategory(type);
+    setUnitStatsInput(defaultUnitStats(category));
+    setUnitAbilitiesInput(defaultUnitAbilities());
+  }
+}
+function formatUnitStats(stats) {
+  const labels = { cost: 'Cost', combat: 'Combat', move: 'Move', capacity: 'Capacity' };
+  const parts = [];
+  ['cost', 'combat', 'move', 'capacity'].forEach(key => {
+    const stat = stats?.[key];
+    if (!stat || !stat.enabled) return;
+    parts.push(`<span class="asset-badge">${labels[key]} ${stat.value == null ? '-' : stat.value}</span>`);
+  });
+  return parts.join('');
+}
+function formatUnitAbilities(abilities) {
+  if (!abilities) return '';
+  const parts = [];
+  if (abilities.deploy) parts.push('<span class="asset-badge">Deploy</span>');
+  if (abilities.planetaryShield) parts.push('<span class="asset-badge">Planetary Shield</span>');
+  if (abilities.sustainDamage) parts.push('<span class="asset-badge">Sustain Damage</span>');
+  const rolls = [
+    ['bombardment', 'Bombardment'],
+    ['antiFighterBarrage', 'Anti-Fighter Barrage'],
+    ['spaceCannon', 'Space Cannon'],
+    ['production', 'Production'],
+  ];
+  rolls.forEach(([key, label]) => {
+    const roll = abilities[key];
+    if (!roll) return;
+    const multiText = roll.multi > 1 ? ` (${roll.multi})` : '';
+    parts.push(`<span class="asset-badge accent">${label} ${roll.target}${multiText}</span>`);
+  });
+  return parts.join('');
+}
+
 function renderAssets() {
   const grid = document.getElementById('assets-grid');
   const empty = document.getElementById('assets-empty');
@@ -611,6 +836,8 @@ function renderAssetPreview(asset) {
   const badges = [
     asset.type ? `<span class="asset-badge accent">${asset.type}</span>` : '',
     asset.faction ? `<span class="asset-badge">${asset.faction}</span>` : '',
+    isUnitType(asset.type) ? formatUnitStats(asset.stats) : '',
+    isUnitType(asset.type) ? formatUnitAbilities(asset.abilities) : '',
   ].filter(Boolean).join('');
   document.getElementById('asset-badges').innerHTML = badges;
 
@@ -651,6 +878,11 @@ function openAssetEditor(path) {
   updateFactionDatalist();
   document.getElementById('asset-edit-faction').value = asset.faction || '';
 
+  applyUnitDefaultsIfNeeded(asset);
+  setUnitStatsInput(asset.stats);
+  setUnitAbilitiesInput(asset.abilities);
+  updateUnitSectionVisibility();
+
   const sectionSelect = document.getElementById('asset-edit-section');
   sectionSelect.innerHTML = sections.map(s => `<option value="${s.id}" ${s.id === asset.section ? 'selected' : ''}>${s.title}</option>`).join('');
 
@@ -686,6 +918,14 @@ function saveAssetEditor() {
   asset.description = document.getElementById('asset-edit-description').value.trim();
   asset.faq = faq;
   asset.back = document.getElementById('asset-edit-back').value;
+
+  if (isUnitType(asset.type)) {
+    asset.stats = getUnitStatsInput();
+    asset.abilities = getUnitAbilitiesInput();
+  } else {
+    delete asset.stats;
+    delete asset.abilities;
+  }
 
   assets[path] = asset;
   renderAssets();
@@ -851,6 +1091,7 @@ document.getElementById('add-section-btn').addEventListener('click', () => {
 });
 document.getElementById('inspect-btn').addEventListener('click', inspectFolder);
 document.getElementById('asset-edit-save-top').addEventListener('click', saveAssetEditor);
+document.getElementById('asset-edit-type').addEventListener('change', updateUnitInputs);
 document.getElementById('asset-edit-back-filter').addEventListener('input', e => {
   const path = document.getElementById('asset-edit-path').value;
   const currentBack = document.getElementById('asset-edit-back').value;

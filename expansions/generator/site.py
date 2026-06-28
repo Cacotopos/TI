@@ -100,6 +100,8 @@ def _collect_assets(config: dict) -> list[dict]:
             "type": asset.get("type", ""),
             "faction": asset.get("faction", ""),
             "configured": asset.get("configured", False),
+            "stats": asset.get("stats", {}),
+            "abilities": asset.get("abilities", {}),
         })
     return images
 

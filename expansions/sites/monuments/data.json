@@ -1380,7 +1380,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Belkosea",
@@ -1394,7 +1396,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Kaltrim",
@@ -1408,7 +1412,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Pharad'n",
@@ -1422,7 +1428,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Qhet",
@@ -1436,7 +1444,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Sarcosa",
@@ -1450,7 +1460,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Toldar - Dishonor",
@@ -1464,7 +1476,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Toldar - Honor",
@@ -1478,7 +1492,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Uydai",
@@ -1492,7 +1508,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Xin",
@@ -1506,7 +1524,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Creuss Base",
@@ -1520,7 +1540,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "L1Z1X Base",
@@ -1534,7 +1556,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Saar Base",
@@ -1548,7 +1572,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Arborec",
@@ -1562,7 +1588,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Argent",
@@ -1576,7 +1604,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Creuss",
@@ -1590,7 +1620,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Empyrean",
@@ -1604,7 +1636,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Hacan",
@@ -1618,7 +1652,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Jol-Nar",
@@ -1632,7 +1668,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "L1Z1X",
@@ -1646,7 +1684,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Letnev",
@@ -1660,7 +1700,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Mahact",
@@ -1674,7 +1716,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Mentak",
@@ -1688,7 +1732,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Muaat",
@@ -1702,7 +1748,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "N'Orr",
@@ -1716,7 +1764,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "NRA",
@@ -1730,7 +1780,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Naalu",
@@ -1744,7 +1796,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Nekro",
@@ -1758,7 +1812,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Nomad",
@@ -1772,7 +1828,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Saar",
@@ -1786,7 +1844,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Sol",
@@ -1800,7 +1860,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Titans",
@@ -1814,7 +1876,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Vuil'Raith",
@@ -1828,7 +1892,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Winnu",
@@ -1842,7 +1908,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Xxcha",
@@ -1856,7 +1924,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Yin",
@@ -1870,7 +1940,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Yssaril",
@@ -1884,7 +1956,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Augurs",
@@ -1898,7 +1972,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Axis",
@@ -1912,7 +1988,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Bentor",
@@ -1926,7 +2004,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Celdauri",
@@ -1940,7 +2020,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Cheiran",
@@ -1954,7 +2036,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Cymiae",
@@ -1968,7 +2052,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Dih-Mohn",
@@ -1982,7 +2068,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Edyn",
@@ -1996,7 +2084,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "FSC",
@@ -2010,7 +2100,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Florzen",
@@ -2024,7 +2116,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "GLEdge",
@@ -2038,7 +2132,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Ghemina",
@@ -2052,7 +2148,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Ghoti",
@@ -2066,7 +2164,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Khrask",
@@ -2080,7 +2180,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Kjalengard",
@@ -2094,7 +2196,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Kollecc",
@@ -2108,7 +2212,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Kolume",
@@ -2122,7 +2228,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Kortali",
@@ -2136,7 +2244,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Kyro",
@@ -2150,7 +2260,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Lanefir",
@@ -2164,7 +2276,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Li-Zho",
@@ -2178,7 +2292,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Mirveda",
@@ -2192,7 +2308,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Mortheus",
@@ -2206,7 +2324,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Myko",
@@ -2220,7 +2340,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Nivyn",
@@ -2234,7 +2356,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Nokar",
@@ -2248,7 +2372,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Olradin",
@@ -2262,7 +2388,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Rhodun Back",
@@ -2276,7 +2404,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Rhodun Front",
@@ -2290,7 +2420,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Roh'Dhna",
@@ -2304,7 +2436,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Tnelis",
@@ -2318,7 +2452,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Vaden",
@@ -2332,7 +2468,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Vaylerian",
@@ -2346,7 +2484,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Veldyr",
@@ -2360,7 +2500,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Zelian",
@@ -2374,7 +2516,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Drahn",
@@ -2388,7 +2532,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Bastion",
@@ -2402,7 +2548,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Crimson Rebellion",
@@ -2416,7 +2564,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Deepwrought",
@@ -2430,7 +2580,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Firmament",
@@ -2444,7 +2596,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Keleres",
@@ -2458,7 +2612,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Obsidian",
@@ -2472,7 +2628,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "Ral-Nel",
@@ -2486,7 +2644,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "King Black",
@@ -2500,7 +2660,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "King Blue",
@@ -2514,7 +2676,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "King Green",
@@ -2528,7 +2692,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "King Orange",
@@ -2542,7 +2708,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "King Pink",
@@ -2556,7 +2724,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "King Purple",
@@ -2570,7 +2740,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "King Red",
@@ -2584,7 +2756,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "King White",
@@ -2598,7 +2772,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     },
     {
       "id": "King Yellow",
@@ -2612,7 +2788,9 @@
       "faq": [],
       "type": "",
       "faction": "",
-      "configured": false
+      "configured": false,
+      "stats": {},
+      "abilities": {}
     }
   ],
   "banner_path": null
