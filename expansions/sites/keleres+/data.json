@@ -1,0 +1,14 @@
+{
+  "id": "keleres+",
+  "name": "keleres+",
+  "version": "1.0",
+  "description": "",
+  "overview": "",
+  "source": {
+    "images": "expansions/source/keleres+"
+  },
+  "s3_path": "keleres+",
+  "sections": [],
+  "assets": {},
+  "images": []
+}
