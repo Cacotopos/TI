@@ -246,7 +246,34 @@
       "path": "Drahn/Drahn Mech.jpg",
       "section": "drahn",
       "title": "Contender",
-      "type": "Unit"
+      "type": "Unit - Ground Force - Mech",
+      "stats": {
+        "cost": {
+          "enabled": true,
+          "value": 2
+        },
+        "combat": {
+          "enabled": true,
+          "value": 6
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        },
+        "capacity": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "abilities": {
+        "deploy": false,
+        "planetaryShield": false,
+        "sustainDamage": true,
+        "bombardment": null,
+        "antiFighterBarrage": null,
+        "spaceCannon": null,
+        "production": null
+      }
     },
     "Drahn/Drahn Monument.jpg": {
       "back": "",

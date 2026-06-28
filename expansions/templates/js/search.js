@@ -35,10 +35,10 @@
       abilities.deploy ? 'Deploy' : '',
       abilities.planetaryShield ? 'Planetary Shield' : '',
       abilities.sustainDamage ? 'Sustain Damage' : '',
-      abilities.bombardment ? `Bombardment ${abilities.bombardment.target} ${abilities.bombardment.multi}` : '',
-      abilities.antiFighterBarrage ? `Anti-Fighter Barrage ${abilities.antiFighterBarrage.target} ${abilities.antiFighterBarrage.multi}` : '',
-      abilities.spaceCannon ? `Space Cannon ${abilities.spaceCannon.target} ${abilities.spaceCannon.multi}` : '',
-      abilities.production ? `Production ${abilities.production.target} ${abilities.production.multi}` : '',
+      abilities.bombardment ? `Bombardment ${abilities.bombardment.value != null ? abilities.bombardment.value : abilities.bombardment.target} ${abilities.bombardment.multi}` : '',
+      abilities.antiFighterBarrage ? `Anti-Fighter Barrage ${abilities.antiFighterBarrage.value != null ? abilities.antiFighterBarrage.value : abilities.antiFighterBarrage.target} ${abilities.antiFighterBarrage.multi}` : '',
+      abilities.spaceCannon ? `Space Cannon ${abilities.spaceCannon.value != null ? abilities.spaceCannon.value : abilities.spaceCannon.target} ${abilities.spaceCannon.multi}` : '',
+      abilities.production ? `Production ${abilities.production.value != null ? abilities.production.value : abilities.production.target} ${abilities.production.multi}` : '',
     ].join(' ');
     const text = `${img.name || ''} ${img.folder || ''} ${img.group || ''} ${img.type || ''} ${img.faction || ''} ${img.description || ''} ${faqText} ${statsText} ${abilityText}`;
     const url = `${img.section || 'cards'}.html`;
