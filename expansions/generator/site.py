@@ -131,6 +131,8 @@ def _collect_assets(config: dict) -> list[dict]:
             "configured": asset.get("configured", False),
             "stats": asset.get("stats", {}),
             "abilities": asset.get("abilities", {}),
+            "prereq": asset.get("prereq", {}),
+            "color": asset.get("color", ""),
         })
     return images
 
