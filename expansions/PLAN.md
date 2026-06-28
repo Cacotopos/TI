@@ -76,8 +76,10 @@ TI/expansions/
 - Section editor with add/remove and id/title/type fields.
 - Asset inspection with auto-suggested sections from top-level folders.
 - Asset list with "not configured" and "hidden" filters and a search box.
-- Per-asset modal for title, section, group, description, FAQ, back image,
-  `isCard`, `hidden`, and `configured` flags.
+- Per-asset modal with image preview, filename, title, section, group, type,
+  faction, description, FAQ, back image, `isCard`, `hidden`, and `configured`
+  flags.
+- Optional banner image picker with minimum width validation.
 
 ### Generator
 
@@ -96,6 +98,8 @@ TI/expansions/
 - Card grids grouped by folder or custom group.
 - Click-to-expand card detail modal with description, FAQ, and back image.
 - Static search page with inverted index and tokenized scoring.
+- Optional full-width banner image at the top of every page, centered and
+  tiled horizontally.
 
 ## Configuration Schema (config.json)
 
@@ -110,6 +114,9 @@ TI/expansions/
     "images": "expansions/source/monuments"
   },
   "s3_path": "monuments",
+  "banner": {
+    "path": "expansions/source/monuments/banner.jpg"
+  },
   "sections": [
     { "id": "overview", "title": "Overview", "type": "markdown" },
     { "id": "cards", "title": "Cards", "type": "cards" }
@@ -122,6 +129,8 @@ TI/expansions/
       "configured": false,
       "hidden": false,
       "isCard": true,
+      "type": "other component",
+      "faction": "",
       "title": "Atokera",
       "description": "",
       "faq": [],

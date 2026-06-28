@@ -55,6 +55,8 @@ The editor stores every detected image as an entry in `config.json`:
       "configured": false,
       "hidden": false,
       "isCard": true,
+      "type": "other component",
+      "faction": "",
       "title": "Atokera",
       "description": "",
       "faq": [],
@@ -68,9 +70,19 @@ The editor stores every detected image as an entry in `config.json`:
 
 - `configured` — Set to true once you have reviewed the asset.
 - `hidden` — Excluded from the generated site.
+- `type` — One of: public objective, secret objective, promissory note, agent, commander, hero, alliance, action card, scenario, other component, agenda, relic, planet, tile, token, relic fragment, legendary ability, planet ability, station, rulebook.
+- `faction` — Optional faction name. The dropdown is populated from distinct faction values across the expansion, but you can type any value.
 - `section` — Which generated page the card appears on.
 - `group` — Used to render cards in named groups on the page.
 - `back` — Path to the back image for two-sided cards.
+
+## Banner Image
+
+You can optionally set a wide banner image for the expansion. The editor lists
+source images that are at least 1552px wide (central column of 1152px plus
+200px on each side). The generator skips banners that are too narrow. The
+banner is displayed full-width at the top of every page, centered and
+repeating horizontally.
 
 ## Directory Structure
 
