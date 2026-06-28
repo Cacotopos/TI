@@ -23,7 +23,25 @@
     {
       "id": "drahn-overview",
       "title": "Drahn Overview",
-      "type": "markdown"
+      "type": "markdown",
+      "blocks": [
+        {
+          "type": "asset",
+          "asset": "Drahn/Drahn Faction Sheet Front.jpg",
+          "subtitle": "The Drahn Faction sheet",
+          "width": 100
+        },
+        {
+          "type": "asset",
+          "asset": "Drahn/Drahn Faction Sheet Back.jpg",
+          "subtitle": "The back and lore of the Drahn faction",
+          "width": 100
+        },
+        {
+          "type": "markdown",
+          "content": "The **Drahn Cartel** is an expansion faction for the Twilight Imperium 4th Edition boardgame."
+        }
+      ]
     }
   ],
   "assets": {
@@ -182,23 +200,23 @@
     },
     "Drahn/Drahn Faction Sheet Back.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Drahn Faction Sheet Back.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": true,
+      "hidden": false,
       "id": "Drahn Faction Sheet Back",
       "isCard": true,
       "path": "Drahn/Drahn Faction Sheet Back.jpg",
-      "section": "drahn",
+      "section": "drahn-overview",
       "title": "Drahn Faction Sheet Back",
       "type": "Other Component"
     },
     "Drahn/Drahn Faction Sheet Front.jpg": {
-      "back": "Drahn/Drahn Faction Sheet Back.jpg",
+      "back": "",
       "configured": true,
       "description": "",
       "faction": "Drahn",
@@ -232,6 +250,15 @@
       "type": "Other Component"
     },
     "Drahn/Drahn Mech.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": true
+      },
       "back": "Drahn/Drahn Mech Back.jpg",
       "configured": true,
       "description": "Apply +1 to this unit's combat rolls for each secret objective you have scored.",
@@ -245,35 +272,26 @@
       "isCard": true,
       "path": "Drahn/Drahn Mech.jpg",
       "section": "drahn",
-      "title": "Contender",
-      "type": "Unit - Ground Force - Mech",
       "stats": {
-        "cost": {
-          "enabled": true,
-          "value": 2
+        "capacity": {
+          "enabled": false,
+          "value": null
         },
         "combat": {
           "enabled": true,
           "value": 6
         },
-        "move": {
-          "enabled": false,
-          "value": null
+        "cost": {
+          "enabled": true,
+          "value": 2
         },
-        "capacity": {
+        "move": {
           "enabled": false,
           "value": null
         }
       },
-      "abilities": {
-        "deploy": false,
-        "planetaryShield": false,
-        "sustainDamage": true,
-        "bombardment": null,
-        "antiFighterBarrage": null,
-        "spaceCannon": null,
-        "production": null
-      }
+      "title": "Contender",
+      "type": "Unit - Ground Force - Mech"
     },
     "Drahn/Drahn Monument.jpg": {
       "back": "",
@@ -362,9 +380,9 @@
     },
     "Drahn/Drahn Promissory Note.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Promissory Note.jpg",
       "folder": "Drahn",
@@ -373,9 +391,9 @@
       "id": "Drahn Promissory Note",
       "isCard": true,
       "path": "Drahn/Drahn Promissory Note.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Drahn Promissory Note",
-      "type": "Other Component"
+      "type": "Promissory Note"
     },
     "Drahn/Drahn Reference.jpg": {
       "back": "",
@@ -386,11 +404,11 @@
       "filename": "Drahn Reference.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": false,
+      "hidden": true,
       "id": "Drahn Reference",
       "isCard": true,
       "path": "Drahn/Drahn Reference.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Drahn Reference",
       "type": "Other Component"
     },
@@ -403,19 +421,19 @@
       "filename": "Drahn Tech - Green Back.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": false,
+      "hidden": true,
       "id": "Drahn Tech - Green Back",
       "isCard": true,
       "path": "Drahn/Drahn Tech - Green Back.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Drahn Tech - Green Back",
       "type": "Other Component"
     },
     "Drahn/Drahn Tech - Guild Fund.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Drahn/Drahn Tech - Green Back.jpg",
+      "configured": true,
+      "description": "GGG\n\nAfter you resolve the primary ability of a strategy card, you may resolve the secondary ability of that strategy card.\n\nWhen you would spend a command token, you may exhaust this card to spend 1 token from your reinforcements instead.",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Tech - Guild Fund.jpg",
       "folder": "Drahn",
@@ -424,9 +442,9 @@
       "id": "Drahn Tech - Guild Fund",
       "isCard": true,
       "path": "Drahn/Drahn Tech - Guild Fund.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Drahn Tech - Guild Fund",
-      "type": "Other Component"
+      "type": "Technology"
     },
     "Drahn/Drahn Tech - Special Forces.jpg": {
       "back": "Drahn/Drahn Tech - Yellow Back.jpg",
@@ -443,7 +461,7 @@
       "path": "Drahn/Drahn Tech - Special Forces.jpg",
       "section": "drahn",
       "title": "Special Forces",
-      "type": "Other Component"
+      "type": "Technology"
     },
     "Drahn/Drahn Tech - Yellow Back.jpg": {
       "back": "",
@@ -3072,11 +3090,11 @@
       "filename": "Keleres Faction Back.jpg",
       "folder": "Keleres",
       "group": "Keleres",
-      "hidden": false,
+      "hidden": true,
       "id": "Keleres Faction Back",
       "isCard": true,
       "path": "Keleres/Keleres Faction Back.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Keleres Faction Back",
       "type": "Other Component"
     },
@@ -3089,11 +3107,11 @@
       "filename": "Keleres Faction Front.jpg",
       "folder": "Keleres",
       "group": "Keleres",
-      "hidden": false,
+      "hidden": true,
       "id": "Keleres Faction Front",
       "isCard": true,
       "path": "Keleres/Keleres Faction Front.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Keleres Faction Front",
       "type": "Other Component"
     },
@@ -3106,11 +3124,11 @@
       "filename": "Keleres+ Reference.jpg",
       "folder": "Keleres",
       "group": "Keleres",
-      "hidden": false,
+      "hidden": true,
       "id": "Keleres+ Reference",
       "isCard": true,
       "path": "Keleres/Keleres+ Reference.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Keleres+ Reference",
       "type": "Other Component"
     },
@@ -3123,11 +3141,11 @@
       "filename": "Tech - Agency Supply Network.jpg",
       "folder": "Keleres",
       "group": "Keleres",
-      "hidden": false,
+      "hidden": true,
       "id": "Tech - Agency Supply Network",
       "isCard": true,
       "path": "Keleres/Tech - Agency Supply Network.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Tech - Agency Supply Network",
       "type": "Other Component"
     },
@@ -3140,11 +3158,11 @@
       "filename": "Tech - Special Clearances.jpg",
       "folder": "Keleres",
       "group": "Keleres",
-      "hidden": false,
+      "hidden": true,
       "id": "Tech - Special Clearances",
       "isCard": true,
       "path": "Keleres/Tech - Special Clearances.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Tech - Special Clearances",
       "type": "Other Component"
     }
@@ -3215,13 +3233,29 @@
       "abilities": {}
     },
     {
+      "id": "Drahn Faction Sheet Back",
+      "path": "assets/images/Drahn/Drahn Faction Sheet Back.jpg",
+      "folder": "Drahn",
+      "name": "Drahn Faction Sheet Back",
+      "section": "drahn-overview",
+      "group": "Drahn",
+      "back": "",
+      "description": "",
+      "faq": [],
+      "type": "Other Component",
+      "faction": "",
+      "configured": true,
+      "stats": {},
+      "abilities": {}
+    },
+    {
       "id": "Drahn Faction Sheet Front",
       "path": "assets/images/Drahn/Drahn Faction Sheet Front.jpg",
       "folder": "Drahn",
       "name": "Drahn Faction Sheet Front",
       "section": "drahn-overview",
       "group": "Drahn",
-      "back": "Drahn/Drahn Faction Sheet Back.jpg",
+      "back": "",
       "description": "",
       "faq": [],
       "type": "Faction Sheet",
@@ -3244,31 +3278,31 @@
       "faction": "Drahn",
       "configured": true,
       "stats": {
-        "cost": {
-          "enabled": true,
-          "value": 2
+        "capacity": {
+          "enabled": false,
+          "value": null
         },
         "combat": {
           "enabled": true,
           "value": 6
         },
-        "move": {
-          "enabled": false,
-          "value": null
+        "cost": {
+          "enabled": true,
+          "value": 2
         },
-        "capacity": {
+        "move": {
           "enabled": false,
           "value": null
         }
       },
       "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "sustainDamage": true,
-        "bombardment": null,
-        "antiFighterBarrage": null,
+        "production": null,
         "spaceCannon": null,
-        "production": null
+        "sustainDamage": true
       }
     },
     {
@@ -3356,46 +3390,14 @@
       "path": "assets/images/Drahn/Drahn Promissory Note.jpg",
       "folder": "Drahn",
       "name": "Drahn Promissory Note",
-      "section": "cards",
+      "section": "drahn",
       "group": "Drahn",
       "back": "",
       "description": "",
       "faq": [],
-      "type": "Other Component",
-      "faction": "",
-      "configured": false,
-      "stats": {},
-      "abilities": {}
-    },
-    {
-      "id": "Drahn Reference",
-      "path": "assets/images/Drahn/Drahn Reference.jpg",
-      "folder": "Drahn",
-      "name": "Drahn Reference",
-      "section": "cards",
-      "group": "Drahn",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "Other Component",
-      "faction": "",
-      "configured": false,
-      "stats": {},
-      "abilities": {}
-    },
-    {
-      "id": "Drahn Tech - Green Back",
-      "path": "assets/images/Drahn/Drahn Tech - Green Back.jpg",
-      "folder": "Drahn",
-      "name": "Drahn Tech - Green Back",
-      "section": "cards",
-      "group": "Drahn",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "Other Component",
-      "faction": "",
-      "configured": false,
+      "type": "Promissory Note",
+      "faction": "Drahn",
+      "configured": true,
       "stats": {},
       "abilities": {}
     },
@@ -3404,14 +3406,14 @@
       "path": "assets/images/Drahn/Drahn Tech - Guild Fund.jpg",
       "folder": "Drahn",
       "name": "Drahn Tech - Guild Fund",
-      "section": "cards",
+      "section": "drahn",
       "group": "Drahn",
-      "back": "",
-      "description": "",
+      "back": "Drahn/Drahn Tech - Green Back.jpg",
+      "description": "GGG\n\nAfter you resolve the primary ability of a strategy card, you may resolve the secondary ability of that strategy card.\n\nWhen you would spend a command token, you may exhaust this card to spend 1 token from your reinforcements instead.",
       "faq": [],
-      "type": "Other Component",
-      "faction": "",
-      "configured": false,
+      "type": "Technology",
+      "faction": "Drahn",
+      "configured": true,
       "stats": {},
       "abilities": {}
     },
@@ -3425,7 +3427,7 @@
       "back": "Drahn/Drahn Tech - Yellow Back.jpg",
       "description": "YY\n\nAt the start of space combat in which you are the defender:\n\nYou may exhaust this card and spend 1 token from your strategy pool to force your opponent to declare a retreat.",
       "faq": [],
-      "type": "Other Component",
+      "type": "Technology",
       "faction": "Drahn",
       "configured": true,
       "stats": {},
@@ -5790,86 +5792,6 @@
       "name": "Xxcha",
       "section": "cards",
       "group": "Keleres/Heroes/Inactive",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "Other Component",
-      "faction": "",
-      "configured": false,
-      "stats": {},
-      "abilities": {}
-    },
-    {
-      "id": "Keleres Faction Back",
-      "path": "assets/images/Keleres/Keleres Faction Back.jpg",
-      "folder": "Keleres",
-      "name": "Keleres Faction Back",
-      "section": "cards",
-      "group": "Keleres",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "Other Component",
-      "faction": "",
-      "configured": false,
-      "stats": {},
-      "abilities": {}
-    },
-    {
-      "id": "Keleres Faction Front",
-      "path": "assets/images/Keleres/Keleres Faction Front.jpg",
-      "folder": "Keleres",
-      "name": "Keleres Faction Front",
-      "section": "cards",
-      "group": "Keleres",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "Other Component",
-      "faction": "",
-      "configured": false,
-      "stats": {},
-      "abilities": {}
-    },
-    {
-      "id": "Keleres+ Reference",
-      "path": "assets/images/Keleres/Keleres+ Reference.jpg",
-      "folder": "Keleres",
-      "name": "Keleres+ Reference",
-      "section": "cards",
-      "group": "Keleres",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "Other Component",
-      "faction": "",
-      "configured": false,
-      "stats": {},
-      "abilities": {}
-    },
-    {
-      "id": "Tech - Agency Supply Network",
-      "path": "assets/images/Keleres/Tech - Agency Supply Network.jpg",
-      "folder": "Keleres",
-      "name": "Tech - Agency Supply Network",
-      "section": "cards",
-      "group": "Keleres",
-      "back": "",
-      "description": "",
-      "faq": [],
-      "type": "Other Component",
-      "faction": "",
-      "configured": false,
-      "stats": {},
-      "abilities": {}
-    },
-    {
-      "id": "Tech - Special Clearances",
-      "path": "assets/images/Keleres/Tech - Special Clearances.jpg",
-      "folder": "Keleres",
-      "name": "Tech - Special Clearances",
-      "section": "cards",
-      "group": "Keleres",
       "back": "",
       "description": "",
       "faq": [],
