@@ -37,6 +37,10 @@
   .tabs { display: flex; gap: 0.5rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
   .tab { padding: 0.5rem 1rem; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; }
   .tab.active { color: var(--text); border-bottom-color: var(--accent); }
+  .tab-content { margin-bottom: 1rem; }
+  .editor-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  button.dirty { background: #16a34a; }
+  button.dirty:hover { background: #15803d; }
   .section-row { background: #12151f; border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 0.75rem; }
   .section-actions { display: flex; gap: 0.25rem; margin-top: 0.75rem; }
   .section-actions button { font-size: 0.85rem; padding: 0.35rem 0.75rem; }
@@ -192,42 +196,49 @@
       <div id="banner-preview" class="banner-preview hidden"></div>
     </div>
 
-    <div class="card">
-      <div class="card-title">Sections</div>
-      <div id="sections-container"></div>
-      <button id="add-section-btn" type="button" class="secondary">Add Section</button>
-    </div>
-
-    <div class="card">
-      <div class="card-title">Assets</div>
-      <div class="toolbar">
-        <button id="inspect-btn" type="button">Inspect Folder</button>
-        <input id="asset-filter" type="text" placeholder="Filter assets..."/>
-        <label class="toggle">
-          <input id="show-unconfigured" type="checkbox" checked/>
-          <span class="switch"></span>
-          <span class="label-text">Not configured</span>
-        </label>
-        <label class="toggle">
-          <input id="show-hidden" type="checkbox"/>
-          <span class="switch"></span>
-          <span class="label-text">Excluded</span>
-        </label>
-        <label class="toggle">
-          <input id="show-hidden-only" type="checkbox"/>
-          <span class="switch"></span>
-          <span class="label-text">Excluded only</span>
-        </label>
-        <span id="asset-count" class="text-muted" style="font-size: 0.85rem; color: var(--muted);"></span>
-      </div>
-      <div id="assets-grid" class="asset-grid"></div>
-      <div id="assets-empty" class="empty-state hidden">No assets yet. Click Inspect Folder to scan the source image folder.</div>
-    </div>
-
-    <div class="card" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+    <div class="editor-actions">
       <button id="save-btn" type="button">Save Config</button>
       <button id="generate-btn" type="button" class="secondary">Generate Site</button>
       <button id="deploy-btn" type="button" class="secondary">Deploy to S3</button>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="sections">Sections</div>
+      <div class="tab" data-tab="assets">Assets</div>
+    </div>
+
+    <div id="tab-sections" class="tab-content">
+      <div class="card">
+        <div id="sections-container"></div>
+        <button id="add-section-btn" type="button" class="secondary">Add Section</button>
+      </div>
+    </div>
+
+    <div id="tab-assets" class="tab-content hidden">
+      <div class="card">
+        <div class="toolbar">
+          <button id="inspect-btn" type="button">Inspect Folder</button>
+          <input id="asset-filter" type="text" placeholder="Filter assets..."/>
+          <label class="toggle">
+            <input id="show-unconfigured" type="checkbox" checked/>
+            <span class="switch"></span>
+            <span class="label-text">Not configured</span>
+          </label>
+          <label class="toggle">
+            <input id="show-hidden" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Excluded</span>
+          </label>
+          <label class="toggle">
+            <input id="show-hidden-only" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Excluded only</span>
+          </label>
+          <span id="asset-count" class="text-muted" style="font-size: 0.85rem; color: var(--muted);"></span>
+        </div>
+        <div id="assets-grid" class="asset-grid"></div>
+        <div id="assets-empty" class="empty-state hidden">No assets yet. Click Inspect Folder to scan the source image folder.</div>
+      </div>
     </div>
   </div>
 </div>
@@ -545,6 +556,7 @@ function resetForm() {
   assets = {};
   renderSections();
   renderAssets();
+  setDirty(false);
 }
 
 async function tryLoadConfig(id) {
@@ -568,6 +580,7 @@ async function tryLoadConfig(id) {
   editorForm.classList.remove('hidden');
   renderSections();
   renderAssets();
+  setDirty(false);
   statusEl.textContent = 'Config loaded.';
   return true;
 }
@@ -858,6 +871,7 @@ function updateSectionsFromForm() {
     }
     return section;
   });
+  setDirty(true);
 }
 
 async function inspectFolder() {
@@ -1227,6 +1241,7 @@ function saveAssetEditor() {
   assets[path] = asset;
   renderAssets();
   closeAssetEditor();
+  setDirty(true);
   statusEl.textContent = `Asset ${asset.id} updated. Save config to persist.`;
 }
 
@@ -1274,6 +1289,7 @@ async function save() {
     await loadExpansionList();
     select.value = id;
     setId(id);
+    setDirty(false);
   }
   statusEl.textContent = data.ok ? 'Config saved.' : `Save failed: ${data.error}`;
 }
@@ -1401,6 +1417,19 @@ document.getElementById('asset-modal').addEventListener('click', e => {
   if (e.target.id === 'asset-modal') closeAssetEditor();
 });
 document.getElementById('asset-filter').addEventListener('input', renderAssets);
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+    document.getElementById(`tab-${tab.dataset.tab}`).classList.remove('hidden');
+  });
+});
+
+document.getElementById('editor-form').addEventListener('input', () => setDirty(true));
+document.getElementById('editor-form').addEventListener('change', () => setDirty(true));
+
 document.getElementById('show-unconfigured').addEventListener('change', renderAssets);
 document.getElementById('show-hidden').addEventListener('change', renderAssets);
 document.getElementById('show-hidden-only').addEventListener('change', renderAssets);
@@ -1414,6 +1443,13 @@ document.getElementById('banner-modal').addEventListener('click', e => {
 document.getElementById('banner-path').addEventListener('input', updateBannerPreview);
 
 let activeMarkdownTextarea = null;
+let isDirty = false;
+function setDirty(dirty) {
+  isDirty = dirty;
+  const saveBtn = document.getElementById('save-btn');
+  saveBtn.classList.toggle('dirty', dirty);
+  saveBtn.textContent = dirty ? 'Save Config*' : 'Save Config';
+}
 function openMarkdownHelp(textarea) {
   activeMarkdownTextarea = textarea;
   document.getElementById('markdown-help-modal').classList.add('visible');

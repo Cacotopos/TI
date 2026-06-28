@@ -147,6 +147,7 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
         return
 
     assets = config.get("assets", {})
+    section_types = {s.get("id"): s.get("type", "cards") for s in config.get("sections", [])}
     mask_path = ROOT / "Icons" / "Card Mask.png"
     crop = mask_path.exists()
 
@@ -159,7 +160,10 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
             dest.parent.mkdir(parents=True, exist_ok=True)
             rel_path = str(rel).replace("\\", "/")
             asset = assets.get(rel_path, {})
-            if crop and asset.get("isCard", True):
+            section_id = asset.get("section", "cards")
+            section_type = section_types.get(section_id, "cards")
+            is_card = asset.get("isCard", True) and section_type == "cards"
+            if crop and is_card:
                 data = _crop_card_image(p, mask_path)
                 dest.write_bytes(data)
             else:

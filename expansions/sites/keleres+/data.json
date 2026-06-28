@@ -11,16 +11,6 @@
   "banner": null,
   "sections": [
     {
-      "id": "drahn",
-      "title": "Drahn Cards",
-      "type": "cards"
-    },
-    {
-      "id": "keleres",
-      "title": "Keleres Cards",
-      "type": "cards"
-    },
-    {
       "id": "drahn-overview",
       "title": "Drahn Overview",
       "type": "markdown",
@@ -48,6 +38,16 @@
           "width": 50
         }
       ]
+    },
+    {
+      "id": "drahn",
+      "title": "Drahn Cards",
+      "type": "cards"
+    },
+    {
+      "id": "keleres",
+      "title": "Keleres Cards",
+      "type": "cards"
     }
   ],
   "assets": {
@@ -437,8 +437,9 @@
     },
     "Drahn/Drahn Tech - Guild Fund.jpg": {
       "back": "Drahn/Drahn Tech - Green Back.jpg",
+      "color": "G",
       "configured": true,
-      "description": "GGG\n\nAfter you resolve the primary ability of a strategy card, you may resolve the secondary ability of that strategy card.\n\nWhen you would spend a command token, you may exhaust this card to spend 1 token from your reinforcements instead.",
+      "description": "After you resolve the primary ability of a strategy card, you may resolve the secondary ability of that strategy card.\n\nWhen you would spend a command token, you may exhaust this card to spend 1 token from your reinforcements instead.",
       "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Tech - Guild Fund.jpg",
@@ -448,8 +449,12 @@
       "id": "Drahn Tech - Guild Fund",
       "isCard": true,
       "path": "Drahn/Drahn Tech - Guild Fund.jpg",
+      "prereq": {
+        "enabled": true,
+        "value": "GGG"
+      },
       "section": "drahn",
-      "title": "Drahn Tech - Guild Fund",
+      "title": "Guild Fund",
       "type": "Technology"
     },
     "Drahn/Drahn Tech - Special Forces.jpg": {
@@ -3401,19 +3406,22 @@
       "id": "Drahn Tech - Guild Fund",
       "path": "assets/images/Drahn/Drahn Tech - Guild Fund.jpg",
       "folder": "Drahn",
-      "name": "Drahn Tech - Guild Fund",
+      "name": "Guild Fund",
       "section": "drahn",
       "group": "Drahn",
       "back": "Drahn/Drahn Tech - Green Back.jpg",
-      "description": "GGG\n\nAfter you resolve the primary ability of a strategy card, you may resolve the secondary ability of that strategy card.\n\nWhen you would spend a command token, you may exhaust this card to spend 1 token from your reinforcements instead.",
+      "description": "After you resolve the primary ability of a strategy card, you may resolve the secondary ability of that strategy card.\n\nWhen you would spend a command token, you may exhaust this card to spend 1 token from your reinforcements instead.",
       "faq": [],
       "type": "Technology",
       "faction": "Drahn",
       "configured": true,
       "stats": {},
       "abilities": {},
-      "prereq": {},
-      "color": ""
+      "prereq": {
+        "enabled": true,
+        "value": "GGG"
+      },
+      "color": "G"
     },
     {
       "id": "Drahn Tech - Special Forces",
