@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>{% block title %}{{ config.name }} v{{ config.version }}{% endblock %}</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: '#0f1117',
+          panel: '#1a1d27',
+          border: '#2d3148',
+          muted: '#94a3b8',
+          accent: '#3b82f6'
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+<body class="bg-bg text-gray-100 min-h-screen">
+{% block body %}{% endblock %}
+<script src="assets/js/search.js"></script>
+<script src="assets/js/filters.js"></script>
+<script src="assets/js/ui.js"></script>
+</body>
+</html>

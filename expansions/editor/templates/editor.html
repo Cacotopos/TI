@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Expansion Editor</title>
+<style>
+  :root { --bg: #0f1117; --panel: #1a1d27; --border: #2d3148; --text: #e2e8f0; --muted: #94a3b8; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { margin-bottom: 0.5rem; }
+  .subtitle { color: var(--muted); margin-bottom: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1rem; }
+  label { display: block; color: var(--muted); font-size: 0.85rem; margin-bottom: 0.25rem; }
+  input, textarea, select { width: 100%; background: #12151f; color: var(--text); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.6rem; margin-bottom: 1rem; }
+  textarea { min-height: 200px; }
+  button { background: #3b82f6; color: #fff; border: none; border-radius: 0.5rem; padding: 0.6rem 1.2rem; font-weight: 600; cursor: pointer; }
+  button:hover { background: #2563eb; }
+  .row { display: flex; gap: 1rem; }
+  .row > div { flex: 1; }
+  .status { margin-top: 1rem; font-size: 0.85rem; color: var(--muted); white-space: pre-wrap; }
+  .settings { font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Expansion Editor</h1>
+  <p class="subtitle">Collect expansion data, generate a static site, and deploy to S3.</p>
+  <div class="settings" id="settings"></div>
+
+  <div class="card">
+    <div class="row">
+      <div>
+        <label for="expansion-id">Expansion ID</label>
+        <input id="expansion-id" type="text" value="monuments" placeholder="monuments"/>
+      </div>
+      <div>
+        <label for="load-btn">Load existing</label>
+        <button id="load-btn" type="button">Load</button>
+      </div>
+    </div>
+
+    <label for="name">Expansion Name</label>
+    <input id="name" type="text" placeholder="Monuments"/>
+
+    <label for="version">Version</label>
+    <input id="version" type="text" placeholder="3.1"/>
+
+    <label for="description">Description</label>
+    <input id="description" type="text" placeholder="Short description"/>
+
+    <label for="overview">Overview Markdown</label>
+    <textarea id="overview" placeholder="Full overview for the agent prompt..."></textarea>
+
+    <label for="image-folder">Source Image Folder (relative to project root)</label>
+    <input id="image-folder" type="text" value="expansions/examples/example_monuments/src/images" placeholder="path/to/images"/>
+
+    <label for="s3-path">S3 Deploy Path</label>
+    <input id="s3-path" type="text" value="monuments" placeholder="monuments"/>
+
+    <button id="save-btn" type="button">Save Config</button>
+    <button id="generate-btn" type="button">Generate Site</button>
+    <button id="deploy-btn" type="button">Deploy to S3</button>
+    <div class="status" id="status"></div>
+  </div>
+</div>
+
+<script>
+const idInput = document.getElementById('expansion-id');
+const statusEl = document.getElementById('status');
+
+async function load() {
+  const id = idInput.value.trim();
+  const res = await fetch(`/api/config/${id}`);
+  const data = await res.json();
+  if (Object.keys(data).length === 0) {
+    statusEl.textContent = 'No existing config found. Starting fresh.';
+    return;
+  }
+  document.getElementById('name').value = data.name || '';
+  document.getElementById('version').value = data.version || '';
+  document.getElementById('description').value = data.description || '';
+  document.getElementById('overview').value = data.overview || '';
+  document.getElementById('image-folder').value = (data.source && data.source.images) || '';
+  document.getElementById('s3-path').value = data.s3_path || data.id || '';
+  statusEl.textContent = 'Config loaded.';
+}
+
+async function save() {
+  const id = idInput.value.trim();
+  const body = {
+    id,
+    name: document.getElementById('name').value,
+    version: document.getElementById('version').value,
+    description: document.getElementById('description').value,
+    overview: document.getElementById('overview').value,
+    source: { images: document.getElementById('image-folder').value },
+    s3_path: document.getElementById('s3-path').value,
+  };
+  const res = await fetch(`/api/config/${id}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
+  statusEl.textContent = data.ok ? 'Config saved.' : `Save failed: ${data.error}`;
+}
+
+async function generate() {
+  const id = idInput.value.trim();
+  statusEl.textContent = 'Generating...';
+  const res = await fetch(`/api/generate/${id}`, { method: 'POST' });
+  const data = await res.json();
+  statusEl.textContent = data.ok
+    ? `Generated: ${data.output_dir}\n${data.stdout}`
+    : `Generate failed:\n${data.stderr}`;
+}
+
+async function deploy() {
+  const id = idInput.value.trim();
+  statusEl.textContent = 'Deploying...';
+  const res = await fetch(`/api/deploy/${id}`, { method: 'POST' });
+  const data = await res.json();
+  statusEl.textContent = data.ok
+    ? `Deployed to ${data.url}\n${data.stdout}`
+    : `Deploy failed:\n${data.stderr}`;
+}
+
+async function loadSettings() {
+  const res = await fetch('/api/settings');
+  const data = await res.json();
+  document.getElementById('settings').textContent = `S3 bucket: ${data.bucket} | Region: ${data.region} | Profile: ${data.profile}`;
+}
+
+document.getElementById('load-btn').addEventListener('click', load);
+document.getElementById('save-btn').addEventListener('click', save);
+document.getElementById('generate-btn').addEventListener('click', generate);
+document.getElementById('deploy-btn').addEventListener('click', deploy);
+loadSettings();
+</script>
+</body>
+</html>

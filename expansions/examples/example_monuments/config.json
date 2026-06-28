@@ -4,10 +4,12 @@
   "version": "3.1",
   "description": "Example expansion site for the Monuments expansion.",
   "release_date": "2026-06-01",
+  "overview": "The Monuments expansion introduces legendary planet cards and revised faction abilities. This overview is a placeholder for the agent prompt.",
   "source": {
     "images": "src/images",
     "icons": "src/icons"
   },
+  "s3_path": "monuments",
   "sections": [
     {
       "id": "overview",
@@ -20,6 +22,12 @@
       "title": "Factions",
       "type": "cards",
       "items": []
+    },
+    {
+      "id": "rules",
+      "title": "Rules",
+      "type": "markdown",
+      "content": "rules.md"
     }
   ]
 }
