@@ -74,9 +74,8 @@ def generate(expansion_id: str):
     output_dir = ROOT / "expansions" / "sites" / expansion_id
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    generator = ROOT / "expansions" / "generator" / "site.py"
     result = subprocess.run(
-        ["python3", str(generator), str(config_path), "--output", str(output_dir)],
+        ["python3", "-m", "expansions.generator.site", str(config_path), "--output", str(output_dir)],
         capture_output=True,
         text=True,
         cwd=ROOT,
