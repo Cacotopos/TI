@@ -201,30 +201,30 @@
       <div>
         <label>Type</label>
         <select id="asset-edit-type">
-          <option value="public objective">public objective</option>
-          <option value="secret objective">secret objective</option>
-          <option value="promissory note">promissory note</option>
-          <option value="agent">agent</option>
-          <option value="commander">commander</option>
-          <option value="hero">hero</option>
-          <option value="alliance">alliance</option>
-          <option value="action card">action card</option>
-          <option value="scenario">scenario</option>
-          <option value="technology">technology</option>
-          <option value="breakthrough">breakthrough</option>
-          <option value="unit">unit</option>
-          <option value="faction sheet">faction sheet</option>
-          <option value="other component" selected>other component</option>
-          <option value="agenda">agenda</option>
-          <option value="relic">relic</option>
-          <option value="planet">planet</option>
-          <option value="tile">tile</option>
-          <option value="token">token</option>
-          <option value="relic fragment">relic fragment</option>
-          <option value="legendary ability">legendary ability</option>
-          <option value="planet ability">planet ability</option>
-          <option value="station">station</option>
-          <option value="rulebook">rulebook</option>
+          <option value="Action Card">Action Card</option>
+          <option value="Agent">Agent</option>
+          <option value="Agenda">Agenda</option>
+          <option value="Alliance">Alliance</option>
+          <option value="Breakthrough">Breakthrough</option>
+          <option value="Commander">Commander</option>
+          <option value="Faction Sheet">Faction Sheet</option>
+          <option value="Hero">Hero</option>
+          <option value="Legendary Ability">Legendary Ability</option>
+          <option value="Other Component" selected>Other Component</option>
+          <option value="Planet">Planet</option>
+          <option value="Planet Ability">Planet Ability</option>
+          <option value="Promissory Note">Promissory Note</option>
+          <option value="Public Objective">Public Objective</option>
+          <option value="Relic">Relic</option>
+          <option value="Relic Fragment">Relic Fragment</option>
+          <option value="Rulebook">Rulebook</option>
+          <option value="Scenario">Scenario</option>
+          <option value="Secret Objective">Secret Objective</option>
+          <option value="Station">Station</option>
+          <option value="Technology">Technology</option>
+          <option value="Tile">Tile</option>
+          <option value="Token">Token</option>
+          <option value="Unit">Unit</option>
         </select>
       </div>
       <div>
@@ -524,7 +524,7 @@ function openAssetEditor(path) {
   document.getElementById('asset-edit-hidden').checked = asset.hidden;
   document.getElementById('asset-edit-configured').checked = asset.configured;
   document.getElementById('asset-edit-title').value = asset.title || '';
-  document.getElementById('asset-edit-type').value = asset.type || 'other component';
+  document.getElementById('asset-edit-type').value = asset.type || 'Other Component';
   document.getElementById('asset-edit-group').value = asset.group || '';
   document.getElementById('asset-edit-description').value = asset.description || '';
   document.getElementById('asset-edit-faq').value = (asset.faq || []).map(qa => `Q: ${qa.q} | A: ${qa.a}`).join('\n');

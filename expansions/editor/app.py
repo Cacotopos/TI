@@ -180,7 +180,7 @@ def inspect(expansion_id: str):
             if path in existing_assets:
                 assets[path] = existing_assets[path]
                 if "type" not in assets[path]:
-                    assets[path]["type"] = "other component"
+                    assets[path]["type"] = "Other Component"
                 if "faction" not in assets[path]:
                     assets[path]["faction"] = ""
             else:
@@ -198,7 +198,7 @@ def inspect(expansion_id: str):
                     "section": "cards",
                     "group": folder,
                     "back": "",
-                    "type": "other component",
+                    "type": "Other Component",
                     "faction": "",
                 }
 
