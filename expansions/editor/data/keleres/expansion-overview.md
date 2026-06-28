@@ -1,0 +1,1 @@
+An introduction page and overview, a page to explore all the cards, an FAQ page that links back to the cards, and a 'how to design your own monuments' page for other players who want to support this in their home-brew factions.

@@ -185,6 +185,23 @@ def inspect(expansion_id: str):
     return jsonify({"assets": assets, "suggested_sections": suggested})
 
 
+@app.route("/api/expansions")
+def list_expansions():
+    """Return existing expansion IDs from source and editor data directories."""
+    ids = set()
+    source_dir = ROOT / "expansions" / "source"
+    if source_dir.exists():
+        for p in source_dir.iterdir():
+            if p.is_dir() and not p.name.startswith("."):
+                ids.add(p.name)
+    data_dir = ROOT / "expansions" / "editor" / "data"
+    if data_dir.exists():
+        for p in data_dir.iterdir():
+            if p.is_dir() and not p.name.startswith("."):
+                ids.add(p.name)
+    return jsonify(sorted(ids))
+
+
 @app.route("/api/settings")
 def settings():
     return jsonify({

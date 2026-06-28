@@ -5,22 +5,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Expansion Editor</title>
 <style>
-  :root { --bg: #0f1117; --panel: #1a1d27; --border: #2d3148; --text: #e2e8f0; --muted: #94a3b8; }
+  :root { --bg: #0f1117; --panel: #1a1d27; --border: #2d3148; --text: #e2e8f0; --muted: #94a3b8; --accent: #3b82f6; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 2rem; }
-  .container { max-width: 900px; margin: 0 auto; }
-  h1 { margin-bottom: 0.5rem; }
-  .subtitle { color: var(--muted); margin-bottom: 1.5rem; }
+  body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 1.5rem; }
+  .container { max-width: 1000px; margin: 0 auto; }
+  h1 { margin-bottom: 0.25rem; }
+  .subtitle { color: var(--muted); margin-bottom: 1rem; }
   .card { background: var(--panel); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1rem; }
+  .card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; }
   label { display: block; color: var(--muted); font-size: 0.85rem; margin-bottom: 0.25rem; }
   input, textarea, select { width: 100%; background: #12151f; color: var(--text); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.6rem; margin-bottom: 1rem; }
-  textarea { min-height: 200px; }
-  button { background: #3b82f6; color: #fff; border: none; border-radius: 0.5rem; padding: 0.6rem 1.2rem; font-weight: 600; cursor: pointer; }
+  input[type="checkbox"] { width: auto; margin-bottom: 0; }
+  textarea { min-height: 120px; }
+  button { background: var(--accent); color: #fff; border: none; border-radius: 0.5rem; padding: 0.6rem 1.2rem; font-weight: 600; cursor: pointer; }
   button:hover { background: #2563eb; }
+  button.secondary { background: transparent; border: 1px solid var(--border); color: var(--text); }
+  button.secondary:hover { background: var(--border); }
+  button.danger { background: #dc2626; }
+  button.danger:hover { background: #b91c1c; }
   .row { display: flex; gap: 1rem; }
   .row > div { flex: 1; }
+  .row > div.auto { flex: 0 0 auto; }
   .status { margin-top: 1rem; font-size: 0.85rem; color: var(--muted); white-space: pre-wrap; }
   .settings { font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem; }
+  .hidden { display: none !important; }
+  .tabs { display: flex; gap: 0.5rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
+  .tab { padding: 0.5rem 1rem; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; }
+  .tab.active { color: var(--text); border-bottom-color: var(--accent); }
+  .section-row { background: #12151f; border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 0.75rem; }
+  .asset-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  @media (min-width: 768px) { .asset-grid { grid-template-columns: repeat(4, 1fr); } }
+  .asset-cell { background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; cursor: pointer; text-align: center; }
+  .asset-cell:hover { border-color: var(--accent); }
+  .asset-cell.configured { border-color: var(--accent); }
+  .asset-cell.hidden { opacity: 0.5; }
+  .asset-cell .title { font-size: 0.85rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .asset-cell .group { font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .toolbar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
+  .toolbar input { margin-bottom: 0; flex: 1; min-width: 200px; }
+  .toolbar label { display: flex; align-items: center; gap: 0.35rem; margin-bottom: 0; }
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 50; padding: 1rem; }
+  .modal-overlay.visible { display: flex; }
+  .modal { background: var(--panel); border: 1px solid var(--border); border-radius: 0.75rem; width: 100%; max-width: 700px; max-height: 90vh; overflow-y: auto; padding: 1.5rem; }
+  .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+  .modal-footer { display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem; }
+  .checkbox-row { display: flex; gap: 1.5rem; margin-bottom: 1rem; }
+  .checkbox-row label { display: flex; align-items: center; gap: 0.35rem; }
+  .empty-state { color: var(--muted); text-align: center; padding: 2rem; }
 </style>
 </head>
 <body>
@@ -30,95 +61,115 @@
   <div class="settings" id="settings"></div>
 
   <div class="card">
+    <div class="card-title">Choose expansion</div>
     <div class="row">
       <div>
-        <label for="expansion-id">Expansion ID</label>
-        <input id="expansion-id" type="text" value="monuments" placeholder="monuments"/>
+        <label for="expansion-select">Existing expansion</label>
+        <select id="expansion-select">
+          <option value="">-- Create new --</option>
+        </select>
       </div>
       <div>
-        <label for="load-btn">Load existing</label>
-        <button id="load-btn" type="button">Load</button>
+        <label for="expansion-id">Expansion ID</label>
+        <input id="expansion-id" type="text" placeholder="new-expansion"/>
+      </div>
+      <div class="auto" style="display: flex; align-items: flex-end; padding-bottom: 1rem;">
+        <button id="load-btn" type="button" class="hidden">Load</button>
+      </div>
+    </div>
+    <div class="status" id="status">Select an existing expansion or type a new ID to begin.</div>
+  </div>
+
+  <div id="editor-form" class="hidden">
+    <div class="card">
+      <div class="card-title">Expansion details</div>
+      <div class="row">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" type="text" placeholder="Monuments"/>
+        </div>
+        <div>
+          <label for="version">Version</label>
+          <input id="version" type="text" placeholder="3.1"/>
+        </div>
+      </div>
+      <label for="description">Description</label>
+      <input id="description" type="text" placeholder="Short description"/>
+      <label for="overview">Overview Markdown</label>
+      <textarea id="overview" placeholder="Full overview..."></textarea>
+      <div class="row">
+        <div>
+          <label for="image-folder">Source image folder</label>
+          <input id="image-folder" type="text" placeholder="expansions/source/monuments"/>
+        </div>
+        <div>
+          <label for="s3-path">S3 deploy path</label>
+          <input id="s3-path" type="text" placeholder="monuments"/>
+        </div>
       </div>
     </div>
 
-    <label for="name">Expansion Name</label>
-    <input id="name" type="text" placeholder="Monuments"/>
-
-    <label for="version">Version</label>
-    <input id="version" type="text" placeholder="3.1"/>
-
-    <label for="description">Description</label>
-    <input id="description" type="text" placeholder="Short description"/>
-
-    <label for="overview">Overview Markdown</label>
-    <textarea id="overview" placeholder="Full overview for the agent prompt..."></textarea>
-
-    <label for="image-folder">Source Image Folder (relative to project root)</label>
-    <input id="image-folder" type="text" value="expansions/examples/example_monuments/src/images" placeholder="path/to/images"/>
-
-    <label for="s3-path">S3 Deploy Path</label>
-    <input id="s3-path" type="text" value="monuments" placeholder="monuments"/>
-
-    <h2 class="text-lg font-semibold mt-6 mb-3">Sections</h2>
-    <div id="sections-container" class="space-y-3"></div>
-    <button id="add-section-btn" type="button" class="mt-3">Add Section</button>
-
-    <h2 class="text-lg font-semibold mt-6 mb-3">Assets</h2>
-    <div class="flex gap-2 mb-3">
-      <button id="inspect-btn" type="button">Inspect Folder</button>
-      <span id="asset-count" class="text-muted text-sm self-center"></span>
+    <div class="card">
+      <div class="card-title">Sections</div>
+      <div id="sections-container"></div>
+      <button id="add-section-btn" type="button" class="secondary">Add Section</button>
     </div>
-    <div class="flex gap-3 mb-3 items-center">
-      <input id="asset-filter" type="text" placeholder="Filter assets..." class="flex-1 mb-0"/>
-      <label class="flex items-center gap-2 text-sm text-muted mb-0">
-        <input id="show-unconfigured" type="checkbox" checked/> Not configured
-      </label>
-      <label class="flex items-center gap-2 text-sm text-muted mb-0">
-        <input id="show-hidden" type="checkbox"/> Hidden
-      </label>
-    </div>
-    <div id="assets-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
 
-    <div class="mt-6">
+    <div class="card">
+      <div class="card-title">Assets</div>
+      <div class="toolbar">
+        <button id="inspect-btn" type="button">Inspect Folder</button>
+        <input id="asset-filter" type="text" placeholder="Filter assets..."/>
+        <label><input id="show-unconfigured" type="checkbox" checked/> Not configured</label>
+        <label><input id="show-hidden" type="checkbox"/> Hidden</label>
+        <span id="asset-count" class="text-muted" style="font-size: 0.85rem; color: var(--muted);"></span>
+      </div>
+      <div id="assets-grid" class="asset-grid"></div>
+      <div id="assets-empty" class="empty-state hidden">No assets yet. Click Inspect Folder to scan the source image folder.</div>
+    </div>
+
+    <div class="card" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
       <button id="save-btn" type="button">Save Config</button>
-      <button id="generate-btn" type="button">Generate Site</button>
-      <button id="deploy-btn" type="button">Deploy to S3</button>
+      <button id="generate-btn" type="button" class="secondary">Generate Site</button>
+      <button id="deploy-btn" type="button" class="secondary">Deploy to S3</button>
     </div>
-    <div class="status" id="status"></div>
   </div>
 </div>
 
-<div id="asset-modal" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-4">
-  <div class="bg-panel border border-border rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6">
-    <h2 id="asset-modal-title" class="text-xl font-bold mb-4">Asset Details</h2>
-    <input id="asset-edit-path" type="hidden"/>
-    <div class="flex gap-4 mb-3">
-      <label class="flex items-center gap-2 text-sm text-muted">
-        <input id="asset-edit-iscard" type="checkbox" checked/> Is card
-      </label>
-      <label class="flex items-center gap-2 text-sm text-muted">
-        <input id="asset-edit-hidden" type="checkbox"/> Hidden
-      </label>
-      <label class="flex items-center gap-2 text-sm text-muted">
-        <input id="asset-edit-configured" type="checkbox" checked/> Configured
-      </label>
+<div id="asset-modal" class="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="asset-modal-title">Asset Details</h2>
+      <button id="asset-modal-close" type="button" class="secondary">&times;</button>
     </div>
-    <label>Title</label>
-    <input id="asset-edit-title" type="text" class="mb-3"/>
-    <label>Section</label>
-    <select id="asset-edit-section" class="mb-3"></select>
+    <input id="asset-edit-path" type="hidden"/>
+    <div class="checkbox-row">
+      <label><input id="asset-edit-iscard" type="checkbox" checked/> Is card</label>
+      <label><input id="asset-edit-hidden" type="checkbox"/> Hidden</label>
+      <label><input id="asset-edit-configured" type="checkbox" checked/> Configured</label>
+    </div>
+    <div class="row">
+      <div>
+        <label>Title</label>
+        <input id="asset-edit-title" type="text"/>
+      </div>
+      <div>
+        <label>Section</label>
+        <select id="asset-edit-section"></select>
+      </div>
+    </div>
     <label>Group</label>
-    <input id="asset-edit-group" type="text" class="mb-3"/>
+    <input id="asset-edit-group" type="text"/>
     <label>Description</label>
-    <textarea id="asset-edit-description" class="mb-3"></textarea>
-    <label>FAQ (one Q&A per line, format: Q: ... | A: ...)</label>
-    <textarea id="asset-edit-faq" class="mb-3" placeholder="Q: Does this ability stack? | A: Yes, it stacks."></textarea>
-    <label>Back Image (filename for two-sided cards)</label>
-    <select id="asset-edit-back" class="mb-3">
+    <textarea id="asset-edit-description"></textarea>
+    <label>FAQ (one Q&A per line: Q: ... | A: ...)</label>
+    <textarea id="asset-edit-faq" placeholder="Q: Does this stack? | A: Yes."></textarea>
+    <label>Back Image</label>
+    <select id="asset-edit-back">
       <option value="">None</option>
     </select>
-    <div class="flex gap-2 justify-end">
-      <button id="asset-edit-cancel" type="button">Cancel</button>
+    <div class="modal-footer">
+      <button id="asset-edit-cancel" type="button" class="secondary">Cancel</button>
       <button id="asset-edit-save" type="button">Save Asset</button>
     </div>
   </div>
@@ -126,16 +177,108 @@
 
 <script>
 const idInput = document.getElementById('expansion-id');
+const select = document.getElementById('expansion-select');
+const loadBtn = document.getElementById('load-btn');
+const editorForm = document.getElementById('editor-form');
 const statusEl = document.getElementById('status');
 
 let sections = [];
+let assets = {};
+let existingIds = [];
+
+async function loadSettings() {
+  const res = await fetch('/api/settings');
+  const data = await res.json();
+  document.getElementById('settings').textContent = `S3 bucket: ${data.bucket} | Region: ${data.region} | Profile: ${data.profile}`;
+}
+
+async function loadExpansionList() {
+  const res = await fetch('/api/expansions');
+  existingIds = await res.json();
+  select.innerHTML = '<option value="">-- Create new --</option>';
+  existingIds.forEach(id => {
+    const opt = document.createElement('option');
+    opt.value = id;
+    opt.textContent = id;
+    select.appendChild(opt);
+  });
+}
+
+function resetForm() {
+  document.getElementById('name').value = '';
+  document.getElementById('version').value = '';
+  document.getElementById('description').value = '';
+  document.getElementById('overview').value = '';
+  document.getElementById('image-folder').value = '';
+  document.getElementById('s3-path').value = '';
+  sections = [];
+  assets = {};
+  renderSections();
+  renderAssets();
+}
+
+function setId(id) {
+  idInput.value = id;
+  const exists = existingIds.includes(id);
+  loadBtn.classList.toggle('hidden', !exists);
+  editorForm.classList.toggle('hidden', !exists && !id);
+  if (!exists) {
+    resetForm();
+    statusEl.textContent = id ? `New expansion '${id}'. Fill in details and save.` : 'Select an existing expansion or type a new ID to begin.';
+  } else {
+    statusEl.textContent = `Expansion '${id}' exists. Click Load to edit.`;
+  }
+}
+
+select.addEventListener('change', () => {
+  const id = select.value;
+  if (id) {
+    setId(id);
+  } else {
+    setId('');
+  }
+});
+
+idInput.addEventListener('input', () => {
+  const id = idInput.value.trim();
+  select.value = existingIds.includes(id) ? id : '';
+  setId(id);
+});
+
+loadBtn.addEventListener('click', async () => {
+  const id = idInput.value.trim();
+  if (!id) return;
+  statusEl.textContent = 'Loading...';
+  const res = await fetch(`/api/config/${id}`);
+  const data = await res.json();
+  if (Object.keys(data).length === 0) {
+    statusEl.textContent = 'No existing config found.';
+    resetForm();
+    return;
+  }
+  document.getElementById('name').value = data.name || '';
+  document.getElementById('version').value = data.version || '';
+  document.getElementById('description').value = data.description || '';
+  document.getElementById('overview').value = data.overview || '';
+  document.getElementById('image-folder').value = (data.source && data.source.images) || '';
+  document.getElementById('s3-path').value = data.s3_path || data.id || '';
+  sections = data.sections || [];
+  assets = data.assets || {};
+  editorForm.classList.remove('hidden');
+  renderSections();
+  renderAssets();
+  statusEl.textContent = 'Config loaded.';
+});
 
 function renderSections() {
   const container = document.getElementById('sections-container');
   container.innerHTML = '';
+  if (sections.length === 0) {
+    container.innerHTML = '<p class="empty-state">No sections yet. Click Add Section or inspect the image folder to auto-suggest sections.</p>';
+  }
   sections.forEach((section, index) => {
     const div = document.createElement('div');
-    div.className = 'card';
+    div.className = 'section-row';
     div.innerHTML = `
       <div class="row">
         <div>
@@ -155,7 +298,7 @@ function renderSections() {
           </select>
         </div>
       </div>
-      <button type="button" class="remove-section-btn" data-index="${index}">Remove</button>
+      <button type="button" class="remove-section-btn danger" data-index="${index}">Remove</button>
     `;
     container.appendChild(div);
   });
@@ -182,37 +325,15 @@ function updateSectionsFromForm() {
   }));
 }
 
-async function load() {
-  const id = idInput.value.trim();
-  const res = await fetch(`/api/config/${id}`);
-  const data = await res.json();
-  if (Object.keys(data).length === 0) {
-    statusEl.textContent = 'No existing config found. Starting fresh.';
-    sections = [];
-    assets = {};
-    renderSections();
-    renderAssets();
-    return;
-  }
-  document.getElementById('name').value = data.name || '';
-  document.getElementById('version').value = data.version || '';
-  document.getElementById('description').value = data.description || '';
-  document.getElementById('overview').value = data.overview || '';
-  document.getElementById('image-folder').value = (data.source && data.source.images) || '';
-  document.getElementById('s3-path').value = data.s3_path || data.id || '';
-  sections = data.sections || [];
-  assets = data.assets || {};
-  renderSections();
-  renderAssets();
-  statusEl.textContent = 'Config loaded.';
-}
-
-let assets = {};
-
 async function inspectFolder() {
   const id = idInput.value.trim();
   if (!id) {
     statusEl.textContent = 'Expansion ID is required.';
+    return;
+  }
+  const imageFolder = document.getElementById('image-folder').value.trim();
+  if (!imageFolder) {
+    statusEl.textContent = 'Source image folder is required.';
     return;
   }
   statusEl.textContent = 'Inspecting folder...';
@@ -237,6 +358,7 @@ function assetValues() {
 
 function renderAssets() {
   const grid = document.getElementById('assets-grid');
+  const empty = document.getElementById('assets-empty');
   grid.innerHTML = '';
   const filter = document.getElementById('asset-filter').value.toLowerCase();
   const showUnconfigured = document.getElementById('show-unconfigured').checked;
@@ -254,16 +376,15 @@ function renderAssets() {
   }
 
   document.getElementById('asset-count').textContent = `${list.length} shown / ${assetValues().length} total`;
+  empty.classList.toggle('hidden', assetValues().length > 0);
 
   list.forEach(asset => {
     const div = document.createElement('div');
-    const border = asset.configured ? 'border-accent' : 'border-border';
-    const opacity = asset.hidden ? 'opacity-50' : '';
-    div.className = `bg-panel border ${border} ${opacity} rounded-lg p-2 cursor-pointer hover:border-accent transition-colors`;
+    div.className = `asset-cell ${asset.configured ? 'configured' : ''} ${asset.hidden ? 'hidden' : ''}`;
     div.innerHTML = `
-      <p class="text-sm font-medium truncate text-center" title="${asset.path}">${asset.title}</p>
-      <p class="text-xs text-muted truncate text-center">${asset.group || asset.folder}</p>
-      ${asset.hidden ? '<p class="text-xs text-red-400 text-center">hidden</p>' : ''}
+      <div class="title" title="${asset.path}">${asset.title}</div>
+      <div class="group" title="${asset.group || asset.folder}">${asset.group || asset.folder}</div>
+      ${asset.hidden ? '<div class="title" style="color:#dc2626">hidden</div>' : ''}
     `;
     div.addEventListener('click', () => openAssetEditor(asset.path));
     grid.appendChild(div);
@@ -299,13 +420,11 @@ function openAssetEditor(path) {
   });
   backSelect.value = currentBack;
 
-  document.getElementById('asset-modal').classList.remove('hidden');
-  document.getElementById('asset-modal').classList.add('flex');
+  document.getElementById('asset-modal').classList.add('visible');
 }
 
 function closeAssetEditor() {
-  document.getElementById('asset-modal').classList.add('hidden');
-  document.getElementById('asset-modal').classList.remove('flex');
+  document.getElementById('asset-modal').classList.remove('visible');
 }
 
 function saveAssetEditor() {
@@ -370,6 +489,11 @@ async function save() {
     body: JSON.stringify(body),
   });
   const data = await res.json();
+  if (data.ok) {
+    await loadExpansionList();
+    select.value = id;
+    setId(id);
+  }
   statusEl.textContent = data.ok ? 'Config saved.' : `Save failed: ${data.error}`;
 }
 
@@ -397,13 +521,6 @@ async function deploy() {
     : `Deploy failed:\n${data.stderr}`;
 }
 
-async function loadSettings() {
-  const res = await fetch('/api/settings');
-  const data = await res.json();
-  document.getElementById('settings').textContent = `S3 bucket: ${data.bucket} | Region: ${data.region} | Profile: ${data.profile}`;
-}
-
-document.getElementById('load-btn').addEventListener('click', load);
 document.getElementById('save-btn').addEventListener('click', save);
 document.getElementById('generate-btn').addEventListener('click', generate);
 document.getElementById('deploy-btn').addEventListener('click', deploy);
@@ -416,6 +533,7 @@ document.getElementById('add-section-btn').addEventListener('click', () => {
 document.getElementById('inspect-btn').addEventListener('click', inspectFolder);
 document.getElementById('asset-edit-save').addEventListener('click', saveAssetEditor);
 document.getElementById('asset-edit-cancel').addEventListener('click', closeAssetEditor);
+document.getElementById('asset-modal-close').addEventListener('click', closeAssetEditor);
 document.getElementById('asset-modal').addEventListener('click', e => {
   if (e.target.id === 'asset-modal') closeAssetEditor();
 });
@@ -424,7 +542,7 @@ document.getElementById('show-unconfigured').addEventListener('change', renderAs
 document.getElementById('show-hidden').addEventListener('change', renderAssets);
 
 loadSettings();
-load();
+loadExpansionList();
 </script>
 </body>
 </html>
