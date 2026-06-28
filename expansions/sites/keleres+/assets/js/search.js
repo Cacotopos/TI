@@ -28,9 +28,10 @@
   });
 
   (site.images || []).forEach((img, i) => {
-    const card = (site.cards || {})[img.id] || {};
-    const cardText = `${card.name || img.name} ${card.description || ''} ${(card.faq || []).map(qa => `${qa.q} ${qa.a}`).join(' ')}`;
-    addDoc(`image-${i}`, `${img.name} ${img.folder} ${cardText}`, card.name || img.name, 'cards.html', 'card');
+    const faqText = (img.faq || []).map(qa => `${qa.q} ${qa.a}`).join(' ');
+    const text = `${img.name || ''} ${img.folder || ''} ${img.group || ''} ${img.type || ''} ${img.faction || ''} ${img.description || ''} ${faqText}`;
+    const url = `${img.section || 'cards'}.html`;
+    addDoc(`image-${i}`, text, img.name || img.id, url, 'card');
   });
 
   const searchReady = new Promise(resolve => {

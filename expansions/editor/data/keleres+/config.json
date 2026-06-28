@@ -8,6 +8,7 @@
     "images": "expansions/source/keleres+"
   },
   "s3_path": "keleres+",
+  "banner": null,
   "sections": [
     {
       "id": "drahn",
@@ -37,9 +38,10 @@
       "title": "Drahn Agent Back"
     },
     "Drahn/Drahn Agent Front.jpg": {
-      "back": "Drahn/Drahn Agent Back.jpg",
+      "back": "",
       "configured": true,
-      "description": "Get some cash",
+      "description": "Aldo Graft/Contract Broker\nYou may exhaust this card at the start of a player's turn; that player may either gain 1 command token or draw 1 secret objective. If they do, end that player's turn.",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Agent Front.jpg",
       "folder": "Drahn",
@@ -49,7 +51,8 @@
       "isCard": true,
       "path": "Drahn/Drahn Agent Front.jpg",
       "section": "drahn",
-      "title": "Drahn Agent"
+      "title": "Drahn Agent",
+      "type": "Agent"
     },
     "Drahn/Drahn Alliance Back.jpg": {
       "back": "",
@@ -59,17 +62,19 @@
       "filename": "Drahn Alliance Back.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": false,
+      "hidden": true,
       "id": "Drahn Alliance Back",
       "isCard": true,
       "path": "Drahn/Drahn Alliance Back.jpg",
-      "section": "cards",
-      "title": "Drahn Alliance Back"
+      "section": "drahn",
+      "title": "Drahn Alliance Back",
+      "type": "Other Component",
+      "faction": ""
     },
     "Drahn/Drahn Alliance Front.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "back": "Drahn/Drahn Alliance Back.jpg",
+      "configured": true,
+      "description": "After you perform a tactical action:\n\nYou may spend 3 trade goods to move 1 of your ships from the active system to an adjacent system that does not contain another player's ships.",
       "faq": [],
       "filename": "Drahn Alliance Front.jpg",
       "folder": "Drahn",
@@ -78,8 +83,10 @@
       "id": "Drahn Alliance Front",
       "isCard": true,
       "path": "Drahn/Drahn Alliance Front.jpg",
-      "section": "cards",
-      "title": "Drahn Alliance Front"
+      "section": "drahn",
+      "title": "Drahn Alliance",
+      "type": "Alliance",
+      "faction": "Drahn"
     },
     "Drahn/Drahn Alliance.jpg": {
       "back": "",
@@ -89,12 +96,14 @@
       "filename": "Drahn Alliance.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": false,
+      "hidden": true,
       "id": "Drahn Alliance",
       "isCard": true,
       "path": "Drahn/Drahn Alliance.jpg",
-      "section": "cards",
-      "title": "Drahn Alliance"
+      "section": "drahn",
+      "title": "Drahn Alliance",
+      "type": "Other Component",
+      "faction": ""
     },
     "Drahn/Drahn Breakthrough BR Back.jpg": {
       "back": "",
@@ -104,17 +113,19 @@
       "filename": "Drahn Breakthrough BR Back.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": false,
+      "hidden": true,
       "id": "Drahn Breakthrough BR Back",
       "isCard": true,
       "path": "Drahn/Drahn Breakthrough BR Back.jpg",
-      "section": "cards",
-      "title": "Drahn Breakthrough BR Back"
+      "section": "drahn",
+      "title": "Drahn Breakthrough BR Back",
+      "type": "Other Component",
+      "faction": ""
     },
     "Drahn/Drahn Breakthrough BR.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "back": "Drahn/Drahn Breakthrough BR Back.jpg",
+      "configured": true,
+      "description": "When you gain this card, gain the Nevermore planet card and its legendary planet card.\n\nYou are neighbors with all palyers who have units on anomalies that do not contain planets.",
       "faq": [],
       "filename": "Drahn Breakthrough BR.jpg",
       "folder": "Drahn",
@@ -123,8 +134,10 @@
       "id": "Drahn Breakthrough BR",
       "isCard": true,
       "path": "Drahn/Drahn Breakthrough BR.jpg",
-      "section": "cards",
-      "title": "Drahn Breakthrough BR"
+      "section": "drahn",
+      "title": "Drahn Breakthrough BR",
+      "type": "Breakthrough",
+      "faction": "Drahn"
     },
     "Drahn/Drahn Commander Back.jpg": {
       "back": "",
@@ -134,17 +147,19 @@
       "filename": "Drahn Commander Back.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": false,
+      "hidden": true,
       "id": "Drahn Commander Back",
       "isCard": true,
       "path": "Drahn/Drahn Commander Back.jpg",
-      "section": "cards",
-      "title": "Drahn Commander Back"
+      "section": "drahn",
+      "title": "Drahn Commander Back",
+      "type": "Other Component",
+      "faction": ""
     },
     "Drahn/Drahn Commander Front.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "back": "Drahn/Drahn Commander Back.jpg",
+      "configured": true,
+      "description": "After you resolve a tactical action:\n\nYou may spend 3 trade goods to move 1 of your ships from the active system to an adjacent system that does not contain another player's ships.",
       "faq": [],
       "filename": "Drahn Commander Front.jpg",
       "folder": "Drahn",
@@ -153,8 +168,10 @@
       "id": "Drahn Commander Front",
       "isCard": true,
       "path": "Drahn/Drahn Commander Front.jpg",
-      "section": "cards",
-      "title": "Drahn Commander Front"
+      "section": "drahn",
+      "title": "Kip Lok Sil",
+      "type": "Commander",
+      "faction": "Drahn"
     },
     "Drahn/Drahn Faction Sheet Back.jpg": {
       "back": "",
@@ -352,9 +369,10 @@
       "title": "Drahn Tech - Guild Fund"
     },
     "Drahn/Drahn Tech - Special Forces.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "back": "Drahn/Drahn Tech - Yellow Back.jpg",
+      "configured": true,
+      "description": "YY\n\nAt the start of space combat in which you are the defender:\n\nYou may exhaust this card and spend 1 token from your strategy pool to force your opponent to declare a retreat.",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Tech - Special Forces.jpg",
       "folder": "Drahn",
@@ -363,23 +381,26 @@
       "id": "Drahn Tech - Special Forces",
       "isCard": true,
       "path": "Drahn/Drahn Tech - Special Forces.jpg",
-      "section": "cards",
-      "title": "Drahn Tech - Special Forces"
+      "section": "drahn",
+      "title": "Special Forces",
+      "type": "Other Component"
     },
     "Drahn/Drahn Tech - Yellow Back.jpg": {
       "back": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Drahn Tech - Yellow Back.jpg",
       "folder": "Drahn",
       "group": "Drahn",
-      "hidden": false,
+      "hidden": true,
       "id": "Drahn Tech - Yellow Back",
       "isCard": true,
       "path": "Drahn/Drahn Tech - Yellow Back.jpg",
-      "section": "cards",
-      "title": "Drahn Tech - Yellow Back"
+      "section": "drahn",
+      "title": "Drahn Tech - Yellow Back",
+      "type": "Other Component"
     },
     "Drahn/Drahn Tokens.jpg": {
       "back": "",
