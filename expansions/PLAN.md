@@ -129,7 +129,7 @@ TI/expansions/
       "configured": false,
       "hidden": false,
       "isCard": true,
-      "type": "other component",
+      "type": "Other Component",
       "faction": "",
       "title": "Atokera",
       "description": "",
