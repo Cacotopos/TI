@@ -29,6 +29,8 @@
   .status { margin-top: 1rem; font-size: 0.85rem; color: var(--muted); white-space: pre-wrap; }
   .settings { font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem; }
   .hidden { display: none !important; }
+  #spinner { display: inline-block; width: 1rem; height: 1rem; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 0.35rem; }
+  @keyframes spin { to { transform: rotate(360deg); } }
   .tabs { display: flex; gap: 0.5rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
   .tab { padding: 0.5rem 1rem; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; }
   .tab.active { color: var(--text); border-bottom-color: var(--accent); }
@@ -39,6 +41,18 @@
   .asset-cell:hover { border-color: var(--accent); }
   .asset-cell.configured { border-color: var(--accent); }
   .asset-cell.excluded { opacity: 0.5; }
+  .asset-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.75rem; }
+  .asset-badge { background: var(--border); color: var(--text); font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 0.35rem; }
+  .asset-badge.accent { background: var(--accent); color: white; }
+  .asset-badge.danger { background: #dc2626; color: white; }
+  .asset-description-preview { background: var(--bg); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.9rem; line-height: 1.5; margin-bottom: 0.75rem; }
+  .asset-description-preview p:first-child { margin-top: 0; }
+  .asset-description-preview p:last-child { margin-bottom: 0; }
+  .asset-faq-preview { margin-bottom: 0.75rem; }
+  .asset-faq-preview summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .asset-faq-preview .faq-item { margin-bottom: 0.5rem; }
+  .asset-faq-preview .faq-q { font-weight: 600; }
+  .asset-faq-preview .faq-a { color: var(--muted); }
   .asset-cell .title { font-size: 0.85rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .asset-cell .group { font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .toolbar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
@@ -95,7 +109,7 @@
         <button id="load-btn" type="button" class="hidden">Load</button>
       </div>
     </div>
-    <div class="status" id="status">Select an existing expansion or type a new ID to begin.</div>
+    <div class="status"><span id="spinner" class="hidden"></span> <span id="status">Select an existing expansion or type a new ID to begin.</span></div>
   </div>
 
   <div id="editor-form" class="hidden">
@@ -179,13 +193,23 @@
   <div class="modal">
     <div class="modal-header">
       <h2 id="asset-modal-title">Asset Details</h2>
-      <button id="asset-modal-close" type="button" class="secondary">&times;</button>
+      <div style="display: flex; gap: 0.5rem; align-items: center;">
+        <button id="asset-edit-save-top" type="button">Save Asset</button>
+        <button id="asset-modal-close" type="button" class="secondary">&times;</button>
+      </div>
     </div>
     <input id="asset-edit-path" type="hidden"/>
+    <div class="asset-badges" id="asset-badges"></div>
     <div id="asset-preview-container" class="mb-4">
       <img id="asset-preview" src="" alt="" style="max-width: 100%; max-height: 200px; border-radius: 0.5rem; border: 1px solid var(--border);"/>
       <p id="asset-filename" class="hint" style="margin-top: 0.5rem; margin-bottom: 0;"></p>
     </div>
+    <div id="asset-description-preview" class="asset-description-preview"></div>
+    <details id="asset-faq-preview" class="asset-faq-preview">
+      <summary>FAQ</summary>
+      <div id="asset-faq-preview-content"></div>
+    </details>
+    <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1rem; color: var(--text);">Edit</h3>
     <div class="checkbox-row">
       <label class="toggle">
         <input id="asset-edit-iscard" type="checkbox" checked/>
@@ -251,7 +275,7 @@
     </div>
     <label>Group</label>
     <input id="asset-edit-group" type="text"/>
-    <label>Description</label>
+    <label>Description (Markdown)</label>
     <textarea id="asset-edit-description"></textarea>
     <label>FAQ (one Q&A per line: Q: ... | A: ...)</label>
     <textarea id="asset-edit-faq" placeholder="Q: Does this stack? | A: Yes."></textarea>
@@ -260,10 +284,6 @@
     <select id="asset-edit-back" size="6">
       <option value="">None</option>
     </select>
-    <div class="modal-footer">
-      <button id="asset-edit-cancel" type="button" class="secondary">Cancel</button>
-      <button id="asset-edit-save" type="button">Save Asset</button>
-    </div>
   </div>
 </div>
 
@@ -475,6 +495,27 @@ function assetValues() {
   return Object.values(assets);
 }
 
+function renderMarkdown(text) {
+  if (!text) return '';
+  let html = text
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/^###### (.*$)/gim, '<h6>$1</h6>')
+    .replace(/^##### (.*$)/gim, '<h5>$1</h5>')
+    .replace(/^#### (.*$)/gim, '<h4>$1</h4>')
+    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
+    .replace(/^\s*-\s+(.*$)/gim, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/\n/g, '<br>');
+  return `<p>${html}</p>`;
+}
+
 function renderAssets() {
   const grid = document.getElementById('assets-grid');
   const empty = document.getElementById('assets-empty');
@@ -554,6 +595,34 @@ function populateBackOptions(path, currentBack, filterText) {
   backSelect.value = stillAvailable ? currentBack : '';
 }
 
+function renderAssetPreview(asset) {
+  const sectionTitle = (sections.find(s => s.id === asset.section) || {}).title || asset.section || 'cards';
+  const badges = [
+    asset.type ? `<span class="asset-badge accent">${asset.type}</span>` : '',
+    asset.faction ? `<span class="asset-badge">${asset.faction}</span>` : '',
+    `<span class="asset-badge">${sectionTitle}</span>`,
+    asset.group ? `<span class="asset-badge">${asset.group}</span>` : '',
+    asset.back ? `<span class="asset-badge">Back: ${asset.back}</span>` : '',
+    asset.hidden ? `<span class="asset-badge danger">Excluded</span>` : '',
+    asset.configured ? `<span class="asset-badge accent">Configured</span>` : `<span class="asset-badge">Not configured</span>`,
+  ].filter(Boolean).join('');
+  document.getElementById('asset-badges').innerHTML = badges;
+
+  document.getElementById('asset-description-preview').innerHTML = renderMarkdown(asset.description || '');
+  document.getElementById('asset-description-preview').classList.toggle('hidden', !(asset.description || '').trim());
+
+  const faq = asset.faq || [];
+  const faqDetails = document.getElementById('asset-faq-preview');
+  const faqContent = document.getElementById('asset-faq-preview-content');
+  if (faq.length) {
+    faqContent.innerHTML = faq.map(qa => `<div class="faq-item"><div class="faq-q">Q: ${qa.q}</div><div class="faq-a">A: ${qa.a}</div></div>`).join('');
+    faqDetails.classList.remove('hidden');
+  } else {
+    faqContent.innerHTML = '';
+    faqDetails.classList.add('hidden');
+  }
+}
+
 function openAssetEditor(path) {
   const asset = assets[path];
   if (!asset) return;
@@ -580,6 +649,7 @@ function openAssetEditor(path) {
   sectionSelect.innerHTML = sections.map(s => `<option value="${s.id}" ${s.id === asset.section ? 'selected' : ''}>${s.title}</option>`).join('');
 
   populateBackOptions(path, asset.back || '', '');
+  renderAssetPreview(asset);
 
   document.getElementById('asset-modal').classList.add('visible');
 }
@@ -665,15 +735,26 @@ async function save() {
   statusEl.textContent = data.ok ? 'Config saved.' : `Save failed: ${data.error}`;
 }
 
+function setLoading(loading, actionText) {
+  const spinner = document.getElementById('spinner');
+  const generateBtn = document.getElementById('generate-btn');
+  const deployBtn = document.getElementById('deploy-btn');
+  spinner.classList.toggle('hidden', !loading);
+  generateBtn.disabled = loading;
+  deployBtn.disabled = loading;
+  generateBtn.textContent = loading ? actionText : 'Generate Site';
+}
+
 async function generate() {
   const id = idInput.value.trim();
-  statusEl.textContent = 'Generating...';
+  setLoading(true, 'Generating...');
+  statusEl.textContent = 'Generating site...';
   const res = await fetch(`/api/generate/${id}`, { method: 'POST' });
   const data = await res.json();
+  setLoading(false, 'Generate Site');
   if (data.ok) {
     const fileUrl = `file://${data.output_dir}/index.html`;
-    window.open(fileUrl, '_blank');
-    statusEl.textContent = `Generated: ${data.output_dir}\n${data.stdout}\nOpened in new tab.`;
+    statusEl.innerHTML = `Generated: ${data.output_dir}<br>${data.stdout}<br><a href="${fileUrl}" target="_blank">Open generated site</a>`;
   } else {
     statusEl.textContent = `Generate failed:\n${data.stderr}`;
   }
@@ -681,9 +762,11 @@ async function generate() {
 
 async function deploy() {
   const id = idInput.value.trim();
-  statusEl.textContent = 'Deploying...';
+  setLoading(true, 'Generating...');
+  statusEl.textContent = 'Deploying to S3...';
   const res = await fetch(`/api/deploy/${id}`, { method: 'POST' });
   const data = await res.json();
+  setLoading(false, 'Generate Site');
   statusEl.textContent = data.ok
     ? `Deployed to ${data.url}\n${data.stdout}`
     : `Deploy failed:\n${data.stderr}`;
@@ -761,8 +844,7 @@ document.getElementById('add-section-btn').addEventListener('click', () => {
   renderAssets();
 });
 document.getElementById('inspect-btn').addEventListener('click', inspectFolder);
-document.getElementById('asset-edit-save').addEventListener('click', saveAssetEditor);
-document.getElementById('asset-edit-cancel').addEventListener('click', closeAssetEditor);
+document.getElementById('asset-edit-save-top').addEventListener('click', saveAssetEditor);
 document.getElementById('asset-edit-back-filter').addEventListener('input', e => {
   const path = document.getElementById('asset-edit-path').value;
   const currentBack = document.getElementById('asset-edit-back').value;

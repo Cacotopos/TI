@@ -136,7 +136,8 @@ def _prepare_banner(config: dict, output_dir: Path) -> str | None:
     The banner is copied alongside other source images; this just confirms it
     meets the minimum width requirement and resolves its output URL.
     """
-    banner_path = config.get("banner", {}).get("path", "")
+    banner_config = config.get("banner") or {}
+    banner_path = banner_config.get("path", "")
     if not banner_path:
         return None
     banner_file = ROOT / banner_path
