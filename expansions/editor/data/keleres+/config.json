@@ -369,8 +369,9 @@
     },
     "Drahn/Drahn Nevermore Front.jpg": {
       "back": "Drahn/Drahn Nevermore Back.jpg",
+      "color": "",
       "configured": true,
-      "description": "Resources 2, Influence 2",
+      "description": "",
       "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Nevermore Front.jpg",
@@ -380,7 +381,21 @@
       "id": "Drahn Nevermore Front",
       "isCard": true,
       "path": "Drahn/Drahn Nevermore Front.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "drahn",
+      "source": {
+        "enabled": true,
+        "influence": 2,
+        "resource": 2,
+        "trait": "",
+        "legendary": true,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": "Drahn/Drahn Nevermore Ability Front.jpg"
+      },
       "title": "Nevermore",
       "type": "Planet"
     },

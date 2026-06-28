@@ -108,6 +108,9 @@
   .source-scores input { flex: 1; }
   .source-toggles { display: flex; gap: 0.5rem; flex-wrap: wrap; }
   .source-toggles .toggle { margin-bottom: 0; }
+  .source-linked-picker { display: flex; flex-direction: column; gap: 0.25rem; }
+  .source-linked-picker input { margin-bottom: 0; }
+  .source-linked-picker select { margin-bottom: 0; }
   .asset-cell .title { font-size: 0.85rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .asset-cell .group { font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .toolbar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
@@ -415,7 +418,10 @@
             </label>
           </div>
           <input id="asset-edit-source-tech" class="source-planet-only" type="text" placeholder="Tech speciality e.g. RRYY" maxlength="4"/>
-          <input id="asset-edit-source-linked" class="source-planet-only" type="text" placeholder="Linked ability card path"/>
+          <div class="source-linked-picker source-planet-only">
+            <input id="asset-edit-source-linked-filter" type="text" placeholder="Filter linked ability card..."/>
+            <select id="asset-edit-source-linked"></select>
+          </div>
         </div>
       </div>
     </div>
@@ -1101,7 +1107,7 @@ function getSourceInput() {
   const linkedAbility = document.getElementById('asset-edit-source-linked').value;
   if (!enabled) return { enabled: false, influence: 0, resource: 0, trait: '', legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
   const isStation = document.getElementById('asset-edit-type').value === 'Station';
-  return { enabled, influence, resource, trait: isStation ? '' : trait, legendary, relic: isStation ? false : relic, techSpeciality: isStation ? '' : techSpeciality, linkedAbility: isStation ? '' : linkedAbility };
+  return { enabled, influence, resource, trait: isStation ? '' : trait, legendary, relic: isStation ? false : relic, techSpeciality: isStation ? '' : techSpeciality, linkedAbility: isStation ? '' : (linkedAbility || '') };
 }
 function setSourceInput(source) {
   const s = source || { enabled: false, influence: 0, resource: 0, trait: '', legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
@@ -1112,7 +1118,15 @@ function setSourceInput(source) {
   document.getElementById('asset-edit-source-legendary').checked = s.legendary || false;
   document.getElementById('asset-edit-source-relic').checked = s.relic || false;
   document.getElementById('asset-edit-source-tech').value = s.techSpeciality || '';
-  document.getElementById('asset-edit-source-linked').value = s.linkedAbility || '';
+  const linkedSelect = document.getElementById('asset-edit-source-linked');
+  linkedSelect.value = s.linkedAbility || '';
+  if (!linkedSelect.value && s.linkedAbility) {
+    const option = document.createElement('option');
+    option.value = s.linkedAbility;
+    option.textContent = s.linkedAbility;
+    linkedSelect.appendChild(option);
+    linkedSelect.value = s.linkedAbility;
+  }
 }
 function updateSourceSectionVisibility() {
   const enabled = document.getElementById('asset-edit-source-toggle').checked;
@@ -1227,6 +1241,24 @@ function populateBackOptions(path, currentBack, filterText) {
   backSelect.value = stillAvailable ? currentBack : '';
 }
 
+function populateLinkedAbilityOptions(currentValue, filterText) {
+  const select = document.getElementById('asset-edit-source-linked');
+  select.innerHTML = '<option value="">None</option>';
+  const filter = filterText.toLowerCase();
+  const options = assetValues().filter(a => {
+    if (!filter) return true;
+    return (a.path + ' ' + a.title + ' ' + a.group).toLowerCase().includes(filter);
+  });
+  options.forEach(a => {
+    const option = document.createElement('option');
+    option.value = a.path;
+    option.textContent = a.hidden ? `${a.path} [excluded]` : a.path;
+    select.appendChild(option);
+  });
+  const stillAvailable = currentValue === '' || options.some(a => a.path === currentValue);
+  select.value = stillAvailable ? currentValue : '';
+}
+
 function renderAssetPreview(asset) {
   document.getElementById('asset-badges').innerHTML = '';
 
@@ -1285,6 +1317,8 @@ function openAssetEditor(path) {
   sectionSelect.innerHTML = sections.map(s => `<option value="${s.id}" ${s.id === asset.section ? 'selected' : ''}>${s.title}</option>`).join('');
 
   populateBackOptions(path, asset.back || '', '');
+  document.getElementById('asset-edit-source-linked-filter').value = '';
+  populateLinkedAbilityOptions(asset.source?.linkedAbility || '', '');
   renderAssetPreview(asset);
 
   document.getElementById('asset-modal').classList.add('visible');
@@ -1507,6 +1541,10 @@ document.getElementById('asset-edit-back-filter').addEventListener('input', e =>
   const path = document.getElementById('asset-edit-path').value;
   const currentBack = document.getElementById('asset-edit-back').value;
   populateBackOptions(path, currentBack, e.target.value);
+});
+document.getElementById('asset-edit-source-linked-filter').addEventListener('input', e => {
+  const current = document.getElementById('asset-edit-source-linked').value;
+  populateLinkedAbilityOptions(current, e.target.value);
 });
 document.getElementById('asset-modal-close').addEventListener('click', closeAssetEditor);
 document.getElementById('asset-modal').addEventListener('click', e => {
