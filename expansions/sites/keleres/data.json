@@ -1,0 +1,14 @@
+{
+  "id": "keleres",
+  "name": "Keleres+",
+  "version": "1.0",
+  "description": "An extension to the TE Keleres heroes, as well as a new Drahn faction and its heroes.",
+  "overview": "An introduction page and overview, a page to explore all the cards, an FAQ page that links back to the cards, and a 'how to design your own monuments' page for other players who want to support this in their home-brew factions.",
+  "source": {
+    "images": "expansions/source/keleres+"
+  },
+  "s3_path": "keleres",
+  "sections": [],
+  "assets": {},
+  "images": []
+}

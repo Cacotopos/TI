@@ -59,10 +59,9 @@ TI/expansions/
 │       └── ui.js           # Common interactions
 ├── schema/
 │   └── expansion.json      # JSON schema for config.json
-├── examples/               # Example expansion configs
-│   └── example_monuments/
-│       ├── config.json
-│       ├── expansion-overview.md
+├── source/                 # Source assets for expansions
+│   ├── monuments/
+│   └── keleres+/
 │       └── src/            # Source images / assets
 └── sites/                  # Generated static sites
     └── example_monuments/
@@ -146,8 +145,8 @@ TI/expansions/
   "description": "Monuments expansion overview",
   "release_date": "2026-06-01",
   "source": {
-    "images": "examples/example_monuments/src/images",
-    "icons": "examples/example_monuments/src/icons"
+    "images": "source/monuments/Monuments",
+    "icons": "source/monuments/icons"
   },
   "sections": [
     {

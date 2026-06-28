@@ -14,10 +14,10 @@ python3 editor/app.py
 # Then open http://localhost:3030
 
 # Generate the static site
-python3 -m expansions.generator.site examples/example_monuments/config.json --output sites/example_monuments
+python3 -m expansions.generator.site editor/data/monuments/config.json --output sites/monuments
 
 # Open the site
-open sites/example_monuments/index.html
+open sites/monuments/index.html
 ```
 
 ## Overview
