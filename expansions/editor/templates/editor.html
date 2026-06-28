@@ -57,8 +57,7 @@
   .modal { background: var(--panel); border: 1px solid var(--border); border-radius: 0.75rem; width: 100%; max-width: 700px; max-height: 90vh; overflow-y: auto; padding: 1.5rem; }
   .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
   .modal-footer { display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem; }
-  .checkbox-row { display: flex; gap: 1.5rem; margin-bottom: 1rem; }
-  .checkbox-row label { display: flex; align-items: center; gap: 0.35rem; }
+  .checkbox-row { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
   .empty-state { color: var(--muted); text-align: center; padding: 2rem; }
   .banner-row { display: flex; gap: 0.75rem; align-items: flex-end; }
   .banner-row input { margin-bottom: 0; }
@@ -155,12 +154,12 @@
         <label class="toggle">
           <input id="show-hidden" type="checkbox"/>
           <span class="switch"></span>
-          <span class="label-text">Hidden</span>
+          <span class="label-text">Excluded</span>
         </label>
         <label class="toggle">
           <input id="show-hidden-only" type="checkbox"/>
           <span class="switch"></span>
-          <span class="label-text">Hidden only</span>
+          <span class="label-text">Excluded only</span>
         </label>
         <span id="asset-count" class="text-muted" style="font-size: 0.85rem; color: var(--muted);"></span>
       </div>
@@ -188,9 +187,21 @@
       <p id="asset-filename" class="hint" style="margin-top: 0.5rem; margin-bottom: 0;"></p>
     </div>
     <div class="checkbox-row">
-      <label><input id="asset-edit-iscard" type="checkbox" checked/> Is card</label>
-      <label><input id="asset-edit-hidden" type="checkbox"/> Hidden</label>
-      <label><input id="asset-edit-configured" type="checkbox" checked/> Configured</label>
+      <label class="toggle">
+        <input id="asset-edit-iscard" type="checkbox" checked/>
+        <span class="switch"></span>
+        <span class="label-text">Is card</span>
+      </label>
+      <label class="toggle">
+        <input id="asset-edit-hidden" type="checkbox"/>
+        <span class="switch"></span>
+        <span class="label-text">Excluded</span>
+      </label>
+      <label class="toggle">
+        <input id="asset-edit-configured" type="checkbox" checked/>
+        <span class="switch"></span>
+        <span class="label-text">Configured</span>
+      </label>
     </div>
     <div class="row">
       <div>
@@ -497,7 +508,7 @@ function renderAssets() {
     div.innerHTML = `
       <div class="title" title="${asset.path}">${asset.title}</div>
       <div class="group" title="${asset.group || asset.folder}">${asset.group || asset.folder}</div>
-      ${asset.hidden ? '<div class="title" style="color:#dc2626">hidden</div>' : ''}
+      ${asset.hidden ? '<div class="title" style="color:#dc2626">excluded</div>' : ''}
     `;
     div.addEventListener('click', () => openAssetEditor(asset.path));
     grid.appendChild(div);
@@ -536,7 +547,7 @@ function populateBackOptions(path, currentBack, filterText) {
   currentBackOptions.forEach(a => {
     const option = document.createElement('option');
     option.value = a.path;
-    option.textContent = a.hidden ? `${a.path} [hidden]` : a.path;
+    option.textContent = a.hidden ? `${a.path} [excluded]` : a.path;
     backSelect.appendChild(option);
   });
   const stillAvailable = currentBack === '' || currentBackOptions.some(a => a.path === currentBack);
