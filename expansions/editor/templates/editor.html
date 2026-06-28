@@ -35,6 +35,8 @@
   .tab { padding: 0.5rem 1rem; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; }
   .tab.active { color: var(--text); border-bottom-color: var(--accent); }
   .section-row { background: #12151f; border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 0.75rem; }
+  .section-actions { display: flex; gap: 0.25rem; margin-top: 0.75rem; }
+  .section-actions button { font-size: 0.85rem; padding: 0.35rem 0.75rem; }
   .section-blocks { margin-top: 0.75rem; }
   .blocks-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 0.75rem; }
   .block-row { background: var(--bg); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; }
@@ -443,11 +445,13 @@
     <textarea id="asset-edit-description"></textarea>
     <label>FAQ (one Q&A per line: Q: ... | A: ...)</label>
     <textarea id="asset-edit-faq" placeholder="Q: Does this stack? | A: Yes."></textarea>
-    <label>Back Image</label>
-    <input id="asset-edit-back-filter" type="text" placeholder="Filter back images..."/>
-    <select id="asset-edit-back" size="6">
-      <option value="">None</option>
-    </select>
+    <div id="asset-back-row">
+      <label>Back Image</label>
+      <input id="asset-edit-back-filter" type="text" placeholder="Filter back images..."/>
+      <select id="asset-edit-back" size="6">
+        <option value="">None</option>
+      </select>
+    </div>
   </div>
 </div>
 
@@ -574,7 +578,7 @@ idInput.addEventListener('input', () => {
 loadBtn.addEventListener('click', () => tryLoadConfig(idInput.value.trim()));
 
 function renderSectionBlockHtml(block, sectionIndex, blockIndex, sectionId) {
-  const sectionAssets = assetValues().filter(a => a.section === sectionId && !a.hidden && a.isCard !== false);
+  const sectionAssets = assetValues().filter(a => a.section === sectionId && !a.hidden);
   const options = sectionAssets.map(a => `<option value="${a.path}" ${a.path === block.asset ? 'selected' : ''}>${a.title || a.path}</option>`).join('');
   if (block.type === 'markdown') {
     return `
@@ -655,7 +659,11 @@ function renderSections() {
           </select>
         </div>
       </div>
-      <button type="button" class="remove-section-btn danger" data-index="${index}">Remove</button>
+      <div class="section-actions">
+        <button type="button" class="move-section-up" data-index="${index}">↑</button>
+        <button type="button" class="move-section-down" data-index="${index}">↓</button>
+        <button type="button" class="remove-section-btn danger" data-index="${index}">Remove</button>
+      </div>
       <div class="section-blocks ${section.type === 'markdown' ? '' : 'hidden'}" data-section-index="${index}">
         <div class="blocks-list" data-section-index="${index}">${blocksHtml}</div>
         <div class="block-add-buttons">
@@ -673,6 +681,24 @@ function renderSections() {
   document.querySelectorAll('.remove-section-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       sections.splice(parseInt(this.dataset.index), 1);
+      renderSections();
+    });
+  });
+  document.querySelectorAll('.move-section-up').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const i = parseInt(this.dataset.index);
+      if (i <= 0) return;
+      updateSectionsFromForm();
+      [sections[i - 1], sections[i]] = [sections[i], sections[i - 1]];
+      renderSections();
+    });
+  });
+  document.querySelectorAll('.move-section-down').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const i = parseInt(this.dataset.index);
+      if (i >= sections.length - 1) return;
+      updateSectionsFromForm();
+      [sections[i], sections[i + 1]] = [sections[i + 1], sections[i]];
       renderSections();
     });
   });
@@ -725,7 +751,7 @@ function renderSections() {
       const filter = this.value.toLowerCase();
       const select = document.querySelector(`.block-asset[data-section-index="${si}"][data-block-index="${bi}"]`);
       if (!select) return;
-      const sectionAssets = assetValues().filter(a => a.section === sectionId && !a.hidden && a.isCard !== false);
+      const sectionAssets = assetValues().filter(a => a.section === sectionId && !a.hidden);
       select.innerHTML = '<option value="">None</option>' + sectionAssets.filter(a => {
         const text = `${a.title || ''} ${a.path}`.toLowerCase();
         return !filter || text.includes(filter);
@@ -928,6 +954,10 @@ function updateUnitSectionVisibility() {
   const type = document.getElementById('asset-edit-type').value;
   document.getElementById('unit-section').classList.toggle('hidden', !isUnitType(type));
 }
+function updateBackRowVisibility() {
+  const isCard = document.getElementById('asset-edit-iscard').checked;
+  document.getElementById('asset-back-row').classList.toggle('hidden', !isCard);
+}
 function applyUnitDefaultsIfNeeded(asset) {
   const category = unitCategory(asset.type);
   if (!category) return;
@@ -1067,6 +1097,7 @@ function openAssetEditor(path) {
   setUnitStatsInput(asset.stats);
   setUnitAbilitiesInput(asset.abilities);
   updateUnitSectionVisibility();
+  updateBackRowVisibility();
 
   const sectionSelect = document.getElementById('asset-edit-section');
   sectionSelect.innerHTML = sections.map(s => `<option value="${s.id}" ${s.id === asset.section ? 'selected' : ''}>${s.title}</option>`).join('');
@@ -1110,6 +1141,10 @@ function saveAssetEditor() {
   } else {
     delete asset.stats;
     delete asset.abilities;
+  }
+
+  if (!asset.isCard) {
+    asset.back = '';
   }
 
   assets[path] = asset;
@@ -1277,6 +1312,7 @@ document.getElementById('add-section-btn').addEventListener('click', () => {
 document.getElementById('inspect-btn').addEventListener('click', inspectFolder);
 document.getElementById('asset-edit-save-top').addEventListener('click', saveAssetEditor);
 document.getElementById('asset-edit-type').addEventListener('change', updateUnitInputs);
+document.getElementById('asset-edit-iscard').addEventListener('change', updateBackRowVisibility);
 document.getElementById('asset-edit-back-filter').addEventListener('input', e => {
   const path = document.getElementById('asset-edit-path').value;
   const currentBack = document.getElementById('asset-edit-back').value;

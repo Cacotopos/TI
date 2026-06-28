@@ -144,6 +144,7 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
         print(f"Warning: source image path not found: {images_src}")
         return
 
+    assets = config.get("assets", {})
     mask_path = ROOT / "Icons" / "Card Mask.png"
     crop = mask_path.exists()
 
@@ -154,7 +155,9 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
             rel = p.relative_to(images_src)
             dest = images_dest / rel
             dest.parent.mkdir(parents=True, exist_ok=True)
-            if crop:
+            rel_path = str(rel).replace("\\", "/")
+            asset = assets.get(rel_path, {})
+            if crop and asset.get("isCard", True):
                 data = _crop_card_image(p, mask_path)
                 dest.write_bytes(data)
             else:
