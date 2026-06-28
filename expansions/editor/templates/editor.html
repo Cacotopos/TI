@@ -59,9 +59,15 @@
     <label for="s3-path">S3 Deploy Path</label>
     <input id="s3-path" type="text" value="monuments" placeholder="monuments"/>
 
-    <button id="save-btn" type="button">Save Config</button>
-    <button id="generate-btn" type="button">Generate Site</button>
-    <button id="deploy-btn" type="button">Deploy to S3</button>
+    <h2 class="text-lg font-semibold mt-6 mb-3">Sections</h2>
+    <div id="sections-container" class="space-y-3"></div>
+    <button id="add-section-btn" type="button" class="mt-3">Add Section</button>
+
+    <div class="mt-6">
+      <button id="save-btn" type="button">Save Config</button>
+      <button id="generate-btn" type="button">Generate Site</button>
+      <button id="deploy-btn" type="button">Deploy to S3</button>
+    </div>
     <div class="status" id="status"></div>
   </div>
 </div>
@@ -70,12 +76,68 @@
 const idInput = document.getElementById('expansion-id');
 const statusEl = document.getElementById('status');
 
+let sections = [];
+
+function renderSections() {
+  const container = document.getElementById('sections-container');
+  container.innerHTML = '';
+  sections.forEach((section, index) => {
+    const div = document.createElement('div');
+    div.className = 'card';
+    div.innerHTML = `
+      <div class="row">
+        <div>
+          <label>ID</label>
+          <input type="text" class="section-id" data-index="${index}" value="${section.id}" placeholder="overview"/>
+        </div>
+        <div>
+          <label>Title</label>
+          <input type="text" class="section-title" data-index="${index}" value="${section.title}" placeholder="Overview"/>
+        </div>
+        <div>
+          <label>Type</label>
+          <select class="section-type" data-index="${index}">
+            <option value="markdown" ${section.type === 'markdown' ? 'selected' : ''}>Markdown</option>
+            <option value="cards" ${section.type === 'cards' ? 'selected' : ''}>Cards</option>
+            <option value="list" ${section.type === 'list' ? 'selected' : ''}>List</option>
+          </select>
+        </div>
+      </div>
+      <button type="button" class="remove-section-btn" data-index="${index}">Remove</button>
+    `;
+    container.appendChild(div);
+  });
+
+  document.querySelectorAll('.section-id, .section-title, .section-type').forEach(input => {
+    input.addEventListener('input', updateSectionsFromForm);
+  });
+  document.querySelectorAll('.remove-section-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      sections.splice(parseInt(this.dataset.index), 1);
+      renderSections();
+    });
+  });
+}
+
+function updateSectionsFromForm() {
+  const ids = Array.from(document.querySelectorAll('.section-id')).map(el => el.value.trim());
+  const titles = Array.from(document.querySelectorAll('.section-title')).map(el => el.value.trim());
+  const types = Array.from(document.querySelectorAll('.section-type')).map(el => el.value);
+  sections = ids.map((id, i) => ({
+    id: id || `section-${i}`,
+    title: titles[i] || id || `Section ${i + 1}`,
+    type: types[i] || 'markdown'
+  }));
+}
+
 async function load() {
   const id = idInput.value.trim();
   const res = await fetch(`/api/config/${id}`);
   const data = await res.json();
   if (Object.keys(data).length === 0) {
     statusEl.textContent = 'No existing config found. Starting fresh.';
+    sections = [];
+    renderSections();
     return;
   }
   document.getElementById('name').value = data.name || '';
@@ -84,6 +146,8 @@ async function load() {
   document.getElementById('overview').value = data.overview || '';
   document.getElementById('image-folder').value = (data.source && data.source.images) || '';
   document.getElementById('s3-path').value = data.s3_path || data.id || '';
+  sections = data.sections || [];
+  renderSections();
   statusEl.textContent = 'Config loaded.';
 }
 
@@ -103,11 +167,9 @@ async function save() {
     imageFolder = imageFolder.slice(1);
   }
 
-  // Load existing config so we preserve sections and other fields not in the form.
-  const existing = await fetch(`/api/config/${id}`).then(r => r.json());
+  updateSectionsFromForm();
 
   const body = {
-    ...existing,
     id,
     name,
     version,
@@ -115,6 +177,7 @@ async function save() {
     overview: document.getElementById('overview').value,
     source: { images: imageFolder },
     s3_path: document.getElementById('s3-path').value,
+    sections,
   };
   const res = await fetch(`/api/config/${id}`, {
     method: 'POST',
@@ -159,7 +222,14 @@ document.getElementById('load-btn').addEventListener('click', load);
 document.getElementById('save-btn').addEventListener('click', save);
 document.getElementById('generate-btn').addEventListener('click', generate);
 document.getElementById('deploy-btn').addEventListener('click', deploy);
+document.getElementById('add-section-btn').addEventListener('click', () => {
+  updateSectionsFromForm();
+  sections.push({ id: '', title: '', type: 'markdown' });
+  renderSections();
+});
+
 loadSettings();
+load();
 </script>
 </body>
 </html>
