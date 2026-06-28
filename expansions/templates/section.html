@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} | {{ config.name }} v{{ config.version }}{% endblock %}
+
+{% block body %}
+<header class="bg-panel border-b border-border p-6">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold">{{ section.title }}</h1>
+    <p class="text-muted mt-2"><a href="index.html" class="text-accent hover:underline">{{ config.name }}</a> &rarr; {{ section.title }}</p>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto p-6">
+  <section class="bg-panel border border-border rounded-xl p-6 shadow-lg">
+    <p class="text-muted">This {{ section.type }} section is ready for content.</p>
+  </section>
+</main>
+{% endblock %}

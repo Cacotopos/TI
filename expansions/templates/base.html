@@ -23,6 +23,17 @@
 <link rel="stylesheet" href="assets/css/styles.css"/>
 </head>
 <body class="bg-bg text-gray-100 min-h-screen">
+<nav class="bg-panel border-b border-border sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 py-3 flex items-center gap-4">
+    <a href="index.html" class="font-bold text-lg hover:text-accent">{{ config.name }}</a>
+    <div class="flex-1 flex gap-2 overflow-x-auto">
+      {% for sec in site.sections %}
+      <a href="{{ sec.id }}.html" class="px-3 py-1 rounded-lg hover:bg-bg text-sm text-muted hover:text-gray-100 transition-colors">{{ sec.title }}</a>
+      {% endfor %}
+    </div>
+    <a href="search.html" class="px-3 py-1 rounded-lg bg-accent text-white text-sm font-semibold hover:bg-blue-600">Search</a>
+  </div>
+</nav>
 {% block body %}{% endblock %}
 <script src="assets/js/search.js"></script>
 <script src="assets/js/filters.js"></script>

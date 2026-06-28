@@ -2,11 +2,15 @@
 """Build a static expansion site from a config.json file."""
 
 import argparse
+import hashlib
+import io
 import json
 import shutil
 from pathlib import Path
 
 import jinja2
+import numpy as np
+from PIL import Image
 
 from expansions.generator.config import load_config
 
@@ -23,6 +27,80 @@ def _copy_assets(output_dir: Path) -> None:
             shutil.copytree(src, assets_dir / sub, dirs_exist_ok=True)
 
 
+_MASK_CROP_BOX: tuple[float, float, float, float] | None = None
+
+
+def _load_mask_crop_box(mask_path: Path) -> tuple[float, float, float, float]:
+    """Load the card mask and return the relative bounding box (left, top, right, bottom)."""
+    mask_img = Image.open(mask_path).convert("RGBA")
+    r, g, b, a = mask_img.split()
+    alpha = np.array(a)
+    if alpha.max() > 0:
+        card_pixels = alpha < 128
+    else:
+        gray = np.array(mask_img.convert("L"))
+        card_pixels = gray < 128
+    rows = card_pixels.any(axis=1)
+    cols = card_pixels.any(axis=0)
+    if not rows.any() or not cols.any():
+        return (0.0, 0.0, 1.0, 1.0)
+    top = np.argmax(rows)
+    bottom = len(rows) - np.argmax(rows[::-1])
+    left = np.argmax(cols)
+    right = len(cols) - np.argmax(cols[::-1])
+    h, w = card_pixels.shape
+    return (left / w, top / h, right / w, bottom / h)
+
+
+def _crop_card_image(path: Path, mask_path: Path) -> bytes:
+    """Crop a source image to the card mask bounding box and return JPEG bytes."""
+    global _MASK_CROP_BOX
+    if _MASK_CROP_BOX is None:
+        _MASK_CROP_BOX = _load_mask_crop_box(mask_path)
+
+    with Image.open(path) as img:
+        img = img.convert("RGB")
+        left, top, right, bottom = _MASK_CROP_BOX
+        w, h = img.size
+        crop = (int(left * w), int(top * h), int(right * w), int(bottom * h))
+        img = img.crop(crop)
+        buffer = io.BytesIO()
+        img.save(buffer, format="JPEG", quality=92)
+        return buffer.getvalue()
+
+
+def _collect_assets(config: dict) -> list[dict]:
+    """Return visible, card assets as a list of image descriptors for the site."""
+    assets = config.get("assets", {})
+    images_path = config.get("source", {}).get("images", "")
+    if not images_path:
+        return []
+    images_src = ROOT / images_path
+    if not images_src.exists():
+        return []
+
+    images = []
+    for path, asset in sorted(assets.items()):
+        if asset.get("hidden"):
+            continue
+        if not asset.get("isCard", True):
+            continue
+        rel = Path(path)
+        images.append({
+            "id": asset.get("id", rel.stem),
+            "path": str(Path("assets/images") / rel).replace("\\", "/"),
+            "folder": str(rel.parent) if rel.parent != Path(".") else "",
+            "name": asset.get("title") or rel.stem,
+            "section": asset.get("section", "cards"),
+            "group": asset.get("group") or (str(rel.parent) if rel.parent != Path(".") else ""),
+            "back": asset.get("back", ""),
+            "description": asset.get("description", ""),
+            "faq": asset.get("faq", []),
+            "configured": asset.get("configured", False),
+        })
+    return images
+
+
 def _copy_source_images(config: dict, output_dir: Path) -> None:
     images_path = config.get("source", {}).get("images", "")
     if not images_path:
@@ -31,14 +109,22 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
     if not images_src.exists():
         print(f"Warning: source image path not found: {images_src}")
         return
+
+    mask_path = ROOT / "Icons" / "Card Mask.png"
+    crop = mask_path.exists()
+
     images_dest = output_dir / "assets" / "images"
     images_dest.mkdir(parents=True, exist_ok=True)
     for p in images_src.rglob("*"):
-        if p.is_file():
+        if p.is_file() and p.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp"}:
             rel = p.relative_to(images_src)
             dest = images_dest / rel
             dest.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(p, dest)
+            if crop:
+                data = _crop_card_image(p, mask_path)
+                dest.write_bytes(data)
+            else:
+                shutil.copy2(p, dest)
 
 
 def build_site(config_path: Path, output_dir: Path) -> None:
@@ -49,13 +135,38 @@ def build_site(config_path: Path, output_dir: Path) -> None:
     _copy_assets(output_dir)
     _copy_source_images(config, output_dir)
 
+    images = _collect_assets(config)
+    site = {
+        **config,
+        "images": images,
+        "sections": config.get("sections", []),
+    }
+
     env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_DIR))
-    template = env.get_template("index.html")
-    html = template.render(config=config)
-    (output_dir / "index.html").write_text(html, encoding="utf-8")
+
+    # Index page
+    index = env.get_template("index.html")
+    (output_dir / "index.html").write_text(
+        index.render(config=config, site=site), encoding="utf-8"
+    )
+
+    # Section pages
+    for section in site["sections"]:
+        template_name = f"section_{section['type']}.html"
+        if not (TEMPLATE_DIR / template_name).exists():
+            template_name = "section.html"
+        template = env.get_template(template_name)
+        page = output_dir / f"{section['id']}.html"
+        page.write_text(template.render(config=config, site=site, section=section), encoding="utf-8")
+
+    # Search page
+    search = env.get_template("search.html")
+    (output_dir / "search.html").write_text(
+        search.render(config=config, site=site), encoding="utf-8"
+    )
 
     # Write data.json for JS search
-    (output_dir / "data.json").write_text(json.dumps(config, indent=2), encoding="utf-8")
+    (output_dir / "data.json").write_text(json.dumps(site, indent=2), encoding="utf-8")
 
 
 def main():

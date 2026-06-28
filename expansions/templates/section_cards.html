@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} | {{ config.name }} v{{ config.version }}{% endblock %}
+
+{% block body %}
+{% set section_images = site.images | selectattr('section', 'equalto', section.id) | list %}
+<header class="bg-panel border-b border-border p-6">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold">{{ section.title }}</h1>
+    <p class="text-muted mt-2"><a href="index.html" class="text-accent hover:underline">{{ config.name }}</a> &rarr; {{ section_images | length }} cards</p>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto p-6 space-y-8">
+  {% if section_images %}
+    {% for group in section_images | map(attribute='group') | unique | sort %}
+    <section>
+      <h2 class="text-xl font-semibold mb-3 text-muted">{{ group or 'General' }}</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 cards-grid">
+        {% for img in section_images if img.group == group %}
+        <div class="card-item bg-panel border border-border rounded-xl p-3 shadow-lg hover:border-accent transition-colors cursor-pointer"
+             data-card-id="{{ img.id }}"
+             data-card-name="{{ img.name }}"
+             data-card-description="{{ img.description }}"
+             data-card-faq="{{ img.faq | tojson | forceescape }}"
+             data-card-back="{{ img.back }}"
+             data-card-front-path="{{ img.path }}">
+          <img src="{{ img.path }}" alt="{{ img.name }}" class="w-full rounded-lg"/>
+          <p class="text-sm text-center mt-2 font-medium truncate" title="{{ img.name }}">{{ img.name }}</p>
+          {% if img.folder %}
+          <p class="text-xs text-center text-muted truncate">{{ img.folder }}</p>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+  {% else %}
+  <section class="bg-panel border border-border rounded-xl p-6 shadow-lg">
+    <p class="text-muted">No cards assigned to this section. Use the editor to assign assets.</p>
+  </section>
+  {% endif %}
+</main>
+
+<div id="card-modal" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-4">
+  <div class="bg-panel border border-border rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6">
+    <div class="flex justify-between items-start mb-4">
+      <h2 id="card-modal-title" class="text-2xl font-bold"></h2>
+      <button id="card-modal-close" class="text-muted hover:text-white text-2xl">&times;</button>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+      <img id="card-modal-front" src="" alt="" class="w-full rounded-lg"/>
+      <img id="card-modal-back" src="" alt="" class="w-full rounded-lg hidden"/>
+    </div>
+    <p id="card-modal-description" class="text-gray-100 mb-4"></p>
+    <div id="card-modal-faq" class="space-y-3"></div>
+  </div>
+</div>
+
+<script src="assets/js/cards.js"></script>
+{% endblock %}
