@@ -7,6 +7,7 @@
   const abilitiesContainer = document.getElementById('card-modal-abilities');
   const prereqContainer = document.getElementById('card-modal-prereq');
   const sourceContainer = document.getElementById('card-modal-source');
+  const actionsContainer = document.getElementById('card-modal-actions');
   const frontImg = document.getElementById('card-modal-front');
   const backImg = document.getElementById('card-modal-back');
   const description = document.getElementById('card-modal-description');
@@ -86,6 +87,47 @@
     return parts.join('');
   }
 
+  function findCardItemByPath(path) {
+    return document.querySelector(`.card-item[data-card-front-path="${CSS.escape(path)}"]`);
+  }
+  function cardDataFromElement(item) {
+    return {
+      id: item.dataset.cardId,
+      name: item.dataset.cardName,
+      type: item.dataset.cardType,
+      faction: item.dataset.cardFaction,
+      section: item.dataset.cardSection,
+      group: item.dataset.cardGroup,
+      description: item.dataset.cardDescription,
+      faq: item.dataset.cardFaq,
+      stats: item.dataset.cardStats,
+      abilities: item.dataset.cardAbilities,
+      prereq: item.dataset.cardPrereq,
+      color: item.dataset.cardColor,
+      source: item.dataset.cardSource,
+      back: item.dataset.cardBack,
+      frontPath: item.dataset.cardFrontPath,
+    };
+  }
+  function renderCardActions(card) {
+    actionsContainer.innerHTML = '';
+    const buttons = [];
+    const source = card.source || {};
+    if (source.enabled && source.linkedAbility) {
+      const linked = findCardItemByPath(source.linkedAbility);
+      if (linked) {
+        const name = linked.dataset.cardName || source.linkedAbility;
+        buttons.push(`<button type="button" class="linked-ability-btn px-3 py-1 rounded-md bg-accent text-white text-sm font-medium hover:opacity-90" data-path="${escapeHtml(source.linkedAbility)}">View linked ability: ${escapeHtml(name)}</button>`);
+      }
+    }
+    const parent = findCardItemByPath(card.parentPath || '');
+    if (parent) {
+      const name = parent.dataset.cardName || card.parentPath;
+      buttons.push(`<button type="button" class="parent-card-btn px-3 py-1 rounded-md bg-gray-700 text-gray-100 text-sm font-medium hover:bg-gray-600" data-path="${escapeHtml(card.parentPath)}">Back to parent: ${escapeHtml(name)}</button>`);
+    }
+    actionsContainer.innerHTML = buttons.join('');
+    actionsContainer.classList.toggle('hidden', !buttons.length);
+  }
   function renderMarkdown(text) {
     if (!text) return '';
     let html = escapeHtml(text)
@@ -144,6 +186,7 @@
     const sourceHtml = formatSource(card.source, card.type);
     sourceContainer.innerHTML = sourceHtml;
     sourceContainer.classList.toggle('hidden', !sourceHtml);
+    renderCardActions(card);
 
     if (card.description) {
       description.innerHTML = renderMarkdown(card.description);
@@ -184,6 +227,16 @@
     modal.classList.add('flex');
   }
 
+  const parentByPath = {};
+  document.querySelectorAll('.card-item').forEach(item => {
+    try {
+      const source = JSON.parse(item.dataset.cardSource || '{}');
+      if (source.enabled && source.linkedAbility) {
+        parentByPath[source.linkedAbility] = item.dataset.cardFrontPath;
+      }
+    } catch (e) {}
+  });
+
   document.querySelectorAll('.card-item').forEach(item => {
     item.addEventListener('click', () => {
       open({
@@ -202,6 +255,7 @@
         source: item.dataset.cardSource,
         back: item.dataset.cardBack,
         frontPath: item.dataset.cardFrontPath,
+        parentPath: parentByPath[item.dataset.cardFrontPath] || '',
       });
     });
   });
@@ -210,6 +264,17 @@
   modal.addEventListener('click', e => {
     if (e.target === modal) close();
   });
+  actionsContainer.addEventListener('click', e => {
+    const btn = e.target.closest('.linked-ability-btn, .parent-card-btn');
+    if (!btn) return;
+    const targetPath = btn.dataset.path;
+    const target = findCardItemByPath(targetPath);
+    if (!target) return;
+    const targetCard = cardDataFromElement(target);
+    targetCard.parentPath = parentByPath[targetPath] || '';
+    open(targetCard);
+  });
+
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && !modal.classList.contains('hidden')) close();
   });

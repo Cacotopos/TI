@@ -174,6 +174,28 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
     mask_path = ROOT / "Icons" / "Card Mask.png"
     crop = mask_path.exists()
 
+    # Map card back images to their front asset orientation.
+    back_to_front = {}
+    front_portrait = set()
+    for path, asset in assets.items():
+        if asset.get("hidden") or not asset.get("isCard", True):
+            continue
+        section_id = asset.get("section", "cards")
+        if section_types.get(section_id, "cards") != "cards":
+            continue
+        back = asset.get("back", "")
+        if back:
+            back_to_front[back] = path
+        src_path = images_src / path
+        if src_path.exists():
+            try:
+                with Image.open(src_path) as img:
+                    w, h = img.size
+                    if h > w:
+                        front_portrait.add(path)
+            except Exception:
+                pass
+
     images_dest = output_dir / "assets" / "images"
     images_dest.mkdir(parents=True, exist_ok=True)
     for p in images_src.rglob("*"):
@@ -189,6 +211,15 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
             if crop and is_card:
                 data = _crop_card_image(p, mask_path)
                 dest.write_bytes(data)
+            elif rel_path in back_to_front and back_to_front[rel_path] in front_portrait:
+                with Image.open(p) as img:
+                    img = img.convert("RGB")
+                    w, h = img.size
+                    if h <= w:
+                        img = img.rotate(90, expand=True)
+                    buffer = io.BytesIO()
+                    img.save(buffer, format="JPEG", quality=92)
+                    dest.write_bytes(buffer.getvalue())
             else:
                 shutil.copy2(p, dest)
 

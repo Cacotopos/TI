@@ -190,7 +190,7 @@ You may spend 3 trade goods to move 1 of your ships from the active system to an
         <div class="card-item bg-panel border border-border rounded-xl p-3 shadow-lg hover:border-accent transition-colors cursor-pointer"
              data-card-id="Drahn Monument"
              data-card-name="Koldan's Outpost"
-             data-card-type="Unit"
+             data-card-type="Unit - Structure - Monument"
              data-card-faction="Drahn"
              data-card-section="Drahn Cards"
              data-card-group="Drahn"
@@ -204,11 +204,11 @@ Can only be placed on Industrial and Cultural planets.
 **Flavor Text**
 *It is more a reminder of Drahn influence than a true monument.*"
              data-card-faq="[]"
-             data-card-stats="{}"
-             data-card-abilities="{}"
-             data-card-prereq="{}"
+             data-card-stats="{&#34;capacity&#34;: {&#34;enabled&#34;: false, &#34;value&#34;: null}, &#34;combat&#34;: {&#34;enabled&#34;: false, &#34;value&#34;: null}, &#34;cost&#34;: {&#34;enabled&#34;: false, &#34;value&#34;: null}, &#34;move&#34;: {&#34;enabled&#34;: false, &#34;value&#34;: null}}"
+             data-card-abilities="{&#34;antiFighterBarrage&#34;: null, &#34;bombardment&#34;: null, &#34;deploy&#34;: false, &#34;planetaryShield&#34;: false, &#34;production&#34;: null, &#34;spaceCannon&#34;: {&#34;multi&#34;: 2, &#34;value&#34;: 8}, &#34;sustainDamage&#34;: false}"
+             data-card-prereq="{&#34;enabled&#34;: false, &#34;value&#34;: &#34;&#34;}"
              data-card-color=""
-             data-card-source="{}"
+             data-card-source="{&#34;enabled&#34;: false, &#34;influence&#34;: 0, &#34;legendary&#34;: false, &#34;linkedAbility&#34;: &#34;&#34;, &#34;relic&#34;: false, &#34;resource&#34;: 0, &#34;techSpeciality&#34;: &#34;&#34;, &#34;trait&#34;: &#34;&#34;}"
              data-card-back=""
              data-card-front-path="assets/images/Drahn/Drahn Monument.jpg"
              data-card-orientation="landscape">
@@ -364,6 +364,7 @@ You may exhaust this card and spend 1 token from your strategy pool to force you
     <div id="card-modal-abilities" class="flex flex-wrap gap-2 mb-4 hidden"></div>
     <div id="card-modal-prereq" class="flex flex-wrap gap-2 mb-4 hidden"></div>
     <div id="card-modal-source" class="flex flex-wrap gap-2 mb-4 hidden"></div>
+    <div id="card-modal-actions" class="flex flex-wrap gap-2 mb-4 hidden"></div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
       <img id="card-modal-front" src="" alt="" class="rounded-lg mx-auto" style="max-height: 420px; width: auto; object-fit: contain;"/>
       <img id="card-modal-back" src="" alt="" class="rounded-lg mx-auto hidden" style="max-height: 420px; width: auto; object-fit: contain;"/>
