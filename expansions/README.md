@@ -70,7 +70,7 @@ The editor stores every detected image as an entry in `config.json`:
 
 - `configured` — Set to true once you have reviewed the asset.
 - `hidden` — Excluded from the generated site.
-- `type` — One of: Action Card, Agent, Agenda, Alliance, Breakthrough, Commander, Faction Sheet, Hero, Legendary Ability, Other Component, Planet, Planet Ability, Promissory Note, Public Objective, Relic, Relic Fragment, Rulebook, Scenario, Secret Objective, Station, Technology, Tile, Token, Unit.
+- `type` — One of: Action Card, Agent, Agenda, Alliance, Breakthrough, Commander, Faction Sheet, Hero, Legendary Ability, Other Component, Planet, Planet Ability, Promissory Note, Public Objective, Relic, Relic Fragment, Rulebook, Scenario, Secret Objective, Station, Technology, Tile, Token, Unit - War sun, Unit - Dreadnought, Unit - Flagship, Unit - Special, Unit - Fighter, Unit - Mech, Unit - Carrier, Unit - Cruiser, Unit - Destroyer, Unit - Monument, Unit - Basic Structure, Unit - Advanced Structure, Unit - Infantry.
 - `faction` — Optional faction name. The dropdown is populated from distinct faction values across the expansion, but you can type any value.
 - `section` — Which generated page the card appears on.
 - `group` — Used to render cards in named groups on the page.
