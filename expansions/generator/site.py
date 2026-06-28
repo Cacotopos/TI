@@ -11,7 +11,8 @@ import jinja2
 from expansions.generator.config import load_config
 
 
-TEMPLATE_DIR = Path(__file__).parent.parent / "templates"
+ROOT = Path(__file__).parent.parent.parent
+TEMPLATE_DIR = ROOT / "expansions" / "templates"
 
 
 def _copy_assets(output_dir: Path) -> None:
@@ -22,9 +23,13 @@ def _copy_assets(output_dir: Path) -> None:
             shutil.copytree(src, assets_dir / sub, dirs_exist_ok=True)
 
 
-def _copy_source_images(config: dict, config_dir: Path, output_dir: Path) -> None:
-    images_src = config_dir / config.get("source", {}).get("images", "")
+def _copy_source_images(config: dict, output_dir: Path) -> None:
+    images_path = config.get("source", {}).get("images", "")
+    if not images_path:
+        return
+    images_src = ROOT / images_path
     if not images_src.exists():
+        print(f"Warning: source image path not found: {images_src}")
         return
     images_dest = output_dir / "assets" / "images"
     images_dest.mkdir(parents=True, exist_ok=True)
@@ -39,11 +44,10 @@ def _copy_source_images(config: dict, config_dir: Path, output_dir: Path) -> Non
 def build_site(config_path: Path, output_dir: Path) -> None:
     """Generate a standalone static site at output_dir."""
     config = load_config(config_path)
-    config_dir = config_path.parent
     output_dir.mkdir(parents=True, exist_ok=True)
 
     _copy_assets(output_dir)
-    _copy_source_images(config, config_dir, output_dir)
+    _copy_source_images(config, output_dir)
 
     env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_DIR))
     template = env.get_template("index.html")
@@ -52,8 +56,6 @@ def build_site(config_path: Path, output_dir: Path) -> None:
 
     # Write data.json for JS search
     (output_dir / "data.json").write_text(json.dumps(config, indent=2), encoding="utf-8")
-
-    print(f"Site generated: {output_dir}")
 
 
 def main():

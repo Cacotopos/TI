@@ -89,13 +89,27 @@ async function load() {
 
 async function save() {
   const id = idInput.value.trim();
+  let name = document.getElementById('name').value.trim();
+  let version = document.getElementById('version').value.trim();
+  let imageFolder = document.getElementById('image-folder').value.trim();
+
+  if (!id) {
+    statusEl.textContent = 'Expansion ID is required.';
+    return;
+  }
+  if (!name) name = id;
+  if (!version) version = '1.0';
+  if (imageFolder.startsWith('/')) {
+    imageFolder = imageFolder.slice(1);
+  }
+
   const body = {
     id,
-    name: document.getElementById('name').value,
-    version: document.getElementById('version').value,
+    name,
+    version,
     description: document.getElementById('description').value,
     overview: document.getElementById('overview').value,
-    source: { images: document.getElementById('image-folder').value },
+    source: { images: imageFolder },
     s3_path: document.getElementById('s3-path').value,
   };
   const res = await fetch(`/api/config/${id}`, {
@@ -112,9 +126,13 @@ async function generate() {
   statusEl.textContent = 'Generating...';
   const res = await fetch(`/api/generate/${id}`, { method: 'POST' });
   const data = await res.json();
-  statusEl.textContent = data.ok
-    ? `Generated: ${data.output_dir}\n${data.stdout}`
-    : `Generate failed:\n${data.stderr}`;
+  if (data.ok) {
+    const fileUrl = `file://${data.output_dir}/index.html`;
+    window.open(fileUrl, '_blank');
+    statusEl.textContent = `Generated: ${data.output_dir}\n${data.stdout}\nOpened in new tab.`;
+  } else {
+    statusEl.textContent = `Generate failed:\n${data.stderr}`;
+  }
 }
 
 async function deploy() {
