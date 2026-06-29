@@ -308,17 +308,7 @@
     </div>
     <input id="asset-edit-path" type="hidden"/>
     <div class="asset-badges" id="asset-badges"></div>
-    <div id="asset-preview-container" class="mb-4 flex justify-center">
-      <img id="asset-preview" src="" alt="" style="max-width: 100%; max-height: 300px; width: auto; height: auto; object-fit: contain; border: 1px solid var(--border);"/>
-    </div>
-    <p id="asset-filename" class="hint" style="margin-top: 0.5rem; margin-bottom: 0;"></p>
-    <div id="asset-description-preview" class="asset-description-preview"></div>
-    <details id="asset-faq-preview" class="asset-faq-preview">
-      <summary>FAQ</summary>
-      <div id="asset-faq-preview-content"></div>
-    </details>
-    <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1rem; color: var(--text);">Edit</h3>
-    <div class="checkbox-row">
+    <div class="checkbox-row" style="margin-bottom: 0.75rem;">
       <label class="toggle">
         <input id="asset-edit-iscard" type="checkbox" checked/>
         <span class="switch"></span>
@@ -334,6 +324,22 @@
         <span class="switch"></span>
         <span class="label-text">Configured</span>
       </label>
+    </div>
+    <div id="asset-preview-container" class="mb-4 flex justify-center">
+      <img id="asset-preview" src="" alt="" style="max-width: 100%; max-height: 300px; width: auto; height: auto; object-fit: contain; border: 1px solid var(--border);"/>
+    </div>
+    <p id="asset-filename" class="hint" style="margin-top: 0.5rem; margin-bottom: 0;"></p>
+    <div id="asset-description-preview" class="asset-description-preview"></div>
+    <details id="asset-faq-preview" class="asset-faq-preview">
+      <summary>FAQ</summary>
+      <div id="asset-faq-preview-content"></div>
+    </details>
+    <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1rem; color: var(--text);">Edit</h3>
+    <div class="checkbox-row">
+      <div class="page-inline">
+        <label for="asset-edit-section">Page</label>
+        <select id="asset-edit-section"></select>
+      </div>
       <div class="orientation-inline">
         <label for="asset-edit-orientation">Orientation</label>
         <select id="asset-edit-orientation">
@@ -341,10 +347,6 @@
           <option value="landscape">Landscape</option>
           <option value="portrait">Portrait</option>
         </select>
-      </div>
-      <div class="page-inline">
-        <label for="asset-edit-section">Page</label>
-        <select id="asset-edit-section"></select>
       </div>
     </div>
     <div class="row">
