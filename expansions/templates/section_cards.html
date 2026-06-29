@@ -11,6 +11,7 @@
   .card-image { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 0.75rem; }
   #card-modal-images { display: grid; gap: 1rem; grid-template-columns: 1fr; }
   #card-modal-images.has-back { grid-template-columns: repeat(2, 1fr); }
+  #card-modal-images .hidden { display: none !important; }
 </style>
 {% set section_images = site.images | selectattr('section', 'equalto', section.id) | list %}
 <header class="bg-panel border-b border-border p-6">
@@ -40,6 +41,7 @@
              data-card-abilities="{{ img.abilities | tojson | forceescape }}"
              data-card-prereq="{{ img.prereq | tojson | forceescape }}"
              data-card-color="{{ img.color }}"
+             data-card-synergy="{{ img.synergy | tojson | forceescape }}"
              data-card-source="{{ img.source | tojson | forceescape }}"
              data-card-back="{{ img.back }}"
              data-card-front-path="{{ img.path }}"
@@ -75,6 +77,7 @@
     <div id="card-modal-stats" class="flex flex-nowrap gap-2 mb-4 hidden overflow-x-auto"></div>
     <div id="card-modal-abilities" class="flex flex-wrap gap-2 mb-4 hidden"></div>
     <div id="card-modal-prereq" class="flex flex-wrap gap-2 mb-4 hidden"></div>
+    <div id="card-modal-synergy" class="flex flex-wrap gap-2 mb-4 hidden"></div>
     <div id="card-modal-source" class="flex flex-wrap gap-2 mb-4 hidden"></div>
     <div id="card-modal-actions" class="flex flex-wrap gap-2 mb-4 hidden"></div>
     <div id="card-modal-images" class="mb-4 items-start">

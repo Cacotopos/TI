@@ -156,6 +156,7 @@ def _collect_assets(config: dict) -> list[dict]:
             "abilities": asset.get("abilities", {}),
             "prereq": asset.get("prereq", {}),
             "color": asset.get("color", ""),
+            "synergy": asset.get("synergy", {}),
             "source": asset.get("source", {}),
             "orientation": orientation,
             "flavour": asset.get("flavour", ""),
@@ -211,10 +212,11 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
             section_id = asset.get("section", "cards")
             section_type = section_types.get(section_id, "cards")
             is_card = asset.get("isCard", True) and section_type == "cards"
-            if crop and is_card:
+            is_back = rel_path in back_to_front
+            if crop and (is_card or is_back):
                 data = _crop_card_image(p, mask_path)
                 dest.write_bytes(data)
-            elif rel_path in back_to_front and back_to_front[rel_path] in front_portrait:
+            elif is_back and back_to_front[rel_path] in front_portrait:
                 with Image.open(p) as img:
                     img = img.convert("RGB")
                     w, h = img.size

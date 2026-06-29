@@ -68,6 +68,15 @@
     }
     return parts.join('');
   }
+  function formatSynergy(synergy) {
+    if (!synergy || !synergy.enabled || !synergy.value) return '';
+    const colorMap = { G: ['bg-green-600', 'Green'], Y: ['bg-yellow-500 text-black', 'Yellow'], R: ['bg-red-600', 'Red'], B: ['bg-blue-600', 'Blue'] };
+    const parts = synergy.value.split('').map(c => {
+      const [cls, name] = colorMap[c] || ['bg-gray-700', c];
+      return `<span class="px-2 py-1 rounded-md ${cls} text-xs font-semibold whitespace-nowrap">${name}</span>`;
+    });
+    return parts.length ? `<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs">Synergy</span> ${parts.join('')}` : '';
+  }
   function formatSource(source, type) {
     if (!source || !source.enabled) return '';
     const parts = [];
@@ -114,6 +123,7 @@
       abilities: item.dataset.cardAbilities,
       prereq: item.dataset.cardPrereq,
       color: item.dataset.cardColor,
+      synergy: item.dataset.cardSynergy,
       source: item.dataset.cardSource,
       back: item.dataset.cardBack,
       frontPath: item.dataset.cardFrontPath,
@@ -182,6 +192,7 @@
     try { card.stats = JSON.parse(card.stats || '{}'); } catch (e) { card.stats = {}; }
     try { card.abilities = JSON.parse(card.abilities || '{}'); } catch (e) { card.abilities = {}; }
     try { card.prereq = JSON.parse(card.prereq || '{}'); } catch (e) { card.prereq = {}; }
+    try { card.synergy = JSON.parse(card.synergy || '{}'); } catch (e) { card.synergy = {}; }
     try { card.source = JSON.parse(card.source || '{}'); } catch (e) { card.source = {}; }
 
     const badgeList = [
@@ -201,6 +212,13 @@
     const prereqHtml = formatPrereq(card.prereq, card.color);
     prereqContainer.innerHTML = prereqHtml;
     prereqContainer.classList.toggle('hidden', !prereqHtml);
+
+    const synergyContainer = document.getElementById('card-modal-synergy');
+    if (synergyContainer) {
+      const synergyHtml = formatSynergy(card.synergy);
+      synergyContainer.innerHTML = synergyHtml;
+      synergyContainer.classList.toggle('hidden', !synergyHtml);
+    }
 
     const sourceHtml = formatSource(card.source, card.type);
     sourceContainer.innerHTML = sourceHtml;

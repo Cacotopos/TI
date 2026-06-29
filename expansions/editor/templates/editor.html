@@ -74,6 +74,8 @@
   .asset-cell.configured { border-color: var(--accent); }
   .asset-cell.excluded { opacity: 0.5; }
   .asset-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.75rem; }
+  #asset-preview { border-radius: 0.5rem; }
+  #asset-preview.portrait { border-radius: 1rem; }
   .asset-badge { background: var(--border); color: var(--text); font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 0.35rem; }
   .asset-badge.accent { background: var(--accent); color: white; }
   .asset-badge.danger { background: #dc2626; color: white; }
@@ -101,8 +103,8 @@
   .well .row + .row { margin-top: 0.75rem; }
   #source-section { width: 100%; }
   #source-section label.toggle { margin-bottom: 0; }
-  #prereq-section { display: flex; flex-direction: column; justify-content: flex-start; flex: 0 0 45%; }
-  #prereq-section label.toggle { margin-bottom: 0; }
+  #prereq-section, #synergy-section { display: flex; flex-direction: column; justify-content: flex-start; }
+  #prereq-section label.toggle, #synergy-section label.toggle { margin-bottom: 0; }
   .source-inputs { display: flex; flex-direction: column; gap: 0.75rem; }
   .source-inputs input, .source-inputs select { margin-bottom: 0; }
   .source-scores { display: flex; gap: 1.5rem; align-items: center; }
@@ -143,7 +145,9 @@
   .banner-row input { margin-bottom: 0; }
   .banner-row .hint { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; }
   .hint { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; margin-bottom: 0.5rem; }
-  .tooltip-icon { display: inline-flex; align-items: center; justify-content: center; width: 1rem; height: 1rem; border-radius: 50%; background: var(--muted); color: var(--panel); font-size: 0.7rem; cursor: help; margin-left: 0.25rem; font-weight: bold; }
+  .tooltip-icon { display: inline-flex; align-items: center; justify-content: center; width: 1.2rem; height: 1.2rem; border-radius: 50%; background: var(--muted); color: var(--panel); font-size: 0.75rem; cursor: help; margin-left: 0.35rem; font-weight: bold; position: relative; }
+  .tooltip-icon::after { content: attr(data-tooltip); position: absolute; left: 50%; bottom: 140%; transform: translateX(-50%); width: 220px; background: var(--panel); border: 1px solid var(--border); color: var(--text); padding: 0.5rem; border-radius: 0.5rem; font-size: 0.8rem; font-weight: normal; line-height: 1.3; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 10; }
+  .tooltip-icon:hover::after, .tooltip-icon:focus::after { opacity: 1; }
   .trait-checkboxes { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
   .trait-checkboxes label { display: flex; align-items: center; gap: 0.4rem; font-size: 0.9rem; }
   .editor-text-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -305,7 +309,7 @@
     <input id="asset-edit-path" type="hidden"/>
     <div class="asset-badges" id="asset-badges"></div>
     <div id="asset-preview-container" class="mb-4 flex justify-center">
-      <img id="asset-preview" src="" alt="" style="max-width: 100%; max-height: 300px; width: auto; height: auto; object-fit: contain; border-radius: 0.5rem; border: 1px solid var(--border);"/>
+      <img id="asset-preview" src="" alt="" style="max-width: 100%; max-height: 300px; width: auto; height: auto; object-fit: contain; border: 1px solid var(--border);"/>
     </div>
     <p id="asset-filename" class="hint" style="margin-top: 0.5rem; margin-bottom: 0;"></p>
     <div id="asset-description-preview" class="asset-description-preview"></div>
@@ -408,6 +412,13 @@
           <span class="label-text">Prerequisite</span>
         </label>
       </div>
+      <div id="synergy-section">
+        <label class="toggle">
+          <input id="asset-edit-synergy-toggle" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Synergy</span>
+        </label>
+      </div>
     </div>
     <div id="asset-edit-prereq-inputs" class="hidden well">
       <div class="row">
@@ -424,6 +435,14 @@
             <option value="R">Red</option>
             <option value="B">Blue</option>
           </select>
+        </div>
+      </div>
+    </div>
+    <div id="asset-edit-synergy-inputs" class="hidden well">
+      <div class="row">
+        <div>
+          <label>Synergy</label>
+          <input id="asset-edit-synergy" type="text" placeholder="e.g. GYRB" maxlength="4"/>
         </div>
       </div>
     </div>
@@ -473,7 +492,7 @@
         <datalist id="asset-edit-faction-list"></datalist>
       </div>
       <div>
-        <label>Group <span class="tooltip-icon" title="Groups cards under sub-headings on card pages.">i</span></label>
+        <label>Group <span class="tooltip-icon" data-tooltip="Groups cards under sub-headings on card pages." tabindex="0">i</span></label>
         <input id="asset-edit-group" type="text" placeholder="e.g. Drahn, Units, Technologies"/>
       </div>
     </div>
@@ -1126,6 +1145,34 @@ function updatePrereqDefaults(type) {
   toggle.checked = prereq.enabled;
   if (!value.value) value.value = prereq.value;
 }
+function defaultSynergy(type) {
+  if (type === 'Technology') return { enabled: true, value: '' };
+  return { enabled: false, value: '' };
+}
+function applySynergyDefaultsIfNeeded(asset) {
+  if (!asset.synergy) asset.synergy = defaultSynergy(asset.type);
+}
+function getSynergyInput() {
+  const enabled = document.getElementById('asset-edit-synergy-toggle').checked;
+  const value = document.getElementById('asset-edit-synergy').value.toUpperCase().replace(/[^GYRB]/g, '').slice(0, 4);
+  return { enabled, value: enabled ? value : '' };
+}
+function setSynergyInput(synergy) {
+  const s = synergy || { enabled: false, value: '' };
+  document.getElementById('asset-edit-synergy-toggle').checked = s.enabled;
+  document.getElementById('asset-edit-synergy').value = s.value || '';
+}
+function updateSynergySectionVisibility() {
+  const enabled = document.getElementById('asset-edit-synergy-toggle').checked;
+  document.getElementById('asset-edit-synergy-inputs').classList.toggle('hidden', !enabled);
+}
+function updateSynergyDefaults(type) {
+  const synergy = defaultSynergy(type);
+  const toggle = document.getElementById('asset-edit-synergy-toggle');
+  const value = document.getElementById('asset-edit-synergy');
+  toggle.checked = synergy.enabled;
+  if (!value.value) value.value = synergy.value;
+}
 function defaultSource(type) {
   return { enabled: type === 'Planet' || type === 'Station', influence: 0, resource: 0, trait: [], legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
 }
@@ -1193,6 +1240,8 @@ function updateUnitInputs() {
   updateUnitSectionVisibility();
   updatePrereqSectionVisibility();
   updatePrereqDefaults(type);
+  updateSynergySectionVisibility();
+  updateSynergyDefaults(type);
   updateSourceSectionVisibility();
   updateSourceDefaults(type);
   if (wasHidden && isUnitType(type)) {
@@ -1224,6 +1273,12 @@ function renderAssets() {
   if (filter) {
     list = list.filter(a => (a.title + ' ' + a.path + ' ' + a.group + ' ' + (a.type || '') + ' ' + (a.faction || '')).toLowerCase().includes(filter));
   }
+  list.sort((a, b) => {
+    const ga = (a.group || a.folder || '').toLowerCase();
+    const gb = (b.group || b.folder || '').toLowerCase();
+    if (ga !== gb) return ga.localeCompare(gb);
+    return (a.title || '').toLowerCase().localeCompare((b.title || '').toLowerCase());
+  });
 
   document.getElementById('asset-count').textContent = `${list.length} shown / ${assetValues().length} total`;
   empty.classList.toggle('hidden', assetValues().length > 0);
@@ -1323,8 +1378,10 @@ function openAssetEditor(path) {
   const expansionId = idInput.value.trim();
   document.getElementById('asset-edit-path').value = path;
   document.getElementById('asset-modal-title').textContent = `Asset: ${asset.filename}`;
-  document.getElementById('asset-preview').src = `/api/image/${expansionId}/${asset.path}`;
-  document.getElementById('asset-preview').alt = asset.title || asset.filename;
+  const previewImg = document.getElementById('asset-preview');
+  previewImg.src = `/api/image/${expansionId}/${asset.path}`;
+  previewImg.alt = asset.title || asset.filename;
+  previewImg.classList.toggle('portrait', asset.orientation === 'portrait');
   document.getElementById('asset-filename').textContent = asset.path;
   document.getElementById('asset-edit-iscard').checked = asset.isCard;
   document.getElementById('asset-edit-hidden').checked = asset.hidden;
@@ -1344,14 +1401,17 @@ function openAssetEditor(path) {
 
   applyUnitDefaultsIfNeeded(asset);
   applyPrereqDefaultsIfNeeded(asset);
+  applySynergyDefaultsIfNeeded(asset);
   applySourceDefaultsIfNeeded(asset);
   setUnitStatsInput(asset.stats);
   setUnitAbilitiesInput(asset.abilities);
   setPrereqInput(asset.prereq);
   document.getElementById('asset-edit-color').value = asset.color || '';
+  setSynergyInput(asset.synergy);
   setSourceInput(asset.source);
   updateUnitSectionVisibility();
   updatePrereqSectionVisibility();
+  updateSynergySectionVisibility();
   updateSourceSectionVisibility();
   updateBackRowVisibility();
 
@@ -1409,6 +1469,7 @@ function saveAssetEditor() {
 
   asset.prereq = getPrereqInput();
   asset.color = asset.type === 'Technology' ? document.getElementById('asset-edit-color').value : '';
+  asset.synergy = getSynergyInput();
   asset.source = getSourceInput();
 
   assets[path] = asset;
@@ -1584,6 +1645,7 @@ document.getElementById('asset-edit-save-top').addEventListener('click', saveAss
 document.getElementById('asset-edit-type').addEventListener('change', updateUnitInputs);
 document.getElementById('asset-edit-iscard').addEventListener('change', updateBackRowVisibility);
 document.getElementById('asset-edit-prereq-toggle').addEventListener('change', updatePrereqSectionVisibility);
+document.getElementById('asset-edit-synergy-toggle').addEventListener('change', updateSynergySectionVisibility);
 document.getElementById('asset-edit-source-toggle').addEventListener('change', updateSourceSectionVisibility);
 document.getElementById('asset-edit-back-filter').addEventListener('input', e => {
   const path = document.getElementById('asset-edit-path').value;
