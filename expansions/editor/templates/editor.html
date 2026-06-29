@@ -41,6 +41,8 @@
   .editor-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
   button.dirty { background: #16a34a; }
   button.dirty:hover { background: #15803d; }
+  button.busy { background: #dc2626 !important; animation: busy-pulse 1s ease-in-out infinite; }
+  @keyframes busy-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(220,38,38,0.5); } 50% { box-shadow: 0 0 0 6px rgba(220,38,38,0); } }
   .section-row { background: #12151f; border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 0.75rem; }
   .section-actions { display: flex; gap: 0.25rem; margin-top: 0.75rem; }
   .section-actions button { font-size: 0.85rem; padding: 0.35rem 0.75rem; }
@@ -1598,6 +1600,13 @@ function setLoading(loading, actionText) {
   generateBtn.disabled = loading;
   deployBtn.disabled = loading;
   generateBtn.textContent = loading ? actionText : 'Generate Site';
+  [generateBtn, deployBtn].forEach(btn => {
+    if (loading) {
+      btn.classList.add('busy');
+    } else {
+      btn.classList.remove('busy');
+    }
+  });
 }
 
 async function generate() {
