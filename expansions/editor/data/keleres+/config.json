@@ -2,8 +2,8 @@
   "id": "keleres+",
   "name": "keleres+",
   "version": "1.0",
-  "description": "This is a test you",
-  "overview": "ANd more test stuff goes here etc etc ",
+  "description": "The Keleres and Drahn factions have come to provide assistance to any and all galactic powers.",
+  "overview": "The Keleres+ mini expansion expands the Keleres faction hero suite, and introduces a new faction, the Drahn, which operates as a sort of anti-Keleres, with its own host of faction heroes.",
   "source": {
     "images": "expansions/source/keleres+"
   },
@@ -70,6 +70,7 @@
     },
     "Drahn/Drahn Agent Front.jpg": {
       "back": "Drahn/Drahn Agent Back.jpg",
+      "color": "",
       "configured": true,
       "description": "**Aldo Graf** *Contract Broker*\nYou may exhaust this card at the start of a player's turn; that player may either gain 1 command token or draw 1 secret objective. If they do, end that player's turn.",
       "faction": "Drahn",
@@ -80,26 +81,25 @@
       "hidden": false,
       "id": "Drahn Agent Front",
       "isCard": true,
+      "orientation": "auto",
       "path": "Drahn/Drahn Agent Front.jpg",
-      "section": "drahn",
-      "title": "Drahn Agent",
-      "type": "Agent",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Drahn Agent",
+      "type": "Agent"
     },
     "Drahn/Drahn Alliance Back.jpg": {
       "back": "",
@@ -120,6 +120,7 @@
     },
     "Drahn/Drahn Alliance Front.jpg": {
       "back": "Drahn/Drahn Alliance Back.jpg",
+      "color": "",
       "configured": true,
       "description": "After you resolve a tactical action:\nYou may spend 3 trade goods to move 1 of your ships from the active system to an adjacent system that does not contain another player's ships.",
       "faction": "Drahn",
@@ -130,26 +131,25 @@
       "hidden": false,
       "id": "Drahn Alliance Front",
       "isCard": true,
+      "orientation": "auto",
       "path": "Drahn/Drahn Alliance Front.jpg",
-      "section": "drahn",
-      "title": "Drahn Alliance",
-      "type": "Alliance",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Drahn Alliance",
+      "type": "Alliance"
     },
     "Drahn/Drahn Alliance.jpg": {
       "back": "",
@@ -187,6 +187,7 @@
     },
     "Drahn/Drahn Breakthrough BR.jpg": {
       "back": "Drahn/Drahn Breakthrough BR Back.jpg",
+      "color": "",
       "configured": true,
       "description": "When you gain this card, gain the Nevermore planet card and its legendary planet card.\n\nYou are neighbors with all palyers who have units on anomalies that do not contain planets.",
       "faction": "Drahn",
@@ -197,26 +198,25 @@
       "hidden": false,
       "id": "Drahn Breakthrough BR",
       "isCard": true,
+      "orientation": "auto",
       "path": "Drahn/Drahn Breakthrough BR.jpg",
-      "section": "drahn",
-      "title": "V.D.H.Q. Consolidation",
-      "type": "Breakthrough",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "V.D.H.Q. Consolidation",
+      "type": "Breakthrough"
     },
     "Drahn/Drahn Commander Back.jpg": {
       "back": "",
@@ -237,6 +237,7 @@
     },
     "Drahn/Drahn Commander Front.jpg": {
       "back": "Drahn/Drahn Commander Back.jpg",
+      "color": "",
       "configured": true,
       "description": "After you resolve a tactical action:\nYou may spend 3 trade goods to move 1 of your ships from the active system to an adjacent system that does not contain another player's ships.",
       "faction": "Drahn",
@@ -247,26 +248,25 @@
       "hidden": false,
       "id": "Drahn Commander Front",
       "isCard": true,
+      "orientation": "auto",
       "path": "Drahn/Drahn Commander Front.jpg",
-      "section": "drahn",
-      "title": "Kip Lok Sil",
-      "type": "Commander",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Kip Lok Sil",
+      "type": "Commander"
     },
     "Drahn/Drahn Faction Sheet Back.jpg": {
       "back": "",
@@ -281,23 +281,23 @@
       "id": "Drahn Faction Sheet Back",
       "isCard": true,
       "path": "Drahn/Drahn Faction Sheet Back.jpg",
-      "section": "drahn-overview",
-      "title": "Drahn Faction Sheet Back",
-      "type": "Other Component",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn-overview",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
-      }
+        "trait": []
+      },
+      "title": "Drahn Faction Sheet Back",
+      "type": "Other Component"
     },
     "Drahn/Drahn Faction Sheet Front.jpg": {
       "back": "",
@@ -335,15 +335,16 @@
     },
     "Drahn/Drahn Mech.jpg": {
       "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "sustainDamage": true,
-        "bombardment": null,
-        "antiFighterBarrage": null,
+        "production": null,
         "spaceCannon": null,
-        "production": null
+        "sustainDamage": true
       },
       "back": "Drahn/Drahn Mech Back.jpg",
+      "color": "",
       "configured": true,
       "description": "Apply +1 to this unit's combat rolls for each secret objective you have scored.",
       "faction": "Drahn",
@@ -354,57 +355,56 @@
       "hidden": false,
       "id": "Drahn Mech",
       "isCard": true,
+      "orientation": "auto",
       "path": "Drahn/Drahn Mech.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
       "stats": {
-        "cost": {
-          "enabled": true,
-          "value": 2
+        "capacity": {
+          "enabled": false,
+          "value": null
         },
         "combat": {
           "enabled": true,
           "value": 6
         },
-        "move": {
-          "enabled": false,
-          "value": null
+        "cost": {
+          "enabled": true,
+          "value": 2
         },
-        "capacity": {
+        "move": {
           "enabled": false,
           "value": null
         }
       },
       "title": "Contender",
-      "type": "Unit - Ground Force - Mech",
-      "prereq": {
-        "enabled": false,
-        "value": ""
-      },
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "resource": 0,
-        "trait": [],
-        "legendary": false,
-        "relic": false,
-        "techSpeciality": "",
-        "linkedAbility": ""
-      },
-      "orientation": "auto",
-      "color": ""
+      "type": "Unit - Ground Force - Mech"
     },
     "Drahn/Drahn Monument.jpg": {
       "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "sustainDamage": false,
-        "bombardment": null,
-        "antiFighterBarrage": null,
+        "production": null,
         "spaceCannon": {
-          "value": 8,
-          "multi": 2
+          "multi": 2,
+          "value": 8
         },
-        "production": null
+        "sustainDamage": false
       },
       "back": "Drahn/Drahn Alliance Back.jpg",
       "color": "",
@@ -418,6 +418,7 @@
       "hidden": false,
       "id": "Drahn Monument",
       "isCard": true,
+      "orientation": "auto",
       "path": "Drahn/Drahn Monument.jpg",
       "prereq": {
         "enabled": false,
@@ -427,15 +428,15 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
       "stats": {
-        "cost": {
+        "capacity": {
           "enabled": false,
           "value": null
         },
@@ -443,18 +444,17 @@
           "enabled": false,
           "value": null
         },
-        "move": {
+        "cost": {
           "enabled": false,
           "value": null
         },
-        "capacity": {
+        "move": {
           "enabled": false,
           "value": null
         }
       },
       "title": "Koldan's Outpost",
-      "type": "Unit - Structure - Monument",
-      "orientation": "auto"
+      "type": "Unit - Structure - Monument"
     },
     "Drahn/Drahn Nevermore Ability Back.jpg": {
       "back": "",
@@ -475,6 +475,7 @@
     },
     "Drahn/Drahn Nevermore Ability Front.jpg": {
       "back": "Drahn/Drahn Nevermore Ability Back.jpg",
+      "color": "",
       "configured": true,
       "description": "When another player activates a system adjacent to Mecatol Rex, gain 1 trade good.\n\nGain 2 command tokens when another players draws a secret objective using the second bullet of \"Imperial\".",
       "faction": "Drahn",
@@ -485,9 +486,24 @@
       "hidden": false,
       "id": "Drahn Nevermore Ability Front",
       "isCard": true,
+      "orientation": "auto",
       "path": "Drahn/Drahn Nevermore Ability Front.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "drahn",
-      "title": "Drahn Nevermore Ability Front",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "title": "Nevermore Ability",
       "type": "Legendary Ability"
     },
     "Drahn/Drahn Nevermore Back.jpg": {
@@ -541,6 +557,7 @@
     },
     "Drahn/Drahn Promissory Note.jpg": {
       "back": "",
+      "color": "",
       "configured": true,
       "description": "",
       "faction": "Drahn",
@@ -551,9 +568,24 @@
       "hidden": false,
       "id": "Drahn Promissory Note",
       "isCard": true,
+      "orientation": "auto",
       "path": "Drahn/Drahn Promissory Note.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "drahn",
-      "title": "Drahn Promissory Note",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "title": "Networking Officer",
       "type": "Promissory Note"
     },
     "Drahn/Drahn Reference.jpg": {
@@ -682,6 +714,7 @@
     },
     "Drahn/Heroes/Active/Arborec.jpg": {
       "back": "Drahn/Heroes/Inactive/Arborec.jpg",
+      "color": "",
       "configured": true,
       "description": "*ACTION*: Use the **PRODUCTION** value of each unit you control, reducing the total cost of the produced units by 12.\nThen, purge this card.",
       "faction": "Drahn",
@@ -692,26 +725,25 @@
       "hidden": false,
       "id": "Arborec",
       "isCard": true,
+      "orientation": "auto",
       "path": "Drahn/Heroes/Active/Arborec.jpg",
-      "section": "drahn",
-      "title": "The Arboretum",
-      "type": "Hero",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "The Arboretum",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Belkosea.jpg": {
       "back": "",
@@ -1865,23 +1897,23 @@
       "id": "Vaylerian",
       "isCard": true,
       "path": "Drahn/Heroes/Inactive/Vaylerian.jpg",
-      "section": "cards",
-      "title": "Vaylerian",
-      "type": "Other Component",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "cards",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
-      }
+        "trait": []
+      },
+      "title": "Vaylerian",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Vuil'Raith.jpg": {
       "back": "",
@@ -2446,6 +2478,7 @@
     },
     "Keleres/Heroes/Active/Roh'Dhna.jpg": {
       "back": "Keleres/Heroes/Inactive/Roh'Dhna.jpg",
+      "color": "",
       "configured": true,
       "description": "After an agenda is resolved, you may purge this card to produce 1 unit in each system that contains 1 of your units with **PRODUCTION**.",
       "faction": "Drahn",
@@ -2456,26 +2489,25 @@
       "hidden": false,
       "id": "Roh'Dhna",
       "isCard": true,
+      "orientation": "auto",
       "path": "Keleres/Heroes/Active/Roh'Dhna.jpg",
-      "section": "drahn",
-      "title": "Rushed Build Order",
-      "type": "Hero",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Rushed Build Order",
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Sarcosa.jpg": {
       "back": "",
@@ -2547,6 +2579,7 @@
     },
     "Keleres/Heroes/Active/Ul.jpg": {
       "back": "Keleres/Heroes/Inactive/Titans.jpg",
+      "color": "",
       "configured": true,
       "description": "**ACTION**: Purge this card to replace up to 4 of your infantry with mechs, and then up to 4 of your mechs with PDS units.",
       "faction": "Drahn",
@@ -2557,26 +2590,25 @@
       "hidden": false,
       "id": "Ul",
       "isCard": true,
+      "orientation": "auto",
       "path": "Keleres/Heroes/Active/Ul.jpg",
-      "section": "drahn",
-      "title": "The Elysian Protocols",
-      "type": "Hero",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "The Elysian Protocols",
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Uydai.jpg": {
       "back": "",
@@ -2682,6 +2714,7 @@
     },
     "Keleres/Heroes/Inactive/Atokera.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2692,26 +2725,25 @@
       "hidden": true,
       "id": "Atokera",
       "isCard": true,
+      "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Atokera.jpg",
-      "section": "drahn-overview",
-      "title": "Atokera",
-      "type": "Other Component",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn-overview",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Atokera",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Augurs.jpg": {
       "back": "",
@@ -2732,6 +2764,7 @@
     },
     "Keleres/Heroes/Inactive/Bentor.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2742,26 +2775,25 @@
       "hidden": true,
       "id": "Bentor",
       "isCard": true,
+      "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Bentor.jpg",
-      "section": "drahn-overview",
-      "title": "Bentor",
-      "type": "Other Component",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn-overview",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Bentor",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Celdauri.jpg": {
       "back": "",
@@ -2816,6 +2848,7 @@
     },
     "Keleres/Heroes/Inactive/Edyn.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2826,29 +2859,29 @@
       "hidden": true,
       "id": "Edyn",
       "isCard": true,
+      "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Edyn.jpg",
-      "section": "drahn-overview",
-      "title": "Edyn",
-      "type": "Other Component",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn-overview",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Edyn",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Hacan.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2859,29 +2892,29 @@
       "hidden": true,
       "id": "Hacan",
       "isCard": true,
+      "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Hacan.jpg",
-      "section": "drahn-overview",
-      "title": "Hacan",
-      "type": "Other Component",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn-overview",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Hacan",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Jol-Nar.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2892,29 +2925,29 @@
       "hidden": true,
       "id": "Jol-Nar",
       "isCard": true,
+      "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Jol-Nar.jpg",
-      "section": "drahn-overview",
-      "title": "Jol-Nar",
-      "type": "Other Component",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn-overview",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Jol-Nar",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Kaltrim.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2925,26 +2958,25 @@
       "hidden": true,
       "id": "Kaltrim",
       "isCard": true,
+      "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Kaltrim.jpg",
-      "section": "drahn-overview",
-      "title": "Kaltrim",
-      "type": "Other Component",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn-overview",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Kaltrim",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Kjalengard.jpg": {
       "back": "",
@@ -2982,6 +3014,7 @@
     },
     "Keleres/Heroes/Inactive/L'Tokk.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2992,26 +3025,25 @@
       "hidden": true,
       "id": "L'Tokk",
       "isCard": true,
+      "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/L'Tokk.jpg",
-      "section": "drahn-overview",
-      "title": "L'Tokk",
-      "type": "Other Component",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn-overview",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "L'Tokk",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/L1Z1X.jpg": {
       "back": "",
@@ -3083,6 +3115,7 @@
     },
     "Keleres/Heroes/Inactive/Mirveda.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3093,29 +3126,29 @@
       "hidden": true,
       "id": "Mirveda",
       "isCard": true,
+      "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Mirveda.jpg",
-      "section": "drahn-overview",
-      "title": "Mirveda",
-      "type": "Other Component",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn-overview",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Mirveda",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Myko-Mentori.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3126,26 +3159,25 @@
       "hidden": true,
       "id": "Myko-Mentori",
       "isCard": true,
+      "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Myko-Mentori.jpg",
-      "section": "drahn-overview",
-      "title": "Myko-Mentori",
-      "type": "Other Component",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn-overview",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Myko-Mentori",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/N'Orr.jpg": {
       "back": "",
@@ -3183,6 +3215,7 @@
     },
     "Keleres/Heroes/Inactive/Nomad.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3193,26 +3226,25 @@
       "hidden": true,
       "id": "Nomad",
       "isCard": true,
+      "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Nomad.jpg",
-      "section": "drahn-overview",
-      "title": "Nomad",
-      "type": "Other Component",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn-overview",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Nomad",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Qhet.jpg": {
       "back": "",
@@ -3233,6 +3265,7 @@
     },
     "Keleres/Heroes/Inactive/Ral-Nel.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3243,29 +3276,29 @@
       "hidden": true,
       "id": "Ral-Nel",
       "isCard": true,
+      "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Ral-Nel.jpg",
-      "section": "drahn-overview",
-      "title": "Ral-Nel",
-      "type": "Other Component",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn-overview",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Ral-Nel",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Rhodun.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3276,26 +3309,25 @@
       "hidden": true,
       "id": "Rhodun",
       "isCard": true,
+      "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Rhodun.jpg",
-      "section": "drahn-overview",
-      "title": "Rhodun",
-      "type": "Other Component",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn-overview",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Rhodun",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Roh'Dhna.jpg": {
       "back": "",
@@ -3418,6 +3450,7 @@
     },
     "Keleres/Heroes/Inactive/Veldyr.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3428,26 +3461,25 @@
       "hidden": true,
       "id": "Veldyr",
       "isCard": true,
+      "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Veldyr.jpg",
-      "section": "drahn-overview",
-      "title": "Veldyr",
-      "type": "Other Component",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn-overview",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Veldyr",
+      "type": "Other Component"
     },
     "Keleres/Heroes/Inactive/Winnu.jpg": {
       "back": "",
@@ -3468,6 +3500,7 @@
     },
     "Keleres/Heroes/Inactive/Xxcha.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3478,26 +3511,25 @@
       "hidden": true,
       "id": "Xxcha",
       "isCard": true,
+      "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Xxcha.jpg",
-      "section": "drahn-overview",
-      "title": "Xxcha",
-      "type": "Other Component",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn-overview",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "orientation": "auto",
-      "color": ""
+      "title": "Xxcha",
+      "type": "Other Component"
     },
     "Keleres/Keleres CV Ability Back.jpg": {
       "back": "",

@@ -9,6 +9,7 @@
   const sourceContainer = document.getElementById('card-modal-source');
   const actionsContainer = document.getElementById('card-modal-actions');
   const frontImg = document.getElementById('card-modal-front');
+  const frontWrapper = document.getElementById('card-modal-front-wrapper');
   const backImg = document.getElementById('card-modal-back');
   const backWrapper = document.getElementById('card-modal-back-wrapper');
   const description = document.getElementById('card-modal-description');
@@ -70,7 +71,7 @@
     if (!source || !source.enabled) return '';
     const parts = [];
     if (source.influence !== undefined && source.influence !== null && source.influence !== '') {
-      parts.push(`<span class="px-2 py-1 rounded-md bg-blue-200 text-black text-xs font-semibold whitespace-nowrap">Influence ${escapeHtml(String(source.influence))}</span>`);
+      parts.push(`<span class="px-2 py-1 rounded-md bg-cyan-500 text-black text-xs font-semibold whitespace-nowrap">Influence ${escapeHtml(String(source.influence))}</span>`);
     }
     if (source.resource !== undefined && source.resource !== null && source.resource !== '') {
       parts.push(`<span class="px-2 py-1 rounded-md bg-yellow-400 text-black text-xs font-semibold whitespace-nowrap">Resource ${escapeHtml(String(source.resource))}</span>`);
@@ -88,7 +89,6 @@
     if (source.legendary) parts.push('<span class="px-2 py-1 rounded-md bg-pink-400 text-black text-xs font-semibold whitespace-nowrap">Legendary</span>');
     if (source.relic) parts.push('<span class="px-2 py-1 rounded-md bg-orange-300 text-black text-xs font-semibold whitespace-nowrap">Relic</span>');
     if (source.techSpeciality) parts.push(`<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs whitespace-nowrap">Tech: ${escapeHtml(source.techSpeciality)}</span>`);
-    if (source.linkedAbility) parts.push(`<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs whitespace-nowrap">Ability: ${escapeHtml(source.linkedAbility)}</span>`);
     return parts.join('');
   }
 
@@ -117,6 +117,7 @@
       back: item.dataset.cardBack,
       frontPath: item.dataset.cardFrontPath,
       flavour: item.dataset.cardFlavour,
+      orientation: item.dataset.cardOrientation,
     };
   }
   function renderCardActions(card) {
@@ -169,6 +170,13 @@
     title.textContent = card.name || card.id;
     frontImg.src = card.frontPath;
     frontImg.alt = card.name || card.id;
+    const orientation = card.orientation === 'portrait' ? 'portrait' : 'landscape';
+    frontWrapper.classList.remove('portrait', 'landscape');
+    frontWrapper.classList.add(orientation);
+    if (backWrapper) {
+      backWrapper.classList.remove('portrait', 'landscape');
+      backWrapper.classList.add(orientation);
+    }
 
     try { card.stats = JSON.parse(card.stats || '{}'); } catch (e) { card.stats = {}; }
     try { card.abilities = JSON.parse(card.abilities || '{}'); } catch (e) { card.abilities = {}; }
@@ -276,6 +284,7 @@
         back: item.dataset.cardBack,
         frontPath: item.dataset.cardFrontPath,
         flavour: item.dataset.cardFlavour,
+        orientation: item.dataset.cardOrientation,
         parentPath: parentByPath[item.dataset.cardFrontPath] || '',
       });
     });
