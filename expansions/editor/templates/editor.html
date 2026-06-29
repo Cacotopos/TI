@@ -390,6 +390,16 @@
         </select>
       </div>
     </div>
+    <div class="editor-text-row">
+      <div>
+        <label>Description (Markdown)</label>
+        <textarea id="asset-edit-description"></textarea>
+      </div>
+      <div>
+        <label>Flavour Text</label>
+        <textarea id="asset-edit-flavour" placeholder="Italic flavour text shown under the card title"></textarea>
+      </div>
+    </div>
     <div class="row">
       <div id="prereq-section">
         <label class="toggle">
@@ -563,16 +573,6 @@
       </div>
     </div>
 
-    <div class="editor-text-row">
-      <div>
-        <label>Description (Markdown)</label>
-        <textarea id="asset-edit-description"></textarea>
-      </div>
-      <div>
-        <label>Flavour Text</label>
-        <textarea id="asset-edit-flavour" placeholder="Italic flavour text shown under the card title"></textarea>
-      </div>
-    </div>
     <label>FAQ (one Q&A per line: Q: ... | A: ...)</label>
     <textarea id="asset-edit-faq" placeholder="Q: Does this stack? | A: Yes."></textarea>
     <div id="asset-back-row">
@@ -1499,9 +1499,13 @@ async function deploy() {
   const res = await fetch(`/api/deploy/${id}`, { method: 'POST' });
   const data = await res.json();
   setLoading(false, 'Generate Site');
-  statusEl.textContent = data.ok
-    ? `Deployed to ${data.url}\n${data.stdout}`
-    : `Deploy failed:\n${data.stderr}`;
+  if (data.ok) {
+    const stdout = (data.stdout || '').replace(/\n/g, '<br>');
+    statusEl.innerHTML = `${stdout}<br><br>Deployed to <a href="${data.url}" target="_blank">${data.url}</a>`;
+  } else {
+    const stderr = (data.stderr || '').replace(/\n/g, '<br>');
+    statusEl.innerHTML = `Deploy failed:<br>${stderr}`;
+  }
 }
 
 const MIN_BANNER_WIDTH = 1552;
