@@ -321,7 +321,21 @@
       "path": "Drahn/Drahn Faction Sheet Front.jpg",
       "section": "drahn-overview",
       "title": "Drahn Faction Sheet Front",
-      "type": "Faction Sheet"
+      "type": "Faction Sheet",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      }
     },
     "Drahn/Drahn Mech Back.jpg": {
       "back": "",
@@ -403,16 +417,16 @@
     },
     "Drahn/Drahn Monument.jpg": {
       "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "sustainDamage": false,
-        "bombardment": null,
-        "antiFighterBarrage": null,
+        "production": null,
         "spaceCannon": {
-          "value": 8,
-          "multi": 2
+          "multi": 2,
+          "value": 8
         },
-        "production": null
+        "sustainDamage": false
       },
       "back": "Drahn/Drahn Alliance Back.jpg",
       "color": "",
@@ -421,6 +435,7 @@
       "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Monument.jpg",
+      "flavour": "It is more a reminder of Drahn influence than a true monument.",
       "folder": "Drahn",
       "group": "Units",
       "hidden": false,
@@ -436,15 +451,15 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
       "stats": {
-        "cost": {
+        "capacity": {
           "enabled": false,
           "value": null
         },
@@ -452,18 +467,17 @@
           "enabled": false,
           "value": null
         },
-        "move": {
+        "cost": {
           "enabled": false,
           "value": null
         },
-        "capacity": {
+        "move": {
           "enabled": false,
           "value": null
         }
       },
       "title": "Koldan's Outpost",
-      "type": "Unit - Structure - Monument",
-      "flavour": "It is more a reminder of Drahn influence than a true monument."
+      "type": "Unit - Structure - Monument"
     },
     "Drahn/Drahn Nevermore Ability Back.jpg": {
       "back": "",

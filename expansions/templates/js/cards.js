@@ -12,6 +12,7 @@
   const frontWrapper = document.getElementById('card-modal-front-wrapper');
   const backImg = document.getElementById('card-modal-back');
   const backWrapper = document.getElementById('card-modal-back-wrapper');
+  const imagesGrid = document.getElementById('card-modal-images');
   const description = document.getElementById('card-modal-description');
   const flavourContainer = document.getElementById('card-modal-flavour');
   const faqDetails = document.getElementById('card-modal-faq');
@@ -245,8 +246,12 @@
       backImg.src = 'assets/images/' + card.back;
       backImg.alt = (card.name || card.id) + ' back';
       backWrapper.classList.remove('hidden');
+      imagesGrid.classList.add('has-back');
     } else {
+      backImg.src = '';
+      backImg.alt = '';
       backWrapper.classList.add('hidden');
+      imagesGrid.classList.remove('has-back');
     }
 
     modal.classList.remove('hidden');

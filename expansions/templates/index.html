@@ -32,11 +32,19 @@
     </div>
   </section>
 
-  {% set card_count = site.images | length %}
-  {% if card_count %}
+  {% set groups = site.images | map(attribute='group') | unique | sort %}
+  {% if groups %}
   <section class="bg-panel border border-border rounded-xl p-6 shadow-lg">
-    <h2 class="text-xl font-semibold mb-4">{{ card_count }} Cards</h2>
-    <p class="text-muted mb-4">Browse all cards in the <a href="cards.html" class="text-accent hover:underline">Cards page</a>.</p>
+    <h2 class="text-xl font-semibold mb-4">Assets</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {% for group in groups %}
+      {% set count = site.images | selectattr('group', 'equalto', group) | list | length %}
+      <div class="block bg-bg border border-border rounded-lg p-4">
+        <h3 class="font-semibold">{{ group or 'General' }}</h3>
+        <p class="text-muted text-sm mt-1">{{ count }} asset{{ 's' if count != 1 else '' }}</p>
+      </div>
+      {% endfor %}
+    </div>
   </section>
   {% endif %}
 </main>
