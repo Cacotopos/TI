@@ -4,7 +4,12 @@
  * Builds a simple inverted index from data.json and exposes search(query).
  */
 (async function() {
-  const site = await fetch('data.json').then(r => r.json());
+  let site = {};
+  try {
+    site = await fetch('data.json').then(r => r.json());
+  } catch (e) {
+    console.error('search.js failed to load data.json', e);
+  }
 
   const index = new Map();
   const docs = [];

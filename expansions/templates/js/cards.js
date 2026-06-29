@@ -10,6 +10,7 @@
   const actionsContainer = document.getElementById('card-modal-actions');
   const frontImg = document.getElementById('card-modal-front');
   const backImg = document.getElementById('card-modal-back');
+  const backWrapper = document.getElementById('card-modal-back-wrapper');
   const description = document.getElementById('card-modal-description');
   const faqDetails = document.getElementById('card-modal-faq');
   const faqContent = document.getElementById('card-modal-faq-content');
@@ -87,8 +88,12 @@
     return parts.join('');
   }
 
+  function normalizePath(path) {
+    if (!path) return '';
+    return path.startsWith('assets/images/') ? path : `assets/images/${path}`;
+  }
   function findCardItemByPath(path) {
-    return document.querySelector(`.card-item[data-card-front-path="${CSS.escape(path)}"]`);
+    return document.querySelector(`.card-item[data-card-front-path="${CSS.escape(normalizePath(path))}"]`);
   }
   function cardDataFromElement(item) {
     return {
@@ -113,17 +118,19 @@
     actionsContainer.innerHTML = '';
     const buttons = [];
     const source = card.source || {};
-    if (source.enabled && source.linkedAbility) {
-      const linked = findCardItemByPath(source.linkedAbility);
+    const linkedPath = normalizePath(source.linkedAbility || '');
+    if (source.enabled && linkedPath) {
+      const linked = findCardItemByPath(linkedPath);
       if (linked) {
         const name = linked.dataset.cardName || source.linkedAbility;
-        buttons.push(`<button type="button" class="linked-ability-btn px-3 py-1 rounded-md bg-accent text-white text-sm font-medium hover:opacity-90" data-path="${escapeHtml(source.linkedAbility)}">View linked ability: ${escapeHtml(name)}</button>`);
+        buttons.push(`<button type="button" class="linked-ability-btn px-3 py-1 rounded-md bg-accent text-white text-sm font-medium hover:opacity-90" data-path="${escapeHtml(linkedPath)}">View linked ability: ${escapeHtml(name)}</button>`);
       }
     }
-    const parent = findCardItemByPath(card.parentPath || '');
+    const parentPath = normalizePath(card.parentPath || '');
+    const parent = findCardItemByPath(parentPath);
     if (parent) {
-      const name = parent.dataset.cardName || card.parentPath;
-      buttons.push(`<button type="button" class="parent-card-btn px-3 py-1 rounded-md bg-gray-700 text-gray-100 text-sm font-medium hover:bg-gray-600" data-path="${escapeHtml(card.parentPath)}">Back to parent: ${escapeHtml(name)}</button>`);
+      const name = parent.dataset.cardName || parentPath;
+      buttons.push(`<button type="button" class="parent-card-btn px-3 py-1 rounded-md bg-gray-700 text-gray-100 text-sm font-medium hover:bg-gray-600" data-path="${escapeHtml(parentPath)}">Back to parent: ${escapeHtml(name)}</button>`);
     }
     actionsContainer.innerHTML = buttons.join('');
     actionsContainer.classList.toggle('hidden', !buttons.length);
@@ -218,9 +225,9 @@
     if (card.back) {
       backImg.src = 'assets/images/' + card.back;
       backImg.alt = (card.name || card.id) + ' back';
-      backImg.classList.remove('hidden');
+      backWrapper.classList.remove('hidden');
     } else {
-      backImg.classList.add('hidden');
+      backWrapper.classList.add('hidden');
     }
 
     modal.classList.remove('hidden');
@@ -232,7 +239,7 @@
     try {
       const source = JSON.parse(item.dataset.cardSource || '{}');
       if (source.enabled && source.linkedAbility) {
-        parentByPath[source.linkedAbility] = item.dataset.cardFrontPath;
+        parentByPath[normalizePath(source.linkedAbility)] = item.dataset.cardFrontPath;
       }
     } catch (e) {}
   });
@@ -267,7 +274,7 @@
   actionsContainer.addEventListener('click', e => {
     const btn = e.target.closest('.linked-ability-btn, .parent-card-btn');
     if (!btn) return;
-    const targetPath = btn.dataset.path;
+    const targetPath = normalizePath(btn.dataset.path);
     const target = findCardItemByPath(targetPath);
     if (!target) return;
     const targetCard = cardDataFromElement(target);

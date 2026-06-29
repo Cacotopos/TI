@@ -27,25 +27,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script>
-(async function() {
-  await window.searchReady;
-  const input = document.getElementById('search-input');
-  const btn = document.getElementById('search-btn');
-  const results = document.getElementById('search-results');
-  const list = document.getElementById('search-results-list');
-  const noResults = document.getElementById('search-no-results');
-
-  function run() {
-    const q = input.value.trim();
-    const docs = window.searchExpansion(q);
-    list.innerHTML = docs.map(d => `<li><a href="${d.url}" class="text-accent hover:underline">${d.title}</a> <span class="text-muted text-sm">(${d.kind})</span></li>`).join('');
-    results.classList.remove('hidden');
-    noResults.classList.toggle('hidden', docs.length > 0);
-  }
-
-  btn.addEventListener('click', run);
-  input.addEventListener('keydown', e => { if (e.key === 'Enter') run(); });
-})();
-</script>
+<!-- Search interactions are handled by assets/js/ui.js -->
 {% endblock %}

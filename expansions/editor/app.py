@@ -178,12 +178,22 @@ def inspect(expansion_id: str):
             folder = str(rel.parent) if rel.parent != Path(".") else ""
             folders.add(folder.split("/")[0] if folder else "General")
 
+            width, height = 0, 0
+            try:
+                with Image.open(p) as img:
+                    width, height = img.size
+            except Exception:
+                pass
+            orientation = "portrait" if height > width else "landscape"
+
             if path in existing_assets:
                 assets[path] = existing_assets[path]
                 if "type" not in assets[path]:
                     assets[path]["type"] = "Other Component"
                 if "faction" not in assets[path]:
                     assets[path]["faction"] = ""
+                if "orientation" not in assets[path]:
+                    assets[path]["orientation"] = orientation
             else:
                 assets[path] = {
                     "id": p.stem,
@@ -201,6 +211,7 @@ def inspect(expansion_id: str):
                     "back": "",
                     "type": "Other Component",
                     "faction": "",
+                    "orientation": orientation,
                 }
 
     # Remove assets whose source files no longer exist (e.g. renamed files).

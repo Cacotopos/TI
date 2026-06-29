@@ -4,9 +4,9 @@
 
 {% block body %}
 <style>
-  .card-image { height: 280px; width: auto; object-fit: contain; display: block; margin: 0 auto; }
-  .card-landscape { max-width: 100%; }
-  .card-portrait { max-width: 100%; }
+  .card-item { display: flex; flex-direction: column; align-items: center; }
+  .card-image-wrapper { width: 100%; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .card-image { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 0.75rem; }
 </style>
 {% set section_images = site.images | selectattr('section', 'equalto', section.id) | list %}
 <header class="bg-panel border-b border-border p-6">
@@ -40,7 +40,9 @@
              data-card-back="{{ img.back }}"
              data-card-front-path="{{ img.path }}"
              data-card-orientation="{{ img.orientation }}">
-          <img src="{{ img.path }}" alt="{{ img.name }}" class="card-image rounded-lg {{ 'card-portrait' if img.orientation == 'portrait' else 'card-landscape' }}"/>
+          <div class="card-image-wrapper">
+            <img src="{{ img.path }}" alt="{{ img.name }}" class="card-image rounded-lg {{ 'card-portrait' if img.orientation == 'portrait' else 'card-landscape' }}"/>
+          </div>
           <p class="text-sm text-center mt-2 font-medium truncate" title="{{ img.name }}">{{ img.name }}</p>
           {% if img.folder %}
           <p class="text-xs text-center text-muted truncate">{{ img.folder }}</p>
@@ -70,8 +72,12 @@
     <div id="card-modal-source" class="flex flex-wrap gap-2 mb-4 hidden"></div>
     <div id="card-modal-actions" class="flex flex-wrap gap-2 mb-4 hidden"></div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-      <img id="card-modal-front" src="" alt="" class="rounded-lg mx-auto" style="max-height: 420px; width: auto; object-fit: contain;"/>
-      <img id="card-modal-back" src="" alt="" class="rounded-lg mx-auto hidden" style="max-height: 420px; width: auto; object-fit: contain;"/>
+      <div class="card-image-wrapper bg-panel border border-border rounded-lg" style="max-height: 420px;">
+        <img id="card-modal-front" src="" alt="" class="card-image rounded-lg"/>
+      </div>
+      <div id="card-modal-back-wrapper" class="card-image-wrapper bg-panel border border-border rounded-lg hidden" style="max-height: 420px;">
+        <img id="card-modal-back" src="" alt="" class="card-image rounded-lg"/>
+      </div>
     </div>
     <div id="card-modal-description" class="text-gray-100 mb-4 prose prose-invert max-w-none"></div>
     <details id="card-modal-faq" class="hidden">

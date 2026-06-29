@@ -318,6 +318,16 @@
     </div>
     <div class="row">
       <div>
+        <label>Orientation</label>
+        <select id="asset-edit-orientation">
+          <option value="auto">Auto (derive from image)</option>
+          <option value="landscape">Landscape</option>
+          <option value="portrait">Portrait</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div>
         <label>Title</label>
         <input id="asset-edit-title" type="text"/>
       </div>
@@ -533,8 +543,6 @@
       </div>
     </div>
 
-    <label>Group</label>
-    <input id="asset-edit-group" type="text"/>
     <label>Description (Markdown)</label>
     <textarea id="asset-edit-description"></textarea>
     <label>FAQ (one Q&A per line: Q: ... | A: ...)</label>
@@ -1292,6 +1300,7 @@ function openAssetEditor(path) {
   document.getElementById('asset-edit-title').value = asset.title || '';
   if (asset.type === 'Planet Ability') asset.type = 'Additional Ability';
   document.getElementById('asset-edit-type').value = asset.type || 'Other Component';
+  document.getElementById('asset-edit-orientation').value = asset.orientation || 'auto';
   document.getElementById('asset-edit-group').value = asset.group || '';
   document.getElementById('asset-edit-description').value = asset.description || '';
   document.getElementById('asset-edit-faq').value = (asset.faq || []).map(qa => `Q: ${qa.q} | A: ${qa.a}`).join('\n');
@@ -1346,6 +1355,7 @@ function saveAssetEditor() {
   asset.type = document.getElementById('asset-edit-type').value;
   asset.faction = document.getElementById('asset-edit-faction').value.trim();
   asset.section = document.getElementById('asset-edit-section').value;
+  asset.orientation = document.getElementById('asset-edit-orientation').value;
   asset.group = document.getElementById('asset-edit-group').value.trim() || asset.folder;
   asset.description = document.getElementById('asset-edit-description').value.trim();
   asset.faq = faq;

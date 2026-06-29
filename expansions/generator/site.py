@@ -128,15 +128,17 @@ def _collect_assets(config: dict) -> list[dict]:
             continue
         rel = Path(path)
         src_path = images_src / rel
-        orientation = "landscape"
-        if src_path.exists():
-            try:
-                with Image.open(src_path) as img:
-                    w, h = img.size
-                    if h > w:
-                        orientation = "portrait"
-            except Exception:
-                pass
+        orientation = asset.get("orientation", "")
+        if orientation not in ("landscape", "portrait"):
+            orientation = "landscape"
+            if src_path.exists():
+                try:
+                    with Image.open(src_path) as img:
+                        w, h = img.size
+                        if h > w:
+                            orientation = "portrait"
+                except Exception:
+                    pass
         images.append({
             "id": asset.get("id", rel.stem),
             "path": str(Path("assets/images") / rel).replace("\\", "/"),
