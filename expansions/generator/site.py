@@ -7,6 +7,7 @@ import io
 import json
 import re
 import shutil
+import subprocess
 from pathlib import Path
 
 import jinja2
@@ -280,6 +281,13 @@ def _prepare_banner(config: dict, output_dir: Path) -> str | None:
     return str(Path("assets/images") / dest.name).replace("\\", "/")
 
 
+def _git_commit() -> str:
+    try:
+        return subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, text=True).strip()
+    except Exception:
+        return "unknown"
+
+
 def build_site(config_path: Path, output_dir: Path) -> None:
     """Generate a standalone static site at output_dir."""
     config = load_config(config_path)
@@ -289,11 +297,13 @@ def build_site(config_path: Path, output_dir: Path) -> None:
     _copy_source_images(config, output_dir)
 
     images = _collect_assets(config)
+    git_commit = _git_commit()
     site = {
         **config,
         "images": images,
         "sections": config.get("sections", []),
         "banner_path": _prepare_banner(config, output_dir),
+        "git_commit": git_commit,
     }
 
     env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_DIR))

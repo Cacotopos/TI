@@ -1697,6 +1697,8 @@
     },
     "Drahn/Heroes/Inactive/Arborec.jpg": {
       "back": "",
+      "backSubtitle": "",
+      "backTitle": "",
       "color": "",
       "configured": false,
       "description": "",
@@ -1719,25 +1721,25 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "title": "Dirzuga Ophliat",
-      "type": "Other Component",
+      "subtitle": "Drahn Officer",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "subtitle": "Drahn Officer",
-      "backTitle": "",
-      "backSubtitle": ""
+      "title": "Dirzuga Ophliat",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Belkosea.jpg": {
       "back": "",
+      "backSubtitle": "",
+      "backTitle": "",
       "color": "",
       "configured": false,
       "description": "",
@@ -1760,22 +1762,20 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "title": "Project Lead Kal",
-      "type": "Other Component",
+      "subtitle": "Drahn Officer",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "subtitle": "Drahn Officer",
-      "backTitle": "",
-      "backSubtitle": ""
+      "title": "Project Lead Kal",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Creuss.jpg": {
       "back": "",
@@ -1801,15 +1801,22 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
-      "title": "Creuss",
-      "type": "Other Component"
+      "title": "Riftmelder Meian",
+      "type": "Other Component",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "subtitle": "Drahn Officer",
+      "backTitle": "",
+      "backSubtitle": ""
     },
     "Drahn/Heroes/Inactive/Crimson Rebellion.jpg": {
       "back": "",
@@ -3606,6 +3613,8 @@
     },
     "Keleres/Heroes/Active/Sarcosa.jpg": {
       "back": "Keleres/Heroes/Inactive/Sarcosa.jpg",
+      "backSubtitle": "",
+      "backTitle": "",
       "color": "",
       "configured": true,
       "description": "***ACTION***: Purge this card to place up to 2 neutral dreadnoughts, 2 neutral cruisers, and 4 neutral fighters in a system adjacent to your units; resolve space combat in that system.",
@@ -3628,22 +3637,20 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
+      "subtitle": "",
       "synergy": {
         "enabled": false,
         "value": ""
       },
       "title": "Letters of Marque",
-      "type": "Hero",
-      "subtitle": "",
-      "backTitle": "",
-      "backSubtitle": ""
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Shipwrights.jpg": {
       "back": "",

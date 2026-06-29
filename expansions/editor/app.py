@@ -31,6 +31,16 @@ S3_REGION = os.getenv("S3_AWS_REGION", "ap-southeast-2")
 AWS_PROFILE = os.getenv("S3_AWS_PROFILE", "tom-local-s3")
 
 
+def _git_commit() -> str:
+    try:
+        return subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, text=True).strip()
+    except Exception:
+        return "unknown"
+
+
+GIT_COMMIT = _git_commit()
+
+
 def _load_config(expansion_id: str) -> dict:
     config_path = DATA_DIR / expansion_id / "config.json"
     if not config_path.exists():
@@ -49,7 +59,12 @@ def _save_config(expansion_id: str, data: dict) -> Path:
 
 @app.route("/")
 def index():
-    return render_template("editor.html")
+    return render_template("editor.html", git_commit=GIT_COMMIT)
+
+
+@app.route("/api/version")
+def version():
+    return jsonify({"commit": GIT_COMMIT})
 
 
 @app.route("/api/config/<expansion_id>")
