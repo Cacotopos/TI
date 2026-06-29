@@ -106,7 +106,7 @@ def deploy(expansion_id: str):
         "ok": result.returncode == 0,
         "stdout": result.stdout,
         "stderr": result.stderr,
-        "url": f"https://{S3_BUCKET}.s3.{S3_REGION}.amazonaws.com/{expansion_id}/index.html",
+        "url": f"http://{S3_BUCKET}.s3-website-{S3_REGION}.amazonaws.com/{expansion_id}/index.html",
     })
 
 
