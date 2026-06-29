@@ -598,8 +598,8 @@
       </div>
     </div>
 
-    <label>FAQ (one Q&A per line: Q: ... | A: ...)</label>
-    <textarea id="asset-edit-faq" placeholder="Q: Does this stack? | A: Yes."></textarea>
+    <label>FAQ (one Q&A per line: question | answer)</label>
+    <textarea id="asset-edit-faq" placeholder="Does this stack? | Yes."></textarea>
     <div id="asset-back-row">
       <label>Back Image</label>
       <input id="asset-edit-back-filter" type="text" placeholder="Filter back images..."/>
@@ -1454,7 +1454,7 @@ function openAssetEditor(path) {
   document.getElementById('asset-edit-group').value = asset.group || '';
   document.getElementById('asset-edit-flavour').value = asset.flavour || '';
   document.getElementById('asset-edit-description').value = asset.description || '';
-  document.getElementById('asset-edit-faq').value = (asset.faq || []).map(qa => `Q: ${qa.q} | A: ${qa.a}`).join('\n');
+  document.getElementById('asset-edit-faq').value = (asset.faq || []).map(qa => `${qa.q} | ${qa.a}`).join('\n');
   document.getElementById('asset-edit-back-filter').value = '';
 
   updateFactionDatalist();
@@ -1498,9 +1498,9 @@ function saveAssetEditor() {
 
   const faqText = document.getElementById('asset-edit-faq').value.trim();
   const faq = faqText ? faqText.split('\n').map(line => {
-    const match = line.match(/^Q:\s*(.+?)\s*\|\s*A:\s*(.+)$/);
-    return match ? { q: match[1].trim(), a: match[2].trim() } : { q: line, a: '' };
-  }) : [];
+    const parts = line.split('|');
+    return parts.length >= 2 ? { q: parts[0].trim(), a: parts.slice(1).join('|').trim() } : { q: line.trim(), a: '' };
+  }).filter(qa => qa.q) : [];
 
   asset.isCard = document.getElementById('asset-edit-iscard').checked;
   asset.hidden = document.getElementById('asset-edit-hidden').checked;

@@ -532,15 +532,21 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
-      "title": "Nevermore Ability",
-      "type": "Legendary Ability"
+      "title": "Nevermore",
+      "type": "Legendary Ability",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "subtitle": "Legendary Ability - Drahn",
+      "flavour": ""
     },
     "Drahn/Drahn Nevermore Back.jpg": {
       "back": "",
@@ -945,11 +951,12 @@
         "techSpeciality": "",
         "trait": []
       },
+      "subtitle": "Reality Dysfunction",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "Crimson",
+      "title": "Hadronic Reknit",
       "type": "Hero"
     },
     "Drahn/Heroes/Active/Deepwrought.jpg": {
@@ -1149,12 +1156,12 @@
       "faction": "Drahn",
       "faq": [
         {
-          "a": "",
-          "q": "Q: This seems really strong?"
+          "q": "Q: This seems really strong?",
+          "a": ""
         },
         {
-          "a": "",
-          "q": "A: You don't start with any planets in your home system, it's fine."
+          "q": "Q: A: You don't start with any planets in your home system, it's fine. | A:",
+          "a": ""
         }
       ],
       "filename": "Ghoti.jpg",
@@ -1174,19 +1181,20 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "Ghoti",
-      "type": "Hero"
+      "title": "Objective Restoration",
+      "type": "Hero",
+      "subtitle": "All-Mother's Hope"
     },
     "Drahn/Heroes/Active/Gledge.jpg": {
       "back": "",
@@ -1779,6 +1787,8 @@
     },
     "Drahn/Heroes/Inactive/Creuss.jpg": {
       "back": "",
+      "backSubtitle": "",
+      "backTitle": "",
       "color": "",
       "configured": false,
       "description": "",
@@ -1801,22 +1811,20 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "title": "Riftmelder Meian",
-      "type": "Other Component",
+      "subtitle": "Drahn Officer",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "subtitle": "Drahn Officer",
-      "backTitle": "",
-      "backSubtitle": ""
+      "title": "Riftmelder Meian",
+      "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Crimson Rebellion.jpg": {
       "back": "",
@@ -1838,7 +1846,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "drahn-overview",
+      "section": "",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -1849,41 +1857,12 @@
         "techSpeciality": "",
         "trait": []
       },
-      "title": "Crimson Rebellion",
-      "type": "Other Component"
-    },
-    "Drahn/Heroes/Inactive/Crimson.jpg": {
-      "back": "",
-      "color": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "Crimson.jpg",
-      "flavour": "",
-      "folder": "Drahn/Heroes/Inactive",
-      "group": "Drahn/Heroes/Inactive",
-      "hidden": true,
-      "id": "Crimson",
-      "isCard": true,
-      "orientation": "landscape",
-      "path": "Drahn/Heroes/Inactive/Crimson.jpg",
-      "prereq": {
+      "subtitle": "Drahn Officer",
+      "synergy": {
         "enabled": false,
         "value": ""
       },
-      "section": "drahn-overview",
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
-        "resource": 0,
-        "techSpeciality": "",
-        "trait": []
-      },
-      "title": "Crimson",
+      "title": "Ahk Au Ka",
       "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Deepwrought.jpg": {
@@ -3294,7 +3273,25 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Kaltrim.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Kaltrim",
       "type": "Other Component"
     },
