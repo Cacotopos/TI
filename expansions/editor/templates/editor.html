@@ -409,7 +409,7 @@
         <label class="toggle">
           <input id="asset-edit-prereq-toggle" type="checkbox"/>
           <span class="switch"></span>
-          <span class="label-text">Prerequisite</span>
+          <span class="label-text">Tech Prerequisite</span>
         </label>
       </div>
       <div id="synergy-section">
@@ -423,11 +423,11 @@
     <div id="asset-edit-prereq-inputs" class="hidden well">
       <div class="row">
         <div>
-          <label>Prerequisite</label>
+          <label>Tech Prerequisite</label>
           <input id="asset-edit-prereq" type="text" placeholder="e.g. RRYY" maxlength="4"/>
         </div>
         <div>
-          <label>Tech color</label>
+          <label>Tech Color</label>
           <select id="asset-edit-color">
             <option value="">None</option>
             <option value="G">Green</option>
@@ -1135,8 +1135,16 @@ function updatePrereqSectionVisibility() {
   document.getElementById('asset-edit-prereq-inputs').classList.toggle('hidden', !enabled);
   const type = document.getElementById('asset-edit-type').value;
   const colorSelect = document.getElementById('asset-edit-color');
-  colorSelect.classList.toggle('hidden', type !== 'Technology');
-  if (type !== 'Technology') colorSelect.value = '';
+  if (isUnitType(type)) {
+    colorSelect.value = '';
+    colorSelect.disabled = true;
+    const opt = colorSelect.querySelector('option[value=""]');
+    if (opt) opt.textContent = 'Units do not have a color';
+  } else {
+    colorSelect.disabled = false;
+    const opt = colorSelect.querySelector('option[value=""]');
+    if (opt) opt.textContent = 'None';
+  }
 }
 function updatePrereqDefaults(type) {
   const prereq = defaultPrereq(type);
@@ -1283,16 +1291,62 @@ function renderAssets() {
   document.getElementById('asset-count').textContent = `${list.length} shown / ${assetValues().length} total`;
   empty.classList.toggle('hidden', assetValues().length > 0);
 
+  // Group by page (section), maintaining section order from config
+  const sectionOrder = sections.map(s => s.id);
+  const pageMap = new Map();
   list.forEach(asset => {
-    const div = document.createElement('div');
-    div.className = `asset-cell ${asset.configured ? 'configured' : ''} ${asset.hidden ? 'excluded' : ''}`;
-    div.innerHTML = `
-      <div class="title" title="${asset.path}">${asset.title}</div>
-      <div class="group" title="${asset.group || asset.folder}">${asset.group || asset.folder}</div>
-      ${asset.hidden ? '<div class="title" style="color:#dc2626">excluded</div>' : ''}
-    `;
-    div.addEventListener('click', () => openAssetEditor(asset.path));
-    grid.appendChild(div);
+    const pageId = asset.section || '';
+    if (!pageMap.has(pageId)) pageMap.set(pageId, []);
+    pageMap.get(pageId).push(asset);
+  });
+  // Sort pages: known sections in order first, then unassigned
+  const pageIds = [...pageMap.keys()].sort((a, b) => {
+    const ia = sectionOrder.indexOf(a);
+    const ib = sectionOrder.indexOf(b);
+    if (ia !== -1 && ib !== -1) return ia - ib;
+    if (ia !== -1) return -1;
+    if (ib !== -1) return 1;
+    return a.localeCompare(b);
+  });
+
+  pageIds.forEach(pageId => {
+    const pageAssets = pageMap.get(pageId);
+    const section = sections.find(s => s.id === pageId);
+    const pageTitle = section ? section.title : (pageId || 'Unassigned');
+
+    const groupEl = document.createElement('div');
+    groupEl.className = 'asset-page-group';
+    groupEl.style.cssText = 'margin-bottom: 1.25rem;';
+
+    const header = document.createElement('div');
+    header.className = 'asset-page-header';
+    header.style.cssText = 'display:flex;align-items:center;gap:0.5rem;cursor:pointer;padding:0.4rem 0.5rem;border-radius:0.4rem;background:var(--panel);border:1px solid var(--border);margin-bottom:0.5rem;user-select:none;';
+    header.innerHTML = `<span style="font-size:0.85rem;color:var(--muted);">▾</span><span style="font-weight:600;font-size:0.9rem;">${pageTitle}</span><span style="font-size:0.8rem;color:var(--muted);margin-left:auto;">${pageAssets.length} asset${pageAssets.length !== 1 ? 's' : ''}</span>`;
+
+    const innerGrid = document.createElement('div');
+    innerGrid.className = 'asset-grid';
+
+    header.addEventListener('click', () => {
+      const collapsed = innerGrid.style.display === 'none';
+      innerGrid.style.display = collapsed ? '' : 'none';
+      header.querySelector('span').textContent = collapsed ? '▾' : '▸';
+    });
+
+    pageAssets.forEach(asset => {
+      const div = document.createElement('div');
+      div.className = `asset-cell ${asset.configured ? 'configured' : ''} ${asset.hidden ? 'excluded' : ''}`;
+      div.innerHTML = `
+        <div class="title" title="${asset.path}">${asset.title}</div>
+        <div class="group" title="${asset.group || asset.folder}">${asset.group || asset.folder}</div>
+        ${asset.hidden ? '<div class="title" style="color:#dc2626">excluded</div>' : ''}
+      `;
+      div.addEventListener('click', () => openAssetEditor(asset.path));
+      innerGrid.appendChild(div);
+    });
+
+    groupEl.appendChild(header);
+    groupEl.appendChild(innerGrid);
+    grid.appendChild(groupEl);
   });
 }
 

@@ -839,22 +839,42 @@
       "type": "Hero"
     },
     "Drahn/Heroes/Active/Belkosea.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Drahn/Heroes/Inactive/Belkosea.jpg",
+      "configured": true,
+      "description": "***ACTION:*** Attach this card to a planet you control. Take a Belkosea super weapon card into your play areas and place its token on that planet. That token is a structure with the unit abilities and ability text of that card. If that structure is destroyed, purge this card and those superweapon components.",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Belkosea.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Blue Reverie Heroes",
       "hidden": false,
       "id": "Belkosea",
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Belkosea.jpg",
-      "section": "cards",
-      "title": "Belkosea",
-      "type": "Other Component"
+      "section": "drahn",
+      "title": "Project Revelation",
+      "type": "Hero",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "flavour": "",
+      "color": ""
     },
     "Drahn/Heroes/Active/Creuss.jpg": {
       "back": "Drahn/Heroes/Inactive/Creuss.jpg",
@@ -1043,22 +1063,42 @@
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Ghemina.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "back": "Drahn/Heroes/Inactive/Ghemina.jpg",
+      "configured": true,
+      "description": "After you resolve the primary ability of a strategy card, you may spend 1 command token from your strategy pool and purge this card to resolve the pimrary ability of that strategy card.",
       "faction": "",
       "faq": [],
       "filename": "Ghemina.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Discordant Srars Heroes",
       "hidden": false,
       "id": "Ghemina",
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Ghemina.jpg",
-      "section": "cards",
-      "title": "Ghemina",
-      "type": "Other Component"
+      "section": "drahn",
+      "title": "Twinned Leadership",
+      "type": "Hero",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "flavour": "",
+      "color": ""
     },
     "Drahn/Heroes/Active/Ghoti.jpg": {
       "back": "",
@@ -2937,10 +2977,10 @@
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Augurs.jpg": {
-      "back": "",
+      "back": "Keleres/Heroes/Inactive/Augurs.jpg",
       "color": "",
-      "configured": false,
-      "description": "",
+      "configured": true,
+      "description": "When an objective is revealed, you may purge this card to discard that objective and reveal a new objective from the corresponding objective deck instead.",
       "faction": "Keleres",
       "faq": [],
       "filename": "Augurs.jpg",
@@ -2971,7 +3011,7 @@
         "enabled": false,
         "value": ""
       },
-      "title": "Augurs",
+      "title": "Dissonant Visions",
       "type": "Hero"
     },
     "Keleres/Heroes/Active/Bentor.jpg": {
@@ -3432,19 +3472,19 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "title": "Rushed Build Order",
-      "type": "Hero",
       "synergy": {
         "enabled": false,
         "value": ""
-      }
+      },
+      "title": "Rushed Build Order",
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Sarcosa.jpg": {
       "back": "Keleres/Heroes/Inactive/Sarcosa.jpg",
@@ -3542,7 +3582,7 @@
       "back": "Keleres/Heroes/Inactive/Titans.jpg",
       "color": "",
       "configured": true,
-      "description": "**ACTION**: Purge this card to replace up to 4 of your infantry with mechs, and then up to 4 of your mechs with PDS units.",
+      "description": "***ACTION***: Purge this card to replace up to 4 of your infantry with mechs, and then up to 4 of your mechs with PDS units.",
       "faction": "Keleres",
       "faq": [],
       "filename": "Ul.jpg",
