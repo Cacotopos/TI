@@ -31,6 +31,9 @@
         <div class="card-item bg-panel border border-border rounded-xl p-3 shadow-lg hover:border-accent transition-colors cursor-pointer"
              data-card-id="{{ img.id }}"
              data-card-name="{{ img.name }}"
+             data-card-subtitle="{{ img.subtitle | default('') | forceescape }}"
+             data-card-back-title="{{ img.backTitle | default('') | forceescape }}"
+             data-card-back-subtitle="{{ img.backSubtitle | default('') | forceescape }}"
              data-card-type="{{ img.type }}"
              data-card-faction="{{ img.faction }}"
              data-card-section="{{ section.title }}"
@@ -51,9 +54,6 @@
             <img src="{{ img.path }}" alt="{{ img.name }}" class="card-image rounded-lg {{ 'card-portrait' if img.orientation == 'portrait' else 'card-landscape' }}"/>
           </div>
           <p class="text-sm text-center mt-2 font-medium truncate" title="{{ img.name }}">{{ img.name }}</p>
-          {% if img.folder %}
-          <p class="text-xs text-center text-muted truncate">{{ img.folder }}</p>
-          {% endif %}
         </div>
         {% endfor %}
       </div>
@@ -68,9 +68,16 @@
 
 <div id="card-modal" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-4">
   <div class="bg-panel border border-border rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6">
-    <div class="flex justify-between items-start mb-4">
-      <h2 id="card-modal-title" class="text-2xl font-bold"></h2>
+    <div class="flex justify-between items-start mb-1">
+      <div>
+        <h2 id="card-modal-title" class="text-2xl font-bold"></h2>
+        <h3 id="card-modal-subtitle" class="text-base text-muted hidden"></h3>
+      </div>
       <button id="card-modal-close" class="text-muted hover:text-white text-2xl">&times;</button>
+    </div>
+    <div id="card-modal-back-heading" class="hidden mb-3">
+      <h2 id="card-modal-back-title" class="text-xl font-bold"></h2>
+      <h3 id="card-modal-back-subtitle" class="text-base text-muted hidden"></h3>
     </div>
     <div id="card-modal-badges" class="flex flex-wrap gap-2 mb-4"></div>
     <div id="card-modal-flavour" class="hidden italic text-muted mb-4"></div>
@@ -84,7 +91,7 @@
       <div id="card-modal-front-wrapper" class="card-image-wrapper bg-panel border border-border rounded-lg landscape">
         <img id="card-modal-front" src="" alt="" class="card-image rounded-lg"/>
       </div>
-      <div id="card-modal-back-wrapper" class="card-image-wrapper bg-panel border border-border rounded-lg hidden">
+      <div id="card-modal-back-wrapper" class="card-image-wrapper bg-panel border border-border rounded-lg landscape hidden">
         <img id="card-modal-back" src="" alt="" class="card-image rounded-lg"/>
       </div>
     </div>

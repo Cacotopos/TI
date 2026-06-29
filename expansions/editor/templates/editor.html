@@ -355,6 +355,10 @@
         <input id="asset-edit-title" type="text"/>
       </div>
       <div>
+        <label>Subtitle</label>
+        <input id="asset-edit-subtitle" type="text" placeholder="Optional subtitle"/>
+      </div>
+      <div>
         <label>Type</label>
         <select id="asset-edit-type">
           <option value="Action Card">Action Card</option>
@@ -597,6 +601,27 @@
     <label>FAQ (one Q&A per line: Q: ... | A: ...)</label>
     <textarea id="asset-edit-faq" placeholder="Q: Does this stack? | A: Yes."></textarea>
     <div id="asset-back-row">
+      <div class="row" style="margin-bottom:0.5rem;">
+        <div id="back-title-section">
+          <label class="toggle">
+            <input id="asset-edit-back-title-toggle" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Back Title</span>
+          </label>
+        </div>
+      </div>
+      <div id="asset-edit-back-title-inputs" class="hidden well" style="margin-bottom:0.75rem;">
+        <div class="row">
+          <div>
+            <label>Back Title</label>
+            <input id="asset-edit-back-title" type="text" placeholder="Title for back card"/>
+          </div>
+          <div>
+            <label>Back Subtitle</label>
+            <input id="asset-edit-back-subtitle" type="text" placeholder="Subtitle for back card"/>
+          </div>
+        </div>
+      </div>
       <label>Back Image</label>
       <input id="asset-edit-back-filter" type="text" placeholder="Filter back images..."/>
       <select id="asset-edit-back" size="6">
@@ -1443,6 +1468,7 @@ function openAssetEditor(path) {
   document.getElementById('asset-edit-hidden').checked = asset.hidden;
   document.getElementById('asset-edit-configured').checked = asset.configured;
   document.getElementById('asset-edit-title').value = asset.title || '';
+  document.getElementById('asset-edit-subtitle').value = asset.subtitle || '';
   if (asset.type === 'Planet Ability') asset.type = 'Additional Ability';
   document.getElementById('asset-edit-type').value = asset.type || 'Other Component';
   document.getElementById('asset-edit-orientation').value = asset.orientation || 'auto';
@@ -1451,6 +1477,10 @@ function openAssetEditor(path) {
   document.getElementById('asset-edit-description').value = asset.description || '';
   document.getElementById('asset-edit-faq').value = (asset.faq || []).map(qa => `Q: ${qa.q} | A: ${qa.a}`).join('\n');
   document.getElementById('asset-edit-back-filter').value = '';
+  document.getElementById('asset-edit-back-title-toggle').checked = !!(asset.backTitle || asset.backSubtitle);
+  document.getElementById('asset-edit-back-title').value = asset.backTitle || '';
+  document.getElementById('asset-edit-back-subtitle').value = asset.backSubtitle || '';
+  document.getElementById('asset-edit-back-title-inputs').classList.toggle('hidden', !(asset.backTitle || asset.backSubtitle));
 
   updateFactionDatalist();
   document.getElementById('asset-edit-faction').value = asset.faction || '';
@@ -1501,6 +1531,7 @@ function saveAssetEditor() {
   asset.hidden = document.getElementById('asset-edit-hidden').checked;
   asset.configured = document.getElementById('asset-edit-configured').checked;
   asset.title = document.getElementById('asset-edit-title').value.trim() || asset.id;
+  asset.subtitle = document.getElementById('asset-edit-subtitle').value.trim();
   asset.type = document.getElementById('asset-edit-type').value;
   asset.faction = document.getElementById('asset-edit-faction').value.trim();
   asset.section = document.getElementById('asset-edit-section').value;
@@ -1510,6 +1541,9 @@ function saveAssetEditor() {
   asset.description = document.getElementById('asset-edit-description').value.trim();
   asset.faq = faq;
   asset.back = document.getElementById('asset-edit-back').value;
+  const backTitleEnabled = document.getElementById('asset-edit-back-title-toggle').checked;
+  asset.backTitle = backTitleEnabled ? document.getElementById('asset-edit-back-title').value.trim() : '';
+  asset.backSubtitle = backTitleEnabled ? document.getElementById('asset-edit-back-subtitle').value.trim() : '';
 
   if (isUnitType(asset.type)) {
     asset.stats = getUnitStatsInput();
@@ -1700,6 +1734,10 @@ document.getElementById('inspect-btn').addEventListener('click', inspectFolder);
 document.getElementById('asset-edit-save-top').addEventListener('click', saveAssetEditor);
 document.getElementById('asset-edit-type').addEventListener('change', updateUnitInputs);
 document.getElementById('asset-edit-iscard').addEventListener('change', updateBackRowVisibility);
+document.getElementById('asset-edit-back-title-toggle').addEventListener('change', () => {
+  const on = document.getElementById('asset-edit-back-title-toggle').checked;
+  document.getElementById('asset-edit-back-title-inputs').classList.toggle('hidden', !on);
+});
 document.getElementById('asset-edit-prereq-toggle').addEventListener('change', updatePrereqSectionVisibility);
 document.getElementById('asset-edit-synergy-toggle').addEventListener('change', updateSynergySectionVisibility);
 document.getElementById('asset-edit-source-toggle').addEventListener('change', updateSourceSectionVisibility);

@@ -113,6 +113,9 @@
     return {
       id: item.dataset.cardId,
       name: item.dataset.cardName,
+      subtitle: item.dataset.cardSubtitle || '',
+      backTitle: item.dataset.cardBackTitle || '',
+      backSubtitle: item.dataset.cardBackSubtitle || '',
       type: item.dataset.cardType,
       faction: item.dataset.cardFaction,
       section: item.dataset.cardSection,
@@ -179,6 +182,23 @@
 
   function open(card) {
     title.textContent = card.name || card.id;
+    const subtitleEl = document.getElementById('card-modal-subtitle');
+    if (subtitleEl) {
+      subtitleEl.textContent = card.subtitle || '';
+      subtitleEl.classList.toggle('hidden', !card.subtitle);
+    }
+    const backHeading = document.getElementById('card-modal-back-heading');
+    const backTitleEl = document.getElementById('card-modal-back-title');
+    const backSubtitleEl = document.getElementById('card-modal-back-subtitle');
+    if (backHeading && backTitleEl) {
+      const hasBT = !!(card.backTitle || card.backSubtitle);
+      backHeading.classList.toggle('hidden', !hasBT);
+      backTitleEl.textContent = card.backTitle || '';
+      if (backSubtitleEl) {
+        backSubtitleEl.textContent = card.backSubtitle || '';
+        backSubtitleEl.classList.toggle('hidden', !card.backSubtitle);
+      }
+    }
     frontImg.src = card.frontPath;
     frontImg.alt = card.name || card.id;
     const orientation = card.orientation === 'portrait' ? 'portrait' : 'landscape';

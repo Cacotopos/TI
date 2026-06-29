@@ -840,11 +840,13 @@
     },
     "Drahn/Heroes/Active/Belkosea.jpg": {
       "back": "Drahn/Heroes/Inactive/Belkosea.jpg",
+      "color": "",
       "configured": true,
       "description": "***ACTION:*** Attach this card to a planet you control. Take a Belkosea super weapon card into your play areas and place its token on that planet. That token is a structure with the unit abilities and ability text of that card. If that structure is destroyed, purge this card and those superweapon components.",
       "faction": "Drahn",
       "faq": [],
       "filename": "Belkosea.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
       "group": "Blue Reverie Heroes",
       "hidden": false,
@@ -852,29 +854,27 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Belkosea.jpg",
-      "section": "drahn",
-      "title": "Project Revelation",
-      "type": "Hero",
       "prereq": {
         "enabled": false,
         "value": ""
+      },
+      "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
       },
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "resource": 0,
-        "trait": [],
-        "legendary": false,
-        "relic": false,
-        "techSpeciality": "",
-        "linkedAbility": ""
-      },
-      "flavour": "",
-      "color": ""
+      "title": "Project Revelation",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Creuss.jpg": {
       "back": "Drahn/Heroes/Inactive/Creuss.jpg",
@@ -1004,7 +1004,25 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Empyrean.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Empyrean",
       "type": "Other Component"
     },
@@ -1064,11 +1082,13 @@
     },
     "Drahn/Heroes/Active/Ghemina.jpg": {
       "back": "Drahn/Heroes/Inactive/Ghemina.jpg",
+      "color": "",
       "configured": true,
       "description": "After you resolve the primary ability of a strategy card, you may spend 1 command token from your strategy pool and purge this card to resolve the pimrary ability of that strategy card.",
       "faction": "",
       "faq": [],
       "filename": "Ghemina.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
       "group": "Discordant Srars Heroes",
       "hidden": false,
@@ -1076,47 +1096,74 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Ghemina.jpg",
-      "section": "drahn",
-      "title": "Twinned Leadership",
-      "type": "Hero",
       "prereq": {
         "enabled": false,
         "value": ""
+      },
+      "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
       },
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "resource": 0,
-        "trait": [],
-        "legendary": false,
-        "relic": false,
-        "techSpeciality": "",
-        "linkedAbility": ""
-      },
-      "flavour": "",
-      "color": ""
+      "title": "Twinned Leadership",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Ghoti.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
+      "back": "Drahn/Heroes/Inactive/Ghoti.jpg",
+      "color": "",
+      "configured": true,
+      "description": "**At any time**: Purge this card and 1 of your unsecured secret objectives, if able, to gain 1 victory point.",
+      "faction": "Drahn",
+      "faq": [
+        {
+          "a": "",
+          "q": "Q: This seems really strong?"
+        },
+        {
+          "a": "",
+          "q": "A: You don't start with any planets in your home system, it's fine."
+        }
+      ],
       "filename": "Ghoti.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Discordant Stars Heroes",
       "hidden": false,
       "id": "Ghoti",
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Ghoti.jpg",
-      "section": "cards",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "drahn-overview",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Ghoti",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Gledge.jpg": {
       "back": "",
@@ -1281,22 +1328,42 @@
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Naalu.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Drahn/Heroes/Inactive/Naalu.jpg",
+      "configured": true,
+      "description": "**At the start of the status phase:**\nPurge this card and spend 1 command token from your strategy pool to score 1 public objective, if you fulfil its requirements.",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Naalu.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Twilight Imperium Heroes",
       "hidden": false,
       "id": "Naalu",
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Naalu.jpg",
-      "section": "cards",
-      "title": "Naalu",
-      "type": "Other Component"
+      "section": "drahn-overview",
+      "title": "Telecognitive Operatives",
+      "type": "Hero",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "flavour": "",
+      "color": ""
     },
     "Drahn/Heroes/Active/Nekro.jpg": {
       "back": "",
@@ -1372,7 +1439,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "drahn-overview",
+      "section": "drahn",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -1382,6 +1449,10 @@
         "resource": 0,
         "techSpeciality": "",
         "trait": []
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
       },
       "title": "Olradin",
       "type": "Hero"
@@ -3375,16 +3446,16 @@
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Nomad.jpg": {
-      "back": "",
+      "back": "Keleres/Heroes/Inactive/Nomad.jpg",
       "color": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "**When another player scores a secret objective:**\nIf you fulfill the requirements of that objective, you may purge this card to draw 3 secret objectives.",
+      "faction": "Keleres",
       "faq": [],
       "filename": "Nomad.jpg",
       "flavour": "",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Prophecy of Kings Heroes",
       "hidden": false,
       "id": "Nomad",
       "isCard": true,
@@ -3409,7 +3480,7 @@
         "enabled": false,
         "value": ""
       },
-      "title": "Nomad",
+      "title": "Hedged Providence",
       "type": "Hero"
     },
     "Keleres/Heroes/Active/Qhet.jpg": {
