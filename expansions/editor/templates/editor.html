@@ -546,6 +546,8 @@
       </div>
     </div>
 
+    <label>Flavour Text</label>
+    <textarea id="asset-edit-flavour" placeholder="Italic flavour text shown under the card title"></textarea>
     <label>Description (Markdown)</label>
     <textarea id="asset-edit-description"></textarea>
     <label>FAQ (one Q&A per line: Q: ... | A: ...)</label>
@@ -1308,6 +1310,7 @@ function openAssetEditor(path) {
   document.getElementById('asset-edit-type').value = asset.type || 'Other Component';
   document.getElementById('asset-edit-orientation').value = asset.orientation || 'auto';
   document.getElementById('asset-edit-group').value = asset.group || '';
+  document.getElementById('asset-edit-flavour').value = asset.flavour || '';
   document.getElementById('asset-edit-description').value = asset.description || '';
   document.getElementById('asset-edit-faq').value = (asset.faq || []).map(qa => `Q: ${qa.q} | A: ${qa.a}`).join('\n');
   document.getElementById('asset-edit-back-filter').value = '';
@@ -1363,6 +1366,7 @@ function saveAssetEditor() {
   asset.section = document.getElementById('asset-edit-section').value;
   asset.orientation = document.getElementById('asset-edit-orientation').value;
   asset.group = document.getElementById('asset-edit-group').value.trim() || asset.folder;
+  asset.flavour = document.getElementById('asset-edit-flavour').value.trim();
   asset.description = document.getElementById('asset-edit-description').value.trim();
   asset.faq = faq;
   asset.back = document.getElementById('asset-edit-back').value;

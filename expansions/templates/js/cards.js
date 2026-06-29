@@ -12,6 +12,7 @@
   const backImg = document.getElementById('card-modal-back');
   const backWrapper = document.getElementById('card-modal-back-wrapper');
   const description = document.getElementById('card-modal-description');
+  const flavourContainer = document.getElementById('card-modal-flavour');
   const faqDetails = document.getElementById('card-modal-faq');
   const faqContent = document.getElementById('card-modal-faq-content');
   const closeBtn = document.getElementById('card-modal-close');
@@ -115,6 +116,7 @@
       source: item.dataset.cardSource,
       back: item.dataset.cardBack,
       frontPath: item.dataset.cardFrontPath,
+      flavour: item.dataset.cardFlavour,
     };
   }
   function renderCardActions(card) {
@@ -198,6 +200,14 @@
     sourceContainer.classList.toggle('hidden', !sourceHtml);
     renderCardActions(card);
 
+    if (card.flavour) {
+      flavourContainer.textContent = card.flavour;
+      flavourContainer.classList.remove('hidden');
+    } else {
+      flavourContainer.textContent = '';
+      flavourContainer.classList.add('hidden');
+    }
+
     if (card.description) {
       description.innerHTML = renderMarkdown(card.description);
       description.classList.remove('hidden');
@@ -265,6 +275,7 @@
         source: item.dataset.cardSource,
         back: item.dataset.cardBack,
         frontPath: item.dataset.cardFrontPath,
+        flavour: item.dataset.cardFlavour,
         parentPath: parentByPath[item.dataset.cardFrontPath] || '',
       });
     });

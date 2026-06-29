@@ -39,7 +39,8 @@
              data-card-source="{{ img.source | tojson | forceescape }}"
              data-card-back="{{ img.back }}"
              data-card-front-path="{{ img.path }}"
-             data-card-orientation="{{ img.orientation }}">
+             data-card-orientation="{{ img.orientation }}"
+             data-card-flavour="{{ img.flavour | default('') | forceescape }}">
           <div class="card-image-wrapper">
             <img src="{{ img.path }}" alt="{{ img.name }}" class="card-image rounded-lg {{ 'card-portrait' if img.orientation == 'portrait' else 'card-landscape' }}"/>
           </div>
@@ -66,6 +67,7 @@
       <button id="card-modal-close" class="text-muted hover:text-white text-2xl">&times;</button>
     </div>
     <div id="card-modal-badges" class="flex flex-wrap gap-2 mb-4"></div>
+    <div id="card-modal-flavour" class="hidden italic text-muted mb-4"></div>
     <div id="card-modal-stats" class="flex flex-nowrap gap-2 mb-4 hidden overflow-x-auto"></div>
     <div id="card-modal-abilities" class="flex flex-wrap gap-2 mb-4 hidden"></div>
     <div id="card-modal-prereq" class="flex flex-wrap gap-2 mb-4 hidden"></div>

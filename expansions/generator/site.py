@@ -158,6 +158,7 @@ def _collect_assets(config: dict) -> list[dict]:
             "color": asset.get("color", ""),
             "source": asset.get("source", {}),
             "orientation": orientation,
+            "flavour": asset.get("flavour", ""),
         })
     return images
 
