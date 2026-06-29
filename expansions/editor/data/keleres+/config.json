@@ -556,15 +556,16 @@
       "source": {
         "enabled": true,
         "influence": 2,
-        "legendary": true,
-        "linkedAbility": "Drahn/Drahn Nevermore Ability Front.jpg",
-        "relic": false,
         "resource": 2,
+        "trait": [],
+        "legendary": true,
+        "relic": false,
         "techSpeciality": "",
-        "trait": ""
+        "linkedAbility": "Drahn/Drahn Nevermore Ability Front.jpg"
       },
       "title": "Nevermore",
-      "type": "Planet"
+      "type": "Planet",
+      "flavour": "Nevermore, the dark beating heart of the Drahn Cartel. Ten thousand people wander down its countless alleys every day, and the Drahn happily transact with them all."
     },
     "Drahn/Drahn Promissory Note.jpg": {
       "back": "",
@@ -590,12 +591,12 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
       "title": "Networking Officer",
       "type": "Promissory Note"

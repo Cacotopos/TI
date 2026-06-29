@@ -135,8 +135,12 @@
   .banner-row input { margin-bottom: 0; }
   .banner-row .hint { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; }
   .hint { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; margin-bottom: 0.5rem; }
+  .tooltip-icon { display: inline-flex; align-items: center; justify-content: center; width: 1rem; height: 1rem; border-radius: 50%; background: var(--muted); color: var(--panel); font-size: 0.7rem; cursor: help; margin-left: 0.25rem; font-weight: bold; }
   .trait-checkboxes { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
   .trait-checkboxes label { display: flex; align-items: center; gap: 0.4rem; font-size: 0.9rem; }
+  .editor-text-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .editor-text-row > div { display: flex; flex-direction: column; }
+  .editor-text-row textarea { flex: 1; min-height: 120px; }
   .banner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
   .banner-option { border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem; cursor: pointer; text-align: center; }
   .banner-option:hover { border-color: var(--accent); }
@@ -445,9 +449,8 @@
         <datalist id="asset-edit-faction-list"></datalist>
       </div>
       <div>
-        <label>Group</label>
+        <label>Group <span class="tooltip-icon" title="Groups cards under sub-headings on card pages.">i</span></label>
         <input id="asset-edit-group" type="text" placeholder="e.g. Drahn, Units, Technologies"/>
-        <p class="hint">Groups cards under sub-headings on card pages.</p>
       </div>
     </div>
 
@@ -546,10 +549,16 @@
       </div>
     </div>
 
-    <label>Flavour Text</label>
-    <textarea id="asset-edit-flavour" placeholder="Italic flavour text shown under the card title"></textarea>
-    <label>Description (Markdown)</label>
-    <textarea id="asset-edit-description"></textarea>
+    <div class="editor-text-row">
+      <div>
+        <label>Flavour Text</label>
+        <textarea id="asset-edit-flavour" placeholder="Italic flavour text shown under the card title"></textarea>
+      </div>
+      <div>
+        <label>Description (Markdown)</label>
+        <textarea id="asset-edit-description"></textarea>
+      </div>
+    </div>
     <label>FAQ (one Q&A per line: Q: ... | A: ...)</label>
     <textarea id="asset-edit-faq" placeholder="Q: Does this stack? | A: Yes."></textarea>
     <div id="asset-back-row">
