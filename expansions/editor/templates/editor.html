@@ -601,27 +601,6 @@
     <label>FAQ (one Q&A per line: Q: ... | A: ...)</label>
     <textarea id="asset-edit-faq" placeholder="Q: Does this stack? | A: Yes."></textarea>
     <div id="asset-back-row">
-      <div class="row" style="margin-bottom:0.5rem;">
-        <div id="back-title-section">
-          <label class="toggle">
-            <input id="asset-edit-back-title-toggle" type="checkbox"/>
-            <span class="switch"></span>
-            <span class="label-text">Back Title</span>
-          </label>
-        </div>
-      </div>
-      <div id="asset-edit-back-title-inputs" class="hidden well" style="margin-bottom:0.75rem;">
-        <div class="row">
-          <div>
-            <label>Back Title</label>
-            <input id="asset-edit-back-title" type="text" placeholder="Title for back card"/>
-          </div>
-          <div>
-            <label>Back Subtitle</label>
-            <input id="asset-edit-back-subtitle" type="text" placeholder="Subtitle for back card"/>
-          </div>
-        </div>
-      </div>
       <label>Back Image</label>
       <input id="asset-edit-back-filter" type="text" placeholder="Filter back images..."/>
       <select id="asset-edit-back" size="6">
@@ -1477,10 +1456,6 @@ function openAssetEditor(path) {
   document.getElementById('asset-edit-description').value = asset.description || '';
   document.getElementById('asset-edit-faq').value = (asset.faq || []).map(qa => `Q: ${qa.q} | A: ${qa.a}`).join('\n');
   document.getElementById('asset-edit-back-filter').value = '';
-  document.getElementById('asset-edit-back-title-toggle').checked = !!(asset.backTitle || asset.backSubtitle);
-  document.getElementById('asset-edit-back-title').value = asset.backTitle || '';
-  document.getElementById('asset-edit-back-subtitle').value = asset.backSubtitle || '';
-  document.getElementById('asset-edit-back-title-inputs').classList.toggle('hidden', !(asset.backTitle || asset.backSubtitle));
 
   updateFactionDatalist();
   document.getElementById('asset-edit-faction').value = asset.faction || '';
@@ -1502,7 +1477,7 @@ function openAssetEditor(path) {
   updateBackRowVisibility();
 
   const sectionSelect = document.getElementById('asset-edit-section');
-  sectionSelect.innerHTML = sections.map(s => `<option value="${s.id}" ${s.id === asset.section ? 'selected' : ''}>${s.title}</option>`).join('');
+  sectionSelect.innerHTML = `<option value="" ${!asset.section ? 'selected' : ''}>None</option>` + sections.map(s => `<option value="${s.id}" ${s.id === asset.section ? 'selected' : ''}>${s.title}</option>`).join('');
 
   populateBackOptions(path, asset.back || '', '');
   document.getElementById('asset-edit-source-linked-filter').value = '';
@@ -1541,9 +1516,6 @@ function saveAssetEditor() {
   asset.description = document.getElementById('asset-edit-description').value.trim();
   asset.faq = faq;
   asset.back = document.getElementById('asset-edit-back').value;
-  const backTitleEnabled = document.getElementById('asset-edit-back-title-toggle').checked;
-  asset.backTitle = backTitleEnabled ? document.getElementById('asset-edit-back-title').value.trim() : '';
-  asset.backSubtitle = backTitleEnabled ? document.getElementById('asset-edit-back-subtitle').value.trim() : '';
 
   if (isUnitType(asset.type)) {
     asset.stats = getUnitStatsInput();
@@ -1734,10 +1706,6 @@ document.getElementById('inspect-btn').addEventListener('click', inspectFolder);
 document.getElementById('asset-edit-save-top').addEventListener('click', saveAssetEditor);
 document.getElementById('asset-edit-type').addEventListener('change', updateUnitInputs);
 document.getElementById('asset-edit-iscard').addEventListener('change', updateBackRowVisibility);
-document.getElementById('asset-edit-back-title-toggle').addEventListener('change', () => {
-  const on = document.getElementById('asset-edit-back-title-toggle').checked;
-  document.getElementById('asset-edit-back-title-inputs').classList.toggle('hidden', !on);
-});
 document.getElementById('asset-edit-prereq-toggle').addEventListener('change', updatePrereqSectionVisibility);
 document.getElementById('asset-edit-synergy-toggle').addEventListener('change', updateSynergySectionVisibility);
 document.getElementById('asset-edit-source-toggle').addEventListener('change', updateSourceSectionVisibility);

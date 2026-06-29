@@ -1,6 +1,6 @@
 {
   "id": "keleres+",
-  "name": "keleres+",
+  "name": "Keleres+",
   "version": "1.0",
   "description": "The Keleres and Drahn factions have come to provide assistance to any and all galactic powers.",
   "overview": "The Keleres+ mini expansion expands the Keleres faction hero suite, and introduces a new faction, the Drahn, which operates as a sort of anti-Keleres, with its own host of faction heroes.",
@@ -1045,22 +1045,45 @@
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Firmament.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Drahn/Heroes/Inactive/Firmament.jpg",
+      "backSubtitle": "Drahn Officer",
+      "backTitle": "Penitent Gello",
+      "color": "",
+      "configured": true,
+      "description": "At the start of your turn you may choose a system that contains a neighbor's units, then 1 of the following: that player destroys 3 of their units in that system; research 1 technology that player owns; your units gain +2 to combat rolls in combats against that player this turn. Then, purge this card.",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Firmament.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Thunder's Edge Heroes",
       "hidden": false,
       "id": "Firmament",
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Firmament.jpg",
-      "section": "cards",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Uncertain Alliance",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Firmament",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Florzen.jpg": {
       "back": "",
@@ -1329,11 +1352,15 @@
     },
     "Drahn/Heroes/Active/Naalu.jpg": {
       "back": "Drahn/Heroes/Inactive/Naalu.jpg",
+      "backSubtitle": "Drahn Officer",
+      "backTitle": "S'San, Chirurgeon",
+      "color": "",
       "configured": true,
       "description": "**At the start of the status phase:**\nPurge this card and spend 1 command token from your strategy pool to score 1 public objective, if you fulfil its requirements.",
       "faction": "Drahn",
       "faq": [],
       "filename": "Naalu.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
       "group": "Twilight Imperium Heroes",
       "hidden": false,
@@ -1341,29 +1368,28 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Naalu.jpg",
-      "section": "drahn-overview",
-      "title": "Telecognitive Operatives",
-      "type": "Hero",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Nefishh Implants",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "resource": 0,
-        "trait": [],
-        "legendary": false,
-        "relic": false,
-        "techSpeciality": "",
-        "linkedAbility": ""
-      },
-      "flavour": "",
-      "color": ""
+      "title": "Telecognitive Operatives",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Nekro.jpg": {
       "back": "",
@@ -1693,15 +1719,22 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
-      "title": "Arborec",
-      "type": "Other Component"
+      "title": "Dirzuga Ophliat",
+      "type": "Other Component",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "subtitle": "Drahn Officer",
+      "backTitle": "",
+      "backSubtitle": ""
     },
     "Drahn/Heroes/Inactive/Belkosea.jpg": {
       "back": "",
@@ -1727,15 +1760,22 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
-      "title": "Belkosea",
-      "type": "Other Component"
+      "title": "Project Lead Kal",
+      "type": "Other Component",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "subtitle": "Drahn Officer",
+      "backTitle": "",
+      "backSubtitle": ""
     },
     "Drahn/Heroes/Inactive/Creuss.jpg": {
       "back": "",
@@ -2447,6 +2487,10 @@
         "resource": 0,
         "techSpeciality": "",
         "trait": []
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
       },
       "title": "Naalu",
       "type": "Other Component"
@@ -3447,6 +3491,8 @@
     },
     "Keleres/Heroes/Active/Nomad.jpg": {
       "back": "Keleres/Heroes/Inactive/Nomad.jpg",
+      "backSubtitle": "",
+      "backTitle": "",
       "color": "",
       "configured": true,
       "description": "**When another player scores a secret objective:**\nIf you fulfill the requirements of that objective, you may purge this card to draw 3 secret objectives.",
@@ -3476,6 +3522,7 @@
         "techSpeciality": "",
         "trait": []
       },
+      "subtitle": "",
       "synergy": {
         "enabled": false,
         "value": ""
@@ -3577,23 +3624,26 @@
         "enabled": false,
         "value": ""
       },
-      "section": "drahn",
+      "section": "keleres",
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "synergy": {
         "enabled": false,
         "value": ""
       },
       "title": "Letters of Marque",
-      "type": "Hero"
+      "type": "Hero",
+      "subtitle": "",
+      "backTitle": "",
+      "backSubtitle": ""
     },
     "Keleres/Heroes/Active/Shipwrights.jpg": {
       "back": "",
