@@ -77,9 +77,12 @@
     if (type === 'Station') {
       parts.push('<span class="px-2 py-1 rounded-md bg-blue-600 text-white text-xs font-semibold whitespace-nowrap">Station</span>');
     } else if (source.trait) {
+      const traits = Array.isArray(source.trait) ? source.trait : (source.trait ? [source.trait] : []);
       const traitColors = { hazardous: 'bg-red-600', cultural: 'bg-green-600', industrial: 'bg-yellow-500 text-black' };
-      const color = traitColors[source.trait] || 'bg-gray-700';
-      parts.push(`<span class="px-2 py-1 rounded-md ${color} text-xs font-semibold whitespace-nowrap capitalize">${escapeHtml(source.trait)}</span>`);
+      traits.forEach(trait => {
+        const color = traitColors[trait] || 'bg-gray-700';
+        parts.push(`<span class="px-2 py-1 rounded-md ${color} text-xs font-semibold whitespace-nowrap capitalize">${escapeHtml(trait)}</span>`);
+      });
     }
     if (source.legendary) parts.push('<span class="px-2 py-1 rounded-md bg-pink-400 text-black text-xs font-semibold whitespace-nowrap">Legendary</span>');
     if (source.relic) parts.push('<span class="px-2 py-1 rounded-md bg-orange-300 text-black text-xs font-semibold whitespace-nowrap">Relic</span>');

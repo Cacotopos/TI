@@ -134,6 +134,9 @@
   .banner-row { display: flex; gap: 0.75rem; align-items: flex-end; }
   .banner-row input { margin-bottom: 0; }
   .banner-row .hint { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; }
+  .hint { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; margin-bottom: 0.5rem; }
+  .trait-checkboxes { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+  .trait-checkboxes label { display: flex; align-items: center; gap: 0.4rem; font-size: 0.9rem; }
   .banner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
   .banner-option { border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem; cursor: pointer; text-align: center; }
   .banner-option:hover { border-color: var(--accent); }
@@ -409,12 +412,11 @@
             <input id="asset-edit-source-influence" type="number" min="0" max="10" placeholder="Influence"/>
             <input id="asset-edit-source-resource" type="number" min="0" max="10" placeholder="Resource"/>
           </div>
-          <select id="asset-edit-source-trait" class="source-planet-only">
-            <option value="">Planetary trait</option>
-            <option value="hazardous">Hazardous</option>
-            <option value="cultural">Cultural</option>
-            <option value="industrial">Industrial</option>
-          </select>
+          <div class="trait-checkboxes source-planet-only">
+            <label><input id="asset-edit-trait-hazardous" type="checkbox" value="hazardous"/> Hazardous</label>
+            <label><input id="asset-edit-trait-cultural" type="checkbox" value="cultural"/> Cultural</label>
+            <label><input id="asset-edit-trait-industrial" type="checkbox" value="industrial"/> Industrial</label>
+          </div>
           <div class="source-toggles">
             <label class="toggle">
               <input id="asset-edit-source-legendary" type="checkbox"/>
@@ -444,7 +446,8 @@
       </div>
       <div>
         <label>Group</label>
-        <input id="asset-edit-group" type="text"/>
+        <input id="asset-edit-group" type="text" placeholder="e.g. Drahn, Units, Technologies"/>
+        <p class="hint">Groups cards under sub-headings on card pages.</p>
       </div>
     </div>
 
@@ -1099,7 +1102,7 @@ function updatePrereqDefaults(type) {
   if (!value.value) value.value = prereq.value;
 }
 function defaultSource(type) {
-  return { enabled: type === 'Planet' || type === 'Station', influence: 0, resource: 0, trait: '', legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
+  return { enabled: type === 'Planet' || type === 'Station', influence: 0, resource: 0, trait: [], legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
 }
 function applySourceDefaultsIfNeeded(asset) {
   if (!asset.source) asset.source = defaultSource(asset.type);
@@ -1108,21 +1111,24 @@ function getSourceInput() {
   const enabled = document.getElementById('asset-edit-source-toggle').checked;
   const influence = parseInt(document.getElementById('asset-edit-source-influence').value) || 0;
   const resource = parseInt(document.getElementById('asset-edit-source-resource').value) || 0;
-  const trait = document.getElementById('asset-edit-source-trait').value;
+  const traits = ['hazardous', 'cultural', 'industrial'].filter(t => document.getElementById(`asset-edit-trait-${t}`).checked);
   const legendary = document.getElementById('asset-edit-source-legendary').checked;
   const relic = document.getElementById('asset-edit-source-relic').checked;
   const techSpeciality = document.getElementById('asset-edit-source-tech').value.toUpperCase().replace(/[^GYRB]/g, '').slice(0, 4);
   const linkedAbility = document.getElementById('asset-edit-source-linked').value;
-  if (!enabled) return { enabled: false, influence: 0, resource: 0, trait: '', legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
+  if (!enabled) return { enabled: false, influence: 0, resource: 0, trait: [], legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
   const isStation = document.getElementById('asset-edit-type').value === 'Station';
-  return { enabled, influence, resource, trait: isStation ? '' : trait, legendary, relic: isStation ? false : relic, techSpeciality: isStation ? '' : techSpeciality, linkedAbility: isStation ? '' : (linkedAbility || '') };
+  return { enabled, influence, resource, trait: isStation ? [] : traits, legendary, relic: isStation ? false : relic, techSpeciality: isStation ? '' : techSpeciality, linkedAbility: isStation ? '' : (linkedAbility || '') };
 }
 function setSourceInput(source) {
-  const s = source || { enabled: false, influence: 0, resource: 0, trait: '', legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
+  const s = source || { enabled: false, influence: 0, resource: 0, trait: [], legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
+  const traits = Array.isArray(s.trait) ? s.trait : (s.trait ? [s.trait] : []);
   document.getElementById('asset-edit-source-toggle').checked = s.enabled;
   document.getElementById('asset-edit-source-influence').value = s.influence || '';
   document.getElementById('asset-edit-source-resource').value = s.resource || '';
-  document.getElementById('asset-edit-source-trait').value = s.trait || '';
+  ['hazardous', 'cultural', 'industrial'].forEach(t => {
+    document.getElementById(`asset-edit-trait-${t}`).checked = traits.includes(t);
+  });
   document.getElementById('asset-edit-source-legendary').checked = s.legendary || false;
   document.getElementById('asset-edit-source-relic').checked = s.relic || false;
   document.getElementById('asset-edit-source-tech').value = s.techSpeciality || '';
