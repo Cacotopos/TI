@@ -21,7 +21,7 @@
   </section>
 
   <section class="bg-panel border border-border rounded-xl p-6 shadow-lg">
-    <h2 class="text-xl font-semibold mb-4">Sections</h2>
+    <h2 class="text-xl font-semibold mb-4">Pages</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {% for section in site.sections %}
       <a href="{{ section.id }}.html" class="block bg-bg border border-border rounded-lg p-4 hover:border-accent transition-colors">
@@ -36,7 +36,7 @@
   {% if card_count %}
   <section class="bg-panel border border-border rounded-xl p-6 shadow-lg">
     <h2 class="text-xl font-semibold mb-4">{{ card_count }} Cards</h2>
-    <p class="text-muted mb-4">Browse all cards in the <a href="cards.html" class="text-accent hover:underline">Cards section</a>.</p>
+    <p class="text-muted mb-4">Browse all cards in the <a href="cards.html" class="text-accent hover:underline">Cards page</a>.</p>
   </section>
   {% endif %}
 </main>

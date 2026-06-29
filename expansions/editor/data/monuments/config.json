@@ -520,17 +520,66 @@
     "Monuments/Base+PoK/Vuil'Raith.jpg": {
       "back": "",
       "configured": false,
-      "description": "",
+      "description": "**DEPLOY**: When you gain control of a planet that contains 1 or more structures, you may place this unit on that planet and capture each other structure on that planet as if it were a non-fighter ship.",
       "faq": [],
       "filename": "Vuil'Raith.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Prophecy of Kings",
       "hidden": false,
       "id": "Vuil'Raith",
       "isCard": true,
       "path": "Monuments/Base+PoK/Vuil'Raith.jpg",
       "section": "cards",
-      "title": "Vuil'Raith"
+      "title": "She Consumes Worlds",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "type": "Unit - Structure - Monument",
+      "faction": "The Vuil'Raith Cabal",
+      "orientation": "auto",
+      "flavour": "",
+      "stats": {
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        },
+        "capacity": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "abilities": {
+        "deploy": true,
+        "planetaryShield": false,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
+        "spaceCannon": null,
+        "production": {
+          "value": 1,
+          "multi": 1
+        }
+      },
+      "color": ""
     },
     "Monuments/Base+PoK/Winnu.jpg": {
       "back": "",
@@ -1074,18 +1123,67 @@
     },
     "Monuments/DS/Vaylerian.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Vaylerian.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Vaylerian",
       "isCard": true,
       "path": "Monuments/DS/Vaylerian.jpg",
       "section": "cards",
-      "title": "Vaylerian"
+      "title": "Aylor Raider Hoard",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": true,
+        "influence": 0,
+        "resource": 0,
+        "trait": [
+          "hazardous",
+          "cultural"
+        ],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "type": "Unit - Structure - Monument",
+      "faction": "Valerian Raiders",
+      "orientation": "auto",
+      "flavour": "",
+      "stats": {
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        },
+        "capacity": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "abilities": {
+        "deploy": false,
+        "planetaryShield": false,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
+        "spaceCannon": null,
+        "production": null
+      },
+      "color": ""
     },
     "Monuments/DS/Veldyr.jpg": {
       "back": "",

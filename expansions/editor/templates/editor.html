@@ -94,23 +94,25 @@
   .unit-roll-ability .toggle { flex: 1; }
   .unit-roll-ability input { width: 4rem; margin-bottom: 0; padding: 0.35rem 0.5rem; text-align: right; }
   .asset-stat-line { display: flex; flex-wrap: nowrap; gap: 0.35rem; }
-  #prereq-section { display: flex; flex-direction: column; justify-content: flex-start; flex: 0 0 45%; }
-  #prereq-section label.toggle { margin-bottom: 0; }
-  #asset-edit-prereq-inputs { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
-  #asset-edit-prereq-inputs input, #asset-edit-prereq-inputs select { margin-bottom: 0; }
   #asset-edit-prereq { text-transform: uppercase; font-family: monospace; letter-spacing: 0.15em; }
   #asset-edit-color { width: auto; flex: 1; }
+  .well { background: var(--bg); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; margin-top: 0.5rem; }
+  .well .row { margin-bottom: 0; }
+  .well .row + .row { margin-top: 0.75rem; }
   #source-section { width: 100%; }
   #source-section label.toggle { margin-bottom: 0; }
-  .source-inputs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 0.5rem; }
+  #prereq-section { display: flex; flex-direction: column; justify-content: flex-start; flex: 0 0 45%; }
+  #prereq-section label.toggle { margin-bottom: 0; }
+  .source-inputs { display: flex; flex-direction: column; gap: 0.75rem; }
   .source-inputs input, .source-inputs select { margin-bottom: 0; }
-  .source-scores { display: flex; gap: 0.5rem; }
-  .source-scores input { flex: 1; }
+  .source-scores { display: flex; gap: 1.5rem; align-items: center; }
+  .source-scores label { font-size: 0.85rem; color: var(--text); display: flex; align-items: center; gap: 0.35rem; }
+  .source-scores input { width: 3.5rem; flex: none; text-align: center; }
   .source-toggles { display: flex; gap: 0.5rem; flex-wrap: wrap; }
   .source-toggles .toggle { margin-bottom: 0; }
-  .source-linked-picker { display: flex; flex-direction: column; gap: 0.25rem; }
-  .source-linked-picker input { margin-bottom: 0; }
-  .source-linked-picker select { margin-bottom: 0; }
+  .source-linked-picker { display: flex; gap: 0.5rem; align-items: center; }
+  .source-linked-picker input { margin-bottom: 0; flex: 1; }
+  .source-linked-picker select { margin-bottom: 0; flex: 2; }
   .asset-cell .title { font-size: 0.85rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .asset-cell .group { font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .toolbar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
@@ -129,7 +131,10 @@
   .modal { background: var(--panel); border: 1px solid var(--border); border-radius: 0.75rem; width: 100%; max-width: 700px; max-height: 90vh; overflow-y: auto; padding: 1.5rem; }
   .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
   .modal-footer { display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem; }
-  .checkbox-row { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .checkbox-row { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; align-items: center; }
+  .orientation-inline { display: flex; align-items: center; gap: 0.5rem; }
+  .orientation-inline label { font-size: 0.85rem; color: var(--muted); margin-bottom: 0; }
+  .orientation-inline select { margin-bottom: 0; width: auto; min-width: 10rem; }
   .empty-state { color: var(--muted); text-align: center; padding: 2rem; }
   .banner-row { display: flex; gap: 0.75rem; align-items: flex-end; }
   .banner-row input { margin-bottom: 0; }
@@ -221,14 +226,14 @@
     </div>
 
     <div class="tabs">
-      <div class="tab active" data-tab="sections">Sections</div>
+      <div class="tab active" data-tab="sections">Pages</div>
       <div class="tab" data-tab="assets">Assets</div>
     </div>
 
     <div id="tab-sections" class="tab-content">
       <div class="card">
         <div id="sections-container"></div>
-        <button id="add-section-btn" type="button" class="secondary">Add Section</button>
+        <button id="add-section-btn" type="button" class="secondary">Add Page</button>
       </div>
     </div>
 
@@ -322,10 +327,8 @@
         <span class="switch"></span>
         <span class="label-text">Configured</span>
       </label>
-    </div>
-    <div class="row">
-      <div>
-        <label>Orientation</label>
+      <div class="orientation-inline">
+        <label for="asset-edit-orientation">Orientation</label>
         <select id="asset-edit-orientation">
           <option value="auto">Auto (derive from image)</option>
           <option value="landscape">Landscape</option>
@@ -338,12 +341,6 @@
         <label>Title</label>
         <input id="asset-edit-title" type="text"/>
       </div>
-      <div>
-        <label>Section</label>
-        <select id="asset-edit-section"></select>
-      </div>
-    </div>
-    <div class="row">
       <div>
         <label>Type</label>
         <select id="asset-edit-type">
@@ -385,16 +382,30 @@
           <option value="Unit - Structure - Advanced Structure">Unit - Structure - Advanced Structure</option>
         </select>
       </div>
-      <div id="prereq-section" class="prereq-inline">
+    </div>
+    <div class="row">
+      <div>
+        <label>Page</label>
+        <select id="asset-edit-section"></select>
+      </div>
+      <div id="prereq-section">
         <label class="toggle">
           <input id="asset-edit-prereq-toggle" type="checkbox"/>
           <span class="switch"></span>
           <span class="label-text">Prerequisite</span>
         </label>
-        <div id="asset-edit-prereq-inputs" class="hidden prereq-inputs">
+      </div>
+    </div>
+    <div id="asset-edit-prereq-inputs" class="hidden well">
+      <div class="row">
+        <div>
+          <label>Prerequisite</label>
           <input id="asset-edit-prereq" type="text" placeholder="e.g. RRYY" maxlength="4"/>
+        </div>
+        <div>
+          <label>Tech color</label>
           <select id="asset-edit-color">
-            <option value="">Tech color</option>
+            <option value="">None</option>
             <option value="G">Green</option>
             <option value="Y">Yellow</option>
             <option value="R">Red</option>
@@ -411,34 +422,34 @@
           <span class="switch"></span>
           <span class="label-text">Source</span>
         </label>
-        <div id="asset-edit-source-inputs" class="hidden source-inputs">
-          <div class="source-scores">
-            <input id="asset-edit-source-influence" type="number" min="0" max="10" placeholder="Influence"/>
-            <input id="asset-edit-source-resource" type="number" min="0" max="10" placeholder="Resource"/>
-          </div>
-          <div class="trait-checkboxes source-planet-only">
-            <label><input id="asset-edit-trait-hazardous" type="checkbox" value="hazardous"/> Hazardous</label>
-            <label><input id="asset-edit-trait-cultural" type="checkbox" value="cultural"/> Cultural</label>
-            <label><input id="asset-edit-trait-industrial" type="checkbox" value="industrial"/> Industrial</label>
-          </div>
-          <div class="source-toggles">
-            <label class="toggle">
-              <input id="asset-edit-source-legendary" type="checkbox"/>
-              <span class="switch"></span>
-              <span class="label-text">Legendary</span>
-            </label>
-            <label class="toggle source-planet-only">
-              <input id="asset-edit-source-relic" type="checkbox"/>
-              <span class="switch"></span>
-              <span class="label-text">Relic</span>
-            </label>
-          </div>
-          <input id="asset-edit-source-tech" class="source-planet-only" type="text" placeholder="Tech speciality e.g. RRYY" maxlength="4"/>
-          <div class="source-linked-picker source-planet-only">
-            <input id="asset-edit-source-linked-filter" type="text" placeholder="Filter linked ability card..."/>
-            <select id="asset-edit-source-linked"></select>
-          </div>
-        </div>
+      </div>
+    </div>
+    <div id="asset-edit-source-inputs" class="hidden well">
+      <div class="source-scores">
+        <label>Influence: <input id="asset-edit-source-influence" type="number" min="0" max="10"/></label>
+        <label>Resource: <input id="asset-edit-source-resource" type="number" min="0" max="10"/></label>
+      </div>
+      <div class="trait-checkboxes source-planet-only">
+        <label><input id="asset-edit-trait-hazardous" type="checkbox" value="hazardous"/> Hazardous</label>
+        <label><input id="asset-edit-trait-cultural" type="checkbox" value="cultural"/> Cultural</label>
+        <label><input id="asset-edit-trait-industrial" type="checkbox" value="industrial"/> Industrial</label>
+      </div>
+      <div class="source-toggles">
+        <label class="toggle">
+          <input id="asset-edit-source-legendary" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Legendary</span>
+        </label>
+        <label class="toggle source-planet-only">
+          <input id="asset-edit-source-relic" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Relic</span>
+        </label>
+      </div>
+      <input id="asset-edit-source-tech" class="source-planet-only" type="text" placeholder="Tech speciality e.g. RRYY" maxlength="4"/>
+      <div class="source-linked-picker source-planet-only">
+        <input id="asset-edit-source-linked-filter" type="text" placeholder="Filter linked ability card..."/>
+        <select id="asset-edit-source-linked"></select>
       </div>
     </div>
 
@@ -551,12 +562,12 @@
 
     <div class="editor-text-row">
       <div>
-        <label>Flavour Text</label>
-        <textarea id="asset-edit-flavour" placeholder="Italic flavour text shown under the card title"></textarea>
-      </div>
-      <div>
         <label>Description (Markdown)</label>
         <textarea id="asset-edit-description"></textarea>
+      </div>
+      <div>
+        <label>Flavour Text</label>
+        <textarea id="asset-edit-flavour" placeholder="Italic flavour text shown under the card title"></textarea>
       </div>
     </div>
     <label>FAQ (one Q&A per line: Q: ... | A: ...)</label>
@@ -749,7 +760,7 @@ function renderSections() {
   const container = document.getElementById('sections-container');
   container.innerHTML = '';
   if (sections.length === 0) {
-    container.innerHTML = '<p class="empty-state">No sections yet. Click Add Section or inspect the image folder to auto-suggest sections.</p>';
+    container.innerHTML = '<p class="empty-state">No pages yet. Click Add Page or inspect the image folder to auto-suggest pages.</p>';
   }
   sections.forEach((section, index) => {
     const blocks = section.blocks || [];
@@ -1271,13 +1282,14 @@ function populateLinkedAbilityOptions(currentValue, filterText) {
   select.innerHTML = '<option value="">None</option>';
   const filter = filterText.toLowerCase();
   const options = assetValues().filter(a => {
+    if (!a.isCard) return false;
     if (!filter) return true;
     return (a.path + ' ' + a.title + ' ' + a.group).toLowerCase().includes(filter);
   });
   options.forEach(a => {
     const option = document.createElement('option');
     option.value = a.path;
-    option.textContent = a.hidden ? `${a.path} [excluded]` : a.path;
+    option.textContent = a.hidden ? `${a.title || a.path} [excluded]` : (a.title || a.path);
     select.appendChild(option);
   });
   const stillAvailable = currentValue === '' || options.some(a => a.path === currentValue);

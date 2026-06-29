@@ -16,6 +16,10 @@
       "type": "markdown",
       "blocks": [
         {
+          "type": "markdown",
+          "content": "The **Drahn Cartel** is an expansion faction for the Twilight Imperium 4th Edition boardgame."
+        },
+        {
           "type": "asset",
           "asset": "Drahn/Drahn Faction Sheet Front.jpg",
           "subtitle": "The Drahn Faction sheet",
@@ -26,10 +30,6 @@
           "asset": "Drahn/Drahn Faction Sheet Back.jpg",
           "subtitle": "The back and lore of the Drahn faction",
           "width": 100
-        },
-        {
-          "type": "markdown",
-          "content": "The **Drahn Cartel** is an expansion faction for the Twilight Imperium 4th Edition boardgame."
         },
         {
           "type": "asset",
@@ -403,21 +403,21 @@
     },
     "Drahn/Drahn Monument.jpg": {
       "abilities": {
-        "antiFighterBarrage": null,
-        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "production": null,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
         "spaceCannon": {
-          "multi": 2,
-          "value": 8
+          "value": 8,
+          "multi": 2
         },
-        "sustainDamage": false
+        "production": null
       },
       "back": "Drahn/Drahn Alliance Back.jpg",
       "color": "",
       "configured": true,
-      "description": "At the beginning of your turn you may remove this unit from this planet and place it onto a different valid planet you control.\nCan only be placed on Industrial and Cultural planets.\n\n**Flavor Text**\n*It is more a reminder of Drahn influence than a true monument.*",
+      "description": "At the beginning of your turn you may remove this unit from this planet and place it onto a different valid planet you control.\nCan only be placed on Industrial and Cultural planets.",
       "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Monument.jpg",
@@ -436,15 +436,15 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "stats": {
-        "capacity": {
+        "cost": {
           "enabled": false,
           "value": null
         },
@@ -452,17 +452,18 @@
           "enabled": false,
           "value": null
         },
-        "cost": {
+        "move": {
           "enabled": false,
           "value": null
         },
-        "move": {
+        "capacity": {
           "enabled": false,
           "value": null
         }
       },
       "title": "Koldan's Outpost",
-      "type": "Unit - Structure - Monument"
+      "type": "Unit - Structure - Monument",
+      "flavour": "It is more a reminder of Drahn influence than a true monument."
     },
     "Drahn/Drahn Nevermore Ability Back.jpg": {
       "back": "",
@@ -541,6 +542,7 @@
       "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Nevermore Front.jpg",
+      "flavour": "Nevermore, the dark beating heart of the Drahn Cartel. Ten thousand people wander down its countless alleys every day, and the Drahn happily transact with them all.",
       "folder": "Drahn",
       "group": "Drahn",
       "hidden": false,
@@ -556,16 +558,15 @@
       "source": {
         "enabled": true,
         "influence": 2,
-        "resource": 2,
-        "trait": [],
         "legendary": true,
+        "linkedAbility": "Drahn/Drahn Nevermore Ability Front.jpg",
         "relic": false,
+        "resource": 2,
         "techSpeciality": "",
-        "linkedAbility": "Drahn/Drahn Nevermore Ability Front.jpg"
+        "trait": []
       },
       "title": "Nevermore",
-      "type": "Planet",
-      "flavour": "Nevermore, the dark beating heart of the Drahn Cartel. Ten thousand people wander down its countless alleys every day, and the Drahn happily transact with them all."
+      "type": "Planet"
     },
     "Drahn/Drahn Promissory Note.jpg": {
       "back": "",
