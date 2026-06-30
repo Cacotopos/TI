@@ -117,6 +117,7 @@
       subtitle: item.dataset.cardSubtitle || '',
       backTitle: item.dataset.cardBackTitle || '',
       backSubtitle: item.dataset.cardBackSubtitle || '',
+      backOrientation: item.dataset.cardBackOrientation || '',
       type: item.dataset.cardType,
       faction: item.dataset.cardFaction,
       section: item.dataset.cardSection,
@@ -219,8 +220,9 @@
     frontWrapper.classList.remove('portrait', 'landscape');
     frontWrapper.classList.add(orientation);
     if (backImgWrapper) {
+      const backOrientation = card.backOrientation === 'portrait' ? 'portrait' : (card.backOrientation === 'landscape' ? 'landscape' : orientation);
       backImgWrapper.classList.remove('portrait', 'landscape');
-      backImgWrapper.classList.add(orientation);
+      backImgWrapper.classList.add(backOrientation);
     }
 
     try { card.stats = JSON.parse(card.stats || '{}'); } catch (e) { card.stats = {}; }

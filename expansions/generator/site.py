@@ -111,6 +111,20 @@ def _crop_card_image(path: Path, mask_path: Path) -> bytes:
         return buffer.getvalue()
 
 
+def _detect_orientation(src_path: Path, asset: dict) -> str:
+    """Return 'portrait' or 'landscape' for an image file."""
+    orientation = asset.get("orientation", "")
+    if orientation in ("landscape", "portrait"):
+        return orientation
+    if src_path.exists():
+        try:
+            with Image.open(src_path) as img:
+                return "portrait" if img.height > img.width else "landscape"
+        except Exception:
+            pass
+    return "landscape"
+
+
 def _collect_assets(config: dict) -> list[dict]:
     """Return visible, card assets as a list of image descriptors for the site."""
     assets = config.get("assets", {})
@@ -148,6 +162,7 @@ def _collect_assets(config: dict) -> list[dict]:
             "subtitle": asset.get("subtitle", ""),
             "backTitle": assets.get(asset.get("back", ""), {}).get("title", ""),
             "backSubtitle": assets.get(asset.get("back", ""), {}).get("subtitle", ""),
+            "backOrientation": _detect_orientation(images_src / asset["back"], assets.get(asset.get("back", ""), {})) if asset.get("back") else "",
             "section": asset.get("section", "cards"),
             "group": asset.get("group") or (str(rel.parent) if rel.parent != Path(".") else ""),
             "back": asset.get("back", ""),
