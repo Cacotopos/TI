@@ -67,6 +67,10 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Agent Back.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
@@ -87,7 +91,7 @@
         "enabled": false,
         "value": ""
       },
-      "title": "Aldo Gradt",
+      "title": "Aldo Graft",
       "type": "Hero"
     },
     "Drahn/Drahn Agent Front.jpg": {
@@ -262,11 +266,13 @@
     },
     "Drahn/Drahn Commander Back.jpg": {
       "back": "",
-      "configured": false,
+      "color": "",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Drahn Commander Back.jpg",
+      "flavour": "",
       "folder": "Drahn",
       "group": "Drahn",
       "hidden": true,
@@ -274,9 +280,32 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Commander Back.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "drahn",
-      "title": "Drahn Commander Back",
-      "type": "Other Component"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Notorious Smuggler",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Kip Lok Sil",
+      "type": "Hero"
     },
     "Drahn/Drahn Commander Front.jpg": {
       "back": "Drahn/Drahn Commander Back.jpg",
@@ -625,7 +654,25 @@
       "isCard": true,
       "orientation": "portrait",
       "path": "Drahn/Drahn Nevermore Back.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "drahn",
+      "source": {
+        "enabled": true,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Drahn Nevermore Back",
       "type": "Planet"
     },
@@ -1371,24 +1418,24 @@
     },
     "Drahn/Heroes/Active/Glimmer.jpg": {
       "abilities": {
-        "antiFighterBarrage": null,
-        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "production": null,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
         "spaceCannon": null,
-        "sustainDamage": false
+        "production": null
       },
       "back": "Drahn/Heroes/Inactive/Glimmer.jpg",
       "color": "",
       "configured": true,
       "description": "***ACTION:*** Place this card near the game board. Until the end of this game round, systems that contain anomalies and no other players ships ain **PRODUCTION 2** sa if they were units you control. At the start of the strategy phase, purge this card.",
-      "faction": "",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Glimmer.jpg",
       "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Glimmer",
       "isCard": true,
@@ -1402,19 +1449,19 @@
         "enabled": false,
         "value": ""
       },
-      "section": "",
+      "section": "drahn",
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "stats": {
-        "capacity": {
+        "cost": {
           "enabled": false,
           "value": null
         },
@@ -1422,11 +1469,11 @@
           "enabled": false,
           "value": null
         },
-        "cost": {
+        "move": {
           "enabled": false,
           "value": null
         },
-        "move": {
+        "capacity": {
           "enabled": false,
           "value": null
         }
@@ -1764,22 +1811,47 @@
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Saar.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Drahn/Heroes/Inactive/Saar.jpg",
+      "color": "",
+      "configured": true,
+      "description": "***ACTION:*** Remove each of your structures from the game board; place each of those structures on a planet you control; for each structure you place, replenish your commodities or convert all of your commodities to trade goods.\nThen, purge this card.",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Saar.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Saar",
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Saar.jpg",
-      "section": "cards",
-      "title": "Saar",
-      "type": "Other Component"
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Ragh Reborn",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Rapid Reorganization",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Savages.jpg": {
       "back": "",
@@ -1925,22 +1997,47 @@
       "type": "Hero"
     },
     "Drahn/Heroes/Active/Yin.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Drahn/Heroes/Inactive/Yin.jpg",
+      "color": "",
+      "configured": true,
+      "description": "**AFter you lose a combat:**\nYou may purge this card to force your opponent to destroy half of their units that participated in that combat, rounded down.",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Yin.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Yin",
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Yin.jpg",
-      "section": "cards",
-      "title": "Yin",
-      "type": "Other Component"
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Counter-Propaganda",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Kolos Manifesto",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Yssaril.jpg": {
       "back": "",
@@ -3569,22 +3666,47 @@
       "type": "Hero"
     },
     "Keleres/Heroes/Active/Cheiran.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Keleres/Heroes/Inactive/Cheiran.jpg",
+      "color": "",
+      "configured": true,
+      "description": "***ACTION:*** Gather units from your reinforcements up to equal to your starting units. Place these units, in any combination, in the space area of systems that contain 1 of your structures and no other players' ships, or on planets you control.\nThen, purge this card.",
+      "faction": "The Council Keleres",
       "faq": [],
       "filename": "Cheiran.jpg",
+      "flavour": "",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Cheiran",
       "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Cheiran.jpg",
-      "section": "cards",
-      "title": "Cheiran",
-      "type": "Other Component"
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "keleres",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Reserve Fleet",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Polemarch's Support",
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Dih-Mohn.jpg": {
       "back": "",
@@ -4662,7 +4784,7 @@
     "Keleres/Heroes/Inactive/Kolume.jpg": {
       "back": "",
       "color": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4675,11 +4797,15 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Kolume.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
-      "section": "drahn-overview",
+      "section": "keleres",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -4690,8 +4816,13 @@
         "techSpeciality": "",
         "trait": []
       },
-      "title": "Kolume",
-      "type": "Other Component"
+      "subtitle": "Keleres Tribunus",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Turial the Epistoler",
+      "type": "Hero"
     },
     "Keleres/Heroes/Inactive/L'Tokk.jpg": {
       "back": "",
@@ -5457,11 +5588,12 @@
     "Keleres/Heroes/Inactive/Xxcha.jpg": {
       "back": "",
       "color": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Xxcha.jpg",
+      "flavour": "",
       "folder": "Keleres/Heroes/Inactive",
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
@@ -5469,11 +5601,15 @@
       "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Xxcha.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
-      "section": "drahn-overview",
+      "section": "keleres",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -5484,8 +5620,13 @@
         "techSpeciality": "",
         "trait": []
       },
-      "title": "Xxcha",
-      "type": "Other Component"
+      "subtitle": "Keleres Tribunus",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Odlynn Myrr",
+      "type": "Hero"
     },
     "Keleres/Keleres CV Ability Back.jpg": {
       "back": "",
