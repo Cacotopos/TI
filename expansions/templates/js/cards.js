@@ -2,7 +2,6 @@
 (function() {
   const modal = document.getElementById('card-modal');
   const title = document.getElementById('card-modal-title');
-  const badges = document.getElementById('card-modal-badges');
   const statsContainer = document.getElementById('card-modal-stats');
   const abilitiesContainer = document.getElementById('card-modal-abilities');
   const prereqContainer = document.getElementById('card-modal-prereq');
@@ -230,12 +229,6 @@
     try { card.prereq = JSON.parse(card.prereq || '{}'); } catch (e) { card.prereq = {}; }
     try { card.synergy = JSON.parse(card.synergy || '{}'); } catch (e) { card.synergy = {}; }
     try { card.source = JSON.parse(card.source || '{}'); } catch (e) { card.source = {}; }
-
-    const badgeList = [
-      card.type ? `<span class="px-2 py-1 rounded-md bg-blue-600 text-white text-xs font-semibold">${escapeHtml(card.type)}</span>` : '',
-      card.faction ? `<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs">${escapeHtml(card.faction)}</span>` : '',
-    ].filter(Boolean).join('');
-    badges.innerHTML = badgeList;
 
     const statsHtml = isUnitType(card.type) ? formatStats(card.stats) : '';
     statsContainer.innerHTML = statsHtml;
