@@ -759,11 +759,19 @@ loadBtn.addEventListener('click', () => tryLoadConfig(idInput.value.trim()));
 function renderSectionBlockHtml(block, sectionIndex, blockIndex, sectionId) {
   const sectionAssets = assetValues().filter(a => a.section === sectionId && !a.hidden);
   const options = sectionAssets.map(a => `<option value="${a.path}" ${a.path === block.asset ? 'selected' : ''}>${a.title || a.path}</option>`).join('');
+  const col = block.column || 'full';
+  const colLabel = { full: 'Full', left: 'Left 50%', right: 'Right 50%' }[col] || 'Full';
+  const colSelect = `<select class="block-column" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" style="width:auto;margin-bottom:0;font-size:0.8rem;padding:0.2rem 0.4rem">
+    <option value="full" ${col === 'full' ? 'selected' : ''}>Full</option>
+    <option value="left" ${col === 'left' ? 'selected' : ''}>Left 50%</option>
+    <option value="right" ${col === 'right' ? 'selected' : ''}>Right 50%</option>
+  </select>`;
   if (block.type === 'markdown') {
     return `
       <div class="block-row" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">
         <div class="block-header">
           <span class="block-type">Markdown</span>
+          ${colSelect}
           <div class="block-actions">
             <button type="button" class="markdown-help-btn" data-target="block" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">?</button>
             <button type="button" class="move-block-up" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">↑</button>
@@ -779,6 +787,7 @@ function renderSectionBlockHtml(block, sectionIndex, blockIndex, sectionId) {
     <div class="block-row" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">
       <div class="block-header">
         <span class="block-type">Asset</span>
+        ${colSelect}
         <div class="block-actions">
           <button type="button" class="move-block-up" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">↑</button>
           <button type="button" class="move-block-down" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">↓</button>
@@ -961,6 +970,9 @@ function renderSections() {
   document.querySelectorAll('.block-content, .block-subtitle').forEach(input => {
     input.addEventListener('input', updateSectionsFromForm);
   });
+  document.querySelectorAll('.block-column').forEach(input => {
+    input.addEventListener('change', updateSectionsFromForm);
+  });
   document.querySelectorAll('.block-asset-preview').forEach(preview => {
     const si = parseInt(preview.dataset.sectionIndex);
     const bi = parseInt(preview.dataset.blockIndex);
@@ -989,14 +1001,15 @@ function updateSectionsFromForm() {
         const bi = parseInt(row.dataset.blockIndex);
         const typeEl = row.querySelector('.block-type');
         const type = typeEl ? typeEl.textContent.trim() : 'Markdown';
+        const column = row.querySelector('.block-column')?.value || 'full';
         if (type === 'Markdown') {
           const content = row.querySelector('.block-content')?.value || '';
-          blocks.push({ type: 'markdown', content });
+          blocks.push({ type: 'markdown', content, column });
         } else {
           const asset = row.querySelector('.block-asset')?.value || '';
           const subtitle = row.querySelector('.block-subtitle')?.value || '';
           const width = parseInt(row.querySelector('.block-width')?.value) || 100;
-          blocks.push({ type: 'asset', asset, subtitle, width });
+          blocks.push({ type: 'asset', asset, subtitle, width, column });
         }
       });
       section.blocks = blocks;

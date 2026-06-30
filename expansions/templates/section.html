@@ -11,26 +11,90 @@
 </header>
 
 <main class="max-w-6xl mx-auto p-6 space-y-8">
-  {% for block in section.blocks or [] %}
-    {% if block.type == 'markdown' %}
-    <section class="bg-panel border border-border rounded-xl p-6 shadow-lg markdown-content">
-      {{ block.content | markdown | safe }}
-    </section>
-    {% elif block.type == 'asset' %}
-    <section class="bg-panel border border-border rounded-xl p-6 shadow-lg text-center">
-      {% set asset_path = block.asset or '' %}
-      {% if asset_path %}
-      <img src="assets/images/{{ asset_path }}" alt="{{ block.subtitle or '' }}" style="width: {{ block.width or 100 }}%; max-width: 100%; margin: 0 auto;" class="rounded-lg"/>
+  {% set blocks = section.blocks or [] %}
+  {% if blocks %}
+    {# Group blocks: emit a flex row whenever we see a left+right pair; full-width blocks are standalone #}
+    {% set ns = namespace(pending=none) %}
+    {% for block in blocks %}
+      {% set col = block.column or 'full' %}
+      {% if col == 'left' %}
+        {# Flush any dangling pending left from before #}
+        {% if ns.pending %}
+          <div class="flex gap-6 items-start">
+            <div class="flex-1">{% include ['_block_' + ns.pending.type + '.html', '_block_fallback.html'] ignore missing %}</div>
+          </div>
+        {% endif %}
+        {% set ns.pending = block %}
+      {% elif col == 'right' and ns.pending %}
+        {# Pair the pending left with this right #}
+        <div class="flex gap-6 items-start">
+          <div class="flex-1">
+            {% set b = ns.pending %}
+            {% if b.type == 'markdown' %}
+            <section class="bg-panel border border-border rounded-xl p-6 shadow-lg markdown-content h-full">{{ b.content | markdown | safe }}</section>
+            {% elif b.type == 'asset' %}
+            <section class="bg-panel border border-border rounded-xl p-6 shadow-lg text-center h-full">
+              {% if b.asset %}<img src="assets/images/{{ b.asset }}" alt="{{ b.subtitle or '' }}" style="width: {{ b.width or 100 }}%; max-width: 100%; margin: 0 auto;" class="rounded-lg"/>{% endif %}
+              {% if b.subtitle %}<p class="text-muted mt-2 text-sm">{{ b.subtitle }}</p>{% endif %}
+            </section>
+            {% endif %}
+          </div>
+          <div class="flex-1">
+            {% if block.type == 'markdown' %}
+            <section class="bg-panel border border-border rounded-xl p-6 shadow-lg markdown-content h-full">{{ block.content | markdown | safe }}</section>
+            {% elif block.type == 'asset' %}
+            <section class="bg-panel border border-border rounded-xl p-6 shadow-lg text-center h-full">
+              {% if block.asset %}<img src="assets/images/{{ block.asset }}" alt="{{ block.subtitle or '' }}" style="width: {{ block.width or 100 }}%; max-width: 100%; margin: 0 auto;" class="rounded-lg"/>{% endif %}
+              {% if block.subtitle %}<p class="text-muted mt-2 text-sm">{{ block.subtitle }}</p>{% endif %}
+            </section>
+            {% endif %}
+          </div>
+        </div>
+        {% set ns.pending = none %}
+      {% else %}
+        {# Full-width block (or orphaned right with no left) — flush pending first #}
+        {% if ns.pending %}
+          <div class="flex gap-6 items-start">
+            <div class="flex-1">
+              {% set b = ns.pending %}
+              {% if b.type == 'markdown' %}
+              <section class="bg-panel border border-border rounded-xl p-6 shadow-lg markdown-content">{{ b.content | markdown | safe }}</section>
+              {% elif b.type == 'asset' %}
+              <section class="bg-panel border border-border rounded-xl p-6 shadow-lg text-center">
+                {% if b.asset %}<img src="assets/images/{{ b.asset }}" alt="{{ b.subtitle or '' }}" style="width: {{ b.width or 100 }}%; max-width: 100%; margin: 0 auto;" class="rounded-lg"/>{% endif %}
+                {% if b.subtitle %}<p class="text-muted mt-2 text-sm">{{ b.subtitle }}</p>{% endif %}
+              </section>
+              {% endif %}
+            </div>
+          </div>
+          {% set ns.pending = none %}
+        {% endif %}
+        {% if block.type == 'markdown' %}
+        <section class="bg-panel border border-border rounded-xl p-6 shadow-lg markdown-content">{{ block.content | markdown | safe }}</section>
+        {% elif block.type == 'asset' %}
+        <section class="bg-panel border border-border rounded-xl p-6 shadow-lg text-center">
+          {% if block.asset %}<img src="assets/images/{{ block.asset }}" alt="{{ block.subtitle or '' }}" style="width: {{ block.width or 100 }}%; max-width: 100%; margin: 0 auto;" class="rounded-lg"/>{% endif %}
+          {% if block.subtitle %}<p class="text-muted mt-2 text-sm">{{ block.subtitle }}</p>{% endif %}
+        </section>
+        {% endif %}
       {% endif %}
-      {% if block.subtitle %}
-      <p class="text-muted mt-2 text-sm">{{ block.subtitle }}</p>
+    {% endfor %}
+    {# Flush any trailing pending left #}
+    {% if ns.pending %}
+      {% set b = ns.pending %}
+      {% if b.type == 'markdown' %}
+      <section class="bg-panel border border-border rounded-xl p-6 shadow-lg markdown-content">{{ b.content | markdown | safe }}</section>
+      {% elif b.type == 'asset' %}
+      <section class="bg-panel border border-border rounded-xl p-6 shadow-lg text-center">
+        {% if b.asset %}<img src="assets/images/{{ b.asset }}" alt="{{ b.subtitle or '' }}" style="width: {{ b.width or 100 }}%; max-width: 100%; margin: 0 auto;" class="rounded-lg"/>{% endif %}
+        {% if b.subtitle %}<p class="text-muted mt-2 text-sm">{{ b.subtitle }}</p>{% endif %}
+      </section>
       {% endif %}
-    </section>
     {% endif %}
   {% else %}
   <section class="bg-panel border border-border rounded-xl p-6 shadow-lg">
     <p class="text-muted">This {{ section.type }} page is ready for content.</p>
   </section>
-  {% endfor %}
+  {% endif %}
 </main>
 {% endblock %}
