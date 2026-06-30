@@ -1,0 +1,1 @@
+The Keleres+ mini expansion expands the Keleres faction hero suite, and introduces a new faction, the Drahn, which operates as a sort of anti-Keleres, with its own host of faction heroes.

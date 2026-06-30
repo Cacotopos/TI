@@ -711,7 +711,7 @@ REPORT_CSS = """
   .images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .img-col { display: flex; flex-direction: column; gap: 0.5rem; }
   .img-label { font-size: 0.8rem; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
-  .img-col img { width: 100%; border-radius: 0.5rem; border: 1px solid #2d3148; }
+  .img-col img { width: 100%; border-radius: 1rem; border: 1px solid #2d3148; }
   .missing { opacity: 0.5; }
   .filters { display: flex; flex-direction: column; gap: 0.75rem; padding: 1rem 1.5rem; background: #12151f; border-bottom: 1px solid #2d3148; }
   .filter-section { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }

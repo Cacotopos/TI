@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} | {{ config.name }} v{{ config.version }}{% endblock %}
+
+{% block body %}
+<header class="bg-panel border-b border-border p-6">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold">{{ section.title }}</h1>
+    <p class="text-muted mt-2"><a href="index.html" class="text-accent hover:underline">{{ config.name }}</a> &rarr; {{ section.title }}</p>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto p-6 space-y-8">
+  {% for block in section.blocks or [] %}
+    {% if block.type == 'markdown' %}
+    <section class="bg-panel border border-border rounded-xl p-6 shadow-lg markdown-content">
+      {{ block.content | markdown | safe }}
+    </section>
+    {% elif block.type == 'asset' %}
+    <section class="bg-panel border border-border rounded-xl p-6 shadow-lg text-center">
+      {% set asset_path = block.asset or '' %}
+      {% if asset_path %}
+      <img src="assets/images/{{ asset_path }}" alt="{{ block.subtitle or '' }}" style="width: {{ block.width or 100 }}%; max-width: 100%; margin: 0 auto;" class="rounded-lg"/>
+      {% endif %}
+      {% if block.subtitle %}
+      <p class="text-muted mt-2 text-sm">{{ block.subtitle }}</p>
+      {% endif %}
+    </section>
+    {% endif %}
+  {% else %}
+  <section class="bg-panel border border-border rounded-xl p-6 shadow-lg">
+    <p class="text-muted">This {{ section.type }} page is ready for content.</p>
+  </section>
+  {% endfor %}
+</main>
+{% endblock %}

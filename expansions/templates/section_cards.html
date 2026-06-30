@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} | {{ config.name }} v{{ config.version }}{% endblock %}
+
+{% block body %}
+<style>
+  .card-item { display: flex; flex-direction: column; align-items: center; }
+  .card-image-wrapper { width: 100%; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .card-image-wrapper.portrait { width: auto; max-width: 100%; aspect-ratio: 2 / 3; max-height: 320px; justify-self: center; }
+  .card-image-wrapper.landscape { width: 100%; aspect-ratio: 3 / 2; justify-self: center; }
+  .card-image { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 0.75rem; }
+  #card-modal-images { display: flex; flex-direction: column; gap: 0.25rem; }
+  #card-modal-images-labels { display: none; gap: 1rem; grid-template-columns: repeat(2, 1fr); }
+  #card-modal-images-labels.has-back { display: grid; }
+  #card-modal-images-cards { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+  #card-modal-images-cards.has-back { grid-template-columns: repeat(2, 1fr); }
+  #card-modal-images .hidden { display: none !important; }
+</style>
+{% set section_images = site.images | selectattr('section', 'equalto', section.id) | list %}
+<header class="bg-panel border-b border-border p-6">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold">{{ section.title }}</h1>
+    <p class="text-muted mt-2"><a href="index.html" class="text-accent hover:underline">{{ config.name }}</a> &rarr; {{ section_images | length }} cards</p>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto p-6 space-y-8">
+  {% if section_images %}
+    {% for group in section_images | map(attribute='group') | unique | sort %}
+    <section>
+      <h2 class="text-xl font-semibold mb-3 text-muted">{{ group or 'General' }}</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 cards-grid">
+        {% for img in section_images if img.group == group %}
+        <div class="card-item bg-panel border border-border rounded-xl p-3 shadow-lg hover:border-accent transition-colors cursor-pointer"
+             data-card-id="{{ img.id }}"
+             data-card-name="{{ img.name }}"
+             data-card-subtitle="{{ img.subtitle | default('') | forceescape }}"
+             data-card-back-title="{{ img.backTitle | default('') | forceescape }}"
+             data-card-back-subtitle="{{ img.backSubtitle | default('') | forceescape }}"
+             data-card-type="{{ img.type }}"
+             data-card-faction="{{ img.faction }}"
+             data-card-section="{{ section.title }}"
+             data-card-group="{{ img.group }}"
+             data-card-description="{{ img.description }}"
+             data-card-faq="{{ img.faq | tojson | forceescape }}"
+             data-card-stats="{{ img.stats | tojson | forceescape }}"
+             data-card-abilities="{{ img.abilities | tojson | forceescape }}"
+             data-card-prereq="{{ img.prereq | tojson | forceescape }}"
+             data-card-color="{{ img.color }}"
+             data-card-synergy="{{ img.synergy | tojson | forceescape }}"
+             data-card-source="{{ img.source | tojson | forceescape }}"
+             data-card-placement="{{ img.placement | tojson | forceescape }}"
+             data-card-back="{{ img.back }}"
+             data-card-back-orientation="{{ img.backOrientation | default('') }}"
+             data-card-front-path="{{ img.path }}"
+             data-card-orientation="{{ img.orientation }}"
+             data-card-flavour="{{ img.flavour | default('') | forceescape }}">
+          <div class="card-image-wrapper">
+            <img src="{{ img.path }}" alt="{{ img.name }}" class="card-image rounded-lg {{ 'card-portrait' if img.orientation == 'portrait' else 'card-landscape' }}"/>
+          </div>
+          <p class="text-sm text-center mt-2 font-medium truncate" title="{{ img.name }}">{{ img.name }}</p>
+          {% if img.subtitle %}<p class="text-xs text-center text-muted truncate">{{ img.subtitle }}</p>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+  {% else %}
+  <section class="bg-panel border border-border rounded-xl p-6 shadow-lg">
+    <p class="text-muted">No cards assigned to this page. Use the editor to assign assets.</p>
+  </section>
+  {% endif %}
+</main>
+
+<div id="card-modal" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-4">
+  <div class="bg-panel border border-border rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6">
+    <div class="flex justify-between items-start mb-1">
+      <div class="flex-1 text-center">
+        <h2 id="card-modal-title" class="text-2xl font-bold"></h2>
+        <h3 id="card-modal-subtitle" class="text-base text-muted hidden"></h3>
+      </div>
+      <button id="card-modal-close" class="text-muted hover:text-white text-2xl flex-none">&times;</button>
+    </div>
+    <div id="card-modal-images" class="mb-4">
+      <div id="card-modal-images-labels">
+        <div id="card-modal-front-label" class="text-center">
+          <p id="card-modal-front-label-title" class="text-sm font-semibold"></p>
+          <p id="card-modal-front-label-subtitle" class="text-xs text-muted hidden"></p>
+        </div>
+        <div id="card-modal-back-heading" class="text-center hidden">
+          <p id="card-modal-back-title" class="text-sm font-semibold"></p>
+          <p id="card-modal-back-subtitle" class="text-xs text-muted hidden"></p>
+        </div>
+      </div>
+      <div id="card-modal-images-cards">
+        <div id="card-modal-front-wrapper" class="card-image-wrapper bg-panel border border-border rounded-lg landscape">
+          <img id="card-modal-front" src="" alt="" class="card-image rounded-lg"/>
+        </div>
+        <div id="card-modal-back-wrapper" class="card-image-wrapper bg-panel border border-border rounded-lg landscape hidden">
+          <img id="card-modal-back" src="" alt="" class="card-image rounded-lg"/>
+        </div>
+      </div>
+    </div>
+    <div id="card-modal-flavour" class="hidden italic text-muted mb-3 mt-2 text-center"></div>
+    <div id="card-modal-stats" class="flex flex-nowrap gap-2 mb-2 hidden overflow-x-auto"></div>
+    <div id="card-modal-abilities" class="flex flex-wrap gap-2 mb-2 hidden"></div>
+    <div id="card-modal-prereq" class="flex flex-wrap gap-2 mb-2 hidden"></div>
+    <div id="card-modal-synergy" class="flex flex-wrap gap-2 mb-2 hidden"></div>
+    <div id="card-modal-placement" class="flex flex-wrap gap-2 mb-2 hidden"></div>
+    <div id="card-modal-source" class="flex flex-wrap gap-2 mb-2 hidden"></div>
+    <div id="card-modal-actions" class="flex flex-wrap gap-2 mb-3 hidden"></div>
+    <div id="card-modal-description" class="text-gray-100 mb-4 prose prose-invert max-w-none"></div>
+    <details id="card-modal-faq" class="hidden">
+      <summary class="cursor-pointer text-accent font-semibold mb-2">FAQ</summary>
+      <div id="card-modal-faq-content" class="space-y-3"></div>
+    </details>
+  </div>
+</div>
+
+<script src="assets/js/cards.js"></script>
+{% endblock %}

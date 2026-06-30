@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Search | {{ config.name }} v{{ config.version }}{% endblock %}
+
+{% block body %}
+<header class="bg-panel border-b border-border p-6">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold">Search</h1>
+    <p class="text-muted mt-2">Search across {{ config.name }} pages and cards.</p>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto p-6 space-y-6">
+  <div class="bg-panel border border-border rounded-xl p-4 shadow-lg flex items-center gap-3">
+    <input id="search-input" type="text" placeholder="Search..."
+           class="bg-bg border border-border rounded-lg px-4 py-2 w-full text-gray-100 focus:outline-none focus:border-accent"/>
+    <button id="search-btn" class="bg-accent text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-600">Search</button>
+  </div>
+
+  <div id="search-results" class="hidden bg-panel border border-border rounded-xl p-6 shadow-lg">
+    <h2 class="text-xl font-semibold mb-4">Results</h2>
+    <ul id="search-results-list" class="space-y-2"></ul>
+    <p id="search-no-results" class="hidden text-muted">No results found.</p>
+  </div>
+</main>
+
+{% endblock %}
+
+{% block scripts %}
+<!-- Search interactions are handled by assets/js/ui.js -->
+{% endblock %}

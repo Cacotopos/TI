@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Expansion Editor</title>
+<style>
+  :root { --bg: #0f1117; --panel: #1a1d27; --border: #2d3148; --text: #e2e8f0; --muted: #94a3b8; --accent: #3b82f6; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 1.5rem; }
+  .container { max-width: 1000px; margin: 0 auto; }
+  h1 { margin-bottom: 0.25rem; }
+  .subtitle { color: var(--muted); margin-bottom: 1rem; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1rem; }
+  .card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; }
+  label { display: block; color: var(--muted); font-size: 0.85rem; margin-bottom: 0.25rem; }
+  input, textarea, select { width: 100%; background: #12151f; color: var(--text); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.6rem; margin-bottom: 1rem; }
+  input, select { min-height: 2.5rem; line-height: 1.25; }
+  select:not([size]) { height: 2.5rem; }
+  select[size] { height: auto; }
+  input[type="checkbox"] { width: auto; margin-bottom: 0; min-height: auto; height: auto; }
+  textarea { min-height: 120px; height: auto; }
+  button { background: var(--accent); color: #fff; border: none; border-radius: 0.5rem; padding: 0.6rem 1.2rem; font-weight: 600; cursor: pointer; }
+  button:hover { background: #2563eb; }
+  button.secondary { background: transparent; border: 1px solid var(--border); color: var(--text); }
+  button.secondary:hover { background: var(--border); }
+  button.danger { background: #dc2626; }
+  button.danger:hover { background: #b91c1c; }
+  .row { display: flex; gap: 1rem; }
+  .row > div { flex: 1; }
+  .row > div.auto { flex: 0 0 auto; }
+  .status { margin-top: 1rem; font-size: 0.85rem; color: var(--muted); white-space: pre-wrap; }
+  .settings { font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem; }
+  .hidden { display: none !important; }
+  #spinner { display: inline-block; width: 1rem; height: 1rem; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 0.35rem; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .tabs { display: flex; gap: 0.5rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
+  .tab { padding: 0.5rem 1rem; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; }
+  .tab.active { color: var(--text); border-bottom-color: var(--accent); }
+  .tab-content { margin-bottom: 1rem; }
+  .editor-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  button.dirty { background: #16a34a; }
+  button.dirty:hover { background: #15803d; }
+  button.busy { background: #dc2626 !important; animation: busy-pulse 1s ease-in-out infinite; }
+  @keyframes busy-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(220,38,38,0.5); } 50% { box-shadow: 0 0 0 6px rgba(220,38,38,0); } }
+  .section-row { background: #12151f; border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 0.75rem; }
+  .section-actions { display: flex; gap: 0.25rem; margin-top: 0.75rem; }
+  .section-actions button { font-size: 0.85rem; padding: 0.35rem 0.75rem; }
+  .section-blocks { margin-top: 0.75rem; }
+  .blocks-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 0.75rem; }
+  .block-row { background: var(--bg); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; }
+  .block-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+  .block-type { font-size: 0.8rem; font-weight: 600; color: var(--accent); text-transform: uppercase; }
+  .block-actions { display: flex; gap: 0.25rem; }
+  .block-actions button { padding: 0.25rem 0.5rem; font-size: 0.8rem; }
+  .block-content { width: 100%; min-height: 100px; margin-bottom: 0; }
+  .block-asset { width: 100%; margin-bottom: 0.5rem; }
+  .block-asset-filter { margin-bottom: 0.5rem; }
+  .block-subtitle { margin-bottom: 0.5rem; }
+  .block-width-row { display: flex; align-items: center; gap: 0.5rem; }
+  .block-width-row input[type="range"] { flex: 1; margin-bottom: 0; }
+  .block-width-row label { font-size: 0.85rem; color: var(--muted); }
+  .block-width-value { font-size: 0.85rem; color: var(--muted); min-width: 2.5rem; }
+  .block-add-buttons { display: flex; gap: 0.5rem; }
+  .block-asset-preview { margin: 0.5rem 0; }
+  .markdown-label { display: flex; align-items: center; justify-content: space-between; }
+  .markdown-help-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); border-radius: 50%; width: 1.5rem; height: 1.5rem; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; padding: 0; cursor: pointer; margin-left: 0.5rem; }
+  .markdown-help-btn:hover { background: var(--accent); color: white; }
+  .markdown-help-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+  .markdown-snippet { background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.6rem; color: var(--text); cursor: pointer; text-align: left; font-size: 0.85rem; }
+  .markdown-snippet:hover { border-color: var(--accent); background: var(--bg); }
+  .asset-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  @media (min-width: 768px) { .asset-grid { grid-template-columns: repeat(4, 1fr); } }
+  .asset-cell { background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; cursor: pointer; text-align: center; }
+  .asset-cell:hover { border-color: var(--accent); }
+  .asset-cell.configured { border-color: var(--accent); }
+  .asset-cell.excluded { opacity: 0.5; }
+  .asset-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.75rem; }
+  #asset-preview { border-radius: 0.5rem; }
+  #asset-preview.portrait { border-radius: 1rem; }
+  .asset-badge { background: var(--border); color: var(--text); font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 0.35rem; }
+  .asset-badge.accent { background: var(--accent); color: white; }
+  .asset-badge.danger { background: #dc2626; color: white; }
+  .asset-description-preview { background: var(--bg); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.9rem; line-height: 1.5; margin-bottom: 0.75rem; }
+  .asset-description-preview p:first-child { margin-top: 0; }
+  .asset-description-preview p:last-child { margin-bottom: 0; }
+  .asset-faq-preview { margin-bottom: 0.75rem; }
+  .asset-faq-preview summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .asset-faq-preview .faq-item { margin-bottom: 0.5rem; }
+  .asset-faq-preview .faq-q { font-weight: 600; }
+  .asset-faq-preview .faq-a { color: var(--muted); }
+  .unit-stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 1rem; }
+  .unit-stat { display: flex; align-items: center; gap: 0.5rem; background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem; }
+  .unit-stat input { width: 4rem; margin-bottom: 0; padding: 0.35rem 0.5rem; }
+  .unit-abilities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
+  .unit-roll-abilities-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
+  .unit-roll-ability { display: flex; align-items: center; gap: 0.5rem; background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem; }
+  .unit-roll-ability .toggle { flex: 1; }
+  .unit-roll-ability input { width: 4rem; margin-bottom: 0; padding: 0.35rem 0.5rem; text-align: right; }
+  .asset-stat-line { display: flex; flex-wrap: nowrap; gap: 0.35rem; }
+  #asset-edit-prereq { text-transform: uppercase; font-family: monospace; letter-spacing: 0.15em; }
+  #asset-edit-color { width: auto; flex: 1; }
+  .well { background: var(--bg); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; margin-top: 0.5rem; }
+  .placement-rules { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.4rem; }
+  .placement-rule-row { display: flex; align-items: center; gap: 0.4rem; background: var(--panel); border: 1px solid var(--border); border-radius: 0.4rem; padding: 0.35rem 0.5rem; }
+  .placement-rule-row input[type=checkbox] { width: 1rem; height: 1rem; cursor: pointer; }
+  .placement-rule-row .rule-label { flex: 1; font-size: 0.85rem; }
+  .placement-rule-row .not-btn { font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 0.25rem; background: var(--border); color: var(--muted); border: none; cursor: pointer; }
+  .placement-rule-row .not-btn.active { background: #dc2626; color: #fff; }
+  .well .row { margin-bottom: 0; }
+  .well .row + .row { margin-top: 0.75rem; }
+  #source-section { width: 100%; }
+  #source-section label.toggle { margin-bottom: 0; }
+  #prereq-section, #synergy-section { display: flex; flex-direction: column; justify-content: flex-start; }
+  #prereq-section label.toggle, #synergy-section label.toggle { margin-bottom: 0; }
+  .source-inputs { display: flex; flex-direction: column; gap: 0.75rem; }
+  .source-inputs input, .source-inputs select { margin-bottom: 0; }
+  .source-scores { display: flex; gap: 1.5rem; align-items: center; }
+  .source-scores label { font-size: 0.85rem; color: var(--text); display: flex; align-items: center; gap: 0.35rem; }
+  .source-scores input { width: 3.5rem; flex: none; text-align: center; }
+  .source-toggles { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .source-toggles .toggle { margin-bottom: 0; }
+  .source-linked-picker { display: flex; gap: 0.5rem; align-items: center; }
+  .source-linked-picker input { margin-bottom: 0; flex: 1; }
+  .source-linked-picker select { margin-bottom: 0; flex: 2; }
+  .asset-cell .title { font-size: 0.85rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .asset-cell .group { font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .toolbar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
+  .toolbar input { margin-bottom: 0; flex: 1; min-width: 200px; }
+  .toolbar label { margin-bottom: 0; }
+  .toggle { display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.35rem 0.5rem; border-radius: 0.5rem; border: 1px solid var(--border); transition: background 0.2s, border-color 0.2s; }
+  .toggle input { display: none; }
+  .toggle .switch { width: 2rem; height: 1rem; background: var(--border); border-radius: 1rem; position: relative; flex-shrink: 0; transition: background 0.2s; }
+  .toggle .switch::after { content: ''; position: absolute; width: 0.75rem; height: 0.75rem; background: var(--text); border-radius: 50%; top: 0.125rem; left: 0.125rem; transition: transform 0.2s; }
+  .toggle input:checked + .switch { background: var(--accent); }
+  .toggle input:checked + .switch::after { transform: translateX(1rem); }
+  .toggle .label-text { color: var(--muted); font-size: 0.85rem; transition: color 0.2s; }
+  .toggle input:checked ~ .label-text { color: var(--text); font-weight: 600; }
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 50; padding: 1rem; }
+  .modal-overlay.visible { display: flex; }
+  .modal { background: var(--panel); border: 1px solid var(--border); border-radius: 0.75rem; width: 100%; max-width: 700px; max-height: 90vh; overflow-y: auto; padding: 1.5rem; }
+  .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+  .modal-footer { display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem; }
+  .checkbox-row { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; align-items: center; }
+  .orientation-inline { display: flex; align-items: center; gap: 0.5rem; }
+  .orientation-inline label { font-size: 0.85rem; color: var(--muted); margin-bottom: 0; }
+  .orientation-inline select { margin-bottom: 0; width: auto; min-width: 10rem; }
+  .page-inline { display: flex; align-items: center; gap: 0.5rem; }
+  .page-inline label { font-size: 0.85rem; color: var(--muted); margin-bottom: 0; }
+  .page-inline select { margin-bottom: 0; width: auto; min-width: 10rem; }
+  .empty-state { color: var(--muted); text-align: center; padding: 2rem; }
+  .banner-row { display: flex; gap: 0.75rem; align-items: flex-end; }
+  .banner-row input { margin-bottom: 0; }
+  .banner-row .hint { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; }
+  .hint { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; margin-bottom: 0.5rem; }
+  .tooltip-icon { display: inline-flex; align-items: center; justify-content: center; width: 1.2rem; height: 1.2rem; border-radius: 50%; background: var(--muted); color: var(--panel); font-size: 0.75rem; cursor: help; margin-left: 0.35rem; font-weight: bold; position: relative; }
+  .tooltip-icon::after { content: attr(data-tooltip); position: absolute; left: 50%; bottom: 140%; transform: translateX(-50%); width: 220px; background: var(--panel); border: 1px solid var(--border); color: var(--text); padding: 0.5rem; border-radius: 0.5rem; font-size: 0.8rem; font-weight: normal; line-height: 1.3; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 10; }
+  .tooltip-icon:hover::after, .tooltip-icon:focus::after { opacity: 1; }
+  .trait-checkboxes { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+  .trait-checkboxes label { display: flex; align-items: center; gap: 0.4rem; font-size: 0.9rem; }
+  .editor-text-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .editor-text-row > div { display: flex; flex-direction: column; }
+  .editor-text-row textarea { flex: 1; min-height: 120px; }
+  .banner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .banner-option { border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem; cursor: pointer; text-align: center; }
+  .banner-option:hover { border-color: var(--accent); }
+  .banner-option.selected { border-color: var(--accent); background: rgba(59, 130, 246, 0.1); }
+  .banner-option.disabled { opacity: 0.4; cursor: not-allowed; }
+  .banner-option img { width: 100%; height: 100px; object-fit: cover; border-radius: 0.35rem; margin-bottom: 0.5rem; }
+  .banner-option .dim { font-size: 0.75rem; color: var(--muted); }
+  .banner-preview { width: 100%; height: 120px; background-position: center; background-repeat: repeat-x; background-size: auto 100%; border-radius: 0.5rem; border: 1px solid var(--border); margin-bottom: 0.75rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Expansion Editor</h1>
+  <p class="subtitle">Collect expansion data, generate a static site, and deploy to S3. &nbsp;<span style="font-family:monospace;font-size:0.8rem;color:var(--muted);">editor: {{ git_commit }}</span></p>
+  <div class="settings" id="settings"></div>
+
+  <div class="card">
+    <div class="card-title">Choose expansion</div>
+    <div class="row">
+      <div>
+        <label for="expansion-select">Existing expansion</label>
+        <select id="expansion-select">
+          <option value="">-- Create new --</option>
+        </select>
+      </div>
+      <div>
+        <label for="expansion-id">Expansion ID</label>
+        <input id="expansion-id" type="text" placeholder="new-expansion"/>
+      </div>
+      <div class="auto" style="display: flex; align-items: flex-end; padding-bottom: 1rem;">
+        <button id="load-btn" type="button" class="hidden">Load</button>
+      </div>
+    </div>
+    <div class="status"><span id="spinner" class="hidden"></span> <span id="status">Select an existing expansion or type a new ID to begin.</span></div>
+  </div>
+
+  <div id="editor-form" class="hidden">
+    <div class="card">
+      <div class="card-title">Expansion details</div>
+      <div class="row">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" type="text" placeholder="Monuments"/>
+        </div>
+        <div>
+          <label for="version">Version</label>
+          <input id="version" type="text" placeholder="3.1"/>
+        </div>
+      </div>
+      <label for="description">Description</label>
+      <input id="description" type="text" placeholder="Short description"/>
+      <label for="overview" class="markdown-label">Overview Markdown <button type="button" class="markdown-help-btn" data-target="overview">?</button></label>
+      <textarea id="overview" placeholder="Full overview..."></textarea>
+      <div class="row">
+        <div>
+          <label for="image-folder">Source image folder</label>
+          <input id="image-folder" type="text" placeholder="expansions/source/monuments"/>
+        </div>
+        <div>
+          <label for="s3-path">S3 deploy path</label>
+          <input id="s3-path" type="text" placeholder="monuments"/>
+        </div>
+      </div>
+      <label>Banner image</label>
+      <div class="banner-row">
+        <input id="banner-path" type="text" placeholder="expansions/source/monuments/banner.jpg" style="flex:1"/>
+        <button id="choose-banner-btn" type="button" class="secondary">Choose</button>
+        <button id="clear-banner-btn" type="button" class="danger">Clear</button>
+      </div>
+      <p class="hint">Optional. Must be at least 1552px wide to cover the central column plus 200px on each side.</p>
+      <div id="banner-preview" class="banner-preview hidden"></div>
+    </div>
+
+    <div class="editor-actions">
+      <button id="save-btn" type="button">Save Config</button>
+      <button id="generate-btn" type="button" class="secondary">Generate Site</button>
+      <button id="deploy-btn" type="button" class="secondary">Deploy to S3</button>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="sections">Pages</div>
+      <div class="tab" data-tab="assets">Assets</div>
+    </div>
+
+    <div id="tab-sections" class="tab-content">
+      <div class="card">
+        <div id="sections-container"></div>
+        <button id="add-section-btn" type="button" class="secondary">Add Page</button>
+      </div>
+    </div>
+
+    <div id="tab-assets" class="tab-content hidden">
+      <div class="card">
+        <div class="toolbar">
+          <button id="inspect-btn" type="button">Inspect Folder</button>
+          <input id="asset-filter" type="text" placeholder="Filter assets..."/>
+          <label class="toggle">
+            <input id="show-unconfigured" type="checkbox" checked/>
+            <span class="switch"></span>
+            <span class="label-text">Not configured</span>
+          </label>
+          <label class="toggle">
+            <input id="show-hidden" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Excluded</span>
+          </label>
+          <label class="toggle">
+            <input id="show-hidden-only" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Excluded only</span>
+          </label>
+          <span id="asset-count" class="text-muted" style="font-size: 0.85rem; color: var(--muted);"></span>
+        </div>
+        <div id="assets-grid"></div>
+        <div id="assets-empty" class="empty-state hidden">No assets yet. Click Inspect Folder to scan the source image folder.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="markdown-help-modal" class="modal-overlay">
+  <div class="modal" style="max-width: 420px;">
+    <div class="modal-header">
+      <h2>Markdown Cheat Sheet</h2>
+      <button id="markdown-help-close" type="button" class="secondary">&times;</button>
+    </div>
+    <p class="hint" style="margin-bottom: 0.75rem;">Click a snippet to insert it at the cursor.</p>
+    <div class="markdown-help-grid">
+      <button type="button" class="markdown-snippet" data-snippet="**bold**"><strong>Bold</strong> **bold**</button>
+      <button type="button" class="markdown-snippet" data-snippet="*italic*"><em>Italic</em> *italic*</button>
+      <button type="button" class="markdown-snippet" data-snippet="<u>underline</u>"><u>Underline</u> &lt;u&gt;...&lt;/u&gt;</button>
+      <button type="button" class="markdown-snippet" data-snippet="# Heading 1">Heading 1 #</button>
+      <button type="button" class="markdown-snippet" data-snippet="## Heading 2">Heading 2 ##</button>
+      <button type="button" class="markdown-snippet" data-snippet="### Heading 3">Heading 3 ###</button>
+      <button type="button" class="markdown-snippet" data-snippet="- item">Bullet list -</button>
+      <button type="button" class="markdown-snippet" data-snippet="1. item">Numbered list 1.</button>
+      <button type="button" class="markdown-snippet" data-snippet="[text](url)">Link [text](url)</button>
+      <button type="button" class="markdown-snippet" data-snippet="`code`">Inline code `code`</button>
+      <button type="button" class="markdown-snippet" data-snippet="```\ncode\n```">Code block ```</button>
+      <button type="button" class="markdown-snippet" data-snippet="&gt; quote">Quote &gt;</button>
+    </div>
+  </div>
+</div>
+
+<div id="asset-modal" class="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="asset-modal-title">Asset Details</h2>
+      <div style="display: flex; gap: 0.5rem; align-items: center;">
+        <button id="asset-edit-save-top" type="button">Save Asset</button>
+        <button id="asset-modal-close" type="button" class="secondary">&times;</button>
+      </div>
+    </div>
+    <input id="asset-edit-path" type="hidden"/>
+    <div class="asset-badges" id="asset-badges"></div>
+    <div class="checkbox-row" style="margin-bottom: 0.75rem;">
+      <label class="toggle">
+        <input id="asset-edit-iscard" type="checkbox" checked/>
+        <span class="switch"></span>
+        <span class="label-text">Is card</span>
+      </label>
+      <label class="toggle">
+        <input id="asset-edit-hidden" type="checkbox"/>
+        <span class="switch"></span>
+        <span class="label-text">Excluded</span>
+      </label>
+      <label class="toggle">
+        <input id="asset-edit-configured" type="checkbox" checked/>
+        <span class="switch"></span>
+        <span class="label-text">Configured</span>
+      </label>
+    </div>
+    <div id="asset-preview-container" class="mb-4 flex justify-center">
+      <img id="asset-preview" src="" alt="" style="max-width: 100%; max-height: 300px; width: auto; height: auto; object-fit: contain; border: 1px solid var(--border);"/>
+    </div>
+    <p id="asset-filename" class="hint" style="margin-top: 0.5rem; margin-bottom: 0;"></p>
+    <div id="asset-description-preview" class="asset-description-preview"></div>
+    <details id="asset-faq-preview" class="asset-faq-preview">
+      <summary>FAQ</summary>
+      <div id="asset-faq-preview-content"></div>
+    </details>
+    <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1rem; color: var(--text);">Edit</h3>
+    <div class="checkbox-row">
+      <div class="page-inline">
+        <label for="asset-edit-section">Page</label>
+        <select id="asset-edit-section"></select>
+      </div>
+      <div class="orientation-inline">
+        <label for="asset-edit-orientation">Orientation</label>
+        <select id="asset-edit-orientation">
+          <option value="auto">Auto (derive from image)</option>
+          <option value="landscape">Landscape</option>
+          <option value="portrait">Portrait</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Title</label>
+        <input id="asset-edit-title" type="text"/>
+      </div>
+      <div>
+        <label>Subtitle</label>
+        <input id="asset-edit-subtitle" type="text" placeholder="Optional subtitle"/>
+      </div>
+      <div>
+        <label>Type</label>
+        <select id="asset-edit-type">
+          <option value="Action Card">Action Card</option>
+          <option value="Agent">Agent</option>
+          <option value="Agenda">Agenda</option>
+          <option value="Alliance">Alliance</option>
+          <option value="Breakthrough">Breakthrough</option>
+          <option value="Commander">Commander</option>
+          <option value="Faction Sheet">Faction Sheet</option>
+          <option value="Hero">Hero</option>
+          <option value="Legendary Ability">Legendary Ability</option>
+          <option value="Other Component" selected>Other Component</option>
+          <option value="Planet">Planet</option>
+          <option value="Additional Ability">Additional Ability</option>
+          <option value="Promissory Note">Promissory Note</option>
+          <option value="Public Objective">Public Objective</option>
+          <option value="Relic">Relic</option>
+          <option value="Relic Fragment">Relic Fragment</option>
+          <option value="Rulebook">Rulebook</option>
+          <option value="Scenario">Scenario</option>
+          <option value="Secret Objective">Secret Objective</option>
+          <option value="Station">Station</option>
+          <option value="Technology">Technology</option>
+          <option value="Tile">Tile</option>
+          <option value="Token">Token</option>
+          <option value="Unit - Ship - War sun">Unit - Ship - War sun</option>
+          <option value="Unit - Ship - Dreadnought">Unit - Ship - Dreadnought</option>
+          <option value="Unit - Ship - Flagship">Unit - Ship - Flagship</option>
+          <option value="Unit - Ship - Special">Unit - Ship - Special</option>
+          <option value="Unit - Ship - Fighter">Unit - Ship - Fighter</option>
+          <option value="Unit - Ship - Carrier">Unit - Ship - Carrier</option>
+          <option value="Unit - Ship - Cruiser">Unit - Ship - Cruiser</option>
+          <option value="Unit - Ship - Destroyer">Unit - Ship - Destroyer</option>
+          <option value="Unit - Ground Force - Infantry">Unit - Ground Force - Infantry</option>
+          <option value="Unit - Ground Force - Mech">Unit - Ground Force - Mech</option>
+          <option value="Unit - Structure - Monument">Unit - Structure - Monument</option>
+          <option value="Unit - Structure - Basic Structure">Unit - Structure - Basic Structure</option>
+          <option value="Unit - Structure - Advanced Structure">Unit - Structure - Advanced Structure</option>
+        </select>
+      </div>
+    </div>
+    <div class="editor-text-row">
+      <div>
+        <label>Description (Markdown)</label>
+        <textarea id="asset-edit-description"></textarea>
+      </div>
+      <div>
+        <label>Flavour Text</label>
+        <textarea id="asset-edit-flavour" placeholder="Italic flavour text shown under the card title"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div id="prereq-section">
+        <label class="toggle">
+          <input id="asset-edit-prereq-toggle" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Tech Prerequisite</span>
+        </label>
+      </div>
+      <div id="synergy-section">
+        <label class="toggle">
+          <input id="asset-edit-synergy-toggle" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Synergy</span>
+        </label>
+      </div>
+    </div>
+    <div id="asset-edit-prereq-inputs" class="hidden well">
+      <div class="row">
+        <div>
+          <label>Tech Prerequisite</label>
+          <input id="asset-edit-prereq" type="text" placeholder="e.g. RRYY" maxlength="4"/>
+        </div>
+        <div>
+          <label>Tech Color</label>
+          <select id="asset-edit-color">
+            <option value="">None</option>
+            <option value="G">Green</option>
+            <option value="Y">Yellow</option>
+            <option value="R">Red</option>
+            <option value="B">Blue</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div id="asset-edit-synergy-inputs" class="hidden well">
+      <div class="row">
+        <div>
+          <label>Synergy</label>
+          <input id="asset-edit-synergy" type="text" placeholder="e.g. GYRB" maxlength="4"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="source-section">
+        <label class="toggle">
+          <input id="asset-edit-source-toggle" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Source</span>
+        </label>
+      </div>
+    </div>
+    <div id="asset-edit-source-inputs" class="hidden well">
+      <div class="source-scores">
+        <label>Influence: <input id="asset-edit-source-influence" type="number" min="0" max="10"/></label>
+        <label>Resource: <input id="asset-edit-source-resource" type="number" min="0" max="10"/></label>
+      </div>
+      <div class="trait-checkboxes source-planet-only">
+        <label><input id="asset-edit-trait-hazardous" type="checkbox" value="hazardous"/> Hazardous</label>
+        <label><input id="asset-edit-trait-cultural" type="checkbox" value="cultural"/> Cultural</label>
+        <label><input id="asset-edit-trait-industrial" type="checkbox" value="industrial"/> Industrial</label>
+      </div>
+      <div class="source-toggles">
+        <label class="toggle">
+          <input id="asset-edit-source-legendary" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Legendary</span>
+        </label>
+        <label class="toggle source-planet-only">
+          <input id="asset-edit-source-relic" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Relic</span>
+        </label>
+      </div>
+      <input id="asset-edit-source-tech" class="source-planet-only" type="text" placeholder="Tech speciality e.g. RRYY" maxlength="4"/>
+      <div class="source-linked-picker source-planet-only">
+        <input id="asset-edit-source-linked-filter" type="text" placeholder="Filter linked ability card..."/>
+        <select id="asset-edit-source-linked"></select>
+      </div>
+    </div>
+
+    <div class="row" id="placement-section" style="display:none">
+      <div>
+        <label class="toggle">
+          <input id="asset-edit-placement-toggle" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Placement Restrictions</span>
+        </label>
+      </div>
+    </div>
+    <div id="asset-edit-placement-inputs" class="hidden well">
+      <p class="hint" style="margin-bottom:0.5rem">Select allowed placement targets. Toggle "Not" to invert (exclude that target).</p>
+      <div class="placement-rules" id="placement-rules-list"></div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label>Faction</label>
+        <input id="asset-edit-faction" type="text" list="asset-edit-faction-list" placeholder="Type or select a faction"/>
+        <datalist id="asset-edit-faction-list"></datalist>
+      </div>
+      <div>
+        <label>Group <span class="tooltip-icon" data-tooltip="Groups cards under sub-headings on card pages." tabindex="0">i</span></label>
+        <input id="asset-edit-group" type="text" placeholder="e.g. Drahn, Units, Technologies"/>
+      </div>
+    </div>
+
+    <div id="unit-section" class="hidden">
+      <label>Unit Stats</label>
+      <div class="unit-stats-grid">
+        <div class="unit-stat">
+          <label class="toggle">
+            <input id="unit-stat-cost-toggle" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Cost</span>
+          </label>
+          <input id="unit-stat-cost" type="number" min="1" max="20" placeholder="-"/>
+        </div>
+        <div class="unit-stat">
+          <label class="toggle">
+            <input id="unit-stat-combat-toggle" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Combat</span>
+          </label>
+          <input id="unit-stat-combat" type="number" min="1" max="10" placeholder="-"/>
+        </div>
+        <div class="unit-stat">
+          <label class="toggle">
+            <input id="unit-stat-move-toggle" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Move</span>
+          </label>
+          <input id="unit-stat-move" type="number" min="1" max="10" placeholder="-"/>
+        </div>
+        <div class="unit-stat">
+          <label class="toggle">
+            <input id="unit-stat-capacity-toggle" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Capacity</span>
+          </label>
+          <input id="unit-stat-capacity" type="number" min="1" max="20" placeholder="-"/>
+        </div>
+      </div>
+
+      <label>Unit Abilities</label>
+      <div class="unit-abilities-grid">
+        <label class="toggle">
+          <input id="ability-deploy" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Deploy</span>
+        </label>
+        <label class="toggle">
+          <input id="ability-planetary-shield" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Planetary Shield</span>
+        </label>
+        <label class="toggle">
+          <input id="ability-sustain-damage" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Sustain Damage</span>
+        </label>
+      </div>
+      <div class="unit-roll-abilities-grid">
+        <div class="unit-roll-ability">
+          <label class="toggle">
+            <input id="ability-bombardment" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Bombardment</span>
+          </label>
+          <input id="ability-bombardment-value" type="number" min="1" max="10" placeholder="Value"/>
+          <input id="ability-bombardment-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+        </div>
+        <div class="unit-roll-ability">
+          <label class="toggle">
+            <input id="ability-anti-fighter-barrage" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Anti-Fighter Barrage</span>
+          </label>
+          <input id="ability-anti-fighter-barrage-value" type="number" min="1" max="10" placeholder="Value"/>
+          <input id="ability-anti-fighter-barrage-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+        </div>
+        <div class="unit-roll-ability">
+          <label class="toggle">
+            <input id="ability-space-cannon" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Space Cannon</span>
+          </label>
+          <input id="ability-space-cannon-value" type="number" min="1" max="10" placeholder="Value"/>
+          <input id="ability-space-cannon-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+        </div>
+        <div class="unit-roll-ability">
+          <label class="toggle">
+            <input id="ability-production" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Production</span>
+          </label>
+          <input id="ability-production-value" type="number" min="1" max="10" placeholder="Value"/>
+          <input id="ability-production-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+        </div>
+      </div>
+    </div>
+
+    <label>FAQ (one Q&A per line: question | answer)</label>
+    <textarea id="asset-edit-faq" placeholder="Does this stack? | Yes."></textarea>
+    <div id="asset-back-row">
+      <label>Back Image</label>
+      <input id="asset-edit-back-filter" type="text" placeholder="Filter back images..."/>
+      <select id="asset-edit-back" size="6">
+        <option value="">None</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div id="banner-modal" class="modal-overlay">
+  <div class="modal" style="max-width: 900px;">
+    <div class="modal-header">
+      <h2>Choose Banner Image</h2>
+      <button id="banner-modal-close" type="button" class="secondary">&times;</button>
+    </div>
+    <p class="hint">Only images at least 1552px wide can be used as a banner.</p>
+    <div id="banner-grid" class="banner-grid"></div>
+    <div id="banner-none" class="empty-state hidden">No wide enough images found in the source folder.</div>
+    <div class="modal-footer">
+      <button id="banner-cancel" type="button" class="secondary">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const idInput = document.getElementById('expansion-id');
+const select = document.getElementById('expansion-select');
+const loadBtn = document.getElementById('load-btn');
+const editorForm = document.getElementById('editor-form');
+const statusEl = document.getElementById('status');
+
+let sections = [];
+let assets = {};
+let existingIds = [];
+
+async function loadSettings() {
+  const res = await fetch('/api/settings');
+  const data = await res.json();
+  document.getElementById('settings').textContent = `S3 bucket: ${data.bucket} | Region: ${data.region} | Profile: ${data.profile}`;
+}
+
+async function loadExpansionList() {
+  const res = await fetch('/api/expansions');
+  existingIds = await res.json();
+  select.innerHTML = '<option value="">-- Create new --</option>';
+  existingIds.forEach(id => {
+    const opt = document.createElement('option');
+    opt.value = id;
+    opt.textContent = id;
+    select.appendChild(opt);
+  });
+}
+
+function resetForm() {
+  document.getElementById('name').value = '';
+  document.getElementById('version').value = '';
+  document.getElementById('description').value = '';
+  document.getElementById('overview').value = '';
+  document.getElementById('image-folder').value = '';
+  document.getElementById('s3-path').value = '';
+  document.getElementById('banner-path').value = '';
+  updateBannerPreview();
+  sections = [];
+  assets = {};
+  renderSections();
+  renderAssets();
+  setDirty(false);
+}
+
+async function tryLoadConfig(id) {
+  if (!id) return false;
+  statusEl.textContent = 'Loading...';
+  const res = await fetch(`/api/config/${id}`);
+  const data = await res.json();
+  if (Object.keys(data).length === 0) {
+    return false;
+  }
+  document.getElementById('name').value = data.name || '';
+  document.getElementById('version').value = data.version || '';
+  document.getElementById('description').value = data.description || '';
+  document.getElementById('overview').value = data.overview || '';
+  document.getElementById('image-folder').value = (data.source && data.source.images) || '';
+  document.getElementById('s3-path').value = data.s3_path || data.id || '';
+  document.getElementById('banner-path').value = (data.banner && data.banner.path) || '';
+  updateBannerPreview();
+  sections = data.sections || [];
+  assets = data.assets || {};
+  editorForm.classList.remove('hidden');
+  renderSections();
+  renderAssets();
+  setDirty(false);
+  statusEl.textContent = 'Config loaded.';
+  return true;
+}
+
+function setId(id) {
+  idInput.value = id;
+  const inSource = existingIds.includes(id);
+  loadBtn.classList.add('hidden');
+  if (!id) {
+    editorForm.classList.add('hidden');
+    statusEl.textContent = 'Select an existing expansion or type a new ID to begin.';
+    return;
+  }
+  editorForm.classList.remove('hidden');
+  if (inSource) {
+    tryLoadConfig(id).then(ok => {
+      if (!ok) {
+        resetForm();
+        document.getElementById('image-folder').value = `expansions/source/${id}`;
+        document.getElementById('s3-path').value = id;
+        statusEl.textContent = `New expansion '${id}' from source folder. Fill in details and inspect the folder.`;
+      }
+    });
+  } else {
+    resetForm();
+    statusEl.textContent = `New expansion '${id}'. Fill in details and save.`;
+  }
+}
+
+select.addEventListener('change', () => {
+  const id = select.value;
+  setId(id);
+});
+
+idInput.addEventListener('input', () => {
+  const id = idInput.value.trim();
+  select.value = existingIds.includes(id) ? id : '';
+  setId(id);
+});
+
+loadBtn.addEventListener('click', () => tryLoadConfig(idInput.value.trim()));
+
+function renderSectionBlockHtml(block, sectionIndex, blockIndex, sectionId) {
+  const sectionAssets = assetValues().filter(a => a.section === sectionId && !a.hidden);
+  const options = sectionAssets.map(a => `<option value="${a.path}" ${a.path === block.asset ? 'selected' : ''}>${a.title || a.path}</option>`).join('');
+  if (block.type === 'markdown') {
+    return `
+      <div class="block-row" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">
+        <div class="block-header">
+          <span class="block-type">Markdown</span>
+          <div class="block-actions">
+            <button type="button" class="markdown-help-btn" data-target="block" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">?</button>
+            <button type="button" class="move-block-up" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">↑</button>
+            <button type="button" class="move-block-down" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">↓</button>
+            <button type="button" class="remove-block" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">×</button>
+          </div>
+        </div>
+        <textarea class="block-content" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" rows="5" placeholder="Markdown content...">${escapeHtml(block.content || '')}</textarea>
+      </div>
+    `;
+  }
+  return `
+    <div class="block-row" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">
+      <div class="block-header">
+        <span class="block-type">Asset</span>
+        <div class="block-actions">
+          <button type="button" class="move-block-up" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">↑</button>
+          <button type="button" class="move-block-down" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">↓</button>
+          <button type="button" class="remove-block" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">×</button>
+        </div>
+      </div>
+      <input type="text" class="block-asset-filter" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" placeholder="Filter assets..." value=""/>
+      <select class="block-asset" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" size="4">
+        <option value="">None</option>
+        ${options}
+      </select>
+      <img class="block-asset-preview hidden" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" src="" alt="" style="max-width: 120px; max-height: 80px; border-radius: 0.35rem; border: 1px solid var(--border);"/>
+      <input type="text" class="block-subtitle" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" placeholder="Subtitle (e.g. Fig a. a sample blah)" value="${escapeHtml(block.subtitle || '')}"/>
+      <div class="block-width-row">
+        <label>Width %</label>
+        <input type="range" class="block-width" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" min="10" max="100" value="${block.width || 100}"/>
+        <span class="block-width-value">${block.width || 100}%</span>
+      </div>
+    </div>
+  `;
+}
+
+function escapeHtml(text) {
+  if (!text) return '';
+  return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function renderSections() {
+  const container = document.getElementById('sections-container');
+  container.innerHTML = '';
+  if (sections.length === 0) {
+    container.innerHTML = '<p class="empty-state">No pages yet. Click Add Page or inspect the image folder to auto-suggest pages.</p>';
+  }
+  sections.forEach((section, index) => {
+    const blocks = section.blocks || [];
+    const blocksHtml = section.type === 'markdown'
+      ? blocks.map((block, bi) => renderSectionBlockHtml(block, index, bi, section.id)).join('')
+      : '';
+    const div = document.createElement('div');
+    div.className = 'section-row';
+    div.innerHTML = `
+      <div class="row">
+        <div>
+          <label>ID</label>
+          <input type="text" class="section-id" data-index="${index}" value="${section.id}" placeholder="overview"/>
+        </div>
+        <div>
+          <label>Title</label>
+          <input type="text" class="section-title" data-index="${index}" value="${section.title}" placeholder="Overview"/>
+        </div>
+        <div>
+          <label>Type</label>
+          <select class="section-type" data-index="${index}">
+            <option value="markdown" ${section.type === 'markdown' ? 'selected' : ''}>Markdown</option>
+            <option value="cards" ${section.type === 'cards' ? 'selected' : ''}>Cards</option>
+            <option value="list" ${section.type === 'list' ? 'selected' : ''}>List</option>
+          </select>
+        </div>
+      </div>
+      <div class="section-actions">
+        <button type="button" class="move-section-up" data-index="${index}">↑</button>
+        <button type="button" class="move-section-down" data-index="${index}">↓</button>
+        <button type="button" class="remove-section-btn danger" data-index="${index}">Remove</button>
+      </div>
+      <div class="section-blocks ${section.type === 'markdown' ? '' : 'hidden'}" data-section-index="${index}">
+        <div class="blocks-list" data-section-index="${index}">${blocksHtml}</div>
+        <div class="block-add-buttons">
+          <button type="button" class="add-block-btn secondary" data-section-index="${index}" data-block-type="markdown">Add Markdown Block</button>
+          <button type="button" class="add-block-btn secondary" data-section-index="${index}" data-block-type="asset">Add Asset Block</button>
+        </div>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+
+  document.querySelectorAll('.section-id, .section-title, .section-type').forEach(input => {
+    input.addEventListener('input', updateSectionsFromForm);
+  });
+  document.querySelectorAll('.remove-section-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      sections.splice(parseInt(this.dataset.index), 1);
+      renderSections();
+    });
+  });
+  document.querySelectorAll('.move-section-up').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const i = parseInt(this.dataset.index);
+      if (i <= 0) return;
+      updateSectionsFromForm();
+      [sections[i - 1], sections[i]] = [sections[i], sections[i - 1]];
+      renderSections();
+    });
+  });
+  document.querySelectorAll('.move-section-down').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const i = parseInt(this.dataset.index);
+      if (i >= sections.length - 1) return;
+      updateSectionsFromForm();
+      [sections[i], sections[i + 1]] = [sections[i + 1], sections[i]];
+      renderSections();
+    });
+  });
+  document.querySelectorAll('.add-block-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const si = parseInt(this.dataset.sectionIndex);
+      const type = this.dataset.blockType;
+      updateSectionsFromForm();
+      sections[si].blocks = sections[si].blocks || [];
+      sections[si].blocks.push(type === 'markdown' ? { type: 'markdown', content: '' } : { type: 'asset', asset: '', subtitle: '', width: 100 });
+      renderSections();
+    });
+  });
+  document.querySelectorAll('.remove-block').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const si = parseInt(this.dataset.sectionIndex);
+      const bi = parseInt(this.dataset.blockIndex);
+      updateSectionsFromForm();
+      sections[si].blocks.splice(bi, 1);
+      renderSections();
+    });
+  });
+  document.querySelectorAll('.move-block-up').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const si = parseInt(this.dataset.sectionIndex);
+      const bi = parseInt(this.dataset.blockIndex);
+      if (bi <= 0) return;
+      updateSectionsFromForm();
+      const blocks = sections[si].blocks;
+      [blocks[bi - 1], blocks[bi]] = [blocks[bi], blocks[bi - 1]];
+      renderSections();
+    });
+  });
+  document.querySelectorAll('.move-block-down').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const si = parseInt(this.dataset.sectionIndex);
+      const bi = parseInt(this.dataset.blockIndex);
+      updateSectionsFromForm();
+      const blocks = sections[si].blocks;
+      if (bi >= blocks.length - 1) return;
+      [blocks[bi], blocks[bi + 1]] = [blocks[bi + 1], blocks[bi]];
+      renderSections();
+    });
+  });
+  document.querySelectorAll('.block-asset-filter').forEach(input => {
+    input.addEventListener('input', function() {
+      const si = parseInt(this.dataset.sectionIndex);
+      const bi = parseInt(this.dataset.blockIndex);
+      const sectionId = sections[si].id;
+      const filter = this.value.toLowerCase();
+      const select = document.querySelector(`.block-asset[data-section-index="${si}"][data-block-index="${bi}"]`);
+      if (!select) return;
+      const sectionAssets = assetValues().filter(a => a.section === sectionId && !a.hidden);
+      select.innerHTML = '<option value="">None</option>' + sectionAssets.filter(a => {
+        const text = `${a.title || ''} ${a.path}`.toLowerCase();
+        return !filter || text.includes(filter);
+      }).map(a => `<option value="${a.path}">${a.title || a.path}</option>`).join('');
+    });
+  });
+  document.querySelectorAll('.block-asset').forEach(select => {
+    select.addEventListener('change', function() {
+      const si = parseInt(this.dataset.sectionIndex);
+      const bi = parseInt(this.dataset.blockIndex);
+      const expansionId = idInput.value.trim();
+      const preview = document.querySelector(`.block-asset-preview[data-section-index="${si}"][data-block-index="${bi}"]`);
+      if (this.value && preview) {
+        preview.src = `/api/image/${expansionId}/${this.value}`;
+        preview.classList.remove('hidden');
+      } else if (preview) {
+        preview.classList.add('hidden');
+      }
+      updateSectionsFromForm();
+    });
+  });
+  document.querySelectorAll('.block-width').forEach(input => {
+    input.addEventListener('input', function() {
+      const row = this.closest('.block-width-row');
+      if (row) row.querySelector('.block-width-value').textContent = `${this.value}%`;
+      updateSectionsFromForm();
+    });
+  });
+  document.querySelectorAll('.block-content, .block-subtitle').forEach(input => {
+    input.addEventListener('input', updateSectionsFromForm);
+  });
+  document.querySelectorAll('.block-asset-preview').forEach(preview => {
+    const si = parseInt(preview.dataset.sectionIndex);
+    const bi = parseInt(preview.dataset.blockIndex);
+    const select = document.querySelector(`.block-asset[data-section-index="${si}"][data-block-index="${bi}"]`);
+    if (select && select.value) {
+      const expansionId = idInput.value.trim();
+      preview.src = `/api/image/${expansionId}/${select.value}`;
+      preview.classList.remove('hidden');
+    }
+  });
+}
+
+function updateSectionsFromForm() {
+  const ids = Array.from(document.querySelectorAll('.section-id')).map(el => el.value.trim());
+  const titles = Array.from(document.querySelectorAll('.section-title')).map(el => el.value.trim());
+  const types = Array.from(document.querySelectorAll('.section-type')).map(el => el.value);
+  sections = ids.map((id, i) => {
+    const section = {
+      id: id || `section-${i}`,
+      title: titles[i] || id || `Section ${i + 1}`,
+      type: types[i] || 'markdown',
+    };
+    if (section.type === 'markdown') {
+      const blocks = [];
+      document.querySelectorAll(`.block-row[data-section-index="${i}"]`).forEach(row => {
+        const bi = parseInt(row.dataset.blockIndex);
+        const typeEl = row.querySelector('.block-type');
+        const type = typeEl ? typeEl.textContent.trim() : 'Markdown';
+        if (type === 'Markdown') {
+          const content = row.querySelector('.block-content')?.value || '';
+          blocks.push({ type: 'markdown', content });
+        } else {
+          const asset = row.querySelector('.block-asset')?.value || '';
+          const subtitle = row.querySelector('.block-subtitle')?.value || '';
+          const width = parseInt(row.querySelector('.block-width')?.value) || 100;
+          blocks.push({ type: 'asset', asset, subtitle, width });
+        }
+      });
+      section.blocks = blocks;
+    }
+    return section;
+  });
+  setDirty(true);
+}
+
+async function inspectFolder() {
+  const id = idInput.value.trim();
+  if (!id) {
+    statusEl.textContent = 'Expansion ID is required.';
+    return;
+  }
+  const imageFolder = document.getElementById('image-folder').value.trim();
+  if (!imageFolder) {
+    statusEl.textContent = 'Source image folder is required.';
+    return;
+  }
+  statusEl.textContent = 'Inspecting folder...';
+  const res = await fetch(`/api/inspect/${id}`, { method: 'POST' });
+  const data = await res.json();
+  if (data.error) {
+    statusEl.textContent = `Inspect failed: ${data.error}`;
+    return;
+  }
+  assets = data.assets;
+  if (data.suggested_sections && sections.length === 0) {
+    sections = data.suggested_sections;
+  }
+  renderSections();
+  renderAssets();
+  statusEl.textContent = `Found ${Object.keys(assets).length} assets.`;
+}
+
+function assetValues() {
+  return Object.values(assets);
+}
+
+function renderMarkdown(text) {
+  if (!text) return '';
+  let html = text
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/^###### (.*$)/gim, '<h6>$1</h6>')
+    .replace(/^##### (.*$)/gim, '<h5>$1</h5>')
+    .replace(/^#### (.*$)/gim, '<h4>$1</h4>')
+    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
+    .replace(/^\s*-\s+(.*$)/gim, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/\n/g, '<br>');
+  return `<p>${html}</p>`;
+}
+
+function isUnitType(type) { return type && type.startsWith('Unit -'); }
+function unitCategory(type) {
+  if (!type) return null;
+  if (type.startsWith('Unit - Ship')) return 'ship';
+  if (type.startsWith('Unit - Ground Force')) return 'ground';
+  if (type.startsWith('Unit - Structure')) return 'structure';
+  return null;
+}
+function defaultUnitStats(category) {
+  if (category === 'structure') {
+    return { cost: { enabled: false, value: null }, combat: { enabled: false, value: null }, move: { enabled: false, value: null }, capacity: { enabled: false, value: null } };
+  }
+  if (category === 'ground') {
+    return { cost: { enabled: true, value: null }, combat: { enabled: true, value: null }, move: { enabled: false, value: null }, capacity: { enabled: false, value: null } };
+  }
+  // ship
+  return { cost: { enabled: true, value: null }, combat: { enabled: true, value: null }, move: { enabled: true, value: null }, capacity: { enabled: false, value: null } };
+}
+function defaultUnitAbilities() {
+  return { deploy: false, planetaryShield: false, sustainDamage: false, bombardment: null, antiFighterBarrage: null, spaceCannon: null, production: null };
+}
+function getUnitStatsInput() {
+  return {
+    cost: { enabled: document.getElementById('unit-stat-cost-toggle').checked, value: parseInt(document.getElementById('unit-stat-cost').value) || null },
+    combat: { enabled: document.getElementById('unit-stat-combat-toggle').checked, value: parseInt(document.getElementById('unit-stat-combat').value) || null },
+    move: { enabled: document.getElementById('unit-stat-move-toggle').checked, value: parseInt(document.getElementById('unit-stat-move').value) || null },
+    capacity: { enabled: document.getElementById('unit-stat-capacity-toggle').checked, value: parseInt(document.getElementById('unit-stat-capacity').value) || null },
+  };
+}
+function getUnitAbilitiesInput() {
+  const roll = (toggleId, valueId, multiId) => {
+    const enabled = document.getElementById(toggleId).checked;
+    if (!enabled) return null;
+    return { value: parseInt(document.getElementById(valueId).value) || 1, multi: parseInt(document.getElementById(multiId).value) || 1 };
+  };
+  return {
+    deploy: document.getElementById('ability-deploy').checked,
+    planetaryShield: document.getElementById('ability-planetary-shield').checked,
+    sustainDamage: document.getElementById('ability-sustain-damage').checked,
+    bombardment: roll('ability-bombardment', 'ability-bombardment-value', 'ability-bombardment-multi'),
+    antiFighterBarrage: roll('ability-anti-fighter-barrage', 'ability-anti-fighter-barrage-value', 'ability-anti-fighter-barrage-multi'),
+    spaceCannon: roll('ability-space-cannon', 'ability-space-cannon-value', 'ability-space-cannon-multi'),
+    production: roll('ability-production', 'ability-production-value', 'ability-production-multi'),
+  };
+}
+function setUnitStatsInput(stats) {
+  stats = stats || { cost: {}, combat: {}, move: {}, capacity: {} };
+  document.getElementById('unit-stat-cost-toggle').checked = stats.cost?.enabled || false;
+  document.getElementById('unit-stat-cost').value = stats.cost?.value || '';
+  document.getElementById('unit-stat-combat-toggle').checked = stats.combat?.enabled || false;
+  document.getElementById('unit-stat-combat').value = stats.combat?.value || '';
+  document.getElementById('unit-stat-move-toggle').checked = stats.move?.enabled || false;
+  document.getElementById('unit-stat-move').value = stats.move?.value || '';
+  document.getElementById('unit-stat-capacity-toggle').checked = stats.capacity?.enabled || false;
+  document.getElementById('unit-stat-capacity').value = stats.capacity?.value || '';
+}
+function setUnitAbilitiesInput(abilities) {
+  abilities = abilities || {};
+  document.getElementById('ability-deploy').checked = abilities.deploy || false;
+  document.getElementById('ability-planetary-shield').checked = abilities.planetaryShield || false;
+  document.getElementById('ability-sustain-damage').checked = abilities.sustainDamage || false;
+  const setRoll = (name, ability) => {
+    document.getElementById(`ability-${name}`).checked = !!ability;
+    document.getElementById(`ability-${name}-value`).value = ability ? (ability.value || ability.target || 1) : '';
+    document.getElementById(`ability-${name}-multi`).value = ability ? (ability.multi || 1) : '1';
+  };
+  setRoll('bombardment', abilities.bombardment);
+  setRoll('anti-fighter-barrage', abilities.antiFighterBarrage);
+  setRoll('space-cannon', abilities.spaceCannon);
+  setRoll('production', abilities.production);
+}
+function updateUnitSectionVisibility() {
+  const type = document.getElementById('asset-edit-type').value;
+  document.getElementById('unit-section').classList.toggle('hidden', !isUnitType(type));
+}
+function updateBackRowVisibility() {
+  const isCard = document.getElementById('asset-edit-iscard').checked;
+  document.getElementById('asset-back-row').classList.toggle('hidden', !isCard);
+}
+function defaultPrereq(type) {
+  if (type === 'Technology') return { enabled: true, value: '' };
+  if (!isUnitType(type)) return { enabled: false, value: '' };
+  const noPrereq = type.includes('Monument') || type.includes('Structure') || type.includes('Flagship');
+  return { enabled: !noPrereq, value: '' };
+}
+function applyPrereqDefaultsIfNeeded(asset) {
+  if (!asset.prereq) asset.prereq = defaultPrereq(asset.type);
+  if (asset.type === 'Technology' && !asset.color) asset.color = '';
+}
+function getPrereqInput() {
+  const enabled = document.getElementById('asset-edit-prereq-toggle').checked;
+  const value = document.getElementById('asset-edit-prereq').value.toUpperCase().replace(/[^GYRB]/g, '').slice(0, 4);
+  return { enabled, value: enabled ? value : '' };
+}
+function setPrereqInput(prereq) {
+  const p = prereq || { enabled: false, value: '' };
+  document.getElementById('asset-edit-prereq-toggle').checked = p.enabled;
+  document.getElementById('asset-edit-prereq').value = p.value || '';
+}
+function updatePrereqSectionVisibility() {
+  const enabled = document.getElementById('asset-edit-prereq-toggle').checked;
+  document.getElementById('asset-edit-prereq-inputs').classList.toggle('hidden', !enabled);
+  const type = document.getElementById('asset-edit-type').value;
+  const colorSelect = document.getElementById('asset-edit-color');
+  if (isUnitType(type)) {
+    colorSelect.value = '';
+    colorSelect.disabled = true;
+    const opt = colorSelect.querySelector('option[value=""]');
+    if (opt) opt.textContent = 'Units do not have a color';
+  } else {
+    colorSelect.disabled = false;
+    const opt = colorSelect.querySelector('option[value=""]');
+    if (opt) opt.textContent = 'None';
+  }
+}
+function updatePrereqDefaults(type) {
+  const prereq = defaultPrereq(type);
+  const toggle = document.getElementById('asset-edit-prereq-toggle');
+  const value = document.getElementById('asset-edit-prereq');
+  toggle.checked = prereq.enabled;
+  if (!value.value) value.value = prereq.value;
+}
+function defaultSynergy(type) {
+  if (type === 'Technology') return { enabled: true, value: '' };
+  return { enabled: false, value: '' };
+}
+function applySynergyDefaultsIfNeeded(asset) {
+  if (!asset.synergy) asset.synergy = defaultSynergy(asset.type);
+}
+function getSynergyInput() {
+  const enabled = document.getElementById('asset-edit-synergy-toggle').checked;
+  const value = document.getElementById('asset-edit-synergy').value.toUpperCase().replace(/[^GYRB]/g, '').slice(0, 4);
+  return { enabled, value: enabled ? value : '' };
+}
+function setSynergyInput(synergy) {
+  const s = synergy || { enabled: false, value: '' };
+  document.getElementById('asset-edit-synergy-toggle').checked = s.enabled;
+  document.getElementById('asset-edit-synergy').value = s.value || '';
+}
+function updateSynergySectionVisibility() {
+  const enabled = document.getElementById('asset-edit-synergy-toggle').checked;
+  document.getElementById('asset-edit-synergy-inputs').classList.toggle('hidden', !enabled);
+}
+function updateSynergyDefaults(type) {
+  const synergy = defaultSynergy(type);
+  const toggle = document.getElementById('asset-edit-synergy-toggle');
+  const value = document.getElementById('asset-edit-synergy');
+  toggle.checked = synergy.enabled;
+  if (!value.value) value.value = synergy.value;
+}
+function defaultSource(type) {
+  return { enabled: type === 'Planet' || type === 'Station', influence: 0, resource: 0, trait: [], legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
+}
+function applySourceDefaultsIfNeeded(asset) {
+  if (!asset.source) asset.source = defaultSource(asset.type);
+}
+function getSourceInput() {
+  const enabled = document.getElementById('asset-edit-source-toggle').checked;
+  const influence = parseInt(document.getElementById('asset-edit-source-influence').value) || 0;
+  const resource = parseInt(document.getElementById('asset-edit-source-resource').value) || 0;
+  const traits = ['hazardous', 'cultural', 'industrial'].filter(t => document.getElementById(`asset-edit-trait-${t}`).checked);
+  const legendary = document.getElementById('asset-edit-source-legendary').checked;
+  const relic = document.getElementById('asset-edit-source-relic').checked;
+  const techSpeciality = document.getElementById('asset-edit-source-tech').value.toUpperCase().replace(/[^GYRB]/g, '').slice(0, 4);
+  const linkedAbility = document.getElementById('asset-edit-source-linked').value;
+  if (!enabled) return { enabled: false, influence: 0, resource: 0, trait: [], legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
+  const isStation = document.getElementById('asset-edit-type').value === 'Station';
+  return { enabled, influence, resource, trait: isStation ? [] : traits, legendary, relic: isStation ? false : relic, techSpeciality: isStation ? '' : techSpeciality, linkedAbility: isStation ? '' : (linkedAbility || '') };
+}
+function setSourceInput(source) {
+  const s = source || { enabled: false, influence: 0, resource: 0, trait: [], legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
+  const traits = Array.isArray(s.trait) ? s.trait : (s.trait ? [s.trait] : []);
+  document.getElementById('asset-edit-source-toggle').checked = s.enabled;
+  document.getElementById('asset-edit-source-influence').value = s.influence || '';
+  document.getElementById('asset-edit-source-resource').value = s.resource || '';
+  ['hazardous', 'cultural', 'industrial'].forEach(t => {
+    document.getElementById(`asset-edit-trait-${t}`).checked = traits.includes(t);
+  });
+  document.getElementById('asset-edit-source-legendary').checked = s.legendary || false;
+  document.getElementById('asset-edit-source-relic').checked = s.relic || false;
+  document.getElementById('asset-edit-source-tech').value = s.techSpeciality || '';
+  const linkedSelect = document.getElementById('asset-edit-source-linked');
+  linkedSelect.value = s.linkedAbility || '';
+  if (!linkedSelect.value && s.linkedAbility) {
+    const option = document.createElement('option');
+    option.value = s.linkedAbility;
+    option.textContent = s.linkedAbility;
+    linkedSelect.appendChild(option);
+    linkedSelect.value = s.linkedAbility;
+  }
+}
+function updateSourceSectionVisibility() {
+  const enabled = document.getElementById('asset-edit-source-toggle').checked;
+  document.getElementById('asset-edit-source-inputs').classList.toggle('hidden', !enabled);
+  const isStation = document.getElementById('asset-edit-type').value === 'Station';
+  document.querySelectorAll('.source-planet-only').forEach(el => el.classList.toggle('hidden', isStation));
+}
+function updateSourceDefaults(type) {
+  const source = defaultSource(type);
+  const toggle = document.getElementById('asset-edit-source-toggle');
+  if (!toggle.checked) {
+    toggle.checked = source.enabled;
+    setSourceInput(source);
+  }
+}
+function applyUnitDefaultsIfNeeded(asset) {
+  const category = unitCategory(asset.type);
+  if (!category) return;
+  if (!asset.stats) asset.stats = defaultUnitStats(category);
+  if (!asset.abilities) asset.abilities = defaultUnitAbilities();
+}
+function updateUnitInputs() {
+  const type = document.getElementById('asset-edit-type').value;
+  const wasHidden = document.getElementById('unit-section').classList.contains('hidden');
+  updateUnitSectionVisibility();
+  updatePrereqSectionVisibility();
+  updatePrereqDefaults(type);
+  updateSynergySectionVisibility();
+  updateSynergyDefaults(type);
+  updateSourceSectionVisibility();
+  updateSourceDefaults(type);
+  updatePlacementSectionVisibility();
+  if (wasHidden && isUnitType(type)) {
+    const category = unitCategory(type);
+    setUnitStatsInput(defaultUnitStats(category));
+    setUnitAbilitiesInput(defaultUnitAbilities());
+  }
+}
+const PLACEMENT_OPTIONS = [
+  { value: 'any', label: 'Any' },
+  { value: 'hazardous', label: 'Hazardous' },
+  { value: 'industrial', label: 'Industrial' },
+  { value: 'cultural', label: 'Cultural' },
+  { value: 'legendary', label: 'Legendary' },
+  { value: 'tech_planet', label: 'Tech Planet' },
+  { value: 'mecatol', label: 'Mecatol Rex' },
+  { value: 'relic', label: 'Relic' },
+];
+function isStructureType(type) { return type && type.startsWith('Unit - Structure'); }
+function updatePlacementSectionVisibility() {
+  const type = document.getElementById('asset-edit-type').value;
+  const section = document.getElementById('placement-section');
+  const inputs = document.getElementById('asset-edit-placement-inputs');
+  const isStruct = isStructureType(type);
+  section.style.display = isStruct ? '' : 'none';
+  const enabled = document.getElementById('asset-edit-placement-toggle').checked;
+  inputs.classList.toggle('hidden', !isStruct || !enabled);
+}
+function renderPlacementRules(rules) {
+  const list = document.getElementById('placement-rules-list');
+  list.innerHTML = '';
+  PLACEMENT_OPTIONS.forEach(opt => {
+    const rule = (rules || []).find(r => r.value === opt.value);
+    const checked = !!rule;
+    const notActive = rule ? rule.not : false;
+    const row = document.createElement('div');
+    row.className = 'placement-rule-row';
+    row.innerHTML = `
+      <input type="checkbox" id="pr-${opt.value}" ${checked ? 'checked' : ''}/>
+      <label class="rule-label" for="pr-${opt.value}">${opt.label}</label>
+      <button type="button" class="not-btn ${notActive ? 'active' : ''}" data-val="${opt.value}">Not</button>
+    `;
+    const cb = row.querySelector('input');
+    const notBtn = row.querySelector('.not-btn');
+    notBtn.addEventListener('click', () => {
+      if (!cb.checked) cb.checked = true;
+      notBtn.classList.toggle('active');
+    });
+    cb.addEventListener('change', () => { if (!cb.checked) notBtn.classList.remove('active'); });
+    list.appendChild(row);
+  });
+}
+function getPlacementInput() {
+  const enabled = document.getElementById('asset-edit-placement-toggle').checked;
+  if (!enabled) return { enabled: false, rules: [] };
+  const rules = [];
+  PLACEMENT_OPTIONS.forEach(opt => {
+    const cb = document.getElementById(`pr-${opt.value}`);
+    if (cb && cb.checked) {
+      const notBtn = document.querySelector(`.not-btn[data-val="${opt.value}"]`);
+      rules.push({ value: opt.value, not: notBtn ? notBtn.classList.contains('active') : false });
+    }
+  });
+  return { enabled: true, rules };
+}
+function setPlacementInput(placement) {
+  const p = placement || { enabled: false, rules: [] };
+  document.getElementById('asset-edit-placement-toggle').checked = p.enabled;
+  renderPlacementRules(p.rules || []);
+}
+function renderAssets() {
+  const grid = document.getElementById('assets-grid');
+  const empty = document.getElementById('assets-empty');
+  grid.innerHTML = '';
+  const filter = document.getElementById('asset-filter').value.toLowerCase();
+  const showUnconfigured = document.getElementById('show-unconfigured').checked;
+  const showHidden = document.getElementById('show-hidden').checked;
+  const showHiddenOnly = document.getElementById('show-hidden-only').checked;
+
+  let list = assetValues();
+  if (showHiddenOnly) {
+    list = list.filter(a => a.hidden);
+  } else {
+    if (showUnconfigured) {
+      list = list.filter(a => !a.configured);
+    }
+    if (!showHidden) {
+      list = list.filter(a => !a.hidden);
+    }
+  }
+  if (filter) {
+    list = list.filter(a => (a.title + ' ' + a.path + ' ' + a.group + ' ' + (a.type || '') + ' ' + (a.faction || '')).toLowerCase().includes(filter));
+  }
+  list.sort((a, b) => {
+    const ga = (a.group || a.folder || '').toLowerCase();
+    const gb = (b.group || b.folder || '').toLowerCase();
+    if (ga !== gb) return ga.localeCompare(gb);
+    return (a.title || '').toLowerCase().localeCompare((b.title || '').toLowerCase());
+  });
+
+  document.getElementById('asset-count').textContent = `${list.length} shown / ${assetValues().length} total`;
+  empty.classList.toggle('hidden', assetValues().length > 0);
+
+  // Group by page (section), maintaining section order from config
+  const sectionOrder = sections.map(s => s.id);
+  const pageMap = new Map();
+  list.forEach(asset => {
+    const pageId = asset.section || '';
+    if (!pageMap.has(pageId)) pageMap.set(pageId, []);
+    pageMap.get(pageId).push(asset);
+  });
+  // Sort pages: known sections in order first, then unassigned
+  const pageIds = [...pageMap.keys()].sort((a, b) => {
+    const ia = sectionOrder.indexOf(a);
+    const ib = sectionOrder.indexOf(b);
+    if (ia !== -1 && ib !== -1) return ia - ib;
+    if (ia !== -1) return -1;
+    if (ib !== -1) return 1;
+    return a.localeCompare(b);
+  });
+
+  pageIds.forEach(pageId => {
+    const pageAssets = pageMap.get(pageId);
+    const section = sections.find(s => s.id === pageId);
+    const pageTitle = section ? section.title : (pageId || 'Unassigned');
+
+    const groupEl = document.createElement('div');
+    groupEl.className = 'asset-page-group';
+    groupEl.style.cssText = 'margin-bottom: 1.25rem;';
+
+    const header = document.createElement('div');
+    header.className = 'asset-page-header';
+    header.style.cssText = 'display:flex;align-items:center;gap:0.5rem;cursor:pointer;padding:0.4rem 0.5rem;border-radius:0.4rem;background:var(--panel);border:1px solid var(--border);margin-bottom:0.5rem;user-select:none;';
+    header.innerHTML = `<span style="font-size:0.85rem;color:var(--muted);">▾</span><span style="font-weight:600;font-size:0.9rem;">${pageTitle}</span><span style="font-size:0.8rem;color:var(--muted);margin-left:auto;">${pageAssets.length} asset${pageAssets.length !== 1 ? 's' : ''}</span>`;
+
+    const innerGrid = document.createElement('div');
+    innerGrid.className = 'asset-grid';
+
+    header.addEventListener('click', () => {
+      const collapsed = innerGrid.style.display === 'none';
+      innerGrid.style.display = collapsed ? '' : 'none';
+      header.querySelector('span').textContent = collapsed ? '▾' : '▸';
+    });
+
+    pageAssets.forEach(asset => {
+      const div = document.createElement('div');
+      div.className = `asset-cell ${asset.configured ? 'configured' : ''} ${asset.hidden ? 'excluded' : ''}`;
+      div.innerHTML = `
+        <div class="title" title="${asset.path}">${asset.title}</div>
+        <div class="group" title="${asset.group || asset.folder}">${asset.group || asset.folder}</div>
+        ${asset.hidden ? '<div class="title" style="color:#dc2626">excluded</div>' : ''}
+      `;
+      div.addEventListener('click', () => openAssetEditor(asset.path));
+      innerGrid.appendChild(div);
+    });
+
+    groupEl.appendChild(header);
+    groupEl.appendChild(innerGrid);
+    grid.appendChild(groupEl);
+  });
+}
+
+function distinctFactions() {
+  const set = new Set();
+  assetValues().forEach(a => {
+    if (a.faction && a.faction.trim()) set.add(a.faction.trim());
+  });
+  return Array.from(set).sort();
+}
+
+function updateFactionDatalist() {
+  const list = document.getElementById('asset-edit-faction-list');
+  list.innerHTML = '';
+  distinctFactions().forEach(f => {
+    const opt = document.createElement('option');
+    opt.value = f;
+    list.appendChild(opt);
+  });
+}
+
+let currentBackOptions = [];
+
+function populateBackOptions(path, currentBack, filterText) {
+  const backSelect = document.getElementById('asset-edit-back');
+  backSelect.innerHTML = '<option value="">None</option>';
+  const filter = filterText.toLowerCase();
+  currentBackOptions = assetValues().filter(a => {
+    if (a.path === path) return false;
+    if (!filter) return true;
+    return (a.path + ' ' + a.title + ' ' + a.group).toLowerCase().includes(filter);
+  });
+  currentBackOptions.forEach(a => {
+    const option = document.createElement('option');
+    option.value = a.path;
+    option.textContent = a.hidden ? `${a.path} [excluded]` : a.path;
+    backSelect.appendChild(option);
+  });
+  const stillAvailable = currentBack === '' || currentBackOptions.some(a => a.path === currentBack);
+  backSelect.value = stillAvailable ? currentBack : '';
+}
+
+function populateLinkedAbilityOptions(currentValue, filterText) {
+  const select = document.getElementById('asset-edit-source-linked');
+  select.innerHTML = '<option value="">None</option>';
+  const filter = filterText.toLowerCase();
+  const options = assetValues().filter(a => {
+    if (!a.isCard) return false;
+    if (!filter) return true;
+    return (a.path + ' ' + a.title + ' ' + a.group).toLowerCase().includes(filter);
+  });
+  options.forEach(a => {
+    const option = document.createElement('option');
+    option.value = a.path;
+    option.textContent = a.hidden ? `${a.title || a.path} [excluded]` : (a.title || a.path);
+    select.appendChild(option);
+  });
+  const stillAvailable = currentValue === '' || options.some(a => a.path === currentValue);
+  select.value = stillAvailable ? currentValue : '';
+}
+
+function renderAssetPreview(asset) {
+  document.getElementById('asset-badges').innerHTML = '';
+
+  document.getElementById('asset-description-preview').innerHTML = renderMarkdown(asset.description || '');
+  document.getElementById('asset-description-preview').classList.toggle('hidden', !(asset.description || '').trim());
+
+  const faq = asset.faq || [];
+  const faqDetails = document.getElementById('asset-faq-preview');
+  const faqContent = document.getElementById('asset-faq-preview-content');
+  if (faq.length) {
+    faqContent.innerHTML = faq.map(qa => `<div class="faq-item"><div class="faq-q">Q: ${qa.q}</div><div class="faq-a">A: ${qa.a}</div></div>`).join('');
+    faqDetails.classList.remove('hidden');
+  } else {
+    faqContent.innerHTML = '';
+    faqDetails.classList.add('hidden');
+  }
+}
+
+function openAssetEditor(path) {
+  const asset = assets[path];
+  if (!asset) return;
+  const expansionId = idInput.value.trim();
+  document.getElementById('asset-edit-path').value = path;
+  document.getElementById('asset-modal-title').textContent = `Asset: ${asset.filename}`;
+  const previewImg = document.getElementById('asset-preview');
+  previewImg.src = `/api/image/${expansionId}/${asset.path}`;
+  previewImg.alt = asset.title || asset.filename;
+  previewImg.classList.toggle('portrait', asset.orientation === 'portrait');
+  document.getElementById('asset-filename').textContent = asset.path;
+  document.getElementById('asset-edit-iscard').checked = asset.isCard;
+  document.getElementById('asset-edit-hidden').checked = asset.hidden;
+  document.getElementById('asset-edit-configured').checked = asset.configured;
+  document.getElementById('asset-edit-title').value = asset.title || '';
+  document.getElementById('asset-edit-subtitle').value = asset.subtitle || '';
+  if (asset.type === 'Planet Ability') asset.type = 'Additional Ability';
+  document.getElementById('asset-edit-type').value = asset.type || 'Other Component';
+  document.getElementById('asset-edit-orientation').value = asset.orientation || 'auto';
+  document.getElementById('asset-edit-group').value = asset.group || '';
+  document.getElementById('asset-edit-flavour').value = asset.flavour || '';
+  document.getElementById('asset-edit-description').value = asset.description || '';
+  document.getElementById('asset-edit-faq').value = (asset.faq || []).map(qa => `${qa.q} | ${qa.a}`).join('\n');
+  document.getElementById('asset-edit-back-filter').value = '';
+
+  updateFactionDatalist();
+  document.getElementById('asset-edit-faction').value = asset.faction || '';
+
+  applyUnitDefaultsIfNeeded(asset);
+  applyPrereqDefaultsIfNeeded(asset);
+  applySynergyDefaultsIfNeeded(asset);
+  applySourceDefaultsIfNeeded(asset);
+  setUnitStatsInput(asset.stats);
+  setUnitAbilitiesInput(asset.abilities);
+  setPrereqInput(asset.prereq);
+  document.getElementById('asset-edit-color').value = asset.color || '';
+  setSynergyInput(asset.synergy);
+  setSourceInput(asset.source);
+  updateUnitSectionVisibility();
+  updatePrereqSectionVisibility();
+  updateSynergySectionVisibility();
+  updateSourceSectionVisibility();
+  updatePlacementSectionVisibility();
+  updateBackRowVisibility();
+  setPlacementInput(asset.placement);
+
+  const sectionSelect = document.getElementById('asset-edit-section');
+  sectionSelect.innerHTML = `<option value="" ${!asset.section ? 'selected' : ''}>None</option>` + sections.map(s => `<option value="${s.id}" ${s.id === asset.section ? 'selected' : ''}>${s.title}</option>`).join('');
+
+  populateBackOptions(path, asset.back || '', '');
+  document.getElementById('asset-edit-source-linked-filter').value = '';
+  populateLinkedAbilityOptions(asset.source?.linkedAbility || '', '');
+  renderAssetPreview(asset);
+
+  document.getElementById('asset-modal').classList.add('visible');
+}
+
+function closeAssetEditor() {
+  document.getElementById('asset-modal').classList.remove('visible');
+}
+
+function saveAssetEditor() {
+  const path = document.getElementById('asset-edit-path').value;
+  const asset = assets[path];
+  if (!asset) return;
+
+  const faqText = document.getElementById('asset-edit-faq').value.trim();
+  const faq = faqText ? faqText.split('\n').map(line => {
+    const parts = line.split('|');
+    return parts.length >= 2 ? { q: parts[0].trim(), a: parts.slice(1).join('|').trim() } : { q: line.trim(), a: '' };
+  }).filter(qa => qa.q) : [];
+
+  asset.isCard = document.getElementById('asset-edit-iscard').checked;
+  asset.hidden = document.getElementById('asset-edit-hidden').checked;
+  asset.configured = document.getElementById('asset-edit-configured').checked;
+  asset.title = document.getElementById('asset-edit-title').value.trim() || asset.id;
+  asset.subtitle = document.getElementById('asset-edit-subtitle').value.trim();
+  asset.type = document.getElementById('asset-edit-type').value;
+  asset.faction = document.getElementById('asset-edit-faction').value.trim();
+  asset.section = document.getElementById('asset-edit-section').value;
+  asset.orientation = document.getElementById('asset-edit-orientation').value;
+  asset.group = document.getElementById('asset-edit-group').value.trim() || asset.folder;
+  asset.flavour = document.getElementById('asset-edit-flavour').value.trim();
+  asset.description = document.getElementById('asset-edit-description').value.trim();
+  asset.faq = faq;
+  asset.back = document.getElementById('asset-edit-back').value;
+
+  if (isUnitType(asset.type)) {
+    asset.stats = getUnitStatsInput();
+    asset.abilities = getUnitAbilitiesInput();
+  } else {
+    delete asset.stats;
+    delete asset.abilities;
+  }
+
+  if (!asset.isCard) {
+    asset.back = '';
+  }
+
+  asset.prereq = getPrereqInput();
+  asset.color = asset.type === 'Technology' ? document.getElementById('asset-edit-color').value : '';
+  asset.synergy = getSynergyInput();
+  asset.source = getSourceInput();
+  asset.placement = isStructureType(asset.type) ? getPlacementInput() : { enabled: false, rules: [] };
+
+  assets[path] = asset;
+  renderAssets();
+  closeAssetEditor();
+  setDirty(true);
+  statusEl.textContent = `Asset ${asset.id} updated. Save config to persist.`;
+}
+
+async function save() {
+  const id = idInput.value.trim();
+  let name = document.getElementById('name').value.trim();
+  let version = document.getElementById('version').value.trim();
+  let imageFolder = document.getElementById('image-folder').value.trim();
+  let bannerPath = document.getElementById('banner-path').value.trim();
+
+  if (!id) {
+    statusEl.textContent = 'Expansion ID is required.';
+    return;
+  }
+  if (!name) name = id;
+  if (!version) version = '1.0';
+  if (imageFolder.startsWith('/')) {
+    imageFolder = imageFolder.slice(1);
+  }
+  if (bannerPath.startsWith('/')) {
+    bannerPath = bannerPath.slice(1);
+  }
+
+  updateSectionsFromForm();
+
+  const body = {
+    id,
+    name,
+    version,
+    description: document.getElementById('description').value,
+    overview: document.getElementById('overview').value,
+    source: { images: imageFolder },
+    s3_path: document.getElementById('s3-path').value,
+    banner: bannerPath ? { path: bannerPath } : null,
+    sections,
+    assets,
+  };
+  const res = await fetch(`/api/config/${id}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
+  if (data.ok) {
+    await loadExpansionList();
+    select.value = id;
+    setId(id);
+    setDirty(false);
+  }
+  statusEl.textContent = data.ok ? 'Config saved.' : `Save failed: ${data.error}`;
+}
+
+function setLoading(loading, actionText, activeBtn) {
+  const spinner = document.getElementById('spinner');
+  const generateBtn = document.getElementById('generate-btn');
+  const deployBtn = document.getElementById('deploy-btn');
+  spinner.classList.toggle('hidden', !loading);
+  generateBtn.disabled = loading;
+  deployBtn.disabled = loading;
+  generateBtn.textContent = loading && activeBtn === generateBtn ? actionText : 'Generate Site';
+  deployBtn.textContent = loading && activeBtn === deployBtn ? actionText : 'Deploy to S3';
+  generateBtn.classList.toggle('busy', loading && activeBtn === generateBtn);
+  deployBtn.classList.toggle('busy', loading && activeBtn === deployBtn);
+}
+
+async function generate() {
+  const id = idInput.value.trim();
+  const btn = document.getElementById('generate-btn');
+  setLoading(true, 'Generating...', btn);
+  statusEl.textContent = 'Generating site...';
+  const res = await fetch(`/api/generate/${id}`, { method: 'POST' });
+  const data = await res.json();
+  setLoading(false, '', btn);
+  if (data.ok) {
+    const fileUrl = `file://${data.output_dir}/index.html`;
+    statusEl.innerHTML = `Generated: ${data.output_dir}<br>${data.stdout}<br><a href="${fileUrl}" target="_blank">Open generated site</a>`;
+  } else {
+    statusEl.textContent = `Generate failed:\n${data.stderr}`;
+  }
+}
+
+async function deploy() {
+  const id = idInput.value.trim();
+  const btn = document.getElementById('deploy-btn');
+  setLoading(true, 'Deploying...', btn);
+  statusEl.textContent = 'Deploying to S3...';
+  const res = await fetch(`/api/deploy/${id}`, { method: 'POST' });
+  const data = await res.json();
+  setLoading(false, '', btn);
+  if (data.ok) {
+    const stdout = (data.stdout || '').replace(/\n/g, '<br>');
+    statusEl.innerHTML = `${stdout}<br><br>Deployed to <a href="${data.url}" target="_blank">${data.url}</a>`;
+  } else {
+    const stderr = (data.stderr || '').replace(/\n/g, '<br>');
+    statusEl.innerHTML = `Deploy failed:<br>${stderr}`;
+  }
+}
+
+const MIN_BANNER_WIDTH = 1552;
+
+function updateBannerPreview() {
+  const path = document.getElementById('banner-path').value.trim();
+  const preview = document.getElementById('banner-preview');
+  if (path) {
+    preview.classList.remove('hidden');
+    preview.style.backgroundImage = `url('/api/image/${idInput.value.trim()}/${path}')`;
+  } else {
+    preview.classList.add('hidden');
+    preview.style.backgroundImage = '';
+  }
+}
+
+function openBannerPicker() {
+  document.getElementById('banner-modal').classList.add('visible');
+  renderBannerOptions();
+}
+
+function closeBannerPicker() {
+  document.getElementById('banner-modal').classList.remove('visible');
+}
+
+async function renderBannerOptions() {
+  const id = idInput.value.trim();
+  const grid = document.getElementById('banner-grid');
+  const none = document.getElementById('banner-none');
+  grid.innerHTML = '';
+  if (!id) {
+    none.classList.remove('hidden');
+    return;
+  }
+  const res = await fetch(`/api/images/${id}`);
+  const images = await res.json();
+  const currentPath = document.getElementById('banner-path').value.trim();
+  const wide = images.filter(img => img.width >= MIN_BANNER_WIDTH);
+  none.classList.toggle('hidden', wide.length > 0);
+  wide.forEach(img => {
+    const div = document.createElement('div');
+    div.className = `banner-option ${img.path === currentPath ? 'selected' : ''}`;
+    div.innerHTML = `
+      <img src="/api/image/${id}/${img.path}" alt="${img.filename}" loading="lazy"/>
+      <div class="title" title="${img.path}">${img.filename}</div>
+      <div class="dim">${img.width} x ${img.height}</div>
+    `;
+    div.addEventListener('click', () => selectBanner(img.path));
+    grid.appendChild(div);
+  });
+}
+
+function selectBanner(path) {
+  document.getElementById('banner-path').value = path;
+  updateBannerPreview();
+  closeBannerPicker();
+  statusEl.textContent = `Banner set to ${path}.`;
+}
+
+function clearBanner() {
+  document.getElementById('banner-path').value = '';
+  updateBannerPreview();
+}
+
+document.getElementById('save-btn').addEventListener('click', save);
+document.getElementById('generate-btn').addEventListener('click', generate);
+document.getElementById('deploy-btn').addEventListener('click', deploy);
+document.getElementById('add-section-btn').addEventListener('click', () => {
+  updateSectionsFromForm();
+  sections.push({ id: '', title: '', type: 'markdown' });
+  renderSections();
+  renderAssets();
+});
+document.getElementById('inspect-btn').addEventListener('click', inspectFolder);
+document.getElementById('asset-edit-save-top').addEventListener('click', saveAssetEditor);
+document.getElementById('asset-edit-type').addEventListener('change', updateUnitInputs);
+document.getElementById('asset-edit-iscard').addEventListener('change', updateBackRowVisibility);
+document.getElementById('asset-edit-prereq-toggle').addEventListener('change', updatePrereqSectionVisibility);
+document.getElementById('asset-edit-synergy-toggle').addEventListener('change', updateSynergySectionVisibility);
+document.getElementById('asset-edit-source-toggle').addEventListener('change', updateSourceSectionVisibility);
+document.getElementById('asset-edit-placement-toggle').addEventListener('change', updatePlacementSectionVisibility);
+document.getElementById('asset-edit-back-filter').addEventListener('input', e => {
+  const path = document.getElementById('asset-edit-path').value;
+  const currentBack = document.getElementById('asset-edit-back').value;
+  populateBackOptions(path, currentBack, e.target.value);
+});
+document.getElementById('asset-edit-source-linked-filter').addEventListener('input', e => {
+  const current = document.getElementById('asset-edit-source-linked').value;
+  populateLinkedAbilityOptions(current, e.target.value);
+});
+document.getElementById('asset-modal-close').addEventListener('click', closeAssetEditor);
+document.getElementById('asset-modal').addEventListener('click', e => {
+  if (e.target.id === 'asset-modal') closeAssetEditor();
+});
+document.getElementById('asset-filter').addEventListener('input', renderAssets);
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+    document.getElementById(`tab-${tab.dataset.tab}`).classList.remove('hidden');
+  });
+});
+
+document.getElementById('editor-form').addEventListener('input', () => setDirty(true));
+document.getElementById('editor-form').addEventListener('change', () => setDirty(true));
+
+document.getElementById('show-unconfigured').addEventListener('change', renderAssets);
+document.getElementById('show-hidden').addEventListener('change', renderAssets);
+document.getElementById('show-hidden-only').addEventListener('change', renderAssets);
+document.getElementById('choose-banner-btn').addEventListener('click', openBannerPicker);
+document.getElementById('clear-banner-btn').addEventListener('click', clearBanner);
+document.getElementById('banner-cancel').addEventListener('click', closeBannerPicker);
+document.getElementById('banner-modal-close').addEventListener('click', closeBannerPicker);
+document.getElementById('banner-modal').addEventListener('click', e => {
+  if (e.target.id === 'banner-modal') closeBannerPicker();
+});
+document.getElementById('banner-path').addEventListener('input', updateBannerPreview);
+
+let activeMarkdownTextarea = null;
+let isDirty = false;
+function setDirty(dirty) {
+  isDirty = dirty;
+  const saveBtn = document.getElementById('save-btn');
+  saveBtn.classList.toggle('dirty', dirty);
+  saveBtn.textContent = dirty ? 'Save Config*' : 'Save Config';
+}
+function openMarkdownHelp(textarea) {
+  activeMarkdownTextarea = textarea;
+  document.getElementById('markdown-help-modal').classList.add('visible');
+}
+function closeMarkdownHelp() {
+  document.getElementById('markdown-help-modal').classList.remove('visible');
+  activeMarkdownTextarea = null;
+}
+function insertMarkdownSnippet(snippet) {
+  if (!activeMarkdownTextarea) return;
+  const start = activeMarkdownTextarea.selectionStart;
+  const end = activeMarkdownTextarea.selectionEnd;
+  const text = activeMarkdownTextarea.value;
+  activeMarkdownTextarea.value = text.slice(0, start) + snippet + text.slice(end);
+  activeMarkdownTextarea.focus();
+  activeMarkdownTextarea.selectionStart = activeMarkdownTextarea.selectionEnd = start + snippet.length;
+  activeMarkdownTextarea.dispatchEvent(new Event('input'));
+}
+
+document.body.addEventListener('click', e => {
+  const btn = e.target.closest('.markdown-help-btn');
+  if (!btn) return;
+  if (btn.dataset.target === 'overview') {
+    openMarkdownHelp(document.getElementById('overview'));
+  } else {
+    const si = btn.dataset.sectionIndex;
+    const bi = btn.dataset.blockIndex;
+    const textarea = document.querySelector(`.block-content[data-section-index="${si}"][data-block-index="${bi}"]`);
+    openMarkdownHelp(textarea);
+  }
+});
+
+document.body.addEventListener('click', e => {
+  const snippet = e.target.closest('.markdown-snippet');
+  if (!snippet) return;
+  insertMarkdownSnippet(snippet.dataset.snippet);
+});
+
+document.getElementById('markdown-help-close').addEventListener('click', closeMarkdownHelp);
+document.getElementById('markdown-help-modal').addEventListener('click', e => {
+  if (e.target.id === 'markdown-help-modal') closeMarkdownHelp();
+});
+
+loadSettings();
+loadExpansionList();
+</script>
+</body>
+</html>
