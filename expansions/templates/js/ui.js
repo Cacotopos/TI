@@ -11,9 +11,10 @@
       resultsList.innerHTML = '<li class="text-muted">No results found.</li>';
     } else {
       resultsList.innerHTML = results.map(r => {
-        const snippet = r.text ? (r.text.length > 120 ? r.text.slice(0, 120) + '…' : r.text) : '';
+        const snippet = r.text ? (r.text.length > 120 ? r.text.slice(0, 120) + '\u2026' : r.text) : '';
+        const href = (r.kind === 'card' && r.id) ? `${r.url}#card:${encodeURIComponent(r.id)}` : r.url;
         return `<li class="border-b border-border py-2 last:border-0">
-          <a href="${r.url}" class="font-semibold text-gray-100 hover:text-accent">${r.title}</a>
+          <a href="${href}" class="font-semibold text-gray-100 hover:text-accent">${r.title}</a>
           <span class="ml-2 text-xs px-2 py-0.5 rounded-full bg-border text-muted">${r.kind}</span>
           ${snippet ? `<p class="text-muted text-sm mt-1">${snippet}</p>` : ''}
         </li>`;

@@ -474,22 +474,22 @@
     },
     "Drahn/Drahn Monument.jpg": {
       "abilities": {
-        "antiFighterBarrage": null,
-        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "production": null,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
         "spaceCannon": {
-          "multi": 2,
-          "value": 8
+          "value": 8,
+          "multi": 2
         },
-        "sustainDamage": false
+        "production": null
       },
       "back": "Drahn/Drahn Alliance Back.jpg",
       "color": "",
       "configured": true,
       "description": "At the beginning of your turn you may remove this unit from this planet and place it onto a different valid planet you control.\nCan only be placed on Industrial and Cultural planets.",
-      "faction": "Drahn",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Drahn Monument.jpg",
       "flavour": "It is more a reminder of Drahn influence than a true monument.",
@@ -508,15 +508,15 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "stats": {
-        "capacity": {
+        "cost": {
           "enabled": false,
           "value": null
         },
@@ -524,17 +524,35 @@
           "enabled": false,
           "value": null
         },
-        "cost": {
+        "move": {
           "enabled": false,
           "value": null
         },
-        "move": {
+        "capacity": {
           "enabled": false,
           "value": null
         }
       },
       "title": "Koldan's Outpost",
-      "type": "Unit - Structure - Monument"
+      "type": "Unit - Structure - Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "subtitle": "Drahn Monument",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "value": "hazardous",
+            "not": false
+          },
+          {
+            "value": "cultural",
+            "not": false
+          }
+        ]
+      }
     },
     "Drahn/Drahn Nevermore Ability Back.jpg": {
       "back": "",
@@ -1594,22 +1612,47 @@
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Nokar.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Drahn/Heroes/Inactive/Nokar.jpg",
+      "color": "",
+      "configured": true,
+      "description": "**At the end of the strategy phase:**\nFor each of your non-fighter ships on the game board, you may destroy that ship to gain a number of trade goods equal to that unit's cost value, and produce up to 2 units in a system that contains a planet you control.\nThen, purge this card.",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Nokar.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroees - Discordant Stars",
       "hidden": false,
       "id": "Nokar",
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Nokar.jpg",
-      "section": "cards",
-      "title": "Nokar",
-      "type": "Other Component"
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Meeting Demand",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Fire Sale",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Olradin.jpg": {
       "back": "Drahn/Heroes/Inactive/Olradin.jpg",
@@ -4112,11 +4155,13 @@
     },
     "Keleres/Heroes/Active/Zealots of Rhodun.jpg": {
       "back": "Keleres/Heroes/Inactive/Rhodun.jpg",
+      "color": "",
       "configured": true,
       "description": "When researching a technology you may purge this card to ignore each prerequisite on that technology.",
       "faction": "The Council Keleres",
       "faq": [],
       "filename": "Zealots of Rhodun.jpg",
+      "flavour": "",
       "folder": "Keleres/Heroes/Active",
       "group": "Heroes - Discordant Stars",
       "hidden": false,
@@ -4124,34 +4169,32 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Zealots of Rhodun.jpg",
-      "section": "keleres",
-      "title": "Wisdom from the Vaults",
-      "type": "Hero",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "keleres",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Prohibition Exemption",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "resource": 0,
-        "trait": [],
-        "legendary": false,
-        "relic": false,
-        "techSpeciality": "",
-        "linkedAbility": ""
-      },
-      "subtitle": "Prohibition Exemption",
-      "flavour": "",
-      "color": "",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      }
+      "title": "Wisdom from the Vaults",
+      "type": "Hero"
     },
     "Keleres/Heroes/Inactive/Argent.jpg": {
       "back": "",
@@ -5005,6 +5048,7 @@
       "faction": "The Council Keleres",
       "faq": [],
       "filename": "Rhodun.jpg",
+      "flavour": "Reflect. Remember. Contain.",
       "folder": "Keleres/Heroes/Inactive",
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
@@ -5012,6 +5056,10 @@
       "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Rhodun.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
@@ -5020,25 +5068,20 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "title": "Abbess Syna",
-      "type": "Hero",
+      "subtitle": "Keleres Tribunus",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "subtitle": "Keleres Tribunus",
-      "flavour": "Reflect. Remember. Contain.",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      }
+      "title": "Abbess Syna",
+      "type": "Hero"
     },
     "Keleres/Heroes/Inactive/Roh'Dhna.jpg": {
       "back": "",

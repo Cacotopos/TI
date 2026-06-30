@@ -191,6 +191,9 @@
   function close() {
     modal.classList.add('hidden');
     modal.classList.remove('flex');
+    if (window.location.hash.startsWith('#card:')) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
   }
 
   function open(card) {
@@ -362,6 +365,20 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && !modal.classList.contains('hidden')) close();
   });
+
+  function openFromHash() {
+    const hash = decodeURIComponent(window.location.hash);
+    if (!hash.startsWith('#card:')) return;
+    const id = hash.slice(6);
+    const item = document.querySelector(`.card-item[data-card-id="${CSS.escape(id)}"]`);
+    if (!item) return;
+    const card = cardDataFromElement(item);
+    card.parentPath = parentByPath[item.dataset.cardFrontPath] || '';
+    open(card);
+  }
+
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
 
   console.log('cards.js loaded');
 })();
