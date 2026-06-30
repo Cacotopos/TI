@@ -187,8 +187,9 @@
     title.textContent = card.name || card.id;
     const subtitleEl = document.getElementById('card-modal-subtitle');
     if (subtitleEl) {
-      subtitleEl.textContent = card.subtitle || '';
-      subtitleEl.classList.toggle('hidden', !card.subtitle);
+      const parts = [card.type, card.faction].filter(Boolean).map(escapeHtml);
+      subtitleEl.textContent = parts.join(' · ');
+      subtitleEl.classList.toggle('hidden', !parts.length);
     }
     // Per-image labels (only shown when both front and back are present)
     const frontLabelTitle = document.getElementById('card-modal-front-label-title');
