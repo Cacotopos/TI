@@ -1592,30 +1592,27 @@ async function save() {
   statusEl.textContent = data.ok ? 'Config saved.' : `Save failed: ${data.error}`;
 }
 
-function setLoading(loading, actionText) {
+function setLoading(loading, actionText, activeBtn) {
   const spinner = document.getElementById('spinner');
   const generateBtn = document.getElementById('generate-btn');
   const deployBtn = document.getElementById('deploy-btn');
   spinner.classList.toggle('hidden', !loading);
   generateBtn.disabled = loading;
   deployBtn.disabled = loading;
-  generateBtn.textContent = loading ? actionText : 'Generate Site';
-  [generateBtn, deployBtn].forEach(btn => {
-    if (loading) {
-      btn.classList.add('busy');
-    } else {
-      btn.classList.remove('busy');
-    }
-  });
+  generateBtn.textContent = loading && activeBtn === generateBtn ? actionText : 'Generate Site';
+  deployBtn.textContent = loading && activeBtn === deployBtn ? actionText : 'Deploy to S3';
+  generateBtn.classList.toggle('busy', loading && activeBtn === generateBtn);
+  deployBtn.classList.toggle('busy', loading && activeBtn === deployBtn);
 }
 
 async function generate() {
   const id = idInput.value.trim();
-  setLoading(true, 'Generating...');
+  const btn = document.getElementById('generate-btn');
+  setLoading(true, 'Generating...', btn);
   statusEl.textContent = 'Generating site...';
   const res = await fetch(`/api/generate/${id}`, { method: 'POST' });
   const data = await res.json();
-  setLoading(false, 'Generate Site');
+  setLoading(false, '', btn);
   if (data.ok) {
     const fileUrl = `file://${data.output_dir}/index.html`;
     statusEl.innerHTML = `Generated: ${data.output_dir}<br>${data.stdout}<br><a href="${fileUrl}" target="_blank">Open generated site</a>`;
@@ -1626,11 +1623,12 @@ async function generate() {
 
 async function deploy() {
   const id = idInput.value.trim();
-  setLoading(true, 'Generating...');
+  const btn = document.getElementById('deploy-btn');
+  setLoading(true, 'Deploying...', btn);
   statusEl.textContent = 'Deploying to S3...';
   const res = await fetch(`/api/deploy/${id}`, { method: 'POST' });
   const data = await res.json();
-  setLoading(false, 'Generate Site');
+  setLoading(false, '', btn);
   if (data.ok) {
     const stdout = (data.stdout || '').replace(/\n/g, '<br>');
     statusEl.innerHTML = `${stdout}<br><br>Deployed to <a href="${data.url}" target="_blank">${data.url}</a>`;
