@@ -177,6 +177,7 @@ def _collect_assets(config: dict) -> list[dict]:
             "color": asset.get("color", ""),
             "synergy": asset.get("synergy", {}),
             "source": asset.get("source", {}),
+            "placement": asset.get("placement", {}),
             "orientation": orientation,
             "flavour": asset.get("flavour", ""),
         })

@@ -69,6 +69,16 @@
     }
     return parts.join('');
   }
+  function formatPlacement(placement) {
+    if (!placement || !placement.enabled || !placement.rules || !placement.rules.length) return '';
+    const labels = { any: 'Any', hazardous: 'Hazardous', industrial: 'Industrial', cultural: 'Cultural', legendary: 'Legendary', tech_planet: 'Tech Planet', mecatol: 'Mecatol Rex', relic: 'Relic' };
+    const parts = placement.rules.map(r => {
+      const label = labels[r.value] || r.value;
+      const cls = r.not ? 'bg-red-700 text-white' : 'bg-indigo-600 text-white';
+      return `<span class="px-2 py-1 rounded-md ${cls} text-xs font-semibold whitespace-nowrap">${r.not ? 'Not ' : ''}${escapeHtml(label)}</span>`;
+    });
+    return `<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs whitespace-nowrap">Placement</span> ${parts.join('')}`;
+  }
   function formatSynergy(synergy) {
     if (!synergy || !synergy.enabled || !synergy.value) return '';
     const colorMap = { G: ['bg-green-600', 'Green'], Y: ['bg-yellow-500 text-black', 'Yellow'], R: ['bg-red-600', 'Red'], B: ['bg-blue-600', 'Blue'] };
@@ -130,6 +140,7 @@
       color: item.dataset.cardColor,
       synergy: item.dataset.cardSynergy,
       source: item.dataset.cardSource,
+      placement: item.dataset.cardPlacement,
       back: item.dataset.cardBack,
       frontPath: item.dataset.cardFrontPath,
       flavour: item.dataset.cardFlavour,
@@ -229,6 +240,7 @@
     try { card.prereq = JSON.parse(card.prereq || '{}'); } catch (e) { card.prereq = {}; }
     try { card.synergy = JSON.parse(card.synergy || '{}'); } catch (e) { card.synergy = {}; }
     try { card.source = JSON.parse(card.source || '{}'); } catch (e) { card.source = {}; }
+    try { card.placement = JSON.parse(card.placement || '{}'); } catch (e) { card.placement = {}; }
 
     const statsHtml = isUnitType(card.type) ? formatStats(card.stats) : '';
     statsContainer.innerHTML = statsHtml;
@@ -247,6 +259,13 @@
       const synergyHtml = formatSynergy(card.synergy);
       synergyContainer.innerHTML = synergyHtml;
       synergyContainer.classList.toggle('hidden', !synergyHtml);
+    }
+
+    const placementContainer = document.getElementById('card-modal-placement');
+    if (placementContainer) {
+      const placementHtml = formatPlacement(card.placement);
+      placementContainer.innerHTML = placementHtml;
+      placementContainer.classList.toggle('hidden', !placementHtml);
     }
 
     const sourceHtml = formatSource(card.source, card.type);

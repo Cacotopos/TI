@@ -101,6 +101,12 @@
   #asset-edit-prereq { text-transform: uppercase; font-family: monospace; letter-spacing: 0.15em; }
   #asset-edit-color { width: auto; flex: 1; }
   .well { background: var(--bg); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; margin-top: 0.5rem; }
+  .placement-rules { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.4rem; }
+  .placement-rule-row { display: flex; align-items: center; gap: 0.4rem; background: var(--panel); border: 1px solid var(--border); border-radius: 0.4rem; padding: 0.35rem 0.5rem; }
+  .placement-rule-row input[type=checkbox] { width: 1rem; height: 1rem; cursor: pointer; }
+  .placement-rule-row .rule-label { flex: 1; font-size: 0.85rem; }
+  .placement-rule-row .not-btn { font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 0.25rem; background: var(--border); color: var(--muted); border: none; cursor: pointer; }
+  .placement-rule-row .not-btn.active { background: #dc2626; color: #fff; }
   .well .row { margin-bottom: 0; }
   .well .row + .row { margin-top: 0.75rem; }
   #source-section { width: 100%; }
@@ -491,6 +497,20 @@
         <input id="asset-edit-source-linked-filter" type="text" placeholder="Filter linked ability card..."/>
         <select id="asset-edit-source-linked"></select>
       </div>
+    </div>
+
+    <div class="row" id="placement-section" style="display:none">
+      <div>
+        <label class="toggle">
+          <input id="asset-edit-placement-toggle" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Placement Restrictions</span>
+        </label>
+      </div>
+    </div>
+    <div id="asset-edit-placement-inputs" class="hidden well">
+      <p class="hint" style="margin-bottom:0.5rem">Select allowed placement targets. Toggle "Not" to invert (exclude that target).</p>
+      <div class="placement-rules" id="placement-rules-list"></div>
     </div>
 
     <div class="row">
@@ -1260,11 +1280,74 @@ function updateUnitInputs() {
   updateSynergyDefaults(type);
   updateSourceSectionVisibility();
   updateSourceDefaults(type);
+  updatePlacementSectionVisibility();
   if (wasHidden && isUnitType(type)) {
     const category = unitCategory(type);
     setUnitStatsInput(defaultUnitStats(category));
     setUnitAbilitiesInput(defaultUnitAbilities());
   }
+}
+const PLACEMENT_OPTIONS = [
+  { value: 'any', label: 'Any' },
+  { value: 'hazardous', label: 'Hazardous' },
+  { value: 'industrial', label: 'Industrial' },
+  { value: 'cultural', label: 'Cultural' },
+  { value: 'legendary', label: 'Legendary' },
+  { value: 'tech_planet', label: 'Tech Planet' },
+  { value: 'mecatol', label: 'Mecatol Rex' },
+  { value: 'relic', label: 'Relic' },
+];
+function isStructureType(type) { return type && type.startsWith('Unit - Structure'); }
+function updatePlacementSectionVisibility() {
+  const type = document.getElementById('asset-edit-type').value;
+  const section = document.getElementById('placement-section');
+  const inputs = document.getElementById('asset-edit-placement-inputs');
+  const isStruct = isStructureType(type);
+  section.style.display = isStruct ? '' : 'none';
+  const enabled = document.getElementById('asset-edit-placement-toggle').checked;
+  inputs.classList.toggle('hidden', !isStruct || !enabled);
+}
+function renderPlacementRules(rules) {
+  const list = document.getElementById('placement-rules-list');
+  list.innerHTML = '';
+  PLACEMENT_OPTIONS.forEach(opt => {
+    const rule = (rules || []).find(r => r.value === opt.value);
+    const checked = !!rule;
+    const notActive = rule ? rule.not : false;
+    const row = document.createElement('div');
+    row.className = 'placement-rule-row';
+    row.innerHTML = `
+      <input type="checkbox" id="pr-${opt.value}" ${checked ? 'checked' : ''}/>
+      <label class="rule-label" for="pr-${opt.value}">${opt.label}</label>
+      <button type="button" class="not-btn ${notActive ? 'active' : ''}" data-val="${opt.value}">Not</button>
+    `;
+    const cb = row.querySelector('input');
+    const notBtn = row.querySelector('.not-btn');
+    notBtn.addEventListener('click', () => {
+      if (!cb.checked) cb.checked = true;
+      notBtn.classList.toggle('active');
+    });
+    cb.addEventListener('change', () => { if (!cb.checked) notBtn.classList.remove('active'); });
+    list.appendChild(row);
+  });
+}
+function getPlacementInput() {
+  const enabled = document.getElementById('asset-edit-placement-toggle').checked;
+  if (!enabled) return { enabled: false, rules: [] };
+  const rules = [];
+  PLACEMENT_OPTIONS.forEach(opt => {
+    const cb = document.getElementById(`pr-${opt.value}`);
+    if (cb && cb.checked) {
+      const notBtn = document.querySelector(`.not-btn[data-val="${opt.value}"]`);
+      rules.push({ value: opt.value, not: notBtn ? notBtn.classList.contains('active') : false });
+    }
+  });
+  return { enabled: true, rules };
+}
+function setPlacementInput(placement) {
+  const p = placement || { enabled: false, rules: [] };
+  document.getElementById('asset-edit-placement-toggle').checked = p.enabled;
+  renderPlacementRules(p.rules || []);
 }
 function renderAssets() {
   const grid = document.getElementById('assets-grid');
@@ -1476,7 +1559,9 @@ function openAssetEditor(path) {
   updatePrereqSectionVisibility();
   updateSynergySectionVisibility();
   updateSourceSectionVisibility();
+  updatePlacementSectionVisibility();
   updateBackRowVisibility();
+  setPlacementInput(asset.placement);
 
   const sectionSelect = document.getElementById('asset-edit-section');
   sectionSelect.innerHTML = `<option value="" ${!asset.section ? 'selected' : ''}>None</option>` + sections.map(s => `<option value="${s.id}" ${s.id === asset.section ? 'selected' : ''}>${s.title}</option>`).join('');
@@ -1535,6 +1620,7 @@ function saveAssetEditor() {
   asset.color = asset.type === 'Technology' ? document.getElementById('asset-edit-color').value : '';
   asset.synergy = getSynergyInput();
   asset.source = getSourceInput();
+  asset.placement = isStructureType(asset.type) ? getPlacementInput() : { enabled: false, rules: [] };
 
   assets[path] = asset;
   renderAssets();
@@ -1716,6 +1802,7 @@ document.getElementById('asset-edit-iscard').addEventListener('change', updateBa
 document.getElementById('asset-edit-prereq-toggle').addEventListener('change', updatePrereqSectionVisibility);
 document.getElementById('asset-edit-synergy-toggle').addEventListener('change', updateSynergySectionVisibility);
 document.getElementById('asset-edit-source-toggle').addEventListener('change', updateSourceSectionVisibility);
+document.getElementById('asset-edit-placement-toggle').addEventListener('change', updatePlacementSectionVisibility);
 document.getElementById('asset-edit-back-filter').addEventListener('input', e => {
   const path = document.getElementById('asset-edit-path').value;
   const currentBack = document.getElementById('asset-edit-back').value;

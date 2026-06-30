@@ -151,7 +151,7 @@
       "color": "",
       "configured": true,
       "description": "After you resolve a tactical action:\nYou may spend 3 trade goods to move 1 of your ships from the active system to an adjacent system that does not contain another player's ships.",
-      "faction": "Drahn",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Drahn Alliance Front.jpg",
       "flavour": "",
@@ -176,6 +176,11 @@
         "resource": 0,
         "techSpeciality": "",
         "trait": []
+      },
+      "subtitle": "Smugglers' Network",
+      "synergy": {
+        "enabled": false,
+        "value": ""
       },
       "title": "Drahn Alliance",
       "type": "Alliance"
@@ -249,8 +254,8 @@
       },
       "subtitle": "The Drahn Cartel",
       "synergy": {
-        "enabled": false,
-        "value": ""
+        "enabled": true,
+        "value": "BR"
       },
       "title": "V.D.H.Q. Consolidation",
       "type": "Breakthrough"
@@ -309,11 +314,13 @@
     },
     "Drahn/Drahn Faction Sheet Back.jpg": {
       "back": "",
+      "color": "",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Drahn Faction Sheet Back.jpg",
+      "flavour": "",
       "folder": "Drahn",
       "group": "Drahn",
       "hidden": false,
@@ -336,16 +343,23 @@
         "techSpeciality": "",
         "trait": []
       },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Drahn Faction Sheet Back",
       "type": "Other Component"
     },
     "Drahn/Drahn Faction Sheet Front.jpg": {
       "back": "",
+      "color": "",
       "configured": true,
       "description": "",
-      "faction": "Drahn",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Drahn Faction Sheet Front.jpg",
+      "flavour": "",
       "folder": "Drahn",
       "group": "Drahn",
       "hidden": false,
@@ -367,6 +381,11 @@
         "resource": 0,
         "techSpeciality": "",
         "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
       },
       "title": "Drahn Faction Sheet Front",
       "type": "Faction Sheet"
@@ -820,11 +839,13 @@
     },
     "Drahn/Drahn Tokens.png": {
       "back": "",
+      "color": "",
       "configured": true,
       "description": "Command and control tokens.",
-      "faction": "Drahn",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Drahn Tokens.png",
+      "flavour": "",
       "folder": "Drahn",
       "group": "Drahn",
       "hidden": false,
@@ -847,6 +868,11 @@
         "techSpeciality": "",
         "trait": []
       },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Drahn Tokens",
       "type": "Token"
     },
@@ -855,12 +881,12 @@
       "color": "",
       "configured": true,
       "description": "***ACTION***: Use the **PRODUCTION** value of each unit you control, reducing the total cost of the produced units by 12.\nThen, purge this card.",
-      "faction": "Drahn",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Arborec.jpg",
       "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Twilight Imperium Heroes",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Arborec",
       "isCard": true,
@@ -881,6 +907,7 @@
         "techSpeciality": "",
         "trait": []
       },
+      "subtitle": "The Symphony Retuned",
       "synergy": {
         "enabled": false,
         "value": ""
@@ -912,32 +939,32 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
+      "subtitle": "Ultimate Decider",
       "synergy": {
         "enabled": false,
         "value": ""
       },
       "title": "Project Revelation",
-      "type": "Hero",
-      "subtitle": ""
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Creuss.jpg": {
       "back": "Drahn/Heroes/Inactive/Creuss.jpg",
       "color": "",
       "configured": true,
       "description": "**After you activate a system that contains or is adjacent to a wormhole:**\nPlace this card face-up near the game board. Until the end of this tactical action, you may treat each of your units as adjacent to the active system. At the end of this tactical action, purge this card.",
-      "faction": "Drahn",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Creuss.jpg",
       "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Twilight Imperium Heroes",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Creuss",
       "isCard": true,
@@ -958,11 +985,12 @@
         "techSpeciality": "",
         "trait": []
       },
+      "subtitle": "Inter-Dimensional Commerce",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "Creuss",
+      "title": "Wormhole Fabricators",
       "type": "Hero"
     },
     "Drahn/Heroes/Active/Crimson.jpg": {
@@ -970,12 +998,12 @@
       "color": "",
       "configured": true,
       "description": "**When a player activates a system:**\nPurge this card to place a destroyer in each system that contains a wormhole and no other player's units. If you do, each wormhole on the game boards is an Epsilon wormhole instead of its regular type until the end of this tactical action.",
-      "faction": "Drahn",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Crimson.jpg",
       "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Thunder's Edge Heroes",
+      "group": "Heroes - Thunder's Edge",
       "hidden": false,
       "id": "Crimson",
       "isCard": true,
@@ -1009,12 +1037,12 @@
       "color": "",
       "configured": true,
       "description": "***ACTION***: Each player, in the order of your choice, may research 1 technology. If they do, you may gain that technology or gain 1 command token.\nOnce all players have chosen, purge this card.",
-      "faction": "Drahn",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Deepwrought.jpg",
       "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Thunder's Edge Heroes",
+      "group": "Heroes - Thunder's Edge",
       "hidden": false,
       "id": "Deepwrought",
       "isCard": true,
@@ -1048,12 +1076,12 @@
       "color": "",
       "configured": true,
       "description": "***ACTION:*** For each command token in your tactics pool, explore the frontier exploration deck once in a system that contains your ships and no planets. \nThen, purge this card.",
-      "faction": "Drahn",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Empyrean.jpg",
       "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Prophecy of Kings Heroes",
+      "group": "Heroes - Prophecy of Kings",
       "hidden": false,
       "id": "Empyrean",
       "isCard": true,
@@ -1083,22 +1111,43 @@
       "type": "Hero"
     },
     "Drahn/Heroes/Active/FSC.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Drahn/Heroes/Inactive/FSC.jpg",
+      "color": "",
+      "configured": true,
+      "description": "***ACTION:*** Choose up to 3 planets. For each of those planets, roll a die; destroy a number of ground forces on that planet equal to or less than the value you roll. Then, place.1 infantry from your reinforcements on each planet you control and purge this card.",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "FSC.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "FSC",
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/FSC.jpg",
-      "section": "cards",
-      "title": "FSC",
-      "type": "Other Component"
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Independent Revolutionaries",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Rebellion Flashpoint",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Firmament.jpg": {
       "back": "Drahn/Heroes/Inactive/Firmament.jpg",
@@ -1107,12 +1156,12 @@
       "color": "",
       "configured": true,
       "description": "At the start of your turn you may choose a system that contains a neighbor's units, then 1 of the following: that player destroys 3 of their units in that system; research 1 technology that player owns; your units gain +2 to combat rolls in combats against that player this turn. Then, purge this card.",
-      "faction": "Drahn",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Firmament.jpg",
       "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Thunder's Edge Heroes",
+      "group": "Heroes - Thunder's Edge",
       "hidden": false,
       "id": "Firmament",
       "isCard": true,
@@ -1138,7 +1187,7 @@
         "enabled": false,
         "value": ""
       },
-      "title": "Firmament",
+      "title": "A Crack in the Facade",
       "type": "Hero"
     },
     "Drahn/Heroes/Active/Florzen.jpg": {
@@ -1204,12 +1253,12 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
       "subtitle": "Twins Forever",
       "synergy": {
@@ -1227,8 +1276,8 @@
       "faction": "The Drahn Cartel",
       "faq": [
         {
-          "q": "This seems really strong?",
-          "a": "You don't start with any planets in your home system, it's fine."
+          "a": "You don't start with any planets in your home system, it's fine.",
+          "q": "This seems really strong?"
         }
       ],
       "filename": "Ghoti.jpg",
@@ -1248,12 +1297,12 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
       "subtitle": "All-Mother's Hope",
       "synergy": {
@@ -1264,22 +1313,43 @@
       "type": "Hero"
     },
     "Drahn/Heroes/Active/Gledge.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Drahn/Heroes/Inactive/Gledge.jpg",
+      "color": "",
+      "configured": true,
+      "description": "***ACTION:***: Exhaust any number of your planets. For each planet you exhaust, gain a number of trade goods equal to 1 more than that planet's resource or influence value.\nThen, purge this card.",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Gledge.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Gledge",
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Gledge.jpg",
-      "section": "cards",
-      "title": "Gledge",
-      "type": "Other Component"
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Earn the Right to Mine",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Drilling Initiative",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Glimmer.jpg": {
       "back": "",
@@ -1336,22 +1406,43 @@
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Kyro.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Drahn/Heroes/Inactive/Kyro.jpg",
+      "configured": true,
+      "description": "***ACTION:*** Exhaust your and any number of other players' strategy cards, if able, without resolving any of their abilities.\nThen, purge this card.",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Kyro.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Kyro",
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Kyro.jpg",
-      "section": "cards",
-      "title": "Kyro",
-      "type": "Other Component"
+      "section": "drahn",
+      "title": "Galactic Pandemic",
+      "type": "Hero",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "subtitle": "Lockdown Order",
+      "flavour": "",
+      "color": ""
     },
     "Drahn/Heroes/Active/Lanefir.jpg": {
       "back": "",
@@ -1432,12 +1523,12 @@
       "color": "",
       "configured": true,
       "description": "**At the start of the status phase:**\nPurge this card and spend 1 command token from your strategy pool to score 1 public objective, if you fulfil its requirements.",
-      "faction": "Drahn",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Naalu.jpg",
       "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Twilight Imperium Heroes",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Naalu",
       "isCard": true,
@@ -1544,20 +1635,20 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
+      "subtitle": "New Government",
       "synergy": {
         "enabled": false,
         "value": ""
       },
       "title": "Political Reform",
-      "type": "Hero",
-      "subtitle": "New Government"
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Pharad'n.jpg": {
       "back": "",
@@ -1700,22 +1791,43 @@
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Xin.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "back": "Drahn/Heroes/Inactive/Xin.jpg",
+      "color": "",
+      "configured": true,
+      "description": "***ACTION:*** For each player who controls a planet that contains your units, you may resolve the secondary ability of 1 of that player's strategy cards without spending a command token, or look at that player's hand of secret objectives. Then, purge this card.",
       "faction": "",
       "faq": [],
       "filename": "Xin.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Blue Reverie",
       "hidden": false,
       "id": "Xin",
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Xin.jpg",
-      "section": "cards",
-      "title": "Xin",
-      "type": "Other Component"
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Balance Restored",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "The Draught",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Yin.jpg": {
       "back": "",
@@ -3222,12 +3334,12 @@
       "color": "",
       "configured": true,
       "description": "When an objective is revealed, you may purge this card to discard that objective and reveal a new objective from the corresponding objective deck instead.",
-      "faction": "Keleres",
+      "faction": "The Council Keleres",
       "faq": [],
       "filename": "Augurs.jpg",
       "flavour": "",
       "folder": "Keleres/Heroes/Active",
-      "group": "Discordant Stars Heroes",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Augurs",
       "isCard": true,
@@ -3248,6 +3360,7 @@
         "techSpeciality": "",
         "trait": []
       },
+      "subtitle": "Make Your Own Future",
       "synergy": {
         "enabled": false,
         "value": ""
@@ -3274,40 +3387,82 @@
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Berserkers.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Keleres/Heroes/Inactive/Kjalengard.jpg",
+      "color": "",
+      "configured": true,
+      "description": "***ACTION:*** Place this card face-up near the game board. Until the end of this game round, you may preroll up to 2 of your fighter or infantry units' combat rolls during each round of combat, applying +1 to the results. At the end of this game round, purge this card.",
+      "faction": "The Council Keleres",
       "faq": [],
       "filename": "Berserkers.jpg",
+      "flavour": "",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Berserkers",
       "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Berserkers.jpg",
-      "section": "cards",
-      "title": "Berserkers",
-      "type": "Other Component"
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "keleres",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Valor or Death",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Skald's Song",
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Celdauri.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Keleres/Heroes/Inactive/Celdauri.jpg",
+      "configured": true,
+      "description": "***ACTION:*** Place this card face-up near the game board. Until the end of this game round, apply +2 to the **PRODUCTION** value of each of your units with **PRODUCTION**. At the end of this game round, purge this card.",
+      "faction": "The Council Keleres",
       "faq": [],
       "filename": "Celdauri.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Celdauri",
       "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Celdauri.jpg",
-      "section": "cards",
-      "title": "Celdauri",
-      "type": "Other Component"
+      "section": "keleres",
+      "title": "Coordinated Production",
+      "type": "Hero",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "subtitle": "Emergency Orders",
+      "flavour": "",
+      "color": ""
     },
     "Keleres/Heroes/Active/Cheiran.jpg": {
       "back": "",
@@ -3640,12 +3795,12 @@
       "color": "",
       "configured": true,
       "description": "**When another player scores a secret objective:**\nIf you fulfill the requirements of that objective, you may purge this card to draw 3 secret objectives.",
-      "faction": "Keleres",
+      "faction": "The Council Keleres",
       "faq": [],
       "filename": "Nomad.jpg",
       "flavour": "",
       "folder": "Keleres/Heroes/Active",
-      "group": "Prophecy of Kings Heroes",
+      "group": "Heroes - Prophecy of Kings",
       "hidden": false,
       "id": "Nomad",
       "isCard": true,
@@ -3666,7 +3821,7 @@
         "techSpeciality": "",
         "trait": []
       },
-      "subtitle": "",
+      "subtitle": "Company Assistance",
       "synergy": {
         "enabled": false,
         "value": ""
@@ -3715,12 +3870,12 @@
       "color": "",
       "configured": true,
       "description": "After an agenda is resolved, you may purge this card to produce 1 unit in each system that contains 1 of your units with **PRODUCTION**.",
-      "faction": "Keleres",
+      "faction": "The Council Keleres",
       "faq": [],
       "filename": "Roh'Dhna.jpg",
       "flavour": "",
       "folder": "Keleres/Heroes/Active",
-      "group": "Discordant Stars Heroes",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Roh'Dhna",
       "isCard": true,
@@ -3741,6 +3896,7 @@
         "techSpeciality": "",
         "trait": []
       },
+      "subtitle": "Emergency Protocols",
       "synergy": {
         "enabled": false,
         "value": ""
@@ -3755,12 +3911,12 @@
       "color": "",
       "configured": true,
       "description": "***ACTION***: Purge this card to place up to 2 neutral dreadnoughts, 2 neutral cruisers, and 4 neutral fighters in a system adjacent to your units; resolve space combat in that system.",
-      "faction": "Keleres",
+      "faction": "The Council Keleres",
       "faq": [],
       "filename": "Sarcosa.jpg",
       "flavour": "",
       "folder": "Keleres/Heroes/Active",
-      "group": "Blue Reverie Heroes",
+      "group": "Heroes - Blue Reverie",
       "hidden": false,
       "id": "Sarcosa",
       "isCard": true,
@@ -3781,7 +3937,7 @@
         "techSpeciality": "",
         "trait": []
       },
-      "subtitle": "",
+      "subtitle": "Pirate Fleet",
       "synergy": {
         "enabled": false,
         "value": ""
@@ -3848,12 +4004,12 @@
       "color": "",
       "configured": true,
       "description": "***ACTION***: Purge this card to replace up to 4 of your infantry with mechs, and then up to 4 of your mechs with PDS units.",
-      "faction": "Keleres",
+      "faction": "The Council Keleres",
       "faq": [],
       "filename": "Ul.jpg",
       "flavour": "",
       "folder": "Keleres/Heroes/Active",
-      "group": "Twilight Imperium Heroes",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Ul",
       "isCard": true,
@@ -3874,6 +4030,7 @@
         "techSpeciality": "",
         "trait": []
       },
+      "subtitle": "The Awakening",
       "synergy": {
         "enabled": false,
         "value": ""
