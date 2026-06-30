@@ -474,16 +474,16 @@
     },
     "Drahn/Drahn Monument.jpg": {
       "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "sustainDamage": false,
-        "bombardment": null,
-        "antiFighterBarrage": null,
+        "production": null,
         "spaceCannon": {
-          "value": 8,
-          "multi": 2
+          "multi": 2,
+          "value": 8
         },
-        "production": null
+        "sustainDamage": false
       },
       "back": "Drahn/Drahn Alliance Back.jpg",
       "color": "",
@@ -500,6 +500,19 @@
       "isCard": true,
       "orientation": "auto",
       "path": "Drahn/Drahn Monument.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
       "prereq": {
         "enabled": false,
         "value": ""
@@ -508,15 +521,15 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
       "stats": {
-        "cost": {
+        "capacity": {
           "enabled": false,
           "value": null
         },
@@ -524,35 +537,22 @@
           "enabled": false,
           "value": null
         },
-        "move": {
+        "cost": {
           "enabled": false,
           "value": null
         },
-        "capacity": {
+        "move": {
           "enabled": false,
           "value": null
         }
       },
-      "title": "Koldan's Outpost",
-      "type": "Unit - Structure - Monument",
+      "subtitle": "Drahn Monument",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "subtitle": "Drahn Monument",
-      "placement": {
-        "enabled": true,
-        "rules": [
-          {
-            "value": "hazardous",
-            "not": false
-          },
-          {
-            "value": "cultural",
-            "not": false
-          }
-        ]
-      }
+      "title": "Koldan's Outpost",
+      "type": "Unit - Structure - Monument"
     },
     "Drahn/Drahn Nevermore Ability Back.jpg": {
       "back": "",
@@ -1370,12 +1370,23 @@
       "type": "Hero"
     },
     "Drahn/Heroes/Active/Glimmer.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Drahn/Heroes/Inactive/Glimmer.jpg",
+      "color": "",
+      "configured": true,
+      "description": "***ACTION:*** Place this card near the game board. Until the end of this game round, systems that contain anomalies and no other players ships ain **PRODUCTION 2** sa if they were units you control. At the start of the strategy phase, purge this card.",
       "faction": "",
       "faq": [],
       "filename": "Glimmer.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
       "group": "Drahn/Heroes/Active",
       "hidden": false,
@@ -1383,9 +1394,50 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Glimmer.jpg",
-      "section": "cards",
-      "title": "Glimmer",
-      "type": "Other Component"
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Anomalous Production",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Weavelink Integration",
+      "type": "Unit - Structure - Monument"
     },
     "Drahn/Heroes/Active/Kollecc.jpg": {
       "back": "",
@@ -2388,12 +2440,12 @@
     "Drahn/Heroes/Inactive/Glimmer.jpg": {
       "back": "",
       "color": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Glimmer.jpg",
-      "flavour": "",
+      "flavour": "Black. Green. White.",
       "folder": "Drahn/Heroes/Inactive",
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
@@ -2401,11 +2453,15 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Glimmer.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
-      "section": "drahn-overview",
+      "section": "",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -2416,8 +2472,13 @@
         "techSpeciality": "",
         "trait": []
       },
-      "title": "Glimmer",
-      "type": "Other Component"
+      "subtitle": "Drahn Officer",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Kokol",
+      "type": "Hero"
     },
     "Drahn/Heroes/Inactive/Heroes+.jpg": {
       "back": "",

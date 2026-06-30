@@ -200,9 +200,14 @@
     title.textContent = card.name || card.id;
     const subtitleEl = document.getElementById('card-modal-subtitle');
     if (subtitleEl) {
-      const parts = [card.type, card.faction].filter(Boolean).map(escapeHtml);
-      subtitleEl.textContent = parts.join(' · ');
-      subtitleEl.classList.toggle('hidden', !parts.length);
+      subtitleEl.textContent = escapeHtml(card.type || '');
+      subtitleEl.classList.toggle('hidden', !card.type);
+    }
+    const metaEl = document.getElementById('card-modal-meta');
+    if (metaEl) {
+      const parts = [card.group, card.faction].filter(Boolean).map(escapeHtml);
+      metaEl.textContent = parts.join(' · ');
+      metaEl.classList.toggle('hidden', !parts.length);
     }
     // Per-image labels (only shown when both front and back are present)
     const frontLabelTitle = document.getElementById('card-modal-front-label-title');
