@@ -518,39 +518,50 @@
       "title": "Titans"
     },
     "Monuments/Base+PoK/Vuil'Raith.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": true,
+        "planetaryShield": false,
+        "production": {
+          "multi": 1,
+          "value": 1
+        },
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
+      "color": "",
       "configured": false,
       "description": "**DEPLOY**: When you gain control of a planet that contains 1 or more structures, you may place this unit on that planet and capture each other structure on that planet as if it were a non-fighter ship.",
+      "faction": "The Vuil'Raith Cabal",
       "faq": [],
       "filename": "Vuil'Raith.jpg",
+      "flavour": "",
       "folder": "Monuments/Base+PoK",
       "group": "Prophecy of Kings",
       "hidden": false,
       "id": "Vuil'Raith",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/Base+PoK/Vuil'Raith.jpg",
-      "section": "cards",
-      "title": "She Consumes Worlds",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "cards",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "type": "Unit - Structure - Monument",
-      "faction": "The Vuil'Raith Cabal",
-      "orientation": "auto",
-      "flavour": "",
       "stats": {
-        "cost": {
+        "capacity": {
           "enabled": false,
           "value": null
         },
@@ -558,28 +569,17 @@
           "enabled": false,
           "value": null
         },
-        "move": {
+        "cost": {
           "enabled": false,
           "value": null
         },
-        "capacity": {
+        "move": {
           "enabled": false,
           "value": null
         }
       },
-      "abilities": {
-        "deploy": true,
-        "planetaryShield": false,
-        "sustainDamage": false,
-        "bombardment": null,
-        "antiFighterBarrage": null,
-        "spaceCannon": null,
-        "production": {
-          "value": 1,
-          "multi": 1
-        }
-      },
-      "color": ""
+      "title": "She Consumes Worlds",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/Winnu.jpg": {
       "back": "",
@@ -1047,34 +1047,154 @@
       "title": "Olradin"
     },
     "Monuments/DS/Rhodun Back.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
-      "configured": false,
-      "description": "",
+      "color": "",
+      "configured": true,
+      "description": "Flip this at any time.\nOther players with units in the Fracture cannot activate this system.\nDuring combat, apply +2 to each of your units' combat rolls in this and adjacent systems if your opponent has any units in the Fracture.",
+      "faction": "Zealots of Rhodun",
       "faq": [],
       "filename": "Rhodun Back.jpg",
+      "flavour": "",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Rhodun Back",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/DS/Rhodun Back.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "tech_planet"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Rhodun Back"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Rhodun Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Reliquat Unleashed",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Rhodun Front.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Monuments/DS/Rhodun Back.jpg",
+      "color": "",
+      "configured": true,
+      "description": "Start with this side face-up; when a player activates this system, you may flip this card.\nDuring combat, apply +1 to each of your units' combat rolls in this and adjacent systems if your opponent has any unit technology upgrades.",
+      "faction": "Zealots of Rhodun",
       "faq": [],
       "filename": "Rhodun Front.jpg",
+      "flavour": "",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Rhodun Front",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/DS/Rhodun Front.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "tech_planet"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Rhodun Front"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": true,
+          "value": null
+        },
+        "cost": {
+          "enabled": true,
+          "value": null
+        },
+        "move": {
+          "enabled": true,
+          "value": null
+        }
+      },
+      "subtitle": "Rhodun Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Vault of New Phrad",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Roh'Dhna.jpg": {
       "back": "",
@@ -1122,42 +1242,60 @@
       "title": "Vaden"
     },
     "Monuments/DS/Vaylerian.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
+      "color": "",
       "configured": true,
       "description": "",
+      "faction": "Valerian Raiders",
       "faq": [],
       "filename": "Vaylerian.jpg",
+      "flavour": "",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Vaylerian",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/DS/Vaylerian.jpg",
-      "section": "cards",
-      "title": "Aylor Raider Hoard",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "cards",
       "source": {
-        "enabled": true,
+        "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [
-          "hazardous",
-          "cultural"
-        ],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "type": "Unit - Structure - Monument",
-      "faction": "Valerian Raiders",
-      "orientation": "auto",
-      "flavour": "",
       "stats": {
-        "cost": {
+        "capacity": {
           "enabled": false,
           "value": null
         },
@@ -1165,25 +1303,22 @@
           "enabled": false,
           "value": null
         },
-        "move": {
+        "cost": {
           "enabled": false,
           "value": null
         },
-        "capacity": {
+        "move": {
           "enabled": false,
           "value": null
         }
       },
-      "abilities": {
-        "deploy": false,
-        "planetaryShield": false,
-        "sustainDamage": false,
-        "bombardment": null,
-        "antiFighterBarrage": null,
-        "spaceCannon": null,
-        "production": null
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
       },
-      "color": ""
+      "title": "Aylor Raider Hoard",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Veldyr.jpg": {
       "back": "",
@@ -1276,19 +1411,87 @@
       "title": "Deepwrought"
     },
     "Monuments/TE/Firmament.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Monuments/TE/Obsidian.jpg",
+      "color": "",
+      "configured": true,
+      "description": "After a player activates this system, you may replace 1 control token on one of your plots with 1 of that player's control tokens.",
+      "faction": "The Firmament",
       "faq": [],
       "filename": "Firmament.jpg",
+      "flavour": "Epiphany offers a meeting place for the discussion of grand strategies,",
       "folder": "Monuments/TE",
-      "group": "Monuments/TE",
+      "group": "Thunder's Edge",
       "hidden": false,
       "id": "Firmament",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/TE/Firmament.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Firmament"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Firmament Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Epiphany",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/TE/Keleres.jpg": {
       "back": "",
@@ -1306,19 +1509,84 @@
       "title": "Keleres"
     },
     "Monuments/TE/Obsidian.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faq": [],
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Monuments/TE/Firmament.jpg",
+      "color": "",
+      "configured": true,
+      "description": "After a puppeted player activates this system, replace up to 2 of that player's infantry on a planet they control with your infantry; those units coexist.",
+      "faction": "Obsidian",
+      "faq": [
+        {
+          "a": "No, there are no valid placements for this monument. You need to place it before it no longer has valid placements.",
+          "q": "Can I place this on a planet once it's flipped?"
+        }
+      ],
       "filename": "Obsidian.jpg",
+      "flavour": "An unknown, twisted connection exists between visitors of this place.",
       "folder": "Monuments/TE",
-      "group": "Monuments/TE",
+      "group": "Thunder's Edge",
       "hidden": false,
       "id": "Obsidian",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/TE/Obsidian.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": true,
+            "value": "any"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Obsidian"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Decayed Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Epiphany Hollow",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/TE/Ral-Nel.jpg": {
       "back": "",

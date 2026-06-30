@@ -1407,11 +1407,13 @@
     },
     "Drahn/Heroes/Active/Kyro.jpg": {
       "back": "Drahn/Heroes/Inactive/Kyro.jpg",
+      "color": "",
       "configured": true,
       "description": "***ACTION:*** Exhaust your and any number of other players' strategy cards, if able, without resolving any of their abilities.\nThen, purge this card.",
       "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Kyro.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
       "group": "Heroes - Discordant Stars",
       "hidden": false,
@@ -1419,30 +1421,28 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Kyro.jpg",
-      "section": "drahn",
-      "title": "Galactic Pandemic",
-      "type": "Hero",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Lockdown Order",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "resource": 0,
-        "trait": [],
-        "legendary": false,
-        "relic": false,
-        "techSpeciality": "",
-        "linkedAbility": ""
-      },
-      "subtitle": "Lockdown Order",
-      "flavour": "",
-      "color": ""
+      "title": "Galactic Pandemic",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Lanefir.jpg": {
       "back": "",
@@ -3427,11 +3427,13 @@
     },
     "Keleres/Heroes/Active/Celdauri.jpg": {
       "back": "Keleres/Heroes/Inactive/Celdauri.jpg",
+      "color": "",
       "configured": true,
       "description": "***ACTION:*** Place this card face-up near the game board. Until the end of this game round, apply +2 to the **PRODUCTION** value of each of your units with **PRODUCTION**. At the end of this game round, purge this card.",
       "faction": "The Council Keleres",
       "faq": [],
       "filename": "Celdauri.jpg",
+      "flavour": "",
       "folder": "Keleres/Heroes/Active",
       "group": "Heroes - Discordant Stars",
       "hidden": false,
@@ -3439,30 +3441,28 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Celdauri.jpg",
-      "section": "keleres",
-      "title": "Coordinated Production",
-      "type": "Hero",
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "section": "keleres",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Emergency Orders",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "resource": 0,
-        "trait": [],
-        "legendary": false,
-        "relic": false,
-        "techSpeciality": "",
-        "linkedAbility": ""
-      },
-      "subtitle": "Emergency Orders",
-      "flavour": "",
-      "color": ""
+      "title": "Coordinated Production",
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Cheiran.jpg": {
       "back": "",
@@ -4111,22 +4111,47 @@
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Zealots of Rhodun.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Keleres/Heroes/Inactive/Rhodun.jpg",
+      "configured": true,
+      "description": "When researching a technology you may purge this card to ignore each prerequisite on that technology.",
+      "faction": "The Council Keleres",
       "faq": [],
       "filename": "Zealots of Rhodun.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Zealots of Rhodun",
       "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Zealots of Rhodun.jpg",
-      "section": "cards",
-      "title": "Zealots of Rhodun",
-      "type": "Other Component"
+      "section": "keleres",
+      "title": "Wisdom from the Vaults",
+      "type": "Hero",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "subtitle": "Prohibition Exemption",
+      "flavour": "",
+      "color": "",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      }
     },
     "Keleres/Heroes/Inactive/Argent.jpg": {
       "back": "",
@@ -4975,9 +5000,9 @@
     "Keleres/Heroes/Inactive/Rhodun.jpg": {
       "back": "",
       "color": "",
-      "configured": false,
+      "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Council Keleres",
       "faq": [],
       "filename": "Rhodun.jpg",
       "folder": "Keleres/Heroes/Inactive",
@@ -4991,19 +5016,29 @@
         "enabled": false,
         "value": ""
       },
-      "section": "drahn-overview",
+      "section": "keleres",
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
-      "title": "Rhodun",
-      "type": "Other Component"
+      "title": "Abbess Syna",
+      "type": "Hero",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "subtitle": "Keleres Tribunus",
+      "flavour": "Reflect. Remember. Contain.",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      }
     },
     "Keleres/Heroes/Inactive/Roh'Dhna.jpg": {
       "back": "",
