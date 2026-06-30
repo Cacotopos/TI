@@ -53,11 +53,13 @@
   "assets": {
     "Drahn/Drahn Agent Back.jpg": {
       "back": "",
-      "configured": false,
+      "color": "",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Drahn Agent Back.jpg",
+      "flavour": "",
       "folder": "Drahn",
       "group": "Drahn",
       "hidden": true,
@@ -65,9 +67,28 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Agent Back.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "drahn",
-      "title": "Drahn Agent Back",
-      "type": "Other Component"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Contract Broker",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Aldo Gradt",
+      "type": "Hero"
     },
     "Drahn/Drahn Agent Front.jpg": {
       "back": "Drahn/Drahn Agent Back.jpg",
@@ -200,7 +221,7 @@
       "color": "",
       "configured": true,
       "description": "When you gain this card, gain the Nevermore planet card and its legendary planet card.\nYou are neighbors with all palyers who have units on anomalies that do not contain planets.",
-      "faction": "Drahn",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Drahn Breakthrough BR.jpg",
       "flavour": "",
@@ -225,6 +246,11 @@
         "resource": 0,
         "techSpeciality": "",
         "trait": []
+      },
+      "subtitle": "The Drahn Cartel",
+      "synergy": {
+        "enabled": false,
+        "value": ""
       },
       "title": "V.D.H.Q. Consolidation",
       "type": "Breakthrough"
@@ -752,7 +778,25 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Tech - Yellow Back.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Drahn Tech - Yellow Back",
       "type": "Other Component"
     },
@@ -849,12 +893,12 @@
       "color": "",
       "configured": true,
       "description": "***ACTION:*** Attach this card to a planet you control. Take a Belkosea super weapon card into your play areas and place its token on that planet. That token is a structure with the unit abilities and ability text of that card. If that structure is destroyed, purge this card and those superweapon components.",
-      "faction": "Drahn",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Belkosea.jpg",
       "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Blue Reverie Heroes",
+      "group": "Heroes - Blue Reverie",
       "hidden": false,
       "id": "Belkosea",
       "isCard": true,
@@ -868,19 +912,20 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "synergy": {
         "enabled": false,
         "value": ""
       },
       "title": "Project Revelation",
-      "type": "Hero"
+      "type": "Hero",
+      "subtitle": ""
     },
     "Drahn/Heroes/Active/Creuss.jpg": {
       "back": "Drahn/Heroes/Inactive/Creuss.jpg",
@@ -1000,11 +1045,13 @@
     },
     "Drahn/Heroes/Active/Empyrean.jpg": {
       "back": "Drahn/Heroes/Inactive/Empyrean.jpg",
+      "color": "",
       "configured": true,
       "description": "***ACTION:*** For each command token in your tactics pool, explore the frontier exploration deck once in a system that contains your ships and no planets. \nThen, purge this card.",
       "faction": "Drahn",
       "faq": [],
       "filename": "Empyrean.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
       "group": "Prophecy of Kings Heroes",
       "hidden": false,
@@ -1020,22 +1067,20 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
+      "subtitle": "Archives Restored",
       "synergy": {
         "enabled": false,
         "value": ""
       },
       "title": "Forgotten Star Charts",
-      "type": "Hero",
-      "subtitle": "Archives Restored",
-      "flavour": "",
-      "color": ""
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/FSC.jpg": {
       "back": "",
@@ -1097,34 +1142,55 @@
       "type": "Hero"
     },
     "Drahn/Heroes/Active/Florzen.jpg": {
-      "back": "",
-      "configured": false,
+      "back": "Drahn/Heroes/Inactive/Florzen.jpg",
+      "color": "",
+      "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Florzen.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Florzen",
       "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Florzen.jpg",
-      "section": "cards",
-      "title": "Florzen",
-      "type": "Other Component"
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Close Enough",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Voidslip Event",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Ghemina.jpg": {
       "back": "Drahn/Heroes/Inactive/Ghemina.jpg",
       "color": "",
       "configured": true,
       "description": "After you resolve the primary ability of a strategy card, you may spend 1 command token from your strategy pool and purge this card to resolve the pimrary ability of that strategy card.",
-      "faction": "Drahn",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Ghemina.jpg",
       "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Discordant Stars Heroes",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Ghemina",
       "isCard": true,
@@ -1138,14 +1204,14 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
-      "subtitle": "",
+      "subtitle": "Twins Forever",
       "synergy": {
         "enabled": false,
         "value": ""
@@ -1158,17 +1224,17 @@
       "color": "",
       "configured": true,
       "description": "**At any time**: Purge this card and 1 of your unsecured secret objectives, if able, to gain 1 victory point.",
-      "faction": "Drahn",
+      "faction": "The Drahn Cartel",
       "faq": [
         {
-          "a": "You don't start with any planets in your home system, it's fine.",
-          "q": "This seems really strong?"
+          "q": "This seems really strong?",
+          "a": "You don't start with any planets in your home system, it's fine."
         }
       ],
       "filename": "Ghoti.jpg",
       "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Discordant Stars Heroes",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Ghoti",
       "isCard": true,
@@ -1182,12 +1248,12 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "subtitle": "All-Mother's Hope",
       "synergy": {
@@ -1459,12 +1525,12 @@
       "color": "",
       "configured": true,
       "description": "**ACTION**: Purge this card to gain 1 of the Olradin policy cards and exhaust up to 1 planet on the game board.",
-      "faction": "Drahn",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Olradin.jpg",
       "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Discordant Stars Heroes",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Olradin",
       "isCard": true,
@@ -1478,19 +1544,20 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "Olradin",
-      "type": "Hero"
+      "title": "Political Reform",
+      "type": "Hero",
+      "subtitle": "New Government"
     },
     "Drahn/Heroes/Active/Pharad'n.jpg": {
       "back": "",
@@ -1847,7 +1914,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "",
+      "section": "drahn",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -1929,20 +1996,20 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "title": "Cyanos",
-      "type": "Hero",
+      "subtitle": "Drahn Officer",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "subtitle": "Drahn Officer"
+      "title": "Cyanos",
+      "type": "Hero"
     },
     "Drahn/Heroes/Inactive/FSC.jpg": {
       "back": "",
@@ -1981,7 +2048,7 @@
     "Drahn/Heroes/Inactive/Firmament.jpg": {
       "back": "",
       "color": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
@@ -1998,7 +2065,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "drahn-overview",
+      "section": "drahn",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -2009,13 +2076,18 @@
         "techSpeciality": "",
         "trait": []
       },
-      "title": "Firmament",
-      "type": "Other Component"
+      "subtitle": "Drahn Officer",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Penitent Gello",
+      "type": "Hero"
     },
     "Drahn/Heroes/Inactive/Florzen.jpg": {
       "back": "",
       "color": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
@@ -2032,7 +2104,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "drahn-overview",
+      "section": "drahn",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -2043,8 +2115,13 @@
         "techSpeciality": "",
         "trait": []
       },
-      "title": "Florzen",
-      "type": "Other Component"
+      "subtitle": "Drahn Officer",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Tosh Laxaq",
+      "type": "Hero"
     },
     "Drahn/Heroes/Inactive/Ghemina.jpg": {
       "back": "",
@@ -2500,7 +2577,7 @@
     "Drahn/Heroes/Inactive/Nekro.jpg": {
       "back": "",
       "color": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
@@ -2517,7 +2594,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "drahn-overview",
+      "section": "drahn",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -2528,8 +2605,13 @@
         "techSpeciality": "",
         "trait": []
       },
-      "title": "Nekro",
-      "type": "Other Component"
+      "subtitle": "Drahn Officer",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Nekro Belphegor.BAK",
+      "type": "Hero"
     },
     "Drahn/Heroes/Inactive/Nivyn.jpg": {
       "back": "",
@@ -3009,11 +3091,13 @@
     },
     "Keleres/CV - Back.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "CV - Back.jpg",
+      "flavour": "",
       "folder": "Keleres",
       "group": "Keleres",
       "hidden": true,
@@ -3021,17 +3105,38 @@
       "isCard": true,
       "orientation": "portrait",
       "path": "Keleres/CV - Back.jpg",
-      "section": "drahn",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "CV - Back",
       "type": "Other Component"
     },
     "Keleres/CV - Front.jpg": {
       "back": "Keleres/CV - Back.jpg",
+      "color": "",
       "configured": true,
       "description": "Resources 1\nInfluence 2",
       "faction": "Keleres",
       "faq": [],
       "filename": "CV - Front.jpg",
+      "flavour": "",
       "folder": "Keleres",
       "group": "Keleres",
       "hidden": true,
@@ -3039,7 +3144,26 @@
       "isCard": true,
       "orientation": "portrait",
       "path": "Keleres/CV - Front.jpg",
-      "section": "keleres",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "",
+      "source": {
+        "enabled": true,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Custodia Vigilia",
       "type": "Planet"
     },
@@ -4353,7 +4477,7 @@
     "Keleres/Heroes/Inactive/Last Bastion.jpg": {
       "back": "",
       "color": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4370,7 +4494,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "drahn-overview",
+      "section": "keleres",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -4381,8 +4505,13 @@
         "techSpeciality": "",
         "trait": []
       },
-      "title": "Last Bastion",
-      "type": "Other Component"
+      "subtitle": "Keleres Tribunus",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Alenra Cavis",
+      "type": "Hero"
     },
     "Keleres/Heroes/Inactive/Letnev.jpg": {
       "back": "",
@@ -4993,7 +5122,7 @@
     "Keleres/Heroes/Inactive/Winnu.jpg": {
       "back": "",
       "color": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
@@ -5010,7 +5139,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "drahn-overview",
+      "section": "keleres",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -5021,8 +5150,13 @@
         "techSpeciality": "",
         "trait": []
       },
-      "title": "Winnu",
-      "type": "Other Component"
+      "subtitle": "Keleres Tribunus",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Mathis Mathinus",
+      "type": "Hero"
     },
     "Keleres/Heroes/Inactive/Xxcha.jpg": {
       "back": "",
@@ -5059,11 +5193,13 @@
     },
     "Keleres/Keleres CV Ability Back.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Keleres CV Ability Back.jpg",
+      "flavour": "",
       "folder": "Keleres",
       "group": "Keleres",
       "hidden": true,
@@ -5071,17 +5207,38 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Keleres CV Ability Back.jpg",
-      "section": "drahn",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Keleres CV Ability Back",
       "type": "Other Component"
     },
     "Keleres/Keleres CV Ability Front.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Keleres CV Ability Front.jpg",
+      "flavour": "",
       "folder": "Keleres",
       "group": "Keleres",
       "hidden": true,
@@ -5089,17 +5246,38 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Keleres CV Ability Front.jpg",
-      "section": "drahn",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Custodia Vigilia",
       "type": "Other Component"
     },
     "Keleres/Keleres Faction Back.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Keleres Faction Back.jpg",
+      "flavour": "",
       "folder": "Keleres",
       "group": "Keleres",
       "hidden": true,
@@ -5107,17 +5285,38 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Keleres Faction Back.jpg",
-      "section": "drahn",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Keleres Faction Back",
       "type": "Other Component"
     },
     "Keleres/Keleres Faction Front.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Keleres Faction Front.jpg",
+      "flavour": "",
       "folder": "Keleres",
       "group": "Keleres",
       "hidden": true,
@@ -5125,7 +5324,26 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Keleres Faction Front.jpg",
-      "section": "drahn",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Keleres Faction Front",
       "type": "Other Component"
     },
@@ -5170,11 +5388,13 @@
     },
     "Keleres/Tech - Agency Supply Network.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Tech - Agency Supply Network.jpg",
+      "flavour": "",
       "folder": "Keleres",
       "group": "Keleres",
       "hidden": true,
@@ -5182,17 +5402,38 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Tech - Agency Supply Network.jpg",
-      "section": "drahn",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Tech - Agency Supply Network",
       "type": "Other Component"
     },
     "Keleres/Tech - Special Clearances.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Tech - Special Clearances.jpg",
+      "flavour": "",
       "folder": "Keleres",
       "group": "Keleres",
       "hidden": true,
@@ -5200,7 +5441,26 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Tech - Special Clearances.jpg",
-      "section": "drahn",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Tech - Special Clearances",
       "type": "Other Component"
     }
