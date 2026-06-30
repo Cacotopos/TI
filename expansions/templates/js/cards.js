@@ -12,8 +12,9 @@
   const frontWrapper = document.getElementById('card-modal-front-wrapper');
   const backImg = document.getElementById('card-modal-back');
   const backWrapper = document.getElementById('card-modal-back-wrapper');
-  const backImgWrapper = document.getElementById('card-modal-back-img-wrapper');
   const imagesGrid = document.getElementById('card-modal-images');
+  const imagesLabels = document.getElementById('card-modal-images-labels');
+  const imagesCards = document.getElementById('card-modal-images-cards');
   const description = document.getElementById('card-modal-description');
   const flavourContainer = document.getElementById('card-modal-flavour');
   const faqDetails = document.getElementById('card-modal-faq');
@@ -190,15 +191,13 @@
       subtitleEl.classList.toggle('hidden', !card.subtitle);
     }
     // Per-image labels (only shown when both front and back are present)
-    const frontLabel = document.getElementById('card-modal-front-label');
     const frontLabelTitle = document.getElementById('card-modal-front-label-title');
     const frontLabelSubtitle = document.getElementById('card-modal-front-label-subtitle');
     const backHeading = document.getElementById('card-modal-back-heading');
     const backTitleEl = document.getElementById('card-modal-back-title');
     const backSubtitleEl = document.getElementById('card-modal-back-subtitle');
     const hasBack = !!card.back;
-    if (frontLabel && frontLabelTitle) {
-      frontLabel.classList.toggle('hidden', !hasBack);
+    if (frontLabelTitle) {
       frontLabelTitle.textContent = card.name || card.id;
       if (frontLabelSubtitle) {
         frontLabelSubtitle.textContent = card.subtitle || '';
@@ -219,10 +218,10 @@
     const orientation = card.orientation === 'portrait' ? 'portrait' : 'landscape';
     frontWrapper.classList.remove('portrait', 'landscape');
     frontWrapper.classList.add(orientation);
-    if (backImgWrapper) {
+    if (backWrapper) {
       const backOrientation = card.backOrientation === 'portrait' ? 'portrait' : (card.backOrientation === 'landscape' ? 'landscape' : orientation);
-      backImgWrapper.classList.remove('portrait', 'landscape');
-      backImgWrapper.classList.add(backOrientation);
+      backWrapper.classList.remove('portrait', 'landscape');
+      backWrapper.classList.add(backOrientation);
     }
 
     try { card.stats = JSON.parse(card.stats || '{}'); } catch (e) { card.stats = {}; }
@@ -300,12 +299,14 @@
       backImg.src = 'assets/images/' + card.back;
       backImg.alt = (card.name || card.id) + ' back';
       backWrapper.classList.remove('hidden');
-      imagesGrid.classList.add('has-back');
+      imagesLabels.classList.add('has-back');
+      imagesCards.classList.add('has-back');
     } else {
       backImg.src = '';
       backImg.alt = '';
       backWrapper.classList.add('hidden');
-      imagesGrid.classList.remove('has-back');
+      imagesLabels.classList.remove('has-back');
+      imagesCards.classList.remove('has-back');
     }
 
     modal.classList.remove('hidden');
