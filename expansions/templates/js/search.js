@@ -1,15 +1,11 @@
 /**
  * Static JS search.
  *
- * Builds a simple inverted index from data.json and exposes search(query).
+ * Uses window.SITE_DATA (inlined by the generator into search-data.js) so
+ * search works with file:// as well as HTTP — no fetch required.
  */
-(async function() {
-  let site = {};
-  try {
-    site = await fetch('data.json').then(r => r.json());
-  } catch (e) {
-    console.error('search.js failed to load data.json', e);
-  }
+(function() {
+  const site = window.SITE_DATA || {};
 
   const index = new Map();
   const docs = [];

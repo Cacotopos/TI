@@ -349,6 +349,13 @@ def build_site(config_path: Path, output_dir: Path) -> None:
     # Write data.json for JS search
     (output_dir / "data.json").write_text(json.dumps(site, indent=2), encoding="utf-8")
 
+    # Write search-data.js — inline site data so search works with file:// (no fetch needed)
+    js_dir = output_dir / "assets" / "js"
+    js_dir.mkdir(parents=True, exist_ok=True)
+    (js_dir / "search-data.js").write_text(
+        f"window.SITE_DATA = {json.dumps(site)};", encoding="utf-8"
+    )
+
 
 def main():
     parser = argparse.ArgumentParser(description="Build a static expansion site")
