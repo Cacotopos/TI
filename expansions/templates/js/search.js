@@ -14,22 +14,22 @@
   const index = new Map();
   const docs = [];
 
-  function addDoc(id, text, title, url, kind) {
-    const doc = { id, title, url, kind, text: text.toLowerCase() };
+  function addDoc(id, text, title, url, kind, snippet) {
+    const doc = { id, title, url, kind, text: (snippet || text).slice(0, 200) };
     docs.push(doc);
-    const tokens = text.toLowerCase().split(/\W+/).filter(t => t.length > 2);
+    const tokens = text.toLowerCase().split(/\W+/).filter(t => t.length > 1);
     tokens.forEach(token => {
       if (!index.has(token)) index.set(token, new Set());
       index.get(token).add(doc);
     });
   }
 
-  addDoc('overview', site.overview || '', 'Overview', 'index.html', 'page');
-  addDoc('name', site.name || '', site.name, 'index.html', 'page');
-  addDoc('description', site.description || '', 'Description', 'index.html', 'page');
+  addDoc('overview', site.overview || '', 'Overview', 'index.html', 'page', site.overview);
+  addDoc('name', site.name || '', site.name, 'index.html', 'page', site.name);
+  addDoc('description', site.description || '', 'Description', 'index.html', 'page', site.description);
 
   (site.sections || []).forEach((section, i) => {
-    addDoc(`section-${i}`, section.title || '', section.title, `${section.id}.html`, 'section');
+    addDoc(`section-${i}`, section.title || '', section.title, `${section.id}.html`, 'section', section.title);
   });
 
   (site.images || []).forEach((img, i) => {
@@ -48,34 +48,39 @@
     const prereqText = img.prereq && img.prereq.enabled ? img.prereq.value : '';
     const colorText = img.color || '';
     const source = img.source || {};
-    const sourceText = source.enabled ? `${source.influence || ''} ${source.resource || ''} ${source.trait || ''} ${source.legendary ? 'Legendary' : ''} ${source.relic ? 'Relic' : ''} ${source.techSpeciality || ''} ${source.linkedAbility || ''}` : '';
-    const text = `${img.name || ''} ${img.folder || ''} ${img.group || ''} ${img.type || ''} ${img.faction || ''} ${img.description || ''} ${faqText} ${statsText} ${abilityText} ${prereqText} ${colorText} ${sourceText}`;
+    const sourceText = source.enabled ? `${source.influence || ''} ${source.resource || ''} ${(source.trait || []).join(' ')} ${source.legendary ? 'Legendary' : ''} ${source.relic ? 'Relic' : ''} ${source.techSpeciality || ''} ${source.linkedAbility || ''}` : '';
+    const synergy = img.synergy || {};
+    const synergyText = synergy.enabled ? (synergy.value || '') : '';
+    const placementText = (img.placement && img.placement.enabled) ? (img.placement.rules || []).map(r => (r.not ? 'not ' : '') + r.value).join(' ') : '';
+    const searchText = `${img.name || ''} ${img.subtitle || ''} ${img.folder || ''} ${img.group || ''} ${img.type || ''} ${img.faction || ''} ${img.description || ''} ${img.flavour || ''} ${faqText} ${statsText} ${abilityText} ${prereqText} ${colorText} ${sourceText} ${synergyText} ${placementText}`;
+    const snippet = [img.subtitle, img.type, img.faction, img.group].filter(Boolean).join(' · ');
     const url = `${img.section || 'cards'}.html`;
-    addDoc(`image-${i}`, text, img.name || img.id, url, 'card');
+    addDoc(`image-${i}`, searchText, img.name || img.id, url, 'card', snippet);
   });
 
-  const searchReady = new Promise(resolve => {
-    window.searchExpansion = function(query) {
-      const q = query.toLowerCase().trim();
-      if (!q) return [];
-      const tokens = q.split(/\W+/).filter(t => t.length > 2);
-      if (tokens.length === 0) {
-        return docs.filter(d => d.text.includes(q));
-      }
-      const scores = new Map();
-      tokens.forEach(token => {
-        const matches = index.get(token) || new Set();
-        matches.forEach(doc => {
-          scores.set(doc, (scores.get(doc) || 0) + 1);
-        });
+  window.searchExpansion = function(query) {
+    const q = query.toLowerCase().trim();
+    if (!q) return [];
+    const tokens = q.split(/\W+/).filter(t => t.length > 1);
+    if (tokens.length === 0) {
+      return docs.filter(d => d.text.toLowerCase().includes(q));
+    }
+    const scores = new Map();
+    tokens.forEach(token => {
+      (index.get(token) || new Set()).forEach(doc => {
+        scores.set(doc, (scores.get(doc) || 0) + 1);
       });
-      return Array.from(scores.entries())
-        .sort((a, b) => b[1] - a[1])
-        .map(([doc]) => doc);
-    };
-    resolve();
-  });
-
-  window.searchReady = searchReady;
+      // partial prefix match
+      index.forEach((docSet, key) => {
+        if (key.startsWith(token) && key !== token) {
+          docSet.forEach(doc => scores.set(doc, (scores.get(doc) || 0) + 0.5));
+        }
+      });
+    });
+    return Array.from(scores.entries())
+      .sort((a, b) => b[1] - a[1])
+      .map(([doc]) => doc);
+  };
+  window.searchReady = Promise.resolve();
   console.log('search.js loaded', docs.length, 'documents');
 })();

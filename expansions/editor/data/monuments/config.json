@@ -16,7 +16,12 @@
       "id": "overview",
       "title": "Overview",
       "type": "markdown",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "markdown",
+          "content": ""
+        }
+      ]
     },
     {
       "id": "cards",
