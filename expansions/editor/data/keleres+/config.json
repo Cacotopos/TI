@@ -517,6 +517,7 @@
       "faction": "Drahn",
       "faq": [],
       "filename": "Drahn Nevermore Ability Front.jpg",
+      "flavour": "",
       "folder": "Drahn",
       "group": "Drahn",
       "hidden": false,
@@ -532,21 +533,20 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "title": "Nevermore",
-      "type": "Legendary Ability",
+      "subtitle": "Legendary Ability - Drahn",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "subtitle": "Legendary Ability - Drahn",
-      "flavour": ""
+      "title": "Nevermore",
+      "type": "Legendary Ability"
     },
     "Drahn/Drahn Nevermore Back.jpg": {
       "back": "",
@@ -990,11 +990,12 @@
         "techSpeciality": "",
         "trait": []
       },
+      "subtitle": "Status Quo Overthrown",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "Deepwrought",
+      "title": "Unpublished Research",
       "type": "Hero"
     },
     "Drahn/Heroes/Active/Empyrean.jpg": {
@@ -1115,12 +1116,12 @@
       "color": "",
       "configured": true,
       "description": "After you resolve the primary ability of a strategy card, you may spend 1 command token from your strategy pool and purge this card to resolve the pimrary ability of that strategy card.",
-      "faction": "",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Ghemina.jpg",
       "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Discordant Srars Heroes",
+      "group": "Discordant Stars Heroes",
       "hidden": false,
       "id": "Ghemina",
       "isCard": true,
@@ -1141,6 +1142,7 @@
         "techSpeciality": "",
         "trait": []
       },
+      "subtitle": "",
       "synergy": {
         "enabled": false,
         "value": ""
@@ -1156,12 +1158,8 @@
       "faction": "Drahn",
       "faq": [
         {
-          "q": "Q: This seems really strong?",
-          "a": ""
-        },
-        {
-          "q": "Q: A: You don't start with any planets in your home system, it's fine. | A:",
-          "a": ""
+          "a": "You don't start with any planets in your home system, it's fine.",
+          "q": "This seems really strong?"
         }
       ],
       "filename": "Ghoti.jpg",
@@ -1177,24 +1175,24 @@
         "enabled": false,
         "value": ""
       },
-      "section": "drahn-overview",
+      "section": "drahn",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
+      "subtitle": "All-Mother's Hope",
       "synergy": {
         "enabled": false,
         "value": ""
       },
       "title": "Objective Restoration",
-      "type": "Hero",
-      "subtitle": "All-Mother's Hope"
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Gledge.jpg": {
       "back": "",
@@ -1708,7 +1706,7 @@
       "backSubtitle": "",
       "backTitle": "",
       "color": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
@@ -1725,7 +1723,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "drahn-overview",
+      "section": "",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -1742,7 +1740,7 @@
         "value": ""
       },
       "title": "Dirzuga Ophliat",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Drahn/Heroes/Inactive/Belkosea.jpg": {
       "back": "",
@@ -1829,7 +1827,7 @@
     "Drahn/Heroes/Inactive/Crimson Rebellion.jpg": {
       "back": "",
       "color": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
@@ -1863,12 +1861,12 @@
         "value": ""
       },
       "title": "Ahk Au Ka",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Drahn/Heroes/Inactive/Deepwrought.jpg": {
       "back": "",
       "color": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
@@ -1885,7 +1883,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "drahn-overview",
+      "section": "",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -1896,8 +1894,13 @@
         "techSpeciality": "",
         "trait": []
       },
-      "title": "Deepwrought",
-      "type": "Other Component"
+      "subtitle": "Drahn Officer",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Tutor Kettoka",
+      "type": "Hero"
     },
     "Drahn/Heroes/Inactive/Empyrean.jpg": {
       "back": "",
@@ -2100,7 +2103,12 @@
         "techSpeciality": "",
         "trait": []
       },
-      "title": "Ghoti",
+      "subtitle": "Drahn Officer",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Speaker for the Void",
       "type": "Other Component"
     },
     "Drahn/Heroes/Inactive/Gledge.jpg": {
@@ -5115,11 +5123,13 @@
     },
     "Keleres/Keleres+ Reference.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Keleres+ Reference.jpg",
+      "flavour": "",
       "folder": "Keleres",
       "group": "Keleres",
       "hidden": true,
@@ -5127,7 +5137,26 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Keleres+ Reference.jpg",
-      "section": "drahn",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Keleres+ Reference",
       "type": "Other Component"
     },

@@ -308,26 +308,9 @@
 
   document.querySelectorAll('.card-item').forEach(item => {
     item.addEventListener('click', () => {
-      open({
-        id: item.dataset.cardId,
-        name: item.dataset.cardName,
-        type: item.dataset.cardType,
-        faction: item.dataset.cardFaction,
-        section: item.dataset.cardSection,
-        group: item.dataset.cardGroup,
-        description: item.dataset.cardDescription,
-        faq: item.dataset.cardFaq,
-        stats: item.dataset.cardStats,
-        abilities: item.dataset.cardAbilities,
-        prereq: item.dataset.cardPrereq,
-        color: item.dataset.cardColor,
-        source: item.dataset.cardSource,
-        back: item.dataset.cardBack,
-        frontPath: item.dataset.cardFrontPath,
-        flavour: item.dataset.cardFlavour,
-        orientation: item.dataset.cardOrientation,
-        parentPath: parentByPath[item.dataset.cardFrontPath] || '',
-      });
+      const card = cardDataFromElement(item);
+      card.parentPath = parentByPath[item.dataset.cardFrontPath] || '';
+      open(card);
     });
   });
 

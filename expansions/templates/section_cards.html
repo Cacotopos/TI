@@ -54,6 +54,7 @@
             <img src="{{ img.path }}" alt="{{ img.name }}" class="card-image rounded-lg {{ 'card-portrait' if img.orientation == 'portrait' else 'card-landscape' }}"/>
           </div>
           <p class="text-sm text-center mt-2 font-medium truncate" title="{{ img.name }}">{{ img.name }}</p>
+          {% if img.subtitle %}<p class="text-xs text-center text-muted truncate">{{ img.subtitle }}</p>{% endif %}
         </div>
         {% endfor %}
       </div>
