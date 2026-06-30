@@ -999,14 +999,14 @@
       "type": "Hero"
     },
     "Drahn/Heroes/Active/Empyrean.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "back": "Drahn/Heroes/Inactive/Empyrean.jpg",
+      "configured": true,
+      "description": "***ACTION:*** For each command token in your tactics pool, explore the frontier exploration deck once in a system that contains your ships and no planets. \nThen, purge this card.",
+      "faction": "Drahn",
       "faq": [],
       "filename": "Empyrean.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Prophecy of Kings Heroes",
       "hidden": false,
       "id": "Empyrean",
       "isCard": true,
@@ -1016,23 +1016,26 @@
         "enabled": false,
         "value": ""
       },
-      "section": "cards",
+      "section": "drahn",
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "Empyrean",
-      "type": "Other Component"
+      "title": "Forgotten Star Charts",
+      "type": "Hero",
+      "subtitle": "Archives Restored",
+      "flavour": "",
+      "color": ""
     },
     "Drahn/Heroes/Active/FSC.jpg": {
       "back": "",
@@ -1905,7 +1908,7 @@
     "Drahn/Heroes/Inactive/Empyrean.jpg": {
       "back": "",
       "color": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
@@ -1926,15 +1929,20 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
-      "title": "Empyrean",
-      "type": "Other Component"
+      "title": "Cyanos",
+      "type": "Hero",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "subtitle": "Drahn Officer"
     },
     "Drahn/Heroes/Inactive/FSC.jpg": {
       "back": "",
