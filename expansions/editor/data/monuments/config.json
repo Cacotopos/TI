@@ -15,29 +15,37 @@
     {
       "id": "overview",
       "title": "Overview",
-      "type": "markdown",
+      "type": "page",
       "blocks": [
         {
           "type": "markdown",
-          "content": ""
+          "content": "",
+          "column": "full"
         }
       ]
     },
     {
       "id": "cards",
       "title": "Cards",
-      "type": "cards"
+      "type": "page",
+      "blocks": [
+        {
+          "type": "cards",
+          "group": "",
+          "column": "full"
+        }
+      ]
     },
     {
       "id": "faq",
       "title": "FAQ",
-      "type": "markdown",
+      "type": "page",
       "blocks": []
     },
     {
       "id": "design",
       "title": "Design Your Own",
-      "type": "markdown",
+      "type": "page",
       "blocks": []
     }
   ],

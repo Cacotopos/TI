@@ -76,10 +76,15 @@
   .markdown-snippet:hover { border-color: var(--accent); background: var(--bg); }
   .asset-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
   @media (min-width: 768px) { .asset-grid { grid-template-columns: repeat(4, 1fr); } }
-  .asset-cell { background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; cursor: pointer; text-align: center; }
+  .asset-cell { background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; cursor: pointer; text-align: center; user-select: none; }
   .asset-cell:hover { border-color: var(--accent); }
   .asset-cell.configured { border-color: var(--accent); }
   .asset-cell.excluded { opacity: 0.5; }
+  .asset-cell.selected { border-color: #f59e0b; background: #1f1a0e; box-shadow: 0 0 0 2px #f59e0b44; }
+  .asset-cell.selected .title { color: #f59e0b; }
+  #asset-selection-bar { display: none; align-items: center; gap: 0.75rem; padding: 0.5rem 0.75rem; background: #1f1a0e; border: 1px solid #f59e0b; border-radius: 0.5rem; margin-bottom: 0.75rem; font-size: 0.9rem; }
+  #asset-selection-bar.visible { display: flex; }
+  #asset-selection-bar span { color: #f59e0b; font-weight: 600; flex: 1; }
   .asset-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.75rem; }
   #asset-preview { border-radius: 0.5rem; }
   #asset-preview.portrait { border-radius: 1rem; }
@@ -279,9 +284,82 @@
           </label>
           <span id="asset-count" class="text-muted" style="font-size: 0.85rem; color: var(--muted);"></span>
         </div>
+        <div id="asset-selection-bar">
+          <span id="asset-selection-count">0 selected</span>
+          <button type="button" id="bulk-edit-btn">Edit Selected</button>
+          <button type="button" class="secondary" id="clear-selection-btn">Clear Selection</button>
+        </div>
         <div id="assets-grid"></div>
         <div id="assets-empty" class="empty-state hidden">No assets yet. Click Inspect Folder to scan the source image folder.</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div id="bulk-edit-modal" class="modal-overlay">
+  <div class="modal" style="max-width:480px">
+    <h3 id="bulk-edit-modal-title" style="margin-bottom:1rem">Bulk Edit</h3>
+    <p class="hint" style="margin-bottom:1rem">Leave a field blank to keep each asset's existing value.</p>
+    <div class="row">
+      <div>
+        <label>Page</label>
+        <select id="bulk-edit-section"><option value="">(no change)</option></select>
+      </div>
+      <div>
+        <label>Type</label>
+        <select id="bulk-edit-type">
+          <option value="">(no change)</option>
+          <option value="Alliance">Alliance</option>
+          <option value="Breakthrough">Breakthrough</option>
+          <option value="Commander">Commander</option>
+          <option value="Faction Sheet">Faction Sheet</option>
+          <option value="Hero">Hero</option>
+          <option value="Legendary Ability">Legendary Ability</option>
+          <option value="Other Component">Other Component</option>
+          <option value="Promissory Note">Promissory Note</option>
+          <option value="Relic">Relic</option>
+          <option value="Technology">Technology</option>
+          <option value="Unit - Fighter">Unit - Fighter</option>
+          <option value="Unit - Flagship">Unit - Flagship</option>
+          <option value="Unit - Infantry">Unit - Infantry</option>
+          <option value="Unit - Mech">Unit - Mech</option>
+          <option value="Unit - Structure - Advanced Structure">Unit - Structure - Advanced Structure</option>
+          <option value="Unit - Structure - Basic Structure">Unit - Structure - Basic Structure</option>
+          <option value="Unit - War Sun">Unit - War Sun</option>
+          <option value="Additional Ability">Additional Ability</option>
+          <option value="Agenda">Agenda</option>
+          <option value="Action Card">Action Card</option>
+          <option value="Exploration">Exploration</option>
+          <option value="Objective">Objective</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Faction</label>
+        <input id="bulk-edit-faction" type="text" list="bulk-edit-faction-list" placeholder="(no change)"/>
+        <datalist id="bulk-edit-faction-list"></datalist>
+      </div>
+      <div>
+        <label>Group</label>
+        <input id="bulk-edit-group" type="text" list="bulk-edit-group-list" placeholder="(no change)"/>
+        <datalist id="bulk-edit-group-list"></datalist>
+      </div>
+    </div>
+    <div>
+      <label>Subtitle</label>
+      <input id="bulk-edit-subtitle" type="text" placeholder="(no change)"/>
+    </div>
+    <div>
+      <label>Back Image</label>
+      <input id="bulk-edit-back-filter" type="text" placeholder="Filter back images..."/>
+      <select id="bulk-edit-back" size="4" style="width:100%;margin-bottom:0.5rem">
+        <option value="">(no change)</option>
+      </select>
+    </div>
+    <div style="display:flex;gap:0.75rem;margin-top:1rem;justify-content:flex-end">
+      <button type="button" class="secondary" id="bulk-edit-cancel-btn">Cancel</button>
+      <button type="button" id="bulk-edit-apply-btn">Apply to Selected</button>
     </div>
   </div>
 </div>
@@ -1388,6 +1466,103 @@ function setPlacementInput(placement) {
   document.getElementById('asset-edit-placement-toggle').checked = p.enabled;
   renderPlacementRules(p.rules || []);
 }
+// ── Multi-select ──────────────────────────────────────────────────────────────
+const selectedAssets = new Set();
+let lastClickedAssetPath = null;
+
+function updateSelectionBar() {
+  const bar = document.getElementById('asset-selection-bar');
+  const count = document.getElementById('asset-selection-count');
+  count.textContent = `${selectedAssets.size} selected`;
+  bar.classList.toggle('visible', selectedAssets.size > 0);
+}
+
+function clearSelection() {
+  selectedAssets.clear();
+  lastClickedAssetPath = null;
+  updateSelectionBar();
+  renderAssets();
+}
+
+function openBulkEditModal() {
+  // Populate section dropdown
+  const secSel = document.getElementById('bulk-edit-section');
+  secSel.innerHTML = '<option value="">(no change)</option>';
+  sections.forEach(s => {
+    const o = document.createElement('option');
+    o.value = s.id;
+    o.textContent = s.title || s.id;
+    secSel.appendChild(o);
+  });
+  // Populate faction + group datalists
+  const fl = document.getElementById('bulk-edit-faction-list');
+  fl.innerHTML = '';
+  distinctFactions().forEach(f => { const o = document.createElement('option'); o.value = f; fl.appendChild(o); });
+  const gl = document.getElementById('bulk-edit-group-list');
+  gl.innerHTML = '';
+  distinctGroups().forEach(g => { const o = document.createElement('option'); o.value = g; gl.appendChild(o); });
+  // Populate back image list
+  populateBulkBackOptions('');
+  // Reset fields
+  document.getElementById('bulk-edit-faction').value = '';
+  document.getElementById('bulk-edit-group').value = '';
+  document.getElementById('bulk-edit-subtitle').value = '';
+  document.getElementById('bulk-edit-type').value = '';
+  document.getElementById('bulk-edit-back-filter').value = '';
+  document.getElementById('bulk-edit-modal-title').textContent = `Bulk Edit (${selectedAssets.size} assets)`;
+  document.getElementById('bulk-edit-modal').classList.add('open');
+}
+
+function populateBulkBackOptions(filter) {
+  const sel = document.getElementById('bulk-edit-back');
+  sel.innerHTML = '<option value="">(no change)</option>';
+  const f = filter.toLowerCase();
+  assetValues().filter(a => !f || (a.path + ' ' + a.title + ' ' + (a.group || '')).toLowerCase().includes(f))
+    .forEach(a => {
+      const o = document.createElement('option');
+      o.value = a.path;
+      o.textContent = a.path;
+      sel.appendChild(o);
+    });
+}
+
+function applyBulkEdit() {
+  const section  = document.getElementById('bulk-edit-section').value;
+  const type     = document.getElementById('bulk-edit-type').value;
+  const faction  = document.getElementById('bulk-edit-faction').value.trim();
+  const group    = document.getElementById('bulk-edit-group').value.trim();
+  const subtitle = document.getElementById('bulk-edit-subtitle').value.trim();
+  const back     = document.getElementById('bulk-edit-back').value;
+
+  selectedAssets.forEach(path => {
+    const asset = assets[path];
+    if (!asset) return;
+    if (section)  asset.section  = section;
+    if (type)     asset.type     = type;
+    if (faction)  asset.faction  = faction;
+    if (group)    asset.group    = group;
+    if (subtitle) asset.subtitle = subtitle;
+    if (back)     asset.back     = back;
+    if (section || type || faction || group || subtitle || back) asset.configured = true;
+  });
+
+  setDirty(true);
+  document.getElementById('bulk-edit-modal').classList.remove('open');
+  clearSelection();
+}
+
+document.getElementById('bulk-edit-btn').addEventListener('click', openBulkEditModal);
+document.getElementById('clear-selection-btn').addEventListener('click', clearSelection);
+document.getElementById('bulk-edit-cancel-btn').addEventListener('click', () => {
+  document.getElementById('bulk-edit-modal').classList.remove('open');
+});
+document.getElementById('bulk-edit-apply-btn').addEventListener('click', applyBulkEdit);
+document.getElementById('bulk-edit-back-filter').addEventListener('input', function() {
+  populateBulkBackOptions(this.value);
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 function renderAssets() {
   const grid = document.getElementById('assets-grid');
   const empty = document.getElementById('assets-empty');
@@ -1464,13 +1639,43 @@ function renderAssets() {
 
     pageAssets.forEach(asset => {
       const div = document.createElement('div');
-      div.className = `asset-cell ${asset.configured ? 'configured' : ''} ${asset.hidden ? 'excluded' : ''}`;
+      div.className = `asset-cell ${asset.configured ? 'configured' : ''} ${asset.hidden ? 'excluded' : ''} ${selectedAssets.has(asset.path) ? 'selected' : ''}`;
+      div.dataset.assetPath = asset.path;
       div.innerHTML = `
         <div class="title" title="${asset.path}">${asset.title}</div>
         <div class="group" title="${asset.group || asset.folder}">${asset.group || asset.folder}</div>
         ${asset.hidden ? '<div class="title" style="color:#dc2626">excluded</div>' : ''}
       `;
-      div.addEventListener('click', () => openAssetEditor(asset.path));
+      div.addEventListener('click', (e) => {
+        if (e.shiftKey && lastClickedAssetPath) {
+          // Range select: collect all visible paths in DOM order between last and this
+          const allCells = Array.from(document.querySelectorAll('.asset-cell[data-asset-path]'));
+          const paths = allCells.map(c => c.dataset.assetPath);
+          const a = paths.indexOf(lastClickedAssetPath);
+          const b = paths.indexOf(asset.path);
+          const [lo, hi] = a < b ? [a, b] : [b, a];
+          paths.slice(lo, hi + 1).forEach(p => selectedAssets.add(p));
+        } else if (e.ctrlKey || e.metaKey) {
+          if (selectedAssets.has(asset.path)) selectedAssets.delete(asset.path);
+          else selectedAssets.add(asset.path);
+          lastClickedAssetPath = asset.path;
+        } else if (selectedAssets.size > 0) {
+          // Selection mode active — plain click toggles
+          if (selectedAssets.has(asset.path)) selectedAssets.delete(asset.path);
+          else selectedAssets.add(asset.path);
+          lastClickedAssetPath = asset.path;
+        } else {
+          // No selection active — open editor as before
+          openAssetEditor(asset.path);
+          return;
+        }
+        updateSelectionBar();
+        renderAssets();
+      });
+      div.addEventListener('dblclick', (e) => {
+        e.preventDefault();
+        openAssetEditor(asset.path);
+      });
       innerGrid.appendChild(div);
     });
 
