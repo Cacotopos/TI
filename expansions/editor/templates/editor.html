@@ -760,12 +760,33 @@ function renderSectionBlockHtml(block, sectionIndex, blockIndex, sectionId) {
   const sectionAssets = assetValues().filter(a => a.section === sectionId && !a.hidden);
   const options = sectionAssets.map(a => `<option value="${a.path}" ${a.path === block.asset ? 'selected' : ''}>${a.title || a.path}</option>`).join('');
   const col = block.column || 'full';
-  const colLabel = { full: 'Full', left: 'Left 50%', right: 'Right 50%' }[col] || 'Full';
   const colSelect = `<select class="block-column" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" style="width:auto;margin-bottom:0;font-size:0.8rem;padding:0.2rem 0.4rem">
     <option value="full" ${col === 'full' ? 'selected' : ''}>Full</option>
     <option value="left" ${col === 'left' ? 'selected' : ''}>Left 50%</option>
     <option value="right" ${col === 'right' ? 'selected' : ''}>Right 50%</option>
   </select>`;
+  if (block.type === 'cards') {
+    const distinctGroups = [...new Set(sectionAssets.map(a => a.group || a.folder || '').filter(Boolean))].sort();
+    const groupOptions = ['', ...distinctGroups].map(g => `<option value="${g}" ${g === (block.group || '') ? 'selected' : ''}>${g || '(all groups)'}</option>`).join('');
+    return `
+      <div class="block-row" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">
+        <div class="block-header">
+          <span class="block-type">Cards</span>
+          ${colSelect}
+          <div class="block-actions">
+            <button type="button" class="move-block-up" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">↑</button>
+            <button type="button" class="move-block-down" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">↓</button>
+            <button type="button" class="remove-block" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">×</button>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.35rem">
+          <label style="margin-bottom:0;font-size:0.85rem;color:var(--muted);white-space:nowrap">Group</label>
+          <select class="block-cards-group" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" style="margin-bottom:0;flex:1">${groupOptions}</select>
+        </div>
+        <p class="hint" style="margin-top:0.35rem">Displays all cards in this section assigned to the chosen group. Cards are assigned via the asset editor.</p>
+      </div>
+    `;
+  }
   if (block.type === 'markdown') {
     return `
       <div class="block-row" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">
@@ -823,9 +844,7 @@ function renderSections() {
   }
   sections.forEach((section, index) => {
     const blocks = section.blocks || [];
-    const blocksHtml = section.type === 'markdown'
-      ? blocks.map((block, bi) => renderSectionBlockHtml(block, index, bi, section.id)).join('')
-      : '';
+    const blocksHtml = blocks.map((block, bi) => renderSectionBlockHtml(block, index, bi, section.id)).join('');
     const div = document.createElement('div');
     div.className = 'section-row';
     div.innerHTML = `
@@ -838,31 +857,25 @@ function renderSections() {
           <label>Title</label>
           <input type="text" class="section-title" data-index="${index}" value="${section.title}" placeholder="Overview"/>
         </div>
-        <div>
-          <label>Type</label>
-          <select class="section-type" data-index="${index}">
-            <option value="markdown" ${section.type === 'markdown' ? 'selected' : ''}>Markdown</option>
-            <option value="cards" ${section.type === 'cards' ? 'selected' : ''}>Cards</option>
-          </select>
-        </div>
       </div>
       <div class="section-actions">
         <button type="button" class="move-section-up" data-index="${index}">↑</button>
         <button type="button" class="move-section-down" data-index="${index}">↓</button>
         <button type="button" class="remove-section-btn danger" data-index="${index}">Remove</button>
       </div>
-      <div class="section-blocks ${section.type === 'markdown' ? '' : 'hidden'}" data-section-index="${index}">
+      <div class="section-blocks" data-section-index="${index}">
         <div class="blocks-list" data-section-index="${index}">${blocksHtml}</div>
         <div class="block-add-buttons">
           <button type="button" class="add-block-btn secondary" data-section-index="${index}" data-block-type="markdown">Add Markdown Block</button>
           <button type="button" class="add-block-btn secondary" data-section-index="${index}" data-block-type="asset">Add Asset Block</button>
+          <button type="button" class="add-block-btn secondary" data-section-index="${index}" data-block-type="cards">Add Cards Block</button>
         </div>
       </div>
     `;
     container.appendChild(div);
   });
 
-  document.querySelectorAll('.section-id, .section-title, .section-type').forEach(input => {
+  document.querySelectorAll('.section-id, .section-title').forEach(input => {
     input.addEventListener('input', updateSectionsFromForm);
   });
   document.querySelectorAll('.remove-section-btn').forEach(btn => {
@@ -895,7 +908,10 @@ function renderSections() {
       const type = this.dataset.blockType;
       updateSectionsFromForm();
       sections[si].blocks = sections[si].blocks || [];
-      sections[si].blocks.push(type === 'markdown' ? { type: 'markdown', content: '' } : { type: 'asset', asset: '', subtitle: '', width: 100 });
+      const newBlock = type === 'markdown' ? { type: 'markdown', content: '', column: 'full' }
+        : type === 'cards' ? { type: 'cards', group: '', column: 'full' }
+        : { type: 'asset', asset: '', subtitle: '', width: 100, column: 'full' };
+      sections[si].blocks.push(newBlock);
       renderSections();
     });
   });
@@ -973,6 +989,9 @@ function renderSections() {
   document.querySelectorAll('.block-column').forEach(input => {
     input.addEventListener('change', updateSectionsFromForm);
   });
+  document.querySelectorAll('.block-cards-group').forEach(input => {
+    input.addEventListener('change', updateSectionsFromForm);
+  });
   document.querySelectorAll('.block-asset-preview').forEach(preview => {
     const si = parseInt(preview.dataset.sectionIndex);
     const bi = parseInt(preview.dataset.blockIndex);
@@ -988,14 +1007,13 @@ function renderSections() {
 function updateSectionsFromForm() {
   const ids = Array.from(document.querySelectorAll('.section-id')).map(el => el.value.trim());
   const titles = Array.from(document.querySelectorAll('.section-title')).map(el => el.value.trim());
-  const types = Array.from(document.querySelectorAll('.section-type')).map(el => el.value);
   sections = ids.map((id, i) => {
     const section = {
       id: id || `section-${i}`,
       title: titles[i] || id || `Section ${i + 1}`,
-      type: types[i] || 'markdown',
+      type: 'page',
     };
-    if (section.type === 'markdown') {
+    {
       const blocks = [];
       document.querySelectorAll(`.block-row[data-section-index="${i}"]`).forEach(row => {
         const bi = parseInt(row.dataset.blockIndex);
@@ -1005,6 +1023,9 @@ function updateSectionsFromForm() {
         if (type === 'Markdown') {
           const content = row.querySelector('.block-content')?.value || '';
           blocks.push({ type: 'markdown', content, column });
+        } else if (type === 'Cards') {
+          const group = row.querySelector('.block-cards-group')?.value || '';
+          blocks.push({ type: 'cards', group, column });
         } else {
           const asset = row.querySelector('.block-asset')?.value || '';
           const subtitle = row.querySelector('.block-subtitle')?.value || '';
@@ -1803,7 +1824,7 @@ document.getElementById('generate-btn').addEventListener('click', generate);
 document.getElementById('deploy-btn').addEventListener('click', deploy);
 document.getElementById('add-section-btn').addEventListener('click', () => {
   updateSectionsFromForm();
-  sections.push({ id: '', title: '', type: 'markdown' });
+  sections.push({ id: '', title: '', type: 'page', blocks: [] });
   renderSections();
   renderAssets();
 });
