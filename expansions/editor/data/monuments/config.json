@@ -30,6 +30,11 @@
       "type": "page",
       "blocks": [
         {
+          "type": "markdown",
+          "content": "The cards by faction groups.",
+          "column": "full"
+        },
+        {
           "type": "cards",
           "group": "",
           "column": "full"
@@ -52,282 +57,677 @@
   "assets": {
     "Monuments/BR/Atokera.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Atokera.jpg",
       "folder": "Monuments/BR",
-      "group": "Monuments/BR",
+      "group": "Blue Reverie",
       "hidden": false,
       "id": "Atokera",
       "isCard": true,
       "path": "Monuments/BR/Atokera.jpg",
       "section": "cards",
-      "title": "Atokera"
+      "title": "Atokera",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Belkosea.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Belkosea.jpg",
       "folder": "Monuments/BR",
-      "group": "Monuments/BR",
+      "group": "Blue Reverie",
       "hidden": false,
       "id": "Belkosea",
       "isCard": true,
       "path": "Monuments/BR/Belkosea.jpg",
       "section": "cards",
-      "title": "Belkosea"
+      "title": "Belkosea",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Kaltrim.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Kaltrim.jpg",
       "folder": "Monuments/BR",
-      "group": "Monuments/BR",
+      "group": "Blue Reverie",
       "hidden": false,
       "id": "Kaltrim",
       "isCard": true,
       "path": "Monuments/BR/Kaltrim.jpg",
       "section": "cards",
-      "title": "Kaltrim"
+      "title": "Kaltrim",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Pharad'n.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Pharad'n.jpg",
       "folder": "Monuments/BR",
-      "group": "Monuments/BR",
+      "group": "Blue Reverie",
       "hidden": false,
       "id": "Pharad'n",
       "isCard": true,
       "path": "Monuments/BR/Pharad'n.jpg",
       "section": "cards",
-      "title": "Pharad'n"
+      "title": "Pharad'n",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Qhet.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Qhet.jpg",
       "folder": "Monuments/BR",
-      "group": "Monuments/BR",
+      "group": "Blue Reverie",
       "hidden": false,
       "id": "Qhet",
       "isCard": true,
       "path": "Monuments/BR/Qhet.jpg",
       "section": "cards",
-      "title": "Qhet"
+      "title": "Qhet",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Sarcosa.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Sarcosa.jpg",
       "folder": "Monuments/BR",
-      "group": "Monuments/BR",
+      "group": "Blue Reverie",
       "hidden": false,
       "id": "Sarcosa",
       "isCard": true,
       "path": "Monuments/BR/Sarcosa.jpg",
       "section": "cards",
-      "title": "Sarcosa"
+      "title": "Sarcosa",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Toldar - Dishonor.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Monuments/BR/Toldar - Honor.jpg",
+      "color": "",
+      "configured": true,
+      "description": "If you have more Honor than Dishonor, flip this card.\nAfter a player wins a combat in this system., they may draw a secret objective.\nWhile your Dishonor is 8, this unit cannot be destroyed.",
+      "faction": "The Toldar Concordat",
       "faq": [],
       "filename": "Toldar - Dishonor.jpg",
+      "flavour": "",
       "folder": "Monuments/BR",
-      "group": "Monuments/BR",
+      "group": "Blue Reverie",
       "hidden": false,
       "id": "Toldar - Dishonor",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/BR/Toldar - Dishonor.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "cultural"
+          },
+          {
+            "not": false,
+            "value": "legendary"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Toldar - Dishonor"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Toldar Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Charnel Fane",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Toldar - Honor.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": true,
+        "production": {
+          "multi": 1,
+          "value": 2
+        },
+        "spaceCannon": {
+          "multi": 3,
+          "value": 4
+        },
+        "sustainDamage": false
+      },
+      "back": "Monuments/BR/Toldar - Dishonor.jpg",
+      "color": "",
+      "configured": true,
+      "description": "If you have more Dishonour and Honour, flip this card.\nThis unit gains the abilities matching your Honor:\n2+: **PRODUCTION 2**\n5+: **PLANETARY SHIELD**\n8: **SPACE CANNON 4 (x3)**",
+      "faction": "The Toldar Concordat",
       "faq": [],
       "filename": "Toldar - Honor.jpg",
+      "flavour": "",
       "folder": "Monuments/BR",
-      "group": "Monuments/BR",
+      "group": "Blue Reverie",
       "hidden": false,
       "id": "Toldar - Honor",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/BR/Toldar - Honor.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "cultural"
+          },
+          {
+            "not": false,
+            "value": "legendary"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Toldar - Honor"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Toldar Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "The People's Temple",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Uydai.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Uydai.jpg",
       "folder": "Monuments/BR",
-      "group": "Monuments/BR",
+      "group": "Blue Reverie",
       "hidden": false,
       "id": "Uydai",
       "isCard": true,
       "path": "Monuments/BR/Uydai.jpg",
       "section": "cards",
-      "title": "Uydai"
+      "title": "Uydai",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Xin.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Xin.jpg",
       "folder": "Monuments/BR",
-      "group": "Monuments/BR",
+      "group": "Blue Reverie",
       "hidden": false,
       "id": "Xin",
       "isCard": true,
       "path": "Monuments/BR/Xin.jpg",
       "section": "cards",
-      "title": "Xin"
+      "title": "Xin",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/Base M/Creuss Base.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Creuss Base.jpg",
+      "flavour": "",
       "folder": "Monuments/Base M",
       "group": "Monuments/Base M",
-      "hidden": false,
+      "hidden": true,
       "id": "Creuss Base",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/Base M/Creuss Base.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Creuss Base"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Creuss Base",
+      "type": "Other Component"
     },
     "Monuments/Base M/L1Z1X Base.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "L1Z1X Base.jpg",
+      "flavour": "",
       "folder": "Monuments/Base M",
       "group": "Monuments/Base M",
-      "hidden": false,
+      "hidden": true,
       "id": "L1Z1X Base",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/Base M/L1Z1X Base.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "L1Z1X Base"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "L1Z1X Base",
+      "type": "Other Component"
     },
     "Monuments/Base M/Saar Base.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Saar Base.jpg",
+      "flavour": "",
       "folder": "Monuments/Base M",
       "group": "Monuments/Base M",
-      "hidden": false,
+      "hidden": true,
       "id": "Saar Base",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/Base M/Saar Base.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Saar Base"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Saar Base",
+      "type": "Other Component"
     },
     "Monuments/Base+PoK/Arborec.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": {
+          "multi": 1,
+          "value": 8
+        },
+        "sustainDamage": false
+      },
       "back": "",
-      "configured": false,
-      "description": "",
+      "color": "",
+      "configured": true,
+      "description": "When you pass, place 1 infantry on a planet in or adjacent to this system other than Mecatol Rex. If that planet contains another player's units, place that unit into coexistence.",
+      "faction": "The Arborec",
       "faq": [],
       "filename": "Arborec.jpg",
+      "flavour": "",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "Arborec",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/Base+PoK/Arborec.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Arborec"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Arborec Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Flaah Orbitals",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/Argent.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Argent.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Prophecy of Kings",
       "hidden": false,
       "id": "Argent",
       "isCard": true,
       "path": "Monuments/Base+PoK/Argent.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Argent"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Argent",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/Creuss.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
-      "configured": false,
+      "color": "",
+      "configured": true,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Creuss.jpg",
+      "flavour": "",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "Creuss",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/Base+PoK/Creuss.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Creuss"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Creuss Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Revenance Circuit",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/Empyrean.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Empyrean.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Prophecy of Kings",
       "hidden": false,
       "id": "Empyrean",
       "isCard": true,
       "path": "Monuments/Base+PoK/Empyrean.jpg",
       "section": "cards",
-      "title": "Empyrean"
+      "title": "Empyrean",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/Hacan.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Hacan.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "Hacan",
       "isCard": true,
       "path": "Monuments/Base+PoK/Hacan.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Hacan"
     },
     "Monuments/Base+PoK/Jol-Nar.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Jol-Nar.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "Jol-Nar",
       "isCard": true,
@@ -337,12 +737,12 @@
     },
     "Monuments/Base+PoK/L1Z1X.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "L1Z1X.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "L1Z1X",
       "isCard": true,
@@ -352,42 +752,61 @@
     },
     "Monuments/Base+PoK/Letnev.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Letnev.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "Letnev",
       "isCard": true,
       "path": "Monuments/Base+PoK/Letnev.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Letnev"
     },
     "Monuments/Base+PoK/Mahact.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Mahact.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Prophecy of Kings",
       "hidden": false,
       "id": "Mahact",
       "isCard": true,
       "path": "Monuments/Base+PoK/Mahact.jpg",
       "section": "cards",
-      "title": "Mahact"
+      "title": "Mahact",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/Mentak.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Mentak.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "Mentak",
       "isCard": true,
@@ -396,28 +815,88 @@
       "title": "Mentak"
     },
     "Monuments/Base+PoK/Muaat.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
-      "configured": false,
-      "description": "",
+      "color": "",
+      "configured": true,
+      "description": "When you exhaust this planet to cast votes, for each war sun or flagship you control in this system, and for each supernova adjacent to this system, choose: cast 3 additional votes, or produce a hit against another player's ships in this or an adjacent system.",
+      "faction": "The Embers of Muaat",
       "faq": [],
       "filename": "Muaat.jpg",
+      "flavour": "",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "Muaat",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/Base+PoK/Muaat.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Muaat"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Muuat Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Glory Furnace",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/N'Orr.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "N'Orr.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "N'Orr",
       "isCard": true,
@@ -427,42 +906,103 @@
     },
     "Monuments/Base+PoK/NRA.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "NRA.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Prophecy of Kings",
       "hidden": false,
       "id": "NRA",
       "isCard": true,
       "path": "Monuments/Base+PoK/NRA.jpg",
       "section": "cards",
-      "title": "NRA"
+      "title": "NRA",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/Naalu.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
-      "configured": false,
+      "color": "",
+      "configured": true,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Naalu.jpg",
+      "flavour": "",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "Naalu",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/Base+PoK/Naalu.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Naalu"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Naalu",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/Nekro.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Nekro.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "Nekro",
       "isCard": true,
@@ -472,27 +1012,28 @@
     },
     "Monuments/Base+PoK/Nomad.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Nomad.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Prophecy of Kings",
       "hidden": false,
       "id": "Nomad",
       "isCard": true,
       "path": "Monuments/Base+PoK/Nomad.jpg",
       "section": "cards",
-      "title": "Nomad"
+      "title": "Nomad",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/Saar.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Saar.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "Saar",
       "isCard": true,
@@ -502,12 +1043,12 @@
     },
     "Monuments/Base+PoK/Sol.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Sol.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "Sol",
       "isCard": true,
@@ -517,18 +1058,19 @@
     },
     "Monuments/Base+PoK/Titans.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Titans.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Prophecy of Kings",
       "hidden": false,
       "id": "Titans",
       "isCard": true,
       "path": "Monuments/Base+PoK/Titans.jpg",
       "section": "cards",
-      "title": "Titans"
+      "title": "Titans",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/Vuil'Raith.jpg": {
       "abilities": {
@@ -545,7 +1087,7 @@
       },
       "back": "",
       "color": "",
-      "configured": false,
+      "configured": true,
       "description": "**DEPLOY**: When you gain control of a planet that contains 1 or more structures, you may place this unit on that planet and capture each other structure on that planet as if it were a non-fighter ship.",
       "faction": "The Vuil'Raith Cabal",
       "faq": [],
@@ -596,12 +1138,12 @@
     },
     "Monuments/Base+PoK/Winnu.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Winnu.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "Winnu",
       "isCard": true,
@@ -611,12 +1153,12 @@
     },
     "Monuments/Base+PoK/Xxcha.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Xxcha.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "Xxcha",
       "isCard": true,
@@ -626,12 +1168,12 @@
     },
     "Monuments/Base+PoK/Yin.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Yin.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "Yin",
       "isCard": true,
@@ -641,12 +1183,12 @@
     },
     "Monuments/Base+PoK/Yssaril.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Yssaril.jpg",
       "folder": "Monuments/Base+PoK",
-      "group": "Monuments/Base+PoK",
+      "group": "Twilight Imperium",
       "hidden": false,
       "id": "Yssaril",
       "isCard": true,
@@ -656,408 +1198,435 @@
     },
     "Monuments/DS/Augurs.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Augurs.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Augurs",
       "isCard": true,
       "path": "Monuments/DS/Augurs.jpg",
       "section": "cards",
-      "title": "Augurs"
+      "title": "Augurs",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Axis.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Axis.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Axis",
       "isCard": true,
       "path": "Monuments/DS/Axis.jpg",
       "section": "cards",
-      "title": "Axis"
+      "title": "Axis",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Bentor.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Bentor.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Bentor",
       "isCard": true,
       "path": "Monuments/DS/Bentor.jpg",
       "section": "cards",
-      "title": "Bentor"
+      "title": "Bentor",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Celdauri.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Celdauri.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Celdauri",
       "isCard": true,
       "path": "Monuments/DS/Celdauri.jpg",
       "section": "cards",
-      "title": "Celdauri"
+      "title": "Celdauri",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Cheiran.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Cheiran.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Cheiran",
       "isCard": true,
       "path": "Monuments/DS/Cheiran.jpg",
       "section": "cards",
-      "title": "Cheiran"
+      "title": "Cheiran",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Cymiae.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Cymiae.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Cymiae",
       "isCard": true,
       "path": "Monuments/DS/Cymiae.jpg",
       "section": "cards",
-      "title": "Cymiae"
+      "title": "Cymiae",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Dih-Mohn.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Dih-Mohn.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Dih-Mohn",
       "isCard": true,
       "path": "Monuments/DS/Dih-Mohn.jpg",
       "section": "cards",
-      "title": "Dih-Mohn"
+      "title": "Dih-Mohn",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Edyn.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Edyn.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Edyn",
       "isCard": true,
       "path": "Monuments/DS/Edyn.jpg",
       "section": "cards",
-      "title": "Edyn"
+      "title": "Edyn",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/FSC.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "FSC.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "FSC",
       "isCard": true,
       "path": "Monuments/DS/FSC.jpg",
       "section": "cards",
-      "title": "FSC"
+      "title": "FSC",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Florzen.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Florzen.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Florzen",
       "isCard": true,
       "path": "Monuments/DS/Florzen.jpg",
       "section": "cards",
-      "title": "Florzen"
+      "title": "Florzen",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/GLEdge.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "GLEdge.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "GLEdge",
       "isCard": true,
       "path": "Monuments/DS/GLEdge.jpg",
       "section": "cards",
-      "title": "GLEdge"
+      "title": "GLEdge",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Ghemina.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Ghemina.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Ghemina",
       "isCard": true,
       "path": "Monuments/DS/Ghemina.jpg",
       "section": "cards",
-      "title": "Ghemina"
+      "title": "Ghemina",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Ghoti.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Ghoti.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Ghoti",
       "isCard": true,
       "path": "Monuments/DS/Ghoti.jpg",
       "section": "cards",
-      "title": "Ghoti"
+      "title": "Ghoti",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Khrask.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Khrask.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Khrask",
       "isCard": true,
       "path": "Monuments/DS/Khrask.jpg",
       "section": "cards",
-      "title": "Khrask"
+      "title": "Khrask",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Kjalengard.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Kjalengard.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Kjalengard",
       "isCard": true,
       "path": "Monuments/DS/Kjalengard.jpg",
       "section": "cards",
-      "title": "Kjalengard"
+      "title": "Kjalengard",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Kollecc.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Kollecc.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Kollecc",
       "isCard": true,
       "path": "Monuments/DS/Kollecc.jpg",
       "section": "cards",
-      "title": "Kollecc"
+      "title": "Kollecc",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Kolume.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Kolume.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Kolume",
       "isCard": true,
       "path": "Monuments/DS/Kolume.jpg",
       "section": "cards",
-      "title": "Kolume"
+      "title": "Kolume",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Kortali.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Kortali.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Kortali",
       "isCard": true,
       "path": "Monuments/DS/Kortali.jpg",
       "section": "cards",
-      "title": "Kortali"
+      "title": "Kortali",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Kyro.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Kyro.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Kyro",
       "isCard": true,
       "path": "Monuments/DS/Kyro.jpg",
       "section": "cards",
-      "title": "Kyro"
+      "title": "Kyro",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Lanefir.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Lanefir.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Lanefir",
       "isCard": true,
       "path": "Monuments/DS/Lanefir.jpg",
       "section": "cards",
-      "title": "Lanefir"
+      "title": "Lanefir",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Li-Zho.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Li-Zho.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Li-Zho",
       "isCard": true,
       "path": "Monuments/DS/Li-Zho.jpg",
       "section": "cards",
-      "title": "Li-Zho"
+      "title": "Li-Zho",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Mirveda.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Mirveda.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Mirveda",
       "isCard": true,
       "path": "Monuments/DS/Mirveda.jpg",
       "section": "cards",
-      "title": "Mirveda"
+      "title": "Mirveda",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Mortheus.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Mortheus.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Mortheus",
       "isCard": true,
       "path": "Monuments/DS/Mortheus.jpg",
       "section": "cards",
-      "title": "Mortheus"
+      "title": "Mortheus",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Myko.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Myko.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Myko",
       "isCard": true,
       "path": "Monuments/DS/Myko.jpg",
       "section": "cards",
-      "title": "Myko"
+      "title": "Myko",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Nivyn.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Nivyn.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Nivyn",
       "isCard": true,
       "path": "Monuments/DS/Nivyn.jpg",
       "section": "cards",
-      "title": "Nivyn"
+      "title": "Nivyn",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Nokar.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Nokar.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Nokar",
       "isCard": true,
       "path": "Monuments/DS/Nokar.jpg",
       "section": "cards",
-      "title": "Nokar"
+      "title": "Nokar",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Olradin.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Olradin.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Olradin",
       "isCard": true,
       "path": "Monuments/DS/Olradin.jpg",
       "section": "cards",
-      "title": "Olradin"
+      "title": "Olradin",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Rhodun Back.jpg": {
       "abilities": {
@@ -1211,48 +1780,51 @@
     },
     "Monuments/DS/Roh'Dhna.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Roh'Dhna.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Roh'Dhna",
       "isCard": true,
       "path": "Monuments/DS/Roh'Dhna.jpg",
       "section": "cards",
-      "title": "Roh'Dhna"
+      "title": "Roh'Dhna",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Tnelis.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Tnelis.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Tnelis",
       "isCard": true,
       "path": "Monuments/DS/Tnelis.jpg",
       "section": "cards",
-      "title": "Tnelis"
+      "title": "Tnelis",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Vaden.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Vaden.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Vaden",
       "isCard": true,
       "path": "Monuments/DS/Vaden.jpg",
       "section": "cards",
-      "title": "Vaden"
+      "title": "Vaden",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Vaylerian.jpg": {
       "abilities": {
@@ -1335,93 +1907,165 @@
     },
     "Monuments/DS/Veldyr.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Veldyr.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Veldyr",
       "isCard": true,
       "path": "Monuments/DS/Veldyr.jpg",
       "section": "cards",
-      "title": "Veldyr"
+      "title": "Veldyr",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Zelian.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Zelian.jpg",
       "folder": "Monuments/DS",
-      "group": "Monuments/DS",
+      "group": "Discordant Stars",
       "hidden": false,
       "id": "Zelian",
       "isCard": true,
       "path": "Monuments/DS/Zelian.jpg",
       "section": "cards",
-      "title": "Zelian"
+      "title": "Zelian",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/Other/Drahn.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": {
+          "multi": 2,
+          "value": 8
+        },
+        "sustainDamage": false
+      },
       "back": "",
-      "configured": false,
-      "description": "",
+      "color": "",
+      "configured": true,
+      "description": "At the beginning of your turn you may remove this unit from this planet and place it onto a different planet you control.",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Drahn.jpg",
+      "flavour": "It is more a reminder of Drahn influence than a true 'monument'.",
       "folder": "Monuments/Other",
-      "group": "Monuments/Other",
+      "group": "Keleres+ Expansion",
       "hidden": false,
       "id": "Drahn",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/Other/Drahn.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "industrial"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Drahn"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Drahn Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Koldan's Outpost",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/TE/Bastion.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Bastion.jpg",
       "folder": "Monuments/TE",
-      "group": "Monuments/TE",
+      "group": "Thunder's Edge",
       "hidden": false,
       "id": "Bastion",
       "isCard": true,
       "path": "Monuments/TE/Bastion.jpg",
       "section": "cards",
-      "title": "Bastion"
+      "title": "Bastion",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/TE/Crimson Rebellion.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Crimson Rebellion.jpg",
       "folder": "Monuments/TE",
-      "group": "Monuments/TE",
+      "group": "Thunder's Edge",
       "hidden": false,
       "id": "Crimson Rebellion",
       "isCard": true,
       "path": "Monuments/TE/Crimson Rebellion.jpg",
       "section": "cards",
-      "title": "Crimson Rebellion"
+      "title": "Crimson Rebellion",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/TE/Deepwrought.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Deepwrought.jpg",
       "folder": "Monuments/TE",
-      "group": "Monuments/TE",
+      "group": "Thunder's Edge",
       "hidden": false,
       "id": "Deepwrought",
       "isCard": true,
       "path": "Monuments/TE/Deepwrought.jpg",
       "section": "cards",
-      "title": "Deepwrought"
+      "title": "Deepwrought",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/TE/Firmament.jpg": {
       "abilities": {
@@ -1508,18 +2152,19 @@
     },
     "Monuments/TE/Keleres.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Keleres.jpg",
       "folder": "Monuments/TE",
-      "group": "Monuments/TE",
+      "group": "Thunder's Edge",
       "hidden": false,
       "id": "Keleres",
       "isCard": true,
       "path": "Monuments/TE/Keleres.jpg",
       "section": "cards",
-      "title": "Keleres"
+      "title": "Keleres",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/TE/Obsidian.jpg": {
       "abilities": {
@@ -1603,27 +2248,29 @@
     },
     "Monuments/TE/Ral-Nel.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faq": [],
       "filename": "Ral-Nel.jpg",
       "folder": "Monuments/TE",
-      "group": "Monuments/TE",
+      "group": "Thunder's Edge",
       "hidden": false,
       "id": "Ral-Nel",
       "isCard": true,
       "path": "Monuments/TE/Ral-Nel.jpg",
       "section": "cards",
-      "title": "Ral-Nel"
+      "title": "Ral-Nel",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/TF/King Black.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
+      "faction": "Mahact Kings",
       "faq": [],
       "filename": "King Black.jpg",
       "folder": "Monuments/TF",
-      "group": "Monuments/TF",
+      "group": "Twilight's Fall",
       "hidden": false,
       "id": "King Black",
       "isCard": true,
@@ -1633,12 +2280,13 @@
     },
     "Monuments/TF/King Blue.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
+      "faction": "Mahact Kings",
       "faq": [],
       "filename": "King Blue.jpg",
       "folder": "Monuments/TF",
-      "group": "Monuments/TF",
+      "group": "Twilight's Fall",
       "hidden": false,
       "id": "King Blue",
       "isCard": true,
@@ -1648,12 +2296,13 @@
     },
     "Monuments/TF/King Green.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
+      "faction": "Mahact Kings",
       "faq": [],
       "filename": "King Green.jpg",
       "folder": "Monuments/TF",
-      "group": "Monuments/TF",
+      "group": "Twilight's Fall",
       "hidden": false,
       "id": "King Green",
       "isCard": true,
@@ -1663,12 +2312,13 @@
     },
     "Monuments/TF/King Orange.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
+      "faction": "Mahact Kings",
       "faq": [],
       "filename": "King Orange.jpg",
       "folder": "Monuments/TF",
-      "group": "Monuments/TF",
+      "group": "Twilight's Fall",
       "hidden": false,
       "id": "King Orange",
       "isCard": true,
@@ -1678,12 +2328,13 @@
     },
     "Monuments/TF/King Pink.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
+      "faction": "Mahact Kings",
       "faq": [],
       "filename": "King Pink.jpg",
       "folder": "Monuments/TF",
-      "group": "Monuments/TF",
+      "group": "Twilight's Fall",
       "hidden": false,
       "id": "King Pink",
       "isCard": true,
@@ -1693,12 +2344,13 @@
     },
     "Monuments/TF/King Purple.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
+      "faction": "Mahact Kings",
       "faq": [],
       "filename": "King Purple.jpg",
       "folder": "Monuments/TF",
-      "group": "Monuments/TF",
+      "group": "Twilight's Fall",
       "hidden": false,
       "id": "King Purple",
       "isCard": true,
@@ -1708,12 +2360,13 @@
     },
     "Monuments/TF/King Red.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
+      "faction": "Mahact Kings",
       "faq": [],
       "filename": "King Red.jpg",
       "folder": "Monuments/TF",
-      "group": "Monuments/TF",
+      "group": "Twilight's Fall",
       "hidden": false,
       "id": "King Red",
       "isCard": true,
@@ -1723,12 +2376,13 @@
     },
     "Monuments/TF/King White.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
+      "faction": "Mahact Kings",
       "faq": [],
       "filename": "King White.jpg",
       "folder": "Monuments/TF",
-      "group": "Monuments/TF",
+      "group": "Twilight's Fall",
       "hidden": false,
       "id": "King White",
       "isCard": true,
@@ -1738,17 +2392,36 @@
     },
     "Monuments/TF/King Yellow.jpg": {
       "back": "",
-      "configured": false,
+      "configured": true,
       "description": "",
+      "faction": "Mahact Kings",
       "faq": [],
       "filename": "King Yellow.jpg",
       "folder": "Monuments/TF",
-      "group": "Monuments/TF",
+      "group": "Twilight's Fall",
       "hidden": false,
       "id": "King Yellow",
       "isCard": true,
       "path": "Monuments/TF/King Yellow.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "King Yellow"
     }
   }

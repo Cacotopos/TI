@@ -6,47 +6,61 @@
   <section class="bg-panel border border-border rounded-xl p-6 shadow-lg markdown-content h-full">{{ b.content | markdown | safe }}</section>
   {% elif b.type == 'asset' %}
   <section class="bg-panel border border-border rounded-xl p-6 shadow-lg text-center h-full">
-    {% if b.asset %}<img src="assets/images/{{ b.asset }}" alt="{{ b.subtitle or '' }}" style="width: {{ b.width or 100 }}%; max-width: 100%; margin: 0 auto;" class="rounded-lg"/>{% endif %}
+    {% if b.asset %}{% set img_width = b.width or 100 %}<div class="asset-block-img-wrap" data-width="{{ img_width }}"><img src="assets/images/{{ b.asset }}" alt="{{ b.subtitle or '' }}" class="rounded-lg" style="width:100%;display:block;"/></div>{% endif %}
     {% if b.subtitle %}<p class="text-muted mt-2 text-sm">{{ b.subtitle }}</p>{% endif %}
   </section>
   {% elif b.type == 'cards' %}
-  {% set grp_images = site.images | selectattr('section', 'equalto', section.id) | selectattr('group', 'equalto', b.group) | list if b.group else site.images | selectattr('section', 'equalto', section.id) | list %}
-  <section class="bg-panel border border-border rounded-xl p-4 shadow-lg h-full">
-    {% if b.group %}<h3 class="text-base font-semibold mb-3 text-muted">{{ b.group }}</h3>{% endif %}
-    <div class="grid {{ 'grid-cols-2' if half else 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4' }} gap-4 cards-grid">
-      {% for img in grp_images %}
-      <div class="card-item bg-panel border border-border rounded-xl p-3 shadow-lg hover:border-accent transition-colors cursor-pointer"
-           data-card-id="{{ img.id }}"
-           data-card-name="{{ img.name }}"
-           data-card-subtitle="{{ img.subtitle | default('') | forceescape }}"
-           data-card-back-title="{{ img.backTitle | default('') | forceescape }}"
-           data-card-back-subtitle="{{ img.backSubtitle | default('') | forceescape }}"
-           data-card-type="{{ img.type }}"
-           data-card-faction="{{ img.faction }}"
-           data-card-section="{{ section.title }}"
-           data-card-group="{{ img.group }}"
-           data-card-description="{{ img.description }}"
-           data-card-faq="{{ img.faq | tojson | forceescape }}"
-           data-card-stats="{{ img.stats | tojson | forceescape }}"
-           data-card-abilities="{{ img.abilities | tojson | forceescape }}"
-           data-card-prereq="{{ img.prereq | tojson | forceescape }}"
-           data-card-color="{{ img.color }}"
-           data-card-synergy="{{ img.synergy | tojson | forceescape }}"
-           data-card-source="{{ img.source | tojson | forceescape }}"
-           data-card-placement="{{ img.placement | tojson | forceescape }}"
-           data-card-back="{{ img.back }}"
-           data-card-back-orientation="{{ img.backOrientation | default('') }}"
-           data-card-front-path="{{ img.path }}"
-           data-card-orientation="{{ img.orientation }}"
-           data-card-flavour="{{ img.flavour | default('') | forceescape }}">
-        <div class="card-image-wrapper">
-          <img src="{{ img.path }}" alt="{{ img.name }}" class="card-image rounded-lg"/>
-        </div>
-        <p class="text-sm text-center mt-2 font-medium truncate" title="{{ img.name }}">{{ img.name }}</p>
-        {% if img.subtitle %}<p class="text-xs text-center text-muted truncate">{{ img.subtitle }}</p>{% endif %}
-      </div>
-      {% endfor %}
+  {% set all_images = site.images | selectattr('section', 'equalto', section.id) | list %}
+  {% set grp_images = all_images | selectattr('group', 'equalto', b.group) | list if b.group else all_images %}
+  {% set grid_cls = 'grid-cols-2' if half else 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4' %}
+  {% macro card_item(img) %}
+  <div class="card-item bg-panel border border-border rounded-xl p-3 shadow-lg hover:border-accent transition-colors cursor-pointer"
+       data-card-id="{{ img.id }}"
+       data-card-name="{{ img.name }}"
+       data-card-subtitle="{{ img.subtitle | default('') | forceescape }}"
+       data-card-back-title="{{ img.backTitle | default('') | forceescape }}"
+       data-card-back-subtitle="{{ img.backSubtitle | default('') | forceescape }}"
+       data-card-type="{{ img.type }}"
+       data-card-faction="{{ img.faction }}"
+       data-card-section="{{ section.title }}"
+       data-card-group="{{ img.group }}"
+       data-card-description="{{ img.description }}"
+       data-card-faq="{{ img.faq | tojson | forceescape }}"
+       data-card-stats="{{ img.stats | tojson | forceescape }}"
+       data-card-abilities="{{ img.abilities | tojson | forceescape }}"
+       data-card-prereq="{{ img.prereq | tojson | forceescape }}"
+       data-card-color="{{ img.color }}"
+       data-card-synergy="{{ img.synergy | tojson | forceescape }}"
+       data-card-source="{{ img.source | tojson | forceescape }}"
+       data-card-placement="{{ img.placement | tojson | forceescape }}"
+       data-card-back="{{ img.back }}"
+       data-card-back-orientation="{{ img.backOrientation | default('') }}"
+       data-card-front-path="{{ img.path }}"
+       data-card-orientation="{{ img.orientation }}"
+       data-card-flavour="{{ img.flavour | default('') | forceescape }}">
+    <div class="card-image-wrapper">
+      <img src="{{ img.path }}" alt="{{ img.name }}" class="card-image rounded-lg"/>
     </div>
+    <p class="text-sm text-center mt-2 font-medium truncate" title="{{ img.name }}">{{ img.name }}</p>
+    {% if img.subtitle %}<p class="text-xs text-center text-muted truncate">{{ img.subtitle }}</p>{% endif %}
+  </div>
+  {% endmacro %}
+  <section class="bg-panel border border-border rounded-xl p-4 shadow-lg h-full">
+    {% if b.group %}
+      <h3 class="text-base font-semibold mb-3 text-muted">{{ b.group }}</h3>
+      <div class="grid {{ grid_cls }} gap-4 cards-grid">
+        {% for img in grp_images %}{{ card_item(img) }}{% endfor %}
+      </div>
+    {% else %}
+      {% set groups = grp_images | map(attribute='group') | unique | sort | list %}
+      {% for grp in groups %}
+        {% set grp_items = grp_images | selectattr('group', 'equalto', grp) | list %}
+        <h3 class="text-base font-semibold mb-3 mt-5 first:mt-0 text-muted">{{ grp }}</h3>
+        <div class="grid {{ grid_cls }} gap-4 cards-grid mb-4">
+          {% for img in grp_items %}{{ card_item(img) }}{% endfor %}
+        </div>
+      {% endfor %}
+    {% endif %}
   </section>
   {% endif %}
 {% endmacro %}
@@ -158,4 +172,5 @@
 </div>
 <script src="assets/js/cards.js"></script>
 {% endif %}
+<script>document.querySelectorAll('.asset-block-img-wrap[data-width]').forEach(function(el){el.style.width=el.dataset.width+'%';el.style.maxWidth='100%';el.style.margin='0 auto';});</script>
 {% endblock %}

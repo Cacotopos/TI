@@ -309,28 +309,43 @@
         <label>Type</label>
         <select id="bulk-edit-type">
           <option value="">(no change)</option>
+          <option value="Action Card">Action Card</option>
+          <option value="Additional Ability">Additional Ability</option>
+          <option value="Agent">Agent</option>
+          <option value="Agenda">Agenda</option>
           <option value="Alliance">Alliance</option>
           <option value="Breakthrough">Breakthrough</option>
           <option value="Commander">Commander</option>
+          <option value="Exploration">Exploration</option>
           <option value="Faction Sheet">Faction Sheet</option>
           <option value="Hero">Hero</option>
           <option value="Legendary Ability">Legendary Ability</option>
           <option value="Other Component">Other Component</option>
+          <option value="Planet">Planet</option>
           <option value="Promissory Note">Promissory Note</option>
+          <option value="Public Objective">Public Objective</option>
           <option value="Relic">Relic</option>
+          <option value="Relic Fragment">Relic Fragment</option>
+          <option value="Rulebook">Rulebook</option>
+          <option value="Scenario">Scenario</option>
+          <option value="Secret Objective">Secret Objective</option>
+          <option value="Station">Station</option>
           <option value="Technology">Technology</option>
-          <option value="Unit - Fighter">Unit - Fighter</option>
-          <option value="Unit - Flagship">Unit - Flagship</option>
-          <option value="Unit - Infantry">Unit - Infantry</option>
-          <option value="Unit - Mech">Unit - Mech</option>
-          <option value="Unit - Structure - Advanced Structure">Unit - Structure - Advanced Structure</option>
+          <option value="Tile">Tile</option>
+          <option value="Token">Token</option>
+          <option value="Unit - Ship - War sun">Unit - Ship - War sun</option>
+          <option value="Unit - Ship - Dreadnought">Unit - Ship - Dreadnought</option>
+          <option value="Unit - Ship - Flagship">Unit - Ship - Flagship</option>
+          <option value="Unit - Ship - Special">Unit - Ship - Special</option>
+          <option value="Unit - Ship - Fighter">Unit - Ship - Fighter</option>
+          <option value="Unit - Ship - Carrier">Unit - Ship - Carrier</option>
+          <option value="Unit - Ship - Cruiser">Unit - Ship - Cruiser</option>
+          <option value="Unit - Ship - Destroyer">Unit - Ship - Destroyer</option>
+          <option value="Unit - Ground Force - Infantry">Unit - Ground Force - Infantry</option>
+          <option value="Unit - Ground Force - Mech">Unit - Ground Force - Mech</option>
+          <option value="Unit - Structure - Monument">Unit - Structure - Monument</option>
           <option value="Unit - Structure - Basic Structure">Unit - Structure - Basic Structure</option>
-          <option value="Unit - War Sun">Unit - War Sun</option>
-          <option value="Additional Ability">Additional Ability</option>
-          <option value="Agenda">Agenda</option>
-          <option value="Action Card">Action Card</option>
-          <option value="Exploration">Exploration</option>
-          <option value="Objective">Objective</option>
+          <option value="Unit - Structure - Advanced Structure">Unit - Structure - Advanced Structure</option>
         </select>
       </div>
     </div>
@@ -491,6 +506,18 @@
         </select>
       </div>
     </div>
+    <div class="row">
+      <div>
+        <label>Faction</label>
+        <input id="asset-edit-faction" type="text" list="asset-edit-faction-list" placeholder="Type or select a faction"/>
+        <datalist id="asset-edit-faction-list"></datalist>
+      </div>
+      <div>
+        <label>Group <span class="tooltip-icon" data-tooltip="Groups cards under sub-headings on card pages." tabindex="0">i</span></label>
+        <input id="asset-edit-group" type="text" list="asset-edit-group-list" placeholder="e.g. Drahn, Units, Technologies"/>
+        <datalist id="asset-edit-group-list"></datalist>
+      </div>
+    </div>
     <div class="editor-text-row">
       <div>
         <label>Description (Markdown)</label>
@@ -594,19 +621,6 @@
     <div id="asset-edit-placement-inputs" class="hidden well">
       <p class="hint" style="margin-bottom:0.5rem">Select allowed placement targets. Toggle "Not" to invert (exclude that target).</p>
       <div class="placement-rules" id="placement-rules-list"></div>
-    </div>
-
-    <div class="row">
-      <div>
-        <label>Faction</label>
-        <input id="asset-edit-faction" type="text" list="asset-edit-faction-list" placeholder="Type or select a faction"/>
-        <datalist id="asset-edit-faction-list"></datalist>
-      </div>
-      <div>
-        <label>Group <span class="tooltip-icon" data-tooltip="Groups cards under sub-headings on card pages." tabindex="0">i</span></label>
-        <input id="asset-edit-group" type="text" list="asset-edit-group-list" placeholder="e.g. Drahn, Units, Technologies"/>
-        <datalist id="asset-edit-group-list"></datalist>
-      </div>
     </div>
 
     <div id="unit-section" class="hidden">
@@ -1510,7 +1524,7 @@ function openBulkEditModal() {
   document.getElementById('bulk-edit-type').value = '';
   document.getElementById('bulk-edit-back-filter').value = '';
   document.getElementById('bulk-edit-modal-title').textContent = `Bulk Edit (${selectedAssets.size} assets)`;
-  document.getElementById('bulk-edit-modal').classList.add('open');
+  document.getElementById('bulk-edit-modal').classList.add('visible');
 }
 
 function populateBulkBackOptions(filter) {
@@ -1547,14 +1561,14 @@ function applyBulkEdit() {
   });
 
   setDirty(true);
-  document.getElementById('bulk-edit-modal').classList.remove('open');
+  document.getElementById('bulk-edit-modal').classList.remove('visible');
   clearSelection();
 }
 
 document.getElementById('bulk-edit-btn').addEventListener('click', openBulkEditModal);
 document.getElementById('clear-selection-btn').addEventListener('click', clearSelection);
 document.getElementById('bulk-edit-cancel-btn').addEventListener('click', () => {
-  document.getElementById('bulk-edit-modal').classList.remove('open');
+  document.getElementById('bulk-edit-modal').classList.remove('visible');
 });
 document.getElementById('bulk-edit-apply-btn').addEventListener('click', applyBulkEdit);
 document.getElementById('bulk-edit-back-filter').addEventListener('input', function() {
