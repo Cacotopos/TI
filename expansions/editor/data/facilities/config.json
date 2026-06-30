@@ -3,7 +3,7 @@
   "name": "Facilities",
   "version": "3.0",
   "description": "An infrastructure mini-expansion for Twilight Imperium 4th Edition",
-  "overview": "",
+  "overview": "Structures are divided into basic and advanced facilities. You may have up to 2 basic and up to 1 advanced facilities on a planet.\nNote: PDS are basic and Space Docks are advanced facilities.",
   "source": {
     "images": "expansions/source/facilities"
   },
@@ -13,23 +13,71 @@
     {
       "id": "general",
       "title": "Overview",
-      "type": "markdown",
-      "blocks": []
+      "type": "page",
+      "blocks": [
+        {
+          "type": "markdown",
+          "content": "Structures are divided into basic and advanced facilities. You may have up to 2 basic and up to 1 advanced facilities on a planet.\nNote: PDS are basic and Space Docks are advanced facilities.",
+          "column": "full"
+        }
+      ]
     },
     {
       "id": "componentns",
       "title": "Components",
-      "type": "cards"
+      "type": "page",
+      "blocks": []
     },
     {
       "id": "player-sheets",
       "title": "Player Sheets",
-      "type": "cards"
+      "type": "page",
+      "blocks": [
+        {
+          "type": "markdown",
+          "content": "Player sheets for each faction, top and bottom, are available for Facilities players.",
+          "column": "left"
+        },
+        {
+          "type": "asset",
+          "asset": "Player Sheets/Bottom/Orange.jpg",
+          "subtitle": "",
+          "width": 100,
+          "column": "right"
+        },
+        {
+          "type": "markdown",
+          "content": "And there are 10 units for each player.",
+          "column": "full"
+        },
+        {
+          "type": "cards",
+          "group": "Basic Facilities",
+          "column": "full"
+        },
+        {
+          "type": "cards",
+          "group": "Advanced Facilities",
+          "column": "full"
+        }
+      ]
     },
     {
       "id": "cards",
       "title": "Cards",
-      "type": "cards"
+      "type": "page",
+      "blocks": [
+        {
+          "type": "markdown",
+          "content": "Blue Reveries supports a set of faction facilities.",
+          "column": "full"
+        },
+        {
+          "type": "cards",
+          "group": "Cards/Unit Cards",
+          "column": "full"
+        }
+      ]
     }
   ],
   "assets": {
@@ -355,20 +403,45 @@
     },
     "Cards/Base Reminders/Refinery x2.jpg": {
       "back": "",
-      "configured": false,
+      "color": "",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Refinery x2.jpg",
+      "flavour": "",
       "folder": "Cards/Base Reminders",
       "group": "Cards/Base Reminders",
-      "hidden": false,
+      "hidden": true,
       "id": "Refinery x2",
       "isCard": true,
       "orientation": "portrait",
       "path": "Cards/Base Reminders/Refinery x2.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Refinery x2",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Reminder",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Refinery",
       "type": "Other Component"
     },
     "Cards/Base Reminders/Transit Network.jpg": {
@@ -966,148 +1039,599 @@
       "type": "Other Component"
     },
     "Cards/Unit Cards/Basic Colony.jpg": {
-      "back": "",
-      "configured": false,
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Cards/Base Reminders/Colony x2.jpg",
+      "color": "",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Basic Colony.jpg",
+      "flavour": "",
       "folder": "Cards/Unit Cards",
-      "group": "Cards/Unit Cards",
+      "group": "Basic Facilities",
       "hidden": false,
       "id": "Basic Colony",
       "isCard": true,
       "orientation": "landscape",
       "path": "Cards/Unit Cards/Basic Colony.jpg",
-      "section": "cards",
-      "title": "Basic Colony",
-      "type": "Other Component"
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "any"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "player-sheets",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Basic Facility",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Colony",
+      "type": "Unit - Structure - Basic Structure"
     },
     "Cards/Unit Cards/Basic Core Factory.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
-      "configured": false,
+      "color": "",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Basic Core Factory.jpg",
+      "flavour": "",
       "folder": "Cards/Unit Cards",
-      "group": "Cards/Unit Cards",
+      "group": "Advanced Facilities",
       "hidden": false,
       "id": "Basic Core Factory",
       "isCard": true,
       "orientation": "landscape",
       "path": "Cards/Unit Cards/Basic Core Factory.jpg",
-      "section": "cards",
-      "title": "Basic Core Factory",
-      "type": "Other Component"
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "player-sheets",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Advanced Facility",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Core Factory",
+      "type": "Unit - Structure - Advanced Structure"
     },
     "Cards/Unit Cards/Basic Garrison.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": true,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
-      "configured": false,
-      "description": "",
+      "color": "",
+      "configured": true,
+      "description": "***DEPLOY:*** When you place infantry on a planet you control, you may place this unit on that planet.\nWhen an infantry unit on this planet would be destroyed, you may have one of your structures on this planet become damaged instead,",
       "faction": "",
       "faq": [],
       "filename": "Basic Garrison.jpg",
+      "flavour": "",
       "folder": "Cards/Unit Cards",
-      "group": "Cards/Unit Cards",
+      "group": "Basic Facilities",
       "hidden": false,
       "id": "Basic Garrison",
       "isCard": true,
       "orientation": "landscape",
       "path": "Cards/Unit Cards/Basic Garrison.jpg",
-      "section": "cards",
-      "title": "Basic Garrison",
-      "type": "Other Component"
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "any"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "player-sheets",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Basic Facility",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Garrison",
+      "type": "Unit - Structure - Basic Structure"
     },
     "Cards/Unit Cards/Basic Laboratory.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Cards/Base Reminders/Laboratory.jpg",
+      "color": "",
+      "configured": true,
+      "description": "The first time you gain a technology this turn, gain 1 trade good. Then, ready this planet if it has a technology speciality.",
       "faction": "",
       "faq": [],
       "filename": "Basic Laboratory.jpg",
+      "flavour": "",
       "folder": "Cards/Unit Cards",
-      "group": "Cards/Unit Cards",
+      "group": "Basic Facilities",
       "hidden": false,
       "id": "Basic Laboratory",
       "isCard": true,
       "orientation": "landscape",
       "path": "Cards/Unit Cards/Basic Laboratory.jpg",
-      "section": "cards",
-      "title": "Basic Laboratory",
-      "type": "Other Component"
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "any"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "player-sheets",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Basic Facility",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Laboratory",
+      "type": "Unit - Structure - Basic Structure"
     },
     "Cards/Unit Cards/Basic Logistics Hub.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
-      "configured": false,
-      "description": "",
+      "color": "",
+      "configured": true,
+      "description": "While this planet is adjacent to a neighbor's planet that contains a structure, increase your commodity value by 1.\nYou can resolve transactions with players who control a logistics hub on planets that share a planetary trait with this planet.",
       "faction": "",
       "faq": [],
       "filename": "Basic Logistics Hub.jpg",
+      "flavour": "",
       "folder": "Cards/Unit Cards",
-      "group": "Cards/Unit Cards",
+      "group": "Advanced Facilities",
       "hidden": false,
       "id": "Basic Logistics Hub",
       "isCard": true,
       "orientation": "landscape",
       "path": "Cards/Unit Cards/Basic Logistics Hub.jpg",
-      "section": "cards",
-      "title": "Basic Logistics Hub",
-      "type": "Other Component"
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": true,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "player-sheets",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Advanced Facility",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Logistics Hub",
+      "type": "Unit - Structure - Advanced Structure"
     },
     "Cards/Unit Cards/Basic Political Embassy.jpg": {
-      "back": "",
-      "configured": false,
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Cards/Base Reminders/Political Embassy.jpg",
+      "color": "",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Basic Political Embassy.jpg",
+      "flavour": "",
       "folder": "Cards/Unit Cards",
-      "group": "Cards/Unit Cards",
+      "group": "Advanced Facilities",
       "hidden": false,
       "id": "Basic Political Embassy",
       "isCard": true,
       "orientation": "landscape",
       "path": "Cards/Unit Cards/Basic Political Embassy.jpg",
-      "section": "cards",
-      "title": "Basic Political Embassy",
-      "type": "Other Component"
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": true,
+            "value": "industrial"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "player-sheets",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Advanced Facility",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Political Embassy",
+      "type": "Unit - Structure - Advanced Structure"
     },
     "Cards/Unit Cards/Basic Refinery.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Cards/Base Reminders/Refinery x2.jpg",
+      "color": "",
+      "configured": true,
+      "description": "This planet's resource value is increased by 1.",
       "faction": "",
       "faq": [],
       "filename": "Basic Refinery.jpg",
+      "flavour": "",
       "folder": "Cards/Unit Cards",
-      "group": "Cards/Unit Cards",
+      "group": "Basic Facilities",
       "hidden": false,
       "id": "Basic Refinery",
       "isCard": true,
       "orientation": "landscape",
       "path": "Cards/Unit Cards/Basic Refinery.jpg",
-      "section": "cards",
-      "title": "Basic Refinery",
-      "type": "Other Component"
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "any"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "player-sheets",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Basic Facility",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Refinery",
+      "type": "Unit - Structure - Basic Structure"
     },
     "Cards/Unit Cards/Basic Transit Network.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Cards/Base Reminders/Transit Network.jpg",
+      "color": "",
+      "configured": true,
+      "description": "During movement, you may exhaust this planet to apply +1 to the move value of 1 ship in a system that contains your structures.",
       "faction": "",
       "faq": [],
       "filename": "Basic Transit Network.jpg",
+      "flavour": "",
       "folder": "Cards/Unit Cards",
-      "group": "Cards/Unit Cards",
+      "group": "Advanced Facilities",
       "hidden": false,
       "id": "Basic Transit Network",
       "isCard": true,
       "orientation": "landscape",
       "path": "Cards/Unit Cards/Basic Transit Network.jpg",
-      "section": "cards",
-      "title": "Basic Transit Network",
-      "type": "Other Component"
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": true,
+            "value": "hazardous"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "player-sheets",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Advanced Facility",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Transit Network",
+      "type": "Unit - Structure - Advanced Structure"
     },
     "Cards/Unit Cards/Belkosea Garrison.jpg": {
       "back": "",
@@ -2258,16 +2782,16 @@
       "type": "Other Component"
     },
     "Player Sheets/Bottom/Orange.jpg": {
-      "back": "",
+      "back": "Player Sheets/Top/Orange.jpg",
       "color": "",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Orange.jpg",
       "flavour": "",
       "folder": "Player Sheets/Bottom",
-      "group": "Player Sheets/Bottom",
+      "group": "Player Sheets",
       "hidden": false,
       "id": "Orange",
       "isCard": true,
@@ -2297,7 +2821,7 @@
         "enabled": false,
         "value": ""
       },
-      "title": "Orange",
+      "title": "Orange - Bottom",
       "type": "Other Component"
     },
     "Player Sheets/Bottom/Pink.jpg": {
@@ -2653,7 +3177,7 @@
       "flavour": "",
       "folder": "Player Sheets/Top",
       "group": "Player Sheets/Top",
-      "hidden": false,
+      "hidden": true,
       "id": "Orange",
       "isCard": true,
       "orientation": "landscape",

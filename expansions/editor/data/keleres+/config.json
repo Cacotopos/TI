@@ -55,17 +55,7 @@
         },
         {
           "type": "cards",
-          "group": "Leaders",
-          "column": "full"
-        },
-        {
-          "type": "cards",
-          "group": "Units",
-          "column": "full"
-        },
-        {
-          "type": "cards",
-          "group": "Faction Technology",
+          "group": "",
           "column": "full"
         }
       ]
@@ -74,7 +64,13 @@
       "id": "keleres",
       "title": "Keleres Cards",
       "type": "page",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "cards",
+          "group": "",
+          "column": "full"
+        }
+      ]
     }
   ],
   "assets": {

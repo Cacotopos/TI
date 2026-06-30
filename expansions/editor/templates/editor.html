@@ -44,13 +44,18 @@
   button.busy { background: #dc2626 !important; animation: busy-pulse 1s ease-in-out infinite; }
   @keyframes busy-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(220,38,38,0.5); } 50% { box-shadow: 0 0 0 6px rgba(220,38,38,0); } }
   .section-row { background: #12151f; border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 0.75rem; }
-  .section-actions { display: flex; gap: 0.25rem; margin-top: 0.75rem; }
+  .section-header { margin-bottom: 0.5rem; }
+  .section-header input.section-title { font-size: 1.1rem; font-weight: 600; background: transparent; border: none; border-bottom: 1px solid var(--border); border-radius: 0; padding: 0.1rem 0; margin-bottom: 0; width: 100%; color: var(--text); }
+  .section-header input.section-title:focus { outline: none; border-bottom-color: var(--accent); }
+  .section-actions { display: flex; gap: 0.25rem; align-items: center; margin-top: 0.4rem; }
+  .section-actions input.section-id { font-size: 0.8rem; padding: 0.2rem 0.4rem; margin-bottom: 0; flex: 1; min-width: 0; color: var(--muted); }
   .section-actions button { font-size: 0.85rem; padding: 0.35rem 0.75rem; }
-  .section-blocks { margin-top: 0.75rem; }
-  .blocks-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 0.75rem; }
-  .block-row { background: var(--bg); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; }
-  .block-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
-  .block-type { font-size: 0.8rem; font-weight: 600; color: var(--accent); text-transform: uppercase; }
+  .section-blocks { margin-top: 0.75rem; border-left: 3px solid var(--border); padding-left: 0.85rem; margin-left: 0.25rem; }
+  .blocks-list { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 0.75rem; }
+  .block-row { background: #0d1018; border: 1px solid var(--border); border-radius: 0.5rem; overflow: hidden; }
+  .block-header { display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0.65rem; background: #1a1f2e; border-bottom: 1px solid var(--border); border-left: 3px solid var(--accent); }
+  .block-body { padding: 0.65rem 0.75rem; }
+  .block-type { font-size: 0.78rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; }
   .block-actions { display: flex; gap: 0.25rem; }
   .block-actions button { padding: 0.25rem 0.5rem; font-size: 0.8rem; }
   .block-content { width: 100%; min-height: 100px; margin-bottom: 0; }
@@ -521,7 +526,8 @@
       </div>
       <div>
         <label>Group <span class="tooltip-icon" data-tooltip="Groups cards under sub-headings on card pages." tabindex="0">i</span></label>
-        <input id="asset-edit-group" type="text" placeholder="e.g. Drahn, Units, Technologies"/>
+        <input id="asset-edit-group" type="text" list="asset-edit-group-list" placeholder="e.g. Drahn, Units, Technologies"/>
+        <datalist id="asset-edit-group-list"></datalist>
       </div>
     </div>
 
@@ -779,11 +785,13 @@ function renderSectionBlockHtml(block, sectionIndex, blockIndex, sectionId) {
             <button type="button" class="remove-block" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">×</button>
           </div>
         </div>
-        <div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.35rem">
-          <label style="margin-bottom:0;font-size:0.85rem;color:var(--muted);white-space:nowrap">Group</label>
-          <select class="block-cards-group" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" style="margin-bottom:0;flex:1">${groupOptions}</select>
+        <div class="block-body">
+          <div style="display:flex;align-items:center;gap:0.5rem">
+            <label style="margin-bottom:0;font-size:0.85rem;color:var(--muted);white-space:nowrap">Group</label>
+            <select class="block-cards-group" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" style="margin-bottom:0;flex:1">${groupOptions}</select>
+          </div>
+          <p class="hint" style="margin-top:0.35rem;margin-bottom:0">Displays all cards in this section assigned to the chosen group. Cards are assigned via the asset editor.</p>
         </div>
-        <p class="hint" style="margin-top:0.35rem">Displays all cards in this section assigned to the chosen group. Cards are assigned via the asset editor.</p>
       </div>
     `;
   }
@@ -800,7 +808,9 @@ function renderSectionBlockHtml(block, sectionIndex, blockIndex, sectionId) {
             <button type="button" class="remove-block" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">×</button>
           </div>
         </div>
-        <textarea class="block-content" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" rows="5" placeholder="Markdown content...">${escapeHtml(block.content || '')}</textarea>
+        <div class="block-body">
+          <textarea class="block-content" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" rows="5" placeholder="Markdown content...">${escapeHtml(block.content || '')}</textarea>
+        </div>
       </div>
     `;
   }
@@ -815,17 +825,19 @@ function renderSectionBlockHtml(block, sectionIndex, blockIndex, sectionId) {
           <button type="button" class="remove-block" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">×</button>
         </div>
       </div>
-      <input type="text" class="block-asset-filter" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" placeholder="Filter assets..." value=""/>
-      <select class="block-asset" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" size="4">
-        <option value="">None</option>
-        ${options}
-      </select>
-      <img class="block-asset-preview hidden" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" src="" alt="" style="max-width: 120px; max-height: 80px; border-radius: 0.35rem; border: 1px solid var(--border);"/>
-      <input type="text" class="block-subtitle" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" placeholder="Subtitle (e.g. Fig a. a sample blah)" value="${escapeHtml(block.subtitle || '')}"/>
-      <div class="block-width-row">
-        <label>Width %</label>
-        <input type="range" class="block-width" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" min="10" max="100" value="${block.width || 100}"/>
-        <span class="block-width-value">${block.width || 100}%</span>
+      <div class="block-body">
+        <input type="text" class="block-asset-filter" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" placeholder="Filter assets..." value=""/>
+        <select class="block-asset" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" size="4">
+          <option value="">None</option>
+          ${options}
+        </select>
+        <img class="block-asset-preview hidden" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" src="" alt="" style="max-width: 120px; max-height: 80px; border-radius: 0.35rem; border: 1px solid var(--border);"/>
+        <input type="text" class="block-subtitle" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" placeholder="Subtitle (e.g. Fig a. a sample blah)" value="${escapeHtml(block.subtitle || '')}"/>
+        <div class="block-width-row">
+          <label>Width %</label>
+          <input type="range" class="block-width" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" min="10" max="100" value="${block.width || 100}"/>
+          <span class="block-width-value">${block.width || 100}%</span>
+        </div>
       </div>
     </div>
   `;
@@ -848,17 +860,11 @@ function renderSections() {
     const div = document.createElement('div');
     div.className = 'section-row';
     div.innerHTML = `
-      <div class="row">
-        <div>
-          <label>ID</label>
-          <input type="text" class="section-id" data-index="${index}" value="${section.id}" placeholder="overview"/>
-        </div>
-        <div>
-          <label>Title</label>
-          <input type="text" class="section-title" data-index="${index}" value="${section.title}" placeholder="Overview"/>
-        </div>
+      <div class="section-header">
+        <input type="text" class="section-title" data-index="${index}" value="${section.title}" placeholder="Page Title"/>
       </div>
       <div class="section-actions">
+        <input type="text" class="section-id" data-index="${index}" value="${section.id}" placeholder="page-id"/>
         <button type="button" class="move-section-up" data-index="${index}">↑</button>
         <button type="button" class="move-section-down" data-index="${index}">↓</button>
         <button type="button" class="remove-section-btn danger" data-index="${index}">Remove</button>
@@ -1474,6 +1480,24 @@ function renderAssets() {
   });
 }
 
+function distinctGroups() {
+  const set = new Set();
+  assetValues().forEach(a => {
+    if (a.group && a.group.trim()) set.add(a.group.trim());
+  });
+  return Array.from(set).sort();
+}
+
+function updateGroupDatalist() {
+  const list = document.getElementById('asset-edit-group-list');
+  list.innerHTML = '';
+  distinctGroups().forEach(g => {
+    const opt = document.createElement('option');
+    opt.value = g;
+    list.appendChild(opt);
+  });
+}
+
 function distinctFactions() {
   const set = new Set();
   assetValues().forEach(a => {
@@ -1576,6 +1600,7 @@ function openAssetEditor(path) {
   document.getElementById('asset-edit-back-filter').value = '';
 
   updateFactionDatalist();
+  updateGroupDatalist();
   document.getElementById('asset-edit-faction').value = asset.faction || '';
 
   applyUnitDefaultsIfNeeded(asset);
