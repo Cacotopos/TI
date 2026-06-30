@@ -76,10 +76,6 @@
       </div>
       <button id="card-modal-close" class="text-muted hover:text-white text-2xl flex-none">&times;</button>
     </div>
-    <div id="card-modal-back-heading" class="hidden mb-3 text-center">
-      <h2 id="card-modal-back-title" class="text-xl font-bold"></h2>
-      <h3 id="card-modal-back-subtitle" class="text-base text-muted hidden"></h3>
-    </div>
     <div id="card-modal-badges" class="flex flex-wrap gap-2 mb-4"></div>
     <div id="card-modal-flavour" class="hidden italic text-muted mb-4"></div>
     <div id="card-modal-stats" class="flex flex-nowrap gap-2 mb-4 hidden overflow-x-auto"></div>
@@ -89,11 +85,23 @@
     <div id="card-modal-source" class="flex flex-wrap gap-2 mb-4 hidden"></div>
     <div id="card-modal-actions" class="flex flex-wrap gap-2 mb-4 hidden"></div>
     <div id="card-modal-images" class="mb-4 items-start">
-      <div id="card-modal-front-wrapper" class="card-image-wrapper bg-panel border border-border rounded-lg landscape">
-        <img id="card-modal-front" src="" alt="" class="card-image rounded-lg"/>
+      <div class="flex flex-col items-center gap-1">
+        <div id="card-modal-front-label" class="text-center hidden">
+          <p id="card-modal-front-label-title" class="text-sm font-semibold"></p>
+          <p id="card-modal-front-label-subtitle" class="text-xs text-muted hidden"></p>
+        </div>
+        <div id="card-modal-front-wrapper" class="card-image-wrapper bg-panel border border-border rounded-lg landscape">
+          <img id="card-modal-front" src="" alt="" class="card-image rounded-lg"/>
+        </div>
       </div>
-      <div id="card-modal-back-wrapper" class="card-image-wrapper bg-panel border border-border rounded-lg landscape hidden">
-        <img id="card-modal-back" src="" alt="" class="card-image rounded-lg"/>
+      <div id="card-modal-back-wrapper" class="flex flex-col items-center gap-1 hidden">
+        <div id="card-modal-back-heading" class="hidden text-center">
+          <p id="card-modal-back-title" class="text-sm font-semibold"></p>
+          <p id="card-modal-back-subtitle" class="text-xs text-muted hidden"></p>
+        </div>
+        <div class="card-image-wrapper bg-panel border border-border rounded-lg landscape" id="card-modal-back-img-wrapper">
+          <img id="card-modal-back" src="" alt="" class="card-image rounded-lg"/>
+        </div>
       </div>
     </div>
     <div id="card-modal-description" class="text-gray-100 mb-4 prose prose-invert max-w-none"></div>

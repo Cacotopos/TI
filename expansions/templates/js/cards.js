@@ -12,6 +12,7 @@
   const frontWrapper = document.getElementById('card-modal-front-wrapper');
   const backImg = document.getElementById('card-modal-back');
   const backWrapper = document.getElementById('card-modal-back-wrapper');
+  const backImgWrapper = document.getElementById('card-modal-back-img-wrapper');
   const imagesGrid = document.getElementById('card-modal-images');
   const description = document.getElementById('card-modal-description');
   const flavourContainer = document.getElementById('card-modal-flavour');
@@ -187,11 +188,24 @@
       subtitleEl.textContent = card.subtitle || '';
       subtitleEl.classList.toggle('hidden', !card.subtitle);
     }
+    // Per-image labels (only shown when both front and back are present)
+    const frontLabel = document.getElementById('card-modal-front-label');
+    const frontLabelTitle = document.getElementById('card-modal-front-label-title');
+    const frontLabelSubtitle = document.getElementById('card-modal-front-label-subtitle');
     const backHeading = document.getElementById('card-modal-back-heading');
     const backTitleEl = document.getElementById('card-modal-back-title');
     const backSubtitleEl = document.getElementById('card-modal-back-subtitle');
+    const hasBack = !!card.back;
+    if (frontLabel && frontLabelTitle) {
+      frontLabel.classList.toggle('hidden', !hasBack);
+      frontLabelTitle.textContent = card.name || card.id;
+      if (frontLabelSubtitle) {
+        frontLabelSubtitle.textContent = card.subtitle || '';
+        frontLabelSubtitle.classList.toggle('hidden', !card.subtitle);
+      }
+    }
     if (backHeading && backTitleEl) {
-      const hasBT = !!(card.backTitle || card.backSubtitle);
+      const hasBT = hasBack && !!(card.backTitle || card.backSubtitle);
       backHeading.classList.toggle('hidden', !hasBT);
       backTitleEl.textContent = card.backTitle || '';
       if (backSubtitleEl) {
@@ -204,9 +218,9 @@
     const orientation = card.orientation === 'portrait' ? 'portrait' : 'landscape';
     frontWrapper.classList.remove('portrait', 'landscape');
     frontWrapper.classList.add(orientation);
-    if (backWrapper) {
-      backWrapper.classList.remove('portrait', 'landscape');
-      backWrapper.classList.add(orientation);
+    if (backImgWrapper) {
+      backImgWrapper.classList.remove('portrait', 'landscape');
+      backImgWrapper.classList.add(orientation);
     }
 
     try { card.stats = JSON.parse(card.stats || '{}'); } catch (e) { card.stats = {}; }
