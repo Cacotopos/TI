@@ -192,7 +192,6 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
         return
 
     assets = config.get("assets", {})
-    section_types = {s.get("id"): s.get("type", "cards") for s in config.get("sections", [])}
     mask_path = ROOT / "Icons" / "Card Mask.png"
     crop = mask_path.exists()
 
@@ -201,9 +200,6 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
     front_portrait = set()
     for path, asset in assets.items():
         if asset.get("hidden") or not asset.get("isCard", True):
-            continue
-        section_id = asset.get("section", "cards")
-        if section_types.get(section_id, "cards") != "cards":
             continue
         back = asset.get("back", "")
         if back:
@@ -223,8 +219,7 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
             asset = assets.get(rel_path, {})
             rotate = int(asset.get("rotate", 0) or 0)
             section_id = asset.get("section", "cards")
-            section_type = section_types.get(section_id, "cards")
-            is_card = asset.get("isCard", True) and section_type == "cards"
+            is_card = asset.get("isCard", True)
             is_back = rel_path in back_to_front
             if crop and (is_card or is_back):
                 data = _crop_card_image(p, mask_path, rotate)

@@ -3,7 +3,7 @@
   "name": "Monuments",
   "version": "3.1",
   "description": "A structures expansion for Twilight Imperium 4th edition, including Prophecy of Kings, Thunder's Edge, Discordant Stars and Blue Reveries expansions.",
-  "overview": "An introduction page and overview, a page to explore all the cards, an FAQ page that links back to the cards, and a 'how to design your own monuments' page for other players who want to support this in their home-brew factions.",
+  "overview": "The Monuments+ Expansion is a stand-alone mini-expansion of cards marked with the original Monuments mini-expansion logo and a +. It can be used with the base Twilight Imperium: Fourth Edition game as well as the Prophecy of Kings and Thunder\u2019s Edge expansions. It extends the base Monuments mini-expansion designed by Blarknob, and contains assets to support factions in the fan expansion Discordant Stars, Blue Reverie, and related content.\n\nAt its core, this mini-expansion aims to encourage a variant strategic option for supported Twilight Imperium factions by placing their faction monument unit. The intent is to lean on faction strengths without simply adding a \u2018more of the same\u2019 ability (eg. more infantry for Sol, more technology for Jol-Nar, etc.), and to emphasize the importance of strategic placement. These units are not purely intended to rebalance or strengthen/nerf any particular factions.",
   "source": {
     "images": "/Users/kangarootime/Documents/Gaming/Boardgames/Twilight Imperium 4/Expansions/Monuments/Printable Cards/v3.1"
   },
@@ -428,7 +428,8 @@
         "enabled": false,
         "value": ""
       },
-      "section": "cards",
+      "rotate": 0,
+      "section": "",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -2306,7 +2307,7 @@
         "spaceCannon": null,
         "sustainDamage": false
       },
-      "back": "",
+      "back": "Backs/Faction Monument Backs/Blue Reverie/Atokera Alliance Back.jpg",
       "color": "",
       "configured": true,
       "description": "During the agenda phase, when an outcome you voted for or predicted is resolved, produce up to 1 unit in this system.",
@@ -2338,6 +2339,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
@@ -2356,10 +2358,12 @@
         },
         "combat": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "cost": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "move": {
@@ -2385,7 +2389,7 @@
         "spaceCannon": null,
         "sustainDamage": false
       },
-      "back": "",
+      "back": "Backs/Faction Monument Backs/Blue Reverie/Belkosean Alliance Back.jpg",
       "color": "",
       "configured": true,
       "description": "At the end of the strategy phase, choose and place 1 control token on a super weapon card in your play area. This card has the text abilities of each superweapon card in your play area that has 1 of your control tokens.",
@@ -2421,6 +2425,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
@@ -2439,10 +2444,12 @@
         },
         "combat": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "cost": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "move": {
@@ -2468,11 +2475,11 @@
         "spaceCannon": null,
         "sustainDamage": false
       },
-      "back": "",
+      "back": "Backs/Faction Monument Backs/Blue Reverie/Kaltrim Alliance Back.jpg",
       "color": "",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "Kaltrim",
       "faq": [],
       "filename": "Kaltrim.jpg",
       "flavour": "",
@@ -2491,6 +2498,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
@@ -2509,10 +2517,12 @@
         },
         "combat": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "cost": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "move": {
@@ -2538,7 +2548,7 @@
         "spaceCannon": null,
         "sustainDamage": true
       },
-      "back": "",
+      "back": "Backs/Faction Monument Backs/Blue Reverie/Pharad'n Alliance Back.jpg",
       "color": "",
       "configured": true,
       "description": "This unit is treated as a structure and a ground force.\n***DEPLOY:*** During the \"Commit Ground Forces\" step, place this uni on a planet in a system adjacent to planet you control.",
@@ -2570,6 +2580,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
@@ -2588,10 +2599,12 @@
         },
         "combat": {
           "enabled": true,
+          "multi": 2,
           "value": 8
         },
         "cost": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "move": {
@@ -2604,7 +2617,7 @@
         "enabled": false,
         "value": ""
       },
-      "title": "Pharad'n",
+      "title": "The Black Pyramid",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Qhet.jpg": {
@@ -3225,14 +3238,14 @@
         "spaceCannon": null,
         "sustainDamage": false
       },
-      "back": "",
+      "back": "Backs/Faction Monument Backs/Base/Creuss Back.jpg",
       "color": "",
       "configured": true,
-      "description": "",
-      "faction": "",
+      "description": "**After a player activates this system:**\nYou may produce 1 hit against players' ships in each system adjacent to this planet that contains a wormhole.",
+      "faction": "The Ghosts of Creuss",
       "faq": [],
       "filename": "Creuss.jpg",
-      "flavour": "",
+      "flavour": "A kaleidoscope of dimensional fire.",
       "folder": "Monuments/Base+PoK",
       "group": "Twilight Imperium",
       "hidden": false,
@@ -3257,6 +3270,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
@@ -3275,10 +3289,12 @@
         },
         "combat": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "cost": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "move": {
@@ -4056,12 +4072,23 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Edyn.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Edyn.jpg",
+      "color": "",
       "configured": true,
-      "description": "",
-      "faction": "",
+      "description": "At any time, you may exhaust this card to produce a mech on this planet without spending resources.",
+      "faction": "The Edyn Mandate",
       "faq": [],
       "filename": "Edyn.jpg",
+      "flavour": "The throne is raised only when the Edyn feel the time is right.",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
@@ -4069,8 +4096,57 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Monuments/DS/Edyn.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "legendary"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Edyn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": 1,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": 1,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Edyn Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Twilight Throne",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/FSC.jpg": {
@@ -4858,7 +4934,7 @@
         "spaceCannon": null,
         "sustainDamage": false
       },
-      "back": "",
+      "back": "Backs/Faction Monument Backs/DS/Vaylerian.jpg",
       "color": "",
       "configured": true,
       "description": "",
@@ -4890,6 +4966,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
@@ -8007,9 +8084,9 @@
       "flavour": "",
       "folder": "",
       "group": "",
-      "hidden": false,
+      "hidden": true,
       "id": "banner",
-      "isCard": true,
+      "isCard": false,
       "orientation": "landscape",
       "path": "banner.jpg",
       "placement": {
@@ -8025,12 +8102,12 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "subtitle": "",
       "synergy": {
