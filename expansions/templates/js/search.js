@@ -10,8 +10,8 @@
   const index = new Map();
   const docs = [];
 
-  function addDoc(id, text, title, url, kind, snippet) {
-    const doc = { id, title, url, kind, text: (snippet || text).slice(0, 200) };
+  function addDoc(id, text, title, url, kind, snippet, fields) {
+    const doc = { id, title, url, kind, text: (snippet || text).slice(0, 200), fields: fields || {} };
     docs.push(doc);
     const tokens = text.toLowerCase().split(/\W+/).filter(t => t.length > 1);
     tokens.forEach(token => {
@@ -48,10 +48,27 @@
     const synergy = img.synergy || {};
     const synergyText = synergy.enabled ? (synergy.value || '') : '';
     const placementText = (img.placement && img.placement.enabled) ? (img.placement.rules || []).map(r => (r.not ? 'not ' : '') + r.value).join(' ') : '';
+    const fields = {
+      subtitle: img.subtitle || '',
+      type: img.type || '',
+      faction: img.faction || '',
+      group: img.group || '',
+      folder: img.folder || '',
+      description: img.description || '',
+      flavour: img.flavour || '',
+      stats: statsText,
+      abilities: abilityText,
+      prereq: prereqText,
+      color: colorText,
+      source: sourceText,
+      synergy: synergyText,
+      placement: placementText,
+      faq: faqText,
+    };
     const searchText = `${img.name || ''} ${img.subtitle || ''} ${img.folder || ''} ${img.group || ''} ${img.type || ''} ${img.faction || ''} ${img.description || ''} ${img.flavour || ''} ${faqText} ${statsText} ${abilityText} ${prereqText} ${colorText} ${sourceText} ${synergyText} ${placementText}`;
     const snippet = [img.subtitle, img.type, img.faction, img.group].filter(Boolean).join(' · ');
     const url = `${img.section || 'cards'}.html`;
-    addDoc(`image-${i}`, searchText, img.name || img.id, url, 'card', snippet);
+    addDoc(`image-${i}`, searchText, img.name || img.id, url, 'card', snippet, fields);
   });
 
   window.searchExpansion = function(query) {

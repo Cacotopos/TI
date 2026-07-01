@@ -35,7 +35,7 @@
       {% endfor %}
     </div>
     <div class="flex-1 md:hidden">
-      <select id="mobile-nav" class="w-full bg-bg border border-border rounded-lg px-3 py-2 text-sm text-gray-100" onchange="if(this.value){window.location.href=this.value}">
+      <select id="mobile-nav" class="w-full bg-bg border border-border rounded-lg px-3 py-1 text-sm text-gray-100" onchange="if(this.value){window.location.href=this.value}">
         <option value="">Pages</option>
         {% for sec in site.sections %}
         <option value="{{ sec.id }}.html">{{ sec.title }}</option>
