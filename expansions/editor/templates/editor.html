@@ -44,7 +44,11 @@
   button.busy { background: #dc2626 !important; animation: busy-pulse 1s ease-in-out infinite; }
   @keyframes busy-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(220,38,38,0.5); } 50% { box-shadow: 0 0 0 6px rgba(220,38,38,0); } }
   .section-row { background: #12151f; border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 0.75rem; }
+  .section-row.collapsed .section-blocks { display: none; }
+  .section-row.collapsed .section-header { margin-bottom: 0; }
   .section-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+  .section-header .collapse-btn { font-size: 0.85rem; padding: 0.25rem 0.45rem; background: transparent; border: 1px solid var(--border); color: var(--muted); }
+  .section-header .collapse-btn:hover { color: var(--text); border-color: var(--accent); }
   .section-header input.section-title { font-size: 1.1rem; font-weight: 600; background: transparent; border: none; border-bottom: 1px solid var(--border); border-radius: 0; padding: 0.1rem 0; margin-bottom: 0; flex: 1; min-width: 0; color: var(--text); }
   .section-header input.section-title:focus { outline: none; border-bottom-color: var(--accent); }
   .section-header input.section-id { font-size: 0.8rem; padding: 0.2rem 0.4rem; margin-bottom: 0; width: 8rem; color: var(--muted); text-align: right; }
@@ -278,7 +282,10 @@
     <div id="tab-sections" class="tab-content">
       <div class="card">
         <div id="sections-container"></div>
-        <button id="add-section-btn" type="button" class="secondary">Add Page</button>
+        <div style="display:flex; gap:0.5rem; margin-top:0.75rem;">
+          <button id="add-section-btn" type="button" class="secondary">Add Page</button>
+          <button id="collapse-all-btn" type="button" class="secondary">Collapse All</button>
+        </div>
       </div>
     </div>
 
@@ -848,6 +855,7 @@ const statusEl = document.getElementById('status');
 let sections = [];
 let assets = {};
 let existingIds = [];
+const collapsedSections = new Set();
 
 async function loadSettings() {
   const res = await fetch('/api/settings');
@@ -909,6 +917,7 @@ function resetForm() {
   updateBannerPreview();
   sections = [];
   assets = {};
+  collapsedSections.clear();
   renderSections();
   renderAssets();
   setDirty(false);
@@ -932,6 +941,7 @@ async function tryLoadConfig(id) {
   updateBannerPreview();
   sections = data.sections || [];
   assets = data.assets || {};
+  collapsedSections.clear();
   editorForm.classList.remove('hidden');
   renderSections();
   renderAssets();
@@ -1101,6 +1111,11 @@ function sectionGroupHint(sectionId) {
 
 function renderSections() {
   const container = document.getElementById('sections-container');
+  const collapseAllBtn = document.getElementById('collapse-all-btn');
+  if (collapseAllBtn) {
+    const allCollapsed = sections.length > 0 && sections.every((_, i) => collapsedSections.has(i));
+    collapseAllBtn.textContent = allCollapsed ? 'Expand All' : 'Collapse All';
+  }
   container.innerHTML = '';
   if (sections.length === 0) {
     container.innerHTML = '<p class="empty-state">No pages yet. Click Add Page or inspect the image folder to auto-suggest pages.</p>';
@@ -1110,11 +1125,13 @@ function renderSections() {
     const blocksHtml = blocks.map((block, bi) => renderSectionBlockHtml(block, index, bi, section.id)).join('');
     const isCardSection = section.type === 'cards' || blocks.some(b => b.type === 'cards');
     const groupHint = isCardSection ? sectionGroupHint(section.id) : '';
+    const isCollapsed = collapsedSections.has(index);
     const div = document.createElement('div');
-    div.className = 'section-row';
+    div.className = 'section-row' + (isCollapsed ? ' collapsed' : '');
     const emptySection = blocks.length === 0;
     div.innerHTML = `
       <div class="section-header">
+        <button type="button" class="collapse-btn" data-index="${index}" title="Collapse/expand page">${isCollapsed ? '▸' : '▾'}</button>
         <input type="text" class="section-title" data-index="${index}" value="${section.title}" placeholder="Page Title"/>
         <input type="text" class="section-id" data-index="${index}" value="${section.id}" placeholder="page-id"/>
         <div class="section-actions">
@@ -1142,7 +1159,15 @@ function renderSections() {
   });
   document.querySelectorAll('.remove-section-btn').forEach(btn => {
     btn.addEventListener('click', function() {
-      sections.splice(parseInt(this.dataset.index), 1);
+      const i = parseInt(this.dataset.index);
+      sections.splice(i, 1);
+      const newCollapsed = new Set();
+      for (const idx of collapsedSections) {
+        if (idx < i) newCollapsed.add(idx);
+        else if (idx > i) newCollapsed.add(idx - 1);
+      }
+      collapsedSections.clear();
+      newCollapsed.forEach(idx => collapsedSections.add(idx));
       renderSections();
     });
   });
@@ -1152,6 +1177,10 @@ function renderSections() {
       if (i <= 0) return;
       updateSectionsFromForm();
       [sections[i - 1], sections[i]] = [sections[i], sections[i - 1]];
+      const iCollapsed = collapsedSections.has(i);
+      const prevCollapsed = collapsedSections.has(i - 1);
+      if (iCollapsed) collapsedSections.add(i - 1); else collapsedSections.delete(i - 1);
+      if (prevCollapsed) collapsedSections.add(i); else collapsedSections.delete(i);
       renderSections();
     });
   });
@@ -1161,6 +1190,21 @@ function renderSections() {
       if (i >= sections.length - 1) return;
       updateSectionsFromForm();
       [sections[i], sections[i + 1]] = [sections[i + 1], sections[i]];
+      const iCollapsed = collapsedSections.has(i);
+      const nextCollapsed = collapsedSections.has(i + 1);
+      if (iCollapsed) collapsedSections.add(i + 1); else collapsedSections.delete(i + 1);
+      if (nextCollapsed) collapsedSections.add(i); else collapsedSections.delete(i);
+      renderSections();
+    });
+  });
+  document.querySelectorAll('.collapse-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const i = parseInt(this.dataset.index);
+      if (collapsedSections.has(i)) {
+        collapsedSections.delete(i);
+      } else {
+        collapsedSections.add(i);
+      }
       renderSections();
     });
   });
@@ -1347,6 +1391,7 @@ async function inspectFolder() {
   assets = data.assets;
   if (data.suggested_sections && sections.length === 0) {
     sections = data.suggested_sections;
+    collapsedSections.clear();
   }
   renderSections();
   renderAssets();
@@ -2296,6 +2341,14 @@ document.getElementById('add-section-btn').addEventListener('click', () => {
   sections.push({ id: '', title: '', type: 'page', blocks: [] });
   renderSections();
   renderAssets();
+});
+document.getElementById('collapse-all-btn').addEventListener('click', function() {
+  const allCollapsed = sections.length > 0 && sections.every((_, i) => collapsedSections.has(i));
+  collapsedSections.clear();
+  if (!allCollapsed) {
+    sections.forEach((_, i) => collapsedSections.add(i));
+  }
+  renderSections();
 });
 document.getElementById('inspect-btn').addEventListener('click', inspectFolder);
 document.getElementById('asset-edit-save-top').addEventListener('click', saveAssetEditor);
