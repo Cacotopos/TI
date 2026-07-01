@@ -76,12 +76,17 @@
   .markdown-snippet:hover { border-color: var(--accent); background: var(--bg); }
   .asset-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
   @media (min-width: 768px) { .asset-grid { grid-template-columns: repeat(4, 1fr); } }
-  .asset-cell { background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; cursor: pointer; text-align: center; user-select: none; }
+  .asset-cell { background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.75rem; cursor: pointer; text-align: center; user-select: none; position: relative; min-width: 0; overflow: hidden; }
   .asset-cell:hover { border-color: var(--accent); }
   .asset-cell.configured { border-color: var(--accent); }
   .asset-cell.excluded { opacity: 0.5; }
   .asset-cell.selected { border-color: #f59e0b; background: #1f1a0e; box-shadow: 0 0 0 2px #f59e0b44; }
   .asset-cell.selected .title { color: #f59e0b; }
+  .asset-cell .orientation-icon { position: absolute; bottom: 0.35rem; left: 0.35rem; width: 1.2rem; height: 0.75rem; border: 1px solid var(--muted); border-radius: 0.15rem; background: transparent; box-sizing: border-box; }
+  .asset-cell .orientation-icon.portrait { width: 0.75rem; height: 1.2rem; }
+  .asset-cell .orientation-icon.square { width: 1rem; height: 1rem; }
+  .asset-cell .rotate-icon { position: absolute; top: 0.35rem; left: 0.35rem; font-size: 0.75rem; color: var(--muted); line-height: 1; }
+  .asset-cell .back-icon { position: absolute; top: 0.35rem; right: 0.35rem; font-size: 0.75rem; color: var(--muted); line-height: 1; }
   #asset-selection-bar { display: none; align-items: center; gap: 0.75rem; padding: 0.5rem 0.75rem; background: #1f1a0e; border: 1px solid #f59e0b; border-radius: 0.5rem; margin-bottom: 0.75rem; font-size: 0.9rem; }
   #asset-selection-bar.visible { display: flex; }
   #asset-selection-bar span { color: #f59e0b; font-weight: 600; flex: 1; }
@@ -136,8 +141,9 @@
   .source-linked-picker { display: flex; gap: 0.5rem; align-items: center; }
   .source-linked-picker input { margin-bottom: 0; flex: 1; }
   .source-linked-picker select { margin-bottom: 0; flex: 2; }
-  .asset-cell .title { font-size: 0.85rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .asset-cell .group { font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .asset-cell .title { font-size: 0.85rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; max-width: 100%; }
+  .asset-cell .group { font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; max-width: 100%; padding-bottom: 0.75rem; }
+  .asset-cell .hidden-badge { padding-bottom: 0.75rem; }
   .toolbar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
   .toolbar input { margin-bottom: 0; flex: 1; min-width: 200px; }
   .toolbar label { margin-bottom: 0; }
@@ -1786,10 +1792,19 @@ function renderAssets() {
       const div = document.createElement('div');
       div.className = `asset-cell ${asset.configured ? 'configured' : ''} ${asset.hidden ? 'excluded' : ''} ${selectedAssets.has(asset.path) ? 'selected' : ''}`;
       div.dataset.assetPath = asset.path;
+      const orientClass = asset.orientation === 'portrait' ? 'portrait' : (asset.orientation === 'square' ? 'square' : '');
+      const rotate = parseInt(asset.rotate || 0);
+      let rotateText = '';
+      if (rotate === 90) rotateText = '↻90';
+      else if (rotate === 180) rotateText = '↻180';
+      else if (rotate === 270) rotateText = '↺90';
       div.innerHTML = `
+        ${rotateText ? `<div class="rotate-icon">${rotateText}</div>` : ''}
+        ${asset.back ? '<div class="back-icon">↩</div>' : ''}
         <div class="title" title="${asset.path}">${asset.title}</div>
         <div class="group" title="${asset.group || asset.folder}">${asset.group || asset.folder}</div>
-        ${asset.hidden ? '<div class="title" style="color:#dc2626">hidden</div>' : ''}
+        ${asset.hidden ? '<div class="title hidden-badge" style="color:#dc2626">hidden</div>' : ''}
+        <div class="orientation-icon ${orientClass}"></div>
       `;
       div.addEventListener('click', (e) => {
         if (e.shiftKey && lastClickedAssetPath) {
