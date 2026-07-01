@@ -33,7 +33,9 @@
     ['cost', 'combat', 'move', 'capacity'].forEach(key => {
       const stat = stats?.[key];
       if (!stat || !stat.enabled) return;
-      parts.push(`<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs whitespace-nowrap">${labels[key]} ${stat.value == null ? '-' : escapeHtml(String(stat.value))}</span>`);
+      const val = stat.value == null ? '-' : escapeHtml(String(stat.value));
+      const multi = (stat.multi && stat.multi > 1) ? ` (x${stat.multi})` : '';
+      parts.push(`<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs whitespace-nowrap">${labels[key]} ${val}${multi}</span>`);
     });
     return parts.join('');
   }

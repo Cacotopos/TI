@@ -102,6 +102,7 @@
   .unit-stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 1rem; }
   .unit-stat { display: flex; align-items: center; gap: 0.5rem; background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem; }
   .unit-stat input { width: 4rem; margin-bottom: 0; padding: 0.35rem 0.5rem; }
+  .unit-stat input.multi { width: 2.5rem; }
   .unit-abilities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
   .unit-roll-abilities-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
   .unit-roll-ability { display: flex; align-items: center; gap: 0.5rem; background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem; }
@@ -649,6 +650,7 @@
               <span class="label-text">Cost</span>
             </label>
             <input id="unit-stat-cost" type="number" min="1" max="20" placeholder="-"/>
+            <input id="unit-stat-cost-multi" class="multi" type="number" min="1" max="3" value="1" placeholder="×"/>
           </div>
           <div class="unit-stat">
             <label class="toggle">
@@ -657,6 +659,7 @@
               <span class="label-text">Combat</span>
             </label>
             <input id="unit-stat-combat" type="number" min="1" max="10" placeholder="-"/>
+            <input id="unit-stat-combat-multi" class="multi" type="number" min="1" max="4" value="1" placeholder="×"/>
           </div>
           <div class="unit-stat">
             <label class="toggle">
@@ -1216,21 +1219,21 @@ function unitCategory(type) {
 }
 function defaultUnitStats(category) {
   if (category === 'structure') {
-    return { cost: { enabled: false, value: null }, combat: { enabled: false, value: null }, move: { enabled: false, value: null }, capacity: { enabled: false, value: null } };
+    return { cost: { enabled: false, value: null, multi: 1 }, combat: { enabled: false, value: null, multi: 1 }, move: { enabled: false, value: null }, capacity: { enabled: false, value: null } };
   }
   if (category === 'ground') {
-    return { cost: { enabled: true, value: null }, combat: { enabled: true, value: null }, move: { enabled: false, value: null }, capacity: { enabled: false, value: null } };
+    return { cost: { enabled: true, value: null, multi: 1 }, combat: { enabled: true, value: null, multi: 1 }, move: { enabled: false, value: null }, capacity: { enabled: false, value: null } };
   }
   // ship
-  return { cost: { enabled: true, value: null }, combat: { enabled: true, value: null }, move: { enabled: true, value: null }, capacity: { enabled: false, value: null } };
+  return { cost: { enabled: true, value: null, multi: 1 }, combat: { enabled: true, value: null, multi: 1 }, move: { enabled: true, value: null }, capacity: { enabled: false, value: null } };
 }
 function defaultUnitAbilities() {
   return { deploy: false, planetaryShield: false, sustainDamage: false, bombardment: null, antiFighterBarrage: null, spaceCannon: null, production: null };
 }
 function getUnitStatsInput() {
   return {
-    cost: { enabled: document.getElementById('unit-stat-cost-toggle').checked, value: parseInt(document.getElementById('unit-stat-cost').value) || null },
-    combat: { enabled: document.getElementById('unit-stat-combat-toggle').checked, value: parseInt(document.getElementById('unit-stat-combat').value) || null },
+    cost: { enabled: document.getElementById('unit-stat-cost-toggle').checked, value: parseInt(document.getElementById('unit-stat-cost').value) || null, multi: parseInt(document.getElementById('unit-stat-cost-multi').value) || 1 },
+    combat: { enabled: document.getElementById('unit-stat-combat-toggle').checked, value: parseInt(document.getElementById('unit-stat-combat').value) || null, multi: parseInt(document.getElementById('unit-stat-combat-multi').value) || 1 },
     move: { enabled: document.getElementById('unit-stat-move-toggle').checked, value: parseInt(document.getElementById('unit-stat-move').value) || null },
     capacity: { enabled: document.getElementById('unit-stat-capacity-toggle').checked, value: parseInt(document.getElementById('unit-stat-capacity').value) || null },
   };
@@ -1257,8 +1260,10 @@ function setUnitStatsInput(stats) {
   stats = stats || { cost: {}, combat: {}, move: {}, capacity: {} };
   document.getElementById('unit-stat-cost-toggle').checked = stats.cost?.enabled || false;
   document.getElementById('unit-stat-cost').value = stats.cost?.value || '';
+  document.getElementById('unit-stat-cost-multi').value = stats.cost?.multi || 1;
   document.getElementById('unit-stat-combat-toggle').checked = stats.combat?.enabled || false;
   document.getElementById('unit-stat-combat').value = stats.combat?.value || '';
+  document.getElementById('unit-stat-combat-multi').value = stats.combat?.multi || 1;
   document.getElementById('unit-stat-move-toggle').checked = stats.move?.enabled || false;
   document.getElementById('unit-stat-move').value = stats.move?.value || '';
   document.getElementById('unit-stat-capacity-toggle').checked = stats.capacity?.enabled || false;
