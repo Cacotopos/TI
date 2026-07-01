@@ -101,23 +101,28 @@
       ]
     },
     {
-      "id": "components",
-      "title": "Other Components",
+      "id": "other-cards",
+      "title": "Other Cards",
       "type": "page",
       "blocks": [
         {
-          "type": "cards",
-          "group": "Action Cards",
+          "type": "markdown",
+          "content": "This section lists all other regular game component cards printed to go with this expansion, as well as some reminder cards to facilitate gameplay with this mini-expansion.",
           "column": "full"
         },
         {
           "type": "cards",
           "group": "Agendas",
-          "column": "full"
+          "column": "left"
         },
         {
           "type": "cards",
           "group": "Agenda Tokens",
+          "column": "right"
+        },
+        {
+          "type": "cards",
+          "group": "Action Cards",
           "column": "full"
         },
         {
@@ -144,7 +149,14 @@
           "type": "cards",
           "group": "Generic Reminders",
           "column": "full"
-        },
+        }
+      ]
+    },
+    {
+      "id": "components",
+      "title": "Other Components",
+      "type": "page",
+      "blocks": [
         {
           "type": "markdown",
           "content": "Additional tokens are included in lieu of unit models, and for relevant reminder effects of faction monuments.",
@@ -152,12 +164,12 @@
         },
         {
           "type": "cards",
-          "group": "Generic Tokens",
+          "group": "Monument Tokens",
           "column": "full"
         },
         {
           "type": "cards",
-          "group": "Monument Tokens",
+          "group": "Generic Tokens",
           "column": "full"
         }
       ]
@@ -169,7 +181,7 @@
       "blocks": [
         {
           "type": "markdown",
-          "content": "Q: What happens when I Nekro \u201cM\u201d the Spire of Ixth?\nA: The copy benefits the Mahact player only (this is deliberate, to avoid \u2018foreign token scripts in RAM\u2019 buffer overflow errors). Sorry Nekro.\n\nQ: Does The Panopticon just go anywhere on the map (excluding the Fracture), as long as there is no planet or anomaly there?\nA: Yep. If you (not-Empyrean) want to stop it spawning Empyrean units, next turn, you should blockade and destroy it ASAP.\n\nQ: Can I redeploy a monument with its deploy ability?\nA: No, deploy (as per LRR 30) is only possible from your reinforcements.\n\nQ: Can I place a monument twice using the new Construction primary?\nA: Yep. Most of the time this won\u2019t be useful, but the N\u2019orr monument is deliberately designed to benefit from that choice.\n\nQ: Hey wait The Obsidian monument has no placement text; is that a typo?\nA: Nope, once Obsidian commits to the relic\u2019s whispers that monument is no longer valid to place on any planet. Flip wisely.\n",
+          "content": "**Q: What happens when I Nekro \u201cM\u201d the Spire of Ixth?**\nA: The copy benefits the Mahact player only (this is deliberate, to avoid \u2018foreign token scripts in RAM\u2019 buffer overflow errors). Sorry Nekro.\n\n**Q: Does The Panopticon just go anywhere on the map (excluding the Fracture), as long as there is no planet or anomaly there?**\nA: Yep. If you (not-Empyrean) want to stop it spawning Empyrean units, next turn, you should blockade and destroy it ASAP.\n\n**Q: Can I redeploy a monument with its deploy ability?**\nA: No, deploy (as per LRR 30) is only possible from your reinforcements.\n\n**Q: Can I place a monument twice using the new Construction primary?**\nA: Yep. Most of the time this won\u2019t be useful, but the N\u2019orr monument is deliberately designed to benefit from that choice.\n\n**Q: Hey wait The Obsidian monument has no placement text; is that a typo?**\nA: Nope, once Obsidian commits to the relic\u2019s whispers that monument is no longer valid to place on any planet. Flip wisely.\n",
           "column": "full"
         }
       ]
@@ -219,7 +231,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -256,7 +268,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -299,7 +311,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -342,7 +354,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -385,7 +397,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -2278,7 +2290,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -3378,7 +3390,25 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Monuments/Base+PoK/Jol-Nar.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Jol-Nar",
       "type": "Other Component"
     },
@@ -5652,7 +5682,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -5695,7 +5725,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -5739,7 +5769,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -5783,7 +5813,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -5827,7 +5857,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -5871,7 +5901,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -5915,7 +5945,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -5959,7 +5989,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -6003,7 +6033,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -6047,7 +6077,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -6091,7 +6121,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -6135,7 +6165,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -6179,7 +6209,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -6266,7 +6296,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -6310,7 +6340,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -6354,7 +6384,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -6398,7 +6428,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -6442,7 +6472,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -6504,7 +6534,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -6590,7 +6620,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -7622,7 +7652,7 @@
         "enabled": false,
         "value": ""
       },
-      "section": "components",
+      "section": "other-cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -8102,12 +8132,12 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
       "subtitle": "",
       "synergy": {
