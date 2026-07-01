@@ -56,19 +56,82 @@
   ],
   "assets": {
     "Monuments/BR/Atokera.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
+      "color": "",
       "configured": true,
-      "description": "",
+      "description": "During the agenda phase, when an outcome you voted for or predicted is resolved, produce up to 1 unit in this system.",
+      "faction": "",
       "faq": [],
       "filename": "Atokera.jpg",
+      "flavour": "The Deepmantle's spike drives the Atokera into a planet's heart.",
       "folder": "Monuments/BR",
       "group": "Blue Reverie",
       "hidden": false,
       "id": "Atokera",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/BR/Atokera.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "industrial"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Atokera",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Atokera Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Deepmantle Interface",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Belkosea.jpg": {
@@ -88,67 +151,313 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Kaltrim.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
+      "color": "",
       "configured": true,
       "description": "",
+      "faction": "",
       "faq": [],
       "filename": "Kaltrim.jpg",
+      "flavour": "",
       "folder": "Monuments/BR",
       "group": "Blue Reverie",
       "hidden": false,
       "id": "Kaltrim",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/BR/Kaltrim.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Kaltrim",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Pharad'n.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": true,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": true
+      },
       "back": "",
+      "color": "",
       "configured": true,
-      "description": "",
+      "description": "This unit is treated as a structure and a ground force.\n***DEPLOY:*** During the \"Commit Ground Forces\" step, place this uni on a planet in a system adjacent to planet you control.",
+      "faction": "The Pharad'n Order",
       "faq": [],
       "filename": "Pharad'n.jpg",
+      "flavour": "",
       "folder": "Monuments/BR",
       "group": "Blue Reverie",
       "hidden": false,
       "id": "Pharad'n",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/BR/Pharad'n.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "legendary"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": true,
+          "value": 8
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Pharad'n",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Qhet.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
+      "color": "",
       "configured": true,
-      "description": "",
+      "description": "When 1 or more of your infantry would be destroyed, you may exhaust this card to place those units on this planet instead.",
+      "faction": "The Qhet Somethin'",
       "faq": [],
       "filename": "Qhet.jpg",
+      "flavour": "Even the singular Qhet corporates require a touchstone for space.",
       "folder": "Monuments/BR",
       "group": "Blue Reverie",
       "hidden": false,
       "id": "Qhet",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/BR/Qhet.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Qhet",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Qhet Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Sacred Pools",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Sarcosa.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": {
+          "multi": 1,
+          "value": 2
+        },
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
+      "color": "",
       "configured": true,
-      "description": "",
+      "description": "You may place this structure into coexistence on a non-home, non-Fracture planet adjacent to a system that contains your or neutral units.",
+      "faction": "The Sarcoma Drift",
       "faq": [],
       "filename": "Sarcosa.jpg",
+      "flavour": "",
       "folder": "Monuments/BR",
       "group": "Blue Reverie",
       "hidden": false,
       "id": "Sarcosa",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/BR/Sarcosa.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Sarcosa",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Sarcoma Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Raider Stronghold",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Toldar - Dishonor.jpg": {
@@ -1423,7 +1732,7 @@
     "Monuments/DS/Kjalengard.jpg": {
       "back": "",
       "configured": true,
-      "description": "",
+      "description": "Once per action, when a player wins a combat in or adjacent to this system, you and that player may each gain 1 command token.",
       "faq": [],
       "filename": "Kjalengard.jpg",
       "folder": "Monuments/DS",
@@ -1433,8 +1742,71 @@
       "isCard": true,
       "path": "Monuments/DS/Kjalengard.jpg",
       "section": "cards",
-      "title": "Kjalengard",
-      "type": "Unit - Structure - Monument"
+      "title": "Krotas Bannerhall",
+      "type": "Unit - Structure - Monument",
+      "stats": {
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        },
+        "capacity": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "abilities": {
+        "deploy": false,
+        "planetaryShield": false,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
+        "spaceCannon": null,
+        "production": null
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "subtitle": "Kjalengard Monument",
+      "faction": "The Berserkers of Kjalengard",
+      "orientation": "auto",
+      "flavour": "This is the most renowned of all Kjalengard bannerhalls.",
+      "color": "",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "value": "hazardous",
+            "not": false
+          },
+          {
+            "value": "industrial",
+            "not": false
+          }
+        ]
+      }
     },
     "Monuments/DS/Kollecc.jpg": {
       "back": "",
@@ -1485,19 +1857,78 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Kyro.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
+      "color": "",
       "configured": true,
-      "description": "",
+      "description": "This planet counts as a legendary planet with an attachment and a technology specialty of no type.\nWhen this unit is destroyed, you must place it on a valid adjacent planet you control, if able. If you do, draw a relic.",
+      "faction": "",
       "faq": [],
       "filename": "Kyro.jpg",
+      "flavour": "",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Kyro",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/DS/Kyro.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Kyro",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Kyro Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Kyro Reliquary",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Lanefir.jpg": {

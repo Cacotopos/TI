@@ -624,96 +624,112 @@
     </div>
 
     <div id="unit-section" class="hidden">
-      <label>Unit Stats</label>
-      <div class="unit-stats-grid">
-        <div class="unit-stat">
+      <div class="row">
+        <div>
           <label class="toggle">
-            <input id="unit-stat-cost-toggle" type="checkbox"/>
+            <input id="unit-stats-toggle" type="checkbox"/>
             <span class="switch"></span>
-            <span class="label-text">Cost</span>
+            <span class="label-text">Unit Stats</span>
           </label>
-          <input id="unit-stat-cost" type="number" min="1" max="20" placeholder="-"/>
         </div>
-        <div class="unit-stat">
+        <div>
           <label class="toggle">
-            <input id="unit-stat-combat-toggle" type="checkbox"/>
+            <input id="unit-abilities-toggle" type="checkbox"/>
             <span class="switch"></span>
-            <span class="label-text">Combat</span>
+            <span class="label-text">Unit Abilities</span>
           </label>
-          <input id="unit-stat-combat" type="number" min="1" max="10" placeholder="-"/>
-        </div>
-        <div class="unit-stat">
-          <label class="toggle">
-            <input id="unit-stat-move-toggle" type="checkbox"/>
-            <span class="switch"></span>
-            <span class="label-text">Move</span>
-          </label>
-          <input id="unit-stat-move" type="number" min="1" max="10" placeholder="-"/>
-        </div>
-        <div class="unit-stat">
-          <label class="toggle">
-            <input id="unit-stat-capacity-toggle" type="checkbox"/>
-            <span class="switch"></span>
-            <span class="label-text">Capacity</span>
-          </label>
-          <input id="unit-stat-capacity" type="number" min="1" max="20" placeholder="-"/>
         </div>
       </div>
-
-      <label>Unit Abilities</label>
-      <div class="unit-abilities-grid">
-        <label class="toggle">
-          <input id="ability-deploy" type="checkbox"/>
-          <span class="switch"></span>
-          <span class="label-text">Deploy</span>
-        </label>
-        <label class="toggle">
-          <input id="ability-planetary-shield" type="checkbox"/>
-          <span class="switch"></span>
-          <span class="label-text">Planetary Shield</span>
-        </label>
-        <label class="toggle">
-          <input id="ability-sustain-damage" type="checkbox"/>
-          <span class="switch"></span>
-          <span class="label-text">Sustain Damage</span>
-        </label>
+      <div id="unit-stats-well" class="hidden well">
+        <div class="unit-stats-grid">
+          <div class="unit-stat">
+            <label class="toggle">
+              <input id="unit-stat-cost-toggle" type="checkbox"/>
+              <span class="switch"></span>
+              <span class="label-text">Cost</span>
+            </label>
+            <input id="unit-stat-cost" type="number" min="1" max="20" placeholder="-"/>
+          </div>
+          <div class="unit-stat">
+            <label class="toggle">
+              <input id="unit-stat-combat-toggle" type="checkbox"/>
+              <span class="switch"></span>
+              <span class="label-text">Combat</span>
+            </label>
+            <input id="unit-stat-combat" type="number" min="1" max="10" placeholder="-"/>
+          </div>
+          <div class="unit-stat">
+            <label class="toggle">
+              <input id="unit-stat-move-toggle" type="checkbox"/>
+              <span class="switch"></span>
+              <span class="label-text">Move</span>
+            </label>
+            <input id="unit-stat-move" type="number" min="1" max="10" placeholder="-"/>
+          </div>
+          <div class="unit-stat">
+            <label class="toggle">
+              <input id="unit-stat-capacity-toggle" type="checkbox"/>
+              <span class="switch"></span>
+              <span class="label-text">Capacity</span>
+            </label>
+            <input id="unit-stat-capacity" type="number" min="1" max="20" placeholder="-"/>
+          </div>
+        </div>
       </div>
-      <div class="unit-roll-abilities-grid">
-        <div class="unit-roll-ability">
+      <div id="unit-abilities-well" class="hidden well">
+        <div class="unit-abilities-grid">
           <label class="toggle">
-            <input id="ability-bombardment" type="checkbox"/>
+            <input id="ability-deploy" type="checkbox"/>
             <span class="switch"></span>
-            <span class="label-text">Bombardment</span>
+            <span class="label-text">Deploy</span>
           </label>
-          <input id="ability-bombardment-value" type="number" min="1" max="10" placeholder="Value"/>
-          <input id="ability-bombardment-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+          <label class="toggle">
+            <input id="ability-planetary-shield" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Planetary Shield</span>
+          </label>
+          <label class="toggle">
+            <input id="ability-sustain-damage" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">Sustain Damage</span>
+          </label>
         </div>
-        <div class="unit-roll-ability">
-          <label class="toggle">
-            <input id="ability-anti-fighter-barrage" type="checkbox"/>
-            <span class="switch"></span>
-            <span class="label-text">Anti-Fighter Barrage</span>
-          </label>
-          <input id="ability-anti-fighter-barrage-value" type="number" min="1" max="10" placeholder="Value"/>
-          <input id="ability-anti-fighter-barrage-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
-        </div>
-        <div class="unit-roll-ability">
-          <label class="toggle">
-            <input id="ability-space-cannon" type="checkbox"/>
-            <span class="switch"></span>
-            <span class="label-text">Space Cannon</span>
-          </label>
-          <input id="ability-space-cannon-value" type="number" min="1" max="10" placeholder="Value"/>
-          <input id="ability-space-cannon-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
-        </div>
-        <div class="unit-roll-ability">
-          <label class="toggle">
-            <input id="ability-production" type="checkbox"/>
-            <span class="switch"></span>
-            <span class="label-text">Production</span>
-          </label>
-          <input id="ability-production-value" type="number" min="1" max="10" placeholder="Value"/>
-          <input id="ability-production-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+        <div class="unit-roll-abilities-grid">
+          <div class="unit-roll-ability">
+            <label class="toggle">
+              <input id="ability-bombardment" type="checkbox"/>
+              <span class="switch"></span>
+              <span class="label-text">Bombardment</span>
+            </label>
+            <input id="ability-bombardment-value" type="number" min="1" max="10" placeholder="Value"/>
+            <input id="ability-bombardment-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+          </div>
+          <div class="unit-roll-ability">
+            <label class="toggle">
+              <input id="ability-anti-fighter-barrage" type="checkbox"/>
+              <span class="switch"></span>
+              <span class="label-text">Anti-Fighter Barrage</span>
+            </label>
+            <input id="ability-anti-fighter-barrage-value" type="number" min="1" max="10" placeholder="Value"/>
+            <input id="ability-anti-fighter-barrage-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+          </div>
+          <div class="unit-roll-ability">
+            <label class="toggle">
+              <input id="ability-space-cannon" type="checkbox"/>
+              <span class="switch"></span>
+              <span class="label-text">Space Cannon</span>
+            </label>
+            <input id="ability-space-cannon-value" type="number" min="1" max="10" placeholder="Value"/>
+            <input id="ability-space-cannon-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+          </div>
+          <div class="unit-roll-ability">
+            <label class="toggle">
+              <input id="ability-production" type="checkbox"/>
+              <span class="switch"></span>
+              <span class="label-text">Production</span>
+            </label>
+            <input id="ability-production-value" type="number" min="1" max="10" placeholder="Value"/>
+          </div>
         </div>
       </div>
     </div>
@@ -1223,7 +1239,9 @@ function getUnitAbilitiesInput() {
   const roll = (toggleId, valueId, multiId) => {
     const enabled = document.getElementById(toggleId).checked;
     if (!enabled) return null;
-    return { value: parseInt(document.getElementById(valueId).value) || 1, multi: parseInt(document.getElementById(multiId).value) || 1 };
+    const result = { value: parseInt(document.getElementById(valueId).value) || 1 };
+    if (multiId) result.multi = parseInt(document.getElementById(multiId).value) || 1;
+    return result;
   };
   return {
     deploy: document.getElementById('ability-deploy').checked,
@@ -1232,7 +1250,7 @@ function getUnitAbilitiesInput() {
     bombardment: roll('ability-bombardment', 'ability-bombardment-value', 'ability-bombardment-multi'),
     antiFighterBarrage: roll('ability-anti-fighter-barrage', 'ability-anti-fighter-barrage-value', 'ability-anti-fighter-barrage-multi'),
     spaceCannon: roll('ability-space-cannon', 'ability-space-cannon-value', 'ability-space-cannon-multi'),
-    production: roll('ability-production', 'ability-production-value', 'ability-production-multi'),
+    production: roll('ability-production', 'ability-production-value', null),
   };
 }
 function setUnitStatsInput(stats) {
@@ -1245,21 +1263,27 @@ function setUnitStatsInput(stats) {
   document.getElementById('unit-stat-move').value = stats.move?.value || '';
   document.getElementById('unit-stat-capacity-toggle').checked = stats.capacity?.enabled || false;
   document.getElementById('unit-stat-capacity').value = stats.capacity?.value || '';
+  const hasStats = !!(stats.cost?.enabled || stats.combat?.enabled || stats.move?.enabled || stats.capacity?.enabled);
+  document.getElementById('unit-stats-toggle').checked = hasStats;
+  document.getElementById('unit-stats-well').classList.toggle('hidden', !hasStats);
 }
 function setUnitAbilitiesInput(abilities) {
   abilities = abilities || {};
   document.getElementById('ability-deploy').checked = abilities.deploy || false;
   document.getElementById('ability-planetary-shield').checked = abilities.planetaryShield || false;
   document.getElementById('ability-sustain-damage').checked = abilities.sustainDamage || false;
-  const setRoll = (name, ability) => {
+  const setRoll = (name, ability, hasMulti) => {
     document.getElementById(`ability-${name}`).checked = !!ability;
     document.getElementById(`ability-${name}-value`).value = ability ? (ability.value || ability.target || 1) : '';
-    document.getElementById(`ability-${name}-multi`).value = ability ? (ability.multi || 1) : '1';
+    if (hasMulti) document.getElementById(`ability-${name}-multi`).value = ability ? (ability.multi || 1) : '1';
   };
-  setRoll('bombardment', abilities.bombardment);
-  setRoll('anti-fighter-barrage', abilities.antiFighterBarrage);
-  setRoll('space-cannon', abilities.spaceCannon);
-  setRoll('production', abilities.production);
+  setRoll('bombardment', abilities.bombardment, true);
+  setRoll('anti-fighter-barrage', abilities.antiFighterBarrage, true);
+  setRoll('space-cannon', abilities.spaceCannon, true);
+  setRoll('production', abilities.production, false);
+  const hasStats = !!(abilities.bombardment || abilities.antiFighterBarrage || abilities.spaceCannon || abilities.production || abilities.deploy || abilities.planetaryShield || abilities.sustainDamage);
+  document.getElementById('unit-abilities-toggle').checked = hasStats;
+  document.getElementById('unit-abilities-well').classList.toggle('hidden', !hasStats);
 }
 function updateUnitSectionVisibility() {
   const type = document.getElementById('asset-edit-type').value;
@@ -2076,6 +2100,12 @@ document.getElementById('inspect-btn').addEventListener('click', inspectFolder);
 document.getElementById('asset-edit-save-top').addEventListener('click', saveAssetEditor);
 document.getElementById('asset-edit-type').addEventListener('change', updateUnitInputs);
 document.getElementById('asset-edit-iscard').addEventListener('change', updateBackRowVisibility);
+document.getElementById('unit-stats-toggle').addEventListener('change', function() {
+  document.getElementById('unit-stats-well').classList.toggle('hidden', !this.checked);
+});
+document.getElementById('unit-abilities-toggle').addEventListener('change', function() {
+  document.getElementById('unit-abilities-well').classList.toggle('hidden', !this.checked);
+});
 document.getElementById('asset-edit-prereq-toggle').addEventListener('change', updatePrereqSectionVisibility);
 document.getElementById('asset-edit-synergy-toggle').addEventListener('change', updateSynergySectionVisibility);
 document.getElementById('asset-edit-source-toggle').addEventListener('change', updateSourceSectionVisibility);
