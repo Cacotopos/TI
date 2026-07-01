@@ -35,7 +35,7 @@
   {% set groups = site.images | map(attribute='group') | unique | sort %}
   {% if groups %}
   <section class="bg-panel border border-border rounded-xl p-6 shadow-lg">
-    <h2 class="text-xl font-semibold mb-4">Assets</h2>
+    <h2 class="text-xl font-semibold mb-4">Assets count</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {% for group in groups %}
       {% set count = site.images | selectattr('group', 'equalto', group) | list | length %}

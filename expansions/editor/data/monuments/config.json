@@ -86,8 +86,18 @@
           "column": "full"
         },
         {
+          "type": "markdown",
+          "content": "Some monuments have effects linked to the planet they are on when you exhaust the planet - these, as well as additional faction cards like Last Bastion's station, are included as well, to be placed under the planets in your planet area as a reminder.",
+          "column": "full"
+        },
+        {
           "type": "cards",
           "group": "Faction Reminders",
+          "column": "full"
+        },
+        {
+          "type": "markdown",
+          "content": "Generic reminder cards per faction are included as simple placement rules cards, or cards to place under a planet with your monument in case that's important to you.",
           "column": "full"
         },
         {
@@ -7815,11 +7825,13 @@
     },
     "banner.jpg": {
       "back": "",
+      "color": "",
       "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "banner.jpg",
+      "flavour": "",
       "folder": "",
       "group": "",
       "hidden": false,
@@ -7827,35 +7839,33 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "banner.jpg",
-      "section": "",
-      "title": "banner",
-      "type": "Other Component",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
+      "section": "",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "resource": 0,
-        "trait": [],
-        "legendary": false,
-        "relic": false,
-        "techSpeciality": "",
-        "linkedAbility": ""
-      },
-      "subtitle": "",
-      "rotate": 0,
-      "flavour": "",
-      "color": "",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      }
+      "title": "banner",
+      "type": "Other Component"
     }
   }
 }
