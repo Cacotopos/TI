@@ -71,7 +71,7 @@
   }
   function formatPlacement(placement) {
     if (!placement || !placement.enabled || !placement.rules || !placement.rules.length) return '';
-    const labels = { any: 'Any', hazardous: 'Hazardous', industrial: 'Industrial', cultural: 'Cultural', legendary: 'Legendary', tech_planet: 'Tech Planet', mecatol: 'Mecatol Rex', relic: 'Relic' };
+    const labels = { any: 'Any', hazardous: 'Hazardous', industrial: 'Industrial', cultural: 'Cultural', legendary: 'Legendary', tech_planet: 'Tech Planet', frontier_special: 'Frontier/special', mecatol: 'Mecatol Rex', relic: 'Relic' };
     const parts = placement.rules.map(r => {
       const label = labels[r.value] || r.value;
       const cls = r.not ? 'bg-red-700 text-white' : 'bg-indigo-600 text-white';

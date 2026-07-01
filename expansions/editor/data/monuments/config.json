@@ -57,19 +57,19 @@
   "assets": {
     "Monuments/BR/Atokera.jpg": {
       "abilities": {
-        "antiFighterBarrage": null,
-        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "production": null,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
         "spaceCannon": null,
-        "sustainDamage": false
+        "production": null
       },
       "back": "",
       "color": "",
       "configured": true,
       "description": "During the agenda phase, when an outcome you voted for or predicted is resolved, produce up to 1 unit in this system.",
-      "faction": "",
+      "faction": "The Atokera Legacy",
       "faq": [],
       "filename": "Atokera.jpg",
       "flavour": "The Deepmantle's spike drives the Atokera into a planet's heart.",
@@ -84,12 +84,12 @@
         "enabled": true,
         "rules": [
           {
-            "not": false,
-            "value": "hazardous"
+            "value": "hazardous",
+            "not": false
           },
           {
-            "not": false,
-            "value": "industrial"
+            "value": "industrial",
+            "not": false
           }
         ]
       },
@@ -101,15 +101,15 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "stats": {
-        "capacity": {
+        "cost": {
           "enabled": false,
           "value": null
         },
@@ -117,11 +117,11 @@
           "enabled": false,
           "value": null
         },
-        "cost": {
+        "move": {
           "enabled": false,
           "value": null
         },
-        "move": {
+        "capacity": {
           "enabled": false,
           "value": null
         }
@@ -137,7 +137,7 @@
     "Monuments/BR/Belkosea.jpg": {
       "back": "",
       "configured": true,
-      "description": "",
+      "description": "At the end of the strategy phase, choose and place 1 control token on a super weapon card in your play area. This card has the text abilities of each superweapon card in your play area that has 1 of your control tokens.",
       "faq": [],
       "filename": "Belkosea.jpg",
       "folder": "Monuments/BR",
@@ -147,18 +147,85 @@
       "isCard": true,
       "path": "Monuments/BR/Belkosea.jpg",
       "section": "cards",
-      "title": "Belkosea",
-      "type": "Unit - Structure - Monument"
+      "title": "Armageddon Project",
+      "type": "Unit - Structure - Monument",
+      "stats": {
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        },
+        "capacity": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "abilities": {
+        "deploy": false,
+        "planetaryShield": false,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
+        "spaceCannon": null,
+        "production": null
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "subtitle": "Belkosea Monument",
+      "faction": "The Belkosean Allied States",
+      "orientation": "auto",
+      "flavour": "",
+      "color": "",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "value": "hazardous",
+            "not": false
+          },
+          {
+            "value": "industrial",
+            "not": false
+          },
+          {
+            "value": "cultural",
+            "not": false
+          }
+        ]
+      }
     },
     "Monuments/BR/Kaltrim.jpg": {
       "abilities": {
-        "antiFighterBarrage": null,
-        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "production": null,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
         "spaceCannon": null,
-        "sustainDamage": false
+        "production": null
       },
       "back": "",
       "color": "",
@@ -187,15 +254,15 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "stats": {
-        "capacity": {
+        "cost": {
           "enabled": false,
           "value": null
         },
@@ -203,21 +270,21 @@
           "enabled": false,
           "value": null
         },
-        "cost": {
+        "move": {
           "enabled": false,
           "value": null
         },
-        "move": {
+        "capacity": {
           "enabled": false,
           "value": null
         }
       },
-      "subtitle": "",
+      "subtitle": "Kaltrim Monument",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "Kaltrim",
+      "title": "The Crown Temple",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Pharad'n.jpg": {
@@ -1473,7 +1540,71 @@
       "isCard": true,
       "path": "Monuments/Base+PoK/Xxcha.jpg",
       "section": "cards",
-      "title": "Xxcha"
+      "title": "Qanoj Shield Array",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "subtitle": "Xxcha Monument",
+      "type": "Unit - Structure - Monument",
+      "faction": "The Xxcha Kingdom",
+      "orientation": "auto",
+      "flavour": "",
+      "stats": {
+        "cost": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        },
+        "capacity": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "abilities": {
+        "deploy": false,
+        "planetaryShield": false,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
+        "spaceCannon": null,
+        "production": null
+      },
+      "color": "",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "value": "industrial",
+            "not": false
+          },
+          {
+            "value": "cultural",
+            "not": false
+          }
+        ]
+      }
     },
     "Monuments/Base+PoK/Yin.jpg": {
       "back": "",
@@ -1730,22 +1861,60 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Kjalengard.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
+      "color": "",
       "configured": true,
       "description": "Once per action, when a player wins a combat in or adjacent to this system, you and that player may each gain 1 command token.",
+      "faction": "The Berserkers of Kjalengard",
       "faq": [],
       "filename": "Kjalengard.jpg",
+      "flavour": "This is the most renowned of all Kjalengard bannerhalls.",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Kjalengard",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/DS/Kjalengard.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "industrial"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Krotas Bannerhall",
-      "type": "Unit - Structure - Monument",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
       "stats": {
-        "cost": {
+        "capacity": {
           "enabled": false,
           "value": null
         },
@@ -1753,60 +1922,22 @@
           "enabled": false,
           "value": null
         },
-        "move": {
+        "cost": {
           "enabled": false,
           "value": null
         },
-        "capacity": {
+        "move": {
           "enabled": false,
           "value": null
         }
       },
-      "abilities": {
-        "deploy": false,
-        "planetaryShield": false,
-        "sustainDamage": false,
-        "bombardment": null,
-        "antiFighterBarrage": null,
-        "spaceCannon": null,
-        "production": null
-      },
-      "prereq": {
-        "enabled": false,
-        "value": ""
-      },
+      "subtitle": "Kjalengard Monument",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "resource": 0,
-        "trait": [],
-        "legendary": false,
-        "relic": false,
-        "techSpeciality": "",
-        "linkedAbility": ""
-      },
-      "subtitle": "Kjalengard Monument",
-      "faction": "The Berserkers of Kjalengard",
-      "orientation": "auto",
-      "flavour": "This is the most renowned of all Kjalengard bannerhalls.",
-      "color": "",
-      "placement": {
-        "enabled": true,
-        "rules": [
-          {
-            "value": "hazardous",
-            "not": false
-          },
-          {
-            "value": "industrial",
-            "not": false
-          }
-        ]
-      }
+      "title": "Krotas Bannerhall",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Kollecc.jpg": {
       "back": "",
