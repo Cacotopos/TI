@@ -252,12 +252,11 @@ def inspect(expansion_id: str):
 
 @app.route("/api/expansions")
 def list_expansions():
-    """Return expansion IDs from source folder subdirectories."""
+    """Return expansion IDs from saved config files."""
     ids = set()
-    source_dir = ROOT / "expansions" / "source"
-    if source_dir.exists():
-        for p in source_dir.iterdir():
-            if p.is_dir() and not p.name.startswith("."):
+    if DATA_DIR.exists():
+        for p in DATA_DIR.iterdir():
+            if p.is_dir() and not p.name.startswith(".") and (p / "config.json").exists():
                 ids.add(p.name)
     return jsonify(sorted(ids))
 

@@ -932,7 +932,8 @@ async function tryLoadConfig(id) {
 
 function setId(id) {
   idInput.value = id;
-  const inSource = existingIds.includes(id);
+  const hasConfig = existingIds.includes(id);
+  const hasSourceFolder = sourceFolders.includes(`expansions/source/${id}`);
   loadBtn.classList.add('hidden');
   if (!id) {
     editorForm.classList.add('hidden');
@@ -940,15 +941,24 @@ function setId(id) {
     return;
   }
   editorForm.classList.remove('hidden');
-  if (inSource) {
+  if (hasConfig) {
     tryLoadConfig(id).then(ok => {
       if (!ok) {
         resetForm();
-        setImageFolder(`expansions/source/${id}`);
-        document.getElementById('s3-path').value = id;
-        statusEl.textContent = `New expansion '${id}' from source folder. Fill in details and inspect the folder.`;
+        if (hasSourceFolder) {
+          setImageFolder(`expansions/source/${id}`);
+          document.getElementById('s3-path').value = id;
+          statusEl.textContent = `New expansion '${id}' from source folder. Fill in details and inspect the folder.`;
+        } else {
+          statusEl.textContent = `New expansion '${id}'. Fill in details and save.`;
+        }
       }
     });
+  } else if (hasSourceFolder) {
+    resetForm();
+    setImageFolder(`expansions/source/${id}`);
+    document.getElementById('s3-path').value = id;
+    statusEl.textContent = `New expansion '${id}' from source folder. Fill in details and inspect the folder.`;
   } else {
     resetForm();
     statusEl.textContent = `New expansion '${id}'. Fill in details and save.`;
