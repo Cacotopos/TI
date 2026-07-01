@@ -45,25 +45,37 @@
       "id": "faq",
       "title": "FAQ",
       "type": "page",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "markdown",
+          "content": "Q: What happens when I Nekro \u201cM\u201d the Spire of Ixth?\nA: The copy benefits the Mahact player only (this is deliberate, to avoid \u2018foreign token scripts in RAM\u2019 buffer overflow errors). Sorry Nekro.\nQ: Does The Panopticon just go anywhere on the map (excluding the Fracture), as long as there is no planet or anomaly there?\nA: Yep. If you (not-Empyrean) want to stop it spawning Empyrean units, next turn, you should blockade and destroy it ASAP.\nQ: Can I redeploy a monument with its deploy ability?\nA: No, deploy (as per LRR 30) is only possible from your reinforcements.\nQ: Can I place a monument twice using the new Construction primary?\nA: Yep. Most of the time this won\u2019t be useful, but the N\u2019orr monument is deliberately designed to benefit from that choice.\nQ: Hey wait The Obsidian monument has no placement text; is that a typo?\nA: Nope, once Obsidian commits to the relic\u2019s whispers that monument is no longer valid to place on any planet. Flip wisely.\n",
+          "column": "full"
+        }
+      ]
     },
     {
       "id": "design",
       "title": "Design Your Own",
       "type": "page",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "markdown",
+          "content": "\nThe following design guidelines are highly recommended for any home brewers crafting their own monument (or alternate\nmonuments) for their own factions or homebrew shenanigans.\nMonuments should always care where they are located. Making them easily defended by a player because they are crammed near (or even on) a home system means they just become an additional power, not an additional option, and that\u2019s what Breakthroughs are for. You\u2019ll note most monuments refer only to adjacent systems, or \u201cthis\u201d system, or units in adjacent systems. This means that the choice to place them by a player is meaningful.\nA monument\u2019s placement limitation is a strong gate on its powers. If you limit something to Mecatol Rex or a legendary planet, then map randomness may significantly limits its usefulness.\nMonuments ideally provide an additional strategy for a faction rather than a simple buff to its existing powers. This isn\u2019t a hard-and-fast rule, since Sol, Argent, N\u2019Orr ignore it a little.\nMonuments are a strong incentive to take Construction (a quick way to catch up for awful construction objectives). This means that a faction that wants to take construction naturally (like Vuil\u2019Raith or even Titans) doesn\u2019t need an additional incentive to take it. Note therefore that eg. The Vuil\u2019Raith monument is designed to be worse when you don\u2019t use its Deploy ability.\nMost monuments shouldn\u2019t do anything if they\u2019re not on the board. It\u2019s unintuitive and confusing.\nHowever, a few factions, such as Winnu and Keleres and Nekro (stupid Nekro) interact with the game as cards too, instead of only units. The card should tell you what it does, so just read the cards as written.\n",
+          "column": "full"
+        }
+      ]
     }
   ],
   "assets": {
     "Monuments/BR/Atokera.jpg": {
       "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "sustainDamage": false,
-        "bombardment": null,
-        "antiFighterBarrage": null,
+        "production": null,
         "spaceCannon": null,
-        "production": null
+        "sustainDamage": false
       },
       "back": "",
       "color": "",
@@ -84,12 +96,12 @@
         "enabled": true,
         "rules": [
           {
-            "value": "hazardous",
-            "not": false
+            "not": false,
+            "value": "hazardous"
           },
           {
-            "value": "industrial",
-            "not": false
+            "not": false,
+            "value": "industrial"
           }
         ]
       },
@@ -101,15 +113,15 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
       "stats": {
-        "cost": {
+        "capacity": {
           "enabled": false,
           "value": null
         },
@@ -117,11 +129,11 @@
           "enabled": false,
           "value": null
         },
-        "move": {
+        "cost": {
           "enabled": false,
           "value": null
         },
-        "capacity": {
+        "move": {
           "enabled": false,
           "value": null
         }
@@ -135,22 +147,64 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Belkosea.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
+      "color": "",
       "configured": true,
       "description": "At the end of the strategy phase, choose and place 1 control token on a super weapon card in your play area. This card has the text abilities of each superweapon card in your play area that has 1 of your control tokens.",
+      "faction": "The Belkosean Allied States",
       "faq": [],
       "filename": "Belkosea.jpg",
+      "flavour": "",
       "folder": "Monuments/BR",
       "group": "Blue Reverie",
       "hidden": false,
       "id": "Belkosea",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/BR/Belkosea.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
-      "title": "Armageddon Project",
-      "type": "Unit - Structure - Monument",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
       "stats": {
-        "cost": {
+        "capacity": {
           "enabled": false,
           "value": null
         },
@@ -158,74 +212,32 @@
           "enabled": false,
           "value": null
         },
-        "move": {
+        "cost": {
           "enabled": false,
           "value": null
         },
-        "capacity": {
+        "move": {
           "enabled": false,
           "value": null
         }
       },
-      "abilities": {
-        "deploy": false,
-        "planetaryShield": false,
-        "sustainDamage": false,
-        "bombardment": null,
-        "antiFighterBarrage": null,
-        "spaceCannon": null,
-        "production": null
-      },
-      "prereq": {
-        "enabled": false,
-        "value": ""
-      },
+      "subtitle": "Belkosea Monument",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "resource": 0,
-        "trait": [],
-        "legendary": false,
-        "relic": false,
-        "techSpeciality": "",
-        "linkedAbility": ""
-      },
-      "subtitle": "Belkosea Monument",
-      "faction": "The Belkosean Allied States",
-      "orientation": "auto",
-      "flavour": "",
-      "color": "",
-      "placement": {
-        "enabled": true,
-        "rules": [
-          {
-            "value": "hazardous",
-            "not": false
-          },
-          {
-            "value": "industrial",
-            "not": false
-          },
-          {
-            "value": "cultural",
-            "not": false
-          }
-        ]
-      }
+      "title": "Armageddon Project",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Kaltrim.jpg": {
       "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "sustainDamage": false,
-        "bombardment": null,
-        "antiFighterBarrage": null,
+        "production": null,
         "spaceCannon": null,
-        "production": null
+        "sustainDamage": false
       },
       "back": "",
       "color": "",
@@ -254,15 +266,15 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
       "stats": {
-        "cost": {
+        "capacity": {
           "enabled": false,
           "value": null
         },
@@ -270,11 +282,11 @@
           "enabled": false,
           "value": null
         },
-        "move": {
+        "cost": {
           "enabled": false,
           "value": null
         },
-        "capacity": {
+        "move": {
           "enabled": false,
           "value": null
         }
@@ -1528,44 +1540,60 @@
       "title": "Winnu"
     },
     "Monuments/Base+PoK/Xxcha.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
+      "color": "",
       "configured": true,
       "description": "",
+      "faction": "The Xxcha Kingdom",
       "faq": [],
       "filename": "Xxcha.jpg",
+      "flavour": "",
       "folder": "Monuments/Base+PoK",
       "group": "Twilight Imperium",
       "hidden": false,
       "id": "Xxcha",
       "isCard": true,
+      "orientation": "auto",
       "path": "Monuments/Base+PoK/Xxcha.jpg",
-      "section": "cards",
-      "title": "Qanoj Shield Array",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
-      "synergy": {
-        "enabled": false,
-        "value": ""
-      },
+      "section": "cards",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
-      "subtitle": "Xxcha Monument",
-      "type": "Unit - Structure - Monument",
-      "faction": "The Xxcha Kingdom",
-      "orientation": "auto",
-      "flavour": "",
       "stats": {
-        "cost": {
+        "capacity": {
           "enabled": false,
           "value": null
         },
@@ -1573,38 +1601,22 @@
           "enabled": false,
           "value": null
         },
-        "move": {
+        "cost": {
           "enabled": false,
           "value": null
         },
-        "capacity": {
+        "move": {
           "enabled": false,
           "value": null
         }
       },
-      "abilities": {
-        "deploy": false,
-        "planetaryShield": false,
-        "sustainDamage": false,
-        "bombardment": null,
-        "antiFighterBarrage": null,
-        "spaceCannon": null,
-        "production": null
+      "subtitle": "Xxcha Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
       },
-      "color": "",
-      "placement": {
-        "enabled": true,
-        "rules": [
-          {
-            "value": "industrial",
-            "not": false
-          },
-          {
-            "value": "cultural",
-            "not": false
-          }
-        ]
-      }
+      "title": "Qanoj Shield Array",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/Yin.jpg": {
       "back": "",
