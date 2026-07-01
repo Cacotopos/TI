@@ -71,7 +71,6 @@
   .section-group-hint { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; margin-top: 0.75rem; font-size: 0.8rem; color: var(--muted); }
   .section-group-hint .group-tag { background: var(--panel); border: 1px solid var(--border); border-radius: 0.35rem; padding: 0.2rem 0.4rem; }
   .section-group-hint .group-tag.missing { background: #3f1a1a; border-color: #dc2626; color: #fecaca; }
-  .section-group-hint .group-tag.any { background: #1f2a3f; border-color: #60a5fa; color: #bfdbfe; }
   .markdown-label { display: flex; align-items: center; justify-content: space-between; }
   .markdown-help-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); border-radius: 50%; width: 1.5rem; height: 1.5rem; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; padding: 0; cursor: pointer; margin-left: 0.5rem; }
   .markdown-help-btn:hover { background: var(--accent); color: white; }
@@ -1082,16 +1081,11 @@ function sectionGroupHint(sectionId) {
   const blocks = sections.find(s => s.id === sectionId)?.blocks || [];
   const cardBlocks = blocks.filter(b => b.type === 'cards');
   const hasAnyBlock = cardBlocks.some(b => !(b.group || ''));
+  if (hasAnyBlock) return '';
   const assignedGroups = new Set(cardBlocks.map(b => b.group || '').filter(Boolean));
-  const tags = allGroups.map(g => {
-    const missing = !assignedGroups.has(g) && !hasAnyBlock;
-    const cls = missing ? 'group-tag missing' : 'group-tag';
-    return `<span class="${cls}">${escapeHtml(g)}</span>`;
-  });
-  if (hasAnyBlock) {
-    tags.push('<span class="group-tag any">any</span>');
-  }
-  return `<div class="section-group-hint"><span>Card groups:</span>${tags.join('')}</div>`;
+  const missing = allGroups.filter(g => !assignedGroups.has(g));
+  if (!missing.length) return '';
+  return `<div class="section-group-hint">${missing.map(g => `<span class="group-tag missing">${escapeHtml(g)}</span>`).join('')}</div>`;
 }
 
 function renderSections() {

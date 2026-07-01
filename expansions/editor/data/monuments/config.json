@@ -86,6 +86,16 @@
           "column": "full"
         },
         {
+          "type": "cards",
+          "group": "Faction Reminders",
+          "column": "full"
+        },
+        {
+          "type": "cards",
+          "group": "Generic Reminders",
+          "column": "full"
+        },
+        {
           "type": "markdown",
           "content": "Additional tokens are included in lieu of unit models, and for relevant reminder effects of faction monuments.",
           "column": "full"
@@ -6061,11 +6071,13 @@
     },
     "Reminders/Letnev Nekro Monument.jpg": {
       "back": "Backs/Faction Monument Backs/Vertical Backs/Nekro Vertical.jpg",
+      "color": "",
       "configured": true,
       "description": "",
       "faction": "The Nekrovirus",
       "faq": [],
       "filename": "Letnev Nekro Monument.jpg",
+      "flavour": "",
       "folder": "Reminders",
       "group": "Faction Reminders",
       "hidden": false,
@@ -6073,43 +6085,43 @@
       "isCard": true,
       "orientation": "portrait",
       "path": "Reminders/Letnev Nekro Monument.jpg",
-      "section": "components",
-      "title": "P4L%733N OBLI$K_",
-      "type": "Other Component",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
+      "section": "components",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "resource": 0,
-        "trait": [],
-        "legendary": false,
-        "relic": false,
-        "techSpeciality": "",
-        "linkedAbility": ""
-      },
-      "subtitle": "",
-      "rotate": 0,
-      "flavour": "",
-      "color": "",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      }
+      "title": "P4L%733N OBLI$K_",
+      "type": "Other Component"
     },
     "Reminders/Muaat Monument.jpg": {
       "back": "Backs/Faction Monument Backs/Vertical Backs/Muaat Alliance Vertical.jpg",
+      "color": "",
       "configured": true,
       "description": "",
       "faction": "The Embers of Muaat",
       "faq": [],
       "filename": "Muaat Monument.jpg",
+      "flavour": "",
       "folder": "Reminders",
       "group": "Faction Reminders",
       "hidden": false,
@@ -6117,43 +6129,43 @@
       "isCard": true,
       "orientation": "portrait",
       "path": "Reminders/Muaat Monument.jpg",
-      "section": "components",
-      "title": "Glory Furnace",
-      "type": "Other Component",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
+      "section": "components",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "resource": 0,
-        "trait": [],
-        "legendary": false,
-        "relic": false,
-        "techSpeciality": "",
-        "linkedAbility": ""
-      },
-      "subtitle": "",
-      "rotate": 0,
-      "flavour": "",
-      "color": "",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      }
+      "title": "Glory Furnace",
+      "type": "Other Component"
     },
     "Reminders/Muaat Nekro Monument.jpg": {
       "back": "Backs/Faction Monument Backs/Vertical Backs/Nekro Vertical.jpg",
+      "color": "",
       "configured": true,
       "description": "",
       "faction": "The Nekrovirus",
       "faq": [],
       "filename": "Muaat Nekro Monument.jpg",
+      "flavour": "",
       "folder": "Reminders",
       "group": "Faction Reminders",
       "hidden": false,
@@ -6161,35 +6173,33 @@
       "isCard": true,
       "orientation": "portrait",
       "path": "Reminders/Muaat Nekro Monument.jpg",
-      "section": "components",
-      "title": "9L*R33 _4N$",
-      "type": "Other Component",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
+      "section": "components",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "resource": 0,
-        "trait": [],
-        "legendary": false,
-        "relic": false,
-        "techSpeciality": "",
-        "linkedAbility": ""
-      },
-      "subtitle": "",
-      "rotate": 0,
-      "flavour": "",
-      "color": "",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      }
+      "title": "9L*R33 _4N$",
+      "type": "Other Component"
     },
     "Reminders/Nekro Station Back.jpg": {
       "back": "",
@@ -6211,11 +6221,13 @@
     },
     "Reminders/Nekro Station Front.jpg": {
       "back": "Reminders/Nekro Station Back.jpg",
+      "color": "",
       "configured": true,
       "description": "",
       "faction": "The Nekrovirus",
       "faq": [],
       "filename": "Nekro Station Front.jpg",
+      "flavour": "",
       "folder": "Reminders",
       "group": "Faction Reminders",
       "hidden": false,
@@ -6223,35 +6235,33 @@
       "isCard": true,
       "orientation": "portrait",
       "path": "Reminders/Nekro Station Front.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "components",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
+      "subtitle": "",
       "synergy": {
         "enabled": false,
         "value": ""
       },
       "title": "DA74 CTR*",
-      "type": "Other Component",
-      "subtitle": "",
-      "rotate": 0,
-      "flavour": "",
-      "color": "",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      }
+      "type": "Other Component"
     },
     "Tokens/Cathedral of Ixth Token Back.jpg": {
       "back": "",
@@ -7817,9 +7827,35 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "banner.jpg",
-      "section": "cards",
+      "section": "",
       "title": "banner",
-      "type": "Other Component"
+      "type": "Other Component",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "subtitle": "",
+      "rotate": 0,
+      "flavour": "",
+      "color": "",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      }
     }
   }
 }
