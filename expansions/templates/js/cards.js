@@ -380,6 +380,7 @@
     const id = hash.slice(6);
     const item = document.querySelector(`.card-item[data-card-id="${CSS.escape(id)}"]`);
     if (!item) return;
+    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
     const card = cardDataFromElement(item);
     card.parentPath = parentByPath[item.dataset.cardFrontPath] || '';
     open(card);
