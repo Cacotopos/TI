@@ -50,13 +50,53 @@
       "blocks": [
         {
           "type": "markdown",
-          "content": "The cards by faction groups.",
+          "content": "The cards by faction groups for official Twilight Imperium expansions.",
           "column": "full"
         },
         {
           "type": "cards",
-          "group": "",
+          "group": "Twilight Imperium",
           "column": "full"
+        },
+        {
+          "type": "cards",
+          "group": "Prophecy of Kings",
+          "column": "left"
+        },
+        {
+          "type": "cards",
+          "group": "Thunder's Edge",
+          "column": "right"
+        },
+        {
+          "type": "cards",
+          "group": "Twilight's Fall",
+          "column": "full"
+        },
+        {
+          "type": "markdown",
+          "content": "The cards by faction groups for fan expansion Twilight Imperium content.",
+          "column": "full"
+        },
+        {
+          "type": "cards",
+          "group": "Discordant Stars",
+          "column": "full"
+        },
+        {
+          "type": "cards",
+          "group": "Blue Reverie",
+          "column": "full"
+        },
+        {
+          "type": "cards",
+          "group": "Blue Reverie - Twilight's Fall",
+          "column": "left"
+        },
+        {
+          "type": "cards",
+          "group": "Keleres+ Expansion",
+          "column": "right"
         }
       ]
     },
@@ -4070,12 +4110,25 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/GLEdge.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": {
+          "value": 1
+        },
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Gledge.jpg",
+      "color": "",
       "configured": true,
-      "description": "",
-      "faction": "",
+      "description": "At the start of your turn, you may exhaust 2 planets you control that contain a Core token; 1 player treats all laws as blank until the end of this turn.",
+      "faction": "The GLEDge Union",
       "faq": [],
       "filename": "GLEdge.jpg",
+      "flavour": "\"The GLEDge Verdant Halo Institute [GVHI] abides by all Galactic Council status that comply with \u00a7736 b. Lazax oversight.\"",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
@@ -4083,8 +4136,57 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Monuments/DS/GLEdge.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "GLEdge",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": 1,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": 1,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Verdant Halo",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Ghemina.jpg": {
@@ -5325,22 +5427,93 @@
       "type": "Other Component"
     },
     "Monuments/TF/King White.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": true,
+        "production": null,
+        "spaceCannon": {
+          "multi": 2,
+          "value": 6
+        },
+        "sustainDamage": false
+      },
       "back": "",
+      "color": "",
       "configured": true,
-      "description": "",
+      "description": "When you draw a relic, gain 1 trade good and produce 1 unit on this planet.",
       "faction": "Mahact Kings",
       "faq": [],
       "filename": "King White.jpg",
+      "flavour": "",
       "folder": "Monuments/TF",
-      "group": "Twilight's Fall",
+      "group": "Blue Reverie - Twilight's Fall",
       "hidden": false,
       "id": "King White",
       "isCard": true,
       "orientation": "landscape",
       "path": "Monuments/TF/King White.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "cultural"
+          },
+          {
+            "not": true,
+            "value": "legendary"
+          },
+          {
+            "not": false,
+            "value": "relic"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "King White",
-      "type": "Other Component"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": 1,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": 1,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Arcane Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "The Alabaster Edifice",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/TF/King Yellow.jpg": {
       "back": "",
