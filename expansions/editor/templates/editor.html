@@ -88,6 +88,7 @@
   .asset-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.75rem; }
   #asset-preview { border-radius: 0.5rem; }
   #asset-preview.portrait { border-radius: 1rem; }
+  #asset-preview.square { border-radius: 0.85rem; }
   .asset-badge { background: var(--border); color: var(--text); font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 0.35rem; }
   .asset-badge.accent { background: var(--accent); color: white; }
   .asset-badge.danger { background: #dc2626; color: white; }
@@ -310,6 +311,24 @@
     <p class="hint" style="margin-bottom:1rem">Leave a field blank to keep each asset's existing value.</p>
     <div class="row">
       <div>
+        <label>Configured</label>
+        <select id="bulk-edit-configured">
+          <option value="">(no change)</option>
+          <option value="true">Configured</option>
+          <option value="false">Unconfigured</option>
+        </select>
+      </div>
+      <div>
+        <label>Hidden</label>
+        <select id="bulk-edit-hidden">
+          <option value="">(no change)</option>
+          <option value="true">Hidden</option>
+          <option value="false">Visible</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div>
         <label>Page</label>
         <select id="bulk-edit-section"><option value="">(no change)</option></select>
       </div>
@@ -460,6 +479,7 @@
           <option value="auto">Auto (derive from image)</option>
           <option value="landscape">Landscape</option>
           <option value="portrait">Portrait</option>
+          <option value="square">Square</option>
         </select>
       </div>
     </div>
@@ -1586,6 +1606,8 @@ function openBulkEditModal() {
   // Populate back image list
   populateBulkBackOptions('');
   // Reset fields
+  document.getElementById('bulk-edit-configured').value = '';
+  document.getElementById('bulk-edit-hidden').value = '';
   document.getElementById('bulk-edit-faction').value = '';
   document.getElementById('bulk-edit-group').value = '';
   document.getElementById('bulk-edit-subtitle').value = '';
@@ -1609,12 +1631,14 @@ function populateBulkBackOptions(filter) {
 }
 
 function applyBulkEdit() {
-  const section  = document.getElementById('bulk-edit-section').value;
-  const type     = document.getElementById('bulk-edit-type').value;
-  const faction  = document.getElementById('bulk-edit-faction').value.trim();
-  const group    = document.getElementById('bulk-edit-group').value.trim();
-  const subtitle = document.getElementById('bulk-edit-subtitle').value.trim();
-  const back     = document.getElementById('bulk-edit-back').value;
+  const section      = document.getElementById('bulk-edit-section').value;
+  const type         = document.getElementById('bulk-edit-type').value;
+  const faction      = document.getElementById('bulk-edit-faction').value.trim();
+  const group        = document.getElementById('bulk-edit-group').value.trim();
+  const subtitle     = document.getElementById('bulk-edit-subtitle').value.trim();
+  const back         = document.getElementById('bulk-edit-back').value;
+  const configured   = document.getElementById('bulk-edit-configured').value;
+  const hidden       = document.getElementById('bulk-edit-hidden').value;
 
   selectedAssets.forEach(path => {
     const asset = assets[path];
@@ -1625,6 +1649,8 @@ function applyBulkEdit() {
     if (group)    asset.group    = group;
     if (subtitle) asset.subtitle = subtitle;
     if (back)     asset.back     = back;
+    if (configured !== '') asset.configured = configured === 'true';
+    if (hidden !== '')     asset.hidden     = hidden === 'true';
     if (section || type || faction || group || subtitle || back) asset.configured = true;
   });
 
@@ -1870,7 +1896,9 @@ function openAssetEditor(path) {
   const previewImg = document.getElementById('asset-preview');
   previewImg.src = `/api/image/${expansionId}/${asset.path}`;
   previewImg.alt = asset.title || asset.filename;
-  previewImg.classList.toggle('portrait', asset.orientation === 'portrait');
+  previewImg.classList.remove('portrait', 'square');
+  if (asset.orientation === 'portrait') previewImg.classList.add('portrait');
+  if (asset.orientation === 'square') previewImg.classList.add('square');
   document.getElementById('asset-filename').textContent = asset.path;
   document.getElementById('asset-edit-iscard').checked = asset.isCard;
   document.getElementById('asset-edit-hidden').checked = asset.hidden;

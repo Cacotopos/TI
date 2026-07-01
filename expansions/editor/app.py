@@ -200,7 +200,12 @@ def inspect(expansion_id: str):
                     width, height = img.size
             except Exception:
                 pass
-            orientation = "portrait" if height > width else "landscape"
+            if height == width:
+                orientation = "square"
+            elif height > width:
+                orientation = "portrait"
+            else:
+                orientation = "landscape"
 
             if path in existing_assets:
                 assets[path] = existing_assets[path]

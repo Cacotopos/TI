@@ -112,13 +112,15 @@ def _crop_card_image(path: Path, mask_path: Path) -> bytes:
 
 
 def _detect_orientation(src_path: Path, asset: dict) -> str:
-    """Return 'portrait' or 'landscape' for an image file."""
+    """Return 'square', 'portrait' or 'landscape' for an image file."""
     orientation = asset.get("orientation", "")
-    if orientation in ("landscape", "portrait"):
+    if orientation in ("landscape", "portrait", "square"):
         return orientation
     if src_path.exists():
         try:
             with Image.open(src_path) as img:
+                if img.height == img.width:
+                    return "square"
                 return "portrait" if img.height > img.width else "landscape"
         except Exception:
             pass
@@ -143,17 +145,7 @@ def _collect_assets(config: dict) -> list[dict]:
             continue
         rel = Path(path)
         src_path = images_src / rel
-        orientation = asset.get("orientation", "")
-        if orientation not in ("landscape", "portrait"):
-            orientation = "landscape"
-            if src_path.exists():
-                try:
-                    with Image.open(src_path) as img:
-                        w, h = img.size
-                        if h > w:
-                            orientation = "portrait"
-                except Exception:
-                    pass
+        orientation = _detect_orientation(src_path, asset)
         images.append({
             "id": asset.get("id", rel.stem),
             "path": str(Path("assets/images") / rel).replace("\\", "/"),

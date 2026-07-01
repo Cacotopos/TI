@@ -8,6 +8,7 @@
   .card-image-wrapper { width: 100%; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .card-image-wrapper.portrait { width: auto; max-width: min(100%, 220px); aspect-ratio: 2 / 3; justify-self: center; align-self: start; }
   .card-image-wrapper.landscape { width: 100%; aspect-ratio: 3 / 2; justify-self: center; align-self: start; }
+  .card-image-wrapper.square { width: auto; max-width: min(100%, 220px); aspect-ratio: 1 / 1; justify-self: center; align-self: start; }
   #card-modal-images-cards.has-back { align-items: start; }
   .card-image { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 0.75rem; }
   #card-modal-images { display: flex; flex-direction: column; gap: 0.25rem; }
@@ -57,7 +58,7 @@
              data-card-orientation="{{ img.orientation }}"
              data-card-flavour="{{ img.flavour | default('') | forceescape }}">
           <div class="card-image-wrapper">
-            <img src="{{ img.path }}" alt="{{ img.name }}" class="card-image rounded-lg {{ 'card-portrait' if img.orientation == 'portrait' else 'card-landscape' }}"/>
+            <img src="{{ img.path }}" alt="{{ img.name }}" class="card-image rounded-lg {{ 'card-portrait' if img.orientation == 'portrait' else ('card-square' if img.orientation == 'square' else 'card-landscape') }}"/>
           </div>
           <p class="text-sm text-center mt-2 font-medium truncate" title="{{ img.name }}">{{ img.name }}</p>
           {% if img.subtitle %}<p class="text-xs text-center text-muted truncate">{{ img.subtitle }}</p>{% endif %}

@@ -237,12 +237,12 @@
     }
     frontImg.src = card.frontPath;
     frontImg.alt = card.name || card.id;
-    const orientation = card.orientation === 'portrait' ? 'portrait' : 'landscape';
-    frontWrapper.classList.remove('portrait', 'landscape');
+    const orientation = card.orientation === 'portrait' ? 'portrait' : (card.orientation === 'square' ? 'square' : 'landscape');
+    frontWrapper.classList.remove('portrait', 'landscape', 'square');
     frontWrapper.classList.add(orientation);
     if (backWrapper) {
-      const backOrientation = card.backOrientation === 'portrait' ? 'portrait' : (card.backOrientation === 'landscape' ? 'landscape' : orientation);
-      backWrapper.classList.remove('portrait', 'landscape');
+      const backOrientation = card.backOrientation === 'portrait' ? 'portrait' : (card.backOrientation === 'square' ? 'square' : (card.backOrientation === 'landscape' ? 'landscape' : orientation));
+      backWrapper.classList.remove('portrait', 'landscape', 'square');
       backWrapper.classList.add(backOrientation);
     }
 
