@@ -68,6 +68,10 @@
   .block-width-value { font-size: 0.85rem; color: var(--muted); min-width: 2.5rem; }
   .block-add-buttons { display: flex; gap: 0.5rem; }
   .block-asset-preview { margin: 0.5rem 0; }
+  .section-group-hint { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; margin-top: 0.75rem; font-size: 0.8rem; color: var(--muted); }
+  .section-group-hint .group-tag { background: var(--panel); border: 1px solid var(--border); border-radius: 0.35rem; padding: 0.2rem 0.4rem; }
+  .section-group-hint .group-tag.missing { background: #3f1a1a; border-color: #dc2626; color: #fecaca; }
+  .section-group-hint .group-tag.any { background: #1f2a3f; border-color: #60a5fa; color: #bfdbfe; }
   .markdown-label { display: flex; align-items: center; justify-content: space-between; }
   .markdown-help-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); border-radius: 50%; width: 1.5rem; height: 1.5rem; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; padding: 0; cursor: pointer; margin-left: 0.5rem; }
   .markdown-help-btn:hover { background: var(--accent); color: white; }
@@ -1064,6 +1068,26 @@ function escapeHtml(text) {
   return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+function sectionGroupHint(sectionId) {
+  const sectionAssets = assetValues().filter(a => a.section === sectionId && !a.hidden);
+  if (!sectionAssets.length) return '';
+  const allGroups = [...new Set(sectionAssets.map(a => a.group || a.folder || '').filter(Boolean))].sort();
+  if (!allGroups.length) return '';
+  const blocks = sections.find(s => s.id === sectionId)?.blocks || [];
+  const cardBlocks = blocks.filter(b => b.type === 'cards');
+  const hasAnyBlock = cardBlocks.some(b => !(b.group || ''));
+  const assignedGroups = new Set(cardBlocks.map(b => b.group || '').filter(Boolean));
+  const tags = allGroups.map(g => {
+    const missing = !assignedGroups.has(g) && !hasAnyBlock;
+    const cls = missing ? 'group-tag missing' : 'group-tag';
+    return `<span class="${cls}">${escapeHtml(g)}</span>`;
+  });
+  if (hasAnyBlock) {
+    tags.push('<span class="group-tag any">any</span>');
+  }
+  return `<div class="section-group-hint"><span>Card groups:</span>${tags.join('')}</div>`;
+}
+
 function renderSections() {
   const container = document.getElementById('sections-container');
   container.innerHTML = '';
@@ -1073,6 +1097,8 @@ function renderSections() {
   sections.forEach((section, index) => {
     const blocks = section.blocks || [];
     const blocksHtml = blocks.map((block, bi) => renderSectionBlockHtml(block, index, bi, section.id)).join('');
+    const isCardSection = section.type === 'cards' || blocks.some(b => b.type === 'cards');
+    const groupHint = isCardSection ? sectionGroupHint(section.id) : '';
     const div = document.createElement('div');
     div.className = 'section-row';
     div.innerHTML = `
@@ -1087,6 +1113,7 @@ function renderSections() {
       </div>
       <div class="section-blocks" data-section-index="${index}">
         <div class="blocks-list" data-section-index="${index}">${blocksHtml}</div>
+        ${groupHint}
         <div class="block-add-buttons">
           <button type="button" class="add-block-btn secondary" data-section-index="${index}" data-block-type="markdown">Add Markdown Block</button>
           <button type="button" class="add-block-btn secondary" data-section-index="${index}" data-block-type="asset">Add Asset Block</button>
