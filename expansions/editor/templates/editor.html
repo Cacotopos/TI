@@ -100,9 +100,10 @@
   .asset-faq-preview .faq-q { font-weight: 600; }
   .asset-faq-preview .faq-a { color: var(--muted); }
   .unit-stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 1rem; }
-  .unit-stat { display: flex; align-items: center; gap: 0.5rem; background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem; }
-  .unit-stat input { width: 4rem; margin-bottom: 0; padding: 0.35rem 0.5rem; }
-  .unit-stat input.multi { width: 2.5rem; }
+  .unit-stat { display: grid; grid-template-columns: 1fr 4rem 2.5rem; gap: 0.5rem; align-items: center; background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem; }
+  .unit-stat .toggle { width: 100%; justify-content: space-between; margin-bottom: 0; border: none; padding: 0; }
+  .unit-stat input { width: 100%; margin-bottom: 0; padding: 0.35rem 0.5rem; }
+  .unit-stat input.multi { width: 100%; }
   .unit-abilities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
   .unit-roll-abilities-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
   .unit-roll-ability { display: flex; align-items: center; gap: 0.5rem; background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem; }
@@ -214,30 +215,31 @@
       <div class="row">
         <div>
           <label for="name">Name</label>
-          <input id="name" type="text" placeholder="Monuments"/>
+          <input id="name" type="text" placeholder="My Expansion"/>
         </div>
         <div>
           <label for="version">Version</label>
-          <input id="version" type="text" placeholder="3.1"/>
+          <input id="version" type="text" placeholder="1.0"/>
         </div>
       </div>
       <label for="description">Description</label>
-      <input id="description" type="text" placeholder="Short description"/>
+      <input id="description" type="text" placeholder="Short description of the expansion"/>
       <label for="overview" class="markdown-label">Overview Markdown <button type="button" class="markdown-help-btn" data-target="overview">?</button></label>
-      <textarea id="overview" placeholder="Full overview..."></textarea>
+      <textarea id="overview" placeholder="Full overview markdown..."></textarea>
       <div class="row">
         <div>
           <label for="image-folder">Source image folder</label>
-          <input id="image-folder" type="text" placeholder="expansions/source/monuments"/>
+          <input id="image-folder" type="text" list="image-folder-list" placeholder="expansions/source/my-expansion"/>
+          <datalist id="image-folder-list"></datalist>
         </div>
         <div>
           <label for="s3-path">S3 deploy path</label>
-          <input id="s3-path" type="text" placeholder="monuments"/>
+          <input id="s3-path" type="text" placeholder="my-expansion"/>
         </div>
       </div>
       <label>Banner image</label>
       <div class="banner-row">
-        <input id="banner-path" type="text" placeholder="expansions/source/monuments/banner.jpg" style="flex:1"/>
+        <input id="banner-path" type="text" placeholder="expansions/source/my-expansion/banner.jpg" style="flex:1"/>
         <button id="choose-banner-btn" type="button" class="secondary">Choose</button>
         <button id="clear-banner-btn" type="button" class="danger">Clear</button>
       </div>
@@ -793,6 +795,24 @@ async function loadExpansionList() {
   });
 }
 
+let sourceFolders = [];
+async function loadSourceFolders() {
+  const res = await fetch('/api/source-folders');
+  sourceFolders = await res.json();
+  const list = document.getElementById('image-folder-list');
+  list.innerHTML = '';
+  sourceFolders.forEach(path => {
+    const opt = document.createElement('option');
+    opt.value = path;
+    opt.textContent = path;
+    list.appendChild(opt);
+  });
+}
+
+function setImageFolder(path) {
+  document.getElementById('image-folder').value = path || '';
+}
+
 function resetForm() {
   document.getElementById('name').value = '';
   document.getElementById('version').value = '';
@@ -821,7 +841,7 @@ async function tryLoadConfig(id) {
   document.getElementById('version').value = data.version || '';
   document.getElementById('description').value = data.description || '';
   document.getElementById('overview').value = data.overview || '';
-  document.getElementById('image-folder').value = (data.source && data.source.images) || '';
+  setImageFolder((data.source && data.source.images) || '');
   document.getElementById('s3-path').value = data.s3_path || data.id || '';
   document.getElementById('banner-path').value = (data.banner && data.banner.path) || '';
   updateBannerPreview();
@@ -849,7 +869,7 @@ function setId(id) {
     tryLoadConfig(id).then(ok => {
       if (!ok) {
         resetForm();
-        document.getElementById('image-folder').value = `expansions/source/${id}`;
+        setImageFolder(`expansions/source/${id}`);
         document.getElementById('s3-path').value = id;
         statusEl.textContent = `New expansion '${id}' from source folder. Fill in details and inspect the folder.`;
       }
@@ -2208,6 +2228,7 @@ document.getElementById('markdown-help-modal').addEventListener('click', e => {
 
 loadSettings();
 loadExpansionList();
+loadSourceFolders();
 </script>
 </body>
 </html>

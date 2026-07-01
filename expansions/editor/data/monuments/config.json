@@ -60,7 +60,7 @@
       "blocks": [
         {
           "type": "markdown",
-          "content": "\nThe following design guidelines are highly recommended for any home brewers crafting their own monument (or alternate\nmonuments) for their own factions or homebrew shenanigans.\nMonuments should always care where they are located. Making them easily defended by a player because they are crammed near (or even on) a home system means they just become an additional power, not an additional option, and that\u2019s what Breakthroughs are for. You\u2019ll note most monuments refer only to adjacent systems, or \u201cthis\u201d system, or units in adjacent systems. This means that the choice to place them by a player is meaningful.\nA monument\u2019s placement limitation is a strong gate on its powers. If you limit something to Mecatol Rex or a legendary planet, then map randomness may significantly limits its usefulness.\nMonuments ideally provide an additional strategy for a faction rather than a simple buff to its existing powers. This isn\u2019t a hard-and-fast rule, since Sol, Argent, N\u2019Orr ignore it a little.\nMonuments are a strong incentive to take Construction (a quick way to catch up for awful construction objectives). This means that a faction that wants to take construction naturally (like Vuil\u2019Raith or even Titans) doesn\u2019t need an additional incentive to take it. Note therefore that eg. The Vuil\u2019Raith monument is designed to be worse when you don\u2019t use its Deploy ability.\nMost monuments shouldn\u2019t do anything if they\u2019re not on the board. It\u2019s unintuitive and confusing.\nHowever, a few factions, such as Winnu and Keleres and Nekro (stupid Nekro) interact with the game as cards too, instead of only units. The card should tell you what it does, so just read the cards as written.\n",
+          "content": "The following design guidelines are highly recommended for any home brewers crafting their own monument (or alternate\nmonuments) for their own factions or homebrew shenanigans.\nMonuments should always care where they are located. Making them easily defended by a player because they are crammed near (or even on) a home system means they just become an additional power, not an additional option, and that\u2019s what Breakthroughs are for. You\u2019ll note most monuments refer only to adjacent systems, or \u201cthis\u201d system, or units in adjacent systems. This means that the choice to place them by a player is meaningful.\nA monument\u2019s placement limitation is a strong gate on its powers. If you limit something to Mecatol Rex or a legendary planet, then map randomness may significantly limits its usefulness.\nMonuments ideally provide an additional strategy for a faction rather than a simple buff to its existing powers. This isn\u2019t a hard-and-fast rule, since Sol, Argent, N\u2019Orr ignore it a little.\nMonuments are a strong incentive to take Construction (a quick way to catch up for awful construction objectives). This means that a faction that wants to take construction naturally (like Vuil\u2019Raith or even Titans) doesn\u2019t need an additional incentive to take it. Note therefore that eg. The Vuil\u2019Raith monument is designed to be worse when you don\u2019t use its Deploy ability.\nMost monuments shouldn\u2019t do anything if they\u2019re not on the board. It\u2019s unintuitive and confusing.\nHowever, a few factions, such as Winnu and Keleres and Nekro (stupid Nekro) interact with the game as cards too, instead of only units. The card should tell you what it does, so just read the cards as written.\n",
           "column": "full"
         }
       ]
@@ -69,13 +69,13 @@
   "assets": {
     "Monuments/BR/Atokera.jpg": {
       "abilities": {
-        "antiFighterBarrage": null,
-        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "production": null,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
         "spaceCannon": null,
-        "sustainDamage": false
+        "production": null
       },
       "back": "",
       "color": "",
@@ -96,12 +96,12 @@
         "enabled": true,
         "rules": [
           {
-            "not": false,
-            "value": "hazardous"
+            "value": "hazardous",
+            "not": false
           },
           {
-            "not": false,
-            "value": "industrial"
+            "value": "industrial",
+            "not": false
           }
         ]
       },
@@ -113,15 +113,15 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "stats": {
-        "capacity": {
+        "cost": {
           "enabled": false,
           "value": null
         },
@@ -129,11 +129,11 @@
           "enabled": false,
           "value": null
         },
-        "cost": {
+        "move": {
           "enabled": false,
           "value": null
         },
-        "move": {
+        "capacity": {
           "enabled": false,
           "value": null
         }
@@ -148,13 +148,13 @@
     },
     "Monuments/BR/Belkosea.jpg": {
       "abilities": {
-        "antiFighterBarrage": null,
-        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "production": null,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
         "spaceCannon": null,
-        "sustainDamage": false
+        "production": null
       },
       "back": "",
       "color": "",
@@ -175,16 +175,16 @@
         "enabled": true,
         "rules": [
           {
-            "not": false,
-            "value": "hazardous"
+            "value": "hazardous",
+            "not": false
           },
           {
-            "not": false,
-            "value": "industrial"
+            "value": "industrial",
+            "not": false
           },
           {
-            "not": false,
-            "value": "cultural"
+            "value": "cultural",
+            "not": false
           }
         ]
       },
@@ -196,15 +196,15 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "stats": {
-        "capacity": {
+        "cost": {
           "enabled": false,
           "value": null
         },
@@ -212,11 +212,11 @@
           "enabled": false,
           "value": null
         },
-        "cost": {
+        "move": {
           "enabled": false,
           "value": null
         },
-        "move": {
+        "capacity": {
           "enabled": false,
           "value": null
         }
@@ -541,13 +541,13 @@
     },
     "Monuments/BR/Toldar - Dishonor.jpg": {
       "abilities": {
-        "antiFighterBarrage": null,
-        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "production": null,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
         "spaceCannon": null,
-        "sustainDamage": false
+        "production": null
       },
       "back": "Monuments/BR/Toldar - Honor.jpg",
       "color": "",
@@ -568,12 +568,12 @@
         "enabled": true,
         "rules": [
           {
-            "not": false,
-            "value": "cultural"
+            "value": "cultural",
+            "not": false
           },
           {
-            "not": false,
-            "value": "legendary"
+            "value": "legendary",
+            "not": false
           }
         ]
       },
@@ -585,15 +585,15 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "stats": {
-        "capacity": {
+        "cost": {
           "enabled": false,
           "value": null
         },
@@ -601,11 +601,11 @@
           "enabled": false,
           "value": null
         },
-        "cost": {
+        "move": {
           "enabled": false,
           "value": null
         },
-        "move": {
+        "capacity": {
           "enabled": false,
           "value": null
         }

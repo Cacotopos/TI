@@ -256,6 +256,20 @@ def list_expansions():
     return jsonify(sorted(ids))
 
 
+@app.route("/api/source-folders")
+def list_source_folders():
+    """Return relative paths of folders that contain image files, anywhere under the project root."""
+    image_exts = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp"}
+    folders = set()
+    for p in ROOT.rglob("*"):
+        if p.is_file() and p.suffix.lower() in image_exts:
+            rel = p.relative_to(ROOT).parent
+            path = str(rel).replace("\\", "/")
+            if path and not path.startswith("."):
+                folders.add(path)
+    return jsonify(sorted(folders))
+
+
 @app.route("/api/settings")
 def settings():
     return jsonify({
