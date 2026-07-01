@@ -164,6 +164,8 @@
   .banner-row { display: flex; gap: 0.75rem; align-items: flex-end; }
   .banner-row input { margin-bottom: 0; }
   .banner-row .hint { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; }
+  .folder-row { display: flex; gap: 0.75rem; align-items: flex-end; }
+  .folder-row input { margin-bottom: 0; }
   .hint { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; margin-bottom: 0.5rem; }
   .tooltip-icon { display: inline-flex; align-items: center; justify-content: center; width: 1.2rem; height: 1.2rem; border-radius: 50%; background: var(--muted); color: var(--panel); font-size: 0.75rem; cursor: help; margin-left: 0.35rem; font-weight: bold; position: relative; }
   .tooltip-icon::after { content: attr(data-tooltip); position: absolute; left: 50%; bottom: 140%; transform: translateX(-50%); width: 220px; background: var(--panel); border: 1px solid var(--border); color: var(--text); padding: 0.5rem; border-radius: 0.5rem; font-size: 0.8rem; font-weight: normal; line-height: 1.3; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 10; }
@@ -229,7 +231,10 @@
       <div class="row">
         <div>
           <label for="image-folder">Source image folder</label>
-          <input id="image-folder" type="text" list="image-folder-list" placeholder="expansions/source/my-expansion"/>
+          <div class="folder-row">
+            <input id="image-folder" type="text" list="image-folder-list" placeholder="expansions/source/my-expansion" style="flex:1"/>
+            <button id="pick-folder-btn" type="button" class="secondary">Pick folder...</button>
+          </div>
           <datalist id="image-folder-list"></datalist>
         </div>
         <div>
@@ -811,6 +816,19 @@ async function loadSourceFolders() {
 
 function setImageFolder(path) {
   document.getElementById('image-folder').value = path || '';
+}
+
+async function pickImageFolder() {
+  try {
+    const res = await fetch('/api/pick-folder', { method: 'POST' });
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data.path) {
+      document.getElementById('image-folder').value = data.path;
+    }
+  } catch (e) {
+    console.error('Folder picker failed', e);
+  }
 }
 
 function resetForm() {
@@ -1969,9 +1987,6 @@ async function save() {
   }
   if (!name) name = id;
   if (!version) version = '1.0';
-  if (imageFolder.startsWith('/')) {
-    imageFolder = imageFolder.slice(1);
-  }
   if (bannerPath.startsWith('/')) {
     bannerPath = bannerPath.slice(1);
   }
@@ -2168,6 +2183,7 @@ document.getElementById('show-hidden').addEventListener('change', renderAssets);
 document.getElementById('show-hidden-only').addEventListener('change', renderAssets);
 document.getElementById('choose-banner-btn').addEventListener('click', openBannerPicker);
 document.getElementById('clear-banner-btn').addEventListener('click', clearBanner);
+document.getElementById('pick-folder-btn').addEventListener('click', pickImageFolder);
 document.getElementById('banner-cancel').addEventListener('click', closeBannerPicker);
 document.getElementById('banner-modal-close').addEventListener('click', closeBannerPicker);
 document.getElementById('banner-modal').addEventListener('click', e => {

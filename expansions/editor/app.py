@@ -7,6 +7,7 @@ deploy a generated expansion site.
 
 import json
 import os
+import platform
 import subprocess
 from pathlib import Path
 
@@ -268,6 +269,36 @@ def list_source_folders():
             if path and not path.startswith("."):
                 folders.add(path)
     return jsonify(sorted(folders))
+
+
+@app.route("/api/pick-folder", methods=["POST"])
+def pick_folder():
+    """Open a native OS folder picker and return the selected absolute path."""
+    system = platform.system()
+    if system == "Darwin":
+        script = 'POSIX path of (choose folder with prompt "Select source image folder")'
+        result = subprocess.run(["osascript", "-e", script], capture_output=True, text=True)
+        if result.returncode != 0:
+            return jsonify({"error": "No folder selected"}), 400
+        path = result.stdout.strip().rstrip("/")
+        return jsonify({"path": path})
+    if system == "Linux":
+        try:
+            result = subprocess.run(
+                ["zenity", "--file-selection", "--directory"],
+                capture_output=True, text=True, check=True
+            )
+            return jsonify({"path": result.stdout.strip().rstrip("/")})
+        except Exception as e:
+            return jsonify({"error": str(e)}), 400
+    if system == "Windows":
+        try:
+            script = 'Add-Type -AssemblyName System.Windows.Forms; $f = New-Object System.Windows.Forms.FolderBrowserDialog; $f.Description = "Select source image folder"; $f.ShowDialog() | Out-Null; $f.SelectedPath'
+            result = subprocess.run(["powershell", "-Command", script], capture_output=True, text=True, check=True)
+            return jsonify({"path": result.stdout.strip().rstrip("/")})
+        except Exception as e:
+            return jsonify({"error": str(e)}), 400
+    return jsonify({"error": f"Folder picker not supported on {system}"}), 400
 
 
 @app.route("/api/settings")
