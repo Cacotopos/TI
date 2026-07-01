@@ -2644,7 +2644,7 @@
       },
       "back": "",
       "color": "",
-      "configured": true,
+      "configured": false,
       "description": "When 1 or more of your infantry would be destroyed, you may exhaust this card to place those units on this planet instead.",
       "faction": "The Qhet Somethin'",
       "faq": [],
@@ -2726,7 +2726,7 @@
       },
       "back": "",
       "color": "",
-      "configured": true,
+      "configured": false,
       "description": "You may place this structure into coexistence on a non-home, non-Fracture planet adjacent to a system that contains your or neutral units.",
       "faction": "The Sarcoma Drift",
       "faq": [],
@@ -2959,7 +2959,7 @@
     },
     "Monuments/BR/Uydai.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -2977,7 +2977,7 @@
     },
     "Monuments/BR/Xin.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3137,7 +3137,7 @@
       },
       "back": "",
       "color": "",
-      "configured": true,
+      "configured": false,
       "description": "When you pass, place 1 infantry on a planet in or adjacent to this system other than Mecatol Rex. If that planet contains another player's units, place that unit into coexistence.",
       "faction": "The Arborec",
       "faq": [],
@@ -3206,7 +3206,7 @@
     },
     "Monuments/Base+PoK/Argent.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3324,7 +3324,7 @@
     },
     "Monuments/Base+PoK/Empyrean.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3342,7 +3342,7 @@
     },
     "Monuments/Base+PoK/Hacan.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3378,7 +3378,7 @@
     },
     "Monuments/Base+PoK/Jol-Nar.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3414,7 +3414,7 @@
     },
     "Monuments/Base+PoK/L1Z1X.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3432,7 +3432,7 @@
     },
     "Monuments/Base+PoK/Letnev.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3468,7 +3468,7 @@
     },
     "Monuments/Base+PoK/Mahact.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3486,7 +3486,7 @@
     },
     "Monuments/Base+PoK/Mentak.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3514,7 +3514,7 @@
       },
       "back": "",
       "color": "",
-      "configured": true,
+      "configured": false,
       "description": "When you exhaust this planet to cast votes, for each war sun or flagship you control in this system, and for each supernova adjacent to this system, choose: cast 3 additional votes, or produce a hit against another player's ships in this or an adjacent system.",
       "faction": "The Embers of Muaat",
       "faq": [],
@@ -3579,7 +3579,7 @@
     },
     "Monuments/Base+PoK/N'Orr.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3597,7 +3597,7 @@
     },
     "Monuments/Base+PoK/NRA.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3625,7 +3625,7 @@
       },
       "back": "",
       "color": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3690,7 +3690,7 @@
     },
     "Monuments/Base+PoK/Nekro.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3708,7 +3708,7 @@
     },
     "Monuments/Base+PoK/Nomad.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3726,7 +3726,7 @@
     },
     "Monuments/Base+PoK/Saar.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3744,7 +3744,7 @@
     },
     "Monuments/Base+PoK/Sol.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3762,7 +3762,7 @@
     },
     "Monuments/Base+PoK/Titans.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3793,7 +3793,7 @@
       },
       "back": "",
       "color": "",
-      "configured": true,
+      "configured": false,
       "description": "**DEPLOY**: When you gain control of a planet that contains 1 or more structures, you may place this unit on that planet and capture each other structure on that planet as if it were a non-fighter ship.",
       "faction": "The Vuil'Raith Cabal",
       "faq": [],
@@ -3844,7 +3844,7 @@
     },
     "Monuments/Base+PoK/Winnu.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3872,7 +3872,7 @@
       },
       "back": "",
       "color": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "The Xxcha Kingdom",
       "faq": [],
@@ -3941,7 +3941,7 @@
     },
     "Monuments/Base+PoK/Yin.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3959,7 +3959,7 @@
     },
     "Monuments/Base+PoK/Yssaril.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3976,12 +3976,23 @@
       "type": "Other Component"
     },
     "Monuments/DS/Augurs.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Augurs.jpg",
+      "color": "",
       "configured": true,
-      "description": "",
-      "faction": "",
+      "description": "When you would explore another planet, you may explore this planet instead.\nIf you do, you may gain trade goods equal to the number of your scored objectives.",
+      "faction": "The Augurs of Ilyxum",
       "faq": [],
       "filename": "Augurs.jpg",
+      "flavour": "The technological edge provided by the planet was ... clarifying.",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
@@ -3989,13 +4000,57 @@
       "isCard": true,
       "orientation": "landscape",
       "path": "Monuments/DS/Augurs.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Augurs",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": 1,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": 1,
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Augurs Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "AI Conclave",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Axis.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4013,7 +4068,7 @@
     },
     "Monuments/DS/Bentor.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4031,7 +4086,7 @@
     },
     "Monuments/DS/Celdauri.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4048,10 +4103,10 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Cheiran.jpg": {
-      "back": "",
+      "back": "Backs/Faction Monument Backs/DS/Cheiran.jpg",
       "configured": true,
-      "description": "",
-      "faction": "",
+      "description": "The unit's **PRODUCTION** value is equal to the number of structures you control in or adjacent to this system.",
+      "faction": "The Cheiran Horde",
       "faq": [],
       "filename": "Cheiran.jpg",
       "folder": "Monuments/DS",
@@ -4062,12 +4117,74 @@
       "orientation": "landscape",
       "path": "Monuments/DS/Cheiran.jpg",
       "section": "cards",
-      "title": "Cheiran",
-      "type": "Unit - Structure - Monument"
+      "title": "Polemarch's Hive",
+      "type": "Unit - Structure - Monument",
+      "stats": {
+        "cost": {
+          "enabled": false,
+          "value": null,
+          "multi": 1
+        },
+        "combat": {
+          "enabled": false,
+          "value": null,
+          "multi": 1
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        },
+        "capacity": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "abilities": {
+        "deploy": false,
+        "planetaryShield": false,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
+        "spaceCannon": null,
+        "production": {
+          "value": 1
+        }
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "subtitle": "Cheiran Monument",
+      "rotate": 0,
+      "flavour": "\"Rest well, my hungry children.\" \u2014Thakt Clqua",
+      "color": "",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "value": "cultural",
+            "not": false
+          }
+        ]
+      }
     },
     "Monuments/DS/Cymiae.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4085,7 +4202,7 @@
     },
     "Monuments/DS/Dih-Mohn.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4181,7 +4298,7 @@
     },
     "Monuments/DS/FSC.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4199,7 +4316,7 @@
     },
     "Monuments/DS/Florzen.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4297,7 +4414,7 @@
     },
     "Monuments/DS/Ghemina.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4315,7 +4432,7 @@
     },
     "Monuments/DS/Ghoti.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4333,7 +4450,7 @@
     },
     "Monuments/DS/Khrask.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4361,7 +4478,7 @@
       },
       "back": "",
       "color": "",
-      "configured": true,
+      "configured": false,
       "description": "Once per action, when a player wins a combat in or adjacent to this system, you and that player may each gain 1 command token.",
       "faction": "The Berserkers of Kjalengard",
       "faq": [],
@@ -4430,7 +4547,7 @@
     },
     "Monuments/DS/Kollecc.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4448,7 +4565,7 @@
     },
     "Monuments/DS/Kolume.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4466,7 +4583,7 @@
     },
     "Monuments/DS/Kortali.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4561,7 +4678,7 @@
     },
     "Monuments/DS/Lanefir.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4579,7 +4696,7 @@
     },
     "Monuments/DS/Li-Zho.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4597,7 +4714,7 @@
     },
     "Monuments/DS/Mirveda.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4615,7 +4732,7 @@
     },
     "Monuments/DS/Mortheus.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4642,7 +4759,7 @@
         "sustainDamage": false
       },
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4698,7 +4815,7 @@
     },
     "Monuments/DS/Nivyn.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4716,7 +4833,7 @@
     },
     "Monuments/DS/Nokar.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4734,7 +4851,7 @@
     },
     "Monuments/DS/Olradin.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4902,7 +5019,7 @@
     },
     "Monuments/DS/Roh'Dhna.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4920,7 +5037,7 @@
     },
     "Monuments/DS/Tnelis.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -4938,7 +5055,7 @@
     },
     "Monuments/DS/Vaden.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -5038,7 +5155,7 @@
     },
     "Monuments/DS/Veldyr.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -5056,7 +5173,7 @@
     },
     "Monuments/DS/Zelian.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -5087,7 +5204,7 @@
       },
       "back": "",
       "color": "",
-      "configured": true,
+      "configured": false,
       "description": "At the beginning of your turn you may remove this unit from this planet and place it onto a different planet you control.",
       "faction": "The Drahn Cartel",
       "faq": [],
@@ -5156,7 +5273,7 @@
     },
     "Monuments/TE/Bastion.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -5174,7 +5291,7 @@
     },
     "Monuments/TE/Crimson Rebellion.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -5192,7 +5309,7 @@
     },
     "Monuments/TE/Deepwrought.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -5293,7 +5410,7 @@
     },
     "Monuments/TE/Keleres.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -5391,7 +5508,7 @@
     },
     "Monuments/TE/Ral-Nel.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
@@ -5409,7 +5526,7 @@
     },
     "Monuments/TF/King Black.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "Mahact Kings",
       "faq": [],
@@ -5427,7 +5544,7 @@
     },
     "Monuments/TF/King Blue.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "Mahact Kings",
       "faq": [],
@@ -5445,7 +5562,7 @@
     },
     "Monuments/TF/King Green.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "Mahact Kings",
       "faq": [],
@@ -5463,7 +5580,7 @@
     },
     "Monuments/TF/King Orange.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "Mahact Kings",
       "faq": [],
@@ -5481,7 +5598,7 @@
     },
     "Monuments/TF/King Pink.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "Mahact Kings",
       "faq": [],
@@ -5499,7 +5616,7 @@
     },
     "Monuments/TF/King Purple.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "Mahact Kings",
       "faq": [],
@@ -5517,7 +5634,7 @@
     },
     "Monuments/TF/King Red.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "Mahact Kings",
       "faq": [],
@@ -5548,7 +5665,7 @@
       },
       "back": "",
       "color": "",
-      "configured": true,
+      "configured": false,
       "description": "When you draw a relic, gain 1 trade good and produce 1 unit on this planet.",
       "faction": "Mahact Kings",
       "faq": [],
@@ -5624,7 +5741,7 @@
     },
     "Monuments/TF/King Yellow.jpg": {
       "back": "",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "Mahact Kings",
       "faq": [],

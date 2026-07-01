@@ -56,14 +56,14 @@
       folder: img.folder || '',
       description: img.description || '',
       flavour: img.flavour || '',
-      stats: statsText,
-      abilities: abilityText,
-      prereq: prereqText,
-      color: colorText,
-      source: sourceText,
-      synergy: synergyText,
-      placement: placementText,
-      faq: faqText,
+      stats: img.stats || {},
+      abilities: img.abilities || {},
+      prereq: img.prereq || {},
+      color: img.color || '',
+      source: img.source || {},
+      synergy: img.synergy || {},
+      placement: img.placement || {},
+      faq: img.faq || [],
     };
     const searchText = `${img.name || ''} ${img.subtitle || ''} ${img.folder || ''} ${img.group || ''} ${img.type || ''} ${img.faction || ''} ${img.description || ''} ${img.flavour || ''} ${faqText} ${statsText} ${abilityText} ${prereqText} ${colorText} ${sourceText} ${synergyText} ${placementText}`;
     const snippet = [img.subtitle, img.type, img.faction, img.group].filter(Boolean).join(' · ');
