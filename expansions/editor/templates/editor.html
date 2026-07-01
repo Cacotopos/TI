@@ -149,7 +149,8 @@
   .asset-cell .group { font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; max-width: 100%; padding-bottom: 0.75rem; }
   .asset-cell .hidden-badge { padding-bottom: 0.75rem; }
   .toolbar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
-  .toolbar input { margin-bottom: 0; flex: 1; min-width: 200px; }
+  .toolbar input { margin-bottom: 0; flex: 1; min-width: 120px; }
+  .toolbar .reload-btn { padding: 0.35rem 0.6rem; font-size: 0.85rem; }
   .toolbar label { margin-bottom: 0; }
   .toggle { display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.35rem 0.5rem; border-radius: 0.5rem; border: 1px solid var(--border); transition: background 0.2s, border-color 0.2s; }
   .toggle input { display: none; }
@@ -284,7 +285,7 @@
     <div id="tab-assets" class="tab-content hidden">
       <div class="card">
         <div class="toolbar">
-          <button id="inspect-btn" type="button">Inspect Folder</button>
+          <button id="inspect-btn" type="button" class="reload-btn">Reload</button>
           <input id="asset-filter" type="text" placeholder="Filter assets..."/>
           <label class="toggle">
             <input id="show-unconfigured" type="checkbox" checked/>
@@ -301,6 +302,11 @@
             <span class="switch"></span>
             <span class="label-text">Hidden only</span>
           </label>
+          <label class="toggle">
+            <input id="show-no-backs" type="checkbox"/>
+            <span class="switch"></span>
+            <span class="label-text">No backs</span>
+          </label>
           <span id="asset-count" class="text-muted" style="font-size: 0.85rem; color: var(--muted);"></span>
         </div>
         <div id="asset-selection-bar">
@@ -309,7 +315,7 @@
           <button type="button" class="secondary" id="clear-selection-btn">Clear Selection</button>
         </div>
         <div id="assets-grid"></div>
-        <div id="assets-empty" class="empty-state hidden">No assets yet. Click Inspect Folder to scan the source image folder.</div>
+        <div id="assets-empty" class="empty-state hidden">No assets yet. Click Reload to scan the source image folder.</div>
       </div>
     </div>
   </div>
@@ -1759,6 +1765,7 @@ function renderAssets() {
   const showUnconfigured = document.getElementById('show-unconfigured').checked;
   const showHidden = document.getElementById('show-hidden').checked;
   const showHiddenOnly = document.getElementById('show-hidden-only').checked;
+  const showNoBacks = document.getElementById('show-no-backs').checked;
 
   let list = assetValues();
   if (showHiddenOnly) {
@@ -1770,6 +1777,9 @@ function renderAssets() {
     if (!showHidden) {
       list = list.filter(a => !a.hidden);
     }
+  }
+  if (showNoBacks) {
+    list = list.filter(a => !a.back);
   }
   if (filter) {
     list = list.filter(a => (a.title + ' ' + a.path + ' ' + a.group + ' ' + (a.type || '') + ' ' + (a.faction || '')).toLowerCase().includes(filter));
@@ -2300,6 +2310,7 @@ document.getElementById('editor-form').addEventListener('change', () => setDirty
 document.getElementById('show-unconfigured').addEventListener('change', renderAssets);
 document.getElementById('show-hidden').addEventListener('change', renderAssets);
 document.getElementById('show-hidden-only').addEventListener('change', renderAssets);
+document.getElementById('show-no-backs').addEventListener('change', renderAssets);
 document.getElementById('choose-banner-btn').addEventListener('click', openBannerPicker);
 document.getElementById('clear-banner-btn').addEventListener('click', clearBanner);
 document.getElementById('pick-folder-btn').addEventListener('click', pickImageFolder);

@@ -5445,12 +5445,14 @@
       "type": "Secret Objective"
     },
     "Reminders/Edyn Monument.jpg": {
-      "back": "",
+      "back": "Backs/Faction Monument Backs/Vertical Backs/Edyn Alliance Vertical.jpg",
+      "color": "",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Edyn Mandate",
       "faq": [],
       "filename": "Edyn Monument.jpg",
+      "flavour": "",
       "folder": "Reminders",
       "group": "Faction Reminders",
       "hidden": false,
@@ -5458,10 +5460,15 @@
       "isCard": true,
       "orientation": "portrait",
       "path": "Reminders/Edyn Monument.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "components",
       "source": {
         "enabled": false,
@@ -5473,20 +5480,23 @@
         "techSpeciality": "",
         "trait": []
       },
+      "subtitle": "",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "Edyn Monument",
+      "title": "Twilight Throne",
       "type": "Other Component"
     },
     "Reminders/Edyn Nekro Monument.jpg": {
-      "back": "",
+      "back": "Backs/Faction Monument Backs/Vertical Backs/Nekro Vertical.jpg",
+      "color": "",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Nekrovirus",
       "faq": [],
       "filename": "Edyn Nekro Monument.jpg",
+      "flavour": "",
       "folder": "Reminders",
       "group": "Faction Reminders",
       "hidden": false,
@@ -5494,8 +5504,32 @@
       "isCard": true,
       "orientation": "portrait",
       "path": "Reminders/Edyn Nekro Monument.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "components",
-      "title": "Edyn Nekro Monument",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "*_7WI_LIT3_ T#RN_*",
       "type": "Other Component"
     },
     "Reminders/Generic Front/Generic Monument Black.jpg": {
@@ -5961,6 +5995,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "components",
       "source": {
         "enabled": false,
@@ -5977,16 +6012,18 @@
         "enabled": false,
         "value": ""
       },
-      "title": "Last Bastion Station",
+      "title": "Data Center",
       "type": "Other Component"
     },
     "Reminders/Letnev Monument.jpg": {
-      "back": "",
+      "back": "Backs/Faction Monument Backs/Vertical Backs/Letnev Alliance Vertical.jpg",
+      "color": "",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Barony of Letnev",
       "faq": [],
       "filename": "Letnev Monument.jpg",
+      "flavour": "",
       "folder": "Reminders",
       "group": "Faction Reminders",
       "hidden": false,
@@ -5994,15 +6031,39 @@
       "isCard": true,
       "orientation": "portrait",
       "path": "Reminders/Letnev Monument.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "components",
-      "title": "Letnev Monument",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Palatine Obelisk",
       "type": "Other Component"
     },
     "Reminders/Letnev Nekro Monument.jpg": {
-      "back": "",
+      "back": "Backs/Faction Monument Backs/Vertical Backs/Nekro Vertical.jpg",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Nekrovirus",
       "faq": [],
       "filename": "Letnev Nekro Monument.jpg",
       "folder": "Reminders",
@@ -6013,14 +6074,40 @@
       "orientation": "portrait",
       "path": "Reminders/Letnev Nekro Monument.jpg",
       "section": "components",
-      "title": "Letnev Nekro Monument",
-      "type": "Other Component"
+      "title": "P4L%733N OBLI$K_",
+      "type": "Other Component",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "subtitle": "",
+      "rotate": 0,
+      "flavour": "",
+      "color": "",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      }
     },
     "Reminders/Muaat Monument.jpg": {
-      "back": "",
+      "back": "Backs/Faction Monument Backs/Vertical Backs/Muaat Alliance Vertical.jpg",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Embers of Muaat",
       "faq": [],
       "filename": "Muaat Monument.jpg",
       "folder": "Reminders",
@@ -6031,14 +6118,40 @@
       "orientation": "portrait",
       "path": "Reminders/Muaat Monument.jpg",
       "section": "components",
-      "title": "Muaat Monument",
-      "type": "Other Component"
+      "title": "Glory Furnace",
+      "type": "Other Component",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "subtitle": "",
+      "rotate": 0,
+      "flavour": "",
+      "color": "",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      }
     },
     "Reminders/Muaat Nekro Monument.jpg": {
-      "back": "",
+      "back": "Backs/Faction Monument Backs/Vertical Backs/Nekro Vertical.jpg",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Nekrovirus",
       "faq": [],
       "filename": "Muaat Nekro Monument.jpg",
       "folder": "Reminders",
@@ -6049,8 +6162,34 @@
       "orientation": "portrait",
       "path": "Reminders/Muaat Nekro Monument.jpg",
       "section": "components",
-      "title": "Muaat Nekro Monument",
-      "type": "Other Component"
+      "title": "9L*R33 _4N$",
+      "type": "Other Component",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "subtitle": "",
+      "rotate": 0,
+      "flavour": "",
+      "color": "",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      }
     },
     "Reminders/Nekro Station Back.jpg": {
       "back": "",
@@ -6071,10 +6210,10 @@
       "type": "Other Component"
     },
     "Reminders/Nekro Station Front.jpg": {
-      "back": "",
+      "back": "Reminders/Nekro Station Back.jpg",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Nekrovirus",
       "faq": [],
       "filename": "Nekro Station Front.jpg",
       "folder": "Reminders",
@@ -6092,19 +6231,27 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "Nekro Station Front",
-      "type": "Other Component"
+      "title": "DA74 CTR*",
+      "type": "Other Component",
+      "subtitle": "",
+      "rotate": 0,
+      "flavour": "",
+      "color": "",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      }
     },
     "Tokens/Cathedral of Ixth Token Back.jpg": {
       "back": "",
