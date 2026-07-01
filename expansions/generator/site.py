@@ -83,12 +83,12 @@ def _load_mask_crop_box(mask_path: Path) -> tuple[float, float, float, float]:
     return (left / w, top / h, right / w, bottom / h)
 
 
-def _crop_card_image(path: Path, mask_path: Path) -> bytes:
+def _crop_card_image(path: Path, mask_path: Path, rotate: int = 0) -> bytes:
     """Crop a source image to the card mask bounding box and return JPEG bytes.
 
     Portrait images are rotated to landscape before cropping, then rotated back
     so they are displayed in their natural orientation while keeping the same
-    crop area.
+    crop area. User rotation is applied first.
     """
     global _MASK_CROP_BOX
     if _MASK_CROP_BOX is None:
@@ -96,6 +96,8 @@ def _crop_card_image(path: Path, mask_path: Path) -> bytes:
 
     with Image.open(path) as img:
         img = img.convert("RGB")
+        if rotate:
+            img = img.rotate(-rotate, expand=True)
         w, h = img.size
         portrait = h > w
         if portrait:
@@ -112,16 +114,20 @@ def _crop_card_image(path: Path, mask_path: Path) -> bytes:
 
 
 def _detect_orientation(src_path: Path, asset: dict) -> str:
-    """Return 'square', 'portrait' or 'landscape' for an image file."""
+    """Return 'square', 'portrait' or 'landscape' for an image file, honouring rotation."""
     orientation = asset.get("orientation", "")
     if orientation in ("landscape", "portrait", "square"):
         return orientation
     if src_path.exists():
         try:
             with Image.open(src_path) as img:
-                if img.height == img.width:
+                w, h = img.size
+                rotate = int(asset.get("rotate", 0) or 0)
+                if rotate in (90, 270):
+                    w, h = h, w
+                if h == w:
                     return "square"
-                return "portrait" if img.height > img.width else "landscape"
+                return "portrait" if h > w else "landscape"
         except Exception:
             pass
     return "landscape"
@@ -203,14 +209,8 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
         if back:
             back_to_front[back] = path
         src_path = images_src / path
-        if src_path.exists():
-            try:
-                with Image.open(src_path) as img:
-                    w, h = img.size
-                    if h > w:
-                        front_portrait.add(path)
-            except Exception:
-                pass
+        if _detect_orientation(src_path, asset) == "portrait":
+            front_portrait.add(path)
 
     images_dest = output_dir / "assets" / "images"
     images_dest.mkdir(parents=True, exist_ok=True)
@@ -221,16 +221,19 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
             dest.parent.mkdir(parents=True, exist_ok=True)
             rel_path = str(rel).replace("\\", "/")
             asset = assets.get(rel_path, {})
+            rotate = int(asset.get("rotate", 0) or 0)
             section_id = asset.get("section", "cards")
             section_type = section_types.get(section_id, "cards")
             is_card = asset.get("isCard", True) and section_type == "cards"
             is_back = rel_path in back_to_front
             if crop and (is_card or is_back):
-                data = _crop_card_image(p, mask_path)
+                data = _crop_card_image(p, mask_path, rotate)
                 dest.write_bytes(data)
             elif is_back and back_to_front[rel_path] in front_portrait:
                 with Image.open(p) as img:
                     img = img.convert("RGB")
+                    if rotate:
+                        img = img.rotate(-rotate, expand=True)
                     w, h = img.size
                     if h <= w:
                         img = img.rotate(90, expand=True)
@@ -238,7 +241,15 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
                     img.save(buffer, format="JPEG", quality=92)
                     dest.write_bytes(buffer.getvalue())
             else:
-                shutil.copy2(p, dest)
+                if rotate:
+                    with Image.open(p) as img:
+                        img = img.convert("RGB")
+                        img = img.rotate(-rotate, expand=True)
+                        buffer = io.BytesIO()
+                        img.save(buffer, format="JPEG", quality=92)
+                        dest.write_bytes(buffer.getvalue())
+                else:
+                    shutil.copy2(p, dest)
 
 
 def _prepare_banner(config: dict, output_dir: Path) -> str | None:

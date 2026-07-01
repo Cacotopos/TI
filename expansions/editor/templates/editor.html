@@ -284,12 +284,12 @@
           <label class="toggle">
             <input id="show-hidden" type="checkbox"/>
             <span class="switch"></span>
-            <span class="label-text">Excluded</span>
+            <span class="label-text">Hidden</span>
           </label>
           <label class="toggle">
             <input id="show-hidden-only" type="checkbox"/>
             <span class="switch"></span>
-            <span class="label-text">Excluded only</span>
+            <span class="label-text">Hidden only</span>
           </label>
           <span id="asset-count" class="text-muted" style="font-size: 0.85rem; color: var(--muted);"></span>
         </div>
@@ -324,6 +324,28 @@
           <option value="">(no change)</option>
           <option value="true">Hidden</option>
           <option value="false">Visible</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Orientation</label>
+        <select id="bulk-edit-orientation">
+          <option value="">(no change)</option>
+          <option value="auto">Auto</option>
+          <option value="landscape">Landscape</option>
+          <option value="portrait">Portrait</option>
+          <option value="square">Square</option>
+        </select>
+      </div>
+      <div>
+        <label>Rotate</label>
+        <select id="bulk-edit-rotate">
+          <option value="">(no change)</option>
+          <option value="0">0°</option>
+          <option value="90">90°</option>
+          <option value="180">180°</option>
+          <option value="270">270°</option>
         </select>
       </div>
     </div>
@@ -450,7 +472,7 @@
       <label class="toggle">
         <input id="asset-edit-hidden" type="checkbox"/>
         <span class="switch"></span>
-        <span class="label-text">Excluded</span>
+        <span class="label-text">Hidden</span>
       </label>
       <label class="toggle">
         <input id="asset-edit-configured" type="checkbox" checked/>
@@ -480,6 +502,15 @@
           <option value="landscape">Landscape</option>
           <option value="portrait">Portrait</option>
           <option value="square">Square</option>
+        </select>
+      </div>
+      <div class="orientation-inline">
+        <label for="asset-edit-rotate">Rotate</label>
+        <select id="asset-edit-rotate">
+          <option value="0">0°</option>
+          <option value="90">90°</option>
+          <option value="180">180°</option>
+          <option value="270">270°</option>
         </select>
       </div>
     </div>
@@ -1608,6 +1639,8 @@ function openBulkEditModal() {
   // Reset fields
   document.getElementById('bulk-edit-configured').value = '';
   document.getElementById('bulk-edit-hidden').value = '';
+  document.getElementById('bulk-edit-orientation').value = '';
+  document.getElementById('bulk-edit-rotate').value = '';
   document.getElementById('bulk-edit-faction').value = '';
   document.getElementById('bulk-edit-group').value = '';
   document.getElementById('bulk-edit-subtitle').value = '';
@@ -1639,6 +1672,8 @@ function applyBulkEdit() {
   const back         = document.getElementById('bulk-edit-back').value;
   const configured   = document.getElementById('bulk-edit-configured').value;
   const hidden       = document.getElementById('bulk-edit-hidden').value;
+  const orientation  = document.getElementById('bulk-edit-orientation').value;
+  const rotate       = document.getElementById('bulk-edit-rotate').value;
 
   selectedAssets.forEach(path => {
     const asset = assets[path];
@@ -1651,7 +1686,9 @@ function applyBulkEdit() {
     if (back)     asset.back     = back;
     if (configured !== '') asset.configured = configured === 'true';
     if (hidden !== '')     asset.hidden     = hidden === 'true';
-    if (section || type || faction || group || subtitle || back) asset.configured = true;
+    if (orientation)     asset.orientation = orientation;
+    if (rotate !== '')   asset.rotate      = parseInt(rotate);
+    if (section || type || faction || group || subtitle || back || orientation || rotate !== '') asset.configured = true;
   });
 
   setDirty(true);
@@ -1752,7 +1789,7 @@ function renderAssets() {
       div.innerHTML = `
         <div class="title" title="${asset.path}">${asset.title}</div>
         <div class="group" title="${asset.group || asset.folder}">${asset.group || asset.folder}</div>
-        ${asset.hidden ? '<div class="title" style="color:#dc2626">excluded</div>' : ''}
+        ${asset.hidden ? '<div class="title" style="color:#dc2626">hidden</div>' : ''}
       `;
       div.addEventListener('click', (e) => {
         if (e.shiftKey && lastClickedAssetPath) {
@@ -1908,6 +1945,7 @@ function openAssetEditor(path) {
   if (asset.type === 'Planet Ability') asset.type = 'Additional Ability';
   document.getElementById('asset-edit-type').value = asset.type || 'Other Component';
   document.getElementById('asset-edit-orientation').value = asset.orientation || 'auto';
+  document.getElementById('asset-edit-rotate').value = String(asset.rotate || 0);
   document.getElementById('asset-edit-group').value = asset.group || '';
   document.getElementById('asset-edit-flavour').value = asset.flavour || '';
   document.getElementById('asset-edit-description').value = asset.description || '';
@@ -1971,6 +2009,7 @@ function saveAssetEditor() {
   asset.faction = document.getElementById('asset-edit-faction').value.trim();
   asset.section = document.getElementById('asset-edit-section').value;
   asset.orientation = document.getElementById('asset-edit-orientation').value;
+  asset.rotate = parseInt(document.getElementById('asset-edit-rotate').value) || 0;
   asset.group = document.getElementById('asset-edit-group').value.trim() || asset.folder;
   asset.flavour = document.getElementById('asset-edit-flavour').value.trim();
   asset.description = document.getElementById('asset-edit-description').value.trim();
