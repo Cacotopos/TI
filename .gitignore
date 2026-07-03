@@ -4,3 +4,5 @@ __pycache__/
 *.pyc
 *.ocr.json
 exports/s3-upload/.env
+exports/
+expansions/sites/
