@@ -35,7 +35,7 @@
         {% for img in section_images if img.group == group %}
         <div class="card-item bg-panel border border-border rounded-xl p-3 shadow-lg hover:border-accent transition-colors cursor-pointer"
              data-card-id="{{ img.id }}"
-             data-card-name="{{ img.name }}"
+             data-card-name="{{ img.name | forceescape }}"
              data-card-subtitle="{{ img.subtitle | default('') | forceescape }}"
              data-card-back-title="{{ img.backTitle | default('') | forceescape }}"
              data-card-back-subtitle="{{ img.backSubtitle | default('') | forceescape }}"
@@ -43,7 +43,7 @@
              data-card-faction="{{ img.faction }}"
              data-card-section="{{ section.title }}"
              data-card-group="{{ img.group }}"
-             data-card-description="{{ img.description }}"
+             data-card-description="{{ img.description | default('') | forceescape }}"
              data-card-faq="{{ img.faq | tojson | forceescape }}"
              data-card-stats="{{ img.stats | tojson | forceescape }}"
              data-card-abilities="{{ img.abilities | tojson | forceescape }}"

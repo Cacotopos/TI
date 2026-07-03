@@ -29,6 +29,16 @@
           "items": { "type": "array" }
         }
       }
+    },
+    "assets": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "component": { "type": "string", "enum": ["us-mini", "tarot", "poker", "player-sheet", "token", "other"] },
+          "isCard": { "type": "boolean" }
+        }
+      }
     }
   }
 }

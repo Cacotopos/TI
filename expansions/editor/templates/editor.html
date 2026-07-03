@@ -95,11 +95,12 @@
   .asset-cell .orientation-icon.square { width: 1rem; height: 1rem; }
   .asset-cell .rotate-icon { position: absolute; top: 0.35rem; left: 0.35rem; font-size: 0.75rem; color: var(--muted); line-height: 1; }
   .asset-cell .back-icon { position: absolute; top: 0.35rem; right: 0.35rem; font-size: 0.75rem; color: var(--muted); line-height: 1; }
+  .asset-cell .component-badge { position: absolute; bottom: 0.35rem; right: 0.35rem; font-size: 0.65rem; color: var(--muted); background: var(--bg); border: 1px solid var(--border); border-radius: 0.25rem; padding: 0.1rem 0.3rem; line-height: 1; text-transform: uppercase; }
   #asset-selection-bar { display: none; align-items: center; gap: 0.75rem; padding: 0.5rem 0.75rem; background: #1f1a0e; border: 1px solid #f59e0b; border-radius: 0.5rem; margin-bottom: 0.75rem; font-size: 0.9rem; }
   #asset-selection-bar.visible { display: flex; }
   #asset-selection-bar span { color: #f59e0b; font-weight: 600; flex: 1; }
   .asset-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.75rem; }
-  #asset-preview { border-radius: 0.5rem; }
+  #asset-preview { border-radius: 0.5rem; image-orientation: none; }
   #asset-preview.portrait { border-radius: 1rem; }
   #asset-preview.square { border-radius: 0.85rem; }
   .asset-badge { background: var(--border); color: var(--text); font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 0.35rem; }
@@ -276,7 +277,7 @@
 
     <div class="tabs">
       <div class="tab active" data-tab="sections">Pages</div>
-      <div class="tab" data-tab="assets">Assets</div>
+      <div class="tab" data-tab="assets">Images</div>
     </div>
 
     <div id="tab-sections" class="tab-content">
@@ -293,7 +294,7 @@
       <div class="card">
         <div class="toolbar">
           <button id="inspect-btn" type="button" class="reload-btn">Reload</button>
-          <input id="asset-filter" type="text" placeholder="Filter assets..."/>
+          <input id="asset-filter" type="text" placeholder="Filter images..."/>
           <label class="toggle">
             <input id="show-unconfigured" type="checkbox" checked/>
             <span class="switch"></span>
@@ -351,6 +352,18 @@
       </div>
     </div>
     <div class="row">
+      <div>
+        <label>Physical Component</label>
+        <select id="bulk-edit-component">
+          <option value="">(no change)</option>
+          <option value="us-mini">US Mini</option>
+          <option value="tarot">Tarot</option>
+          <option value="poker">Poker</option>
+          <option value="player-sheet">Player Sheet</option>
+          <option value="token">Token</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
       <div>
         <label>Orientation</label>
         <select id="bulk-edit-orientation">
@@ -478,20 +491,24 @@
 <div id="asset-modal" class="modal-overlay">
   <div class="modal">
     <div class="modal-header">
-      <h2 id="asset-modal-title">Asset Details</h2>
+      <h2 id="asset-modal-title">Image Details</h2>
       <div style="display: flex; gap: 0.5rem; align-items: center;">
-        <button id="asset-edit-save-top" type="button">Save Asset</button>
+        <button id="asset-edit-save-top" type="button">Save Image</button>
         <button id="asset-modal-close" type="button" class="secondary">&times;</button>
       </div>
     </div>
     <input id="asset-edit-path" type="hidden"/>
     <div class="asset-badges" id="asset-badges"></div>
+    <label>Physical Component</label>
+    <select id="asset-edit-component" style="margin-bottom: 0.75rem;">
+      <option value="us-mini">US Mini</option>
+      <option value="tarot">Tarot</option>
+      <option value="poker">Poker</option>
+      <option value="player-sheet">Player Sheet</option>
+      <option value="token">Token</option>
+      <option value="other">Other</option>
+    </select>
     <div class="checkbox-row" style="margin-bottom: 0.75rem;">
-      <label class="toggle">
-        <input id="asset-edit-iscard" type="checkbox" checked/>
-        <span class="switch"></span>
-        <span class="label-text">Is card</span>
-      </label>
       <label class="toggle">
         <input id="asset-edit-hidden" type="checkbox"/>
         <span class="switch"></span>
@@ -730,8 +747,8 @@
               <span class="switch"></span>
               <span class="label-text">Cost</span>
             </label>
-            <input id="unit-stat-cost" type="number" min="1" max="20" placeholder="-"/>
-            <input id="unit-stat-cost-multi" class="multi" type="number" min="1" max="3" value="1" placeholder="×"/>
+            <input id="unit-stat-cost" type="text" placeholder="-"/>
+            <input id="unit-stat-cost-multi" class="multi" type="text" placeholder="×"/>
           </div>
           <div class="unit-stat">
             <label class="toggle">
@@ -739,8 +756,8 @@
               <span class="switch"></span>
               <span class="label-text">Combat</span>
             </label>
-            <input id="unit-stat-combat" type="number" min="1" max="10" placeholder="-"/>
-            <input id="unit-stat-combat-multi" class="multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+            <input id="unit-stat-combat" type="text" placeholder="-"/>
+            <input id="unit-stat-combat-multi" class="multi" type="text" placeholder="×"/>
           </div>
           <div class="unit-stat">
             <label class="toggle">
@@ -748,7 +765,7 @@
               <span class="switch"></span>
               <span class="label-text">Move</span>
             </label>
-            <input id="unit-stat-move" type="number" min="1" max="10" placeholder="-"/>
+            <input id="unit-stat-move" type="text" placeholder="-"/>
           </div>
           <div class="unit-stat">
             <label class="toggle">
@@ -756,7 +773,7 @@
               <span class="switch"></span>
               <span class="label-text">Capacity</span>
             </label>
-            <input id="unit-stat-capacity" type="number" min="1" max="20" placeholder="-"/>
+            <input id="unit-stat-capacity" type="text" placeholder="-"/>
           </div>
         </div>
       </div>
@@ -785,8 +802,8 @@
               <span class="switch"></span>
               <span class="label-text">Bombardment</span>
             </label>
-            <input id="ability-bombardment-value" type="number" min="1" max="10" placeholder="Value"/>
-            <input id="ability-bombardment-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+            <input id="ability-bombardment-value" type="text" placeholder="Value"/>
+            <input id="ability-bombardment-multi" type="text" placeholder="×"/>
           </div>
           <div class="unit-roll-ability">
             <label class="toggle">
@@ -794,8 +811,8 @@
               <span class="switch"></span>
               <span class="label-text">Anti-Fighter Barrage</span>
             </label>
-            <input id="ability-anti-fighter-barrage-value" type="number" min="1" max="10" placeholder="Value"/>
-            <input id="ability-anti-fighter-barrage-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+            <input id="ability-anti-fighter-barrage-value" type="text" placeholder="Value"/>
+            <input id="ability-anti-fighter-barrage-multi" type="text" placeholder="×"/>
           </div>
           <div class="unit-roll-ability">
             <label class="toggle">
@@ -803,8 +820,8 @@
               <span class="switch"></span>
               <span class="label-text">Space Cannon</span>
             </label>
-            <input id="ability-space-cannon-value" type="number" min="1" max="10" placeholder="Value"/>
-            <input id="ability-space-cannon-multi" type="number" min="1" max="4" value="1" placeholder="×"/>
+            <input id="ability-space-cannon-value" type="text" placeholder="Value"/>
+            <input id="ability-space-cannon-multi" type="text" placeholder="×"/>
           </div>
           <div class="unit-roll-ability">
             <label class="toggle">
@@ -812,7 +829,7 @@
               <span class="switch"></span>
               <span class="label-text">Production</span>
             </label>
-            <input id="ability-production-value" type="number" min="1" max="10" placeholder="Value"/>
+            <input id="ability-production-value" type="text" placeholder="Value"/>
           </div>
         </div>
       </div>
@@ -1002,11 +1019,11 @@ function blockActionsHtml(sectionIndex, blockIndex, includeHelp) {
   return `
     <div class="block-actions">
       <button type="button" class="insert-block-above-md secondary" title="Insert Markdown above" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">MD ↑</button>
-      <button type="button" class="insert-block-above-art secondary" title="Insert Asset above" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">Art ↑</button>
-      <button type="button" class="insert-block-above-cards secondary" title="Insert Cards above" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">Cards ↑</button>
+      <button type="button" class="insert-block-above-art secondary" title="Insert Image above" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">Img ↑</button>
+      <button type="button" class="insert-block-above-cards secondary" title="Insert Components above" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">Cmpnt ↑</button>
       <button type="button" class="insert-block-below-md secondary" title="Insert Markdown below" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">MD ↓</button>
-      <button type="button" class="insert-block-below-art secondary" title="Insert Asset below" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">Art ↓</button>
-      <button type="button" class="insert-block-below-cards secondary" title="Insert Cards below" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">Cards ↓</button>
+      <button type="button" class="insert-block-below-art secondary" title="Insert Image below" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">Img ↓</button>
+      <button type="button" class="insert-block-below-cards secondary" title="Insert Components below" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">Cmpnt ↓</button>
       ${includeHelp ? `<button type="button" class="markdown-help-btn" data-target="block" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">?</button>` : ''}
       <button type="button" class="move-block-up" title="Move up" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">↑</button>
       <button type="button" class="move-block-down" title="Move down" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">↓</button>
@@ -1031,7 +1048,7 @@ function renderSectionBlockHtml(block, sectionIndex, blockIndex, sectionId) {
       <div class="block-row" data-section-index="${sectionIndex}" data-block-index="${blockIndex}">
         <div class="block-header">
           <div class="block-title">
-            <span class="block-type">Cards</span>
+            <span class="block-type">Components</span>
             ${colSelect}
           </div>
           ${blockActionsHtml(sectionIndex, blockIndex)}
@@ -1041,7 +1058,7 @@ function renderSectionBlockHtml(block, sectionIndex, blockIndex, sectionId) {
             <label style="margin-bottom:0;font-size:0.85rem;color:var(--muted);white-space:nowrap">Group</label>
             <select class="block-cards-group" data-section-index="${sectionIndex}" data-block-index="${blockIndex}" style="margin-bottom:0;flex:1">${groupOptions}</select>
           </div>
-          <p class="hint" style="margin-top:0.35rem;margin-bottom:0">Displays all cards in this section assigned to the chosen group. Cards are assigned via the asset editor.</p>
+          <p class="hint" style="margin-top:0.35rem;margin-bottom:0">Displays all components in this section assigned to the chosen group. Components are assigned via the image editor.</p>
         </div>
       </div>
     `;
@@ -1123,8 +1140,8 @@ function renderSections() {
   sections.forEach((section, index) => {
     const blocks = section.blocks || [];
     const blocksHtml = blocks.map((block, bi) => renderSectionBlockHtml(block, index, bi, section.id)).join('');
-    const isCardSection = section.type === 'cards' || blocks.some(b => b.type === 'cards');
-    const groupHint = isCardSection ? sectionGroupHint(section.id) : '';
+    const isComponentSection = section.type === 'cards' || blocks.some(b => b.type === 'cards');
+    const groupHint = isComponentSection ? sectionGroupHint(section.id) : '';
     const isCollapsed = collapsedSections.has(index);
     const div = document.createElement('div');
     div.className = 'section-row' + (isCollapsed ? ' collapsed' : '');
@@ -1146,8 +1163,8 @@ function renderSections() {
         ${emptySection ? `
         <div class="block-add-buttons">
           <button type="button" class="add-block-btn secondary" data-section-index="${index}" data-block-type="markdown">Add Markdown</button>
-          <button type="button" class="add-block-btn secondary" data-section-index="${index}" data-block-type="asset">Add Asset</button>
-          <button type="button" class="add-block-btn secondary" data-section-index="${index}" data-block-type="cards">Add Cards</button>
+          <button type="button" class="add-block-btn secondary" data-section-index="${index}" data-block-type="asset">Add Image</button>
+          <button type="button" class="add-block-btn secondary" data-section-index="${index}" data-block-type="cards">Add Components</button>
         </div>` : ''}
       </div>
     `;
@@ -1353,7 +1370,7 @@ function updateSectionsFromForm() {
         if (type === 'Markdown') {
           const content = row.querySelector('.block-content')?.value || '';
           blocks.push({ type: 'markdown', content, column });
-        } else if (type === 'Cards') {
+        } else if (type === 'Components') {
           const group = row.querySelector('.block-cards-group')?.value || '';
           blocks.push({ type: 'cards', group, column });
         } else {
@@ -1445,19 +1462,24 @@ function defaultUnitAbilities() {
   return { deploy: false, planetaryShield: false, sustainDamage: false, bombardment: null, antiFighterBarrage: null, spaceCannon: null, production: null };
 }
 function getUnitStatsInput() {
+  const value = id => {
+    const v = document.getElementById(id).value.trim();
+    return v || null;
+  };
   return {
-    cost: { enabled: document.getElementById('unit-stat-cost-toggle').checked, value: parseInt(document.getElementById('unit-stat-cost').value) || null, multi: parseInt(document.getElementById('unit-stat-cost-multi').value) || 1 },
-    combat: { enabled: document.getElementById('unit-stat-combat-toggle').checked, value: parseInt(document.getElementById('unit-stat-combat').value) || null, multi: parseInt(document.getElementById('unit-stat-combat-multi').value) || 1 },
-    move: { enabled: document.getElementById('unit-stat-move-toggle').checked, value: parseInt(document.getElementById('unit-stat-move').value) || null },
-    capacity: { enabled: document.getElementById('unit-stat-capacity-toggle').checked, value: parseInt(document.getElementById('unit-stat-capacity').value) || null },
+    cost: { enabled: document.getElementById('unit-stat-cost-toggle').checked, value: value('unit-stat-cost'), multi: value('unit-stat-cost-multi') || 1 },
+    combat: { enabled: document.getElementById('unit-stat-combat-toggle').checked, value: value('unit-stat-combat'), multi: value('unit-stat-combat-multi') || 1 },
+    move: { enabled: document.getElementById('unit-stat-move-toggle').checked, value: value('unit-stat-move') },
+    capacity: { enabled: document.getElementById('unit-stat-capacity-toggle').checked, value: value('unit-stat-capacity') },
   };
 }
 function getUnitAbilitiesInput() {
   const roll = (toggleId, valueId, multiId) => {
     const enabled = document.getElementById(toggleId).checked;
     if (!enabled) return null;
-    const result = { value: parseInt(document.getElementById(valueId).value) || 1 };
-    if (multiId) result.multi = parseInt(document.getElementById(multiId).value) || 1;
+    const v = document.getElementById(valueId).value.trim();
+    const result = { value: v || '' };
+    if (multiId) result.multi = document.getElementById(multiId).value.trim() || '';
     return result;
   };
   return {
@@ -1472,16 +1494,17 @@ function getUnitAbilitiesInput() {
 }
 function setUnitStatsInput(stats) {
   stats = stats || { cost: {}, combat: {}, move: {}, capacity: {} };
+  const val = v => v != null ? String(v) : '';
   document.getElementById('unit-stat-cost-toggle').checked = stats.cost?.enabled || false;
-  document.getElementById('unit-stat-cost').value = stats.cost?.value || '';
-  document.getElementById('unit-stat-cost-multi').value = stats.cost?.multi || 1;
+  document.getElementById('unit-stat-cost').value = val(stats.cost?.value);
+  document.getElementById('unit-stat-cost-multi').value = val(stats.cost?.multi);
   document.getElementById('unit-stat-combat-toggle').checked = stats.combat?.enabled || false;
-  document.getElementById('unit-stat-combat').value = stats.combat?.value || '';
-  document.getElementById('unit-stat-combat-multi').value = stats.combat?.multi || 1;
+  document.getElementById('unit-stat-combat').value = val(stats.combat?.value);
+  document.getElementById('unit-stat-combat-multi').value = val(stats.combat?.multi);
   document.getElementById('unit-stat-move-toggle').checked = stats.move?.enabled || false;
-  document.getElementById('unit-stat-move').value = stats.move?.value || '';
+  document.getElementById('unit-stat-move').value = val(stats.move?.value);
   document.getElementById('unit-stat-capacity-toggle').checked = stats.capacity?.enabled || false;
-  document.getElementById('unit-stat-capacity').value = stats.capacity?.value || '';
+  document.getElementById('unit-stat-capacity').value = val(stats.capacity?.value);
   const hasStats = !!(stats.cost?.enabled || stats.combat?.enabled || stats.move?.enabled || stats.capacity?.enabled);
   document.getElementById('unit-stats-toggle').checked = hasStats;
   document.getElementById('unit-stats-well').classList.toggle('hidden', !hasStats);
@@ -1493,8 +1516,9 @@ function setUnitAbilitiesInput(abilities) {
   document.getElementById('ability-sustain-damage').checked = abilities.sustainDamage || false;
   const setRoll = (name, ability, hasMulti) => {
     document.getElementById(`ability-${name}`).checked = !!ability;
-    document.getElementById(`ability-${name}-value`).value = ability ? (ability.value || ability.target || 1) : '';
-    if (hasMulti) document.getElementById(`ability-${name}-multi`).value = ability ? (ability.multi || 1) : '1';
+    const value = ability ? (ability.value != null ? String(ability.value) : (ability.target != null ? String(ability.target) : '')) : '';
+    document.getElementById(`ability-${name}-value`).value = value;
+    if (hasMulti) document.getElementById(`ability-${name}-multi`).value = ability ? (ability.multi != null ? String(ability.multi) : '') : '';
   };
   setRoll('bombardment', abilities.bombardment, true);
   setRoll('anti-fighter-barrage', abilities.antiFighterBarrage, true);
@@ -1508,9 +1532,31 @@ function updateUnitSectionVisibility() {
   const type = document.getElementById('asset-edit-type').value;
   document.getElementById('unit-section').classList.toggle('hidden', !isUnitType(type));
 }
+function croppingComponent(component) {
+  return ['us-mini', 'tarot', 'poker'].includes(component);
+}
+function detectComponentFromDimensions(width, height) {
+  if (!width || !height) return '';
+  const ratio = Math.max(width, height) / Math.min(width, height);
+  const ratios = [
+    { component: 'us-mini', ratio: 1.470 },
+    { component: 'tarot', ratio: 1.668 },
+    { component: 'poker', ratio: 1.381 }
+  ];
+  const tolerance = 0.06;
+  let best = '';
+  let bestDiff = Infinity;
+  for (const r of ratios) {
+    const diff = Math.abs(ratio - r.ratio);
+    if (diff < bestDiff && diff < tolerance) {
+      bestDiff = diff;
+      best = r.component;
+    }
+  }
+  return best;
+}
 function updateBackRowVisibility() {
-  const isCard = document.getElementById('asset-edit-iscard').checked;
-  document.getElementById('asset-back-row').classList.toggle('hidden', !isCard);
+  document.getElementById('asset-back-row').classList.remove('hidden');
 }
 function defaultPrereq(type) {
   if (type === 'Technology') return { enabled: true, value: '' };
@@ -1764,6 +1810,7 @@ function openBulkEditModal() {
   // Reset fields
   document.getElementById('bulk-edit-configured').value = '';
   document.getElementById('bulk-edit-hidden').value = '';
+  document.getElementById('bulk-edit-component').value = '';
   document.getElementById('bulk-edit-orientation').value = '';
   document.getElementById('bulk-edit-rotate').value = '';
   document.getElementById('bulk-edit-faction').value = '';
@@ -1797,6 +1844,7 @@ function applyBulkEdit() {
   const back         = document.getElementById('bulk-edit-back').value;
   const configured   = document.getElementById('bulk-edit-configured').value;
   const hidden       = document.getElementById('bulk-edit-hidden').value;
+  const component    = document.getElementById('bulk-edit-component').value;
   const orientation  = document.getElementById('bulk-edit-orientation').value;
   const rotate       = document.getElementById('bulk-edit-rotate').value;
 
@@ -1811,9 +1859,10 @@ function applyBulkEdit() {
     if (back)     asset.back     = back;
     if (configured !== '') asset.configured = configured === 'true';
     if (hidden !== '')     asset.hidden     = hidden === 'true';
+    if (component)         asset.component  = component;
     if (orientation)     asset.orientation = orientation;
     if (rotate !== '')   asset.rotate      = parseInt(rotate);
-    if (section || type || faction || group || subtitle || back || orientation || rotate !== '') asset.configured = true;
+    if (section || type || faction || group || subtitle || back || component || orientation || rotate !== '') asset.configured = true;
   });
 
   setDirty(true);
@@ -1921,6 +1970,7 @@ function renderAssets() {
       if (rotate === 90) rotateText = '↻90';
       else if (rotate === 180) rotateText = '↻180';
       else if (rotate === 270) rotateText = '↺90';
+      const componentBadge = (asset.component && asset.component !== 'us-mini') ? `<div class="component-badge" title="${asset.component}">${asset.component}</div>` : '';
       div.innerHTML = `
         ${rotateText ? `<div class="rotate-icon">${rotateText}</div>` : ''}
         ${asset.back ? '<div class="back-icon">↩</div>' : ''}
@@ -1928,6 +1978,7 @@ function renderAssets() {
         <div class="group" title="${asset.group || asset.folder}">${asset.group || asset.folder}</div>
         ${asset.hidden ? '<div class="title hidden-badge" style="color:#dc2626">hidden</div>' : ''}
         <div class="orientation-icon ${orientClass}"></div>
+        ${componentBadge}
       `;
       div.addEventListener('click', (e) => {
         if (e.shiftKey && lastClickedAssetPath) {
@@ -2030,7 +2081,7 @@ function populateLinkedAbilityOptions(currentValue, filterText) {
   select.innerHTML = '<option value="">None</option>';
   const filter = filterText.toLowerCase();
   const options = assetValues().filter(a => {
-    if (!a.isCard) return false;
+    if (!croppingComponent(a.component)) return false;
     if (!filter) return true;
     return (a.path + ' ' + a.title + ' ' + a.group).toLowerCase().includes(filter);
   });
@@ -2062,20 +2113,37 @@ function renderAssetPreview(asset) {
   }
 }
 
+function applyAssetPreviewRotation() {
+  const previewImg = document.getElementById('asset-preview');
+  const rotate = parseInt(document.getElementById('asset-edit-rotate').value) || 0;
+  previewImg.style.transform = rotate ? `rotate(${rotate}deg)` : '';
+}
+
 function openAssetEditor(path) {
   const asset = assets[path];
   if (!asset) return;
   const expansionId = idInput.value.trim();
   document.getElementById('asset-edit-path').value = path;
-  document.getElementById('asset-modal-title').textContent = `Asset: ${asset.filename}`;
+  document.getElementById('asset-modal-title').textContent = `Image: ${asset.filename}`;
   const previewImg = document.getElementById('asset-preview');
   previewImg.src = `/api/image/${expansionId}/${asset.path}`;
   previewImg.alt = asset.title || asset.filename;
   previewImg.classList.remove('portrait', 'square');
+  previewImg.style.transform = '';
   if (asset.orientation === 'portrait') previewImg.classList.add('portrait');
   if (asset.orientation === 'square') previewImg.classList.add('square');
+  previewImg.onload = function() {
+    if (!asset.configured) {
+      const detected = detectComponentFromDimensions(this.naturalWidth, this.naturalHeight);
+      if (detected && detected !== asset.component) {
+        asset.component = detected;
+        document.getElementById('asset-edit-component').value = detected;
+        updateBackRowVisibility();
+      }
+    }
+  };
   document.getElementById('asset-filename').textContent = asset.path;
-  document.getElementById('asset-edit-iscard').checked = asset.isCard;
+  document.getElementById('asset-edit-component').value = asset.component || 'us-mini';
   document.getElementById('asset-edit-hidden').checked = asset.hidden;
   document.getElementById('asset-edit-configured').checked = asset.configured;
   document.getElementById('asset-edit-title').value = asset.title || '';
@@ -2084,6 +2152,7 @@ function openAssetEditor(path) {
   document.getElementById('asset-edit-type').value = asset.type || 'Other Component';
   document.getElementById('asset-edit-orientation').value = asset.orientation || 'auto';
   document.getElementById('asset-edit-rotate').value = String(asset.rotate || 0);
+  applyAssetPreviewRotation();
   document.getElementById('asset-edit-group').value = asset.group || '';
   document.getElementById('asset-edit-flavour').value = asset.flavour || '';
   document.getElementById('asset-edit-description').value = asset.description || '';
@@ -2138,7 +2207,7 @@ function saveAssetEditor() {
     return parts.length >= 2 ? { q: parts[0].trim(), a: parts.slice(1).join('|').trim() } : { q: line.trim(), a: '' };
   }).filter(qa => qa.q) : [];
 
-  asset.isCard = document.getElementById('asset-edit-iscard').checked;
+  asset.component = document.getElementById('asset-edit-component').value || 'us-mini';
   asset.hidden = document.getElementById('asset-edit-hidden').checked;
   asset.configured = document.getElementById('asset-edit-configured').checked;
   asset.title = document.getElementById('asset-edit-title').value.trim() || asset.id;
@@ -2160,10 +2229,6 @@ function saveAssetEditor() {
   } else {
     delete asset.stats;
     delete asset.abilities;
-  }
-
-  if (!asset.isCard) {
-    asset.back = '';
   }
 
   asset.prereq = getPrereqInput();
@@ -2353,7 +2418,8 @@ document.getElementById('collapse-all-btn').addEventListener('click', function()
 document.getElementById('inspect-btn').addEventListener('click', inspectFolder);
 document.getElementById('asset-edit-save-top').addEventListener('click', saveAssetEditor);
 document.getElementById('asset-edit-type').addEventListener('change', updateUnitInputs);
-document.getElementById('asset-edit-iscard').addEventListener('change', updateBackRowVisibility);
+document.getElementById('asset-edit-component').addEventListener('change', updateBackRowVisibility);
+document.getElementById('asset-edit-rotate').addEventListener('change', applyAssetPreviewRotation);
 document.getElementById('unit-stats-toggle').addEventListener('change', function() {
   document.getElementById('unit-stats-well').classList.toggle('hidden', !this.checked);
 });

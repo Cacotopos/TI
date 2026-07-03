@@ -5,6 +5,7 @@ Reads S3 credentials from the project .env file and can run aws s3 sync to
 deploy a generated expansion site.
 """
 
+import io
 import json
 import os
 import platform
@@ -12,7 +13,7 @@ import subprocess
 from pathlib import Path
 
 from dotenv import load_dotenv
-from flask import Flask, jsonify, render_template, request, send_from_directory
+from flask import Flask, jsonify, render_template, request, send_file, send_from_directory
 from PIL import Image
 
 app = Flask(__name__)
@@ -42,11 +43,45 @@ def _git_commit() -> str:
 GIT_COMMIT = _git_commit()
 
 
+def _migrate_config(data: dict) -> dict:
+    """Migrate legacy isCard boolean to component string."""
+    for asset in data.get("assets", {}).values():
+        if "component" not in asset:
+            asset["component"] = "us-mini" if asset.get("isCard", True) else "other"
+        if "isCard" in asset:
+            del asset["isCard"]
+    return data
+
+
+# Landscape aspect ratios for known physical card components.
+_COMPONENT_RATIOS = {
+    "us-mini": 1.470,
+    "tarot": 1.668,
+    "poker": 1.381,
+}
+_COMPONENT_RATIO_TOLERANCE = 0.06
+
+
+def _detect_component_from_dimensions(width: int, height: int) -> str:
+    """Guess the physical component from image aspect ratio."""
+    if width <= 0 or height <= 0:
+        return "us-mini"
+    ratio = max(width, height) / min(width, height)
+    best = "other"
+    best_diff = float("inf")
+    for component, expected in _COMPONENT_RATIOS.items():
+        diff = abs(ratio - expected)
+        if diff < best_diff and diff < _COMPONENT_RATIO_TOLERANCE:
+            best_diff = diff
+            best = component
+    return best
+
+
 def _load_config(expansion_id: str) -> dict:
     config_path = DATA_DIR / expansion_id / "config.json"
     if not config_path.exists():
         return {}
-    return json.loads(config_path.read_text(encoding="utf-8"))
+    return _migrate_config(json.loads(config_path.read_text(encoding="utf-8")))
 
 
 def _save_config(expansion_id: str, data: dict) -> Path:
@@ -128,7 +163,9 @@ def deploy(expansion_id: str):
 
 @app.route("/api/image/<expansion_id>/<path:filename>")
 def serve_image(expansion_id: str, filename: str):
-    """Serve a source image file for preview."""
+    """Serve a source image file for preview, stripping EXIF orientation so the
+    preview matches the generated site output.
+    """
     config = _load_config(expansion_id)
     images_path = config.get("source", {}).get("images", "")
     if not images_path:
@@ -136,7 +173,27 @@ def serve_image(expansion_id: str, filename: str):
     images_src = ROOT / images_path
     if not images_src.exists():
         return "", 404
-    return send_from_directory(images_src, filename)
+    src = images_src / filename
+    if not src.exists():
+        return "", 404
+    try:
+        with Image.open(src) as img:
+            fmt = img.format or "JPEG"
+            if fmt.upper() in ("JPEG", "JPG"):
+                img = img.convert("RGB")
+                buffer = io.BytesIO()
+                img.save(buffer, format="JPEG", quality=92)
+                buffer.seek(0)
+                return send_file(buffer, mimetype="image/jpeg")
+            if "exif" in img.info:
+                img.info.pop("exif")
+            buffer = io.BytesIO()
+            img.save(buffer, format=fmt)
+            buffer.seek(0)
+            mimetype = Image.MIME.get(fmt, "image/png")
+            return send_file(buffer, mimetype=mimetype)
+    except Exception:
+        return send_from_directory(images_src, filename)
 
 
 @app.route("/api/images/<expansion_id>")
@@ -215,6 +272,8 @@ def inspect(expansion_id: str):
                     assets[path]["faction"] = ""
                 if "orientation" not in assets[path]:
                     assets[path]["orientation"] = orientation
+                if "component" not in assets[path]:
+                    assets[path]["component"] = _detect_component_from_dimensions(width, height)
             else:
                 assets[path] = {
                     "id": p.stem,
@@ -223,7 +282,7 @@ def inspect(expansion_id: str):
                     "folder": folder,
                     "configured": False,
                     "hidden": False,
-                    "isCard": True,
+                    "component": _detect_component_from_dimensions(width, height),
                     "title": p.stem,
                     "description": "",
                     "faq": [],

@@ -10,8 +10,8 @@
   const index = new Map();
   const docs = [];
 
-  function addDoc(id, text, title, url, kind, snippet, fields) {
-    const doc = { id, title, url, kind, text: (snippet || text).slice(0, 200), fields: fields || {} };
+  function addDoc(id, text, title, url, kind, snippet, fields, cardId) {
+    const doc = { id, title, url, kind, text: (snippet || text).slice(0, 200), fields: fields || {}, cardId: cardId || null };
     docs.push(doc);
     const tokens = text.toLowerCase().split(/\W+/).filter(t => t.length > 1);
     tokens.forEach(token => {
@@ -30,16 +30,23 @@
 
   (site.images || []).forEach((img, i) => {
     const faqText = (img.faq || []).map(qa => `${qa.q} ${qa.a}`).join(' ');
-    const statsText = img.stats ? Object.values(img.stats).map(s => s.enabled ? (s.value || '-') : '').join(' ') : '';
+    const statsText = img.stats ? Object.values(img.stats).map(s => s.enabled ? (s.value != null ? String(s.value) : '-') : '').join(' ') : '';
     const abilities = img.abilities || {};
+    const rollText = (roll, label) => {
+      if (!roll) return '';
+      const val = roll.value != null ? roll.value : roll.target;
+      if (val === '' || val == null) return '';
+      const multi = roll.multi != null && roll.multi !== '' ? ` (x${roll.multi})` : '';
+      return `${label} ${val}${multi}`;
+    };
     const abilityText = [
       abilities.deploy ? 'Deploy' : '',
       abilities.planetaryShield ? 'Planetary Shield' : '',
       abilities.sustainDamage ? 'Sustain Damage' : '',
-      abilities.bombardment ? `Bombardment ${abilities.bombardment.value != null ? abilities.bombardment.value : abilities.bombardment.target} (x${abilities.bombardment.multi || 1})` : '',
-      abilities.antiFighterBarrage ? `Anti-Fighter Barrage ${abilities.antiFighterBarrage.value != null ? abilities.antiFighterBarrage.value : abilities.antiFighterBarrage.target} (x${abilities.antiFighterBarrage.multi || 1})` : '',
-      abilities.spaceCannon ? `Space Cannon ${abilities.spaceCannon.value != null ? abilities.spaceCannon.value : abilities.spaceCannon.target} (x${abilities.spaceCannon.multi || 1})` : '',
-      abilities.production ? `Production ${abilities.production.value != null ? abilities.production.value : abilities.production.target} (x${abilities.production.multi || 1})` : '',
+      rollText(abilities.bombardment, 'Bombardment'),
+      rollText(abilities.antiFighterBarrage, 'Anti-Fighter Barrage'),
+      rollText(abilities.spaceCannon, 'Space Cannon'),
+      rollText(abilities.production, 'Production'),
     ].join(' ');
     const prereqText = img.prereq && img.prereq.enabled ? img.prereq.value : '';
     const colorText = img.color || '';
@@ -68,7 +75,7 @@
     const searchText = `${img.name || ''} ${img.subtitle || ''} ${img.folder || ''} ${img.group || ''} ${img.type || ''} ${img.faction || ''} ${img.description || ''} ${img.flavour || ''} ${faqText} ${statsText} ${abilityText} ${prereqText} ${colorText} ${sourceText} ${synergyText} ${placementText}`;
     const snippet = [img.subtitle, img.type, img.faction, img.group].filter(Boolean).join(' · ');
     const url = `${img.section || 'cards'}.html`;
-    addDoc(`image-${i}`, searchText, img.name || img.id, url, 'card', snippet, fields);
+    addDoc(`image-${i}`, searchText, img.name || img.id, url, 'card', snippet, fields, img.id);
   });
 
   window.searchExpansion = function(query) {

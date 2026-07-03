@@ -23,6 +23,9 @@
   if (!modal) return;
 
   function escapeHtml(text) {
+    return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function escapeHtmlText(text) {
     return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
@@ -34,7 +37,7 @@
       const stat = stats?.[key];
       if (!stat || !stat.enabled) return;
       const val = stat.value == null ? '-' : escapeHtml(String(stat.value));
-      const multi = (stat.multi && stat.multi > 1) ? ` (x${stat.multi})` : '';
+      const multi = (stat.multi != null && stat.multi !== '' && Number(stat.multi) > 1) ? ` (x${stat.multi})` : '';
       parts.push(`<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs whitespace-nowrap">${labels[key]} ${val}${multi}</span>`);
     });
     return parts.join('');
@@ -55,7 +58,8 @@
       const roll = abilities[key];
       if (!roll) return;
       const val = roll.value != null ? roll.value : roll.target;
-      const multi = roll.multi != null ? ` (x${roll.multi})` : '';
+      if (val === '' || val == null) return;
+      const multi = (roll.multi != null && roll.multi !== '' && Number(roll.multi) > 1) ? ` (x${roll.multi})` : '';
       parts.push(`<span class="px-2 py-1 rounded-md bg-blue-600 text-white text-xs font-semibold">${label} ${val}${multi}</span>`);
     });
     return parts.join('');
@@ -72,13 +76,22 @@
     }
     return parts.join('');
   }
+  const PILL_COLORS = {
+    hazardous: ['#D31800', 'white'],
+    industrial: ['#06B700', 'white'],
+    cultural: ['#01A7DB', 'black'],
+    influence: ['#56C3F0', 'black'],
+    resource: ['#F3D21C', 'black'],
+  };
+  function pillStyle(bg, text) { return `background-color: ${bg}; color: ${text};`; }
+
   function formatPlacement(placement) {
     if (!placement || !placement.enabled || !placement.rules || !placement.rules.length) return '';
     const labels = { any: 'Any', hazardous: 'Hazardous', industrial: 'Industrial', cultural: 'Cultural', legendary: 'Legendary', tech_planet: 'Tech Planet', frontier_special: 'Frontier/special', mecatol: 'Mecatol Rex', relic: 'Relic' };
     const parts = placement.rules.map(r => {
       const label = labels[r.value] || r.value;
-      const cls = r.not ? 'bg-red-700 text-white' : 'bg-indigo-600 text-white';
-      return `<span class="px-2 py-1 rounded-md ${cls} text-xs font-semibold whitespace-nowrap">${r.not ? 'Not ' : ''}${escapeHtml(label)}</span>`;
+      const [bg, text] = r.not ? ['#B91C1C', 'white'] : (PILL_COLORS[r.value] || ['#4F46E5', 'white']);
+      return `<span class="px-2 py-1 rounded-md text-xs font-semibold whitespace-nowrap" style="${pillStyle(bg, text)}">${r.not ? 'Not ' : ''}${escapeHtml(label)}</span>`;
     });
     return `<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs whitespace-nowrap">Placement</span> ${parts.join('')}`;
   }
@@ -95,19 +108,18 @@
     if (!source || !source.enabled) return '';
     const parts = [];
     if (source.influence !== undefined && source.influence !== null && source.influence !== '') {
-      parts.push(`<span class="px-2 py-1 rounded-md bg-cyan-500 text-black text-xs font-semibold whitespace-nowrap">Influence ${escapeHtml(String(source.influence))}</span>`);
+      parts.push(`<span class="px-2 py-1 rounded-md text-black text-xs font-semibold whitespace-nowrap" style="${pillStyle(PILL_COLORS.influence[0], PILL_COLORS.influence[1])}">Influence ${escapeHtml(String(source.influence))}</span>`);
     }
     if (source.resource !== undefined && source.resource !== null && source.resource !== '') {
-      parts.push(`<span class="px-2 py-1 rounded-md bg-yellow-400 text-black text-xs font-semibold whitespace-nowrap">Resource ${escapeHtml(String(source.resource))}</span>`);
+      parts.push(`<span class="px-2 py-1 rounded-md text-black text-xs font-semibold whitespace-nowrap" style="${pillStyle(PILL_COLORS.resource[0], PILL_COLORS.resource[1])}">Resource ${escapeHtml(String(source.resource))}</span>`);
     }
     if (type === 'Station') {
       parts.push('<span class="px-2 py-1 rounded-md bg-blue-600 text-white text-xs font-semibold whitespace-nowrap">Station</span>');
     } else if (source.trait) {
       const traits = Array.isArray(source.trait) ? source.trait : (source.trait ? [source.trait] : []);
-      const traitColors = { hazardous: 'bg-red-600', cultural: 'bg-green-600', industrial: 'bg-yellow-500 text-black' };
       traits.forEach(trait => {
-        const color = traitColors[trait] || 'bg-gray-700';
-        parts.push(`<span class="px-2 py-1 rounded-md ${color} text-xs font-semibold whitespace-nowrap capitalize">${escapeHtml(trait)}</span>`);
+        const [bg, text] = PILL_COLORS[trait] || ['#374151', 'white'];
+        parts.push(`<span class="px-2 py-1 rounded-md text-xs font-semibold whitespace-nowrap capitalize" style="${pillStyle(bg, text)}">${escapeHtml(trait)}</span>`);
       });
     }
     if (source.legendary) parts.push('<span class="px-2 py-1 rounded-md bg-pink-400 text-black text-xs font-semibold whitespace-nowrap">Legendary</span>');
@@ -173,7 +185,7 @@
   }
   function renderMarkdown(text) {
     if (!text) return '';
-    let html = escapeHtml(text)
+    let html = escapeHtmlText(text)
       .replace(/^###### (.*$)/gim, '<h6>$1</h6>')
       .replace(/^##### (.*$)/gim, '<h5>$1</h5>')
       .replace(/^#### (.*$)/gim, '<h4>$1</h4>')

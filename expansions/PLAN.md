@@ -77,7 +77,7 @@ TI/expansions/
 - Asset inspection with auto-suggested sections from top-level folders.
 - Asset list with "not configured" and "hidden" filters and a search box.
 - Per-asset modal with image preview, filename, title, section, group, type,
-  faction, description, FAQ, back image, `isCard`, `hidden`, and `configured`
+  faction, description, FAQ, back image, physical `component`, `hidden`, and `configured`
   flags.
 - Optional banner image picker with minimum width validation.
 
@@ -85,7 +85,8 @@ TI/expansions/
 
 - Jinja2 templating.
 - Copies CSS, JS, and images into the output site.
-- Crops card images using `Icons/Card Mask.png` (same mask as `card_diff`).
+- Crops card images per physical component using `Icons/Card Mask.png` (US Mini)
+  and component-specific masks for Tarot and Poker.
 - Generates `index.html`, one page per section, and a `search.html` page.
 - Writes `data.json` for client-side search.
 - Groups cards by their `group` field on section pages.

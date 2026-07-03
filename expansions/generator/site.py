@@ -58,11 +58,12 @@ def _copy_assets(output_dir: Path) -> None:
             shutil.copytree(src, assets_dir / sub, dirs_exist_ok=True)
 
 
-_MASK_CROP_BOX: tuple[float, float, float, float] | None = None
+_CROP_COMPONENTS = {"us-mini", "tarot", "poker"}
+_COMPONENT_CROP_BOXES: dict[str, tuple[float, float, float, float]] = {}
 
 
 def _load_mask_crop_box(mask_path: Path) -> tuple[float, float, float, float]:
-    """Load the card mask and return the relative bounding box (left, top, right, bottom)."""
+    """Load a card mask and return the relative bounding box (left, top, right, bottom)."""
     mask_img = Image.open(mask_path).convert("RGBA")
     r, g, b, a = mask_img.split()
     alpha = np.array(a)
@@ -83,17 +84,42 @@ def _load_mask_crop_box(mask_path: Path) -> tuple[float, float, float, float]:
     return (left / w, top / h, right / w, bottom / h)
 
 
-def _crop_card_image(path: Path, mask_path: Path, rotate: int = 0) -> bytes:
-    """Crop a source image to the card mask bounding box and return JPEG bytes.
+def _default_crop_box(component: str) -> tuple[float, float, float, float]:
+    """Default relative crop box for components that do not have a mask file."""
+    if component == "tarot":
+        return (0.0251, 0.0407, 0.9749, 0.9593)
+    if component == "poker":
+        return (0.0356, 0.0486, 0.9644, 0.9514)
+    return (0.0, 0.0, 1.0, 1.0)
+
+
+def _component_crop_box(component: str) -> tuple[float, float, float, float]:
+    """Return the cached crop box for a physical component."""
+    if component in _COMPONENT_CROP_BOXES:
+        return _COMPONENT_CROP_BOXES[component]
+    if component == "us-mini":
+        mask_path = ROOT / "Icons" / "Card Mask.png"
+        if mask_path.exists():
+            box = _load_mask_crop_box(mask_path)
+        else:
+            box = _default_crop_box(component)
+    else:
+        mask_path = ROOT / "Icons" / f"{component.replace('-', ' ').title()} Mask.png"
+        if mask_path.exists():
+            box = _load_mask_crop_box(mask_path)
+        else:
+            box = _default_crop_box(component)
+    _COMPONENT_CROP_BOXES[component] = box
+    return box
+
+
+def _crop_image(path: Path, crop_box: tuple[float, float, float, float], rotate: int = 0) -> bytes:
+    """Crop a source image to a relative bounding box and return JPEG bytes.
 
     Portrait images are rotated to landscape before cropping, then rotated back
     so they are displayed in their natural orientation while keeping the same
     crop area. User rotation is applied first.
     """
-    global _MASK_CROP_BOX
-    if _MASK_CROP_BOX is None:
-        _MASK_CROP_BOX = _load_mask_crop_box(mask_path)
-
     with Image.open(path) as img:
         img = img.convert("RGB")
         if rotate:
@@ -103,7 +129,7 @@ def _crop_card_image(path: Path, mask_path: Path, rotate: int = 0) -> bytes:
         if portrait:
             img = img.rotate(-90, expand=True)
             w, h = img.size
-        left, top, right, bottom = _MASK_CROP_BOX
+        left, top, right, bottom = crop_box
         crop = (int(left * w), int(top * h), int(right * w), int(bottom * h))
         img = img.crop(crop)
         if portrait:
@@ -147,7 +173,7 @@ def _collect_assets(config: dict) -> list[dict]:
     for path, asset in sorted(assets.items()):
         if asset.get("hidden"):
             continue
-        if not asset.get("isCard", True):
+        if asset.get("component", "us-mini") == "other":
             continue
         rel = Path(path)
         src_path = images_src / rel
@@ -192,15 +218,11 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
         return
 
     assets = config.get("assets", {})
-    mask_path = ROOT / "Icons" / "Card Mask.png"
-    crop = mask_path.exists()
 
-    # Map card back images to their front asset orientation.
+    # Map back images to their front asset for portrait orientation matching.
     back_to_front = {}
     front_portrait = set()
     for path, asset in assets.items():
-        if asset.get("hidden") or not asset.get("isCard", True):
-            continue
         back = asset.get("back", "")
         if back:
             back_to_front[back] = path
@@ -218,11 +240,12 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
             rel_path = str(rel).replace("\\", "/")
             asset = assets.get(rel_path, {})
             rotate = int(asset.get("rotate", 0) or 0)
-            section_id = asset.get("section", "cards")
-            is_card = asset.get("isCard", True)
+            component = asset.get("component", "us-mini")
             is_back = rel_path in back_to_front
-            if crop and (is_card or is_back):
-                data = _crop_card_image(p, mask_path, rotate)
+
+            if component in _CROP_COMPONENTS:
+                crop_box = _component_crop_box(component)
+                data = _crop_image(p, crop_box, rotate)
                 dest.write_bytes(data)
             elif is_back and back_to_front[rel_path] in front_portrait:
                 with Image.open(p) as img:
@@ -244,7 +267,19 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
                         img.save(buffer, format="JPEG", quality=92)
                         dest.write_bytes(buffer.getvalue())
                 else:
-                    shutil.copy2(p, dest)
+                    with Image.open(p) as img:
+                        fmt = img.format or "JPEG"
+                        if fmt.upper() in ("JPEG", "JPG"):
+                            img = img.convert("RGB")
+                            buffer = io.BytesIO()
+                            img.save(buffer, format="JPEG", quality=92)
+                            dest.write_bytes(buffer.getvalue())
+                        else:
+                            if "exif" in img.info:
+                                img.info.pop("exif")
+                            buffer = io.BytesIO()
+                            img.save(buffer, format=fmt)
+                            dest.write_bytes(buffer.getvalue())
 
 
 def _prepare_banner(config: dict, output_dir: Path) -> str | None:
