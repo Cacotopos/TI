@@ -875,9 +875,18 @@ let existingIds = [];
 const collapsedSections = new Set();
 
 async function loadSettings() {
-  const res = await fetch('/api/settings');
-  const data = await res.json();
-  document.getElementById('settings').textContent = `S3 bucket: ${data.bucket} | Region: ${data.region} | Profile: ${data.profile}`;
+  const [settingsRes, statusRes] = await Promise.all([
+    fetch('/api/settings'),
+    fetch('/api/deploy-status'),
+  ]);
+  const settings = await settingsRes.json();
+  const status = await statusRes.json();
+  const deployHint = status.can_deploy ? '' : ' (deploy unavailable)';
+  document.getElementById('settings').textContent = `S3 bucket: ${settings.bucket} | Region: ${settings.region} | Profile: ${settings.profile}${deployHint}`;
+  const deployBtn = document.getElementById('deploy-btn');
+  if (deployBtn) {
+    deployBtn.classList.toggle('hidden', !status.can_deploy);
+  }
 }
 
 async function loadExpansionList() {

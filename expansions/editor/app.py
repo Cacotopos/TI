@@ -9,6 +9,7 @@ import io
 import json
 import os
 import platform
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -39,6 +40,23 @@ def _git_commit() -> str:
         return subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, text=True).strip()
     except Exception:
         return "unknown"
+
+
+def _aws_profile_configured(profile: str) -> bool:
+    """Return True if the AWS CLI is installed and the named profile exists."""
+    if not shutil.which("aws"):
+        return False
+    try:
+        result = subprocess.run(
+            ["aws", "configure", "list-profiles"],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        profiles = [p.strip() for p in result.stdout.splitlines() if p.strip()]
+        return profile in profiles
+    except Exception:
+        return False
 
 
 GIT_COMMIT = _git_commit()
@@ -371,6 +389,17 @@ def settings():
         "bucket": S3_BUCKET,
         "region": S3_REGION,
         "profile": AWS_PROFILE,
+    })
+
+
+@app.route("/api/deploy-status")
+def deploy_status():
+    """Return whether the configured AWS profile is available for S3 deploy."""
+    return jsonify({
+        "can_deploy": _aws_profile_configured(AWS_PROFILE),
+        "profile": AWS_PROFILE,
+        "bucket": S3_BUCKET,
+        "region": S3_REGION,
     })
 
 
