@@ -10,6 +10,7 @@ import json
 import os
 import platform
 import subprocess
+import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -127,7 +128,7 @@ def generate(expansion_id: str):
     output_dir.mkdir(parents=True, exist_ok=True)
 
     result = subprocess.run(
-        ["python3", "-m", "expansions.generator.site", str(config_path), "--output", str(output_dir)],
+        [sys.executable, "-m", "expansions.generator.site", str(config_path), "--output", str(output_dir)],
         capture_output=True,
         text=True,
         cwd=ROOT,
