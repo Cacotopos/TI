@@ -23,30 +23,29 @@ MIN_BANNER_WIDTH = 1152 + 400
 
 
 def _markdown_filter(text: str) -> str:
-    """Render a small subset of Markdown to HTML."""
+    """Render a small subset of Markdown to HTML, matching the client renderer."""
     if not text:
         return ""
-    html = (
-        text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-    )
+    html = text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    # Headers (allow optional space after the hashes)
+    for i in range(6, 0, -1):
+        hashes = "#" * i
+        pattern = r"^" + hashes + r"\s*(.*$)"
+        html = re.sub(pattern, rf"<h{i}>\1</h{i}>", html, flags=re.MULTILINE)
     # Bold
     html = re.sub(r"\*\*(.*?)\*\*", r"<strong>\1</strong>", html)
     # Italic
     html = re.sub(r"\*(.*?)\*", r"<em>\1</em>", html)
-    # Headers
-    for i in range(6, 0, -1):
-        html = re.sub(rf"^#{i} (.*$)", rf"<h{i}>\1</h{i}>", html, flags=re.MULTILINE)
     # Inline code
     html = re.sub(r"`([^`]+)`", r"<code>\1</code>", html)
     # Links
-    html = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2" target="_blank">\1</a>', html)
+    html = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2" target="_blank" class="text-accent hover:underline">\1</a>', html)
     # Lists
     html = re.sub(r"^\s*-\s+(.*$)", r"<li>\1</li>", html, flags=re.MULTILINE)
     html = re.sub(r"(<li>.*</li>)", r"<ul>\1</ul>", html, flags=re.DOTALL)
     # Paragraphs
-    paragraphs = html.split("\n\n")
-    html = "\n\n".join(f"<p>{p.replace(chr(10), '<br>')}</p>" if p.strip() else p for p in paragraphs)
-    return html
+    html = html.replace("\n\n", "</p><p>").replace("\n", "<br>")
+    return f"<p>{html}</p>"
 
 
 

@@ -183,6 +183,7 @@
     actionsContainer.innerHTML = buttons.join('');
     actionsContainer.classList.toggle('hidden', !buttons.length);
   }
+
   function renderMarkdown(text) {
     if (!text) return '';
     let html = escapeHtmlText(text)
