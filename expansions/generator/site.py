@@ -208,6 +208,7 @@ def _collect_assets(config: dict) -> list[dict]:
             "component": component,
             "tileType": asset.get("tileType", ""),
             "anomalies": asset.get("anomalies", []),
+            "wormholes": asset.get("wormholes", []),
             "flavour": asset.get("flavour", ""),
         })
     return images

@@ -40,7 +40,8 @@
        data-card-flavour="{{ img.flavour | default('') | forceescape }}"
        data-card-component="{{ img.component | default('') }}"
        data-card-tile-type="{{ img.tileType | default('') }}"
-       data-card-anomalies="{{ img.anomalies | default([]) | join(',') | forceescape }}">
+       data-card-anomalies="{{ img.anomalies | default([]) | join(',') | forceescape }}"
+       data-card-wormholes="{{ img.wormholes | default([]) | join(',') | forceescape }}">
     <div class="card-image-wrapper {{ 'tile' if img.component == 'tile' else '' }}">
       <img src="{{ img.path }}" alt="{{ img.name }}" class="card-image {{ 'tile' if img.component == 'tile' else '' }} rounded-lg"/>
     </div>
@@ -50,6 +51,13 @@
     <div class="flex flex-wrap justify-center gap-1 mt-1">
       {% for anomaly in img.anomalies %}
       <span class="px-1.5 py-0.5 rounded bg-bg border border-border text-[10px] text-muted">{{ anomaly }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if img.component == 'tile' and img.wormholes %}
+    <div class="flex flex-wrap justify-center gap-1 mt-1">
+      {% for wormhole in img.wormholes %}
+      <span class="px-1.5 py-0.5 rounded bg-accent/20 border border-accent/40 text-[10px] text-accent">{{ wormhole }}</span>
       {% endfor %}
     </div>
     {% endif %}

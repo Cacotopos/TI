@@ -163,6 +163,7 @@
       component: item.dataset.cardComponent,
       tileType: item.dataset.cardTileType,
       anomalies: item.dataset.cardAnomalies,
+      wormholes: item.dataset.cardWormholes,
     };
   }
   function renderCardActions(card) {
@@ -227,7 +228,8 @@
       let parts;
       if (card.component === 'tile') {
         const anomalyList = (card.anomalies || '').split(',').filter(Boolean);
-        parts = [card.tileType ? card.tileType.replace(/-/g, ' ') : '', anomalyList.join(', ')].filter(Boolean);
+        const wormholeList = (card.wormholes || '').split(',').filter(Boolean);
+        parts = [card.tileType ? card.tileType.replace(/-/g, ' ') : '', anomalyList.join(', '), wormholeList.join(', ')].filter(Boolean);
       } else {
         parts = [card.group, card.faction].filter(Boolean).map(escapeHtml);
       }

@@ -36,8 +36,9 @@
         "type": "object",
         "properties": {
           "component": { "type": "string", "enum": ["us-mini", "tarot", "poker", "tile", "player-sheet", "token", "other"] },
-          "tileType": { "type": "string", "enum": ["home-system", "nexus", "hyperlane", "anomaly"] },
-          "anomalies": { "type": "array", "items": { "type": "string", "enum": ["Asteroid", "Scar", "Gravity Rift", "Fracture", "Empty", "Nebula"] } },
+          "tileType": { "type": "string", "enum": ["home-system", "nexus", "hyperlane", "other"] },
+          "anomalies": { "type": "array", "items": { "type": "string", "enum": ["Asteroid", "Scar", "Gravity Rift", "Fracture", "Empty", "Nebula", "Supernova"] } },
+          "wormholes": { "type": "array", "items": { "type": "string", "enum": ["alpha", "beta", "gamma", "delta", "epsilon", "ingress", "egress", "other"] } },
           "isCard": { "type": "boolean" }
         }
       }
