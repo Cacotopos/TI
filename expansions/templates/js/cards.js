@@ -160,6 +160,9 @@
       frontPath: item.dataset.cardFrontPath,
       flavour: item.dataset.cardFlavour,
       orientation: item.dataset.cardOrientation,
+      component: item.dataset.cardComponent,
+      tileType: item.dataset.cardTileType,
+      anomalies: item.dataset.cardAnomalies,
     };
   }
   function renderCardActions(card) {
@@ -221,7 +224,13 @@
     }
     const metaEl = document.getElementById('card-modal-meta');
     if (metaEl) {
-      const parts = [card.group, card.faction].filter(Boolean).map(escapeHtml);
+      let parts;
+      if (card.component === 'tile') {
+        const anomalyList = (card.anomalies || '').split(',').filter(Boolean);
+        parts = [card.tileType ? card.tileType.replace(/-/g, ' ') : '', anomalyList.join(', ')].filter(Boolean);
+      } else {
+        parts = [card.group, card.faction].filter(Boolean).map(escapeHtml);
+      }
       metaEl.textContent = parts.join(' · ');
       metaEl.classList.toggle('hidden', !parts.length);
     }

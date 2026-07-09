@@ -177,6 +177,9 @@ def _collect_assets(config: dict) -> list[dict]:
         rel = Path(path)
         src_path = images_src / rel
         orientation = _detect_orientation(src_path, asset)
+        component = asset.get("component", "us-mini")
+        if component == "tile":
+            orientation = "square"
         images.append({
             "id": asset.get("id", rel.stem),
             "path": str(Path("assets/images") / rel).replace("\\", "/"),
@@ -202,6 +205,9 @@ def _collect_assets(config: dict) -> list[dict]:
             "source": asset.get("source", {}),
             "placement": asset.get("placement", {}),
             "orientation": orientation,
+            "component": component,
+            "tileType": asset.get("tileType", ""),
+            "anomalies": asset.get("anomalies", []),
             "flavour": asset.get("flavour", ""),
         })
     return images

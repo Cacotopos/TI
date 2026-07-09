@@ -504,10 +504,31 @@
       <option value="us-mini">US Mini</option>
       <option value="tarot">Tarot</option>
       <option value="poker">Poker</option>
+      <option value="tile">Tile</option>
       <option value="player-sheet">Player Sheet</option>
       <option value="token">Token</option>
       <option value="other">Other</option>
     </select>
+    <div id="tile-type-row" class="hidden">
+      <label>Tile Type</label>
+      <select id="asset-edit-tile-type" style="margin-bottom: 0.75rem;">
+        <option value="home-system">Home System</option>
+        <option value="nexus">Nexus</option>
+        <option value="hyperlane">Hyperlane</option>
+        <option value="anomaly">Anomaly</option>
+      </select>
+    </div>
+    <div id="tile-anomalies-well" class="hidden well" style="margin-bottom: 0.75rem;">
+      <label>Anomalies</label>
+      <div class="checkbox-row" id="tile-anomalies-row">
+        <label class="toggle"><input type="checkbox" class="anomaly-toggle" value="Asteroid"/><span class="switch"></span><span class="label-text">Asteroid</span></label>
+        <label class="toggle"><input type="checkbox" class="anomaly-toggle" value="Scar"/><span class="switch"></span><span class="label-text">Scar</span></label>
+        <label class="toggle"><input type="checkbox" class="anomaly-toggle" value="Gravity Rift"/><span class="switch"></span><span class="label-text">Gravity Rift</span></label>
+        <label class="toggle"><input type="checkbox" class="anomaly-toggle" value="Fracture"/><span class="switch"></span><span class="label-text">Fracture</span></label>
+        <label class="toggle"><input type="checkbox" class="anomaly-toggle" value="Empty"/><span class="switch"></span><span class="label-text">Empty</span></label>
+        <label class="toggle"><input type="checkbox" class="anomaly-toggle" value="Nebula"/><span class="switch"></span><span class="label-text">Nebula</span></label>
+      </div>
+    </div>
     <div class="checkbox-row" style="margin-bottom: 0.75rem;">
       <label class="toggle">
         <input id="asset-edit-hidden" type="checkbox"/>
@@ -1567,6 +1588,25 @@ function detectComponentFromDimensions(width, height) {
 function updateBackRowVisibility() {
   document.getElementById('asset-back-row').classList.remove('hidden');
 }
+function updateTileSectionVisibility() {
+  const component = document.getElementById('asset-edit-component').value;
+  const isTile = component === 'tile';
+  const tileTypeRow = document.getElementById('tile-type-row');
+  const anomaliesWell = document.getElementById('tile-anomalies-well');
+  tileTypeRow.classList.toggle('hidden', !isTile);
+  if (!isTile) {
+    anomaliesWell.classList.add('hidden');
+    return;
+  }
+  const tileType = document.getElementById('asset-edit-tile-type').value;
+  const showAnomalies = tileType === 'anomaly';
+  anomaliesWell.classList.toggle('hidden', !showAnomalies);
+  if (tileType === 'hyperlane') {
+    document.querySelectorAll('.anomaly-toggle').forEach(cb => { cb.checked = false; cb.disabled = true; });
+  } else {
+    document.querySelectorAll('.anomaly-toggle').forEach(cb => { cb.disabled = false; });
+  }
+}
 function defaultPrereq(type) {
   if (type === 'Technology') return { enabled: true, value: '' };
   if (!isUnitType(type)) return { enabled: false, value: '' };
@@ -2153,6 +2193,8 @@ function openAssetEditor(path) {
   };
   document.getElementById('asset-filename').textContent = asset.path;
   document.getElementById('asset-edit-component').value = asset.component || 'us-mini';
+  document.getElementById('asset-edit-tile-type').value = asset.tileType || 'home-system';
+  document.querySelectorAll('.anomaly-toggle').forEach(cb => { cb.checked = (asset.anomalies || []).includes(cb.value); cb.disabled = false; });
   document.getElementById('asset-edit-hidden').checked = asset.hidden;
   document.getElementById('asset-edit-configured').checked = asset.configured;
   document.getElementById('asset-edit-title').value = asset.title || '';
@@ -2188,6 +2230,7 @@ function openAssetEditor(path) {
   updateSourceSectionVisibility();
   updatePlacementSectionVisibility();
   updateBackRowVisibility();
+  updateTileSectionVisibility();
   setPlacementInput(asset.placement);
 
   const sectionSelect = document.getElementById('asset-edit-section');
@@ -2217,6 +2260,13 @@ function saveAssetEditor() {
   }).filter(qa => qa.q) : [];
 
   asset.component = document.getElementById('asset-edit-component').value || 'us-mini';
+  if (asset.component === 'tile') {
+    asset.tileType = document.getElementById('asset-edit-tile-type').value;
+    asset.anomalies = Array.from(document.querySelectorAll('.anomaly-toggle:checked')).map(cb => cb.value);
+  } else {
+    delete asset.tileType;
+    delete asset.anomalies;
+  }
   asset.hidden = document.getElementById('asset-edit-hidden').checked;
   asset.configured = document.getElementById('asset-edit-configured').checked;
   asset.title = document.getElementById('asset-edit-title').value.trim() || asset.id;
@@ -2427,7 +2477,11 @@ document.getElementById('collapse-all-btn').addEventListener('click', function()
 document.getElementById('inspect-btn').addEventListener('click', inspectFolder);
 document.getElementById('asset-edit-save-top').addEventListener('click', saveAssetEditor);
 document.getElementById('asset-edit-type').addEventListener('change', updateUnitInputs);
-document.getElementById('asset-edit-component').addEventListener('change', updateBackRowVisibility);
+document.getElementById('asset-edit-component').addEventListener('change', function() {
+  updateBackRowVisibility();
+  updateTileSectionVisibility();
+});
+document.getElementById('asset-edit-tile-type').addEventListener('change', updateTileSectionVisibility);
 document.getElementById('asset-edit-rotate').addEventListener('change', applyAssetPreviewRotation);
 document.getElementById('unit-stats-toggle').addEventListener('change', function() {
   document.getElementById('unit-stats-well').classList.toggle('hidden', !this.checked);
