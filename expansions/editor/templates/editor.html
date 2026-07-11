@@ -93,6 +93,7 @@
   .asset-cell .orientation-icon { position: absolute; bottom: 0.35rem; left: 0.35rem; width: 1.2rem; height: 0.75rem; border: 1px solid var(--muted); border-radius: 0.15rem; background: transparent; box-sizing: border-box; }
   .asset-cell .orientation-icon.portrait { width: 0.75rem; height: 1.2rem; }
   .asset-cell .orientation-icon.square { width: 1rem; height: 1rem; }
+  .asset-cell .orientation-icon.tile { width: 1rem; height: 1rem; border: none; background: var(--muted); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); }
   .asset-cell .rotate-icon { position: absolute; top: 0.35rem; left: 0.35rem; font-size: 0.75rem; color: var(--muted); line-height: 1; }
   .asset-cell .back-icon { position: absolute; top: 0.35rem; right: 0.35rem; font-size: 0.75rem; color: var(--muted); line-height: 1; }
   .asset-cell .component-badge { position: absolute; bottom: 0.35rem; right: 0.35rem; font-size: 0.65rem; color: var(--muted); background: var(--bg); border: 1px solid var(--border); border-radius: 0.25rem; padding: 0.1rem 0.3rem; line-height: 1; text-transform: uppercase; }
@@ -360,6 +361,7 @@
           <option value="tarot">Tarot</option>
           <option value="poker">Poker</option>
           <option value="player-sheet">Player Sheet</option>
+          <option value="tile">System Tile</option>
           <option value="token">Token</option>
           <option value="other">Other</option>
         </select>
@@ -416,7 +418,7 @@
           <option value="Secret Objective">Secret Objective</option>
           <option value="Station">Station</option>
           <option value="Technology">Technology</option>
-          <option value="Tile">Tile</option>
+          <option value="Tile">System Tile</option>
           <option value="Token">Token</option>
           <option value="Unit - Ship - War sun">Unit - Ship - War sun</option>
           <option value="Unit - Ship - Dreadnought">Unit - Ship - Dreadnought</option>
@@ -504,7 +506,7 @@
       <option value="us-mini">US Mini</option>
       <option value="tarot">Tarot</option>
       <option value="poker">Poker</option>
-      <option value="tile">Tile</option>
+      <option value="tile">System Tile</option>
       <option value="player-sheet">Player Sheet</option>
       <option value="token">Token</option>
       <option value="other">Other</option>
@@ -622,7 +624,7 @@
           <option value="Secret Objective">Secret Objective</option>
           <option value="Station">Station</option>
           <option value="Technology">Technology</option>
-          <option value="Tile">Tile</option>
+          <option value="Tile">System Tile</option>
           <option value="Token">Token</option>
           <option value="Unit - Ship - War sun">Unit - Ship - War sun</option>
           <option value="Unit - Ship - Dreadnought">Unit - Ship - Dreadnought</option>
@@ -734,6 +736,11 @@
           <input id="asset-edit-source-relic" type="checkbox"/>
           <span class="switch"></span>
           <span class="label-text">Relic</span>
+        </label>
+        <label class="toggle">
+          <input id="asset-edit-source-station" type="checkbox"/>
+          <span class="switch"></span>
+          <span class="label-text">Station</span>
         </label>
       </div>
       <input id="asset-edit-source-tech" class="source-planet-only" type="text" placeholder="Tech speciality e.g. RRYY" maxlength="4"/>
@@ -1696,7 +1703,7 @@ function updateSynergyDefaults(type) {
   if (!value.value) value.value = synergy.value;
 }
 function defaultSource(type) {
-  return { enabled: type === 'Planet' || type === 'Station', influence: 0, resource: 0, trait: [], legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
+  return { enabled: type === 'Planet' || type === 'Station', influence: 0, resource: 0, trait: [], legendary: false, relic: false, station: type === 'Station', techSpeciality: '', linkedAbility: '' };
 }
 function applySourceDefaultsIfNeeded(asset) {
   if (!asset.source) asset.source = defaultSource(asset.type);
@@ -1708,14 +1715,15 @@ function getSourceInput() {
   const traits = ['hazardous', 'cultural', 'industrial'].filter(t => document.getElementById(`asset-edit-trait-${t}`).checked);
   const legendary = document.getElementById('asset-edit-source-legendary').checked;
   const relic = document.getElementById('asset-edit-source-relic').checked;
+  const station = document.getElementById('asset-edit-source-station').checked;
   const techSpeciality = document.getElementById('asset-edit-source-tech').value.toUpperCase().replace(/[^GYRB]/g, '').slice(0, 4);
   const linkedAbility = document.getElementById('asset-edit-source-linked').value;
-  if (!enabled) return { enabled: false, influence: 0, resource: 0, trait: [], legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
-  const isStation = document.getElementById('asset-edit-type').value === 'Station';
-  return { enabled, influence, resource, trait: isStation ? [] : traits, legendary, relic: isStation ? false : relic, techSpeciality: isStation ? '' : techSpeciality, linkedAbility: isStation ? '' : (linkedAbility || '') };
+  if (!enabled) return { enabled: false, influence: 0, resource: 0, trait: [], legendary: false, relic: false, station: false, techSpeciality: '', linkedAbility: '' };
+  const isStationType = document.getElementById('asset-edit-type').value === 'Station';
+  return { enabled, influence, resource, trait: isStationType ? [] : traits, legendary, relic: isStationType ? false : relic, station: isStationType ? true : station, techSpeciality: isStationType ? '' : techSpeciality, linkedAbility: isStationType ? '' : (linkedAbility || '') };
 }
 function setSourceInput(source) {
-  const s = source || { enabled: false, influence: 0, resource: 0, trait: [], legendary: false, relic: false, techSpeciality: '', linkedAbility: '' };
+  const s = source || { enabled: false, influence: 0, resource: 0, trait: [], legendary: false, relic: false, station: false, techSpeciality: '', linkedAbility: '' };
   const traits = Array.isArray(s.trait) ? s.trait : (s.trait ? [s.trait] : []);
   document.getElementById('asset-edit-source-toggle').checked = s.enabled;
   document.getElementById('asset-edit-source-influence').value = s.influence || '';
@@ -1725,6 +1733,7 @@ function setSourceInput(source) {
   });
   document.getElementById('asset-edit-source-legendary').checked = s.legendary || false;
   document.getElementById('asset-edit-source-relic').checked = s.relic || false;
+  document.getElementById('asset-edit-source-station').checked = s.station || false;
   document.getElementById('asset-edit-source-tech').value = s.techSpeciality || '';
   const linkedSelect = document.getElementById('asset-edit-source-linked');
   linkedSelect.value = s.linkedAbility || '';
@@ -2030,7 +2039,8 @@ function renderAssets() {
       const div = document.createElement('div');
       div.className = `asset-cell ${asset.configured ? 'configured' : ''} ${asset.hidden ? 'excluded' : ''} ${selectedAssets.has(asset.path) ? 'selected' : ''}`;
       div.dataset.assetPath = asset.path;
-      const orientClass = asset.orientation === 'portrait' ? 'portrait' : (asset.orientation === 'square' ? 'square' : '');
+      let orientClass = asset.orientation === 'portrait' ? 'portrait' : (asset.orientation === 'square' ? 'square' : '');
+      if (asset.component === 'tile') orientClass = 'tile';
       const rotate = parseInt(asset.rotate || 0);
       let rotateText = '';
       if (rotate === 90) rotateText = '↻90';
@@ -2197,7 +2207,7 @@ function openAssetEditor(path) {
   previewImg.classList.remove('portrait', 'square');
   previewImg.style.transform = '';
   if (asset.orientation === 'portrait') previewImg.classList.add('portrait');
-  if (asset.orientation === 'square') previewImg.classList.add('square');
+  if (asset.orientation === 'square' && asset.component !== 'tile') previewImg.classList.add('square');
   previewImg.onload = function() {
     if (!asset.configured) {
       const detected = detectComponentFromDimensions(this.naturalWidth, this.naturalHeight);
@@ -2210,7 +2220,7 @@ function openAssetEditor(path) {
   };
   document.getElementById('asset-filename').textContent = asset.path;
   document.getElementById('asset-edit-component').value = asset.component || 'us-mini';
-  document.getElementById('asset-edit-tile-type').value = asset.tileType || 'home-system';
+  document.getElementById('asset-edit-tile-type').value = asset.tileType || 'other';
   document.querySelectorAll('.anomaly-toggle').forEach(cb => { cb.checked = (asset.anomalies || []).includes(cb.value); cb.disabled = false; });
   document.querySelectorAll('.wormhole-toggle').forEach(cb => { cb.checked = (asset.wormholes || []).includes(cb.value); });
   document.getElementById('asset-edit-hidden').checked = asset.hidden;

@@ -113,9 +113,10 @@
     if (source.resource !== undefined && source.resource !== null && source.resource !== '') {
       parts.push(`<span class="px-2 py-1 rounded-md text-black text-xs font-semibold whitespace-nowrap" style="${pillStyle(PILL_COLORS.resource[0], PILL_COLORS.resource[1])}">Resource ${escapeHtml(String(source.resource))}</span>`);
     }
-    if (type === 'Station') {
-      parts.push('<span class="px-2 py-1 rounded-md bg-blue-600 text-white text-xs font-semibold whitespace-nowrap">Station</span>');
-    } else if (source.trait) {
+    if (type === 'Station' || source.station) {
+      parts.push('<span class="px-2 py-1 rounded-md bg-gray-500 text-white text-xs font-semibold whitespace-nowrap">Station</span>');
+    }
+    if (type !== 'Station' && source.trait) {
       const traits = Array.isArray(source.trait) ? source.trait : (source.trait ? [source.trait] : []);
       traits.forEach(trait => {
         const [bg, text] = PILL_COLORS[trait] || ['#374151', 'white'];
@@ -225,16 +226,19 @@
     }
     const metaEl = document.getElementById('card-modal-meta');
     if (metaEl) {
-      let parts;
       if (card.component === 'tile') {
         const anomalyList = (card.anomalies || '').split(',').filter(Boolean);
         const wormholeList = (card.wormholes || '').split(',').filter(Boolean);
-        parts = [card.tileType ? card.tileType.replace(/-/g, ' ') : '', anomalyList.join(', '), wormholeList.join(', ')].filter(Boolean);
+        const typeLabel = card.tileType ? `<span class="px-2 py-1 rounded-md bg-accent/20 text-accent text-xs font-semibold whitespace-nowrap">${escapeHtml(card.tileType.replace(/-/g, ' '))}</span>` : '';
+        const anomalyLabels = anomalyList.map(a => `<span class="px-2 py-1 rounded-md bg-bg border border-border text-muted text-xs font-semibold whitespace-nowrap">${escapeHtml(a)}</span>`).join('');
+        const wormholeLabels = wormholeList.map(w => `<span class="px-2 py-1 rounded-md bg-accent/20 border border-accent/40 text-accent text-xs font-semibold whitespace-nowrap">${escapeHtml(w)}</span>`).join('');
+        metaEl.innerHTML = [typeLabel, anomalyLabels, wormholeLabels].filter(Boolean).join(' ');
+        metaEl.classList.toggle('hidden', !(typeLabel || anomalyLabels || wormholeLabels));
       } else {
-        parts = [card.group, card.faction].filter(Boolean).map(escapeHtml);
+        const parts = [card.group, card.faction].filter(Boolean).map(escapeHtml);
+        metaEl.textContent = parts.join(' · ');
+        metaEl.classList.toggle('hidden', !parts.length);
       }
-      metaEl.textContent = parts.join(' · ');
-      metaEl.classList.toggle('hidden', !parts.length);
     }
     // Per-image labels (only shown when both front and back are present)
     const frontLabelTitle = document.getElementById('card-modal-front-label-title');

@@ -56,7 +56,11 @@
              data-card-back-orientation="{{ img.backOrientation | default('') }}"
              data-card-front-path="{{ img.path }}"
              data-card-orientation="{{ img.orientation }}"
-             data-card-flavour="{{ img.flavour | default('') | forceescape }}">
+             data-card-flavour="{{ img.flavour | default('') | forceescape }}"
+             data-card-component="{{ img.component | default('') }}"
+             data-card-tile-type="{{ img.tileType | default('') }}"
+             data-card-anomalies="{{ img.anomalies | default([]) | join(',') | forceescape }}"
+             data-card-wormholes="{{ img.wormholes | default([]) | join(',') | forceescape }}">
           <div class="card-image-wrapper">
             <img src="{{ img.path }}" alt="{{ img.name }}" class="card-image rounded-lg {{ 'card-portrait' if img.orientation == 'portrait' else ('card-square' if img.orientation == 'square' else 'card-landscape') }}"/>
           </div>
@@ -80,7 +84,7 @@
       <div class="flex-1 text-center">
         <h2 id="card-modal-title" class="text-2xl font-bold"></h2>
         <h3 id="card-modal-subtitle" class="text-base text-muted hidden"></h3>
-        <p id="card-modal-meta" class="text-xs text-muted mt-0.5 hidden"></p>
+        <p id="card-modal-meta" class="text-xs text-muted mt-0.5 hidden flex flex-wrap gap-1"></p>
       </div>
       <button id="card-modal-close" class="text-muted hover:text-white text-2xl flex-none">&times;</button>
     </div>

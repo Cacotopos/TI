@@ -27,25 +27,52 @@ def _markdown_filter(text: str) -> str:
     if not text:
         return ""
     html = text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-    # Headers (allow optional space after the hashes)
-    for i in range(6, 0, -1):
-        hashes = "#" * i
-        pattern = r"^" + hashes + r"\s*(.*$)"
-        html = re.sub(pattern, rf"<h{i}>\1</h{i}>", html, flags=re.MULTILINE)
-    # Bold
-    html = re.sub(r"\*\*(.*?)\*\*", r"<strong>\1</strong>", html)
-    # Italic
-    html = re.sub(r"\*(.*?)\*", r"<em>\1</em>", html)
-    # Inline code
-    html = re.sub(r"`([^`]+)`", r"<code>\1</code>", html)
-    # Links
-    html = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2" target="_blank" class="text-accent hover:underline">\1</a>', html)
-    # Lists
-    html = re.sub(r"^\s*-\s+(.*$)", r"<li>\1</li>", html, flags=re.MULTILINE)
-    html = re.sub(r"(<li>.*</li>)", r"<ul>\1</ul>", html, flags=re.DOTALL)
-    # Paragraphs
-    html = html.replace("\n\n", "</p><p>").replace("\n", "<br>")
-    return f"<p>{html}</p>"
+
+    def inline(s: str) -> str:
+        s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
+        s = re.sub(r"\*\*(.*?)\*\*", r"<strong>\1</strong>", s)
+        s = re.sub(r"\*(.*?)\*", r"<em>\1</em>", s)
+        s = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2" target="_blank" class="text-accent hover:underline">\1</a>', s)
+        return s
+
+    lines = html.split("\n")
+    out: list[str] = []
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip()
+        if not line:
+            i += 1
+            continue
+
+        header_match = re.match(r"^(#{1,6})\s*(.*)$", line)
+        if header_match:
+            level = len(header_match.group(1))
+            out.append(f"<h{level}>{inline(header_match.group(2))}</h{level}>")
+            i += 1
+            continue
+
+        if re.match(r"^-\s+(.*)$", line):
+            items: list[str] = []
+            while i < len(lines) and re.match(r"^-\s+(.*)$", lines[i].strip()):
+                item_text = re.sub(r"^-\s+", "", lines[i].strip())
+                items.append(f"<li>{inline(item_text)}</li>")
+                i += 1
+            out.append(f"<ul>{''.join(items)}</ul>")
+            continue
+
+        para_lines: list[str] = []
+        while i < len(lines) and lines[i].strip():
+            stripped = lines[i].strip()
+            if re.match(r"^(#{1,6})\s*(.*)$", stripped) or re.match(r"^-\s+(.*)$", stripped):
+                break
+            para_lines.append(lines[i])
+            i += 1
+        if para_lines:
+            para = inline("\n".join(para_lines))
+            para = para.replace("\n", "<br>")
+            out.append(f"<p>{para}</p>")
+
+    return "\n".join(out)
 
 
 
@@ -178,8 +205,6 @@ def _collect_assets(config: dict) -> list[dict]:
         src_path = images_src / rel
         orientation = _detect_orientation(src_path, asset)
         component = asset.get("component", "us-mini")
-        if component == "tile":
-            orientation = "square"
         images.append({
             "id": asset.get("id", rel.stem),
             "path": str(Path("assets/images") / rel).replace("\\", "/"),

@@ -42,8 +42,8 @@
        data-card-tile-type="{{ img.tileType | default('') }}"
        data-card-anomalies="{{ img.anomalies | default([]) | join(',') | forceescape }}"
        data-card-wormholes="{{ img.wormholes | default([]) | join(',') | forceescape }}">
-    <div class="card-image-wrapper {{ 'tile' if img.component == 'tile' else '' }}">
-      <img src="{{ img.path }}" alt="{{ img.name }}" class="card-image {{ 'tile' if img.component == 'tile' else '' }} rounded-lg"/>
+    <div class="card-image-wrapper">
+      <img src="{{ img.path }}" alt="{{ img.name }}" class="card-image rounded-lg"/>
     </div>
     <p class="text-sm text-center mt-2 font-medium truncate" title="{{ img.name }}">{{ img.name }}</p>
     {% if img.subtitle %}<p class="text-xs text-center text-muted truncate">{{ img.subtitle }}</p>{% endif %}
@@ -93,8 +93,6 @@
   .card-image-wrapper.landscape { width: 100%; aspect-ratio: 3 / 2; justify-self: center; align-self: start; }
   .card-image-wrapper.square { width: auto; max-width: min(100%, 220px); aspect-ratio: 1 / 1; justify-self: center; align-self: start; }
   .card-image { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 0.75rem; }
-  .card-image-wrapper.tile { width: 100%; aspect-ratio: 1 / 1; }
-  .card-image.tile { width: 100%; height: 100%; object-fit: cover; border-radius: 0; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); }
   #card-modal-images { display: flex; flex-direction: column; gap: 0.25rem; }
   #card-modal-images-labels { display: none; gap: 1rem; grid-template-columns: repeat(2, 1fr); }
   #card-modal-images-labels.has-back { display: grid; }
@@ -113,30 +111,48 @@
 <main class="max-w-6xl mx-auto p-6 space-y-8">
   {% set blocks = section.blocks or [] %}
   {% if blocks %}
-    {% set ns = namespace(pending=none) %}
+    {% set ns = namespace(left=none, right=none) %}
     {% for block in blocks %}
       {% set col = block.column or 'full' %}
-      {% if col == 'left' %}
-        {% if ns.pending %}
-        <div class="flex flex-col md:flex-row gap-6 items-start"><div class="w-full md:flex-1">{{ render_block(ns.pending, half=true) }}</div></div>
-        {% endif %}
-        {% set ns.pending = block %}
-      {% elif col == 'right' and ns.pending %}
+      {% if col == 'full' %}
+        {% if ns.left or ns.right %}
         <div class="flex flex-col md:flex-row gap-6 items-start">
-          <div class="w-full md:flex-1">{{ render_block(ns.pending, half=true) }}</div>
-          <div class="w-full md:flex-1">{{ render_block(block, half=true) }}</div>
+          <div class="w-full md:flex-1">{{ render_block(ns.left, half=true) if ns.left else '' }}</div>
+          <div class="w-full md:flex-1">{{ render_block(ns.right, half=true) if ns.right else '' }}</div>
         </div>
-        {% set ns.pending = none %}
-      {% else %}
-        {% if ns.pending %}
-        <div class="flex flex-col md:flex-row gap-6 items-start"><div class="w-full md:flex-1">{{ render_block(ns.pending, half=true) }}</div></div>
-        {% set ns.pending = none %}
+        {% set ns.left = none %}
+        {% set ns.right = none %}
         {% endif %}
         {{ render_block(block) }}
+      {% elif col == 'left' %}
+        {% if ns.left %}
+        <div class="flex flex-col md:flex-row gap-6 items-start">
+          <div class="w-full md:flex-1">{{ render_block(ns.left, half=true) }}</div>
+          <div class="w-full md:flex-1">{{ render_block(ns.right, half=true) if ns.right else '' }}</div>
+        </div>
+        {% set ns.left = block %}
+        {% set ns.right = none %}
+        {% else %}
+        {% set ns.left = block %}
+        {% endif %}
+      {% elif col == 'right' %}
+        {% if ns.right %}
+        <div class="flex flex-col md:flex-row gap-6 items-start">
+          <div class="w-full md:flex-1">{{ render_block(ns.left, half=true) if ns.left else '' }}</div>
+          <div class="w-full md:flex-1">{{ render_block(ns.right, half=true) }}</div>
+        </div>
+        {% set ns.left = none %}
+        {% set ns.right = block %}
+        {% else %}
+        {% set ns.right = block %}
+        {% endif %}
       {% endif %}
     {% endfor %}
-    {% if ns.pending %}
-    <div class="flex flex-col md:flex-row gap-6 items-start"><div class="w-full md:flex-1">{{ render_block(ns.pending, half=true) }}</div></div>
+    {% if ns.left or ns.right %}
+    <div class="flex flex-col md:flex-row gap-6 items-start">
+      <div class="w-full md:flex-1">{{ render_block(ns.left, half=true) if ns.left else '' }}</div>
+      <div class="w-full md:flex-1">{{ render_block(ns.right, half=true) if ns.right else '' }}</div>
+    </div>
     {% endif %}
   {% else %}
   <section class="bg-panel border border-border rounded-xl p-6 shadow-lg">
@@ -152,7 +168,7 @@
       <div class="flex-1 text-center">
         <h2 id="card-modal-title" class="text-2xl font-bold"></h2>
         <h3 id="card-modal-subtitle" class="text-base text-muted hidden"></h3>
-        <p id="card-modal-meta" class="text-xs text-muted mt-0.5 hidden"></p>
+        <p id="card-modal-meta" class="text-xs text-muted mt-0.5 hidden flex flex-wrap gap-1"></p>
       </div>
       <button id="card-modal-close" class="text-muted hover:text-white text-2xl flex-none">&times;</button>
     </div>

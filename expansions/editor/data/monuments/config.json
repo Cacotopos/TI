@@ -19,7 +19,7 @@
       "blocks": [
         {
           "type": "markdown",
-          "content": "You can introduce Monuments easily using the included 'Cultural Monuments' event.",
+          "content": "##Last updated: 2026-7-7 DRAFT\n\nYou can introduce Monuments easily using the included 'Cultural Monuments' event.",
           "column": "full"
         },
         {
@@ -32,14 +32,14 @@
         {
           "type": "markdown",
           "content": "The Thunder's Edge Monuments event has been Omegad in this expansion to avoid terminology conflicts.",
-          "column": "left"
+          "column": "full"
         },
         {
           "type": "asset",
           "asset": "Events/Monuments to the Ages Omega.jpg",
           "subtitle": "",
           "width": 100,
-          "column": "right"
+          "column": "full"
         }
       ]
     },
@@ -171,6 +171,18 @@
           "type": "cards",
           "group": "Generic Tokens",
           "column": "full"
+        },
+        {
+          "type": "markdown",
+          "content": "This is a full replacement \"Construction\" strategy card for those so inclined.",
+          "column": "left"
+        },
+        {
+          "type": "asset",
+          "asset": "Construction Card Monuments.png",
+          "subtitle": "",
+          "width": 100,
+          "column": "right"
         }
       ]
     },
@@ -337,7 +349,12 @@
       "configured": true,
       "description": "**Elect non-home planet**\nAttach this card to the elected planet. The owner of this planet gains 1 VP if their monument is on this planet.\nWhen a player places their monument on this planet, they gain 1 VP. When a player's monument on this planet is removed, they lose 1 VP.",
       "faction": "",
-      "faq": [],
+      "faq": [
+        {
+          "a": "No, you only lose the point according to the law's rules. If the law was removed before you lost your monument, that point is locked in.",
+          "q": "If I remove this law with an action card, do I lose the VP if I got it when the law resolved?"
+        }
+      ],
       "filename": "Cathedral of Ixth.jpg",
       "flavour": "",
       "folder": "Agendas",
@@ -354,6 +371,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "other-cards",
       "source": {
         "enabled": false,
@@ -2959,6 +2977,56 @@
       "title": "Secret Back",
       "type": "Other Component"
     },
+    "Construction Card Monuments.png": {
+      "back": "",
+      "color": "",
+      "component": "other",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [
+        {
+          "a": "This one is for people who want to somehow print their own replacement strategy card. I'm not one of those people but hey, you do you.",
+          "q": "I'm confused, what about the strategy mini card?"
+        }
+      ],
+      "filename": "Construction Card Monuments.png",
+      "flavour": "",
+      "folder": "",
+      "group": "",
+      "hidden": false,
+      "id": "Construction Card Monuments",
+      "orientation": "portrait",
+      "path": "Construction Card Monuments.png",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "components",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Construction Card - Monuments",
+      "type": "Other Component"
+    },
     "Events/Cultural Monuments Event.jpg": {
       "back": "Backs/Events Back.jpg",
       "color": "",
@@ -3272,8 +3340,8 @@
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "",
-      "faction": "Kaltrim",
+      "description": "***DEPLOY:*** When the Kaltrim Crown token is revealed, place this structure on a planet in your home system.\nWhile you have the Kaltrim Crown token, other players must spend.1 command token from their command sheet to activate this system.",
+      "faction": "The Principality of Kaltrim",
       "faq": [],
       "filename": "Kaltrim.jpg",
       "flavour": "",
@@ -3284,8 +3352,13 @@
       "orientation": "auto",
       "path": "Monuments/BR/Kaltrim.jpg",
       "placement": {
-        "enabled": false,
-        "rules": []
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "frontier_special"
+          }
+        ]
       },
       "prereq": {
         "enabled": false,
@@ -3310,12 +3383,12 @@
         },
         "combat": {
           "enabled": false,
-          "multi": 1,
+          "multi": "1",
           "value": null
         },
         "cost": {
           "enabled": false,
-          "multi": 1,
+          "multi": "1",
           "value": null
         },
         "move": {
@@ -3423,12 +3496,12 @@
         "spaceCannon": null,
         "sustainDamage": false
       },
-      "back": "",
+      "back": "Backs/Faction Monument Backs/Blue Reverie/Qhet Alliance Back.jpg",
       "color": "",
       "component": "us-mini",
-      "configured": false,
+      "configured": true,
       "description": "When 1 or more of your infantry would be destroyed, you may exhaust this card to place those units on this planet instead.",
-      "faction": "The Qhet Somethin'",
+      "faction": "The Qhet Republic",
       "faq": [],
       "filename": "Qhet.jpg",
       "flavour": "Even the singular Qhet corporates require a touchstone for space.",
@@ -3455,6 +3528,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
@@ -3473,10 +3547,12 @@
         },
         "combat": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "cost": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "move": {
@@ -3499,18 +3575,17 @@
         "deploy": false,
         "planetaryShield": false,
         "production": {
-          "multi": 1,
-          "value": 2
+          "value": "2"
         },
         "spaceCannon": null,
         "sustainDamage": false
       },
-      "back": "",
+      "back": "Backs/Faction Monument Backs/Blue Reverie/Sarcosa Alliance Back.jpg",
       "color": "",
       "component": "us-mini",
-      "configured": false,
+      "configured": true,
       "description": "You may place this structure into coexistence on a non-home, non-Fracture planet adjacent to a system that contains your or neutral units.",
-      "faction": "The Sarcoma Drift",
+      "faction": "The Sarcosa Drift",
       "faq": [],
       "filename": "Sarcosa.jpg",
       "flavour": "",
@@ -3537,6 +3612,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
@@ -3555,10 +3631,12 @@
         },
         "combat": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "cost": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "move": {
@@ -3566,7 +3644,7 @@
           "value": null
         }
       },
-      "subtitle": "Sarcoma Monument",
+      "subtitle": "Sarcosa Monument",
       "synergy": {
         "enabled": false,
         "value": ""
@@ -3739,39 +3817,167 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Uydai.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/Blue Reverie/Uydai Alliance Back.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "At the start of your turn, if this system contains 1 of your command tokens, you may exhaust this card to swap a plan card on your faction sheet for any other plan card.",
+      "faction": "The Uydai Conclave",
       "faq": [],
       "filename": "Uydai.jpg",
+      "flavour": "Nature sculpted into shrine.",
       "folder": "Monuments/BR",
       "group": "Blue Reverie",
       "hidden": false,
       "id": "Uydai",
       "orientation": "landscape",
       "path": "Monuments/BR/Uydai.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Uydai",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Uydai Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Hidden Oasis",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/BR/Xin.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/Blue Reverie/Xin Alliance Back.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "When a player activates this system, gain 1 balance token or flip 1 balance token on your faction sheet.\nThis unit may also be placed on a legendary planet.",
+      "faction": "The Xin Court",
       "faq": [],
       "filename": "Xin.jpg",
+      "flavour": "Balance is achieved.",
       "folder": "Monuments/BR",
       "group": "Blue Reverie",
       "hidden": false,
       "id": "Xin",
       "orientation": "landscape",
       "path": "Monuments/BR/Xin.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "legendary"
+          },
+          {
+            "not": false,
+            "value": "tech_planet"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Xin",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Xin Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Celestial Court",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/Base M/Creuss Base.jpg": {
@@ -4238,23 +4444,53 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/Hacan.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/Base/Hacan Back.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
+      "configured": true,
+      "description": "Outside of combat, players may trade their units in the space area of this and adjacent systems as part of a transaction. A player who gained units this way then replaces them and moves them to a system that contains their ships and 1 of their command tokens, ia able; otherwise, remove those units.",
+      "faction": "The emirates of Hacan",
+      "faq": [
+        {
+          "a": "It's a way for players to sell (and move and transport) units near your Freeport. Buy a fleet to go wage war on the other side of a galaxy! Maybe buy a fleet just to get rid of it.",
+          "q": "This is really complicated, what is happening?"
+        }
+      ],
       "filename": "Hacan.jpg",
+      "flavour": "",
       "folder": "Monuments/Base+PoK",
       "group": "Twilight Imperium",
       "hidden": false,
       "id": "Hacan",
       "orientation": "landscape",
       "path": "Monuments/Base+PoK/Hacan.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
@@ -4266,12 +4502,33 @@
         "techSpeciality": "",
         "trait": []
       },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Hacan Monument",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "Hacan",
-      "type": "Other Component"
+      "title": "Mowshir Freeport",
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/Jol-Nar.jpg": {
       "abilities": {
@@ -4286,7 +4543,7 @@
       "back": "Backs/Faction Monument Backs/Base/Jol-Nar Back.jpg",
       "color": "",
       "component": "us-mini",
-      "configured": false,
+      "configured": true,
       "description": "**After an agenda outcome you voted for or predicted is resolved:**\nPlace up to 2 infantry on a planet you control in this system.",
       "faction": "The Universities of Jol-Nar",
       "faq": [],
@@ -4865,13 +5122,13 @@
     },
     "Monuments/Base+PoK/Naalu.jpg": {
       "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "sustainDamage": false,
-        "bombardment": null,
-        "antiFighterBarrage": null,
+        "production": null,
         "spaceCannon": null,
-        "production": null
+        "sustainDamage": false
       },
       "back": "Backs/Faction Monument Backs/Base/Naalu Back.jpg",
       "color": "",
@@ -4892,8 +5149,8 @@
         "enabled": true,
         "rules": [
           {
-            "value": "cultural",
-            "not": false
+            "not": false,
+            "value": "cultural"
           }
         ]
       },
@@ -4901,33 +5158,34 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
       "stats": {
-        "cost": {
-          "enabled": false,
-          "value": null,
-          "multi": 1
-        },
-        "combat": {
-          "enabled": false,
-          "value": null,
-          "multi": 1
-        },
-        "move": {
+        "capacity": {
           "enabled": false,
           "value": null
         },
-        "capacity": {
+        "combat": {
+          "enabled": false,
+          "multi": 1,
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": 1,
+          "value": null
+        },
+        "move": {
           "enabled": false,
           "value": null
         }
@@ -4938,8 +5196,7 @@
         "value": ""
       },
       "title": "Nefishh Projector",
-      "type": "Unit - Structure - Monument",
-      "rotate": 0
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/Nekro.jpg": {
       "abilities": {
@@ -5712,7 +5969,7 @@
       "back": "Backs/Faction Monument Backs/Base/Yssaril Back.jpg",
       "color": "",
       "component": "us-mini",
-      "configured": false,
+      "configured": true,
       "description": "**When another player plays an action card:**\nIf that player controls 1 or more units in this or an adjacent system, you may gain 2 trade goods.",
       "faction": "The Yssaril Tribes",
       "faq": [],
@@ -5958,21 +6215,81 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Celdauri.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Celdauri.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "During each of your tactical actions, you may commit ground forces on this planet to planets that contain your space docks.",
+      "faction": "The Celdauri Trade Federation",
       "faq": [],
       "filename": "Celdauri.jpg",
+      "flavour": "An accident, turned into an asset.",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Celdauri",
       "orientation": "landscape",
       "path": "Monuments/DS/Celdauri.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Celdauri",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Celdauri Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Hyperlane Relay",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Cheiran.jpg": {
@@ -6289,39 +6606,163 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/FSC.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Free Systems.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "After you resolve the primary or secondary ability of the \"Leadership\" strategy card, each other player with units in or adjacent to this system who reveals 1 of your promissory notes from their hand gains 1 command token.",
+      "faction": "The Free Systems Compact",
       "faq": [],
       "filename": "FSC.jpg",
+      "flavour": "",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "FSC",
       "orientation": "landscape",
       "path": "Monuments/DS/FSC.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "FSC",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Free Systems Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Independence Tower",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Florzen.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Florzen.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "When you produce fighters, you may place that many plastic fighter units on this card, instead.\nAt the start of your turn, you may produce any fighters on this card in this system without spending resources.",
+      "faction": "The Florzen Profiteers",
       "faq": [],
       "filename": "Florzen.jpg",
+      "flavour": "",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Florzen",
       "orientation": "landscape",
       "path": "Monuments/DS/Florzen.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Florzen",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Florzen Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Corsairs' Cove",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/GLEdge.jpg": {
@@ -6405,39 +6846,170 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Ghemina.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": true,
+        "production": null,
+        "spaceCannon": {
+          "multi": "2",
+          "value": "6"
+        },
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Ghemina.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "You may treat this system as adjacent to systems that contain 2 of your structures of the same unit type.",
+      "faction": "The Ghemina Raiders",
       "faq": [],
       "filename": "Ghemina.jpg",
+      "flavour": "",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Ghemina",
       "orientation": "landscape",
       "path": "Monuments/DS/Ghemina.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Ghemina",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Ghemina Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Halls of Valor",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Ghoti.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Ghoti.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "During movement, you may choose to treat this system as if it contains no planets.\nYou treat this system as though it contains a frontier token.",
+      "faction": "The Ghoti Wayfarers",
       "faq": [],
       "filename": "Ghoti.jpg",
+      "flavour": "What the anchor point represents is unknown, but the Ghoti revere it.",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Ghoti",
       "orientation": "landscape",
       "path": "Monuments/DS/Ghoti.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "tech_planet"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Ghoti",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Ghoti Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Ghoti Anchorpoint",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Khrask.jpg": {
@@ -6830,21 +7402,85 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Li-Zho.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Li-Zho.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "When a player activates this system, remove 1 command token from this system or gain 1 command token.",
+      "faction": "The Li-Zho Dynasty",
       "faq": [],
       "filename": "Li-Zho.jpg",
+      "flavour": "Nightfall Fortress is an endless maze of traps: physical and moral.",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Li-Zho",
       "orientation": "landscape",
       "path": "Monuments/DS/Li-Zho.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "industrial"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Li-Zho",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Li-Zho Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Nightfall Fortress",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Mirveda.jpg": {
@@ -7027,21 +7663,87 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Nokar.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": {
+          "value": "3"
+        },
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Nokar.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "Your ships may move out of this system, and transport units, even if it contains 1 of your command tokens.",
+      "faction": "The Nokar Sellships",
       "faq": [],
       "filename": "Nokar.jpg",
+      "flavour": "Freehold by name, though nothing is truly free among the Nokar.",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Nokar",
       "orientation": "landscape",
       "path": "Monuments/DS/Nokar.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Nokar",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Nokar Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Freehold Starport",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Olradin.jpg": {
@@ -7299,39 +8001,168 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Tnelis.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Tnelis.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "When you lose a ground combat on this planet, you may destroy each unit on this planet.\nAt the start of your turn you may destroy 1 other player's coexisting unit in this system.",
+      "faction": "The Tnelis Syndicate",
       "faq": [],
       "filename": "Tnelis.jpg",
+      "flavour": "It abandons principle for practicality.",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Tnelis",
       "orientation": "landscape",
       "path": "Monuments/DS/Tnelis.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Tnelis",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Tnelis Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Dawnstar HQ",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Vaden.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Vaden.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "After another player with ships in this or an adjacent system replenishes commodities, if that player has control tokens on the Vaden player's faction sheet, you may take one of their commodities.",
+      "faction": "The Vaden Banking Clans",
       "faq": [],
       "filename": "Vaden.jpg",
+      "flavour": "",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Vaden",
       "orientation": "landscape",
       "path": "Monuments/DS/Vaden.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Vaden",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Vaden Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Bounty Brokerage",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Vaylerian.jpg": {
@@ -7754,21 +8585,90 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/TE/Deepwrought.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/TE/Deepwrought Back.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
+      "configured": true,
+      "description": "Other players' ships in this system do not trigger space combat. Afer this unit is removed from a planet, choose a player with ships in that system to resolve a space combat. Repeat this until it contains no more than a player's ships.",
+      "faction": "The Deepwrought Scholarate",
+      "faq": [
+        {
+          "a": "Look, it's functionally coexistence in space that you can't break, with an automatic clean up step.",
+          "q": "What is... Help?"
+        }
+      ],
       "filename": "Deepwrought.jpg",
+      "flavour": "",
       "folder": "Monuments/TE",
       "group": "Thunder's Edge",
       "hidden": false,
       "id": "Deepwrought",
       "orientation": "landscape",
       "path": "Monuments/TE/Deepwrought.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Deepwrought",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Deepwrought Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "The Pelagion",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/TE/Firmament.jpg": {
@@ -8028,37 +8928,819 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/TE/Ral-Nel.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": {
+          "value": "1"
+        },
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/TE/Ral-Nel Back.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "At the end of your tactical action, you may move 1 structure in the space area of this or an adjacent system to the space area of a system adjacent to that structure.",
+      "faction": "The Ral Nel Consortium",
       "faq": [],
       "filename": "Ral-Nel.jpg",
+      "flavour": "The most practical of edifices.",
       "folder": "Monuments/TE",
       "group": "Thunder's Edge",
       "hidden": false,
       "id": "Ral-Nel",
       "orientation": "landscape",
       "path": "Monuments/TE/Ral-Nel.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Ral-Nel",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Sor Tek Linkhub",
       "type": "Unit - Structure - Monument"
     },
-    "Monuments/TF/King Black.jpg": {
+    "Monuments/TF/King Black Back.jpg": {
       "back": "",
+      "color": "",
       "component": "us-mini",
       "configured": false,
       "description": "",
-      "faction": "Mahact Kings",
+      "faction": "",
+      "faq": [],
+      "filename": "King Black Back.jpg",
+      "flavour": "",
+      "folder": "Monuments/TF",
+      "group": "Monuments/TF",
+      "hidden": true,
+      "id": "King Black Back",
+      "orientation": "landscape",
+      "path": "Monuments/TF/King Black Back.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "King Black Back",
+      "type": "Other Component"
+    },
+    "Monuments/TF/King Black.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": {
+          "value": "2"
+        },
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Monuments/TF/King Black Back.jpg",
+      "color": "",
+      "component": "us-mini",
+      "configured": true,
+      "description": "Capture all infantry destroyed in this system.\nYou may spend captured infantry as if they were resources when producing units on this planet.",
+      "faction": "A Sickening Lurch",
       "faq": [],
       "filename": "King Black.jpg",
+      "flavour": "",
       "folder": "Monuments/TF",
       "group": "Twilight's Fall",
       "hidden": false,
       "id": "King Black",
       "orientation": "landscape",
       "path": "Monuments/TF/King Black.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": true,
+            "value": "legendary"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Raithborn Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "The Flesh Cathedral",
+      "type": "Unit - Structure - Monument"
+    },
+    "Monuments/TF/King Blue Back.jpg": {
+      "back": "",
+      "color": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "King Blue Back.jpg",
+      "flavour": "",
+      "folder": "Monuments/TF",
+      "group": "Monuments/TF",
+      "hidden": true,
+      "id": "King Blue Back",
+      "orientation": "landscape",
+      "path": "Monuments/TF/King Blue Back.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "King Blue Back",
+      "type": "Other Component"
+    },
+    "Monuments/TF/King Blue.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Monuments/TF/King Blue Back.jpg",
+      "color": "",
+      "component": "us-mini",
+      "configured": true,
+      "description": "At the start of any tactical action, you may choose any number of destroyers or cruisers in this system.\nThose units without a capacity gain a capacity value of 1 until the end of this tactical action.",
+      "faction": "The Saint of Swords",
+      "faq": [
+        {
+          "a": "Yes, other players' units too.",
+          "q": "Any number?"
+        }
+      ],
+      "filename": "King Blue.jpg",
+      "flavour": "",
+      "folder": "Monuments/TF",
+      "group": "Twilight's Fall",
+      "hidden": false,
+      "id": "King Blue",
+      "orientation": "landscape",
+      "path": "Monuments/TF/King Blue.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": true,
+            "value": "legendary"
+          },
+          {
+            "not": false,
+            "value": "relic"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Tempered Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Caracas",
+      "type": "Unit - Structure - Monument"
+    },
+    "Monuments/TF/King Green Back.jpg": {
+      "back": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "King Green Back.jpg",
+      "folder": "Monuments/TF",
+      "group": "Monuments/TF",
+      "hidden": true,
+      "id": "King Green Back",
+      "orientation": "landscape",
+      "path": "Monuments/TF/King Green Back.jpg",
+      "section": "cards",
+      "title": "King Green Back",
+      "type": "Other Component"
+    },
+    "Monuments/TF/King Green.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Monuments/TF/King Green Back.jpg",
+      "color": "",
+      "component": "us-mini",
+      "configured": true,
+      "description": "At the start of a ground combat not involving your units in this and adjacent systems, you may produce 1 hit against a player's units in that combat.\nUnits cannot be placed into coexistence in this system.",
+      "faction": "Mahact Kings",
+      "faq": [],
+      "filename": "King Green.jpg",
+      "flavour": "",
+      "folder": "Monuments/TF",
+      "group": "Twilight's Fall",
+      "hidden": false,
+      "id": "King Green",
+      "orientation": "landscape",
+      "path": "Monuments/TF/King Green.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          },
+          {
+            "not": true,
+            "value": "legendary"
+          },
+          {
+            "not": false,
+            "value": "relic"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Blossoming Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "The Crown of Thorns",
+      "type": "Unit - Structure - Monument"
+    },
+    "Monuments/TF/King Orange Back.jpg": {
+      "back": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "King Orange Back.jpg",
+      "folder": "Monuments/TF",
+      "group": "Monuments/TF",
+      "hidden": true,
+      "id": "King Orange Back",
+      "orientation": "landscape",
+      "path": "Monuments/TF/King Orange Back.jpg",
+      "section": "cards",
+      "title": "King Orange Back",
+      "type": "Other Component"
+    },
+    "Monuments/TF/King Orange.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Monuments/TF/King Orange Back.jpg",
+      "color": "",
+      "component": "us-mini",
+      "configured": true,
+      "description": "At the start of an action you may allow any players' mechs in this and adjacent systems to gain +1 to their combat rolls until the end that action.",
+      "faction": "Radiant Aur",
+      "faq": [],
+      "filename": "King Orange.jpg",
+      "flavour": "",
+      "folder": "Monuments/TF",
+      "group": "Twilight's Fall",
+      "hidden": false,
+      "id": "King Orange",
+      "orientation": "landscape",
+      "path": "Monuments/TF/King Orange.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "legendary"
+          },
+          {
+            "not": false,
+            "value": "relic"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Divine Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "The Starlit Redoubt",
+      "type": "Unit - Structure - Monument"
+    },
+    "Monuments/TF/King Pink Back.jpg": {
+      "back": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "King Pink Back.jpg",
+      "folder": "Monuments/TF",
+      "group": "Monuments/TF",
+      "hidden": true,
+      "id": "King Pink Back",
+      "orientation": "landscape",
+      "path": "Monuments/TF/King Pink Back.jpg",
+      "section": "cards",
+      "title": "King Pink Back",
+      "type": "Other Component"
+    },
+    "Monuments/TF/King Pink.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Monuments/TF/King Pink Back.jpg",
+      "color": "",
+      "component": "us-mini",
+      "configured": true,
+      "description": "This unit is a ground force as well as a monument. It can be transported.\nThis unit gains the non-DEPLOY unit abilities and text abilities of your ground forces.",
+      "faction": "El Nen Janovet",
+      "faq": [],
+      "filename": "King Pink.jpg",
+      "flavour": "",
+      "folder": "Monuments/TF",
+      "group": "Twilight's Fall",
+      "hidden": false,
+      "id": "King Pink",
+      "orientation": "landscape",
+      "path": "Monuments/TF/King Pink.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          },
+          {
+            "not": true,
+            "value": "legendary"
+          },
+          {
+            "not": false,
+            "value": "relic"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": true,
+          "multi": "2",
+          "value": "4"
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Replicant Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Avatar of Mirrors",
+      "type": "Unit - Structure - Monument"
+    },
+    "Monuments/TF/King Purple Back.jpg": {
+      "back": "",
+      "color": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "King Purple Back.jpg",
+      "flavour": "",
+      "folder": "Monuments/TF",
+      "group": "Monuments/TF",
+      "hidden": true,
+      "id": "King Purple Back",
+      "orientation": "landscape",
+      "path": "Monuments/TF/King Purple Back.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "King Purple Back",
+      "type": "Other Component"
+    },
+    "Monuments/TF/King Purple.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": {
+          "value": "3"
+        },
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Monuments/TF/King Purple Back.jpg",
+      "color": "",
+      "component": "us-mini",
+      "configured": true,
+      "description": "This unit is placed in the space area of a system that contains a planet you control, instead of on a planet. 1 ship in this system does not count against your fleet limit.",
+      "faction": "Il Na Viroset",
+      "faq": [],
+      "filename": "King Purple.jpg",
+      "flavour": "",
+      "folder": "Monuments/TF",
+      "group": "Twilight's Fall",
+      "hidden": false,
+      "id": "King Purple",
+      "orientation": "landscape",
+      "path": "Monuments/TF/King Purple.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "frontier_special"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": true,
+          "value": "3"
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Paradox Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Halo Cortex",
+      "type": "Unit - Structure - Monument"
+    },
+    "Monuments/TF/King Red Back.jpg": {
+      "back": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "King Red Back.jpg",
+      "folder": "Monuments/TF",
+      "group": "Monuments/TF",
+      "hidden": true,
+      "id": "King Red Back",
+      "orientation": "landscape",
+      "path": "Monuments/TF/King Red Back.jpg",
       "prereq": {
         "enabled": false,
         "value": ""
@@ -8078,115 +9760,146 @@
         "enabled": false,
         "value": ""
       },
-      "title": "King Black",
-      "type": "Other Component"
-    },
-    "Monuments/TF/King Blue.jpg": {
-      "back": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "Mahact Kings",
-      "faq": [],
-      "filename": "King Blue.jpg",
-      "folder": "Monuments/TF",
-      "group": "Twilight's Fall",
-      "hidden": false,
-      "id": "King Blue",
-      "orientation": "landscape",
-      "path": "Monuments/TF/King Blue.jpg",
-      "section": "cards",
-      "title": "King Blue",
-      "type": "Other Component"
-    },
-    "Monuments/TF/King Green.jpg": {
-      "back": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "Mahact Kings",
-      "faq": [],
-      "filename": "King Green.jpg",
-      "folder": "Monuments/TF",
-      "group": "Twilight's Fall",
-      "hidden": false,
-      "id": "King Green",
-      "orientation": "landscape",
-      "path": "Monuments/TF/King Green.jpg",
-      "section": "cards",
-      "title": "King Green",
-      "type": "Other Component"
-    },
-    "Monuments/TF/King Orange.jpg": {
-      "back": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "Mahact Kings",
-      "faq": [],
-      "filename": "King Orange.jpg",
-      "folder": "Monuments/TF",
-      "group": "Twilight's Fall",
-      "hidden": false,
-      "id": "King Orange",
-      "orientation": "landscape",
-      "path": "Monuments/TF/King Orange.jpg",
-      "section": "cards",
-      "title": "King Orange",
-      "type": "Other Component"
-    },
-    "Monuments/TF/King Pink.jpg": {
-      "back": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "Mahact Kings",
-      "faq": [],
-      "filename": "King Pink.jpg",
-      "folder": "Monuments/TF",
-      "group": "Twilight's Fall",
-      "hidden": false,
-      "id": "King Pink",
-      "orientation": "landscape",
-      "path": "Monuments/TF/King Pink.jpg",
-      "section": "cards",
-      "title": "King Pink",
-      "type": "Other Component"
-    },
-    "Monuments/TF/King Purple.jpg": {
-      "back": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "Mahact Kings",
-      "faq": [],
-      "filename": "King Purple.jpg",
-      "folder": "Monuments/TF",
-      "group": "Twilight's Fall",
-      "hidden": false,
-      "id": "King Purple",
-      "orientation": "landscape",
-      "path": "Monuments/TF/King Purple.jpg",
-      "section": "cards",
-      "title": "King Purple",
+      "title": "King Red Back",
       "type": "Other Component"
     },
     "Monuments/TF/King Red.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Monuments/TF/King Red Back.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "Mahact Kings",
-      "faq": [],
+      "configured": true,
+      "description": "***DEPLOY:*** At the start of a ground combat involving your units, place this unit on that planet, then produce 2 hits against each other player's units on this planet.",
+      "faction": "The Ruby Monarch",
+      "faq": [
+        {
+          "a": "No, 2 hits per player, to their units.",
+          "q": "Two hits per unit wow!"
+        }
+      ],
       "filename": "King Red.jpg",
+      "flavour": "",
       "folder": "Monuments/TF",
       "group": "Twilight's Fall",
       "hidden": false,
       "id": "King Red",
       "orientation": "landscape",
       "path": "Monuments/TF/King Red.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": true,
+            "value": "legendary"
+          },
+          {
+            "not": false,
+            "value": "relic"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "King Red",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Vermillion Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "The Serrated Throne",
+      "type": "Unit - Structure - Monument"
+    },
+    "Monuments/TF/King White Back.jpg": {
+      "back": "",
+      "color": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "King White Back.jpg",
+      "flavour": "",
+      "folder": "Monuments/TF",
+      "group": "Monuments/TF",
+      "hidden": true,
+      "id": "King White Back",
+      "orientation": "landscape",
+      "path": "Monuments/TF/King White Back.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "King White Back",
       "type": "Other Component"
     },
     "Monuments/TF/King White.jpg": {
@@ -8197,17 +9910,17 @@
         "planetaryShield": true,
         "production": null,
         "spaceCannon": {
-          "multi": 2,
-          "value": 6
+          "multi": "2",
+          "value": "6"
         },
         "sustainDamage": false
       },
-      "back": "",
+      "back": "Monuments/TF/King White Back.jpg",
       "color": "",
       "component": "us-mini",
-      "configured": false,
+      "configured": true,
       "description": "When you draw a relic, gain 1 trade good and produce 1 unit on this planet.",
-      "faction": "Mahact Kings",
+      "faction": "Aelo An Goldos",
       "faq": [],
       "filename": "King White.jpg",
       "flavour": "",
@@ -8257,12 +9970,12 @@
         },
         "combat": {
           "enabled": false,
-          "multi": 1,
+          "multi": "1",
           "value": null
         },
         "cost": {
           "enabled": false,
-          "multi": 1,
+          "multi": "1",
           "value": null
         },
         "move": {
@@ -8278,24 +9991,75 @@
       "title": "The Alabaster Edifice",
       "type": "Unit - Structure - Monument"
     },
-    "Monuments/TF/King Yellow.jpg": {
+    "Monuments/TF/King Yellow Back.jpg": {
       "back": "",
       "component": "us-mini",
       "configured": false,
       "description": "",
-      "faction": "Mahact Kings",
+      "faction": "",
+      "faq": [],
+      "filename": "King Yellow Back.jpg",
+      "folder": "Monuments/TF",
+      "group": "Monuments/TF",
+      "hidden": true,
+      "id": "King Yellow Back",
+      "orientation": "landscape",
+      "path": "Monuments/TF/King Yellow Back.jpg",
+      "section": "cards",
+      "title": "King Yellow Back",
+      "type": "Other Component"
+    },
+    "Monuments/TF/King Yellow.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Monuments/TF/King Yellow Back.jpg",
+      "color": "",
+      "component": "us-mini",
+      "configured": true,
+      "description": "When you splice, you may place 1 command token from your reinforcements on this card, if able.\nYou may remove a token from this card to cancel a hit in this or an adjacent system.",
+      "faction": "Avarice Rex",
       "faq": [],
       "filename": "King Yellow.jpg",
+      "flavour": "",
       "folder": "Monuments/TF",
       "group": "Twilight's Fall",
       "hidden": false,
       "id": "King Yellow",
       "orientation": "landscape",
       "path": "Monuments/TF/King Yellow.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          },
+          {
+            "not": true,
+            "value": "legendary"
+          },
+          {
+            "not": false,
+            "value": "relic"
+          }
+        ]
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
@@ -8307,12 +10071,33 @@
         "techSpeciality": "",
         "trait": []
       },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Glimmering Monument",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "King Yellow",
-      "type": "Other Component"
+      "title": "Aura Vault",
+      "type": "Unit - Structure - Monument"
     },
     "Objectives/Great Work.jpg": {
       "back": "Backs/Secret Back.jpg",

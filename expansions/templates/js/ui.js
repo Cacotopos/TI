@@ -160,9 +160,10 @@
     if (source.resource !== undefined && source.resource !== null && source.resource !== '') {
       parts.push(`<span class="px-2 py-1 rounded-md text-black text-xs font-semibold whitespace-nowrap" style="${pillStyle(PILL_COLORS.resource[0], PILL_COLORS.resource[1])}">Resource ${escapeHtml(String(source.resource))}</span>`);
     }
-    if (type === 'Station') {
-      parts.push('<span class="px-2 py-1 rounded-md bg-blue-600 text-white text-xs font-semibold whitespace-nowrap">Station</span>');
-    } else if (source.trait) {
+    if (type === 'Station' || source.station) {
+      parts.push('<span class="px-2 py-1 rounded-md bg-gray-500 text-white text-xs font-semibold whitespace-nowrap">Station</span>');
+    }
+    if (type !== 'Station' && source.trait) {
       const traits = Array.isArray(source.trait) ? source.trait : (source.trait ? [source.trait] : []);
       traits.forEach(trait => {
         const [bg, text] = PILL_COLORS[trait] || ['#374151', 'white'];

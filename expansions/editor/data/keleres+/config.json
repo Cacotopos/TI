@@ -5,7 +5,7 @@
   "description": "The Keleres and Drahn factions have come to provide assistance to any and all galactic powers.",
   "overview": "The Keleres+ mini expansion expands the Keleres faction hero suite, and introduces a new faction, the Drahn, which operates as a sort of anti-Keleres, with its own host of faction heroes.",
   "source": {
-    "images": "expansions/source/keleres+"
+    "images": "/Users/kangarootime/Documents/Gaming/Boardgames/Twilight Imperium 4/Expansions/Keleres+/Printable"
   },
   "s3_path": "keleres+",
   "banner": null,
@@ -29,16 +29,16 @@
         },
         {
           "type": "asset",
-          "asset": "Drahn/Drahn Tokens.png",
-          "subtitle": "Command and control tokens",
-          "width": 30,
+          "asset": "Drahn/Drahn Faction Sheet Back.jpg",
+          "subtitle": "The back and lore of the Drahn faction",
+          "width": 100,
           "column": "full"
         },
         {
           "type": "asset",
-          "asset": "Drahn/Drahn Faction Sheet Back.jpg",
-          "subtitle": "The back and lore of the Drahn faction",
-          "width": 100,
+          "asset": "Drahn/Drahn Tokens.png",
+          "subtitle": "Command and control tokens",
+          "width": 30,
           "column": "full"
         }
       ]
@@ -77,6 +77,7 @@
     "Drahn/Drahn Agent Back.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -87,7 +88,6 @@
       "group": "Drahn",
       "hidden": true,
       "id": "Drahn Agent Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Agent Back.jpg",
       "placement": {
@@ -120,6 +120,7 @@
     "Drahn/Drahn Agent Front.jpg": {
       "back": "Drahn/Drahn Agent Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "*Contract Broker*\nYou may exhaust this card at the start of a player's turn; that player may either gain 1 command token or draw 1 secret objective. If they do, end that player's turn.",
       "faction": "Drahn",
@@ -130,7 +131,6 @@
       "group": "Leaders",
       "hidden": false,
       "id": "Drahn Agent Front",
-      "isCard": true,
       "orientation": "auto",
       "path": "Drahn/Drahn Agent Front.jpg",
       "prereq": {
@@ -157,6 +157,7 @@
     },
     "Drahn/Drahn Alliance Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -166,7 +167,6 @@
       "group": "Drahn",
       "hidden": true,
       "id": "Drahn Alliance Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Alliance Back.jpg",
       "section": "drahn",
@@ -176,6 +176,7 @@
     "Drahn/Drahn Alliance Front.jpg": {
       "back": "Drahn/Drahn Alliance Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "After you resolve a tactical action:\nYou may spend 3 trade goods to move 1 of your ships from the active system to an adjacent system that does not contain another player's ships.",
       "faction": "The Drahn Cartel",
@@ -186,7 +187,6 @@
       "group": "Drahn",
       "hidden": false,
       "id": "Drahn Alliance Front",
-      "isCard": true,
       "orientation": "auto",
       "path": "Drahn/Drahn Alliance Front.jpg",
       "prereq": {
@@ -214,6 +214,7 @@
     },
     "Drahn/Drahn Alliance.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -223,7 +224,6 @@
       "group": "Drahn",
       "hidden": true,
       "id": "Drahn Alliance",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Alliance.jpg",
       "section": "drahn",
@@ -232,6 +232,7 @@
     },
     "Drahn/Drahn Breakthrough BR Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -241,7 +242,6 @@
       "group": "Drahn",
       "hidden": true,
       "id": "Drahn Breakthrough BR Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Breakthrough BR Back.jpg",
       "section": "drahn",
@@ -251,6 +251,7 @@
     "Drahn/Drahn Breakthrough BR.jpg": {
       "back": "Drahn/Drahn Breakthrough BR Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "When you gain this card, gain the Nevermore planet card and its legendary planet card.\nYou are neighbors with all palyers who have units on anomalies that do not contain planets.",
       "faction": "The Drahn Cartel",
@@ -261,7 +262,6 @@
       "group": "Breakthrough",
       "hidden": false,
       "id": "Drahn Breakthrough BR",
-      "isCard": true,
       "orientation": "auto",
       "path": "Drahn/Drahn Breakthrough BR.jpg",
       "prereq": {
@@ -290,6 +290,7 @@
     "Drahn/Drahn Commander Back.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -300,7 +301,6 @@
       "group": "Drahn",
       "hidden": true,
       "id": "Drahn Commander Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Commander Back.jpg",
       "placement": {
@@ -333,6 +333,7 @@
     "Drahn/Drahn Commander Front.jpg": {
       "back": "Drahn/Drahn Commander Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "After you resolve a tactical action:\nYou may spend 3 trade goods to move 1 of your ships from the active system to an adjacent system that does not contain another player's ships.",
       "faction": "Drahn",
@@ -343,7 +344,6 @@
       "group": "Leaders",
       "hidden": false,
       "id": "Drahn Commander Front",
-      "isCard": true,
       "orientation": "auto",
       "path": "Drahn/Drahn Commander Front.jpg",
       "prereq": {
@@ -367,6 +367,7 @@
     "Drahn/Drahn Faction Sheet Back.jpg": {
       "back": "",
       "color": "",
+      "component": "player-sheet",
       "configured": true,
       "description": "",
       "faction": "The Drahn Cartel",
@@ -377,13 +378,17 @@
       "group": "Drahn",
       "hidden": false,
       "id": "Drahn Faction Sheet Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Faction Sheet Back.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "drahn-overview",
       "source": {
         "enabled": false,
@@ -392,6 +397,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -406,6 +412,7 @@
     "Drahn/Drahn Faction Sheet Front.jpg": {
       "back": "",
       "color": "",
+      "component": "player-sheet",
       "configured": true,
       "description": "",
       "faction": "The Drahn Cartel",
@@ -416,13 +423,17 @@
       "group": "Drahn",
       "hidden": false,
       "id": "Drahn Faction Sheet Front",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Faction Sheet Front.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "drahn-overview",
       "source": {
         "enabled": false,
@@ -431,6 +442,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -444,6 +456,7 @@
     },
     "Drahn/Drahn Mech Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -453,7 +466,6 @@
       "group": "Drahn",
       "hidden": true,
       "id": "Drahn Mech Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Mech Back.jpg",
       "section": "drahn",
@@ -472,6 +484,7 @@
       },
       "back": "Drahn/Drahn Mech Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "Apply +1 to this unit's combat rolls for each secret objective you have scored.",
       "faction": "Drahn",
@@ -481,7 +494,6 @@
       "group": "Units",
       "hidden": false,
       "id": "Drahn Mech",
-      "isCard": true,
       "orientation": "auto",
       "path": "Drahn/Drahn Mech.jpg",
       "prereq": {
@@ -539,6 +551,7 @@
       },
       "back": "Drahn/Drahn Alliance Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "At the beginning of your turn you may remove this unit from this planet and place it onto a different valid planet you control.\nCan only be placed on Industrial and Cultural planets.",
       "faction": "The Drahn Cartel",
@@ -549,7 +562,6 @@
       "group": "Units",
       "hidden": false,
       "id": "Drahn Monument",
-      "isCard": true,
       "orientation": "auto",
       "path": "Drahn/Drahn Monument.jpg",
       "placement": {
@@ -608,6 +620,7 @@
     },
     "Drahn/Drahn Nevermore Ability Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -617,7 +630,6 @@
       "group": "Drahn",
       "hidden": true,
       "id": "Drahn Nevermore Ability Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Nevermore Ability Back.jpg",
       "section": "drahn",
@@ -627,6 +639,7 @@
     "Drahn/Drahn Nevermore Ability Front.jpg": {
       "back": "Drahn/Drahn Nevermore Ability Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "When another player activates a system adjacent to Mecatol Rex, gain 1 trade good.\n\nGain 2 command tokens when another players draws a secret objective using the second bullet of \"Imperial\".",
       "faction": "Drahn",
@@ -637,7 +650,6 @@
       "group": "Drahn",
       "hidden": false,
       "id": "Drahn Nevermore Ability Front",
-      "isCard": true,
       "orientation": "auto",
       "path": "Drahn/Drahn Nevermore Ability Front.jpg",
       "prereq": {
@@ -665,6 +677,7 @@
     },
     "Drahn/Drahn Nevermore Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -674,7 +687,6 @@
       "group": "Drahn",
       "hidden": true,
       "id": "Drahn Nevermore Back",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Drahn/Drahn Nevermore Back.jpg",
       "prereq": {
@@ -702,6 +714,7 @@
     "Drahn/Drahn Nevermore Front.jpg": {
       "back": "Drahn/Drahn Nevermore Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "Drahn",
@@ -712,7 +725,6 @@
       "group": "Drahn",
       "hidden": false,
       "id": "Drahn Nevermore Front",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Drahn/Drahn Nevermore Front.jpg",
       "prereq": {
@@ -736,6 +748,7 @@
     "Drahn/Drahn Promissory Note.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "This promissory note has the ability text of 1 of your faction promissory notes of your choice, replacing any reference to your faction with that of the Drahn player.",
       "faction": "Drahn",
@@ -746,7 +759,6 @@
       "group": "Drahn",
       "hidden": false,
       "id": "Drahn Promissory Note",
-      "isCard": true,
       "orientation": "auto",
       "path": "Drahn/Drahn Promissory Note.jpg",
       "prereq": {
@@ -769,6 +781,7 @@
     },
     "Drahn/Drahn Reference.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -778,7 +791,6 @@
       "group": "Drahn",
       "hidden": true,
       "id": "Drahn Reference",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Reference.jpg",
       "section": "drahn",
@@ -787,6 +799,7 @@
     },
     "Drahn/Drahn Tech - Green Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -796,7 +809,6 @@
       "group": "Drahn",
       "hidden": true,
       "id": "Drahn Tech - Green Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Tech - Green Back.jpg",
       "section": "drahn",
@@ -806,6 +818,7 @@
     "Drahn/Drahn Tech - Guild Fund.jpg": {
       "back": "Drahn/Drahn Tech - Green Back.jpg",
       "color": "G",
+      "component": "us-mini",
       "configured": true,
       "description": "After you resolve the primary ability of a strategy card, you may resolve the secondary ability of that strategy card.\n\nWhen you would spend a command token, you may exhaust this card to spend 1 token from your reinforcements instead.",
       "faction": "Drahn",
@@ -816,7 +829,6 @@
       "group": "Faction Technology",
       "hidden": false,
       "id": "Drahn Tech - Guild Fund",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Tech - Guild Fund.jpg",
       "prereq": {
@@ -840,6 +852,7 @@
     "Drahn/Drahn Tech - Special Forces.jpg": {
       "back": "Drahn/Drahn Tech - Yellow Back.jpg",
       "color": "Y",
+      "component": "us-mini",
       "configured": true,
       "description": "**At the start of space combat in which you are the defender:**\nYou may exhaust this card and spend 1 token from your strategy pool to force your opponent to declare a retreat.",
       "faction": "Drahn",
@@ -850,7 +863,6 @@
       "group": "Faction Technology",
       "hidden": false,
       "id": "Drahn Tech - Special Forces",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Tech - Special Forces.jpg",
       "prereq": {
@@ -873,6 +885,7 @@
     },
     "Drahn/Drahn Tech - Yellow Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -882,7 +895,6 @@
       "group": "Drahn",
       "hidden": true,
       "id": "Drahn Tech - Yellow Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Tech - Yellow Back.jpg",
       "prereq": {
@@ -909,6 +921,7 @@
     },
     "Drahn/Drahn Tokens.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -918,7 +931,6 @@
       "group": "Drahn",
       "hidden": true,
       "id": "Drahn Tokens",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Drahn Tokens.jpg",
       "section": "drahn",
@@ -928,6 +940,7 @@
     "Drahn/Drahn Tokens.png": {
       "back": "",
       "color": "",
+      "component": "token",
       "configured": true,
       "description": "Command and control tokens.",
       "faction": "The Drahn Cartel",
@@ -938,13 +951,17 @@
       "group": "Drahn",
       "hidden": false,
       "id": "Drahn Tokens",
-      "isCard": true,
-      "orientation": "landscape",
+      "orientation": "square",
       "path": "Drahn/Drahn Tokens.png",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "drahn-overview",
       "source": {
         "enabled": false,
@@ -953,6 +970,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -967,6 +985,7 @@
     "Drahn/Heroes/Active/Arborec.jpg": {
       "back": "Drahn/Heroes/Inactive/Arborec.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "***ACTION***: Use the **PRODUCTION** value of each unit you control, reducing the total cost of the produced units by 12.\nThen, purge this card.",
       "faction": "The Drahn Cartel",
@@ -977,7 +996,6 @@
       "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Arborec",
-      "isCard": true,
       "orientation": "auto",
       "path": "Drahn/Heroes/Active/Arborec.jpg",
       "prereq": {
@@ -1006,6 +1024,7 @@
     "Drahn/Heroes/Active/Belkosea.jpg": {
       "back": "Drahn/Heroes/Inactive/Belkosea.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "***ACTION:*** Attach this card to a planet you control. Take a Belkosea super weapon card into your play areas and place its token on that planet. That token is a structure with the unit abilities and ability text of that card. If that structure is destroyed, purge this card and those superweapon components.",
       "faction": "The Drahn Cartel",
@@ -1016,7 +1035,6 @@
       "group": "Heroes - Blue Reverie",
       "hidden": false,
       "id": "Belkosea",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Belkosea.jpg",
       "prereq": {
@@ -1045,6 +1063,7 @@
     "Drahn/Heroes/Active/Creuss.jpg": {
       "back": "Drahn/Heroes/Inactive/Creuss.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "**After you activate a system that contains or is adjacent to a wormhole:**\nPlace this card face-up near the game board. Until the end of this tactical action, you may treat each of your units as adjacent to the active system. At the end of this tactical action, purge this card.",
       "faction": "The Drahn Cartel",
@@ -1055,7 +1074,6 @@
       "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Creuss",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Creuss.jpg",
       "prereq": {
@@ -1084,6 +1102,7 @@
     "Drahn/Heroes/Active/Crimson.jpg": {
       "back": "Drahn/Heroes/Inactive/Crimson Rebellion.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "**When a player activates a system:**\nPurge this card to place a destroyer in each system that contains a wormhole and no other player's units. If you do, each wormhole on the game boards is an Epsilon wormhole instead of its regular type until the end of this tactical action.",
       "faction": "The Drahn Cartel",
@@ -1094,7 +1113,6 @@
       "group": "Heroes - Thunder's Edge",
       "hidden": false,
       "id": "Crimson",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Crimson.jpg",
       "prereq": {
@@ -1123,6 +1141,7 @@
     "Drahn/Heroes/Active/Deepwrought.jpg": {
       "back": "Drahn/Heroes/Inactive/Deepwrought.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "***ACTION***: Each player, in the order of your choice, may research 1 technology. If they do, you may gain that technology or gain 1 command token.\nOnce all players have chosen, purge this card.",
       "faction": "The Drahn Cartel",
@@ -1133,7 +1152,6 @@
       "group": "Heroes - Thunder's Edge",
       "hidden": false,
       "id": "Deepwrought",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Deepwrought.jpg",
       "prereq": {
@@ -1162,6 +1180,7 @@
     "Drahn/Heroes/Active/Empyrean.jpg": {
       "back": "Drahn/Heroes/Inactive/Empyrean.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "***ACTION:*** For each command token in your tactics pool, explore the frontier exploration deck once in a system that contains your ships and no planets. \nThen, purge this card.",
       "faction": "The Drahn Cartel",
@@ -1172,7 +1191,6 @@
       "group": "Heroes - Prophecy of Kings",
       "hidden": false,
       "id": "Empyrean",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Empyrean.jpg",
       "prereq": {
@@ -1201,6 +1219,7 @@
     "Drahn/Heroes/Active/FSC.jpg": {
       "back": "Drahn/Heroes/Inactive/FSC.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "***ACTION:*** Choose up to 3 planets. For each of those planets, roll a die; destroy a number of ground forces on that planet equal to or less than the value you roll. Then, place.1 infantry from your reinforcements on each planet you control and purge this card.",
       "faction": "The Drahn Cartel",
@@ -1211,7 +1230,6 @@
       "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "FSC",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/FSC.jpg",
       "prereq": {
@@ -1242,6 +1260,7 @@
       "backSubtitle": "Drahn Officer",
       "backTitle": "Penitent Gello",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "At the start of your turn you may choose a system that contains a neighbor's units, then 1 of the following: that player destroys 3 of their units in that system; research 1 technology that player owns; your units gain +2 to combat rolls in combats against that player this turn. Then, purge this card.",
       "faction": "The Drahn Cartel",
@@ -1252,7 +1271,6 @@
       "group": "Heroes - Thunder's Edge",
       "hidden": false,
       "id": "Firmament",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Firmament.jpg",
       "prereq": {
@@ -1281,6 +1299,7 @@
     "Drahn/Heroes/Active/Florzen.jpg": {
       "back": "Drahn/Heroes/Inactive/Florzen.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "The Drahn Cartel",
@@ -1291,7 +1310,6 @@
       "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Florzen",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Florzen.jpg",
       "prereq": {
@@ -1320,6 +1338,7 @@
     "Drahn/Heroes/Active/Ghemina.jpg": {
       "back": "Drahn/Heroes/Inactive/Ghemina.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "After you resolve the primary ability of a strategy card, you may spend 1 command token from your strategy pool and purge this card to resolve the pimrary ability of that strategy card.",
       "faction": "The Drahn Cartel",
@@ -1330,7 +1349,6 @@
       "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Ghemina",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Ghemina.jpg",
       "prereq": {
@@ -1359,6 +1377,7 @@
     "Drahn/Heroes/Active/Ghoti.jpg": {
       "back": "Drahn/Heroes/Inactive/Ghoti.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "**At any time**: Purge this card and 1 of your unsecured secret objectives, if able, to gain 1 victory point.",
       "faction": "The Drahn Cartel",
@@ -1374,7 +1393,6 @@
       "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Ghoti",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Ghoti.jpg",
       "prereq": {
@@ -1403,6 +1421,7 @@
     "Drahn/Heroes/Active/Gledge.jpg": {
       "back": "Drahn/Heroes/Inactive/Gledge.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "***ACTION:***: Exhaust any number of your planets. For each planet you exhaust, gain a number of trade goods equal to 1 more than that planet's resource or influence value.\nThen, purge this card.",
       "faction": "The Drahn Cartel",
@@ -1413,7 +1432,6 @@
       "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Gledge",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Gledge.jpg",
       "prereq": {
@@ -1451,6 +1469,7 @@
       },
       "back": "Drahn/Heroes/Inactive/Glimmer.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "***ACTION:*** Place this card near the game board. Until the end of this game round, systems that contain anomalies and no other players ships ain **PRODUCTION 2** sa if they were units you control. At the start of the strategy phase, purge this card.",
       "faction": "The Drahn Cartel",
@@ -1461,7 +1480,6 @@
       "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Glimmer",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Glimmer.jpg",
       "placement": {
@@ -1511,43 +1529,44 @@
     },
     "Drahn/Heroes/Active/Kollecc.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Kollecc.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Kollecc",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Kollecc.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Kollecc",
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Kortali.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Kortali.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Kortali",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Kortali.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Kortali",
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Kyro.jpg": {
       "back": "Drahn/Heroes/Inactive/Kyro.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "***ACTION:*** Exhaust your and any number of other players' strategy cards, if able, without resolving any of their abilities.\nThen, purge this card.",
       "faction": "The Drahn Cartel",
@@ -1558,7 +1577,6 @@
       "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Kyro",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Kyro.jpg",
       "prereq": {
@@ -1586,73 +1604,73 @@
     },
     "Drahn/Heroes/Active/Lanefir.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Lanefir.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Lanefir",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Lanefir.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Lanefir",
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Li-Zho.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Li-Zho.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Li-Zho",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Li-Zho.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Li-Zho",
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Mahact.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Mahact.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Mahact",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Mahact.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Mahact",
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Muaat.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Muaat.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Muaat",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Muaat.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Muaat",
       "type": "Other Component"
     },
@@ -1661,6 +1679,7 @@
       "backSubtitle": "Drahn Officer",
       "backTitle": "S'San, Chirurgeon",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "**At the start of the status phase:**\nPurge this card and spend 1 command token from your strategy pool to score 1 public objective, if you fulfil its requirements.",
       "faction": "The Drahn Cartel",
@@ -1671,7 +1690,6 @@
       "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Naalu",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Naalu.jpg",
       "prereq": {
@@ -1699,43 +1717,44 @@
     },
     "Drahn/Heroes/Active/Nekro.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Nekro.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Nekro",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Nekro.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Nekro",
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Nivyn.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Nivyn.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Nivyn",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Nivyn.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Nivyn",
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Nokar.jpg": {
       "back": "Drahn/Heroes/Inactive/Nokar.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "**At the end of the strategy phase:**\nFor each of your non-fighter ships on the game board, you may destroy that ship to gain a number of trade goods equal to that unit's cost value, and produce up to 2 units in a system that contains a planet you control.\nThen, purge this card.",
       "faction": "The Drahn Cartel",
@@ -1743,10 +1762,9 @@
       "filename": "Nokar.jpg",
       "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Heroees - Discordant Stars",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Nokar",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Nokar.jpg",
       "placement": {
@@ -1779,6 +1797,7 @@
     "Drahn/Heroes/Active/Olradin.jpg": {
       "back": "Drahn/Heroes/Inactive/Olradin.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "**ACTION**: Purge this card to gain 1 of the Olradin policy cards and exhaust up to 1 planet on the game board.",
       "faction": "The Drahn Cartel",
@@ -1789,7 +1808,6 @@
       "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Olradin",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Olradin.jpg",
       "prereq": {
@@ -1817,25 +1835,53 @@
     },
     "Drahn/Heroes/Active/Pharad'n.jpg": {
       "back": "",
-      "configured": false,
+      "color": "",
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Pharad'n.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Blue Reverie",
       "hidden": false,
       "id": "Pharad'n",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Pharad'n.jpg",
-      "section": "cards",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Pharad'n",
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Saar.jpg": {
       "back": "Drahn/Heroes/Inactive/Saar.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "***ACTION:*** Remove each of your structures from the game board; place each of those structures on a planet you control; for each structure you place, replenish your commodities or convert all of your commodities to trade goods.\nThen, purge this card.",
       "faction": "The Drahn Cartel",
@@ -1846,7 +1892,6 @@
       "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Saar",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Saar.jpg",
       "placement": {
@@ -1878,41 +1923,41 @@
     },
     "Drahn/Heroes/Active/Savages.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Savages.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Savages",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Savages.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Savages",
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Tnelis.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Tnelis.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Tnelis",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Tnelis.jpg",
       "prereq": {
         "enabled": false,
         "value": ""
       },
-      "section": "cards",
+      "section": "drahn",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -1928,61 +1973,62 @@
     },
     "Drahn/Heroes/Active/Vaden.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Vaden.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Vaden",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Vaden.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Vaden",
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Vaylerian.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Vaylerian.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Vaylerian",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Vaylerian.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Vaylerian",
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Vuil'Raith.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Vuil'Raith.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Vuil'Raith",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Vuil'Raith.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Vuil'Raith",
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Xin.jpg": {
       "back": "Drahn/Heroes/Inactive/Xin.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "***ACTION:*** For each player who controls a planet that contains your units, you may resolve the secondary ability of 1 of that player's strategy cards without spending a command token, or look at that player's hand of secret objectives. Then, purge this card.",
       "faction": "",
@@ -1993,7 +2039,6 @@
       "group": "Heroes - Blue Reverie",
       "hidden": false,
       "id": "Xin",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Xin.jpg",
       "prereq": {
@@ -2022,6 +2067,7 @@
     "Drahn/Heroes/Active/Yin.jpg": {
       "back": "Drahn/Heroes/Inactive/Yin.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "**AFter you lose a combat:**\nYou may purge this card to force your opponent to destroy half of their units that participated in that combat, rounded down.",
       "faction": "The Drahn Cartel",
@@ -2032,7 +2078,6 @@
       "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Yin",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Yin.jpg",
       "placement": {
@@ -2064,37 +2109,37 @@
     },
     "Drahn/Heroes/Active/Yssaril.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Yssaril.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Yssaril",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Yssaril.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Yssaril",
       "type": "Other Component"
     },
     "Drahn/Heroes/Active/Zelian.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Zelian.jpg",
       "folder": "Drahn/Heroes/Active",
-      "group": "Drahn/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Zelian",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Zelian.jpg",
-      "section": "cards",
+      "section": "drahn",
       "title": "Zelian",
       "type": "Other Component"
     },
@@ -2103,6 +2148,7 @@
       "backSubtitle": "",
       "backTitle": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -2113,7 +2159,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Arborec",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Arborec.jpg",
       "prereq": {
@@ -2144,6 +2189,7 @@
       "backSubtitle": "",
       "backTitle": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2154,7 +2200,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Belkosea",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Belkosea.jpg",
       "prereq": {
@@ -2185,6 +2230,7 @@
       "backSubtitle": "",
       "backTitle": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2195,7 +2241,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Creuss",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Creuss.jpg",
       "prereq": {
@@ -2224,6 +2269,7 @@
     "Drahn/Heroes/Inactive/Crimson Rebellion.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -2234,7 +2280,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Crimson Rebellion",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Crimson Rebellion.jpg",
       "prereq": {
@@ -2263,6 +2308,7 @@
     "Drahn/Heroes/Inactive/Deepwrought.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -2273,7 +2319,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Deepwrought",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Deepwrought.jpg",
       "prereq": {
@@ -2302,6 +2347,7 @@
     "Drahn/Heroes/Inactive/Empyrean.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -2312,7 +2358,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Empyrean",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Empyrean.jpg",
       "prereq": {
@@ -2341,6 +2386,7 @@
     "Drahn/Heroes/Inactive/FSC.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2351,7 +2397,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "FSC",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/FSC.jpg",
       "prereq": {
@@ -2375,6 +2420,7 @@
     "Drahn/Heroes/Inactive/Firmament.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -2385,7 +2431,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Firmament",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Firmament.jpg",
       "prereq": {
@@ -2414,6 +2459,7 @@
     "Drahn/Heroes/Inactive/Florzen.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -2424,7 +2470,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Florzen",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Florzen.jpg",
       "prereq": {
@@ -2453,6 +2498,7 @@
     "Drahn/Heroes/Inactive/Ghemina.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2463,7 +2509,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Ghemina",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Ghemina.jpg",
       "prereq": {
@@ -2487,6 +2532,7 @@
     "Drahn/Heroes/Inactive/Ghoti.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2497,7 +2543,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Ghoti",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Ghoti.jpg",
       "prereq": {
@@ -2526,6 +2571,7 @@
     "Drahn/Heroes/Inactive/Gledge.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2536,7 +2582,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Gledge",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Gledge.jpg",
       "prereq": {
@@ -2560,6 +2605,7 @@
     "Drahn/Heroes/Inactive/Glimmer.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -2570,7 +2616,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Glimmer",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Glimmer.jpg",
       "placement": {
@@ -2600,43 +2645,10 @@
       "title": "Kokol",
       "type": "Hero"
     },
-    "Drahn/Heroes/Inactive/Heroes+.jpg": {
-      "back": "",
-      "color": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "Heroes+.jpg",
-      "flavour": "",
-      "folder": "Drahn/Heroes/Inactive",
-      "group": "Drahn/Heroes/Inactive",
-      "hidden": true,
-      "id": "Heroes+",
-      "isCard": true,
-      "orientation": "landscape",
-      "path": "Drahn/Heroes/Inactive/Heroes+.jpg",
-      "prereq": {
-        "enabled": false,
-        "value": ""
-      },
-      "section": "drahn-overview",
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
-        "resource": 0,
-        "techSpeciality": "",
-        "trait": []
-      },
-      "title": "Heroes+",
-      "type": "Other Component"
-    },
     "Drahn/Heroes/Inactive/Kollecc.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2647,7 +2659,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Kollecc",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Kollecc.jpg",
       "prereq": {
@@ -2671,6 +2682,7 @@
     "Drahn/Heroes/Inactive/Kortali.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2681,7 +2693,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Kortali",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Kortali.jpg",
       "prereq": {
@@ -2705,6 +2716,7 @@
     "Drahn/Heroes/Inactive/Kyro.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2715,7 +2727,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Kyro",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Kyro.jpg",
       "prereq": {
@@ -2739,6 +2750,7 @@
     "Drahn/Heroes/Inactive/Lanefir.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2749,7 +2761,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Lanefir",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Lanefir.jpg",
       "prereq": {
@@ -2773,6 +2784,7 @@
     "Drahn/Heroes/Inactive/Li-Zho.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2783,7 +2795,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Li-Zho",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Li-Zho.jpg",
       "prereq": {
@@ -2807,6 +2818,7 @@
     "Drahn/Heroes/Inactive/Mahact.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2817,7 +2829,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Mahact",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Mahact.jpg",
       "prereq": {
@@ -2841,6 +2852,7 @@
     "Drahn/Heroes/Inactive/Muaat.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2851,7 +2863,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Muaat",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Muaat.jpg",
       "prereq": {
@@ -2875,6 +2886,7 @@
     "Drahn/Heroes/Inactive/Naalu.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2885,7 +2897,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Naalu",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Naalu.jpg",
       "prereq": {
@@ -2913,6 +2924,7 @@
     "Drahn/Heroes/Inactive/Nekro.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -2923,7 +2935,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Nekro",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Nekro.jpg",
       "prereq": {
@@ -2952,6 +2963,7 @@
     "Drahn/Heroes/Inactive/Nivyn.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2962,7 +2974,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Nivyn",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Nivyn.jpg",
       "prereq": {
@@ -2986,6 +2997,7 @@
     "Drahn/Heroes/Inactive/Nokar.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2996,7 +3008,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Nokar",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Nokar.jpg",
       "prereq": {
@@ -3020,6 +3031,7 @@
     "Drahn/Heroes/Inactive/Olradin.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3030,7 +3042,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Olradin",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Olradin.jpg",
       "prereq": {
@@ -3054,6 +3065,7 @@
     "Drahn/Heroes/Inactive/Pharad'n.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3064,7 +3076,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Pharad'n",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Pharad'n.jpg",
       "prereq": {
@@ -3088,6 +3099,7 @@
     "Drahn/Heroes/Inactive/Saar.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3098,7 +3110,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Saar",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Saar.jpg",
       "prereq": {
@@ -3122,6 +3133,7 @@
     "Drahn/Heroes/Inactive/Savages.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3132,7 +3144,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Savages",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Savages.jpg",
       "prereq": {
@@ -3156,6 +3167,7 @@
     "Drahn/Heroes/Inactive/Tnelis.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3166,7 +3178,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Tnelis",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Tnelis.jpg",
       "prereq": {
@@ -3190,6 +3201,7 @@
     "Drahn/Heroes/Inactive/Vaden.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3200,7 +3212,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Vaden",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Vaden.jpg",
       "prereq": {
@@ -3224,6 +3235,7 @@
     "Drahn/Heroes/Inactive/Vaylerian.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3234,7 +3246,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Vaylerian",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Vaylerian.jpg",
       "prereq": {
@@ -3258,6 +3269,7 @@
     "Drahn/Heroes/Inactive/Vuil'Raith.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3268,7 +3280,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Vuil'Raith",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Vuil'Raith.jpg",
       "prereq": {
@@ -3292,6 +3303,7 @@
     "Drahn/Heroes/Inactive/Xin.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3302,7 +3314,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Xin",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Xin.jpg",
       "prereq": {
@@ -3326,6 +3337,7 @@
     "Drahn/Heroes/Inactive/Yin.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3336,7 +3348,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Yin",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Yin.jpg",
       "prereq": {
@@ -3360,6 +3371,7 @@
     "Drahn/Heroes/Inactive/Yssaril.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3370,7 +3382,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Yssaril",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Yssaril.jpg",
       "prereq": {
@@ -3394,6 +3405,7 @@
     "Drahn/Heroes/Inactive/Zelian.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3404,7 +3416,6 @@
       "group": "Drahn/Heroes/Inactive",
       "hidden": true,
       "id": "Zelian",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Drahn/Heroes/Inactive/Zelian.jpg",
       "prereq": {
@@ -3428,6 +3439,7 @@
     "Keleres/CV - Back.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -3438,7 +3450,6 @@
       "group": "Keleres",
       "hidden": true,
       "id": "CV - Back",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Keleres/CV - Back.jpg",
       "prereq": {
@@ -3467,6 +3478,7 @@
     "Keleres/CV - Front.jpg": {
       "back": "Keleres/CV - Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "Resources 1\nInfluence 2",
       "faction": "Keleres",
@@ -3477,7 +3489,6 @@
       "group": "Keleres",
       "hidden": true,
       "id": "CV - Front",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Keleres/CV - Front.jpg",
       "prereq": {
@@ -3505,23 +3516,30 @@
     },
     "Keleres/Heroes/Active/Argent.jpg": {
       "back": "",
-      "configured": false,
+      "color": "",
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Argent.jpg",
+      "flavour": "",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Prophecy of Kings",
       "hidden": false,
       "id": "Argent",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Argent.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
-      "section": "cards",
+      "rotate": 0,
+      "section": "keleres",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -3529,33 +3547,40 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
       },
       "title": "Argent",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Atokera.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Atokera.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Blue Reverie",
       "hidden": false,
       "id": "Atokera",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Atokera.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Atokera",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Augurs.jpg": {
       "back": "Keleres/Heroes/Inactive/Augurs.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "When an objective is revealed, you may purge this card to discard that objective and reveal a new objective from the corresponding objective deck instead.",
       "faction": "The Council Keleres",
@@ -3566,7 +3591,6 @@
       "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Augurs",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Augurs.jpg",
       "prereq": {
@@ -3594,25 +3618,26 @@
     },
     "Keleres/Heroes/Active/Bentor.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Bentor.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Bentor",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Bentor.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Bentor",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Berserkers.jpg": {
       "back": "Keleres/Heroes/Inactive/Kjalengard.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "***ACTION:*** Place this card face-up near the game board. Until the end of this game round, you may preroll up to 2 of your fighter or infantry units' combat rolls during each round of combat, applying +1 to the results. At the end of this game round, purge this card.",
       "faction": "The Council Keleres",
@@ -3623,7 +3648,6 @@
       "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Berserkers",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Berserkers.jpg",
       "prereq": {
@@ -3652,6 +3676,7 @@
     "Keleres/Heroes/Active/Celdauri.jpg": {
       "back": "Keleres/Heroes/Inactive/Celdauri.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "***ACTION:*** Place this card face-up near the game board. Until the end of this game round, apply +2 to the **PRODUCTION** value of each of your units with **PRODUCTION**. At the end of this game round, purge this card.",
       "faction": "The Council Keleres",
@@ -3662,7 +3687,6 @@
       "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Celdauri",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Celdauri.jpg",
       "prereq": {
@@ -3691,6 +3715,7 @@
     "Keleres/Heroes/Active/Cheiran.jpg": {
       "back": "Keleres/Heroes/Inactive/Cheiran.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "***ACTION:*** Gather units from your reinforcements up to equal to your starting units. Place these units, in any combination, in the space area of systems that contain 1 of your structures and no other players' ships, or on planets you control.\nThen, purge this card.",
       "faction": "The Council Keleres",
@@ -3701,7 +3726,6 @@
       "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Cheiran",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Cheiran.jpg",
       "placement": {
@@ -3733,95 +3757,95 @@
     },
     "Keleres/Heroes/Active/Dih-Mohn.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Dih-Mohn.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Dih-Mohn",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Dih-Mohn.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Dih-Mohn",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Edyn.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Edyn.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Edyn",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Edyn.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Edyn",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Hacan.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Hacan.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Hacan",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Hacan.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Hacan",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Jol-Nar.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Jol-Nar.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Jol-Nar",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Jol-Nar.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Jol-Nar",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Kaltrim.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Kaltrim.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Blue Reverie",
       "hidden": false,
       "id": "Kaltrim",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Kaltrim.jpg",
       "prereq": {
         "enabled": false,
         "value": ""
       },
-      "section": "cards",
+      "section": "keleres",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -3841,199 +3865,208 @@
     },
     "Keleres/Heroes/Active/Khrask.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Khrask.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Khrask",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Khrask.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Khrask",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Kolume.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Kolume.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Kolume",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Kolume.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Kolume",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/L1Z1X copy.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "L1Z1X copy.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "L1Z1X copy",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/L1Z1X copy.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "L1Z1X copy",
       "type": "Other Component"
     },
-    "Keleres/Heroes/Active/Last Bastion ?.jpg": {
-      "back": "",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "Last Bastion ?.jpg",
-      "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
-      "hidden": false,
-      "id": "Last Bastion ?",
-      "isCard": true,
-      "orientation": "landscape",
-      "path": "Keleres/Heroes/Active/Last Bastion ?.jpg",
-      "section": "cards",
-      "title": "Last Bastion ?",
-      "type": "Other Component"
-    },
     "Keleres/Heroes/Active/Last Bastion.jpg": {
-      "back": "",
-      "configured": false,
+      "back": "Keleres/Heroes/Inactive/Last Bastion.jpg",
+      "color": "",
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Last Bastion.jpg",
+      "flavour": "",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Thunder's Edge",
       "hidden": false,
       "id": "Last Bastion",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Last Bastion.jpg",
-      "section": "cards",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "keleres",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Last Bastion",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Letnev.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Letnev.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Letnev",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Letnev.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Letnev",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Mentak.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Mentak.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Mentak",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Mentak.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Mentak",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Mirveda.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Mirveda.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Mirveda",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Mirveda.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Mirveda",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Myko-Mentori.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Myko-Mentori.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Myko-Mentori",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Myko-Mentori.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Myko-Mentori",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/N'orr.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "N'orr.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "N'orr",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/N'orr.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "N'orr",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Naaz-Rokha.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Naaz-Rokha.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Naaz-Rokha",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Naaz-Rokha.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Naaz-Rokha",
       "type": "Other Component"
     },
@@ -4042,6 +4075,7 @@
       "backSubtitle": "",
       "backTitle": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "**When another player scores a secret objective:**\nIf you fulfill the requirements of that objective, you may purge this card to draw 3 secret objectives.",
       "faction": "The Council Keleres",
@@ -4052,7 +4086,6 @@
       "group": "Heroes - Prophecy of Kings",
       "hidden": false,
       "id": "Nomad",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Nomad.jpg",
       "prereq": {
@@ -4080,43 +4113,44 @@
     },
     "Keleres/Heroes/Active/Qhet.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Qhet.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Blue Reverie",
       "hidden": false,
       "id": "Qhet",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Qhet.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Qhet",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Ral-Nel.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Ral-Nel.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Thunder's Edge",
       "hidden": false,
       "id": "Ral-Nel",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Ral-Nel.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Ral-Nel",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Roh'Dhna.jpg": {
       "back": "Keleres/Heroes/Inactive/Roh'Dhna.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "After an agenda is resolved, you may purge this card to produce 1 unit in each system that contains 1 of your units with **PRODUCTION**.",
       "faction": "The Council Keleres",
@@ -4127,7 +4161,6 @@
       "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Roh'Dhna",
-      "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Active/Roh'Dhna.jpg",
       "prereq": {
@@ -4158,6 +4191,7 @@
       "backSubtitle": "",
       "backTitle": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "***ACTION***: Purge this card to place up to 2 neutral dreadnoughts, 2 neutral cruisers, and 4 neutral fighters in a system adjacent to your units; resolve space combat in that system.",
       "faction": "The Council Keleres",
@@ -4168,7 +4202,6 @@
       "group": "Heroes - Blue Reverie",
       "hidden": false,
       "id": "Sarcosa",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Sarcosa.jpg",
       "prereq": {
@@ -4196,61 +4229,62 @@
     },
     "Keleres/Heroes/Active/Shipwrights.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Shipwrights.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Shipwrights",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Shipwrights.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Shipwrights",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Sol.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Sol.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Sol",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Sol.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Sol",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Toldar.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Toldar.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Blue Reverie",
       "hidden": false,
       "id": "Toldar",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Toldar.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Toldar",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Ul.jpg": {
       "back": "Keleres/Heroes/Inactive/Titans.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "***ACTION***: Purge this card to replace up to 4 of your infantry with mechs, and then up to 4 of your mechs with PDS units.",
       "faction": "The Council Keleres",
@@ -4261,7 +4295,6 @@
       "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Ul",
-      "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Active/Ul.jpg",
       "prereq": {
@@ -4289,79 +4322,80 @@
     },
     "Keleres/Heroes/Active/Uydai.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Uydai.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Blue Reverie",
       "hidden": false,
       "id": "Uydai",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Uydai.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Uydai",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Veldyr.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Veldyr.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Veldyr",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Veldyr.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Veldyr",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Winnu.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Winnu.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Winnu",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Winnu.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Winnu",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Xxcha.jpg": {
       "back": "",
-      "configured": false,
+      "component": "us-mini",
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Xxcha.jpg",
       "folder": "Keleres/Heroes/Active",
-      "group": "Keleres/Heroes/Active",
+      "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Xxcha",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Xxcha.jpg",
-      "section": "cards",
+      "section": "keleres",
       "title": "Xxcha",
       "type": "Other Component"
     },
     "Keleres/Heroes/Active/Zealots of Rhodun.jpg": {
       "back": "Keleres/Heroes/Inactive/Rhodun.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "When researching a technology you may purge this card to ignore each prerequisite on that technology.",
       "faction": "The Council Keleres",
@@ -4372,7 +4406,6 @@
       "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Zealots of Rhodun",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Zealots of Rhodun.jpg",
       "placement": {
@@ -4405,6 +4438,7 @@
     "Keleres/Heroes/Inactive/Argent.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -4415,7 +4449,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Argent",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Argent.jpg",
       "prereq": {
@@ -4439,6 +4472,7 @@
     "Keleres/Heroes/Inactive/Atokera.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -4448,7 +4482,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Atokera",
-      "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Atokera.jpg",
       "prereq": {
@@ -4472,6 +4505,7 @@
     "Keleres/Heroes/Inactive/Augurs.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -4482,7 +4516,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Augurs",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Augurs.jpg",
       "prereq": {
@@ -4506,6 +4539,7 @@
     "Keleres/Heroes/Inactive/Bentor.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -4515,7 +4549,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Bentor",
-      "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Bentor.jpg",
       "prereq": {
@@ -4539,6 +4572,7 @@
     "Keleres/Heroes/Inactive/Celdauri.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -4549,7 +4583,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Celdauri",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Celdauri.jpg",
       "prereq": {
@@ -4573,6 +4606,7 @@
     "Keleres/Heroes/Inactive/Cheiran.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -4583,7 +4617,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Cheiran",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Cheiran.jpg",
       "prereq": {
@@ -4607,6 +4640,7 @@
     "Keleres/Heroes/Inactive/Dih-Mohn.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -4617,7 +4651,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Dih-Mohn",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Dih-Mohn.jpg",
       "prereq": {
@@ -4641,6 +4674,7 @@
     "Keleres/Heroes/Inactive/Edyn.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -4650,7 +4684,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Edyn",
-      "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Edyn.jpg",
       "prereq": {
@@ -4674,6 +4707,7 @@
     "Keleres/Heroes/Inactive/Hacan.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -4683,7 +4717,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Hacan",
-      "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Hacan.jpg",
       "prereq": {
@@ -4707,6 +4740,7 @@
     "Keleres/Heroes/Inactive/Jol-Nar.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -4716,7 +4750,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Jol-Nar",
-      "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Jol-Nar.jpg",
       "prereq": {
@@ -4740,6 +4773,7 @@
     "Keleres/Heroes/Inactive/Kaltrim.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -4749,7 +4783,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Kaltrim",
-      "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Kaltrim.jpg",
       "prereq": {
@@ -4773,6 +4806,7 @@
     "Keleres/Heroes/Inactive/Kjalengard.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -4783,7 +4817,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Kjalengard",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Kjalengard.jpg",
       "prereq": {
@@ -4807,6 +4840,7 @@
     "Keleres/Heroes/Inactive/Kolume.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -4817,7 +4851,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Kolume",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Kolume.jpg",
       "placement": {
@@ -4850,6 +4883,7 @@
     "Keleres/Heroes/Inactive/L'Tokk.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -4859,7 +4893,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "L'Tokk",
-      "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/L'Tokk.jpg",
       "prereq": {
@@ -4883,6 +4916,7 @@
     "Keleres/Heroes/Inactive/L1Z1X.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -4893,7 +4927,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "L1Z1X",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/L1Z1X.jpg",
       "prereq": {
@@ -4917,6 +4950,7 @@
     "Keleres/Heroes/Inactive/Last Bastion.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -4927,7 +4961,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Last Bastion",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Last Bastion.jpg",
       "prereq": {
@@ -4956,6 +4989,7 @@
     "Keleres/Heroes/Inactive/Letnev.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -4966,7 +5000,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Letnev",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Letnev.jpg",
       "prereq": {
@@ -4990,6 +5023,7 @@
     "Keleres/Heroes/Inactive/Mentak.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5000,7 +5034,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Mentak",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Mentak.jpg",
       "prereq": {
@@ -5024,6 +5057,7 @@
     "Keleres/Heroes/Inactive/Mirveda.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5033,7 +5067,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Mirveda",
-      "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Mirveda.jpg",
       "prereq": {
@@ -5057,6 +5090,7 @@
     "Keleres/Heroes/Inactive/Myko-Mentori.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5066,7 +5100,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Myko-Mentori",
-      "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Myko-Mentori.jpg",
       "prereq": {
@@ -5090,6 +5123,7 @@
     "Keleres/Heroes/Inactive/N'Orr.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5100,7 +5134,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "N'Orr",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/N'Orr.jpg",
       "prereq": {
@@ -5124,6 +5157,7 @@
     "Keleres/Heroes/Inactive/NRA.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5134,7 +5168,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "NRA",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/NRA.jpg",
       "prereq": {
@@ -5158,6 +5191,7 @@
     "Keleres/Heroes/Inactive/Nomad.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5167,7 +5201,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Nomad",
-      "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Nomad.jpg",
       "prereq": {
@@ -5191,6 +5224,7 @@
     "Keleres/Heroes/Inactive/Qhet.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5201,7 +5235,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Qhet",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Qhet.jpg",
       "prereq": {
@@ -5225,6 +5258,7 @@
     "Keleres/Heroes/Inactive/Ral-Nel.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5234,7 +5268,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Ral-Nel",
-      "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Ral-Nel.jpg",
       "prereq": {
@@ -5258,6 +5291,7 @@
     "Keleres/Heroes/Inactive/Rhodun.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "The Council Keleres",
@@ -5268,7 +5302,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Rhodun",
-      "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Rhodun.jpg",
       "placement": {
@@ -5301,6 +5334,7 @@
     "Keleres/Heroes/Inactive/Roh'Dhna.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5311,7 +5345,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Roh'Dhna",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Roh'Dhna.jpg",
       "prereq": {
@@ -5335,6 +5368,7 @@
     "Keleres/Heroes/Inactive/Sarcosa.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5345,7 +5379,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Sarcosa",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Sarcosa.jpg",
       "prereq": {
@@ -5369,6 +5402,7 @@
     "Keleres/Heroes/Inactive/Shipwrights.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5379,7 +5413,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Shipwrights",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Shipwrights.jpg",
       "prereq": {
@@ -5403,6 +5436,7 @@
     "Keleres/Heroes/Inactive/Sol.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5413,7 +5447,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Sol",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Sol.jpg",
       "prereq": {
@@ -5437,6 +5470,7 @@
     "Keleres/Heroes/Inactive/Titans.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5447,7 +5481,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Titans",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Titans.jpg",
       "prereq": {
@@ -5471,6 +5504,7 @@
     "Keleres/Heroes/Inactive/Toldar.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5481,7 +5515,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Toldar",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Toldar.jpg",
       "prereq": {
@@ -5505,6 +5538,7 @@
     "Keleres/Heroes/Inactive/Uydai.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5515,7 +5549,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Uydai",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Uydai.jpg",
       "prereq": {
@@ -5539,6 +5572,7 @@
     "Keleres/Heroes/Inactive/Veldyr.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5548,7 +5582,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Veldyr",
-      "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Veldyr.jpg",
       "prereq": {
@@ -5572,6 +5605,7 @@
     "Keleres/Heroes/Inactive/Winnu.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -5582,7 +5616,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Winnu",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Heroes/Inactive/Winnu.jpg",
       "prereq": {
@@ -5611,6 +5644,7 @@
     "Keleres/Heroes/Inactive/Xxcha.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -5621,7 +5655,6 @@
       "group": "Keleres/Heroes/Inactive",
       "hidden": true,
       "id": "Xxcha",
-      "isCard": true,
       "orientation": "auto",
       "path": "Keleres/Heroes/Inactive/Xxcha.jpg",
       "placement": {
@@ -5654,6 +5687,7 @@
     "Keleres/Keleres CV Ability Back.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5664,7 +5698,6 @@
       "group": "Keleres",
       "hidden": true,
       "id": "Keleres CV Ability Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Keleres CV Ability Back.jpg",
       "prereq": {
@@ -5693,6 +5726,7 @@
     "Keleres/Keleres CV Ability Front.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5703,7 +5737,6 @@
       "group": "Keleres",
       "hidden": true,
       "id": "Keleres CV Ability Front",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Keleres CV Ability Front.jpg",
       "prereq": {
@@ -5732,6 +5765,7 @@
     "Keleres/Keleres Faction Back.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5742,7 +5776,6 @@
       "group": "Keleres",
       "hidden": true,
       "id": "Keleres Faction Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Keleres Faction Back.jpg",
       "prereq": {
@@ -5771,6 +5804,7 @@
     "Keleres/Keleres Faction Front.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5781,7 +5815,6 @@
       "group": "Keleres",
       "hidden": true,
       "id": "Keleres Faction Front",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Keleres Faction Front.jpg",
       "prereq": {
@@ -5810,6 +5843,7 @@
     "Keleres/Keleres+ Reference.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5820,7 +5854,6 @@
       "group": "Keleres",
       "hidden": true,
       "id": "Keleres+ Reference",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Keleres+ Reference.jpg",
       "prereq": {
@@ -5849,6 +5882,7 @@
     "Keleres/Tech - Agency Supply Network.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5859,7 +5893,6 @@
       "group": "Keleres",
       "hidden": true,
       "id": "Tech - Agency Supply Network",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Tech - Agency Supply Network.jpg",
       "prereq": {
@@ -5888,6 +5921,7 @@
     "Keleres/Tech - Special Clearances.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -5898,7 +5932,6 @@
       "group": "Keleres",
       "hidden": true,
       "id": "Tech - Special Clearances",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Keleres/Tech - Special Clearances.jpg",
       "prereq": {
@@ -5922,6 +5955,123 @@
         "value": ""
       },
       "title": "Tech - Special Clearances",
+      "type": "Other Component"
+    },
+    "Pacts and Deals/Creuss - Deal.jpg": {
+      "back": "Drahn/Drahn Alliance Back.jpg",
+      "component": "us-mini",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "Creuss - Deal.jpg",
+      "folder": "Pacts and Deals",
+      "group": "Other Components",
+      "hidden": false,
+      "id": "Creuss - Deal",
+      "orientation": "landscape",
+      "path": "Pacts and Deals/Creuss - Deal.jpg",
+      "section": "drahn",
+      "title": "Creuss - Deal",
+      "type": "Other Component"
+    },
+    "Pacts and Deals/Crimson - Deal.jpg": {
+      "back": "Drahn/Drahn Alliance Back.jpg",
+      "component": "us-mini",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "Crimson - Deal.jpg",
+      "folder": "Pacts and Deals",
+      "group": "Other Components",
+      "hidden": false,
+      "id": "Crimson - Deal",
+      "orientation": "landscape",
+      "path": "Pacts and Deals/Crimson - Deal.jpg",
+      "section": "drahn",
+      "title": "Crimson - Deal",
+      "type": "Other Component"
+    },
+    "Pacts and Deals/Nivyn - Deal.jpg": {
+      "back": "Drahn/Drahn Alliance Back.jpg",
+      "component": "us-mini",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "Nivyn - Deal.jpg",
+      "folder": "Pacts and Deals",
+      "group": "Other Components",
+      "hidden": false,
+      "id": "Nivyn - Deal",
+      "orientation": "landscape",
+      "path": "Pacts and Deals/Nivyn - Deal.jpg",
+      "section": "drahn",
+      "title": "Nivyn - Deal",
+      "type": "Other Component"
+    },
+    "Pacts and Deals/Uydai - Pact.jpg": {
+      "back": "",
+      "color": "",
+      "component": "us-mini",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "Uydai - Pact.jpg",
+      "flavour": "",
+      "folder": "Pacts and Deals",
+      "group": "Pacts and Deals",
+      "hidden": false,
+      "id": "Uydai - Pact",
+      "orientation": "landscape",
+      "path": "Pacts and Deals/Uydai - Pact.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "keleres",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "station": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Uydai - Pact",
+      "type": "Other Component"
+    },
+    "Pacts and Deals/Zelian - Deal.jpg": {
+      "back": "Drahn/Drahn Alliance Back.jpg",
+      "component": "us-mini",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "Zelian - Deal.jpg",
+      "folder": "Pacts and Deals",
+      "group": "Other Components",
+      "hidden": false,
+      "id": "Zelian - Deal",
+      "orientation": "landscape",
+      "path": "Pacts and Deals/Zelian - Deal.jpg",
+      "section": "drahn",
+      "title": "Zelian - Deal",
       "type": "Other Component"
     }
   }
