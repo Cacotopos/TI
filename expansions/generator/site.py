@@ -363,7 +363,9 @@ def _prepare_banner(config: dict, output_dir: Path) -> str | None:
 
 def _git_commit() -> str:
     try:
-        return subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, text=True).strip()
+        return subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, text=True, stderr=subprocess.DEVNULL
+        ).strip()
     except Exception:
         return "unknown"
 

@@ -16,9 +16,10 @@ services:
       # Mount AWS credentials and .env file for S3 deploy if available.
       - ${HOME:-~}/.aws:/root/.aws:ro
       - ./.env:/app/.env:ro
-      # Mount the local source-images folder. Adjust SOURCE_IMAGES to your
-      # local path containing expansion card images.
-      - ${SOURCE_IMAGES:-./source-images}:/app/source-images:ro
+      # Mount the local source-images folder. Set SOURCE_IMAGES to the
+      # absolute path used in your config.json. It is mounted at the same
+      # path inside the container so existing configs resolve correctly.
+      - ${SOURCE_IMAGES:-./source-images}:${SOURCE_IMAGES:-/app/source-images}:ro
     working_dir: /app
     command: python -m expansions.editor.app
 
