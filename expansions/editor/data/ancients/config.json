@@ -13,7 +13,7 @@
     {
       "id": "general",
       "title": "General",
-      "type": "markdown",
+      "type": "page",
       "blocks": [
         {
           "type": "asset",
@@ -27,17 +27,20 @@
     {
       "id": "ancient-sets",
       "title": "Ancient Sets",
-      "type": "cards"
+      "type": "page",
+      "blocks": []
     },
     {
       "id": "salvage",
       "title": "Salvage",
-      "type": "cards"
+      "type": "page",
+      "blocks": []
     }
   ],
   "assets": {
     "Ancient Sets/The Gatekeeper Torus/Attacks/Attack Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -47,7 +50,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Attacks",
       "hidden": false,
       "id": "Attack Back",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Attacks/Attack Back.jpg",
       "section": "cards",
@@ -56,6 +58,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Attacks/Core Beam.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -65,7 +68,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Attacks",
       "hidden": false,
       "id": "Core Beam",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Attacks/Core Beam.jpg",
       "section": "cards",
@@ -75,6 +77,7 @@
     "Ancient Sets/The Gatekeeper Torus/Attacks/Defensive Matrix.jpg": {
       "back": "Ancient Sets/The Gatekeeper Torus/Attacks/Attack Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "The Gatekeeper Torus",
@@ -85,7 +88,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Attacks",
       "hidden": false,
       "id": "Defensive Matrix",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Attacks/Defensive Matrix.jpg",
       "placement": {
@@ -117,6 +119,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Attacks/Dimensional Shear.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -126,7 +129,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Attacks",
       "hidden": false,
       "id": "Dimensional Shear",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Attacks/Dimensional Shear.jpg",
       "section": "cards",
@@ -135,6 +137,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Attacks/Energy Flechettes.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -144,7 +147,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Attacks",
       "hidden": false,
       "id": "Energy Flechettes",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Attacks/Energy Flechettes.jpg",
       "section": "cards",
@@ -153,6 +155,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Attacks/Helical Beam.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -162,7 +165,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Attacks",
       "hidden": false,
       "id": "Helical Beam",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Attacks/Helical Beam.jpg",
       "section": "cards",
@@ -171,6 +173,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Attacks/Magnetic Overload.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -180,7 +183,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Attacks",
       "hidden": false,
       "id": "Magnetic Overload",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Attacks/Magnetic Overload.jpg",
       "section": "cards",
@@ -189,6 +191,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Attacks/Mote Swarm.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -198,7 +201,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Attacks",
       "hidden": false,
       "id": "Mote Swarm",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Attacks/Mote Swarm.jpg",
       "section": "cards",
@@ -207,6 +209,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Attacks/Neutron Pulse.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -216,7 +219,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Attacks",
       "hidden": false,
       "id": "Neutron Pulse",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Attacks/Neutron Pulse.jpg",
       "section": "cards",
@@ -225,6 +227,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Attacks/Psychic Array.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -234,7 +237,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Attacks",
       "hidden": false,
       "id": "Psychic Array",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Attacks/Psychic Array.jpg",
       "section": "cards",
@@ -243,6 +245,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Attacks/Spiral Lash.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -252,7 +255,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Attacks",
       "hidden": false,
       "id": "Spiral Lash",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Attacks/Spiral Lash.jpg",
       "section": "cards",
@@ -261,6 +263,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Counters/Counter Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -270,7 +273,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Counters",
       "hidden": false,
       "id": "Counter Back",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Counters/Counter Back.jpg",
       "section": "cards",
@@ -279,6 +281,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Counters/Decoy Fleet.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -288,7 +291,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Counters",
       "hidden": false,
       "id": "Decoy Fleet",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Counters/Decoy Fleet.jpg",
       "section": "cards",
@@ -297,6 +299,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Counters/Disrupting Chaff.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -306,7 +309,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Counters",
       "hidden": false,
       "id": "Disrupting Chaff",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Counters/Disrupting Chaff.jpg",
       "section": "cards",
@@ -315,6 +317,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Counters/Focus Fire.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -324,7 +327,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Counters",
       "hidden": false,
       "id": "Focus Fire",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Counters/Focus Fire.jpg",
       "section": "cards",
@@ -333,6 +335,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Counters/Magnetic Pulse.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -342,7 +345,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Counters",
       "hidden": false,
       "id": "Magnetic Pulse",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Counters/Magnetic Pulse.jpg",
       "section": "cards",
@@ -351,6 +353,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Counters/Overwhelming Swarm.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -360,7 +363,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Counters",
       "hidden": false,
       "id": "Overwhelming Swarm",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Counters/Overwhelming Swarm.jpg",
       "section": "cards",
@@ -369,6 +371,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Counters/Peer Cognition.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -378,7 +381,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Counters",
       "hidden": false,
       "id": "Peer Cognition",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Counters/Peer Cognition.jpg",
       "section": "cards",
@@ -387,6 +389,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Counters/Reflective Mirrors.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -396,7 +399,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Counters",
       "hidden": false,
       "id": "Reflective Mirrors",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Counters/Reflective Mirrors.jpg",
       "section": "cards",
@@ -405,6 +407,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Counters/Refractive Mirrors.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -414,7 +417,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Counters",
       "hidden": false,
       "id": "Refractive Mirrors",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Counters/Refractive Mirrors.jpg",
       "section": "cards",
@@ -423,6 +425,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Counters/Sarcoman Maneuver.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -432,7 +435,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Counters",
       "hidden": false,
       "id": "Sarcoman Maneuver",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Counters/Sarcoman Maneuver.jpg",
       "section": "cards",
@@ -441,6 +443,7 @@
     },
     "Ancient Sets/The Gatekeeper Torus/Counters/Scattered Targets.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -450,7 +453,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus/Counters",
       "hidden": false,
       "id": "Scattered Targets",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Gatekeeper Torus/Counters/Scattered Targets.jpg",
       "section": "cards",
@@ -460,6 +462,7 @@
     "Ancient Sets/The Gatekeeper Torus/The Gatekeeper Torus Ancient Back.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -470,7 +473,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus",
       "hidden": true,
       "id": "The Gatekeeper Torus Ancient Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Gatekeeper Torus/The Gatekeeper Torus Ancient Back.jpg",
       "placement": {
@@ -503,6 +505,7 @@
     "Ancient Sets/The Gatekeeper Torus/The Gatekeeper Torus Ancient.jpg": {
       "back": "Ancient Sets/The Gatekeeper Torus/The Gatekeeper Torus Ancient Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "The Gatekeeper Torus",
@@ -513,7 +516,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus",
       "hidden": false,
       "id": "The Gatekeeper Torus Ancient",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Gatekeeper Torus/The Gatekeeper Torus Ancient.jpg",
       "placement": {
@@ -544,9 +546,10 @@
       "type": "Other Component"
     },
     "Ancient Sets/The Gatekeeper Torus/The Gatekeeper Torus Token.jpg": {
-      "back": "",
+      "back": "Ancients Token Back.jpg",
       "color": "",
-      "configured": false,
+      "component": "token",
+      "configured": true,
       "description": "",
       "faction": "The Gatekeeper Torus",
       "faq": [],
@@ -556,8 +559,7 @@
       "group": "Ancient Sets/The Gatekeeper Torus",
       "hidden": false,
       "id": "The Gatekeeper Torus Token",
-      "isCard": true,
-      "orientation": "landscape",
+      "orientation": "square",
       "path": "Ancient Sets/The Gatekeeper Torus/The Gatekeeper Torus Token.jpg",
       "placement": {
         "enabled": false,
@@ -567,6 +569,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "ancient-sets",
       "source": {
         "enabled": false,
@@ -575,6 +578,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -601,6 +605,7 @@
       },
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "The Gatekeeper Torus",
@@ -611,7 +616,6 @@
       "group": "Ancient Sets/The Gatekeeper Torus",
       "hidden": false,
       "id": "The Gatekeeper Torus Unit",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Gatekeeper Torus/The Gatekeeper Torus Unit.jpg",
       "placement": {
@@ -661,6 +665,7 @@
     },
     "Ancient Sets/The Hordefleet Tesseract/The Hordefleet Tesseract Ancient Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -670,7 +675,6 @@
       "group": "Ancient Sets/The Hordefleet Tesseract",
       "hidden": false,
       "id": "The Hordefleet Tesseract Ancient Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Hordefleet Tesseract/The Hordefleet Tesseract Ancient Back.jpg",
       "section": "cards",
@@ -679,6 +683,7 @@
     },
     "Ancient Sets/The Hordefleet Tesseract/The Hordefleet Tesseract Ancient.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -688,7 +693,6 @@
       "group": "Ancient Sets/The Hordefleet Tesseract",
       "hidden": false,
       "id": "The Hordefleet Tesseract Ancient",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Hordefleet Tesseract/The Hordefleet Tesseract Ancient.jpg",
       "section": "cards",
@@ -697,6 +701,7 @@
     },
     "Ancient Sets/The Hordefleet Tesseract/The Hordefleet Tesseract Token.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -706,7 +711,6 @@
       "group": "Ancient Sets/The Hordefleet Tesseract",
       "hidden": false,
       "id": "The Hordefleet Tesseract Token",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Hordefleet Tesseract/The Hordefleet Tesseract Token.jpg",
       "section": "cards",
@@ -715,6 +719,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/Attack/Attack Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -724,7 +729,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn/Attack",
       "hidden": false,
       "id": "Attack Back",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/Attack/Attack Back.jpg",
       "section": "cards",
@@ -733,6 +737,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/Attack/Coil Charge x4.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -742,7 +747,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn/Attack",
       "hidden": false,
       "id": "Coil Charge x4",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/Attack/Coil Charge x4.jpg",
       "section": "cards",
@@ -751,6 +755,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/Attack/Defensive Systems.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -760,7 +765,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn/Attack",
       "hidden": false,
       "id": "Defensive Systems",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/Attack/Defensive Systems.jpg",
       "section": "cards",
@@ -769,6 +773,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/Attack/Gravitic Pulse x2.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -778,7 +783,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn/Attack",
       "hidden": false,
       "id": "Gravitic Pulse x2",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/Attack/Gravitic Pulse x2.jpg",
       "section": "cards",
@@ -787,6 +791,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/Attack/Maelstrom.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -796,7 +801,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn/Attack",
       "hidden": false,
       "id": "Maelstrom",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/Attack/Maelstrom.jpg",
       "section": "cards",
@@ -805,6 +809,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/Attack/Solar Torque.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -814,7 +819,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn/Attack",
       "hidden": false,
       "id": "Solar Torque",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/Attack/Solar Torque.jpg",
       "section": "cards",
@@ -823,6 +827,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/Attack/The Starhammer Fires.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -832,7 +837,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn/Attack",
       "hidden": false,
       "id": "The Starhammer Fires",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/Attack/The Starhammer Fires.jpg",
       "section": "cards",
@@ -841,6 +845,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/Counters/Counter Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -850,7 +855,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn/Counters",
       "hidden": false,
       "id": "Counter Back",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/Counters/Counter Back.jpg",
       "section": "cards",
@@ -859,6 +863,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/Counters/Discharge Load Cycles.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -868,7 +873,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn/Counters",
       "hidden": false,
       "id": "Discharge Load Cycles",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/Counters/Discharge Load Cycles.jpg",
       "section": "cards",
@@ -877,6 +881,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/Counters/Guidance LL x2.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -886,7 +891,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn/Counters",
       "hidden": false,
       "id": "Guidance LL x2",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/Counters/Guidance LL x2.jpg",
       "section": "cards",
@@ -895,6 +899,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/Counters/Guidance LR x2.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -904,7 +909,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn/Counters",
       "hidden": false,
       "id": "Guidance LR x2",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/Counters/Guidance LR x2.jpg",
       "section": "cards",
@@ -913,6 +917,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/Counters/Guidance RL x2.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -922,7 +927,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn/Counters",
       "hidden": false,
       "id": "Guidance RL x2",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/Counters/Guidance RL x2.jpg",
       "section": "cards",
@@ -931,6 +935,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/Counters/Guidance RR x2.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -940,7 +945,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn/Counters",
       "hidden": false,
       "id": "Guidance RR x2",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/Counters/Guidance RR x2.jpg",
       "section": "cards",
@@ -949,6 +953,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/Counters/Network Intercept.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -958,7 +963,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn/Counters",
       "hidden": false,
       "id": "Network Intercept",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/Counters/Network Intercept.jpg",
       "section": "cards",
@@ -967,6 +971,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/The Starhammer of Nalha Duhn Ancient Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -976,7 +981,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn",
       "hidden": false,
       "id": "The Starhammer of Nalha Duhn Ancient Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/The Starhammer of Nalha Duhn Ancient Back.jpg",
       "section": "cards",
@@ -985,6 +989,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/The Starhammer of Nalha Duhn Ancient.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -994,7 +999,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn",
       "hidden": false,
       "id": "The Starhammer of Nalha Duhn Ancient",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/The Starhammer of Nalha Duhn Ancient.jpg",
       "section": "cards",
@@ -1003,6 +1007,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/The Starhammer of Nalha Duhn Token.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1012,7 +1017,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn",
       "hidden": false,
       "id": "The Starhammer of Nalha Duhn Token",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/The Starhammer of Nalha Duhn Token.jpg",
       "section": "cards",
@@ -1021,6 +1025,7 @@
     },
     "Ancient Sets/The Starhammer of Nalha Duhn/The Starhammer of Nalha Duhn Unit.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1030,7 +1035,6 @@
       "group": "Ancient Sets/The Starhammer of Nalha Duhn",
       "hidden": false,
       "id": "The Starhammer of Nalha Duhn Unit",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Starhammer of Nalha Duhn/The Starhammer of Nalha Duhn Unit.jpg",
       "section": "cards",
@@ -1039,6 +1043,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Attacks/Arc Shields.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1048,7 +1053,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Attacks",
       "hidden": false,
       "id": "Arc Shields",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/Attacks/Arc Shields.jpg",
       "section": "cards",
@@ -1057,6 +1061,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Attacks/Attack Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1066,7 +1071,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Attacks",
       "hidden": false,
       "id": "Attack Back",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Tyrant's Lament/Attacks/Attack Back.jpg",
       "section": "cards",
@@ -1075,6 +1079,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Attacks/Central Beam.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1084,7 +1089,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Attacks",
       "hidden": false,
       "id": "Central Beam",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/Attacks/Central Beam.jpg",
       "section": "cards",
@@ -1093,6 +1097,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Attacks/Drive Enervator.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1102,7 +1107,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Attacks",
       "hidden": false,
       "id": "Drive Enervator",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/Attacks/Drive Enervator.jpg",
       "section": "cards",
@@ -1111,6 +1115,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Attacks/Drone Matrix.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1120,7 +1125,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Attacks",
       "hidden": false,
       "id": "Drone Matrix",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/Attacks/Drone Matrix.jpg",
       "section": "cards",
@@ -1129,6 +1133,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Attacks/Flechette Turrets.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1138,7 +1143,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Attacks",
       "hidden": false,
       "id": "Flechette Turrets",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/Attacks/Flechette Turrets.jpg",
       "section": "cards",
@@ -1147,6 +1151,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Attacks/Fusion Centrifuge.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1156,7 +1161,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Attacks",
       "hidden": false,
       "id": "Fusion Centrifuge",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/Attacks/Fusion Centrifuge.jpg",
       "section": "cards",
@@ -1165,6 +1169,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Attacks/Gravitic Sling.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1174,7 +1179,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Attacks",
       "hidden": false,
       "id": "Gravitic Sling",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/Attacks/Gravitic Sling.jpg",
       "section": "cards",
@@ -1183,6 +1187,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Attacks/Hypershift Projector.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1192,7 +1197,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Attacks",
       "hidden": false,
       "id": "Hypershift Projector",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/Attacks/Hypershift Projector.jpg",
       "section": "cards",
@@ -1201,6 +1205,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Attacks/Proton Engine Cores.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1210,7 +1215,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Attacks",
       "hidden": false,
       "id": "Proton Engine Cores",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/Attacks/Proton Engine Cores.jpg",
       "section": "cards",
@@ -1219,6 +1223,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Attacks/Regenerative Plating.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1228,7 +1233,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Attacks",
       "hidden": false,
       "id": "Regenerative Plating",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/Attacks/Regenerative Plating.jpg",
       "section": "cards",
@@ -1237,6 +1241,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Counters/Counter Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1246,7 +1251,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Counters",
       "hidden": false,
       "id": "Counter Back",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Tyrant's Lament/Counters/Counter Back.jpg",
       "section": "cards",
@@ -1255,6 +1259,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Counters/Magnetic Flux.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1264,7 +1269,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Counters",
       "hidden": false,
       "id": "Magnetic Flux",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/Counters/Magnetic Flux.jpg",
       "section": "cards",
@@ -1273,6 +1277,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Counters/Modular Restructure.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1282,7 +1287,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Counters",
       "hidden": false,
       "id": "Modular Restructure",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Tyrant's Lament/Counters/Modular Restructure.jpg",
       "section": "cards",
@@ -1291,6 +1295,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Counters/Overheating.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1300,7 +1305,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Counters",
       "hidden": false,
       "id": "Overheating",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/Counters/Overheating.jpg",
       "section": "cards",
@@ -1309,6 +1313,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Counters/Phasic Alternator.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1318,7 +1323,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Counters",
       "hidden": false,
       "id": "Phasic Alternator",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/Counters/Phasic Alternator.jpg",
       "section": "cards",
@@ -1327,6 +1331,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Counters/Pointspace Override.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1336,7 +1341,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Counters",
       "hidden": false,
       "id": "Pointspace Override",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/Counters/Pointspace Override.jpg",
       "section": "cards",
@@ -1345,6 +1349,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Counters/Precomputed Trajectory.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1354,7 +1359,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Counters",
       "hidden": false,
       "id": "Precomputed Trajectory",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Tyrant's Lament/Counters/Precomputed Trajectory.jpg",
       "section": "cards",
@@ -1363,6 +1367,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Counters/Scrambled Targeting.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1372,7 +1377,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Counters",
       "hidden": false,
       "id": "Scrambled Targeting",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/Counters/Scrambled Targeting.jpg",
       "section": "cards",
@@ -1381,6 +1385,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Counters/Sentient Coil Disruption.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1390,7 +1395,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Counters",
       "hidden": false,
       "id": "Sentient Coil Disruption",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Tyrant's Lament/Counters/Sentient Coil Disruption.jpg",
       "section": "cards",
@@ -1399,6 +1403,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Counters/Shield Overload.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1408,7 +1413,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Counters",
       "hidden": false,
       "id": "Shield Overload",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/Counters/Shield Overload.jpg",
       "section": "cards",
@@ -1417,6 +1421,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/Counters/Velocity Ram.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1426,7 +1431,6 @@
       "group": "Ancient Sets/The Tyrant's Lament/Counters",
       "hidden": false,
       "id": "Velocity Ram",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Tyrant's Lament/Counters/Velocity Ram.jpg",
       "section": "cards",
@@ -1435,6 +1439,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/The Tyrant's Lament Ancient Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1444,7 +1449,6 @@
       "group": "Ancient Sets/The Tyrant's Lament",
       "hidden": false,
       "id": "The Tyrant's Lament Ancient Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/The Tyrant's Lament Ancient Back.jpg",
       "section": "cards",
@@ -1453,6 +1457,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/The Tyrant's Lament Ancient.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1462,7 +1467,6 @@
       "group": "Ancient Sets/The Tyrant's Lament",
       "hidden": false,
       "id": "The Tyrant's Lament Ancient",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/The Tyrant's Lament Ancient.jpg",
       "section": "cards",
@@ -1471,6 +1475,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/The Tyrant's Lament Token.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1480,7 +1485,6 @@
       "group": "Ancient Sets/The Tyrant's Lament",
       "hidden": false,
       "id": "The Tyrant's Lament Token",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancient Sets/The Tyrant's Lament/The Tyrant's Lament Token.jpg",
       "section": "cards",
@@ -1489,6 +1493,7 @@
     },
     "Ancient Sets/The Tyrant's Lament/The Tyrant's Lament Unit.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1498,7 +1503,6 @@
       "group": "Ancient Sets/The Tyrant's Lament",
       "hidden": false,
       "id": "The Tyrant's Lament Unit",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Ancient Sets/The Tyrant's Lament/The Tyrant's Lament Unit.jpg",
       "section": "cards",
@@ -1508,6 +1512,7 @@
     "Ancients Token Back.jpg": {
       "back": "",
       "color": "",
+      "component": "token",
       "configured": false,
       "description": "",
       "faction": "",
@@ -1516,9 +1521,8 @@
       "flavour": "",
       "folder": "",
       "group": "",
-      "hidden": false,
+      "hidden": true,
       "id": "Ancients Token Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "Ancients Token Back.jpg",
       "placement": {
@@ -1529,6 +1533,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "",
       "source": {
         "enabled": false,
@@ -1537,6 +1542,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -1551,6 +1557,7 @@
     "Salvage/Council Assistance.jpg": {
       "back": "Salvage/Salvage Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -1561,7 +1568,6 @@
       "group": "Salvage",
       "hidden": false,
       "id": "Council Assistance",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Salvage/Council Assistance.jpg",
       "placement": {
@@ -1594,6 +1600,7 @@
     "Salvage/Council Gratitude.jpg": {
       "back": "Salvage/Salvage Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -1604,7 +1611,6 @@
       "group": "Salvage",
       "hidden": false,
       "id": "Council Gratitude",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Salvage/Council Gratitude.jpg",
       "placement": {
@@ -1637,6 +1643,7 @@
     "Salvage/Imperial Imprimatur.jpg": {
       "back": "Salvage/Salvage Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -1647,7 +1654,6 @@
       "group": "Salvage",
       "hidden": false,
       "id": "Imperial Imprimatur",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Salvage/Imperial Imprimatur.jpg",
       "placement": {
@@ -1680,6 +1686,7 @@
     "Salvage/Imperial Trophy.jpg": {
       "back": "Salvage/Salvage Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -1690,7 +1697,6 @@
       "group": "Salvage",
       "hidden": false,
       "id": "Imperial Trophy",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Salvage/Imperial Trophy.jpg",
       "placement": {
@@ -1723,6 +1729,7 @@
     "Salvage/Insight.jpg": {
       "back": "Salvage/Salvage Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -1733,7 +1740,6 @@
       "group": "Salvage",
       "hidden": false,
       "id": "Insight",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Salvage/Insight.jpg",
       "placement": {
@@ -1766,6 +1772,7 @@
     "Salvage/Insights.jpg": {
       "back": "Salvage/Salvage Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -1776,7 +1783,6 @@
       "group": "Salvage",
       "hidden": false,
       "id": "Insights",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Salvage/Insights.jpg",
       "placement": {
@@ -1809,6 +1815,7 @@
     "Salvage/Relic.jpg": {
       "back": "Salvage/Salvage Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -1819,7 +1826,6 @@
       "group": "Salvage",
       "hidden": false,
       "id": "Relic",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Salvage/Relic.jpg",
       "placement": {
@@ -1852,6 +1858,7 @@
     "Salvage/Relics.jpg": {
       "back": "Salvage/Salvage Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -1862,7 +1869,6 @@
       "group": "Salvage",
       "hidden": false,
       "id": "Relics",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Salvage/Relics.jpg",
       "placement": {
@@ -1895,6 +1901,7 @@
     "Salvage/Salvage Back.jpg": {
       "back": "",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -1905,7 +1912,6 @@
       "group": "Salvage",
       "hidden": true,
       "id": "Salvage Back",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Salvage/Salvage Back.jpg",
       "placement": {
@@ -1938,6 +1944,7 @@
     "Salvage/Subspace Stratagem.jpg": {
       "back": "Salvage/Salvage Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -1948,7 +1955,6 @@
       "group": "Salvage",
       "hidden": false,
       "id": "Subspace Stratagem",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Salvage/Subspace Stratagem.jpg",
       "placement": {
@@ -1981,6 +1987,7 @@
     "Salvage/Subspace Transmission.jpg": {
       "back": "Salvage/Salvage Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -1991,7 +1998,6 @@
       "group": "Salvage",
       "hidden": false,
       "id": "Subspace Transmission",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Salvage/Subspace Transmission.jpg",
       "placement": {
@@ -2024,6 +2030,7 @@
     "Salvage/Technological Breakthrough.jpg": {
       "back": "Salvage/Salvage Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -2034,7 +2041,6 @@
       "group": "Salvage",
       "hidden": false,
       "id": "Technological Breakthrough",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Salvage/Technological Breakthrough.jpg",
       "placement": {
@@ -2067,6 +2073,7 @@
     "Salvage/Technological Insight.jpg": {
       "back": "Salvage/Salvage Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -2077,7 +2084,6 @@
       "group": "Salvage",
       "hidden": false,
       "id": "Technological Insight",
-      "isCard": true,
       "orientation": "portrait",
       "path": "Salvage/Technological Insight.jpg",
       "placement": {
@@ -2109,23 +2115,30 @@
     },
     "The Ancients Scenario Back.jpg": {
       "back": "",
+      "color": "",
+      "component": "tarot",
       "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "The Ancients Scenario Back.jpg",
+      "flavour": "",
       "folder": "",
       "group": "",
-      "hidden": false,
+      "hidden": true,
       "id": "The Ancients Scenario Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "The Ancients Scenario Back.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
-      "section": "cards",
+      "rotate": 0,
+      "section": "",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -2133,9 +2146,11 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
+      "subtitle": "",
       "synergy": {
         "enabled": false,
         "value": ""
@@ -2146,6 +2161,7 @@
     "The Ancients Scenario.jpg": {
       "back": "The Ancients Scenario Back.jpg",
       "color": "",
+      "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
@@ -2156,7 +2172,6 @@
       "group": "",
       "hidden": false,
       "id": "The Ancients Scenario",
-      "isCard": true,
       "orientation": "landscape",
       "path": "The Ancients Scenario.jpg",
       "placement": {
@@ -2188,6 +2203,7 @@
     },
     "The Ancients Unit Back.jpg": {
       "back": "",
+      "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
@@ -2197,10 +2213,28 @@
       "group": "",
       "hidden": false,
       "id": "The Ancients Unit Back",
-      "isCard": true,
       "orientation": "landscape",
       "path": "The Ancients Unit Back.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "The Ancients Unit Back",
       "type": "Other Component"
     }

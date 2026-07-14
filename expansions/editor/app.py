@@ -170,6 +170,7 @@ def deploy(expansion_id: str):
     cmd = [
         "aws", "s3", "sync", str(site_dir), s3_path,
         "--profile", AWS_PROFILE,
+        "--size-only",
     ]
     result = subprocess.run(cmd, capture_output=True, text=True, cwd=ROOT)
     return jsonify({

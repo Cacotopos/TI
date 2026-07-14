@@ -1834,12 +1834,12 @@
       "type": "Hero"
     },
     "Drahn/Heroes/Active/Pharad'n.jpg": {
-      "back": "",
+      "back": "Drahn/Heroes/Inactive/Pharad'n.jpg",
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "",
-      "faction": "",
+      "description": "***ACTION:*** Place this card near the game board. After you gain control of a planet during this game round, place 1 infantry from your reinforcements on each planet in that system. Those units coexist, if able. At the end of that game round, purge this card.",
+      "faction": "The Drahn Cartel",
       "faq": [],
       "filename": "Pharad'n.jpg",
       "flavour": "",
@@ -1870,13 +1870,13 @@
         "techSpeciality": "",
         "trait": []
       },
-      "subtitle": "",
+      "subtitle": "Endless Patience",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "Pharad'n",
-      "type": "Other Component"
+      "title": "The Sentinels of Time",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Saar.jpg": {
       "back": "Drahn/Heroes/Inactive/Saar.jpg",
@@ -6040,13 +6040,13 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "station": false,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
       "subtitle": "",
       "synergy": {

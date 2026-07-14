@@ -368,6 +368,98 @@ def _git_commit() -> str:
         return "unknown"
 
 
+def _build_export(config: dict, images: list[dict], sections: list[dict], git_commit: str) -> dict:
+    """Build a clean public JSON export from the generated image data."""
+
+    def _truthy(value):
+        if value is None:
+            return False
+        if isinstance(value, (list, dict, str)):
+            return bool(value)
+        return value not in (False, 0)
+
+    def clean_card(img: dict) -> dict:
+        card: dict = {
+            "id": img["id"],
+            "name": img.get("name", ""),
+            "type": img.get("type", ""),
+            "faction": img.get("faction", ""),
+            "group": img.get("group", ""),
+            "section": img.get("section", ""),
+            "component": img.get("component", ""),
+            "front": img.get("path", ""),
+        }
+
+        for field in ("subtitle", "flavour", "color", "tileType", "backTitle", "backSubtitle"):
+            value = img.get(field)
+            if _truthy(value):
+                card[field] = value
+
+        description = img.get("description", "")
+        if _truthy(description):
+            card["description"] = _markdown_filter(description)
+
+        for field in ("anomalies", "wormholes"):
+            value = img.get(field)
+            if value:
+                card[field] = value
+
+        faq = img.get("faq", [])
+        if faq:
+            card["faq"] = [
+                {"q": _markdown_filter(item.get("q", "")), "a": _markdown_filter(item.get("a", ""))}
+                for item in faq
+            ]
+
+        for obj_field in ("stats", "abilities"):
+            value = img.get(obj_field)
+            if value and any(_truthy(v) for v in value.values()):
+                card[obj_field] = value
+
+        source = img.get("source")
+        if source and source.get("enabled"):
+            card["source"] = {
+                k: v for k, v in source.items()
+                if k != "enabled" and _truthy(v)
+            }
+
+        placement = img.get("placement")
+        if placement and placement.get("enabled"):
+            rules = placement.get("rules")
+            if rules:
+                card["placement"] = rules
+
+        prereq = img.get("prereq")
+        if prereq and prereq.get("enabled") and _truthy(prereq.get("value")):
+            card["prereq"] = prereq["value"]
+
+        synergy = img.get("synergy")
+        if synergy and synergy.get("enabled") and _truthy(synergy.get("value")):
+            card["synergy"] = synergy["value"]
+
+        back = img.get("back", "")
+        if back:
+            card["back"] = back if back.startswith("assets/images/") else f"assets/images/{back}"
+
+        return card
+
+    overview = config.get("overview", "")
+    return {
+        "id": config.get("id", ""),
+        "name": config.get("name", ""),
+        "version": config.get("version", ""),
+        "description": config.get("description", ""),
+        "overview": _markdown_filter(overview) if overview else "",
+        "git_commit": git_commit,
+        "sections": [
+            {"id": s.get("id", ""), "title": s.get("title", ""), "type": s.get("type", "")}
+            for s in sections
+        ],
+        "groups": sorted({img.get("group", "") for img in images if img.get("group")}),
+        "cards": [clean_card(img) for img in images if not img.get("hidden")],
+    }
+
+
 def build_site(config_path: Path, output_dir: Path) -> None:
     """Generate a standalone static site at output_dir."""
     config = load_config(config_path)
@@ -410,10 +502,11 @@ def build_site(config_path: Path, output_dir: Path) -> None:
         search.render(config=config, site=site), encoding="utf-8"
     )
 
-    # Write data.json for JS search
-    (output_dir / "data.json").write_text(json.dumps(site, indent=2), encoding="utf-8")
+    # Write clean public export data.json
+    export_data = _build_export(config, images, site["sections"], git_commit)
+    (output_dir / "data.json").write_text(json.dumps(export_data, indent=2), encoding="utf-8")
 
-    # Write search-data.js — inline site data so search works with file:// (no fetch needed)
+    # Write search-data.js — inline full site data so search works with file:// (no fetch needed)
     js_dir = output_dir / "assets" / "js"
     js_dir.mkdir(parents=True, exist_ok=True)
     (js_dir / "search-data.js").write_text(

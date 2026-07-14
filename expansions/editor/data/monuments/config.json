@@ -2646,6 +2646,168 @@
       "title": "Rebellion Back",
       "type": "Other Component"
     },
+    "Backs/Faction Monument Backs/TF/King Black Back.jpg": {
+      "back": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "King Black Back.jpg",
+      "folder": "Backs/Faction Monument Backs/TF",
+      "group": "Backs/Faction Monument Backs/TF",
+      "hidden": false,
+      "id": "King Black Back",
+      "orientation": "landscape",
+      "path": "Backs/Faction Monument Backs/TF/King Black Back.jpg",
+      "section": "cards",
+      "title": "King Black Back",
+      "type": "Other Component"
+    },
+    "Backs/Faction Monument Backs/TF/King Blue Back.jpg": {
+      "back": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "King Blue Back.jpg",
+      "folder": "Backs/Faction Monument Backs/TF",
+      "group": "Backs/Faction Monument Backs/TF",
+      "hidden": false,
+      "id": "King Blue Back",
+      "orientation": "landscape",
+      "path": "Backs/Faction Monument Backs/TF/King Blue Back.jpg",
+      "section": "cards",
+      "title": "King Blue Back",
+      "type": "Other Component"
+    },
+    "Backs/Faction Monument Backs/TF/King Green Back.jpg": {
+      "back": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "King Green Back.jpg",
+      "folder": "Backs/Faction Monument Backs/TF",
+      "group": "Backs/Faction Monument Backs/TF",
+      "hidden": false,
+      "id": "King Green Back",
+      "orientation": "landscape",
+      "path": "Backs/Faction Monument Backs/TF/King Green Back.jpg",
+      "section": "cards",
+      "title": "King Green Back",
+      "type": "Other Component"
+    },
+    "Backs/Faction Monument Backs/TF/King Orange Back.jpg": {
+      "back": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "King Orange Back.jpg",
+      "folder": "Backs/Faction Monument Backs/TF",
+      "group": "Backs/Faction Monument Backs/TF",
+      "hidden": false,
+      "id": "King Orange Back",
+      "orientation": "landscape",
+      "path": "Backs/Faction Monument Backs/TF/King Orange Back.jpg",
+      "section": "cards",
+      "title": "King Orange Back",
+      "type": "Other Component"
+    },
+    "Backs/Faction Monument Backs/TF/King Pink Back.jpg": {
+      "back": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "King Pink Back.jpg",
+      "folder": "Backs/Faction Monument Backs/TF",
+      "group": "Backs/Faction Monument Backs/TF",
+      "hidden": false,
+      "id": "King Pink Back",
+      "orientation": "landscape",
+      "path": "Backs/Faction Monument Backs/TF/King Pink Back.jpg",
+      "section": "cards",
+      "title": "King Pink Back",
+      "type": "Other Component"
+    },
+    "Backs/Faction Monument Backs/TF/King Purple Back.jpg": {
+      "back": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "King Purple Back.jpg",
+      "folder": "Backs/Faction Monument Backs/TF",
+      "group": "Backs/Faction Monument Backs/TF",
+      "hidden": false,
+      "id": "King Purple Back",
+      "orientation": "landscape",
+      "path": "Backs/Faction Monument Backs/TF/King Purple Back.jpg",
+      "section": "cards",
+      "title": "King Purple Back",
+      "type": "Other Component"
+    },
+    "Backs/Faction Monument Backs/TF/King Red Back.jpg": {
+      "back": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "King Red Back.jpg",
+      "folder": "Backs/Faction Monument Backs/TF",
+      "group": "Backs/Faction Monument Backs/TF",
+      "hidden": false,
+      "id": "King Red Back",
+      "orientation": "landscape",
+      "path": "Backs/Faction Monument Backs/TF/King Red Back.jpg",
+      "section": "cards",
+      "title": "King Red Back",
+      "type": "Other Component"
+    },
+    "Backs/Faction Monument Backs/TF/King White Back.jpg": {
+      "back": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "King White Back.jpg",
+      "folder": "Backs/Faction Monument Backs/TF",
+      "group": "Backs/Faction Monument Backs/TF",
+      "hidden": false,
+      "id": "King White Back",
+      "orientation": "landscape",
+      "path": "Backs/Faction Monument Backs/TF/King White Back.jpg",
+      "section": "cards",
+      "title": "King White Back",
+      "type": "Other Component"
+    },
+    "Backs/Faction Monument Backs/TF/King Yellow Back.jpg": {
+      "back": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "King Yellow Back.jpg",
+      "folder": "Backs/Faction Monument Backs/TF",
+      "group": "Backs/Faction Monument Backs/TF",
+      "hidden": false,
+      "id": "King Yellow Back",
+      "orientation": "landscape",
+      "path": "Backs/Faction Monument Backs/TF/King Yellow Back.jpg",
+      "section": "cards",
+      "title": "King Yellow Back",
+      "type": "Other Component"
+    },
     "Backs/Faction Monument Backs/Vertical Backs/Edyn Alliance Vertical.jpg": {
       "back": "",
       "component": "us-mini",
@@ -4777,21 +4939,103 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/Mahact.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/Base/Mahact Back.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
+      "configured": true,
+      "description": "At the start of the status phase, the Mahact player may place 1 command token in this system into their fleet pool.",
+      "faction": "The Mahact Gene-Sorcerors",
+      "faq": [
+        {
+          "a": "Yes, the 1 max is a specific limitation of the specific gain token faction ability, not a constraint in any other way.",
+          "q": "Hey, does this let you put another player's token into your fleet pool twice?"
+        },
+        {
+          "a": "They're strong but this is more fun, and as a passive monument, this gives them a little bit of value (if no one activates the system, the monument does nothing unless you force their tokens into the system with Diplomacy or something.",
+          "q": "But they're already too strong!"
+        },
+        {
+          "a": "Yes, if Nekro copies this the Mahact player actually gets to trigger this in both systems.",
+          "q": "Wait this says 'Mahact player'. So it's useless for Nekro?"
+        }
+      ],
       "filename": "Mahact.jpg",
+      "flavour": "Visitors report only joy here.",
       "folder": "Monuments/Base+PoK",
       "group": "Prophecy of Kings",
       "hidden": false,
       "id": "Mahact",
       "orientation": "landscape",
       "path": "Monuments/Base+PoK/Mahact.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Mahact",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Mahact Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Spire of Ixth",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/Base+PoK/Mentak.jpg": {
@@ -9011,50 +9255,6 @@
       "title": "Sor Tek Linkhub",
       "type": "Unit - Structure - Monument"
     },
-    "Monuments/TF/King Black Back.jpg": {
-      "back": "",
-      "color": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "King Black Back.jpg",
-      "flavour": "",
-      "folder": "Monuments/TF",
-      "group": "Monuments/TF",
-      "hidden": true,
-      "id": "King Black Back",
-      "orientation": "landscape",
-      "path": "Monuments/TF/King Black Back.jpg",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      },
-      "prereq": {
-        "enabled": false,
-        "value": ""
-      },
-      "rotate": 0,
-      "section": "cards",
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
-        "resource": 0,
-        "techSpeciality": "",
-        "trait": []
-      },
-      "subtitle": "",
-      "synergy": {
-        "enabled": false,
-        "value": ""
-      },
-      "title": "King Black Back",
-      "type": "Other Component"
-    },
     "Monuments/TF/King Black.jpg": {
       "abilities": {
         "antiFighterBarrage": null,
@@ -9143,50 +9343,6 @@
       },
       "title": "The Flesh Cathedral",
       "type": "Unit - Structure - Monument"
-    },
-    "Monuments/TF/King Blue Back.jpg": {
-      "back": "",
-      "color": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "King Blue Back.jpg",
-      "flavour": "",
-      "folder": "Monuments/TF",
-      "group": "Monuments/TF",
-      "hidden": true,
-      "id": "King Blue Back",
-      "orientation": "landscape",
-      "path": "Monuments/TF/King Blue Back.jpg",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      },
-      "prereq": {
-        "enabled": false,
-        "value": ""
-      },
-      "rotate": 0,
-      "section": "cards",
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
-        "resource": 0,
-        "techSpeciality": "",
-        "trait": []
-      },
-      "subtitle": "",
-      "synergy": {
-        "enabled": false,
-        "value": ""
-      },
-      "title": "King Blue Back",
-      "type": "Other Component"
     },
     "Monuments/TF/King Blue.jpg": {
       "abilities": {
@@ -9283,24 +9439,6 @@
       "title": "Caracas",
       "type": "Unit - Structure - Monument"
     },
-    "Monuments/TF/King Green Back.jpg": {
-      "back": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "King Green Back.jpg",
-      "folder": "Monuments/TF",
-      "group": "Monuments/TF",
-      "hidden": true,
-      "id": "King Green Back",
-      "orientation": "landscape",
-      "path": "Monuments/TF/King Green Back.jpg",
-      "section": "cards",
-      "title": "King Green Back",
-      "type": "Other Component"
-    },
     "Monuments/TF/King Green.jpg": {
       "abilities": {
         "antiFighterBarrage": null,
@@ -9391,24 +9529,6 @@
       "title": "The Crown of Thorns",
       "type": "Unit - Structure - Monument"
     },
-    "Monuments/TF/King Orange Back.jpg": {
-      "back": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "King Orange Back.jpg",
-      "folder": "Monuments/TF",
-      "group": "Monuments/TF",
-      "hidden": true,
-      "id": "King Orange Back",
-      "orientation": "landscape",
-      "path": "Monuments/TF/King Orange Back.jpg",
-      "section": "cards",
-      "title": "King Orange Back",
-      "type": "Other Component"
-    },
     "Monuments/TF/King Orange.jpg": {
       "abilities": {
         "antiFighterBarrage": null,
@@ -9494,24 +9614,6 @@
       },
       "title": "The Starlit Redoubt",
       "type": "Unit - Structure - Monument"
-    },
-    "Monuments/TF/King Pink Back.jpg": {
-      "back": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "King Pink Back.jpg",
-      "folder": "Monuments/TF",
-      "group": "Monuments/TF",
-      "hidden": true,
-      "id": "King Pink Back",
-      "orientation": "landscape",
-      "path": "Monuments/TF/King Pink Back.jpg",
-      "section": "cards",
-      "title": "King Pink Back",
-      "type": "Other Component"
     },
     "Monuments/TF/King Pink.jpg": {
       "abilities": {
@@ -9603,50 +9705,6 @@
       "title": "Avatar of Mirrors",
       "type": "Unit - Structure - Monument"
     },
-    "Monuments/TF/King Purple Back.jpg": {
-      "back": "",
-      "color": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "King Purple Back.jpg",
-      "flavour": "",
-      "folder": "Monuments/TF",
-      "group": "Monuments/TF",
-      "hidden": true,
-      "id": "King Purple Back",
-      "orientation": "landscape",
-      "path": "Monuments/TF/King Purple Back.jpg",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      },
-      "prereq": {
-        "enabled": false,
-        "value": ""
-      },
-      "rotate": 0,
-      "section": "cards",
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
-        "resource": 0,
-        "techSpeciality": "",
-        "trait": []
-      },
-      "subtitle": "",
-      "synergy": {
-        "enabled": false,
-        "value": ""
-      },
-      "title": "King Purple Back",
-      "type": "Other Component"
-    },
     "Monuments/TF/King Purple.jpg": {
       "abilities": {
         "antiFighterBarrage": null,
@@ -9726,42 +9784,6 @@
       },
       "title": "Halo Cortex",
       "type": "Unit - Structure - Monument"
-    },
-    "Monuments/TF/King Red Back.jpg": {
-      "back": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "King Red Back.jpg",
-      "folder": "Monuments/TF",
-      "group": "Monuments/TF",
-      "hidden": true,
-      "id": "King Red Back",
-      "orientation": "landscape",
-      "path": "Monuments/TF/King Red Back.jpg",
-      "prereq": {
-        "enabled": false,
-        "value": ""
-      },
-      "section": "cards",
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
-        "resource": 0,
-        "techSpeciality": "",
-        "trait": []
-      },
-      "synergy": {
-        "enabled": false,
-        "value": ""
-      },
-      "title": "King Red Back",
-      "type": "Other Component"
     },
     "Monuments/TF/King Red.jpg": {
       "abilities": {
@@ -9858,50 +9880,6 @@
       "title": "The Serrated Throne",
       "type": "Unit - Structure - Monument"
     },
-    "Monuments/TF/King White Back.jpg": {
-      "back": "",
-      "color": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "King White Back.jpg",
-      "flavour": "",
-      "folder": "Monuments/TF",
-      "group": "Monuments/TF",
-      "hidden": true,
-      "id": "King White Back",
-      "orientation": "landscape",
-      "path": "Monuments/TF/King White Back.jpg",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      },
-      "prereq": {
-        "enabled": false,
-        "value": ""
-      },
-      "rotate": 0,
-      "section": "cards",
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
-        "resource": 0,
-        "techSpeciality": "",
-        "trait": []
-      },
-      "subtitle": "",
-      "synergy": {
-        "enabled": false,
-        "value": ""
-      },
-      "title": "King White Back",
-      "type": "Other Component"
-    },
     "Monuments/TF/King White.jpg": {
       "abilities": {
         "antiFighterBarrage": null,
@@ -9990,24 +9968,6 @@
       },
       "title": "The Alabaster Edifice",
       "type": "Unit - Structure - Monument"
-    },
-    "Monuments/TF/King Yellow Back.jpg": {
-      "back": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "King Yellow Back.jpg",
-      "folder": "Monuments/TF",
-      "group": "Monuments/TF",
-      "hidden": true,
-      "id": "King Yellow Back",
-      "orientation": "landscape",
-      "path": "Monuments/TF/King Yellow Back.jpg",
-      "section": "cards",
-      "title": "King Yellow Back",
-      "type": "Other Component"
     },
     "Monuments/TF/King Yellow.jpg": {
       "abilities": {
