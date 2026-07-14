@@ -1,0 +1,30 @@
+# Python virtual environment
+.venv/
+venv/
+
+# Generated sites and reports
+expansions/sites/
+exports/reports/
+
+# Docker artifacts
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Git
+.git/
+.gitignore
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Test and temporary files
+compute_crop_boxes.py
+crop_tests/
+generate_masks.py
+samples/

@@ -1,0 +1,27 @@
+services:
+  editor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${EDITOR_PORT:-3030}:3030"
+    environment:
+      - EDITOR_HOST=0.0.0.0
+      - EDITOR_PORT=3030
+      - EDITOR_DEBUG=${EDITOR_DEBUG:-false}
+    volumes:
+      # Persist saved expansion configs and generated sites.
+      - editor-data:/app/expansions/editor/data
+      - sites:/app/expansions/sites
+      # Mount AWS credentials and .env file for S3 deploy if available.
+      - ${HOME:-~}/.aws:/root/.aws:ro
+      - ./.env:/app/.env:ro
+      # Mount the local source-images folder. Adjust SOURCE_IMAGES to your
+      # local path containing expansion card images.
+      - ${SOURCE_IMAGES:-./source-images}:/app/source-images:ro
+    working_dir: /app
+    command: python -m expansions.editor.app
+
+volumes:
+  editor-data:
+  sites:

@@ -21,6 +21,54 @@ python3 -m expansions.generator.site editor/data/monuments/config.json --output 
 open sites/monuments/index.html
 ```
 
+## Docker Quick Start
+
+If you have Docker installed you can run everything without setting up a local
+Python virtual environment.
+
+```bash
+cd /Users/kangarootime/Source/RiderProjects/TI
+
+# Build and start the editor on http://localhost:3030
+docker compose up --build -d editor
+
+# Stop it
+docker compose down
+```
+
+The editor saves configs to a Docker volume (`editor-data`), so they persist
+between runs. Generated sites are written to another volume (`sites`).
+
+To mount your own source-images folder, set the `SOURCE_IMAGES` environment
+variable before starting:
+
+```bash
+export SOURCE_IMAGES="/path/to/your/expansion/Printable Cards/v3.1"
+docker compose up --build -d editor
+```
+
+If the source folder path in `config.json` is an absolute host path, mount it at
+the same absolute path inside the container. For example, if `config.json` uses
+`/Users/me/Documents/.../Monuments/Printable Cards/v3.1`, run:
+
+```bash
+export SOURCE_IMAGES="/Users/me/Documents/.../Monuments/Printable Cards/v3.1"
+docker compose up --build -d editor
+```
+
+### Generate a site inside Docker
+
+Once the editor container is running, generate a site with:
+
+```bash
+docker compose exec editor python -m expansions.generator.site \
+  expansions/editor/data/monuments/config.json \
+  --output expansions/sites/monuments
+```
+
+The generated site is written to the `sites` volume and can be found at
+`expansions/sites/monuments/index.html` inside the container.
+
 ## Overview
 
 This sub-project is separate from `card_diff` but shares its dark, card-first

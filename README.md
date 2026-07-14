@@ -21,11 +21,27 @@ TI/
 
 ## Setup
 
+### Local Python environment
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
+
+### Docker
+
+A `Dockerfile` and `docker-compose.yml` are included. To run the editor and
+generator without installing Python dependencies locally:
+
+```bash
+cd /Users/kangarootime/Source/RiderProjects/TI
+docker compose up --build -d editor
+open http://localhost:3030
+```
+
+See `expansions/README.md` for full Docker usage, including mounting source
+images and generating sites inside the container.
 
 ## Usage
 

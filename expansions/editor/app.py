@@ -405,4 +405,7 @@ def deploy_status():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=3030)
+    port = int(os.getenv("EDITOR_PORT", "3030"))
+    host = os.getenv("EDITOR_HOST", "127.0.0.1")
+    debug = os.getenv("EDITOR_DEBUG", "true").lower() in ("1", "true", "yes")
+    app.run(debug=debug, host=host, port=port)
