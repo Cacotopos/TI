@@ -1,8 +1,8 @@
 # TI Expansions — Editor & Static Site Generator
-# Includes Python dependencies for the editor, site generator, and card_diff OCR.
+# Lean image for the editor and generator only (no OCR/card_diff stack).
 FROM python:3.12-slim
 
-# Install system dependencies required by Pillow, OpenCV (via EasyOCR), PyTorch, etc.
+# Install system dependencies required by Pillow.
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libgl1 \
     libglib2.0-0 \
@@ -10,15 +10,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxext6 \
     libxrender1 \
     libgomp1 \
-    gcc \
     git \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Install Python dependencies first so Docker layer caching works.
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Install lean Python dependencies first so Docker layer caching works.
+COPY requirements.editor.txt .
+RUN pip install --no-cache-dir -r requirements.editor.txt
 
 # Copy the rest of the project.
 COPY . .

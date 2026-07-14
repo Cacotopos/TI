@@ -1,0 +1,26 @@
+# TI Card Diff — OCR-based card comparison
+# Full image including PyTorch and EasyOCR for running card_diff.py.
+FROM python:3.12-slim
+
+# Install system dependencies required by Pillow, OpenCV (via EasyOCR), PyTorch, etc.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgl1 \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender1 \
+    libgomp1 \
+    gcc \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+# card_diff is run as a command, not a server.
+ENTRYPOINT ["python3", "card_diff/card_diff.py"]
+CMD ["--help"]

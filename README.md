@@ -31,8 +31,9 @@ pip install -r requirements.txt
 
 ### Docker
 
-A `Dockerfile` and `docker-compose.yml` are included. To run the editor and
-generator without installing Python dependencies locally:
+A lean `Dockerfile` and `docker-compose.yml` are included for the editor and
+static site generator. A separate `Dockerfile.ocr` contains the full PyTorch/
+EasyOCR stack for `card_diff.py`.
 
 ```bash
 cd /Users/kangarootime/Source/RiderProjects/TI

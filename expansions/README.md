@@ -23,8 +23,9 @@ open sites/monuments/index.html
 
 ## Docker Quick Start
 
-If you have Docker installed you can run everything without setting up a local
-Python virtual environment.
+The primary Docker image contains only the editor and static-site generator
+dependencies, so it builds quickly. A separate image (`Dockerfile.ocr`) includes
+the full PyTorch/EasyOCR stack for `card_diff.py`.
 
 ```bash
 cd /Users/kangarootime/Source/RiderProjects/TI
@@ -40,19 +41,11 @@ The editor saves configs to a Docker volume (`editor-data`), so they persist
 between runs. Generated sites are written to another volume (`sites`).
 
 To mount your own source-images folder, set the `SOURCE_IMAGES` environment
-variable before starting:
+variable before starting. It is mounted at the same absolute path inside the
+container so existing `config.json` paths resolve correctly.
 
 ```bash
 export SOURCE_IMAGES="/path/to/your/expansion/Printable Cards/v3.1"
-docker compose up --build -d editor
-```
-
-If the source folder path in `config.json` is an absolute host path, mount it at
-the same absolute path inside the container. For example, if `config.json` uses
-`/Users/me/Documents/.../Monuments/Printable Cards/v3.1`, run:
-
-```bash
-export SOURCE_IMAGES="/Users/me/Documents/.../Monuments/Printable Cards/v3.1"
 docker compose up --build -d editor
 ```
 
@@ -68,6 +61,17 @@ docker compose exec editor python -m expansions.generator.site \
 
 The generated site is written to the `sites` volume and can be found at
 `expansions/sites/monuments/index.html` inside the container.
+
+### OCR / card_diff image
+
+For the card comparison tool, build and run the OCR image:
+
+```bash
+docker build -f Dockerfile.ocr -t ti-ocr .
+docker run --rm -v "$PWD:/app" ti-ocr \
+  card_diff/card_diff.py v3/Monuments v3.1/Monuments \
+  --output exports/reports/monuments_v3_v3.1
+```
 
 ## Overview
 

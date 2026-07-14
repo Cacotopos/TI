@@ -1,0 +1,8 @@
+# Lean dependencies for the expansion editor and static site generator.
+# Use this for the primary Docker image. The full OCR stack for card_diff is in Dockerfile.ocr.
+Flask>=3.0.0
+Jinja2>=3.1.0
+Pillow>=10.0.0
+python-dotenv>=1.0.0
+boto3>=1.34.0
+numpy>=1.24.0
