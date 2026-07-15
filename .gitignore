@@ -6,3 +6,4 @@ __pycache__/
 exports/s3-upload/.env
 exports/
 expansions/sites/
+v3.1/
