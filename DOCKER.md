@@ -103,15 +103,12 @@ docker compose logs -f editor
 # Stop everything
 docker compose down
 
-# Remove volumes (deletes saved editor data and generated sites)
-docker compose down -v
-
-# Inspect the generated site inside the container
-docker compose exec editor ls -la expansions/sites/monuments
+# Inspect the generated site on the host
+ls -la expansions/sites/monuments
 ```
 
 ## Notes
 
 - The lean editor image uses `requirements.editor.txt` and does **not** include PyTorch or EasyOCR. It is intended for the editor and site generator only.
-- Generated sites and saved expansion configs are stored in Docker volumes, so they persist across restarts unless you run `docker compose down -v`.
+- Because `docker-compose.yml` mounts `.:/app`, generated sites and saved editor configs live on the host in `expansions/sites/` and `expansions/editor/data/`.
 - If you are sending the project without git, include at least the files listed in the "Files required" section above.
