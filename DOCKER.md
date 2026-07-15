@@ -86,10 +86,12 @@ Build the heavier image only when you need OCR-based card comparison:
 
 ```bash
 docker build -f Dockerfile.ocr -t ti-ocr .
-docker run --rm -v "$PWD:/app" ti-ocr \
+docker run --rm -v "$PWD:/app" -v "/path/to/v3:/app/v3" -v "/path/to/v3.1:/app/v3.1" ti-ocr \
   card_diff/card_diff.py v3/Monuments v3.1/Monuments \
   --output exports/reports/monuments_v3_v3.1
 ```
+
+`v3/` and `v3.1/` are source image folders you provide; they are not included in the repo.
 
 ## Common commands
 

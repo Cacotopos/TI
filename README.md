@@ -13,11 +13,11 @@ TI/
 │   ├── reports/         # Generated static report sites
 │   └── s3-upload/       # S3 deployment scripts (to be added)
 ├── Icons/               # Icon template images
-├── v3/                  # Example source card images
-├── v3.1/                # Example target card images
 ├── requirements.txt
 └── README.md
 ```
+
+Source card images (e.g. `v3/`, `v3.1/`) are not included in the repository. Pass the appropriate folders to `card_diff.py` when running locally.
 
 ## Setup
 
