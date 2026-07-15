@@ -23,6 +23,23 @@ You do **not** need to send:
 - `exports/reports/`
 - `.git/` (unless building from a clone)
 
+## How the container points to local project files
+
+`docker-compose.yml` bind-mounts the entire project directory into the container at `/app`:
+
+```yaml
+volumes:
+  - .:/app
+```
+
+This means the container uses the **local files on the other dev's machine**, not just the code baked into the image. The other dev can:
+
+- Edit code and have Flask reload it
+- View and modify `expansions/editor/data/` configs directly on their host
+- See generated sites in `expansions/sites/` on their host
+
+Source image assets are also mounted separately. The paths in `expansions/editor/data/<expansion>/config.json` are absolute host paths, so the same absolute path is mounted inside the container.
+
 ## Source image assets
 
 Expansion configs in `expansions/editor/data/<expansion>/config.json` store the absolute path to the source card images on the host. The Docker container must have that same path mounted, or generation will fail with a missing-source warning.
@@ -61,7 +78,7 @@ docker compose exec editor python -m expansions.generator.site \
   --output expansions/sites/monuments
 ```
 
-The generated site is written to the `sites` Docker volume at `expansions/sites/monuments/` inside the container.
+The generated site is written to `expansions/sites/monuments/` on the host (because `docker-compose.yml` mounts `.:/app`).
 
 ## OCR / card_diff image
 

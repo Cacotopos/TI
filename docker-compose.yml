@@ -10,19 +10,15 @@ services:
       - EDITOR_PORT=3030
       - EDITOR_DEBUG=${EDITOR_DEBUG:-false}
     volumes:
-      # Persist saved expansion configs and generated sites.
-      - editor-data:/app/expansions/editor/data
-      - sites:/app/expansions/sites
+      # Mount the entire project so the container uses local files.
+      # This lets another dev edit code/configs and see changes immediately.
+      - .:/app
       # Mount AWS credentials and .env file for S3 deploy if available.
       - ${HOME:-~}/.aws:/root/.aws:ro
       - ./.env:/app/.env:ro
-      # Mount the local source-images folder. Set SOURCE_IMAGES to the
-      # absolute path used in your config.json. It is mounted at the same
-      # path inside the container so existing configs resolve correctly.
+      # Mount the source-images folder. Set SOURCE_IMAGES to the absolute
+      # path used in your config.json. It is mounted at the same path
+      # inside the container so existing configs resolve correctly.
       - ${SOURCE_IMAGES:-./source-images}:${SOURCE_IMAGES:-/app/source-images}:ro
     working_dir: /app
     command: python -m expansions.editor.app
-
-volumes:
-  editor-data:
-  sites:
