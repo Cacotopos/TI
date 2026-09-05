@@ -19,7 +19,7 @@
       "blocks": [
         {
           "type": "markdown",
-          "content": "##Last updated: 2026-7-7 DRAFT\n\nYou can introduce Monuments easily using the included 'Cultural Monuments' event.",
+          "content": "##Last updated: 2026-9-5\n\nYou can introduce Monuments easily using the included 'Cultural Monuments' event.",
           "column": "full"
         },
         {
@@ -112,6 +112,11 @@
         },
         {
           "type": "cards",
+          "group": "Objectives",
+          "column": "full"
+        },
+        {
+          "type": "cards",
           "group": "Agendas",
           "column": "left"
         },
@@ -126,9 +131,14 @@
           "column": "full"
         },
         {
+          "type": "markdown",
+          "content": "These cards are attached to the base game strategy cards in lieu of reprinting the strategy card tiles.",
+          "column": "left"
+        },
+        {
           "type": "cards",
-          "group": "Objectives",
-          "column": "full"
+          "group": "Strategy Card Attachments",
+          "column": "right"
         },
         {
           "type": "markdown",
@@ -174,12 +184,19 @@
         },
         {
           "type": "markdown",
-          "content": "This is a full replacement \"Construction\" strategy card for those so inclined.",
+          "content": "These are full replacement \"Construction\" and \"Civitas\" strategy cards for those so inclined.",
+          "column": "full"
+        },
+        {
+          "type": "asset",
+          "asset": "monuments_construction.png",
+          "subtitle": "",
+          "width": 100,
           "column": "left"
         },
         {
           "type": "asset",
-          "asset": "Construction Card Monuments.png",
+          "asset": "monumentstf4.png",
           "subtitle": "",
           "width": 100,
           "column": "right"
@@ -206,14 +223,7 @@
         {
           "type": "markdown",
           "content": "The following design guidelines are highly recommended for any home brewers crafting their own monument (or alternate\nmonuments) for their own factions or homebrew shenanigans.\n\nMonuments should always care where they are located. Making them easily defended by a player because they are crammed near (or even on) a home system means they just become an additional power, not an additional option, and that\u2019s what Breakthroughs are for. You\u2019ll note most monuments refer only to adjacent systems, or \u201cthis\u201d system, or units in adjacent systems. This means that the choice to place them by a player is meaningful.\n\nA monument\u2019s placement limitation is a strong gate on its powers. If you limit something to Mecatol Rex or a legendary planet, then map randomness may significantly limits its usefulness.\n\nMonuments ideally provide an additional strategy for a faction rather than a simple buff to its existing powers. This isn\u2019t a hard-and-fast rule, since Sol, Argent, N\u2019Orr ignore it a little.\n\nMonuments are a strong incentive to take Construction (a quick way to catch up for awful construction objectives). This means that a faction that wants to take construction naturally (like Vuil\u2019Raith or even Titans) doesn\u2019t need an additional incentive to take it. Note therefore that eg. The Vuil\u2019Raith monument is designed to be worse when you don\u2019t use its Deploy ability.\n\nMost monuments shouldn\u2019t do anything if they\u2019re not on the board. It\u2019s unintuitive and confusing.\nHowever, a few factions, such as Winnu and Keleres and Nekro (stupid Nekro) interact with the game as cards too, instead of only units. The card should tell you what it does, so just read the cards as written.\n",
-          "column": "left"
-        },
-        {
-          "type": "asset",
-          "asset": "",
-          "subtitle": "",
-          "width": 100,
-          "column": "right"
+          "column": "full"
         }
       ]
     }
@@ -340,6 +350,96 @@
         "value": ""
       },
       "title": "Renovation",
+      "type": "Action Card"
+    },
+    "Action Cards/TF Dematerialize.jpg": {
+      "back": "Backs/TF Action Card.jpg",
+      "color": "",
+      "component": "us-mini",
+      "configured": true,
+      "description": "***ACTION:*** Destroy another player's monument.",
+      "faction": "",
+      "faq": [],
+      "filename": "TF Dematerialize.jpg",
+      "flavour": "The very edges or reality shivered under the King's will.",
+      "folder": "Action Cards",
+      "group": "Action Cards",
+      "hidden": false,
+      "id": "TF Dematerialize",
+      "orientation": "portrait",
+      "path": "Action Cards/TF Dematerialize.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "other-cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Dematerialize",
+      "type": "Action Card"
+    },
+    "Action Cards/TF Materialize.jpg": {
+      "back": "Backs/TF Action Card.jpg",
+      "color": "",
+      "component": "us-mini",
+      "configured": true,
+      "description": "***ACTION:*** Place your monument on the game board, following its printed placement requirements. You cannot place your monument on a planet you do not control.",
+      "faction": "",
+      "faq": [],
+      "filename": "TF Materialize.jpg",
+      "flavour": "\"It has always been here.\"",
+      "folder": "Action Cards",
+      "group": "Action Cards",
+      "hidden": false,
+      "id": "TF Materialize",
+      "orientation": "portrait",
+      "path": "Action Cards/TF Materialize.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "other-cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Materialize",
       "type": "Action Card"
     },
     "Agendas/Cathedral of Ixth.jpg": {
@@ -2562,7 +2662,7 @@
       "group": "Backs",
       "hidden": true,
       "id": "Keleres Alliance Back",
-      "orientation": "portrait",
+      "orientation": "landscape",
       "path": "Backs/Faction Monument Backs/TE/Keleres Alliance Back.jpg",
       "placement": {
         "enabled": false,
@@ -2581,6 +2681,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -2656,11 +2757,30 @@
       "filename": "King Black Back.jpg",
       "folder": "Backs/Faction Monument Backs/TF",
       "group": "Backs/Faction Monument Backs/TF",
-      "hidden": false,
+      "hidden": true,
       "id": "King Black Back",
       "orientation": "landscape",
       "path": "Backs/Faction Monument Backs/TF/King Black Back.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "King Black Back",
       "type": "Other Component"
     },
@@ -2674,7 +2794,7 @@
       "filename": "King Blue Back.jpg",
       "folder": "Backs/Faction Monument Backs/TF",
       "group": "Backs/Faction Monument Backs/TF",
-      "hidden": false,
+      "hidden": true,
       "id": "King Blue Back",
       "orientation": "landscape",
       "path": "Backs/Faction Monument Backs/TF/King Blue Back.jpg",
@@ -2692,7 +2812,7 @@
       "filename": "King Green Back.jpg",
       "folder": "Backs/Faction Monument Backs/TF",
       "group": "Backs/Faction Monument Backs/TF",
-      "hidden": false,
+      "hidden": true,
       "id": "King Green Back",
       "orientation": "landscape",
       "path": "Backs/Faction Monument Backs/TF/King Green Back.jpg",
@@ -2710,7 +2830,7 @@
       "filename": "King Orange Back.jpg",
       "folder": "Backs/Faction Monument Backs/TF",
       "group": "Backs/Faction Monument Backs/TF",
-      "hidden": false,
+      "hidden": true,
       "id": "King Orange Back",
       "orientation": "landscape",
       "path": "Backs/Faction Monument Backs/TF/King Orange Back.jpg",
@@ -2728,7 +2848,7 @@
       "filename": "King Pink Back.jpg",
       "folder": "Backs/Faction Monument Backs/TF",
       "group": "Backs/Faction Monument Backs/TF",
-      "hidden": false,
+      "hidden": true,
       "id": "King Pink Back",
       "orientation": "landscape",
       "path": "Backs/Faction Monument Backs/TF/King Pink Back.jpg",
@@ -2746,7 +2866,7 @@
       "filename": "King Purple Back.jpg",
       "folder": "Backs/Faction Monument Backs/TF",
       "group": "Backs/Faction Monument Backs/TF",
-      "hidden": false,
+      "hidden": true,
       "id": "King Purple Back",
       "orientation": "landscape",
       "path": "Backs/Faction Monument Backs/TF/King Purple Back.jpg",
@@ -2764,7 +2884,7 @@
       "filename": "King Red Back.jpg",
       "folder": "Backs/Faction Monument Backs/TF",
       "group": "Backs/Faction Monument Backs/TF",
-      "hidden": false,
+      "hidden": true,
       "id": "King Red Back",
       "orientation": "landscape",
       "path": "Backs/Faction Monument Backs/TF/King Red Back.jpg",
@@ -2782,7 +2902,7 @@
       "filename": "King White Back.jpg",
       "folder": "Backs/Faction Monument Backs/TF",
       "group": "Backs/Faction Monument Backs/TF",
-      "hidden": false,
+      "hidden": true,
       "id": "King White Back",
       "orientation": "landscape",
       "path": "Backs/Faction Monument Backs/TF/King White Back.jpg",
@@ -2800,7 +2920,7 @@
       "filename": "King Yellow Back.jpg",
       "folder": "Backs/Faction Monument Backs/TF",
       "group": "Backs/Faction Monument Backs/TF",
-      "hidden": false,
+      "hidden": true,
       "id": "King Yellow Back",
       "orientation": "landscape",
       "path": "Backs/Faction Monument Backs/TF/King Yellow Back.jpg",
@@ -3139,27 +3259,58 @@
       "title": "Secret Back",
       "type": "Other Component"
     },
-    "Construction Card Monuments.png": {
+    "Backs/TF Action Card.jpg": {
       "back": "",
-      "color": "",
-      "component": "other",
-      "configured": true,
+      "component": "us-mini",
+      "configured": false,
       "description": "",
       "faction": "",
-      "faq": [
-        {
-          "a": "This one is for people who want to somehow print their own replacement strategy card. I'm not one of those people but hey, you do you.",
-          "q": "I'm confused, what about the strategy mini card?"
-        }
-      ],
-      "filename": "Construction Card Monuments.png",
-      "flavour": "",
-      "folder": "",
-      "group": "",
-      "hidden": false,
-      "id": "Construction Card Monuments",
+      "faq": [],
+      "filename": "TF Action Card.jpg",
+      "folder": "Backs",
+      "group": "Backs",
+      "hidden": true,
+      "id": "TF Action Card",
       "orientation": "portrait",
-      "path": "Construction Card Monuments.png",
+      "path": "Backs/TF Action Card.jpg",
+      "section": "cards",
+      "title": "TF Action Card",
+      "type": "Other Component"
+    },
+    "Backs/TF Edict Card.jpg": {
+      "back": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "TF Edict Card.jpg",
+      "folder": "Backs",
+      "group": "Backs",
+      "hidden": true,
+      "id": "TF Edict Card",
+      "orientation": "portrait",
+      "path": "Backs/TF Edict Card.jpg",
+      "section": "cards",
+      "title": "TF Edict Card",
+      "type": "Other Component"
+    },
+    "Backs/TF Monument Funding Back.jpg": {
+      "back": "",
+      "color": "",
+      "component": "us-mini",
+      "configured": false,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "TF Monument Funding Back.jpg",
+      "flavour": "",
+      "folder": "Backs",
+      "group": "Backs",
+      "hidden": true,
+      "id": "TF Monument Funding Back",
+      "orientation": "portrait",
+      "path": "Backs/TF Monument Funding Back.jpg",
       "placement": {
         "enabled": false,
         "rules": []
@@ -3169,7 +3320,7 @@
         "value": ""
       },
       "rotate": 0,
-      "section": "components",
+      "section": "cards",
       "source": {
         "enabled": false,
         "influence": 0,
@@ -3186,7 +3337,7 @@
         "enabled": false,
         "value": ""
       },
-      "title": "Construction Card - Monuments",
+      "title": "TF Monument Funding Back",
       "type": "Other Component"
     },
     "Events/Cultural Monuments Event.jpg": {
@@ -3288,7 +3439,7 @@
       "filename": "Monument Funding.jpg",
       "flavour": "Raise a monument.\nRaze a monument.",
       "folder": "",
-      "group": "",
+      "group": "Strategy Card Attachments",
       "hidden": false,
       "id": "Monument Funding",
       "orientation": "portrait",
@@ -3416,7 +3567,7 @@
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "At the end of the strategy phase, choose and place 1 control token on a super weapon card in your play area. This card has the text abilities of each superweapon card in your play area that has 1 of your control tokens.",
+      "description": "At the end of the strategy phase, choose and place 1 control token on a Superweapon card in your play area. This card has the text abilities of each superweapon card in your play area that has 1 of your control tokens.",
       "faction": "The Belkosean Allied States",
       "faq": [],
       "filename": "Belkosea.jpg",
@@ -3457,6 +3608,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -3467,12 +3619,12 @@
         },
         "combat": {
           "enabled": false,
-          "multi": 1,
+          "multi": "1",
           "value": null
         },
         "cost": {
           "enabled": false,
-          "multi": 1,
+          "multi": "1",
           "value": null
         },
         "move": {
@@ -3580,7 +3732,7 @@
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "This unit is treated as a structure and a ground force.\n***DEPLOY:*** During the \"Commit Ground Forces\" step, place this uni on a planet in a system adjacent to planet you control.",
+      "description": "This unit is treated as a structure and a ground force.\n***DEPLOY:*** During your \"Commit Ground Forces\" step, if you control a planet in the active system, place this unit on a planet in that system.",
       "faction": "The Pharad'n Order",
       "faq": [],
       "filename": "Pharad'n.jpg",
@@ -3617,6 +3769,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -3828,7 +3981,7 @@
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "If you have more Honor than Dishonor, flip this card.\nAfter a player wins a combat in this system., they may draw a secret objective.\nWhile your Dishonor is 8, this unit cannot be destroyed.",
+      "description": "If you have more Honor than Dishonor, flip this card.\nAfter a player wins a combat in this system, they may draw a secret objective.\nIf your Dishonor is 8, move this unit to the space area; it cannot be destroyed.",
       "faction": "The Toldar Concordat",
       "faq": [],
       "filename": "Toldar - Dishonor.jpg",
@@ -3856,6 +4009,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
@@ -3864,6 +4018,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -3874,10 +4029,12 @@
         },
         "combat": {
           "enabled": false,
+          "multi": "1",
           "value": null
         },
         "cost": {
           "enabled": false,
+          "multi": "1",
           "value": null
         },
         "move": {
@@ -3900,12 +4057,11 @@
         "deploy": false,
         "planetaryShield": true,
         "production": {
-          "multi": 1,
-          "value": 2
+          "value": "2"
         },
         "spaceCannon": {
-          "multi": 3,
-          "value": 4
+          "multi": "3",
+          "value": "4"
         },
         "sustainDamage": false
       },
@@ -3913,7 +4069,7 @@
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "If you have more Dishonour and Honour, flip this card.\nThis unit gains the abilities matching your Honor:\n2+: **PRODUCTION 2**\n5+: **PLANETARY SHIELD**\n8: **SPACE CANNON 4 (x3)**",
+      "description": "If you have more Dishonor and Honor, flip this card.\nThis unit gains the abilities matching your Honor:\n2+: **PRODUCTION 2**\n5+: **PLANETARY SHIELD**\n8: **SPACE CANNON 4 (x3)**",
       "faction": "The Toldar Concordat",
       "faq": [],
       "filename": "Toldar - Honor.jpg",
@@ -3941,6 +4097,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
@@ -3949,6 +4106,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -3959,10 +4117,12 @@
         },
         "combat": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "cost": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "move": {
@@ -4141,135 +4301,6 @@
       },
       "title": "Celestial Court",
       "type": "Unit - Structure - Monument"
-    },
-    "Monuments/Base M/Creuss Base.jpg": {
-      "back": "",
-      "color": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "Creuss Base.jpg",
-      "flavour": "",
-      "folder": "Monuments/Base M",
-      "group": "Monuments/Base M",
-      "hidden": true,
-      "id": "Creuss Base",
-      "orientation": "auto",
-      "path": "Monuments/Base M/Creuss Base.jpg",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      },
-      "prereq": {
-        "enabled": false,
-        "value": ""
-      },
-      "section": "cards",
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
-        "resource": 0,
-        "techSpeciality": "",
-        "trait": []
-      },
-      "subtitle": "",
-      "synergy": {
-        "enabled": false,
-        "value": ""
-      },
-      "title": "Creuss Base",
-      "type": "Other Component"
-    },
-    "Monuments/Base M/L1Z1X Base.jpg": {
-      "back": "",
-      "color": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "L1Z1X Base.jpg",
-      "flavour": "",
-      "folder": "Monuments/Base M",
-      "group": "Monuments/Base M",
-      "hidden": true,
-      "id": "L1Z1X Base",
-      "orientation": "auto",
-      "path": "Monuments/Base M/L1Z1X Base.jpg",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      },
-      "prereq": {
-        "enabled": false,
-        "value": ""
-      },
-      "section": "cards",
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
-        "resource": 0,
-        "techSpeciality": "",
-        "trait": []
-      },
-      "subtitle": "",
-      "synergy": {
-        "enabled": false,
-        "value": ""
-      },
-      "title": "L1Z1X Base",
-      "type": "Other Component"
-    },
-    "Monuments/Base M/Saar Base.jpg": {
-      "back": "",
-      "color": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "Saar Base.jpg",
-      "flavour": "",
-      "folder": "Monuments/Base M",
-      "group": "Monuments/Base M",
-      "hidden": true,
-      "id": "Saar Base",
-      "orientation": "auto",
-      "path": "Monuments/Base M/Saar Base.jpg",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      },
-      "prereq": {
-        "enabled": false,
-        "value": ""
-      },
-      "section": "cards",
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
-        "resource": 0,
-        "techSpeciality": "",
-        "trait": []
-      },
-      "subtitle": "",
-      "synergy": {
-        "enabled": false,
-        "value": ""
-      },
-      "title": "Saar Base",
-      "type": "Other Component"
     },
     "Monuments/Base+PoK/Arborec.jpg": {
       "abilities": {
@@ -4784,7 +4815,7 @@
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "At the start of your turn, you may exhaust this card to take a player's command token from an adjacent system and place it in this system.",
+      "description": "At the start of your turn, you may exhaust this card to remove a player's command token from an adjacent system and place it in this system.",
       "faction": "The L1Z1X Mindnet",
       "faq": [],
       "filename": "L1Z1X.jpg",
@@ -4825,6 +4856,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -6292,7 +6324,7 @@
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "When you would explore another planet, you may explore this planet instead.\nIf you do, you may gain trade goods equal to the number of your scored objectives.",
+      "description": "When you would explore another planet, you may explore this planet instead.\nIf you do, you may gain trade goods equal to the number of your scored secret objectives.",
       "faction": "The Augurs of Ilyxum",
       "faq": [],
       "filename": "Augurs.jpg",
@@ -6320,6 +6352,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -6330,12 +6363,12 @@
         },
         "combat": {
           "enabled": false,
-          "multi": 1,
+          "multi": "1",
           "value": null
         },
         "cost": {
           "enabled": false,
-          "multi": 1,
+          "multi": "1",
           "value": null
         },
         "move": {
@@ -6352,21 +6385,84 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Axis.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": {
+          "value": "3"
+        },
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Axis.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "When you produce 1 or more non-fighter ships in this system, gain 1 trade good.",
+      "faction": "The Shipwrights of Axis",
       "faq": [],
       "filename": "Axis.jpg",
+      "flavour": "The Anvil's light, a beacon to the Axis; its hollow rumble, a summons.",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Axis",
       "orientation": "landscape",
       "path": "Monuments/DS/Axis.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "industrial"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Axis",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Axis Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Anvil of Atlas",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Bentor.jpg": {
@@ -6472,7 +6568,7 @@
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "During each of your tactical actions, you may commit ground forces on this planet to planets that contain your space docks.",
+      "description": "During the \"Commit Ground Forces\" step:\nYou can commit ground forces on this planet to planets that contain your space docks, if this system does not contain 1 of your command tokens.",
       "faction": "The Celdauri Trade Federation",
       "faq": [],
       "filename": "Celdauri.jpg",
@@ -6505,6 +6601,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -6585,6 +6682,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -7192,7 +7290,7 @@
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "During movement, you may choose to treat this system as if it contains no planets.\nYou treat this system as though it contains a frontier token.",
+      "description": "During movement, you may choose to treat this system as thought it contains no planets.\nYou treat this system as though it contains a frontier token.",
       "faction": "The Ghoti Wayfarers",
       "faq": [],
       "filename": "Ghoti.jpg",
@@ -7225,6 +7323,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -7257,21 +7356,77 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Khrask.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": true
+      },
       "back": "",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "During ground combat in this system, this unit is treated as a structure and a group force.",
+      "faction": "L'tokk Khrask",
       "faq": [],
       "filename": "Khrask.jpg",
+      "flavour": "",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Khrask",
       "orientation": "landscape",
       "path": "Monuments/DS/Khrask.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Khrask",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": true,
+          "multi": "2",
+          "value": "3"
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Khrask Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Sleeping Worlds",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Kjalengard.jpg": {
@@ -7357,21 +7512,82 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Kollecc.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "After movement, if this is the active system and contains no more than 1 other player's ships, you may place any of your captured units from your faction sheet into this system.",
+      "faction": "The Kollecc Society",
       "faq": [],
       "filename": "Kollecc.jpg",
+      "flavour": "The Kollecc secret their den on prominent worlds, almost as a dare.",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Kollecc",
       "orientation": "landscape",
       "path": "Monuments/DS/Kollecc.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "legendary"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Kollecc",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Kollecc Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Shades' Den",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Kolume.jpg": {
@@ -7465,21 +7681,77 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Kortali.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Kortali.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "When a non-fighter, non-infantry unit you control is destroyed in this system, roll a die. If you roll equal to or higher than that unit's combat value, or 8 if that unit has no combat value, produce 1 hit against another player's ships in this system.",
+      "faction": "The Kortali Tribunal",
       "faq": [],
       "filename": "Kortali.jpg",
+      "flavour": "",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Kortali",
       "orientation": "landscape",
       "path": "Monuments/DS/Kortali.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Kortali",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Kortali Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Queen's Rest",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Kyro.jpg": {
@@ -7647,19 +7919,19 @@
     },
     "Monuments/DS/Li-Zho.jpg": {
       "abilities": {
-        "antiFighterBarrage": null,
-        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "production": null,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
         "spaceCannon": null,
-        "sustainDamage": false
+        "production": null
       },
       "back": "Backs/Faction Monument Backs/DS/Li-Zho.jpg",
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "When a player activates this system, remove 1 command token from this system or gain 1 command token.",
+      "description": "When a player activates this system, remove a different player's command token from this system, or gain 1 command token.",
       "faction": "The Li-Zho Dynasty",
       "faq": [],
       "filename": "Li-Zho.jpg",
@@ -7674,12 +7946,99 @@
         "enabled": true,
         "rules": [
           {
+            "value": "hazardous",
+            "not": false
+          },
+          {
+            "value": "industrial",
+            "not": false
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "station": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "stats": {
+        "cost": {
+          "enabled": false,
+          "value": null,
+          "multi": "1"
+        },
+        "combat": {
+          "enabled": false,
+          "value": null,
+          "multi": "1"
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        },
+        "capacity": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Li-Zho Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Nightfall Fortress",
+      "type": "Unit - Structure - Monument"
+    },
+    "Monuments/DS/Mirveda.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": true,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Mirveda.jpg",
+      "color": "",
+      "component": "us-mini",
+      "configured": true,
+      "description": "During the first round of ground combat in this system, your opponent's units do not make combat rolls.",
+      "faction": "The Mirveda Protectorate",
+      "faq": [],
+      "filename": "Mirveda.jpg",
+      "flavour": "The Citadel serves a purely strategic purpose for the Mirveda.",
+      "folder": "Monuments/DS",
+      "group": "Discordant Stars",
+      "hidden": false,
+      "id": "Mirveda",
+      "orientation": "landscape",
+      "path": "Monuments/DS/Mirveda.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
             "not": false,
             "value": "hazardous"
           },
           {
             "not": false,
             "value": "industrial"
+          },
+          {
+            "not": false,
+            "value": "cultural"
           }
         ]
       },
@@ -7696,6 +8055,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -7719,30 +8079,12 @@
           "value": null
         }
       },
-      "subtitle": "Li-Zho Monument",
+      "subtitle": "Mirveda Monument",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "Nightfall Fortress",
-      "type": "Unit - Structure - Monument"
-    },
-    "Monuments/DS/Mirveda.jpg": {
-      "back": "",
-      "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "Mirveda.jpg",
-      "folder": "Monuments/DS",
-      "group": "Discordant Stars",
-      "hidden": false,
-      "id": "Mirveda",
-      "orientation": "landscape",
-      "path": "Monuments/DS/Mirveda.jpg",
-      "section": "cards",
-      "title": "Mirveda",
+      "title": "Ado Citadel",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Mortheus.jpg": {
@@ -7792,6 +8134,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -7820,7 +8163,7 @@
         "enabled": false,
         "value": ""
       },
-      "title": "Mirrorfore",
+      "title": "Mirrorforge",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Myko.jpg": {
@@ -7834,22 +8177,38 @@
         "sustainDamage": false
       },
       "back": "",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "Up to 3 fighters in this and each adjacent system do not count against your ships' capacity.\nAfter a player uses an omen die, you may produce 1 fighter in this system without spending resources.",
+      "faction": "The Myko-Mentori",
       "faq": [],
       "filename": "Myko.jpg",
+      "flavour": "",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Myko",
       "orientation": "landscape",
       "path": "Monuments/DS/Myko.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "industrial"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
@@ -7858,6 +8217,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -7868,12 +8228,12 @@
         },
         "combat": {
           "enabled": false,
-          "multi": 1,
+          "multi": "1",
           "value": null
         },
         "cost": {
           "enabled": false,
-          "multi": 1,
+          "multi": "1",
           "value": null
         },
         "move": {
@@ -7881,29 +8241,91 @@
           "value": null
         }
       },
+      "subtitle": "Myko-Mentori Monument",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "Myko",
+      "title": "Gravelord's Keep",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Nivyn.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Nivyn.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "Other players' ships cannot move out of or through this system.\nYour ships may treat this system as adjacent to the Wound.",
+      "faction": "The Nivyn Star Kings",
       "faq": [],
       "filename": "Nivyn.jpg",
+      "flavour": "The Nivyn do not know how the Maw is bound to the Wounds.",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Nivyn",
       "orientation": "landscape",
       "path": "Monuments/DS/Nivyn.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "tech_planet"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Nivyn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Nivyn Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "The Maw",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Nokar.jpg": {
@@ -8090,7 +8512,7 @@
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "Flip this at any time.\nOther players with units in the Fracture cannot activate this system.\nDuring combat, apply +2 to each of your units' combat rolls in this and adjacent systems if your opponent has any units in the Fracture.",
+      "description": "Flip this card at any time.\nOther players with units in the Fracture cannot activate this system.\nDuring combat, apply +2 to each of your units' combat rolls in this and adjacent systems if your opponent has any units in the Fracture.",
       "faction": "Zealots of Rhodun",
       "faq": [],
       "filename": "Rhodun Back.jpg",
@@ -8114,6 +8536,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
@@ -8122,6 +8545,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -8132,10 +8556,12 @@
         },
         "combat": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "cost": {
           "enabled": false,
+          "multi": 1,
           "value": null
         },
         "move": {
@@ -8165,7 +8591,7 @@
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "Start with this side face-up; when a player activates this system, you may flip this card.\nDuring combat, apply +1 to each of your units' combat rolls in this and adjacent systems if your opponent has any unit technology upgrades.",
+      "description": "Start with this side face-up; when a player activates this system, you may flip this card.\nDuring combat, apply +1 to each of your units' combat rolls in this and adjacent systems if your opponent has any unit upgrade technologies.",
       "faction": "Zealots of Rhodun",
       "faq": [],
       "filename": "Rhodun Front.jpg",
@@ -8189,6 +8615,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
@@ -8197,6 +8624,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -8207,10 +8635,12 @@
         },
         "combat": {
           "enabled": true,
+          "multi": 1,
           "value": null
         },
         "cost": {
           "enabled": true,
+          "multi": 1,
           "value": null
         },
         "move": {
@@ -8227,21 +8657,85 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Roh'Dhna.jpg": {
-      "back": "",
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": {
+          "multi": "2",
+          "value": "7"
+        },
+        "sustainDamage": false
+      },
+      "back": "Backs/Faction Monument Backs/DS/Roh_Dhna.jpg",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "When you produce any number of units in this system, reduce the combined cost of those units by 2.",
+      "faction": "Roh'Dhna Mechatronics",
       "faq": [],
       "filename": "Roh'Dhna.jpg",
+      "flavour": "It stands in contrast to the Axis Anvil, a challenge to competitors.",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Roh'Dhna",
       "orientation": "landscape",
       "path": "Monuments/DS/Roh'Dhna.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "industrial"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Roh'Dhna",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Roh'Dhna Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Zha'Ren Foundry",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Tnelis.jpg": {
@@ -8492,21 +8986,86 @@
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Veldyr.jpg": {
+      "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
+        "deploy": false,
+        "planetaryShield": false,
+        "production": null,
+        "spaceCannon": null,
+        "sustainDamage": false
+      },
       "back": "",
+      "color": "",
       "component": "us-mini",
-      "configured": false,
-      "description": "",
-      "faction": "",
+      "configured": true,
+      "description": "During movement, hits production by the SPACE CANNON abilities of your units in this system cannot be cancelled.",
+      "faction": "The Veldyr Sovereignty",
       "faq": [],
       "filename": "Veldyr.jpg",
+      "flavour": "The Veldyr have provided a litany of well-written reports detailing the array's cultural, artistic, and scientific importance.",
       "folder": "Monuments/DS",
       "group": "Discordant Stars",
       "hidden": false,
       "id": "Veldyr",
       "orientation": "landscape",
       "path": "Monuments/DS/Veldyr.jpg",
+      "placement": {
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "hazardous"
+          },
+          {
+            "not": false,
+            "value": "cultural"
+          }
+        ]
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
-      "title": "Veldyr",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "stats": {
+        "capacity": {
+          "enabled": false,
+          "value": null
+        },
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
+          "enabled": false,
+          "value": null
+        }
+      },
+      "subtitle": "Veldyr Monument",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Perdition Array",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/DS/Zelian.jpg": {
@@ -8523,7 +9082,7 @@
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "This system is treated as an asteroid field. Units can move into this system as it it were a non-anomaly tile.\nPlace the Zelian asteroid field token in this system as a reminder.",
+      "description": "This system is treated as an asteroid field. Units can move into this system as if it were a non-anomaly tile.\nPlace the Zelian asteroid field token in this system as a reminder.",
       "faction": "Zelian",
       "faq": [],
       "filename": "Zelian.jpg",
@@ -8556,6 +9115,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -8682,11 +9242,11 @@
         "spaceCannon": null,
         "sustainDamage": false
       },
-      "back": "Reminders/Last Bastion Station Back.jpg",
+      "back": "Backs/Faction Monument Backs/TE/Bastion Back.jpg",
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "The unit is a station and placed in the space area of a system that contains your ships and exactly 1 non-legendary planet. Take its matching station card while you control it.\nWhen you lose control of this station, destroy it and produce 2 hits against ships in this system.",
+      "description": "The unit is a space station and placed in the space area of a system that contains your ships and exactly 1 non-legendary planet. Take its matching space station card while you control it.\nWhen you lose control of this station, destroy it and produce 2 hits against ships in this system.",
       "faction": "The Last Bastion",
       "faq": [],
       "filename": "Bastion.jpg",
@@ -8719,6 +9279,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -9014,7 +9575,7 @@
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "After a law enters play you may add a command token from your reinforcements to this card. When you would place a command in this or an adjacent system, you may place that token from this card instead.",
+      "description": "After a law enters play you may add a command token from your reinforcements to this card.\nWhen you would place a command in this or an adjacent system, you may place that token from this card instead.",
       "faction": "The Council Keleres",
       "faq": [
         {
@@ -9060,6 +9621,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -9088,7 +9650,7 @@
         "enabled": false,
         "value": ""
       },
-      "title": "Paris Iustitiae",
+      "title": "Pharus Iustitiae",
       "type": "Unit - Structure - Monument"
     },
     "Monuments/TE/Obsidian.jpg": {
@@ -10059,22 +10621,22 @@
       "title": "Aura Vault",
       "type": "Unit - Structure - Monument"
     },
-    "Objectives/Great Work.jpg": {
+    "Objectives/Defend a Great Work.jpg": {
       "back": "Backs/Secret Back.jpg",
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "",
+      "description": "Have a monument on the game board and at least 3 ground forces on its planet or in its space area.",
       "faction": "",
       "faq": [],
-      "filename": "Great Work.jpg",
+      "filename": "Defend a Great Work.jpg",
       "flavour": "",
       "folder": "Objectives",
       "group": "Objectives",
       "hidden": false,
-      "id": "Great Work",
+      "id": "Defend a Great Work",
       "orientation": "portrait",
-      "path": "Objectives/Great Work.jpg",
+      "path": "Objectives/Defend a Great Work.jpg",
       "placement": {
         "enabled": false,
         "rules": []
@@ -10083,6 +10645,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "other-cards",
       "source": {
         "enabled": false,
@@ -10091,18 +10654,19 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
-      "subtitle": "",
+      "subtitle": "Status Phase",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "Great Work",
-      "type": "Other Component"
+      "title": "Defend a Great Work",
+      "type": "Secret Objective"
     },
-    "Objectives/Topple Monument.jpg": {
+    "Objectives/Topple a Monument.jpg": {
       "back": "Backs/Secret Back.jpg",
       "color": "",
       "component": "us-mini",
@@ -10110,14 +10674,14 @@
       "description": "Destroy another player's monument during a tactical action.",
       "faction": "",
       "faq": [],
-      "filename": "Topple Monument.jpg",
+      "filename": "Topple a Monument.jpg",
       "flavour": "",
       "folder": "Objectives",
       "group": "Objectives",
       "hidden": false,
-      "id": "Topple Monument",
+      "id": "Topple a Monument",
       "orientation": "portrait",
-      "path": "Objectives/Topple Monument.jpg",
+      "path": "Objectives/Topple a Monument.jpg",
       "placement": {
         "enabled": false,
         "rules": []
@@ -10126,6 +10690,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "other-cards",
       "source": {
         "enabled": false,
@@ -10134,15 +10699,16 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
-      "subtitle": "",
+      "subtitle": "Action Phase",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "Topple Monument",
+      "title": "Topple a Monument",
       "type": "Secret Objective"
     },
     "Reminders/Edyn Monument.jpg": {
@@ -10705,6 +11271,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -10952,6 +11519,51 @@
         "value": ""
       },
       "title": "DA74 CTR*",
+      "type": "Other Component"
+    },
+    "TF Monument Funding.jpg": {
+      "back": "Backs/TF Monument Funding Back.jpg",
+      "color": "",
+      "component": "us-mini",
+      "configured": true,
+      "description": "After you perform the primary ability of the \"Civitas\" strategy card, if your monument is not on the game board, you may place your monument.\nPlayers cannot place monuments using the secondary ability of the \"Civitas\" strategy card.",
+      "faction": "",
+      "faq": [],
+      "filename": "TF Monument Funding.jpg",
+      "flavour": "Raise a monument.\nRaze a monument.",
+      "folder": "",
+      "group": "Strategy Card Attachments",
+      "hidden": false,
+      "id": "TF Monument Funding",
+      "orientation": "portrait",
+      "path": "TF Monument Funding.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "other-cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Monumental",
       "type": "Other Component"
     },
     "Tokens/Cathedral of Ixth Token Back.jpg": {
@@ -11646,7 +12258,7 @@
       "type": "Token"
     },
     "Tokens/Faction Color Wireframe/Monuments Blue.jpg": {
-      "back": "Backs/Generic Monuments Backs/Monuments Blue Back.jpg",
+      "back": "Tokens/Faction Color Back/Monuments Blue Back.jpg",
       "color": "",
       "component": "token",
       "configured": true,
@@ -11678,6 +12290,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -12561,6 +13174,96 @@
         "value": ""
       },
       "title": "banner",
+      "type": "Other Component"
+    },
+    "monuments_construction.png": {
+      "back": "",
+      "color": "",
+      "component": "other",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "monuments_construction.png",
+      "flavour": "",
+      "folder": "",
+      "group": "Strategy Cards",
+      "hidden": false,
+      "id": "monuments_construction",
+      "orientation": "portrait",
+      "path": "monuments_construction.png",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "components",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Strategy Card",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Construction",
+      "type": "Other Component"
+    },
+    "monumentstf4.png": {
+      "back": "",
+      "color": "",
+      "component": "other",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "monumentstf4.png",
+      "flavour": "",
+      "folder": "",
+      "group": "Strategy Cards",
+      "hidden": false,
+      "id": "monumentstf4",
+      "orientation": "portrait",
+      "path": "monumentstf4.png",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "components",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Strategy Card",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Civitas",
       "type": "Other Component"
     }
   }
