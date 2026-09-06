@@ -11,6 +11,7 @@
   "banner": {
     "path": "banner.jpg"
   },
+  "print_assets_url": "https://drive.google.com/drive/folders/1GGm22xxWCI-iG7C9zHNUWC1KwOLFRGNC?usp=share_link",
   "sections": [
     {
       "id": "overview",
@@ -19,7 +20,7 @@
       "blocks": [
         {
           "type": "markdown",
-          "content": "##Last updated: 2026-9-5\n\nYou can introduce Monuments easily using the included 'Cultural Monuments' event.",
+          "content": "##Last updated: 2026-9-6\n\nYou can introduce Monuments easily using the included 'Cultural Monuments' event.",
           "column": "full"
         },
         {
@@ -189,14 +190,14 @@
         },
         {
           "type": "asset",
-          "asset": "monuments_construction.png",
+          "asset": "Monuments Construction SC.png",
           "subtitle": "",
           "width": 100,
           "column": "left"
         },
         {
           "type": "asset",
-          "asset": "monumentstf4.png",
+          "asset": "TF Monuments Civitas SC.png",
           "subtitle": "",
           "width": 100,
           "column": "right"
@@ -230,7 +231,7 @@
   ],
   "assets": {
     "Action Cards/Festival.jpg": {
-      "back": "Backs/Action Card.png",
+      "back": "Backs/Action Card.jpg",
       "color": "",
       "component": "us-mini",
       "configured": true,
@@ -273,23 +274,30 @@
       "type": "Action Card"
     },
     "Action Cards/Rebel Bombing.jpg": {
-      "back": "Backs/Action Card.png",
+      "back": "Backs/Action Card.jpg",
+      "color": "",
       "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Rebel Bombing.jpg",
+      "flavour": "",
       "folder": "Action Cards",
       "group": "Action Cards",
       "hidden": false,
       "id": "Rebel Bombing",
       "orientation": "portrait",
       "path": "Action Cards/Rebel Bombing.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "other-cards",
       "source": {
         "enabled": false,
@@ -298,9 +306,11 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
+      "subtitle": "",
       "synergy": {
         "enabled": false,
         "value": ""
@@ -443,7 +453,7 @@
       "type": "Action Card"
     },
     "Agendas/Cathedral of Ixth.jpg": {
-      "back": "Backs/Agenda Back.png",
+      "back": "Backs/Agenda Back.jpg",
       "color": "",
       "component": "us-mini",
       "configured": true,
@@ -492,7 +502,7 @@
       "type": "Agenda"
     },
     "Agendas/Minister of Culture.jpg": {
-      "back": "Backs/Agenda Back.png",
+      "back": "Backs/Agenda Back.jpg",
       "color": "",
       "component": "us-mini",
       "configured": true,
@@ -534,90 +544,39 @@
       "title": "Minister of Culture",
       "type": "Agenda"
     },
-    "Backs/Action Card.png": {
+    "Backs/Action Card.jpg": {
       "back": "",
-      "color": "",
       "component": "us-mini",
       "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
-      "filename": "Action Card.png",
-      "flavour": "",
+      "filename": "Action Card.jpg",
       "folder": "Backs",
       "group": "Backs",
-      "hidden": true,
+      "hidden": false,
       "id": "Action Card",
       "orientation": "portrait",
-      "path": "Backs/Action Card.png",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      },
-      "prereq": {
-        "enabled": false,
-        "value": ""
-      },
-      "rotate": 0,
-      "section": "",
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
-        "resource": 0,
-        "techSpeciality": "",
-        "trait": []
-      },
-      "subtitle": "",
-      "synergy": {
-        "enabled": false,
-        "value": ""
-      },
+      "path": "Backs/Action Card.jpg",
+      "section": "cards",
       "title": "Action Card",
       "type": "Other Component"
     },
-    "Backs/Agenda Back.png": {
+    "Backs/Agenda Back.jpg": {
       "back": "",
-      "color": "",
       "component": "us-mini",
-      "configured": true,
+      "configured": false,
       "description": "",
       "faction": "",
       "faq": [],
-      "filename": "Agenda Back.png",
-      "flavour": "",
+      "filename": "Agenda Back.jpg",
       "folder": "Backs",
       "group": "Backs",
-      "hidden": true,
+      "hidden": false,
       "id": "Agenda Back",
       "orientation": "portrait",
-      "path": "Backs/Agenda Back.png",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      },
-      "prereq": {
-        "enabled": false,
-        "value": ""
-      },
+      "path": "Backs/Agenda Back.jpg",
       "section": "cards",
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
-        "resource": 0,
-        "techSpeciality": "",
-        "trait": []
-      },
-      "subtitle": "",
-      "synergy": {
-        "enabled": false,
-        "value": ""
-      },
       "title": "Agenda Back",
       "type": "Other Component"
     },
@@ -3469,6 +3428,51 @@
         "value": ""
       },
       "title": "Monument Funding",
+      "type": "Other Component"
+    },
+    "Monuments Construction SC.png": {
+      "back": "",
+      "color": "",
+      "component": "other",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "Monuments Construction SC.png",
+      "flavour": "",
+      "folder": "",
+      "group": "Strategy Cards",
+      "hidden": false,
+      "id": "Monuments Construction SC",
+      "orientation": "portrait",
+      "path": "Monuments Construction SC.png",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "components",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Strategy Card",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Construction",
       "type": "Other Component"
     },
     "Monuments/BR/Atokera.jpg": {
@@ -7919,13 +7923,13 @@
     },
     "Monuments/DS/Li-Zho.jpg": {
       "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "sustainDamage": false,
-        "bombardment": null,
-        "antiFighterBarrage": null,
+        "production": null,
         "spaceCannon": null,
-        "production": null
+        "sustainDamage": false
       },
       "back": "Backs/Faction Monument Backs/DS/Li-Zho.jpg",
       "color": "",
@@ -7946,12 +7950,12 @@
         "enabled": true,
         "rules": [
           {
-            "value": "hazardous",
-            "not": false
+            "not": false,
+            "value": "hazardous"
           },
           {
-            "value": "industrial",
-            "not": false
+            "not": false,
+            "value": "industrial"
           }
         ]
       },
@@ -7964,30 +7968,30 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "station": false,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
       "stats": {
-        "cost": {
-          "enabled": false,
-          "value": null,
-          "multi": "1"
-        },
-        "combat": {
-          "enabled": false,
-          "value": null,
-          "multi": "1"
-        },
-        "move": {
+        "capacity": {
           "enabled": false,
           "value": null
         },
-        "capacity": {
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
           "enabled": false,
           "value": null
         }
@@ -10185,13 +10189,13 @@
         "planetaryShield": false,
         "production": null,
         "spaceCannon": null,
-        "sustainDamage": false
+        "sustainDamage": true
       },
-      "back": "Monuments/TF/King Pink Back.jpg",
+      "back": "",
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "This unit is a ground force as well as a monument. It can be transported.\nThis unit gains the non-DEPLOY unit abilities and text abilities of your ground forces.",
+      "description": "While this unit is on the game board it is a mech as well as a monument. It can be transported.",
       "faction": "El Nen Janovet",
       "faq": [],
       "filename": "King Pink.jpg",
@@ -10236,6 +10240,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -11564,6 +11569,51 @@
         "value": ""
       },
       "title": "Monumental",
+      "type": "Other Component"
+    },
+    "TF Monuments Civitas SC.png": {
+      "back": "",
+      "color": "",
+      "component": "other",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "TF Monuments Civitas SC.png",
+      "flavour": "",
+      "folder": "",
+      "group": "Strategy Cards",
+      "hidden": false,
+      "id": "TF Monuments Civitas SC",
+      "orientation": "portrait",
+      "path": "TF Monuments Civitas SC.png",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "components",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Strategy Card",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Civitas",
       "type": "Other Component"
     },
     "Tokens/Cathedral of Ixth Token Back.jpg": {
@@ -13174,96 +13224,6 @@
         "value": ""
       },
       "title": "banner",
-      "type": "Other Component"
-    },
-    "monuments_construction.png": {
-      "back": "",
-      "color": "",
-      "component": "other",
-      "configured": true,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "monuments_construction.png",
-      "flavour": "",
-      "folder": "",
-      "group": "Strategy Cards",
-      "hidden": false,
-      "id": "monuments_construction",
-      "orientation": "portrait",
-      "path": "monuments_construction.png",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      },
-      "prereq": {
-        "enabled": false,
-        "value": ""
-      },
-      "rotate": 0,
-      "section": "components",
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
-        "resource": 0,
-        "station": false,
-        "techSpeciality": "",
-        "trait": []
-      },
-      "subtitle": "Strategy Card",
-      "synergy": {
-        "enabled": false,
-        "value": ""
-      },
-      "title": "Construction",
-      "type": "Other Component"
-    },
-    "monumentstf4.png": {
-      "back": "",
-      "color": "",
-      "component": "other",
-      "configured": true,
-      "description": "",
-      "faction": "",
-      "faq": [],
-      "filename": "monumentstf4.png",
-      "flavour": "",
-      "folder": "",
-      "group": "Strategy Cards",
-      "hidden": false,
-      "id": "monumentstf4",
-      "orientation": "portrait",
-      "path": "monumentstf4.png",
-      "placement": {
-        "enabled": false,
-        "rules": []
-      },
-      "prereq": {
-        "enabled": false,
-        "value": ""
-      },
-      "rotate": 0,
-      "section": "components",
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
-        "resource": 0,
-        "station": false,
-        "techSpeciality": "",
-        "trait": []
-      },
-      "subtitle": "Strategy Card",
-      "synergy": {
-        "enabled": false,
-        "value": ""
-      },
-      "title": "Civitas",
       "type": "Other Component"
     }
   }
