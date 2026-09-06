@@ -547,38 +547,92 @@
     "Backs/Action Card.jpg": {
       "back": "",
       "component": "us-mini",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Action Card.jpg",
       "folder": "Backs",
       "group": "Backs",
-      "hidden": false,
+      "hidden": true,
       "id": "Action Card",
       "orientation": "portrait",
       "path": "Backs/Action Card.jpg",
       "section": "cards",
       "title": "Action Card",
-      "type": "Other Component"
+      "type": "Other Component",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "station": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "subtitle": "",
+      "rotate": 0,
+      "flavour": "",
+      "color": "",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      }
     },
     "Backs/Agenda Back.jpg": {
       "back": "",
       "component": "us-mini",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "Agenda Back.jpg",
       "folder": "Backs",
       "group": "Backs",
-      "hidden": false,
+      "hidden": true,
       "id": "Agenda Back",
       "orientation": "portrait",
       "path": "Backs/Agenda Back.jpg",
       "section": "cards",
       "title": "Agenda Back",
-      "type": "Other Component"
+      "type": "Other Component",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "station": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "subtitle": "",
+      "rotate": 0,
+      "flavour": "",
+      "color": "",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      }
     },
     "Backs/Events Back.jpg": {
       "back": "",

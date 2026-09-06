@@ -2552,8 +2552,9 @@ document.querySelectorAll('.tab').forEach(tab => {
   });
 });
 
-document.getElementById('editor-form').addEventListener('input', () => setDirty(true));
-document.getElementById('editor-form').addEventListener('change', () => setDirty(true));
+const _DIRTY_IGNORE = new Set(['asset-filter', 'show-unconfigured', 'show-hidden', 'show-hidden-only', 'show-no-backs']);
+document.getElementById('editor-form').addEventListener('input', e => { if (!_DIRTY_IGNORE.has(e.target.id)) setDirty(true); });
+document.getElementById('editor-form').addEventListener('change', e => { if (!_DIRTY_IGNORE.has(e.target.id)) setDirty(true); });
 
 document.getElementById('show-unconfigured').addEventListener('change', renderAssets);
 document.getElementById('show-hidden').addEventListener('change', renderAssets);

@@ -7,8 +7,9 @@
   "source": {
     "images": "/Users/kangarootime/Documents/Gaming/Boardgames/Twilight Imperium 4/Expansions/Keleres+/Printable"
   },
-  "s3_path": "keleres+",
+  "s3_path": "keleres",
   "banner": null,
+  "print_assets_url": "",
   "sections": [
     {
       "id": "drahn-overview",
