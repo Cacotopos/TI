@@ -5,6 +5,9 @@
   <div class="max-w-6xl mx-auto">
     <h1 class="text-3xl font-bold">{{ config.name }} <span class="text-muted text-xl font-normal">v{{ config.version }}</span></h1>
     <p class="text-muted mt-2">{{ (config.description or '') | markdown | safe }}</p>
+    {% if config.print_assets_url %}
+    <a href="{{ config.print_assets_url }}" target="_blank" rel="noopener noreferrer" class="inline-block mt-3 px-4 py-2 bg-accent text-white rounded-lg hover:opacity-90 transition-opacity text-sm font-semibold">Print Assets &nearr;</a>
+    {% endif %}
   </div>
 </header>
 
