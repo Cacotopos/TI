@@ -85,6 +85,24 @@ def _copy_assets(output_dir: Path) -> None:
 
 
 _CROP_COMPONENTS = {"us-mini", "tarot", "poker"}
+
+# Maximum width (in pixels) for web-displayed card images. Source images are
+# often 1764px+ wide but displayed at ~400px, so downsizing to 2x retina
+# avoids shipping multi-megabyte files to S3 with no visible quality loss.
+# The banner is exempt (it needs full width for the header cover).
+_WEB_MAX_WIDTH = 800
+
+
+def _resize_for_web(img: Image.Image) -> Image.Image:
+    """Downscale an image so its longest side is at most _WEB_MAX_WIDTH pixels.
+    Images already at or below the cap are returned unchanged.
+    """
+    w, h = img.size
+    longest = max(w, h)
+    if longest <= _WEB_MAX_WIDTH:
+        return img
+    scale = _WEB_MAX_WIDTH / longest
+    return img.resize((int(w * scale), int(h * scale)), Image.LANCZOS)
 _COMPONENT_CROP_BOXES: dict[str, tuple[float, float, float, float]] = {}
 
 
@@ -160,6 +178,7 @@ def _crop_image(path: Path, crop_box: tuple[float, float, float, float], rotate:
         img = img.crop(crop)
         if portrait:
             img = img.rotate(90, expand=True)
+        img = _resize_for_web(img)
         buffer = io.BytesIO()
         img.save(buffer, format="JPEG", quality=92)
         return buffer.getvalue()
@@ -263,6 +282,7 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
 
     images_dest = output_dir / "assets" / "images"
     images_dest.mkdir(parents=True, exist_ok=True)
+    banner_rel = (config.get("banner") or {}).get("path", "").replace("\\", "/")
     for p in images_src.rglob("*"):
         if p.is_file() and p.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp"}:
             rel = p.relative_to(images_src)
@@ -273,6 +293,7 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
             rotate = int(asset.get("rotate", 0) or 0)
             component = asset.get("component", "us-mini")
             is_back = rel_path in back_to_front
+            is_banner = rel_path == banner_rel
 
             if component in _CROP_COMPONENTS:
                 crop_box = _component_crop_box(component)
@@ -286,6 +307,8 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
                     w, h = img.size
                     if h <= w:
                         img = img.rotate(90, expand=True)
+                    if not is_banner:
+                        img = _resize_for_web(img)
                     buffer = io.BytesIO()
                     img.save(buffer, format="JPEG", quality=92)
                     dest.write_bytes(buffer.getvalue())
@@ -294,6 +317,8 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
                     with Image.open(p) as img:
                         img = img.convert("RGB")
                         img = img.rotate(-rotate, expand=True)
+                        if not is_banner:
+                            img = _resize_for_web(img)
                         buffer = io.BytesIO()
                         img.save(buffer, format="JPEG", quality=92)
                         dest.write_bytes(buffer.getvalue())
@@ -302,12 +327,16 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
                         fmt = img.format or "JPEG"
                         if fmt.upper() in ("JPEG", "JPG"):
                             img = img.convert("RGB")
+                            if not is_banner:
+                                img = _resize_for_web(img)
                             buffer = io.BytesIO()
                             img.save(buffer, format="JPEG", quality=92)
                             dest.write_bytes(buffer.getvalue())
                         else:
                             if "exif" in img.info:
                                 img.info.pop("exif")
+                            if not is_banner:
+                                img = _resize_for_web(img)
                             buffer = io.BytesIO()
                             img.save(buffer, format=fmt)
                             dest.write_bytes(buffer.getvalue())

@@ -268,6 +268,9 @@
       </div>
       <p class="hint">Optional. Must be at least 1552px wide to cover the central column plus 200px on each side.</p>
       <div id="banner-preview" class="banner-preview hidden"></div>
+      <label for="print-assets-url">Print Assets URL</label>
+      <input id="print-assets-url" type="url" placeholder="https://... (opens in a new window on the generated site)"/>
+      <p class="hint">Optional. Link to where full-resolution print assets are stored (e.g. a Drive/Dropbox folder). Shown as a link on the main page.</p>
     </div>
 
     <div class="editor-actions">
@@ -1006,6 +1009,7 @@ async function tryLoadConfig(id) {
   setImageFolder((data.source && data.source.images) || '');
   document.getElementById('s3-path').value = data.s3_path || data.id || '';
   document.getElementById('banner-path').value = (data.banner && data.banner.path) || '';
+  document.getElementById('print-assets-url').value = data.print_assets_url || '';
   updateBannerPreview();
   sections = data.sections || [];
   assets = data.assets || {};
@@ -2361,6 +2365,7 @@ async function save() {
     source: { images: imageFolder },
     s3_path: document.getElementById('s3-path').value,
     banner: bannerPath ? { path: bannerPath } : null,
+    print_assets_url: document.getElementById('print-assets-url').value.trim(),
     sections,
     assets,
   };
