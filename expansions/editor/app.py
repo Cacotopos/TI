@@ -166,9 +166,11 @@ def deploy(expansion_id: str):
     if not site_dir.exists():
         return jsonify({"error": "site not generated"}), 404
 
-    s3_path = f"s3://{S3_BUCKET}/{expansion_id}"
+    config = _load_config(expansion_id)
+    deploy_path = config.get("s3_path") or expansion_id
+    s3_uri = f"s3://{S3_BUCKET}/{deploy_path}"
     cmd = [
-        "aws", "s3", "sync", str(site_dir), s3_path,
+        "aws", "s3", "sync", str(site_dir), s3_uri,
         "--profile", AWS_PROFILE,
         "--size-only",
     ]
@@ -177,7 +179,7 @@ def deploy(expansion_id: str):
         "ok": result.returncode == 0,
         "stdout": result.stdout,
         "stderr": result.stderr,
-        "url": f"http://{S3_BUCKET}.s3-website-{S3_REGION}.amazonaws.com/{expansion_id}/index.html",
+        "url": f"http://{S3_BUCKET}.s3-website-{S3_REGION}.amazonaws.com/{deploy_path}/index.html",
     })
 
 
