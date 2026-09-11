@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Local web editor for collecting expansion data.
 
-Reads S3 credentials from the project .env file and can run aws s3 sync to
-deploy a generated expansion site.
+Reads S3 credentials from the project .env file and can deploy a generated
+expansion site to S3.
 """
 
+import hashlib
 import io
 import json
 import os
@@ -14,6 +15,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import boto3
+from botocore.exceptions import ClientError, ProfileNotFound
 from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template, request, send_file, send_from_directory
 from PIL import Image
@@ -159,13 +162,27 @@ def generate(expansion_id: str):
     })
 
 
+def _s3_client():
+    """Return an S3 client using the configured profile, falling back to default."""
+    try:
+        session = boto3.Session(profile_name=AWS_PROFILE)
+    except ProfileNotFound:
+        session = boto3.Session()
+    return session.client("s3", region_name=S3_REGION)
+
+
+def _md5(path: Path) -> str:
+    return hashlib.md5(path.read_bytes()).hexdigest()
+
+
 @app.route("/api/deploy/<expansion_id>", methods=["POST"])
 def deploy(expansion_id: str):
-    """Deploy the generated site to S3 using the configured bucket and profile.
+    """Deploy the generated site to S3.
 
-    Assets are uploaded with long immutable cache headers because their URLs are
-    content-hashed. HTML and data.json get short no-cache headers so the latest
-    "manifest" pages are always fetched.
+    Only files whose content (MD5) has changed are uploaded. Assets receive
+    long immutable cache headers because their URLs are content-hashed; HTML
+    and data.json receive short no-cache headers so the latest pages are
+    always fetched.
     """
     site_dir = ROOT / "expansions" / "sites" / expansion_id
     if not site_dir.exists():
@@ -173,33 +190,56 @@ def deploy(expansion_id: str):
 
     config = _load_config(expansion_id)
     deploy_path = config.get("s3_path") or expansion_id
-    s3_uri = f"s3://{S3_BUCKET}/{deploy_path}"
+    prefix = f"{deploy_path}/"
 
-    # Sync content-hashed assets with far-future cache headers.
-    assets_cmd = [
-        "aws", "s3", "sync", str(site_dir / "assets"), f"{s3_uri}/assets",
-        "--profile", AWS_PROFILE,
-        "--cache-control", "public, max-age=31536000, immutable",
-    ]
-    assets_result = subprocess.run(assets_cmd, capture_output=True, text=True, cwd=ROOT)
+    try:
+        s3 = _s3_client()
+    except Exception as e:
+        return jsonify({"ok": False, "stdout": "", "stderr": str(e)}), 500
 
-    # Sync HTML / data.json with no-cache headers; exclude assets/ to avoid
-    # overwriting the cache headers set above.
-    root_cmd = [
-        "aws", "s3", "sync", str(site_dir), s3_uri,
-        "--profile", AWS_PROFILE,
-        "--exclude", "assets/*",
-        "--cache-control", "public, max-age=0, must-revalidate",
-    ]
-    root_result = subprocess.run(root_cmd, capture_output=True, text=True, cwd=ROOT)
+    # List existing S3 objects and their ETags (content MD5s).
+    existing: dict[str, str] = {}
+    try:
+        paginator = s3.get_paginator("list_objects_v2")
+        for page in paginator.paginate(Bucket=S3_BUCKET, Prefix=prefix):
+            for obj in page.get("Contents", []):
+                existing[obj["Key"]] = obj["ETag"].strip('"')
+    except ClientError as e:
+        return jsonify({"ok": False, "stdout": "", "stderr": str(e)}), 500
 
-    ok = assets_result.returncode == 0 and root_result.returncode == 0
-    stdout = f"{assets_result.stdout}\n{root_result.stdout}".strip()
-    stderr = f"{assets_result.stderr}\n{root_result.stderr}".strip()
+    uploaded = 0
+    skipped = 0
+    errors: list[str] = []
+
+    for local_path in sorted(site_dir.rglob("*")):
+        if not local_path.is_file():
+            continue
+        rel = str(local_path.relative_to(site_dir)).replace("\\", "/")
+        s3_key = f"{prefix}{rel}"
+        md5 = _md5(local_path)
+
+        if existing.get(s3_key) == md5:
+            skipped += 1
+            continue
+
+        cache_control = (
+            "public, max-age=31536000, immutable"
+            if rel.startswith("assets/")
+            else "public, max-age=0, must-revalidate"
+        )
+        extra = {"CacheControl": cache_control}
+        try:
+            s3.upload_file(str(local_path), S3_BUCKET, s3_key, ExtraArgs=extra)
+            uploaded += 1
+        except ClientError as e:
+            errors.append(f"{rel}: {e}")
+
+    ok = not errors
+    stdout = f"Uploaded {uploaded} files, skipped {skipped} unchanged files."
     return jsonify({
         "ok": ok,
         "stdout": stdout,
-        "stderr": stderr,
+        "stderr": "\n".join(errors),
         "url": f"http://{S3_BUCKET}.s3-website-{S3_REGION}.amazonaws.com/{deploy_path}/index.html",
     })
 
