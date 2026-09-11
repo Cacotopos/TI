@@ -8,6 +8,7 @@ expansion site to S3.
 import hashlib
 import io
 import json
+import mimetypes
 import os
 import platform
 import shutil
@@ -227,7 +228,8 @@ def deploy(expansion_id: str):
             if rel.startswith("assets/")
             else "public, max-age=0, must-revalidate"
         )
-        extra = {"CacheControl": cache_control}
+        content_type = mimetypes.guess_type(str(local_path))[0] or "application/octet-stream"
+        extra = {"CacheControl": cache_control, "ContentType": content_type}
         try:
             s3.upload_file(str(local_path), S3_BUCKET, s3_key, ExtraArgs=extra)
             uploaded += 1

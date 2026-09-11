@@ -399,8 +399,13 @@ def _git_commit() -> str:
         return "unknown"
 
 
+# Version salt for the content hash. Bumping this prefix invalidates all
+# existing cached asset URLs without changing file names.
+_HASH_VERSION = "v1"
+
+
 def _compute_asset_hashes(output_dir: Path) -> dict[str, str]:
-    """Return a mapping of relative file paths to a short content hash.
+    """Return a mapping of relative file paths to a versioned content hash.
 
     Only files under output_dir are hashed. The keys are forward-slash paths
     relative to output_dir (e.g. "assets/images/Action Cards/Festival.jpg").
@@ -415,9 +420,10 @@ def _compute_asset_hashes(output_dir: Path) -> dict[str, str]:
         try:
             data = p.read_bytes()
             if data:
-                hashes[rel] = hashlib.md5(data).hexdigest()[:12]
+                h = hashlib.md5(_HASH_VERSION.encode() + data).hexdigest()[:12]
+                hashes[rel] = f"{_HASH_VERSION}-{h}"
             else:
-                hashes[rel] = "empty"
+                hashes[rel] = f"{_HASH_VERSION}-empty"
         except Exception:
             continue
     return hashes
