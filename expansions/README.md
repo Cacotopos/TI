@@ -5,20 +5,47 @@ Imperium expansions.
 
 ## Quick Start
 
-```bash
-cd /Users/kangarootime/Source/RiderProjects/TI/expansions
+First-time setup — create the virtualenv and install the lean editor
+dependencies from the project root:
 
-# Run the local editor
-python3 editor/app.py
+```bash
+cd /Users/kangarootime/Source/RiderProjects/TI
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.editor.txt
+```
+
+Then run the editor and generate sites:
+
+```bash
+cd /Users/kangarootime/Source/RiderProjects/TI
+source .venv/bin/activate
+
+# Run the local editor (http://localhost:3030)
+python3 expansions/editor/app.py
 
 # Open the editor
 open http://localhost:3030
 
 # Generate a static site from a saved config
-python3 -m expansions.generator.site editor/data/monuments/config.json --output sites/monuments
+python3 -m expansions.generator.site expansions/editor/data/monuments/config.json --output expansions/sites/monuments
 
 # Open the generated site
-open sites/monuments/index.html
+open expansions/sites/monuments/index.html
+```
+
+Editor environment variables (all optional):
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `EDITOR_HOST` | `127.0.0.1` | Bind address. Use `0.0.0.0` to allow LAN access. |
+| `EDITOR_PORT` | `3030` | Port to listen on. |
+| `EDITOR_DEBUG` | `true` | Flask debug mode with auto-reload. Set `false` to disable. |
+
+Example — bind to all interfaces on a custom port:
+
+```bash
+EDITOR_HOST=0.0.0.0 EDITOR_PORT=3030 python3 expansions/editor/app.py
 ```
 
 ## Docker Quick Start
@@ -177,6 +204,11 @@ expansions/
 Card images are cropped using the same mask as the `card_diff` project
 (`Icons/Card Mask.png`). The generator copies source images to the output site
 and applies the mask bounding box so cards render cleanly.
+
+## Helper Scripts
+
+See `scripts/print_order.py` at the project root for generating a print-order CSV
+from a generated expansion `data.json`.
 
 ## Search
 

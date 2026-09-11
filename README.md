@@ -13,6 +13,7 @@ TI/
 │   ├── reports/         # Generated static report sites
 │   └── s3-upload/       # S3 deployment scripts (to be added)
 ├── Icons/               # Icon template images
+├── scripts/             # Helper utilities for expansion assets
 ├── requirements.txt
 └── README.md
 ```
@@ -190,3 +191,18 @@ This reads `S3_AWS_REGION` and `S3_AWS_BUCKET_NAME` from `exports/s3-upload/.env
 - **Uploaded report still shows old title or image labels** — Clear browser cache and hard-refresh. S3 may also cache objects for a short time.
 - **Re-uploading every image after a re-render** — This should no longer happen. The script now skips images whose MD5 checksum already matches. Use `aws s3 sync ... --size-only` if it still does.
 - **Title says `Monuments vs Monuments` instead of `Monuments v3 vs v3.1`** — The title uses the parent folder names (`v3`, `v3.1`) and the folder name (`Monuments`). Ensure you are comparing `v3/Monuments` and `v3.1/Monuments`.
+
+## Helper Scripts
+
+Small utilities in `scripts/`:
+
+- `scripts/print_order.py` — builds a print-order CSV from an expansion `data.json`.
+  Outputs one row per asset with both a front and a back image. `quantity` defaults to `1`
+  and is overridden by an `xN` token in either filename (e.g. `Token Back x2.png` → `2`).
+  Paths are written relative to the v3.1 source root.
+
+  ```bash
+  cd /Users/kangarootime/Source/RiderProjects/TI
+  source .venv/bin/activate
+  python3 scripts/print_order.py expansions/sites/monuments/data.json
+  ```
