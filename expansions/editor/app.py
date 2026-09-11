@@ -161,7 +161,12 @@ def generate(expansion_id: str):
 
 @app.route("/api/deploy/<expansion_id>", methods=["POST"])
 def deploy(expansion_id: str):
-    """Deploy the generated site to S3 using the configured bucket and profile."""
+    """Deploy the generated site to S3 using the configured bucket and profile.
+
+    Assets are uploaded with long immutable cache headers because their URLs are
+    content-hashed. HTML and data.json get short no-cache headers so the latest
+    "manifest" pages are always fetched.
+    """
     site_dir = ROOT / "expansions" / "sites" / expansion_id
     if not site_dir.exists():
         return jsonify({"error": "site not generated"}), 404
@@ -169,16 +174,32 @@ def deploy(expansion_id: str):
     config = _load_config(expansion_id)
     deploy_path = config.get("s3_path") or expansion_id
     s3_uri = f"s3://{S3_BUCKET}/{deploy_path}"
-    cmd = [
+
+    # Sync content-hashed assets with far-future cache headers.
+    assets_cmd = [
+        "aws", "s3", "sync", str(site_dir / "assets"), f"{s3_uri}/assets",
+        "--profile", AWS_PROFILE,
+        "--cache-control", "public, max-age=31536000, immutable",
+    ]
+    assets_result = subprocess.run(assets_cmd, capture_output=True, text=True, cwd=ROOT)
+
+    # Sync HTML / data.json with no-cache headers; exclude assets/ to avoid
+    # overwriting the cache headers set above.
+    root_cmd = [
         "aws", "s3", "sync", str(site_dir), s3_uri,
         "--profile", AWS_PROFILE,
-        "--size-only",
+        "--exclude", "assets/*",
+        "--cache-control", "public, max-age=0, must-revalidate",
     ]
-    result = subprocess.run(cmd, capture_output=True, text=True, cwd=ROOT)
+    root_result = subprocess.run(root_cmd, capture_output=True, text=True, cwd=ROOT)
+
+    ok = assets_result.returncode == 0 and root_result.returncode == 0
+    stdout = f"{assets_result.stdout}\n{root_result.stdout}".strip()
+    stderr = f"{assets_result.stderr}\n{root_result.stderr}".strip()
     return jsonify({
-        "ok": result.returncode == 0,
-        "stdout": result.stdout,
-        "stderr": result.stderr,
+        "ok": ok,
+        "stdout": stdout,
+        "stderr": stderr,
         "url": f"http://{S3_BUCKET}.s3-website-{S3_REGION}.amazonaws.com/{deploy_path}/index.html",
     })
 

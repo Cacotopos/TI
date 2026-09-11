@@ -158,7 +158,9 @@
       source: item.dataset.cardSource,
       placement: item.dataset.cardPlacement,
       back: item.dataset.cardBack,
+      backSrc: item.dataset.cardBackSrc,
       frontPath: item.dataset.cardFrontPath,
+      frontSrc: item.dataset.cardFrontSrc,
       flavour: item.dataset.cardFlavour,
       orientation: item.dataset.cardOrientation,
       component: item.dataset.cardComponent,
@@ -263,7 +265,7 @@
         backSubtitleEl.classList.toggle('hidden', !card.backSubtitle);
       }
     }
-    frontImg.src = card.frontPath;
+    frontImg.src = card.frontSrc || card.frontPath;
     frontImg.alt = card.name || card.id;
     const orientation = card.orientation === 'portrait' ? 'portrait' : (card.orientation === 'square' ? 'square' : 'landscape');
     frontWrapper.classList.remove('portrait', 'landscape', 'square');
@@ -347,8 +349,8 @@
       faqDetails.classList.add('hidden');
     }
 
-    if (card.back) {
-      backImg.src = 'assets/images/' + card.back;
+    if (card.backSrc || card.back) {
+      backImg.src = card.backSrc || ('assets/images/' + card.back);
       backImg.alt = (card.name || card.id) + ' back';
       backWrapper.classList.remove('hidden');
       imagesLabels.classList.add('has-back');

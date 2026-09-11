@@ -20,12 +20,10 @@
     }
   }
 </script>
-<link rel="stylesheet" href="assets/css/styles.css"/>
+<link rel="stylesheet" href="{{ 'assets/css/styles.css' | bust }}"/>
 </head>
 <body class="bg-bg text-gray-100 min-h-screen">
-{% if site.banner_path %}
-<div class="site-banner" style="background-image: url('{{ site.banner_path }}');"></div>
-{% endif %}
+{% if site.banner_url %}<div class="site-banner" style="background-image: url('{{ site.banner_url }}');"></div>{% endif %}
 <nav class="bg-panel border-b border-border sticky top-0 z-50">
   <div class="max-w-6xl mx-auto px-6 py-3 flex items-center gap-4">
     <a href="index.html" class="font-bold text-lg hover:text-accent">{{ config.name }}</a>
@@ -49,13 +47,13 @@
 <footer class="max-w-6xl mx-auto px-6 py-6 text-sm text-muted border-t border-border mt-8">
   <div class="flex justify-between items-center">
     <span>{{ config.name }} v{{ config.version }}</span>
-    <a href="data.json" download class="text-accent hover:underline">Download data.json</a>
+    <a href="{{ 'data.json' | bust }}" download class="text-accent hover:underline">Download data.json</a>
   </div>
 </footer>
-<script src="assets/js/search-data.js"></script>
-<script src="assets/js/search.js"></script>
-<script src="assets/js/filters.js"></script>
-<script src="assets/js/ui.js"></script>
+<script src="{{ 'assets/js/search-data.js' | bust }}"></script>
+<script src="{{ 'assets/js/search.js' | bust }}"></script>
+<script src="{{ 'assets/js/filters.js' | bust }}"></script>
+<script src="{{ 'assets/js/ui.js' | bust }}"></script>
 {% block scripts %}{% endblock %}
 </body>
 </html>

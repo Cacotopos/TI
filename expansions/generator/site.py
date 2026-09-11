@@ -399,6 +399,41 @@ def _git_commit() -> str:
         return "unknown"
 
 
+def _compute_asset_hashes(output_dir: Path) -> dict[str, str]:
+    """Return a mapping of relative file paths to a short content hash.
+
+    Only files under output_dir are hashed. The keys are forward-slash paths
+    relative to output_dir (e.g. "assets/images/Action Cards/Festival.jpg").
+    """
+    hashes: dict[str, str] = {}
+    if not output_dir.exists():
+        return hashes
+    for p in output_dir.rglob("*"):
+        if not p.is_file():
+            continue
+        rel = str(p.relative_to(output_dir)).replace("\\", "/")
+        try:
+            data = p.read_bytes()
+            if data:
+                hashes[rel] = hashlib.md5(data).hexdigest()[:12]
+            else:
+                hashes[rel] = "empty"
+        except Exception:
+            continue
+    return hashes
+
+
+def _bust_url(path: str, hashes: dict[str, str]) -> str:
+    """Append a content-hash query string to a site-relative asset path."""
+    if not path or path.startswith(("http://", "https://", "//")):
+        return path
+    # Strip a leading slash so relative paths always match.
+    lookup = path.lstrip("/")
+    if lookup in hashes:
+        return f"{path}?v={hashes[lookup]}"
+    return path
+
+
 def _build_export(config: dict, images: list[dict], sections: list[dict], git_commit: str) -> dict:
     """Build a clean public JSON export from the generated image data."""
 
@@ -501,16 +536,54 @@ def build_site(config_path: Path, output_dir: Path) -> None:
 
     images = _collect_assets(config)
     git_commit = _git_commit()
+
+    # Hash the static assets that have already been copied/generated.
+    asset_hashes = _compute_asset_hashes(output_dir)
+
+    # Add content-hashed display URLs to each image while keeping the clean
+    # source-relative paths intact for data.json and external consumers.
+    for img in images:
+        img["url"] = _bust_url(img.get("path", ""), asset_hashes)
+        back = img.get("back", "")
+        if back:
+            back_path = back if back.startswith("assets/images/") else f"assets/images/{back}"
+            img["back_url"] = _bust_url(back_path, asset_hashes)
+
+    banner_path = _prepare_banner(config, output_dir)
     site = {
         **config,
         "images": images,
         "sections": config.get("sections", []),
-        "banner_path": _prepare_banner(config, output_dir),
+        "banner_path": banner_path,
+        "banner_url": _bust_url(banner_path or "", asset_hashes),
         "git_commit": git_commit,
     }
 
+    # Write search-data.js before rendering HTML, so its own hash can be
+    # included in the page <script src> URLs.
+    js_dir = output_dir / "assets" / "js"
+    js_dir.mkdir(parents=True, exist_ok=True)
+    (js_dir / "search-data.js").write_text(
+        f"window.SITE_DATA = {json.dumps(site)};", encoding="utf-8"
+    )
+
+    # Hash the generated data files too.
+    asset_hashes.update(_compute_asset_hashes(output_dir))
+
+    # Write the clean public export data.json; its hash is needed for the
+    # download link in the footer.
+    export_data = _build_export(config, images, site["sections"], git_commit)
+    (output_dir / "data.json").write_text(json.dumps(export_data, indent=2), encoding="utf-8")
+
+    # Final hash sweep now that data.json exists.
+    asset_hashes.update(_compute_asset_hashes(output_dir))
+
+    def bust_filter(path: str) -> str:
+        return _bust_url(path, asset_hashes)
+
     env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_DIR))
     env.filters["markdown"] = _markdown_filter
+    env.filters["bust"] = bust_filter
 
     # Index page
     index = env.get_template("index.html")
@@ -531,17 +604,6 @@ def build_site(config_path: Path, output_dir: Path) -> None:
     search = env.get_template("search.html")
     (output_dir / "search.html").write_text(
         search.render(config=config, site=site), encoding="utf-8"
-    )
-
-    # Write clean public export data.json
-    export_data = _build_export(config, images, site["sections"], git_commit)
-    (output_dir / "data.json").write_text(json.dumps(export_data, indent=2), encoding="utf-8")
-
-    # Write search-data.js — inline full site data so search works with file:// (no fetch needed)
-    js_dir = output_dir / "assets" / "js"
-    js_dir.mkdir(parents=True, exist_ok=True)
-    (js_dir / "search-data.js").write_text(
-        f"window.SITE_DATA = {json.dumps(site)};", encoding="utf-8"
     )
 
 

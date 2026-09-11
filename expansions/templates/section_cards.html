@@ -53,8 +53,10 @@
              data-card-source="{{ img.source | tojson | forceescape }}"
              data-card-placement="{{ img.placement | tojson | forceescape }}"
              data-card-back="{{ img.back }}"
+             data-card-back-src="{{ img.back_url | default('') }}"
              data-card-back-orientation="{{ img.backOrientation | default('') }}"
              data-card-front-path="{{ img.path }}"
+             data-card-front-src="{{ img.url }}"
              data-card-orientation="{{ img.orientation }}"
              data-card-flavour="{{ img.flavour | default('') | forceescape }}"
              data-card-component="{{ img.component | default('') }}"
@@ -62,7 +64,7 @@
              data-card-anomalies="{{ img.anomalies | default([]) | join(',') | forceescape }}"
              data-card-wormholes="{{ img.wormholes | default([]) | join(',') | forceescape }}">
           <div class="card-image-wrapper">
-            <img src="{{ img.path }}" alt="{{ img.name }}" class="card-image rounded-lg {{ 'card-portrait' if img.orientation == 'portrait' else ('card-square' if img.orientation == 'square' else 'card-landscape') }}"/>
+            <img src="{{ img.url }}" alt="{{ img.name }}" class="card-image rounded-lg {{ 'card-portrait' if img.orientation == 'portrait' else ('card-square' if img.orientation == 'square' else 'card-landscape') }}"/>
           </div>
           <p class="text-sm text-center mt-2 font-medium truncate" title="{{ img.name }}">{{ img.name }}</p>
           {% if img.subtitle %}<p class="text-xs text-center text-muted truncate">{{ img.subtitle }}</p>{% endif %}
@@ -124,5 +126,5 @@
   </div>
 </div>
 
-<script src="assets/js/cards.js"></script>
+<script src="{{ 'assets/js/cards.js' | bust }}"></script>
 {% endblock %}
