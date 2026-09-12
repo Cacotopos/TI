@@ -437,11 +437,27 @@ def _file_hash(path: Path) -> str:
 def _hash_asset_file(path: Path, output_dir: Path) -> dict[str, str]:
     """Hash a single file, rename it with the hash in its filename, and return
     a mapping from the clean relative path to the hashed relative path.
+
+    Any other hashed versions of the same base filename are removed first so
+    only one fingerprinted copy remains.
     """
     if not path.exists():
         return {}
     h = _file_hash(path)
     new_path = _hashed_path(path, h)
+    target_clean_name = _clean_hashed_name(new_path.name)
+    # Remove sibling hashed files for the same base asset.
+    if new_path.parent.exists():
+        for sibling in new_path.parent.iterdir():
+            if not sibling.is_file():
+                continue
+            if sibling == path:
+                continue
+            if _clean_hashed_name(sibling.name) == target_clean_name:
+                try:
+                    sibling.unlink()
+                except Exception:
+                    pass
     if path != new_path:
         path.rename(new_path)
     clean_rel = str(new_path.parent.relative_to(output_dir) / _clean_hashed_name(new_path.name)).replace("\\", "/")

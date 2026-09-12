@@ -14,6 +14,7 @@ import platform
 import shutil
 import subprocess
 import sys
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import boto3
@@ -37,6 +38,7 @@ for env_path in (ROOT / "exports" / "s3-upload" / ".env", ROOT / ".env"):
 S3_BUCKET = os.getenv("S3_AWS_BUCKET_NAME", "ti4-expansions")
 S3_REGION = os.getenv("S3_AWS_REGION", "ap-southeast-2")
 AWS_PROFILE = os.getenv("S3_AWS_PROFILE", "tom-local-s3")
+S3_CLEANUP_GRACE_SECONDS = int(os.getenv("S3_CLEANUP_GRACE_SECONDS", "300"))
 
 
 def _git_commit() -> str:
@@ -184,6 +186,10 @@ def deploy(expansion_id: str):
     long immutable cache headers because their URLs are content-hashed; HTML
     and data.json receive short no-cache headers so the latest pages are
     always fetched.
+
+    Each deploy writes a manifest to S3 (monuments/deploys/<commit>-<ts>.json)
+    and a mutable "latest" copy. After uploading, stale objects from older
+    deploys are removed after a short grace period.
     """
     site_dir = ROOT / "expansions" / "sites" / expansion_id
     if not site_dir.exists():
@@ -192,6 +198,9 @@ def deploy(expansion_id: str):
     config = _load_config(expansion_id)
     deploy_path = config.get("s3_path") or expansion_id
     prefix = f"{deploy_path}/"
+    deploys_prefix = f"{prefix}deploys/"
+    deploy_start = datetime.now(timezone.utc)
+    grace_cutoff = deploy_start - timedelta(seconds=S3_CLEANUP_GRACE_SECONDS)
 
     try:
         s3 = _s3_client()
@@ -212,13 +221,28 @@ def deploy(expansion_id: str):
     uploaded_files: list[str] = []
     skipped = 0
     errors: list[str] = []
+    manifest_assets: list[dict] = []
+    current_keys: set[str] = set()
 
     for local_path in sorted(site_dir.rglob("*")):
         if not local_path.is_file():
             continue
+        # Ignore macOS .DS_Store and other dot files.
+        if any(part.startswith(".") for part in local_path.relative_to(site_dir).parts):
+            continue
         rel = str(local_path.relative_to(site_dir)).replace("\\", "/")
         s3_key = f"{prefix}{rel}"
         md5 = _md5(local_path)
+        size = local_path.stat().st_size
+        content_type = mimetypes.guess_type(str(local_path))[0] or "application/octet-stream"
+
+        current_keys.add(s3_key)
+        manifest_assets.append({
+            "key": rel,
+            "md5": md5,
+            "size": size,
+            "content_type": content_type,
+        })
 
         if existing.get(s3_key) == md5:
             skipped += 1
@@ -229,7 +253,6 @@ def deploy(expansion_id: str):
             if rel.startswith("assets/")
             else "public, max-age=0, must-revalidate"
         )
-        content_type = mimetypes.guess_type(str(local_path))[0] or "application/octet-stream"
         extra = {"CacheControl": cache_control, "ContentType": content_type}
         try:
             s3.upload_file(str(local_path), S3_BUCKET, s3_key, ExtraArgs=extra)
@@ -238,17 +261,132 @@ def deploy(expansion_id: str):
         except ClientError as e:
             errors.append(f"{rel}: {e}")
 
-    ok = not errors
+    if errors:
+        return jsonify({
+            "ok": False,
+            "stdout": f"Uploaded {uploaded} files, skipped {skipped} unchanged files.",
+            "stderr": "\n".join(errors),
+            "url": f"http://{S3_BUCKET}.s3-website-{S3_REGION}.amazonaws.com/{deploy_path}/index.html",
+        }), 500
+
+    # Build and upload a per-deploy manifest and the mutable "latest" copy.
+    git_commit = _git_commit()
+    timestamp = deploy_start.isoformat().replace(":", "-")
+    manifest_name = f"{git_commit}-{timestamp}.json"
+    manifest = {
+        "git_commit": git_commit,
+        "timestamp": deploy_start.isoformat(),
+        "expansion": expansion_id,
+        "prefix": deploy_path,
+        "count": len(manifest_assets),
+        "total_bytes": sum(a["size"] for a in manifest_assets),
+        "assets": sorted(manifest_assets, key=lambda a: a["key"]),
+    }
+    manifest_bytes = json.dumps(manifest, indent=2).encode("utf-8")
+
+    manifest_key_historical = f"{deploys_prefix}{manifest_name}"
+    manifest_key_latest = f"{deploys_prefix}latest.json"
+
+    # Compare with the previous manifest for a changeset report before we
+    # overwrite the mutable "latest" copy.
+    previous_manifest: dict | None = None
+    try:
+        prev_obj = s3.get_object(Bucket=S3_BUCKET, Key=manifest_key_latest)
+        previous_manifest = json.loads(prev_obj["Body"].read().decode("utf-8"))
+    except ClientError:
+        pass
+
+    try:
+        for key in (manifest_key_historical, manifest_key_latest):
+            s3.put_object(
+                Bucket=S3_BUCKET,
+                Key=key,
+                Body=manifest_bytes,
+                ContentType="application/json",
+                CacheControl="public, max-age=0, must-revalidate",
+            )
+        current_keys.add(manifest_key_latest)
+    except ClientError as e:
+        return jsonify({
+            "ok": False,
+            "stdout": f"Uploaded {uploaded} files, skipped {skipped} unchanged files.",
+            "stderr": f"Failed to upload manifest: {e}",
+            "url": f"http://{S3_BUCKET}.s3-website-{S3_REGION}.amazonaws.com/{deploy_path}/index.html",
+        }), 500
+
+    current_by_key = {a["key"]: a for a in manifest_assets}
+    previous_by_key: dict[str, dict] = {}
+    if previous_manifest:
+        previous_by_key = {a["key"]: a for a in previous_manifest.get("assets", [])}
+
+    added: list[dict] = [current_by_key[k] for k in sorted(set(current_by_key) - set(previous_by_key))]
+    removed: list[dict] = [previous_by_key[k] for k in sorted(set(previous_by_key) - set(current_by_key))]
+    changed: list[dict] = []
+    unchanged = 0
+    for key in sorted(set(current_by_key) & set(previous_by_key)):
+        left = previous_by_key[key]
+        right = current_by_key[key]
+        if left["md5"] != right["md5"]:
+            changed.append({
+                "key": key,
+                "left_md5": left["md5"],
+                "right_md5": right["md5"],
+                "left_size": left["size"],
+                "right_size": right["size"],
+            })
+        else:
+            unchanged += 1
+
+    # Clean up stale S3 objects that are not in the current manifest and are
+    # older than the grace period. Manifests under deploys/ are never deleted.
+    deleted = 0
+    deleted_bytes = 0
+    cleanup_errors: list[str] = []
+    try:
+        paginator = s3.get_paginator("list_objects_v2")
+        for page in paginator.paginate(Bucket=S3_BUCKET, Prefix=prefix):
+            for obj in page.get("Contents", []):
+                key = obj["Key"]
+                if key in current_keys or key.startswith(deploys_prefix):
+                    continue
+                last_modified = obj["LastModified"]
+                if last_modified < grace_cutoff:
+                    s3.delete_object(Bucket=S3_BUCKET, Key=key)
+                    deleted += 1
+                    deleted_bytes += obj["Size"]
+    except ClientError as e:
+        cleanup_errors.append(f"Cleanup failed: {e}")
+
     stdout_lines = [f"Uploaded {uploaded} files, skipped {skipped} unchanged files."]
     if uploaded_files:
         stdout_lines.append("Uploaded:")
         stdout_lines.extend(f"  {f}" for f in uploaded_files)
+    stdout_lines.append(f"Manifest: {manifest_key_historical}")
+    stdout_lines.append("Changeset:")
+    stdout_lines.append(f"  added: {len(added)}")
+    stdout_lines.append(f"  removed: {len(removed)}")
+    stdout_lines.append(f"  changed: {len(changed)}")
+    stdout_lines.append(f"  unchanged: {unchanged}")
+    if deleted:
+        stdout_lines.append(f"Cleanup: deleted {deleted} stale objects ({deleted_bytes / 1024 / 1024:.1f} MB)")
+    if cleanup_errors:
+        stdout_lines.extend(f"  {e}" for e in cleanup_errors)
     stdout = "\n".join(stdout_lines)
+
     return jsonify({
-        "ok": ok,
+        "ok": True,
         "stdout": stdout,
-        "stderr": "\n".join(errors),
+        "stderr": "\n".join(cleanup_errors),
         "url": f"http://{S3_BUCKET}.s3-website-{S3_REGION}.amazonaws.com/{deploy_path}/index.html",
+        "manifest_url": f"https://{S3_BUCKET}.s3.{S3_REGION}.amazonaws.com/{manifest_key_historical}",
+        "changeset": {
+            "added": [a["key"] for a in added],
+            "removed": [a["key"] for a in removed],
+            "changed": changed,
+            "unchanged": unchanged,
+            "deleted": deleted,
+            "deleted_bytes": deleted_bytes,
+        },
     })
 
 
