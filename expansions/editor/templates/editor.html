@@ -201,6 +201,40 @@
   .banner-option img { width: 100%; height: 100px; object-fit: cover; border-radius: 0.35rem; margin-bottom: 0.5rem; }
   .banner-option .dim { font-size: 0.75rem; color: var(--muted); }
   .banner-preview { width: 100%; height: 120px; background-position: center; background-repeat: repeat-x; background-size: auto 100%; border-radius: 0.5rem; border: 1px solid var(--border); margin-bottom: 0.75rem; }
+  .tab-select { display: none; width: 100%; margin-bottom: 1rem; }
+  @media (max-width: 600px) { .tabs { display: none; } .tab-select { display: block; } }
+  .change-history-controls { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: flex-end; margin-bottom: 1rem; }
+  .change-history-controls label { flex: 1; min-width: 140px; }
+  .change-history-controls select { width: 100%; }
+  .change-history-summary { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+  .change-history-summary .badge { background: var(--border); color: var(--text); font-size: 0.85rem; padding: 0.35rem 0.65rem; border-radius: 0.35rem; }
+  .change-history-summary .badge.added { background: #14532d; color: #86efac; }
+  .change-history-summary .badge.removed { background: #7f1d1d; color: #fecaca; }
+  .change-history-summary .badge.changed { background: #713f12; color: #fde047; }
+  .change-history-images { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  @media (min-width: 700px) { .change-history-images { grid-template-columns: repeat(2, 1fr); } }
+  .change-pair { background: var(--panel); border: 1px solid var(--border); border-radius: 0.75rem; padding: 0.75rem; }
+  .change-pair.changed { border-color: #f59e0b; }
+  .change-pair.added { border-color: #16a34a; }
+  .change-pair.removed { border-color: #dc2626; }
+  .change-pair .title { font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem; word-break: break-all; }
+  .change-pair .meta { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.5rem; }
+  .change-pair .images { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  @media (max-width: 700px) { .change-pair .images { grid-template-columns: 1fr; } }
+  .change-pair .images.single { grid-template-columns: 1fr; }
+  .change-pair .image-box { text-align: center; }
+  .change-pair .image-box img { max-width: 100%; max-height: 220px; border-radius: 0.35rem; border: 1px solid var(--border); object-fit: contain; }
+  .change-pair .image-box .label { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; }
+  .change-pair .flicker-btn { margin-top: 0.5rem; font-size: 0.8rem; padding: 0.35rem 0.65rem; }
+  .change-pair .overlay-slider { width: 100%; margin-top: 0.5rem; }
+  .change-history-non-image { margin-top: 1rem; }
+  .change-history-non-image h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+  .change-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  .change-table th, .change-table td { text-align: left; padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--border); }
+  .change-table th { color: var(--muted); font-weight: 600; }
+  .change-table .status-added { color: #86efac; }
+  .change-table .status-removed { color: #fecaca; }
+  .change-table .status-changed { color: #fde047; }
 </style>
 </head>
 <body>
@@ -282,7 +316,13 @@
     <div class="tabs">
       <div class="tab active" data-tab="sections">Pages</div>
       <div class="tab" data-tab="assets">Images</div>
+      <div class="tab" data-tab="history">Change History</div>
     </div>
+    <select id="tab-select" class="tab-select">
+      <option value="sections" selected>Pages</option>
+      <option value="assets">Images</option>
+      <option value="history">Change History</option>
+    </select>
 
     <div id="tab-sections" class="tab-content">
       <div class="card">
@@ -328,6 +368,24 @@
         </div>
         <div id="assets-grid"></div>
         <div id="assets-empty" class="empty-state hidden">No assets yet. Click Reload to scan the source image folder.</div>
+      </div>
+    </div>
+
+    <div id="tab-history" class="tab-content hidden">
+      <div class="card">
+        <div class="card-title">Change History</div>
+        <div class="change-history-controls">
+          <label>Left (old)
+            <select id="history-left"></select>
+          </label>
+          <label>Right (new)
+            <select id="history-right"></select>
+          </label>
+          <button id="history-compare-btn" type="button" class="secondary">Compare</button>
+        </div>
+        <div id="history-summary" class="change-history-summary"></div>
+        <div id="history-images" class="change-history-images"></div>
+        <div id="history-non-image" class="change-history-non-image hidden"></div>
       </div>
     </div>
   </div>
@@ -2543,16 +2601,23 @@ document.getElementById('asset-modal').addEventListener('click', e => {
 });
 document.getElementById('asset-filter').addEventListener('input', renderAssets);
 
+function setTab(tabName) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tabName));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+  const content = document.getElementById(`tab-${tabName}`);
+  if (content) content.classList.remove('hidden');
+  const tabSelect = document.getElementById('tab-select');
+  if (tabSelect) tabSelect.value = tabName;
+  if (tabName === 'history') loadChangeHistory();
+}
+
 document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
-    document.getElementById(`tab-${tab.dataset.tab}`).classList.remove('hidden');
-  });
+  tab.addEventListener('click', () => setTab(tab.dataset.tab));
 });
 
-const _DIRTY_IGNORE = new Set(['asset-filter', 'show-unconfigured', 'show-hidden', 'show-hidden-only', 'show-no-backs']);
+document.getElementById('tab-select').addEventListener('change', e => setTab(e.target.value));
+
+const _DIRTY_IGNORE = new Set(['asset-filter', 'show-unconfigured', 'show-hidden', 'show-hidden-only', 'show-no-backs', 'tab-select', 'history-left', 'history-right']);
 document.getElementById('editor-form').addEventListener('input', e => { if (!_DIRTY_IGNORE.has(e.target.id)) setDirty(true); });
 document.getElementById('editor-form').addEventListener('change', e => { if (!_DIRTY_IGNORE.has(e.target.id)) setDirty(true); });
 
@@ -2619,6 +2684,198 @@ document.body.addEventListener('click', e => {
 document.getElementById('markdown-help-close').addEventListener('click', closeMarkdownHelp);
 document.getElementById('markdown-help-modal').addEventListener('click', e => {
   if (e.target.id === 'markdown-help-modal') closeMarkdownHelp();
+});
+
+let historyDeploys = [];
+
+async function loadChangeHistory() {
+  const id = idInput.value.trim();
+  if (!id) {
+    document.getElementById('history-images').innerHTML = '<p class="empty-state">Load an expansion to view change history.</p>';
+    return;
+  }
+  const leftSelect = document.getElementById('history-left');
+  const rightSelect = document.getElementById('history-right');
+  leftSelect.disabled = true;
+  rightSelect.disabled = true;
+  document.getElementById('history-images').innerHTML = '<p class="empty-state">Loading deploy history...</p>';
+
+  try {
+    const res = await fetch(`/api/deploys/${id}`);
+    const data = await res.json();
+    if (!data.ok) {
+      document.getElementById('history-images').innerHTML = `<p class="empty-state">Error: ${escapeHtml(data.error || 'unknown')}</p>`;
+      return;
+    }
+    historyDeploys = data.deploys || [];
+    const options = historyDeploys.map((d, i) => `<option value="${escapeHtml(d.key)}" ${i === 0 ? 'selected' : ''}>${escapeHtml(d.timestamp)} (${escapeHtml(d.git_commit)})</option>`).join('');
+
+    if (historyDeploys.length === 0) {
+      leftSelect.innerHTML = rightSelect.innerHTML = '';
+      document.getElementById('history-images').innerHTML = '<p class="empty-state">No deploy history yet.</p>';
+      return;
+    }
+
+    leftSelect.innerHTML = options;
+    rightSelect.innerHTML = options;
+    leftSelect.selectedIndex = Math.min(1, historyDeploys.length - 1);
+    rightSelect.selectedIndex = 0;
+    leftSelect.disabled = false;
+    rightSelect.disabled = false;
+
+    if (historyDeploys.length >= 1) {
+      compareChangeHistory();
+    }
+  } catch (e) {
+    document.getElementById('history-images').innerHTML = `<p class="empty-state">Error: ${escapeHtml(String(e))}</p>`;
+  }
+}
+
+async function compareChangeHistory() {
+  const id = idInput.value.trim();
+  const left = document.getElementById('history-left').value;
+  const right = document.getElementById('history-right').value;
+  if (!id || !left || !right) return;
+
+  document.getElementById('history-images').innerHTML = '<p class="empty-state">Comparing...</p>';
+  document.getElementById('history-summary').innerHTML = '';
+  document.getElementById('history-non-image').classList.add('hidden');
+
+  try {
+    const res = await fetch(`/api/deploys/${id}/diff?left=${encodeURIComponent(left)}&right=${encodeURIComponent(right)}`);
+    const data = await res.json();
+    if (!data.ok) {
+      document.getElementById('history-images').innerHTML = `<p class="empty-state">Error: ${escapeHtml(data.error || 'unknown')}</p>`;
+      return;
+    }
+    renderChangeHistoryDiff(data);
+  } catch (e) {
+    document.getElementById('history-images').innerHTML = `<p class="empty-state">Error: ${escapeHtml(String(e))}</p>`;
+  }
+}
+
+function renderChangeHistoryDiff(data) {
+  const diff = data.diff;
+  const summary = [];
+  if (diff.added_images.length) summary.push(`<span class="badge added">+ ${diff.added_images.length} images</span>`);
+  if (diff.removed_images.length) summary.push(`<span class="badge removed">- ${diff.removed_images.length} images</span>`);
+  if (diff.changed_images.length) summary.push(`<span class="badge changed">~ ${diff.changed_images.length} images</span>`);
+  if (diff.non_image.length) summary.push(`<span class="badge">${diff.non_image.length} other files</span>`);
+  if (!summary.length) summary.push('<span class="badge">No changes</span>');
+  document.getElementById('history-summary').innerHTML = summary.join('');
+
+  const imagesContainer = document.getElementById('history-images');
+  const leftTime = data.left.timestamp ? ` (${escapeHtml(data.left.timestamp)})` : '';
+  const rightTime = data.right.timestamp ? ` (${escapeHtml(data.right.timestamp)})` : '';
+
+  const changedCards = diff.changed_images.map(item => `
+    <div class="change-pair changed">
+      <div class="title">${escapeHtml(item.key)}</div>
+      <div class="meta">
+        <span style="color:var(--muted)">left md5:</span> ${escapeHtml(item.left_md5)} &middot; <span style="color:var(--muted)">right md5:</span> ${escapeHtml(item.right_md5)}
+      </div>
+      <div class="images">
+        <div class="image-box">
+          <img src="${encodeURI(item.left_url)}" alt="old" data-side="left" loading="lazy"/>
+          <div class="label">Old${leftTime} — ${formatBytes(item.left_size)}</div>
+        </div>
+        <div class="image-box">
+          <img src="${encodeURI(item.right_url)}" alt="new" data-side="right" loading="lazy"/>
+          <div class="label">New${rightTime} — ${formatBytes(item.right_size)}</div>
+        </div>
+      </div>
+      <button type="button" class="flicker-btn secondary" data-left="${encodeURI(item.left_url)}" data-right="${encodeURI(item.right_url)}">Flash difference</button>
+    </div>
+  `).join('');
+
+  const addedCards = diff.added_images.map(item => `
+    <div class="change-pair added">
+      <div class="title">${escapeHtml(item.key)}</div>
+      <div class="meta">md5: ${escapeHtml(item.md5)} &middot; ${formatBytes(item.size)}</div>
+      <div class="images single">
+        <div class="image-box">
+          <img src="${encodeURI(item.url)}" alt="new" loading="lazy"/>
+          <div class="label">New${rightTime}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  const removedCards = diff.removed_images.map(item => `
+    <div class="change-pair removed">
+      <div class="title">${escapeHtml(item.key)}</div>
+      <div class="meta">md5: ${escapeHtml(item.md5)} &middot; ${formatBytes(item.size)}</div>
+      <div class="images single">
+        <div class="image-box">
+          <img src="${encodeURI(item.url)}" alt="old" loading="lazy"/>
+          <div class="label">Old${leftTime}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  imagesContainer.innerHTML = changedCards + addedCards + removedCards;
+  if (!imagesContainer.innerHTML) {
+    imagesContainer.innerHTML = '<p class="empty-state">No image changes between these deploys.</p>';
+  }
+
+  if (diff.non_image.length) {
+    const rows = diff.non_image.map(item => {
+      const statusClass = `status-${item.status}`;
+      let left = '-', right = '-';
+      if (item.status === 'added') right = `${escapeHtml(item.right_md5 || '').slice(0, 12)}… (${formatBytes(item.right_size || 0)})`;
+      else if (item.status === 'removed') left = `${escapeHtml(item.left_md5 || '').slice(0, 12)}… (${formatBytes(item.left_size || 0)})`;
+      else if (item.status === 'changed') {
+        left = `${escapeHtml(item.left_md5 || '').slice(0, 12)}… (${formatBytes(item.left_size || 0)})`;
+        right = `${escapeHtml(item.right_md5 || '').slice(0, 12)}… (${formatBytes(item.right_size || 0)})`;
+      }
+      return `<tr><td class="${statusClass}">${item.status}</td><td>${escapeHtml(item.key)}</td><td>${left}</td><td>${right}</td></tr>`;
+    }).join('');
+    document.getElementById('history-non-image').innerHTML = `
+      <h3>Non-image changes</h3>
+      <table class="change-table">
+        <thead><tr><th>Status</th><th>File</th><th>Old</th><th>New</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    `;
+    document.getElementById('history-non-image').classList.remove('hidden');
+  } else {
+    document.getElementById('history-non-image').classList.add('hidden');
+  }
+}
+
+function formatBytes(bytes) {
+  if (!bytes && bytes !== 0) return '';
+  const units = ['B', 'KB', 'MB', 'GB'];
+  let size = bytes;
+  let i = 0;
+  while (size >= 1024 && i < units.length - 1) { size /= 1024; i++; }
+  return `${size.toFixed(i === 0 ? 0 : 1)} ${units[i]}`;
+}
+
+document.getElementById('history-compare-btn').addEventListener('click', compareChangeHistory);
+document.getElementById('history-left').addEventListener('change', compareChangeHistory);
+document.getElementById('history-right').addEventListener('change', compareChangeHistory);
+
+// Flicker / flash the right image to spot differences.
+document.getElementById('history-images').addEventListener('click', e => {
+  const btn = e.target.closest('.flicker-btn');
+  if (!btn) return;
+  const rightImg = btn.closest('.change-pair').querySelector('[data-side="right"]');
+  if (!rightImg) return;
+  const left = btn.dataset.left;
+  const right = btn.dataset.right;
+  let showLeft = true;
+  let count = 0;
+  const interval = setInterval(() => {
+    rightImg.src = showLeft ? left : right;
+    showLeft = !showLeft;
+    count++;
+    if (count >= 6) {
+      clearInterval(interval);
+      rightImg.src = right;
+    }
+  }, 400);
 });
 
 loadSettings();

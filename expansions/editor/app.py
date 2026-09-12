@@ -16,6 +16,7 @@ import subprocess
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from urllib.parse import quote
 
 import boto3
 from botocore.exceptions import ClientError, ProfileNotFound
@@ -39,6 +40,7 @@ S3_BUCKET = os.getenv("S3_AWS_BUCKET_NAME", "ti4-expansions")
 S3_REGION = os.getenv("S3_AWS_REGION", "ap-southeast-2")
 AWS_PROFILE = os.getenv("S3_AWS_PROFILE", "tom-local-s3")
 S3_CLEANUP_GRACE_SECONDS = int(os.getenv("S3_CLEANUP_GRACE_SECONDS", "300"))
+S3_DEPLOY_HISTORY_LIMIT = int(os.getenv("S3_DEPLOY_HISTORY_LIMIT", "0"))
 
 
 def _git_commit() -> str:
@@ -46,6 +48,39 @@ def _git_commit() -> str:
         return subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, text=True).strip()
     except Exception:
         return "unknown"
+
+
+def _s3_object_url(s3_key: str) -> str:
+    """Return the public HTTPS URL for an S3 object key."""
+    quoted = quote(s3_key, safe="/")
+    return f"https://{S3_BUCKET}.s3.{S3_REGION}.amazonaws.com/{quoted}"
+
+
+def _diff_manifests(left_assets: list[dict], right_assets: list[dict]) -> dict:
+    """Compare two manifest asset lists and return a structured changeset."""
+    left_by_key = {a["key"]: a for a in left_assets}
+    right_by_key = {a["key"]: a for a in right_assets}
+    left_keys = set(left_by_key)
+    right_keys = set(right_by_key)
+
+    added = [right_by_key[k] for k in sorted(right_keys - left_keys)]
+    removed = [left_by_key[k] for k in sorted(left_keys - right_keys)]
+    changed = []
+    unchanged = []
+    for k in sorted(left_keys & right_keys):
+        l = left_by_key[k]
+        r = right_by_key[k]
+        if l["md5"] != r["md5"]:
+            changed.append({"key": k, "left": l, "right": r})
+        else:
+            unchanged.append(k)
+
+    return {
+        "added": added,
+        "removed": removed,
+        "changed": changed,
+        "unchanged": unchanged,
+    }
 
 
 def _aws_profile_configured(profile: str) -> bool:
@@ -357,6 +392,25 @@ def deploy(expansion_id: str):
     except ClientError as e:
         cleanup_errors.append(f"Cleanup failed: {e}")
 
+    # If configured, keep only the N most recent historical manifests (plus latest).
+    if S3_DEPLOY_HISTORY_LIMIT > 0:
+        try:
+            paginator = s3.get_paginator("list_objects_v2")
+            manifests: list[tuple[datetime, str, int]] = []
+            for page in paginator.paginate(Bucket=S3_BUCKET, Prefix=deploys_prefix):
+                for obj in page.get("Contents", []):
+                    key = obj["Key"]
+                    if key == manifest_key_latest or not key.endswith(".json"):
+                        continue
+                    manifests.append((obj["LastModified"], key, obj["Size"]))
+            manifests.sort(key=lambda x: x[0], reverse=True)
+            for _, key, size in manifests[S3_DEPLOY_HISTORY_LIMIT:]:
+                s3.delete_object(Bucket=S3_BUCKET, Key=key)
+                deleted += 1
+                deleted_bytes += size
+        except ClientError as e:
+            cleanup_errors.append(f"Manifest history cleanup failed: {e}")
+
     stdout_lines = [f"Uploaded {uploaded} files, skipped {skipped} unchanged files."]
     if uploaded_files:
         stdout_lines.append("Uploaded:")
@@ -610,6 +664,208 @@ def deploy_status():
         "profile": AWS_PROFILE,
         "bucket": S3_BUCKET,
         "region": S3_REGION,
+    })
+
+
+def _is_image_asset(asset: dict) -> bool:
+    return (
+        asset.get("content_type", "").startswith("image/")
+        or asset.get("key", "").startswith("assets/images/")
+    )
+
+
+@app.route("/api/deploys/<expansion_id>")
+def list_deploys(expansion_id: str):
+    """List historical deploy manifests for an expansion."""
+    config = _load_config(expansion_id)
+    deploy_path = config.get("s3_path") or expansion_id
+    prefix = f"{deploy_path}/deploys/"
+
+    try:
+        s3 = _s3_client()
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+    deploys = []
+    try:
+        paginator = s3.get_paginator("list_objects_v2")
+        for page in paginator.paginate(Bucket=S3_BUCKET, Prefix=prefix):
+            for obj in page.get("Contents", []):
+                key = obj["Key"]
+                name = key.split("/")[-1]
+                if name == "latest.json" or not name.endswith(".json"):
+                    continue
+                # Parse git_commit-timestamp.json
+                parts = name.rsplit(".", 1)[0].split("-", 1)
+                git_commit = parts[0] if parts else "unknown"
+                timestamp = parts[1] if len(parts) > 1 else ""
+                deploys.append({
+                    "key": key,
+                    "name": name,
+                    "git_commit": git_commit,
+                    "timestamp": timestamp.replace("-", ":").replace("T", " ").split("+")[0] if timestamp else "",
+                    "last_modified": obj["LastModified"].isoformat() if obj.get("LastModified") else "",
+                    "size": obj["Size"],
+                    "url": _s3_object_url(key),
+                })
+    except ClientError as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+    deploys.sort(key=lambda d: d["last_modified"], reverse=True)
+    return jsonify({"ok": True, "deploys": deploys, "deploy_path": deploy_path})
+
+
+@app.route("/api/deploys/<expansion_id>/diff")
+def diff_deploys(expansion_id: str):
+    """Compare two deploy manifests and return a structured changeset.
+
+    Query params:
+      left  - S3 key of the older manifest
+      right - S3 key of the newer manifest
+    """
+    config = _load_config(expansion_id)
+    deploy_path = config.get("s3_path") or expansion_id
+    deploys_prefix = f"{deploy_path}/deploys/"
+
+    left_key = request.args.get("left", "")
+    right_key = request.args.get("right", "")
+
+    try:
+        s3 = _s3_client()
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+    def _resolve_key(key: str) -> str:
+        if key and not key.startswith(deploys_prefix):
+            if not key.startswith(f"{deploy_path}/"):
+                return f"{deploys_prefix}{key}"
+        return key or ""
+
+    left_key = _resolve_key(left_key)
+    right_key = _resolve_key(right_key)
+
+    # Default to two most recent manifests if not provided.
+    if not left_key or not right_key:
+        list_result = list_deploys(expansion_id)
+        if isinstance(list_result, tuple):
+            if list_result[1] != 200:
+                return list_result
+            deploys = list_result[0].get_json().get("deploys", [])
+        else:
+            if list_result.status_code != 200:
+                return list_result
+            deploys = list_result.get_json().get("deploys", [])
+        if right_key and not left_key and len(deploys) >= 2:
+            # Find the deploy immediately before the selected right manifest.
+            for i, d in enumerate(deploys):
+                if d["key"] == right_key and i + 1 < len(deploys):
+                    left_key = deploys[i + 1]["key"]
+                    break
+        elif left_key and not right_key and len(deploys) >= 1:
+            if deploys[0]["key"] == left_key and len(deploys) >= 2:
+                right_key = deploys[1]["key"]
+            else:
+                right_key = deploys[0]["key"]
+        elif len(deploys) >= 2:
+            right_key = deploys[0]["key"]
+            left_key = deploys[1]["key"]
+        elif len(deploys) == 1:
+            right_key = left_key = deploys[0]["key"]
+
+    if not left_key or not right_key:
+        return jsonify({"ok": True, "diff": {"changed_images": [], "added_images": [], "removed_images": [], "non_image": []}})
+
+    def _load_manifest(key: str) -> dict:
+        obj = s3.get_object(Bucket=S3_BUCKET, Key=key)
+        return json.loads(obj["Body"].read().decode("utf-8"))
+
+    try:
+        left_manifest = _load_manifest(left_key)
+        right_manifest = _load_manifest(right_key)
+    except ClientError as e:
+        return jsonify({"ok": False, "error": f"Could not load manifests: {e}"}), 404
+
+    raw = _diff_manifests(left_manifest.get("assets", []), right_manifest.get("assets", []))
+
+    def _asset_url(key: str) -> str:
+        return _s3_object_url(f"{deploy_path}/{key}")
+
+    changed_images = []
+    added_images = []
+    removed_images = []
+    non_image = []
+
+    for item in raw["changed"]:
+        if _is_image_asset(item["left"]) and _is_image_asset(item["right"]):
+            changed_images.append({
+                "key": item["key"],
+                "left_url": _asset_url(item["left"]["key"]),
+                "right_url": _asset_url(item["right"]["key"]),
+                "left_md5": item["left"]["md5"],
+                "right_md5": item["right"]["md5"],
+                "left_size": item["left"]["size"],
+                "right_size": item["right"]["size"],
+            })
+        else:
+            non_image.append({
+                "key": item["key"],
+                "status": "changed",
+                "left_md5": item["left"]["md5"],
+                "right_md5": item["right"]["md5"],
+                "left_size": item["left"]["size"],
+                "right_size": item["right"]["size"],
+            })
+
+    for asset in raw["added"]:
+        if _is_image_asset(asset):
+            added_images.append({
+                "key": asset["key"],
+                "url": _asset_url(asset["key"]),
+                "md5": asset["md5"],
+                "size": asset["size"],
+            })
+        else:
+            non_image.append({
+                "key": asset["key"],
+                "status": "added",
+                "right_md5": asset["md5"],
+                "right_size": asset["size"],
+            })
+
+    for asset in raw["removed"]:
+        if _is_image_asset(asset):
+            removed_images.append({
+                "key": asset["key"],
+                "url": _asset_url(asset["key"]),
+                "md5": asset["md5"],
+                "size": asset["size"],
+            })
+        else:
+            non_image.append({
+                "key": asset["key"],
+                "status": "removed",
+                "left_md5": asset["md5"],
+                "left_size": asset["size"],
+            })
+
+    return jsonify({
+        "ok": True,
+        "left": {
+            "key": left_key,
+            "git_commit": left_manifest.get("git_commit", "unknown"),
+            "timestamp": left_manifest.get("timestamp", ""),
+        },
+        "right": {
+            "key": right_key,
+            "git_commit": right_manifest.get("git_commit", "unknown"),
+            "timestamp": right_manifest.get("timestamp", ""),
+        },
+        "diff": {
+            "changed_images": changed_images,
+            "added_images": added_images,
+            "removed_images": removed_images,
+            "non_image": non_image,
+        },
     })
 
 
