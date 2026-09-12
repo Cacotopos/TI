@@ -399,44 +399,104 @@ def _git_commit() -> str:
         return "unknown"
 
 
-# Version salt for the content hash. Bumping this prefix invalidates all
-# existing cached asset URLs without changing file names.
-_HASH_VERSION = "v1"
+# Version salt for the content hash. Bumping this prefix changes every hashed
+# filename, which forces CloudFront/browsers to fetch fresh copies.
+_HASH_VERSION = "v2"
+
+
+# Pattern for a hashed filename segment, e.g. `.v2-3a808a5d1455`
+_HASH_SEGMENT = re.compile(rf"\.{re.escape(_HASH_VERSION)}-[0-9a-f]{{12}}")
+
+
+# Pattern to detect any old fingerprinted filename so we can clean them up.
+_ANY_HASH_SEGMENT = re.compile(r"\.v\d+-[0-9a-f]{12}")
+
+
+def _is_hashed_name(name: str) -> bool:
+    return bool(_ANY_HASH_SEGMENT.search(name))
+
+
+def _clean_hashed_name(name: str) -> str:
+    """Return the clean filename for a fingerprinted file, e.g. styles.css."""
+    # Remove the hash segment that appears before the final extension.
+    return re.sub(rf"\.{re.escape(_HASH_VERSION)}-[0-9a-f]{{12}}(?=\.[^.]+$)", "", name)
+
+
+def _hashed_path(path: Path, hash_value: str) -> Path:
+    """Return a new Path with the hash segment inserted before the extension."""
+    return path.parent / f"{path.stem}.{_HASH_VERSION}-{hash_value}{path.suffix}"
+
+
+def _file_hash(path: Path) -> str:
+    data = path.read_bytes()
+    if data:
+        return hashlib.md5(_HASH_VERSION.encode() + data).hexdigest()[:12]
+    return "empty"
+
+
+def _hash_asset_file(path: Path, output_dir: Path) -> dict[str, str]:
+    """Hash a single file, rename it with the hash in its filename, and return
+    a mapping from the clean relative path to the hashed relative path.
+    """
+    if not path.exists():
+        return {}
+    h = _file_hash(path)
+    new_path = _hashed_path(path, h)
+    if path != new_path:
+        path.rename(new_path)
+    clean_rel = str(new_path.parent.relative_to(output_dir) / _clean_hashed_name(new_path.name)).replace("\\", "/")
+    new_rel = str(new_path.relative_to(output_dir)).replace("\\", "/")
+    return {clean_rel: new_rel}
 
 
 def _compute_asset_hashes(output_dir: Path) -> dict[str, str]:
-    """Return a mapping of relative file paths to a versioned content hash.
+    """Hash and rename all files under output_dir/assets/.
 
-    Only files under output_dir are hashed. The keys are forward-slash paths
-    relative to output_dir (e.g. "assets/images/Action Cards/Festival.jpg").
+    Returns a mapping from clean relative paths to hashed relative paths.
+    Old hashed files from previous runs are removed first to avoid duplicates.
     """
     hashes: dict[str, str] = {}
     if not output_dir.exists():
         return hashes
-    for p in output_dir.rglob("*"):
+    assets_dir = output_dir / "assets"
+    if not assets_dir.exists():
+        return hashes
+
+    # Remove any stale hashed files from a previous build.
+    for p in assets_dir.rglob("*"):
+        if p.is_file() and _is_hashed_name(p.name):
+            try:
+                p.unlink()
+            except Exception:
+                pass
+
+    for p in assets_dir.rglob("*"):
         if not p.is_file():
             continue
-        rel = str(p.relative_to(output_dir)).replace("\\", "/")
         try:
-            data = p.read_bytes()
-            if data:
-                h = hashlib.md5(_HASH_VERSION.encode() + data).hexdigest()[:12]
-                hashes[rel] = f"{_HASH_VERSION}-{h}"
-            else:
-                hashes[rel] = f"{_HASH_VERSION}-empty"
+            hashes.update(_hash_asset_file(p, output_dir))
         except Exception:
             continue
     return hashes
 
 
+def _hash_data_json(path: Path) -> dict[str, str]:
+    """Return a query-string busted URL for data.json without renaming it."""
+    if not path.exists():
+        return {}
+    h = _file_hash(path)
+    rel = str(path.relative_to(path.parent.parent)).replace("\\", "/")
+    return {rel: f"{rel}?v={_HASH_VERSION}-{h}"}
+
+
 def _bust_url(path: str, hashes: dict[str, str]) -> str:
-    """Append a content-hash query string to a site-relative asset path."""
+    """Resolve a clean site-relative path to its content-hashed public URL."""
     if not path or path.startswith(("http://", "https://", "//")):
         return path
     # Strip a leading slash so relative paths always match.
     lookup = path.lstrip("/")
     if lookup in hashes:
-        return f"{path}?v={hashes[lookup]}"
+        return hashes[lookup]
     return path
 
 
@@ -540,10 +600,15 @@ def build_site(config_path: Path, output_dir: Path) -> None:
     _copy_assets(output_dir)
     _copy_source_images(config, output_dir)
 
+    # Prepare the banner image so it gets content-hashed with the rest.
+    banner_path = _prepare_banner(config, output_dir)
+
     images = _collect_assets(config)
     git_commit = _git_commit()
 
-    # Hash the static assets that have already been copied/generated.
+    # Hash and rename static assets. This gives each asset a content-hashed
+    # filename, which is the only cache-busting mechanism that works when a
+    # CDN (e.g. CloudFront) ignores query strings.
     asset_hashes = _compute_asset_hashes(output_dir)
 
     # Add content-hashed display URLs to each image while keeping the clean
@@ -555,7 +620,6 @@ def build_site(config_path: Path, output_dir: Path) -> None:
             back_path = back if back.startswith("assets/images/") else f"assets/images/{back}"
             img["back_url"] = _bust_url(back_path, asset_hashes)
 
-    banner_path = _prepare_banner(config, output_dir)
     site = {
         **config,
         "images": images,
@@ -565,24 +629,22 @@ def build_site(config_path: Path, output_dir: Path) -> None:
         "git_commit": git_commit,
     }
 
-    # Write search-data.js before rendering HTML, so its own hash can be
-    # included in the page <script src> URLs.
+    # Write search-data.js before rendering HTML, then hash/rename it so the
+    # <script src> in the HTML can point to a fingerprinted file.
     js_dir = output_dir / "assets" / "js"
     js_dir.mkdir(parents=True, exist_ok=True)
-    (js_dir / "search-data.js").write_text(
+    search_data_path = js_dir / "search-data.js"
+    search_data_path.write_text(
         f"window.SITE_DATA = {json.dumps(site)};", encoding="utf-8"
     )
+    asset_hashes.update(_hash_asset_file(search_data_path, output_dir))
 
-    # Hash the generated data files too.
-    asset_hashes.update(_compute_asset_hashes(output_dir))
-
-    # Write the clean public export data.json; its hash is needed for the
-    # download link in the footer.
+    # Write the clean public export data.json. It keeps its clean filename but
+    # gets a query-string hash for the download link.
     export_data = _build_export(config, images, site["sections"], git_commit)
-    (output_dir / "data.json").write_text(json.dumps(export_data, indent=2), encoding="utf-8")
-
-    # Final hash sweep now that data.json exists.
-    asset_hashes.update(_compute_asset_hashes(output_dir))
+    data_json_path = output_dir / "data.json"
+    data_json_path.write_text(json.dumps(export_data, indent=2), encoding="utf-8")
+    asset_hashes.update(_hash_data_json(data_json_path))
 
     def bust_filter(path: str) -> str:
         return _bust_url(path, asset_hashes)

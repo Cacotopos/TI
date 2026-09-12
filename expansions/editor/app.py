@@ -209,6 +209,7 @@ def deploy(expansion_id: str):
         return jsonify({"ok": False, "stdout": "", "stderr": str(e)}), 500
 
     uploaded = 0
+    uploaded_files: list[str] = []
     skipped = 0
     errors: list[str] = []
 
@@ -233,11 +234,16 @@ def deploy(expansion_id: str):
         try:
             s3.upload_file(str(local_path), S3_BUCKET, s3_key, ExtraArgs=extra)
             uploaded += 1
+            uploaded_files.append(rel)
         except ClientError as e:
             errors.append(f"{rel}: {e}")
 
     ok = not errors
-    stdout = f"Uploaded {uploaded} files, skipped {skipped} unchanged files."
+    stdout_lines = [f"Uploaded {uploaded} files, skipped {skipped} unchanged files."]
+    if uploaded_files:
+        stdout_lines.append("Uploaded:")
+        stdout_lines.extend(f"  {f}" for f in uploaded_files)
+    stdout = "\n".join(stdout_lines)
     return jsonify({
         "ok": ok,
         "stdout": stdout,
