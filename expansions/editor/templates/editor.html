@@ -965,6 +965,63 @@
   </div>
 </div>
 
+<div id="new-expansion-modal" class="modal-overlay">
+  <div class="modal" style="max-width: 640px;">
+    <div class="modal-header">
+      <h2>New expansion setup</h2>
+      <button id="new-expansion-modal-close" type="button" class="secondary">&times;</button>
+    </div>
+    <p class="hint">
+      This expansion has been deployed to S3 for the first time.<br>
+      The S3 website URL works now, but the custom domain <code class="setup-custom-domain"></code> will not resolve until the steps below are complete.
+    </p>
+    <div id="new-expansion-setup-body" style="margin: 1rem 0;">
+      <h3>1. Update the CloudFront function</h3>
+      <p class="hint">
+        Add a branch for <code class="setup-subdomain"></code> so requests to <code class="setup-custom-domain"></code> are routed to the <code class="setup-s3-prefix"></code> prefix:
+      </p>
+      <pre style="background: var(--bg); padding: 0.75rem; border-radius: 0.5rem; overflow-x: auto; font-size: 0.85rem;"><code>if (request.headers['host'].value === '<span class="setup-subdomain"></span>.cacotopos.com') {
+    request.uri = '/<span class="setup-subdomain"></span>' + request.uri;
+}</code></pre>
+
+      <h3>2. Add the subdomain to the ACM certificate</h3>
+      <p class="hint">
+        In AWS Certificate Manager, add <code class="setup-custom-domain"></code> to the existing certificate and validate it (unless the certificate is already a wildcard for <code>*.cacotopos.com</code>).
+      </p>
+
+      <h3>3. Add the DNS record in Namecheap</h3>
+      <p class="hint">
+        In Namecheap Advanced DNS for <code>cacotopos.com</code>, add a CNAME record:
+      </p>
+      <table style="width: 100%; border-collapse: collapse; margin: 0.5rem 0; font-size: 0.9rem;">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <th style="text-align: left; padding: 0.25rem 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.25rem 0.5rem;">Host</th>
+            <th style="text-align: left; padding: 0.25rem 0.5rem;">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.25rem 0.5rem;">CNAME Record</td>
+            <td style="padding: 0.25rem 0.5rem;"><code class="setup-subdomain"></code></td>
+            <td style="padding: 0.25rem 0.5rem;">d39rtkg7d9lwsg.cloudfront.net</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>4. Add the alternate domain to CloudFront</h3>
+      <p class="hint">
+        If the distribution does not already use <code>*.cacotopos.com</code>, add <code class="setup-custom-domain"></code> to the distribution's <strong>Alternate domain names (CNAMEs)</strong> and attach the ACM certificate.
+      </p>
+    </div>
+    <div class="modal-footer" style="justify-content: space-between;">
+      <a href="/new-expansion-setup.md" target="_blank" style="color: var(--accent); font-size: 0.9rem;">Open full document</a>
+      <button id="new-expansion-modal-ok" type="button">Done</button>
+    </div>
+  </div>
+</div>
+
 <script>
 const idInput = document.getElementById('expansion-id');
 const select = document.getElementById('expansion-select');
@@ -2482,6 +2539,9 @@ async function deploy() {
   if (data.ok) {
     const stdout = (data.stdout || '').replace(/\n/g, '<br>');
     statusEl.innerHTML = `${stdout}<br><br>Deployed to <a href="${data.url}" target="_blank">${data.url}</a>`;
+    if (data.first_deploy) {
+      showNewExpansionSetup(data.subdomain || id, data.custom_domain);
+    }
   } else {
     const stderr = (data.stderr || '').replace(/\n/g, '<br>');
     statusEl.innerHTML = `Deploy failed:<br>${stderr}`;
@@ -2509,6 +2569,18 @@ function openBannerPicker() {
 
 function closeBannerPicker() {
   document.getElementById('banner-modal').classList.remove('visible');
+}
+
+function showNewExpansionSetup(subdomain, customDomain) {
+  const modal = document.getElementById('new-expansion-modal');
+  modal.querySelectorAll('.setup-subdomain').forEach(el => el.textContent = subdomain);
+  modal.querySelectorAll('.setup-s3-prefix').forEach(el => el.textContent = subdomain);
+  modal.querySelectorAll('.setup-custom-domain').forEach(el => el.textContent = customDomain);
+  modal.classList.add('visible');
+}
+
+function closeNewExpansionSetup() {
+  document.getElementById('new-expansion-modal').classList.remove('visible');
 }
 
 async function renderBannerOptions() {
@@ -2634,6 +2706,12 @@ document.getElementById('banner-modal').addEventListener('click', e => {
   if (e.target.id === 'banner-modal') closeBannerPicker();
 });
 document.getElementById('banner-path').addEventListener('input', updateBannerPreview);
+
+document.getElementById('new-expansion-modal-ok').addEventListener('click', closeNewExpansionSetup);
+document.getElementById('new-expansion-modal-close').addEventListener('click', closeNewExpansionSetup);
+document.getElementById('new-expansion-modal').addEventListener('click', e => {
+  if (e.target.id === 'new-expansion-modal') closeNewExpansionSetup();
+});
 
 let activeMarkdownTextarea = null;
 let isDirty = false;

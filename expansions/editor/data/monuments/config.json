@@ -20,7 +20,7 @@
       "blocks": [
         {
           "type": "markdown",
-          "content": "##Last updated: 2026-9-10\n\nYou can introduce Monuments easily using the included 'Cultural Monuments' event. If you're playing Twilight's Fall, use the *MONUMENTAL* civitas card instead of the *MONUMENT FUNDING* card.",
+          "content": "##Last updated: 2026-9-12\n\nYou can introduce Monuments easily using the included 'Cultural Monuments' event. If you're playing Twilight's Fall, use the *MONUMENTAL* civitas card instead of the *MONUMENT FUNDING* card.",
           "column": "full"
         },
         {
@@ -3614,19 +3614,19 @@
     },
     "Monuments/BR/Belkosea.jpg": {
       "abilities": {
-        "antiFighterBarrage": null,
-        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "production": null,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
         "spaceCannon": null,
-        "sustainDamage": false
+        "production": null
       },
       "back": "Backs/Faction Monument Backs/Blue Reverie/Belkosean Alliance Back.jpg",
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "At the end of the strategy phase, choose and place 1 control token on a Superweapon card in your play area. This card has the text abilities of each superweapon card in your play area that has 1 of your control tokens.",
+      "description": "At the end of the strategy phase, choose and place 1 control token on a Superweapon card in a play area. This card has the text abilities of each Superweapon card in a play area that has 1 of your control tokens.",
       "faction": "The Belkosean Allied States",
       "faq": [],
       "filename": "Belkosea.jpg",
@@ -3641,16 +3641,16 @@
         "enabled": true,
         "rules": [
           {
-            "not": false,
-            "value": "hazardous"
+            "value": "hazardous",
+            "not": false
           },
           {
-            "not": false,
-            "value": "industrial"
+            "value": "industrial",
+            "not": false
           },
           {
-            "not": false,
-            "value": "cultural"
+            "value": "cultural",
+            "not": false
           }
         ]
       },
@@ -3663,30 +3663,30 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "station": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "stats": {
-        "capacity": {
+        "cost": {
           "enabled": false,
-          "value": null
+          "value": null,
+          "multi": "1"
         },
         "combat": {
           "enabled": false,
-          "multi": "1",
-          "value": null
-        },
-        "cost": {
-          "enabled": false,
-          "multi": "1",
-          "value": null
+          "value": null,
+          "multi": "1"
         },
         "move": {
+          "enabled": false,
+          "value": null
+        },
+        "capacity": {
           "enabled": false,
           "value": null
         }
@@ -9547,19 +9547,19 @@
     },
     "Monuments/TE/Firmament.jpg": {
       "abilities": {
-        "antiFighterBarrage": null,
-        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "production": null,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
         "spaceCannon": null,
-        "sustainDamage": false
+        "production": null
       },
       "back": "Monuments/TE/Obsidian.jpg",
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "After a player activates this system, you may replace 1 control token on one of your plots with 1 of that player's control tokens.",
+      "description": "After a non-Firmament player activates this system, place a face down plot card into your play area, if possible. Place that player's control token on a plot card.",
       "faction": "The Firmament",
       "faq": [],
       "filename": "Firmament.jpg",
@@ -9574,16 +9574,16 @@
         "enabled": true,
         "rules": [
           {
-            "not": false,
-            "value": "hazardous"
+            "value": "hazardous",
+            "not": false
           },
           {
-            "not": false,
-            "value": "industrial"
+            "value": "industrial",
+            "not": false
           },
           {
-            "not": false,
-            "value": "cultural"
+            "value": "cultural",
+            "not": false
           }
         ]
       },
@@ -9595,27 +9595,30 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "station": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "stats": {
-        "capacity": {
+        "cost": {
           "enabled": false,
-          "value": null
+          "value": null,
+          "multi": 1
         },
         "combat": {
           "enabled": false,
-          "value": null
+          "value": null,
+          "multi": 1
         },
-        "cost": {
+        "move": {
           "enabled": false,
           "value": null
         },
-        "move": {
+        "capacity": {
           "enabled": false,
           "value": null
         }
@@ -9626,7 +9629,8 @@
         "value": ""
       },
       "title": "Epiphany",
-      "type": "Unit - Structure - Monument"
+      "type": "Unit - Structure - Monument",
+      "rotate": 0
     },
     "Monuments/TE/Keleres.jpg": {
       "abilities": {
@@ -13001,7 +13005,7 @@
       "color": "",
       "component": "token",
       "configured": true,
-      "description": "",
+      "description": "2 copies required. These are used to record additional commodities due to Nekro Valefar \"M\"/\"Z\" on Last Bastion's monument or Vaylerian's monument.",
       "faction": "",
       "faq": [],
       "filename": "Nekro Station Token Back x2.png",
@@ -13038,7 +13042,7 @@
         "enabled": false,
         "value": ""
       },
-      "title": "Nekro Station Commodity Token",
+      "title": "Nekro Commodity Token",
       "type": "Token"
     },
     "Tokens/Vaylarian Commodity Back.png": {

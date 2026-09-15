@@ -1,0 +1,324 @@
+{
+  "id": "fallen-empires",
+  "name": "Fallen Empires",
+  "version": "3.0",
+  "description": "For busy adults who drop out of their important all-day boardgame.",
+  "overview": "To be filled in",
+  "source": {
+    "images": "/Users/kangarootime/Documents/Gaming/Boardgames/Twilight Imperium 4/Expansions/Fallen Empires/Project Shared/v3"
+  },
+  "s3_path": "fallen-empires",
+  "banner": null,
+  "print_assets_url": "https://drive.google.com/drive/folders/1ecCGWKsd3sX1JwfeIjitmTnRdB50l0qo?usp=share_link",
+  "sections": [
+    {
+      "id": "general",
+      "title": "Overview",
+      "type": "page",
+      "blocks": [
+        {
+          "type": "markdown",
+          "content": "The Fallen Empires Expansion is a stand-alone mini-expansion of cards that can be used with the base Twilight Imperium: Fourth Edition game as\nwell as the Prophecy of Kings expansion (PoK specific cards are additionally marked with the PoK expansion logo for easy removal). It requires only the provided cards, and for one or more players to have to leave the game early.\nAt its core, this mini-expansion aims to encourage a continuation of \u2018presence\u2019 in the galactic slice of a player who has had the real world intrude on your game and who doesn\u2019t understand priorities (and therefore had to return to this \u2018real life\u2019, as if the fate of the galaxy wasn\u2019t hanging in the balance but whatever we\u2019re not their dad).",
+          "column": "full"
+        }
+      ]
+    },
+    {
+      "id": "section-1",
+      "title": "Rules Cards",
+      "type": "page",
+      "blocks": [
+        {
+          "type": "markdown",
+          "content": "Only 3 rules cards (and the Thunder's Edge Neutral Unit reference card) are needed to play this mini-expansion. If you don't have Thunder's Edge, simply use an online reference, or if you have no access to those details, use the demissioning player's faction sheet.",
+          "column": "full"
+        },
+        {
+          "type": "cards",
+          "group": "Rules",
+          "column": "full"
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "Collapse",
+      "type": "page",
+      "blocks": [
+        {
+          "type": "markdown",
+          "content": "Collapse cards result in controlled planets undergoing some sort of civilizational collapse related calamity. Collapses result in calamity tokens being placed on planets the player controlled.",
+          "column": "full"
+        },
+        {
+          "type": "cards",
+          "group": "Collapse",
+          "column": "full"
+        }
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "Disaster",
+      "type": "page",
+      "blocks": [
+        {
+          "type": "markdown",
+          "content": "Disaster cards result in systems undergoing some sort of systemic disaster related calamity. Disasters result in calamity tokens being placed in systems the player had units in.. ",
+          "column": "full"
+        },
+        {
+          "type": "cards",
+          "group": "",
+          "column": "full"
+        }
+      ]
+    }
+  ],
+  "assets": {
+    "Backs/Back - Cards.jpg": {
+      "back": "",
+      "component": "tarot",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "Back - Cards.jpg",
+      "folder": "Backs",
+      "group": "Backs",
+      "hidden": true,
+      "id": "Back - Cards",
+      "orientation": "portrait",
+      "path": "Backs/Back - Cards.jpg",
+      "section": "cards",
+      "title": "Back - Cards",
+      "type": "Other Component"
+    },
+    "Backs/Back - Demission.jpg": {
+      "back": "",
+      "component": "tarot",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "Back - Demission.jpg",
+      "folder": "Backs",
+      "group": "Backs",
+      "hidden": true,
+      "id": "Back - Demission",
+      "orientation": "portrait",
+      "path": "Backs/Back - Demission.jpg",
+      "section": "cards",
+      "title": "Back - Demission",
+      "type": "Other Component"
+    },
+    "Backs/Back - Rules.jpg": {
+      "back": "",
+      "component": "tarot",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "Back - Rules.jpg",
+      "folder": "Backs",
+      "group": "Backs",
+      "hidden": true,
+      "id": "Back - Rules",
+      "orientation": "portrait",
+      "path": "Backs/Back - Rules.jpg",
+      "section": "cards",
+      "title": "Back - Rules",
+      "type": "Other Component"
+    },
+    "Collapse/Stripmining.jpg": {
+      "back": "Backs/Back - Cards.jpg",
+      "component": "tarot",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "Stripmining.jpg",
+      "folder": "Collapse",
+      "group": "Collapse",
+      "hidden": false,
+      "id": "Stripmining",
+      "orientation": "portrait",
+      "path": "Collapse/Stripmining.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "section": "section-2",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Stripmining",
+      "type": "Other Component"
+    },
+    "Collapse/Technological Pogrom.jpg": {
+      "back": "Backs/Back - Cards.jpg",
+      "component": "tarot",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "Technological Pogrom.jpg",
+      "folder": "Collapse",
+      "group": "Collapse",
+      "hidden": false,
+      "id": "Technological Pogrom",
+      "orientation": "portrait",
+      "path": "Collapse/Technological Pogrom.jpg",
+      "section": "section-2",
+      "title": "Technological Pogrom",
+      "type": "Other Component"
+    },
+    "Rules/Demission - Controlled.jpg": {
+      "back": "Backs/Back - Demission.jpg",
+      "color": "",
+      "component": "tarot",
+      "configured": true,
+      "description": "After your strategic action\n1. Produce up to your total PRODUCTION limit of units, exhausting planets and spending trade goods as needed; Place each unit in a system or on a planet that contains your units, obeying fleet limits.\n2. Your units become neutral units.\n3. Set aside your planets, and return your player sheets and non-system tile faction components to the box; your command and control tokens remain in play. Then, remove all laws that elected you or your planets, and all your other cards in play areas, including Support for the Throne.\n4. If at any time one of your planets has no control token or units on it, treat that planet as uncontrolled.\n5. Draw 2 cards from the calamity deck and choose 1 to narratively end your empire.\n6. Follow that calamity\u2019s setup instructions.",
+      "faction": "",
+      "faq": [],
+      "filename": "Demission - Controlled.jpg",
+      "flavour": "Resolve remaining questions using Section 33\u2028of the Living Rules Reference: Elimination",
+      "folder": "Rules",
+      "group": "Rules",
+      "hidden": false,
+      "id": "Demission - Controlled",
+      "orientation": "portrait",
+      "path": "Rules/Demission - Controlled.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "section-1",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Demission",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Demission - Controlled",
+      "type": "Other Component"
+    },
+    "Rules/Demission - Emergency.jpg": {
+      "back": "Backs/Back - Demission.jpg",
+      "color": "",
+      "component": "tarot",
+      "configured": true,
+      "description": "The speaker takes this card\n1. The demissioned player\u2019s units become neutral units. \n2. That player\u2019s strategy card is returned.\n3. Set aside their planets, and return their player sheets and non-system tile faction components to the box; their command and control tokens remain in play. Then, remove all laws that elected them or their planets, and all other cards in their play area. Their Support for the Throne remains in play if it is in a play area.\n4. If at any time one of their planets has no control token or units on it, treat that planet as uncontrolled.\n5. The speaker draws 2 cards from the calamity deck and chooses 1, describing how this empire declined.\n6. Follow that calamity\u2019s setup instructions.",
+      "faction": "",
+      "faq": [],
+      "filename": "Demission - Emergency.jpg",
+      "flavour": "Resolve remaining questions using Section 33\u2028of the Living Rules Reference: Elimination",
+      "folder": "Rules",
+      "group": "Rules",
+      "hidden": false,
+      "id": "Demission - Emergency",
+      "orientation": "portrait",
+      "path": "Rules/Demission - Emergency.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "section-1",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Demission",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Demission - Emergency",
+      "type": "Other Component"
+    },
+    "Rules/Rules - In Memoriam.jpg": {
+      "back": "Backs/Back - Rules.jpg",
+      "color": "",
+      "component": "tarot",
+      "configured": true,
+      "description": "When there are no planets containing the demissioned player\u2019s control tokens, or no units of their color remain on the gameboard (whichever comes first):\n\u2726 Purge the demissioned player\u2019s faction sheet, mech card, Support for the Throne promissory note, and remaining components from the game.\n\u2726 Remove that player\u2019s calamity card and remaining tokens from the game.\n\nAN EMPIRE HAS PASSED\n\u2726 The speaker should say a few words at this time.\n\u2726 The remaining empires are encouraged to observe a moment\u2019s silence.",
+      "faction": "",
+      "faq": [],
+      "filename": "Rules - In Memoriam.jpg",
+      "flavour": "",
+      "folder": "Rules",
+      "group": "Rules",
+      "hidden": false,
+      "id": "Rules - In Memoriam",
+      "orientation": "portrait",
+      "path": "Rules/Rules - In Memoriam.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
+      "section": "section-1",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Rules",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Rules - In Memoriam",
+      "type": "Other Component"
+    }
+  }
+}

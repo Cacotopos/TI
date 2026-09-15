@@ -390,15 +390,6 @@ def _prepare_banner(config: dict, output_dir: Path) -> str | None:
     return str(Path("assets/images") / dest.name).replace("\\", "/")
 
 
-def _git_commit() -> str:
-    try:
-        return subprocess.check_output(
-            ["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, text=True, stderr=subprocess.DEVNULL
-        ).strip()
-    except Exception:
-        return "unknown"
-
-
 # Version salt for the content hash. Bumping this prefix changes every hashed
 # filename, which forces CloudFront/browsers to fetch fresh copies.
 _HASH_VERSION = "v2"
@@ -516,7 +507,7 @@ def _bust_url(path: str, hashes: dict[str, str]) -> str:
     return path
 
 
-def _build_export(config: dict, images: list[dict], sections: list[dict], git_commit: str) -> dict:
+def _build_export(config: dict, images: list[dict], sections: list[dict]) -> dict:
     """Build a clean public JSON export from the generated image data."""
 
     def _truthy(value):
@@ -598,7 +589,6 @@ def _build_export(config: dict, images: list[dict], sections: list[dict], git_co
         "version": config.get("version", ""),
         "description": config.get("description", ""),
         "overview": _markdown_filter(overview) if overview else "",
-        "git_commit": git_commit,
         "sections": [
             {"id": s.get("id", ""), "title": s.get("title", ""), "type": s.get("type", "")}
             for s in sections
@@ -620,7 +610,6 @@ def build_site(config_path: Path, output_dir: Path) -> None:
     banner_path = _prepare_banner(config, output_dir)
 
     images = _collect_assets(config)
-    git_commit = _git_commit()
 
     # Hash and rename static assets. This gives each asset a content-hashed
     # filename, which is the only cache-busting mechanism that works when a
@@ -642,7 +631,6 @@ def build_site(config_path: Path, output_dir: Path) -> None:
         "sections": config.get("sections", []),
         "banner_path": banner_path,
         "banner_url": _bust_url(banner_path or "", asset_hashes),
-        "git_commit": git_commit,
     }
 
     # Write search-data.js before rendering HTML, then hash/rename it so the
@@ -657,7 +645,7 @@ def build_site(config_path: Path, output_dir: Path) -> None:
 
     # Write the clean public export data.json. It keeps its clean filename but
     # gets a query-string hash for the download link.
-    export_data = _build_export(config, images, site["sections"], git_commit)
+    export_data = _build_export(config, images, site["sections"])
     data_json_path = output_dir / "data.json"
     data_json_path.write_text(json.dumps(export_data, indent=2), encoding="utf-8")
     asset_hashes.update(_hash_data_json(data_json_path))

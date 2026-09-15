@@ -330,6 +330,7 @@ def deploy(expansion_id: str):
         previous_manifest = json.loads(prev_obj["Body"].read().decode("utf-8"))
     except ClientError:
         pass
+    first_deploy = previous_manifest is None
 
     try:
         for key in (manifest_key_historical, manifest_key_latest):
@@ -427,12 +428,16 @@ def deploy(expansion_id: str):
         stdout_lines.extend(f"  {e}" for e in cleanup_errors)
     stdout = "\n".join(stdout_lines)
 
+    custom_domain = f"https://{deploy_path}.cacotopos.com"
     return jsonify({
         "ok": True,
         "stdout": stdout,
         "stderr": "\n".join(cleanup_errors),
         "url": f"http://{S3_BUCKET}.s3-website-{S3_REGION}.amazonaws.com/{deploy_path}/index.html",
         "manifest_url": f"https://{S3_BUCKET}.s3.{S3_REGION}.amazonaws.com/{manifest_key_historical}",
+        "subdomain": deploy_path,
+        "custom_domain": custom_domain,
+        "first_deploy": first_deploy,
         "changeset": {
             "added": [a["key"] for a in added],
             "removed": [a["key"] for a in removed],
@@ -867,6 +872,15 @@ def diff_deploys(expansion_id: str):
             "non_image": non_image,
         },
     })
+
+
+@app.route("/new-expansion-setup.md")
+def new_expansion_setup_doc():
+    """Serve the new-expansion setup checklist as Markdown."""
+    path = ROOT / "expansions" / "NEW_EXPANSION_SETUP.md"
+    if not path.exists():
+        return "Not found", 404
+    return send_from_directory(path.parent, path.name, mimetype="text/markdown")
 
 
 if __name__ == "__main__":
