@@ -17,6 +17,8 @@
   #card-modal-images-cards { display: grid; gap: 1rem; grid-template-columns: 1fr; }
   #card-modal-images-cards.has-back { grid-template-columns: repeat(2, 1fr); align-items: start; }
   #card-modal-images .hidden { display: none !important; }
+  #card-modal-images-cards .card-image-wrapper { width: auto; max-width: none; aspect-ratio: auto; }
+  #card-modal-images-cards .card-image { max-width: min(100%, 360px); max-height: 65vh; }
 </style>
 {% set section_images = site.images | selectattr('section', 'equalto', section.id) | list %}
 <header class="bg-panel border-b border-border p-6">
