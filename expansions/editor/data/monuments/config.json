@@ -3614,13 +3614,13 @@
     },
     "Monuments/BR/Belkosea.jpg": {
       "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "sustainDamage": false,
-        "bombardment": null,
-        "antiFighterBarrage": null,
+        "production": null,
         "spaceCannon": null,
-        "production": null
+        "sustainDamage": false
       },
       "back": "Backs/Faction Monument Backs/Blue Reverie/Belkosean Alliance Back.jpg",
       "color": "",
@@ -3641,16 +3641,16 @@
         "enabled": true,
         "rules": [
           {
-            "value": "hazardous",
-            "not": false
+            "not": false,
+            "value": "hazardous"
           },
           {
-            "value": "industrial",
-            "not": false
+            "not": false,
+            "value": "industrial"
           },
           {
-            "value": "cultural",
-            "not": false
+            "not": false,
+            "value": "cultural"
           }
         ]
       },
@@ -3663,30 +3663,30 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "station": false,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
       "stats": {
-        "cost": {
-          "enabled": false,
-          "value": null,
-          "multi": "1"
-        },
-        "combat": {
-          "enabled": false,
-          "value": null,
-          "multi": "1"
-        },
-        "move": {
+        "capacity": {
           "enabled": false,
           "value": null
         },
-        "capacity": {
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
           "enabled": false,
           "value": null
         }
@@ -5031,32 +5031,24 @@
     },
     "Monuments/Base+PoK/Mahact.jpg": {
       "abilities": {
-        "antiFighterBarrage": null,
-        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "production": null,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
         "spaceCannon": null,
-        "sustainDamage": false
+        "production": null
       },
       "back": "Backs/Faction Monument Backs/Base/Mahact Back.jpg",
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "At the start of the status phase, the Mahact player may place 1 command token in this system into their fleet pool.",
+      "description": "At the start of the status phase, the Mahact player may place 1 command token in this system into their fleet pool if it is their own token, or if it does not already have 1 of that player's tokens.",
       "faction": "The Mahact Gene-Sorcerors",
       "faq": [
         {
-          "a": "Yes, the 1 max is a specific limitation of the specific gain token faction ability, not a constraint in any other way.",
-          "q": "Hey, does this let you put another player's token into your fleet pool twice?"
-        },
-        {
-          "a": "They're strong but this is more fun, and as a passive monument, this gives them a little bit of value (if no one activates the system, the monument does nothing unless you force their tokens into the system with Diplomacy or something.",
-          "q": "But they're already too strong!"
-        },
-        {
-          "a": "Yes, if Nekro copies this the Mahact player actually gets to trigger this in both systems.",
-          "q": "Wait this says 'Mahact player'. So it's useless for Nekro?"
+          "q": "Wait this says 'Mahact player'. So it's useless for Nekro?",
+          "a": "Yes, if Nekro copies this the Mahact player actually gets to trigger this in both systems."
         }
       ],
       "filename": "Mahact.jpg",
@@ -5071,16 +5063,16 @@
         "enabled": true,
         "rules": [
           {
-            "not": false,
-            "value": "hazardous"
+            "value": "hazardous",
+            "not": false
           },
           {
-            "not": false,
-            "value": "industrial"
+            "value": "industrial",
+            "not": false
           },
           {
-            "not": false,
-            "value": "cultural"
+            "value": "cultural",
+            "not": false
           }
         ]
       },
@@ -5093,30 +5085,30 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "station": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "stats": {
-        "capacity": {
+        "cost": {
           "enabled": false,
-          "value": null
+          "value": null,
+          "multi": "1"
         },
         "combat": {
           "enabled": false,
-          "multi": "1",
-          "value": null
-        },
-        "cost": {
-          "enabled": false,
-          "multi": "1",
-          "value": null
+          "value": null,
+          "multi": "1"
         },
         "move": {
+          "enabled": false,
+          "value": null
+        },
+        "capacity": {
           "enabled": false,
           "value": null
         }
@@ -9547,23 +9539,23 @@
     },
     "Monuments/TE/Firmament.jpg": {
       "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "sustainDamage": false,
-        "bombardment": null,
-        "antiFighterBarrage": null,
+        "production": null,
         "spaceCannon": null,
-        "production": null
+        "sustainDamage": false
       },
       "back": "Monuments/TE/Obsidian.jpg",
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "After a non-Firmament player activates this system, place a face down plot card into your play area, if possible. Place that player's control token on a plot card.",
+      "description": "When a player activates this system, place their control token on this card if it does not have one. When you research a technology, you may remove a control token from this card to skip 1 prerequisite, or move a non-Firmament player\u2019s control token to a plot card.",
       "faction": "The Firmament",
       "faq": [],
       "filename": "Firmament.jpg",
-      "flavour": "Epiphany offers a meeting place for the discussion of grand strategies,",
+      "flavour": "",
       "folder": "Monuments/TE",
       "group": "Thunder's Edge",
       "hidden": false,
@@ -9574,16 +9566,16 @@
         "enabled": true,
         "rules": [
           {
-            "value": "hazardous",
-            "not": false
+            "not": false,
+            "value": "hazardous"
           },
           {
-            "value": "industrial",
-            "not": false
+            "not": false,
+            "value": "industrial"
           },
           {
-            "value": "cultural",
-            "not": false
+            "not": false,
+            "value": "cultural"
           }
         ]
       },
@@ -9591,34 +9583,35 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "station": false,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
       "stats": {
-        "cost": {
-          "enabled": false,
-          "value": null,
-          "multi": 1
-        },
-        "combat": {
-          "enabled": false,
-          "value": null,
-          "multi": 1
-        },
-        "move": {
+        "capacity": {
           "enabled": false,
           "value": null
         },
-        "capacity": {
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
           "enabled": false,
           "value": null
         }
@@ -9629,8 +9622,7 @@
         "value": ""
       },
       "title": "Epiphany",
-      "type": "Unit - Structure - Monument",
-      "rotate": 0
+      "type": "Unit - Structure - Monument"
     },
     "Monuments/TE/Keleres.jpg": {
       "abilities": {
