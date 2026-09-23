@@ -223,7 +223,7 @@
     title.textContent = card.name || card.id;
     const subtitleEl = document.getElementById('card-modal-subtitle');
     if (subtitleEl) {
-      subtitleEl.textContent = escapeHtml(card.type || '');
+      subtitleEl.textContent = card.type || '';
       subtitleEl.classList.toggle('hidden', !card.type);
     }
     const metaEl = document.getElementById('card-modal-meta');
@@ -237,7 +237,7 @@
         metaEl.innerHTML = [typeLabel, anomalyLabels, wormholeLabels].filter(Boolean).join(' ');
         metaEl.classList.toggle('hidden', !(typeLabel || anomalyLabels || wormholeLabels));
       } else {
-        const parts = [card.group, card.faction].filter(Boolean).map(escapeHtml);
+        const parts = [card.group, card.faction].filter(Boolean);
         metaEl.textContent = parts.join(' · ');
         metaEl.classList.toggle('hidden', !parts.length);
       }
