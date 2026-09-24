@@ -224,14 +224,23 @@ def _collect_assets(config: dict) -> list[dict]:
         src_path = images_src / rel
         orientation = _detect_orientation(src_path, asset)
         component = asset.get("component", "us-mini")
+
+        back_asset = assets.get(asset.get("back", ""), {})
+        back_title = back_asset.get("title", "")
+        back_stem = Path(back_asset.get("filename", "")).stem
+        # Hide the back title when it is just the back asset's filename stem
+        # (i.e. it was never customised). A manually-set title still shows.
+        if back_title and back_title == back_stem:
+            back_title = ""
+
         images.append({
             "id": asset.get("id", rel.stem),
             "path": str(Path("assets/images") / rel).replace("\\", "/"),
             "folder": str(rel.parent) if rel.parent != Path(".") else "",
             "name": asset.get("title") or rel.stem,
             "subtitle": asset.get("subtitle", ""),
-            "backTitle": assets.get(asset.get("back", ""), {}).get("title", ""),
-            "backSubtitle": assets.get(asset.get("back", ""), {}).get("subtitle", ""),
+            "backTitle": back_title,
+            "backSubtitle": back_asset.get("subtitle", ""),
             "backOrientation": _detect_orientation(images_src / asset["back"], assets.get(asset.get("back", ""), {})) if asset.get("back") else "",
             "section": asset.get("section", "cards"),
             "group": asset.get("group") or (str(rel.parent) if rel.parent != Path(".") else ""),
