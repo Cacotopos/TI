@@ -93,7 +93,7 @@
       const [bg, text] = r.not ? ['#B91C1C', 'white'] : (PILL_COLORS[r.value] || ['#4F46E5', 'white']);
       return `<span class="px-2 py-1 rounded-md text-xs font-semibold whitespace-nowrap" style="${pillStyle(bg, text)}">${r.not ? 'Not ' : ''}${escapeHtml(label)}</span>`;
     });
-    return `<span class="px-2 py-1 rounded-md bg-gray-700 text-gray-100 text-xs whitespace-nowrap">Placement</span> ${parts.join('')}`;
+    return `<span class="text-xs text-muted uppercase tracking-wide mr-1">Placement:</span> ${parts.join('')}`;
   }
   function formatSynergy(synergy) {
     if (!synergy || !synergy.enabled || !synergy.value) return '';
