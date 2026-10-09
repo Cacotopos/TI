@@ -34,6 +34,16 @@ python3 -m expansions.generator.site expansions/editor/data/monuments/config.jso
 open expansions/sites/monuments/index.html
 ```
 
+### Start editor (one command)
+
+If you already have the venv set up, you can start the editor with:
+
+```bash
+cd /Users/kangarootime/Source/RiderProjects/TI && source .venv/bin/activate && python3 expansions/editor/app.py
+```
+
+Then open [http://localhost:3030](http://localhost:3030).
+
 Editor environment variables (all optional):
 
 | Variable | Default | Description |
