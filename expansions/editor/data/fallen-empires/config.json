@@ -130,6 +130,51 @@
       "title": "Back - Rules",
       "type": "Other Component"
     },
+    "Collapse/Awakened Structures.jpg": {
+      "back": "Backs/Back - Cards.jpg",
+      "component": "tarot",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "Awakened Structures.jpg",
+      "folder": "Collapse",
+      "group": "Thunder's Edge",
+      "hidden": false,
+      "id": "Awakened Structures",
+      "orientation": "portrait",
+      "path": "Collapse/Awakened Structures.jpg",
+      "section": "section-2",
+      "title": "Awakened Structures",
+      "type": "Other Component",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "station": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "subtitle": "",
+      "rotate": 0,
+      "flavour": "",
+      "color": "",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      }
+    },
     "Collapse/Biosphere Collapse.jpg": {
       "back": "Backs/Back - Cards.jpg",
       "component": "tarot",
@@ -609,6 +654,43 @@
       "title": "Entropic Rifts",
       "type": "Other Component"
     },
+    "Disaster/Exogalactic Invader.jpg": {
+      "back": "Backs/Back - Cards.jpg",
+      "component": "tarot",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "Exogalactic Invader.jpg",
+      "folder": "Disaster",
+      "group": "Discordant Stars",
+      "hidden": false,
+      "id": "Exogalactic Invader",
+      "orientation": "portrait",
+      "path": "Disaster/Exogalactic Invader.jpg",
+      "section": "section-3",
+      "title": "Exogalactic Invader",
+      "type": "Other Component",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "station": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      }
+    },
     "Disaster/Gamma Ray Burst.jpg": {
       "back": "Backs/Back - Cards.jpg",
       "component": "tarot",
@@ -625,6 +707,24 @@
       "path": "Disaster/Gamma Ray Burst.jpg",
       "section": "section-3",
       "title": "Gamma Ray Burst",
+      "type": "Other Component"
+    },
+    "Disaster/Gravitic Tides.jpg": {
+      "back": "Backs/Back - Cards.jpg",
+      "component": "tarot",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "Gravitic Tides.jpg",
+      "folder": "Disaster",
+      "group": "Discordant Stars",
+      "hidden": false,
+      "id": "Gravitic Tides",
+      "orientation": "portrait",
+      "path": "Disaster/Gravitic Tides.jpg",
+      "section": "section-3",
+      "title": "Gravitic Tides",
       "type": "Other Component"
     },
     "Disaster/Interstellar Piracy.jpg": {
@@ -644,6 +744,43 @@
       "section": "section-3",
       "title": "Interstellar Piracy",
       "type": "Other Component"
+    },
+    "Disaster/Local Warlords.jpg": {
+      "back": "Backs/Back - Cards.jpg",
+      "component": "tarot",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "Local Warlords.jpg",
+      "folder": "Disaster",
+      "group": "Discordant Stars",
+      "hidden": false,
+      "id": "Local Warlords",
+      "orientation": "portrait",
+      "path": "Disaster/Local Warlords.jpg",
+      "section": "section-3",
+      "title": "Local Warlords",
+      "type": "Other Component",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "station": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      }
     },
     "Disaster/Nanite Contagion.jpg": {
       "back": "Backs/Back - Cards.jpg",
@@ -717,6 +854,24 @@
       "title": "Solar Flares",
       "type": "Other Component"
     },
+    "Disaster/Space Hulks.jpg": {
+      "back": "Backs/Back - Cards.jpg",
+      "component": "tarot",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "Space Hulks.jpg",
+      "folder": "Disaster",
+      "group": "Discordant Stars",
+      "hidden": false,
+      "id": "Space Hulks",
+      "orientation": "portrait",
+      "path": "Disaster/Space Hulks.jpg",
+      "section": "section-3",
+      "title": "Space Hulks",
+      "type": "Other Component"
+    },
     "Disaster/Spacetime Anomalies.jpg": {
       "back": "Backs/Back - Cards.jpg",
       "component": "tarot",
@@ -752,6 +907,51 @@
       "section": "section-3",
       "title": "Telepathic Resonance",
       "type": "Other Component"
+    },
+    "Disaster/The Fracture.jpg": {
+      "back": "Backs/Back - Cards.jpg",
+      "component": "tarot",
+      "configured": true,
+      "description": "",
+      "faction": "",
+      "faq": [],
+      "filename": "The Fracture.jpg",
+      "folder": "Disaster",
+      "group": "Thunder's Edge",
+      "hidden": false,
+      "id": "The Fracture",
+      "orientation": "portrait",
+      "path": "Disaster/The Fracture.jpg",
+      "section": "section-3",
+      "title": "The Fracture",
+      "type": "Other Component",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "station": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      },
+      "subtitle": "",
+      "rotate": 0,
+      "flavour": "",
+      "color": "",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      }
     },
     "Disaster/Viral Pandemic.jpg": {
       "back": "Backs/Back - Cards.jpg",

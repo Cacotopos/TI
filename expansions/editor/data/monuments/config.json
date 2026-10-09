@@ -2286,19 +2286,46 @@
     },
     "Backs/Faction Monument Backs/DS/L_tokk.jpg": {
       "back": "",
+      "color": "",
       "component": "us-mini",
       "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
       "filename": "L_tokk.jpg",
+      "flavour": "",
       "folder": "Backs/Faction Monument Backs/DS",
       "group": "Backs",
       "hidden": true,
       "id": "L_tokk",
       "orientation": "landscape",
       "path": "Backs/Faction Monument Backs/DS/L_tokk.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "cards",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "L_tokk",
       "type": "Other Component"
     },
@@ -3216,7 +3243,7 @@
       "back": "",
       "color": "",
       "component": "us-mini",
-      "configured": false,
+      "configured": true,
       "description": "",
       "faction": "",
       "faq": [],
@@ -3236,6 +3263,7 @@
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "cards",
       "source": {
         "enabled": false,
@@ -3244,6 +3272,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -5031,13 +5060,13 @@
     },
     "Monuments/Base+PoK/Mahact.jpg": {
       "abilities": {
+        "antiFighterBarrage": null,
+        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "sustainDamage": false,
-        "bombardment": null,
-        "antiFighterBarrage": null,
+        "production": null,
         "spaceCannon": null,
-        "production": null
+        "sustainDamage": false
       },
       "back": "Backs/Faction Monument Backs/Base/Mahact Back.jpg",
       "color": "",
@@ -5047,8 +5076,8 @@
       "faction": "The Mahact Gene-Sorcerors",
       "faq": [
         {
-          "q": "Wait this says 'Mahact player'. So it's useless for Nekro?",
-          "a": "Yes, if Nekro copies this the Mahact player actually gets to trigger this in both systems."
+          "a": "Yes, if Nekro copies this the Mahact player actually gets to trigger this in both systems.",
+          "q": "Wait this says 'Mahact player'. So it's useless for Nekro?"
         }
       ],
       "filename": "Mahact.jpg",
@@ -5063,16 +5092,16 @@
         "enabled": true,
         "rules": [
           {
-            "value": "hazardous",
-            "not": false
+            "not": false,
+            "value": "hazardous"
           },
           {
-            "value": "industrial",
-            "not": false
+            "not": false,
+            "value": "industrial"
           },
           {
-            "value": "cultural",
-            "not": false
+            "not": false,
+            "value": "cultural"
           }
         ]
       },
@@ -5085,30 +5114,30 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "resource": 0,
-        "trait": [],
         "legendary": false,
+        "linkedAbility": "",
         "relic": false,
+        "resource": 0,
         "station": false,
         "techSpeciality": "",
-        "linkedAbility": ""
+        "trait": []
       },
       "stats": {
-        "cost": {
-          "enabled": false,
-          "value": null,
-          "multi": "1"
-        },
-        "combat": {
-          "enabled": false,
-          "value": null,
-          "multi": "1"
-        },
-        "move": {
+        "capacity": {
           "enabled": false,
           "value": null
         },
-        "capacity": {
+        "combat": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "cost": {
+          "enabled": false,
+          "multi": "1",
+          "value": null
+        },
+        "move": {
           "enabled": false,
           "value": null
         }
@@ -7419,11 +7448,11 @@
         "spaceCannon": null,
         "sustainDamage": true
       },
-      "back": "",
+      "back": "Backs/Faction Monument Backs/DS/L_tokk.jpg",
       "color": "",
       "component": "us-mini",
       "configured": true,
-      "description": "During ground combat in this system, this unit is treated as a structure and a group force.",
+      "description": "During ground combat in this system, this unit is treated as a structure and a ground force.",
       "faction": "L'tokk Khrask",
       "faq": [],
       "filename": "Khrask.jpg",
@@ -7435,8 +7464,13 @@
       "orientation": "landscape",
       "path": "Monuments/DS/Khrask.jpg",
       "placement": {
-        "enabled": false,
-        "rules": []
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "legendary"
+          }
+        ]
       },
       "prereq": {
         "enabled": false,
@@ -7567,15 +7601,15 @@
     },
     "Monuments/DS/Kollecc.jpg": {
       "abilities": {
-        "antiFighterBarrage": null,
-        "bombardment": null,
         "deploy": false,
         "planetaryShield": false,
-        "production": null,
+        "sustainDamage": false,
+        "bombardment": null,
+        "antiFighterBarrage": null,
         "spaceCannon": null,
-        "sustainDamage": false
+        "production": null
       },
-      "back": "",
+      "back": "Backs/Faction Monument Backs/DS/Kollec.jpg",
       "color": "",
       "component": "us-mini",
       "configured": true,
@@ -7594,8 +7628,8 @@
         "enabled": true,
         "rules": [
           {
-            "not": false,
-            "value": "legendary"
+            "value": "legendary",
+            "not": false
           }
         ]
       },
@@ -7608,30 +7642,30 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
         "station": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "stats": {
-        "capacity": {
+        "cost": {
           "enabled": false,
-          "value": null
+          "value": null,
+          "multi": "1"
         },
         "combat": {
           "enabled": false,
-          "multi": "1",
-          "value": null
-        },
-        "cost": {
-          "enabled": false,
-          "multi": "1",
-          "value": null
+          "value": null,
+          "multi": "1"
         },
         "move": {
+          "enabled": false,
+          "value": null
+        },
+        "capacity": {
           "enabled": false,
           "value": null
         }
@@ -7760,8 +7794,13 @@
       "orientation": "landscape",
       "path": "Monuments/DS/Kortali.jpg",
       "placement": {
-        "enabled": false,
-        "rules": []
+        "enabled": true,
+        "rules": [
+          {
+            "not": false,
+            "value": "legendary"
+          }
+        ]
       },
       "prereq": {
         "enabled": false,
@@ -9051,7 +9090,7 @@
         "spaceCannon": null,
         "sustainDamage": false
       },
-      "back": "",
+      "back": "Backs/Faction Monument Backs/DS/Veldyr.jpg",
       "color": "",
       "component": "us-mini",
       "configured": true,
@@ -10521,7 +10560,7 @@
         },
         "sustainDamage": false
       },
-      "back": "Monuments/TF/King White Back.jpg",
+      "back": "Backs/Faction Monument Backs/TF/King White Back.jpg",
       "color": "",
       "component": "us-mini",
       "configured": true,
@@ -10566,6 +10605,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
