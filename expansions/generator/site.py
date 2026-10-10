@@ -387,7 +387,7 @@ def _prepare_changelog(changes: dict, output_dir: Path) -> dict | None:
 
     entries = []
     for key, f in sorted(files.items()):
-        if f.get("false_positive") or f.get("status") == "unchanged":
+        if f.get("false_positive") or f.get("linked_into") or f.get("status") == "unchanged":
             continue
         left_rel = f.get("left") or ""
         right_rel = f.get("right") or ""

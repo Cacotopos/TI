@@ -778,7 +778,11 @@
         "trait": []
       },
       "title": "Networking Officer",
-      "type": "Promissory Note"
+      "type": "Promissory Note",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      }
     },
     "Drahn/Drahn Reference.jpg": {
       "back": "",
@@ -880,6 +884,10 @@
         "resource": 0,
         "techSpeciality": "",
         "trait": []
+      },
+      "synergy": {
+        "enabled": true,
+        "value": ""
       },
       "title": "Special Forces",
       "type": "Technology"
@@ -1184,7 +1192,7 @@
       "component": "us-mini",
       "configured": true,
       "description": "***ACTION:*** For each command token in your tactics pool, explore the frontier exploration deck once in a system that contains your ships and no planets. \nThen, purge this card.",
-      "faction": "The Drahn Cartel",
+      "faction": "The Empyrean",
       "faq": [],
       "filename": "Empyrean.jpg",
       "flavour": "",
@@ -1194,10 +1202,15 @@
       "id": "Empyrean",
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Empyrean.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "drahn",
       "source": {
         "enabled": false,
@@ -1206,6 +1219,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -1526,7 +1540,7 @@
         "value": ""
       },
       "title": "Weavelink Integration",
-      "type": "Unit - Structure - Monument"
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Kollecc.jpg": {
       "back": "",
@@ -1544,25 +1558,52 @@
       "path": "Drahn/Heroes/Active/Kollecc.jpg",
       "section": "drahn",
       "title": "Kollecc",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Kortali.jpg": {
-      "back": "",
+      "back": "Drahn/Heroes/Inactive/Kortali.jpg",
+      "color": "",
       "component": "us-mini",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Kortali Tribunal",
       "faq": [],
       "filename": "Kortali.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
       "group": "Heroes - Discordant Stars",
       "hidden": false,
       "id": "Kortali",
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Kortali.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "drahn",
-      "title": "Kortali",
-      "type": "Other Component"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Sacred Fire",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Shadow Crusade",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Kyro.jpg": {
       "back": "Drahn/Heroes/Inactive/Kyro.jpg",
@@ -1619,7 +1660,7 @@
       "path": "Drahn/Heroes/Active/Lanefir.jpg",
       "section": "drahn",
       "title": "Lanefir",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Li-Zho.jpg": {
       "back": "",
@@ -1637,25 +1678,52 @@
       "path": "Drahn/Heroes/Active/Li-Zho.jpg",
       "section": "drahn",
       "title": "Li-Zho",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Mahact.jpg": {
-      "back": "",
+      "back": "Drahn/Heroes/Inactive/Mahact.jpg",
+      "color": "",
       "component": "us-mini",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Mahact Gene-Sorcerers",
       "faq": [],
       "filename": "Mahact.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Heroes - Twilight Imperium",
+      "group": "Heroes - Prophecy of Kings",
       "hidden": false,
       "id": "Mahact",
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Mahact.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "drahn",
-      "title": "Mahact",
-      "type": "Other Component"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "A new way forward",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Coercive Compliance",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Muaat.jpg": {
       "back": "",
@@ -1673,7 +1741,7 @@
       "path": "Drahn/Heroes/Active/Muaat.jpg",
       "section": "drahn",
       "title": "Muaat",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Naalu.jpg": {
       "back": "Drahn/Heroes/Inactive/Naalu.jpg",
@@ -1732,7 +1800,7 @@
       "path": "Drahn/Heroes/Active/Nekro.jpg",
       "section": "drahn",
       "title": "Nekro",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Nivyn.jpg": {
       "back": "",
@@ -1750,7 +1818,7 @@
       "path": "Drahn/Heroes/Active/Nivyn.jpg",
       "section": "drahn",
       "title": "Nivyn",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Nokar.jpg": {
       "back": "Drahn/Heroes/Inactive/Nokar.jpg",
@@ -1938,7 +2006,7 @@
       "path": "Drahn/Heroes/Active/Savages.jpg",
       "section": "drahn",
       "title": "Savages",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Tnelis.jpg": {
       "back": "",
@@ -1970,7 +2038,7 @@
         "trait": []
       },
       "title": "Tnelis",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Vaden.jpg": {
       "back": "",
@@ -1988,7 +2056,7 @@
       "path": "Drahn/Heroes/Active/Vaden.jpg",
       "section": "drahn",
       "title": "Vaden",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Vaylerian.jpg": {
       "back": "",
@@ -2006,25 +2074,52 @@
       "path": "Drahn/Heroes/Active/Vaylerian.jpg",
       "section": "drahn",
       "title": "Vaylerian",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Vuil'Raith.jpg": {
-      "back": "",
+      "back": "Drahn/Heroes/Inactive/Vuil'Raith.jpg",
+      "color": "",
       "component": "us-mini",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Vuil'Raith Cabal",
       "faq": [],
       "filename": "Vuil'Raith.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
-      "group": "Heroes - Twilight Imperium",
+      "group": "Heroes - Prophecy of Kings",
       "hidden": false,
       "id": "Vuil'Raith",
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Vuil'Raith.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "drahn",
-      "title": "Vuil'Raith",
-      "type": "Other Component"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Enslaved Horrors",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Hunger of the Void",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Xin.jpg": {
       "back": "Drahn/Heroes/Inactive/Xin.jpg",
@@ -2109,22 +2204,49 @@
       "type": "Hero"
     },
     "Drahn/Heroes/Active/Yssaril.jpg": {
-      "back": "",
+      "back": "Drahn/Heroes/Inactive/Yssaril.jpg",
+      "color": "",
       "component": "us-mini",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Yssaril Tribes",
       "faq": [],
       "filename": "Yssaril.jpg",
+      "flavour": "",
       "folder": "Drahn/Heroes/Active",
       "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "Yssaril",
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Yssaril.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "drahn",
-      "title": "Yssaril",
-      "type": "Other Component"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Trust No One",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Council Infiltration",
+      "type": "Hero"
     },
     "Drahn/Heroes/Active/Zelian.jpg": {
       "back": "",
@@ -2142,7 +2264,7 @@
       "path": "Drahn/Heroes/Active/Zelian.jpg",
       "section": "drahn",
       "title": "Zelian",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Drahn/Heroes/Inactive/Arborec.jpg": {
       "back": "",
@@ -3516,12 +3638,12 @@
       "type": "Planet"
     },
     "Keleres/Heroes/Active/Argent.jpg": {
-      "back": "",
+      "back": "Keleres/Heroes/Inactive/Argent.jpg",
       "color": "",
       "component": "us-mini",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Argent Flight",
       "faq": [],
       "filename": "Argent.jpg",
       "flavour": "",
@@ -3552,13 +3674,13 @@
         "techSpeciality": "",
         "trait": []
       },
-      "subtitle": "",
+      "subtitle": "Artemiris Ascendant",
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "title": "Argent",
-      "type": "Other Component"
+      "title": "Overwing Zeta",
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Atokera.jpg": {
       "back": "",
@@ -3576,7 +3698,7 @@
       "path": "Keleres/Heroes/Active/Atokera.jpg",
       "section": "keleres",
       "title": "Atokera",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Augurs.jpg": {
       "back": "Keleres/Heroes/Inactive/Augurs.jpg",
@@ -3633,7 +3755,7 @@
       "path": "Keleres/Heroes/Active/Bentor.jpg",
       "section": "keleres",
       "title": "Bentor",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Berserkers.jpg": {
       "back": "Keleres/Heroes/Inactive/Kjalengard.jpg",
@@ -3772,7 +3894,7 @@
       "path": "Keleres/Heroes/Active/Dih-Mohn.jpg",
       "section": "keleres",
       "title": "Dih-Mohn",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Edyn.jpg": {
       "back": "",
@@ -3790,7 +3912,7 @@
       "path": "Keleres/Heroes/Active/Edyn.jpg",
       "section": "keleres",
       "title": "Edyn",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Hacan.jpg": {
       "back": "",
@@ -3808,7 +3930,7 @@
       "path": "Keleres/Heroes/Active/Hacan.jpg",
       "section": "keleres",
       "title": "Hacan",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Jol-Nar.jpg": {
       "back": "",
@@ -3826,7 +3948,7 @@
       "path": "Keleres/Heroes/Active/Jol-Nar.jpg",
       "section": "keleres",
       "title": "Jol-Nar",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Kaltrim.jpg": {
       "back": "",
@@ -3862,7 +3984,7 @@
         "value": ""
       },
       "title": "Kaltrim",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Khrask.jpg": {
       "back": "",
@@ -3880,7 +4002,7 @@
       "path": "Keleres/Heroes/Active/Khrask.jpg",
       "section": "keleres",
       "title": "Khrask",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Kolume.jpg": {
       "back": "",
@@ -3898,25 +4020,52 @@
       "path": "Keleres/Heroes/Active/Kolume.jpg",
       "section": "keleres",
       "title": "Kolume",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/L1Z1X copy.jpg": {
-      "back": "",
+      "back": "Keleres/Heroes/Inactive/L1Z1X.jpg",
+      "color": "",
       "component": "us-mini",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The L1Z1X Mindnet",
       "faq": [],
       "filename": "L1Z1X copy.jpg",
+      "flavour": "",
       "folder": "Keleres/Heroes/Active",
       "group": "Heroes - Twilight Imperium",
       "hidden": false,
       "id": "L1Z1X copy",
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/L1Z1X copy.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "keleres",
-      "title": "L1Z1X copy",
-      "type": "Other Component"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Legacy Interfaces",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Drone Ship Network",
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Last Bastion.jpg": {
       "back": "Keleres/Heroes/Inactive/Last Bastion.jpg",
@@ -3961,7 +4110,7 @@
         "value": ""
       },
       "title": "Last Bastion",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Letnev.jpg": {
       "back": "",
@@ -3979,7 +4128,7 @@
       "path": "Keleres/Heroes/Active/Letnev.jpg",
       "section": "keleres",
       "title": "Letnev",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Mentak.jpg": {
       "back": "",
@@ -3997,7 +4146,26 @@
       "path": "Keleres/Heroes/Active/Mentak.jpg",
       "section": "keleres",
       "title": "Mentak",
-      "type": "Other Component"
+      "type": "Hero",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "station": false,
+        "techSpeciality": "",
+        "linkedAbility": ""
+      }
     },
     "Keleres/Heroes/Active/Mirveda.jpg": {
       "back": "",
@@ -4015,7 +4183,7 @@
       "path": "Keleres/Heroes/Active/Mirveda.jpg",
       "section": "keleres",
       "title": "Mirveda",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Myko-Mentori.jpg": {
       "back": "",
@@ -4033,7 +4201,7 @@
       "path": "Keleres/Heroes/Active/Myko-Mentori.jpg",
       "section": "keleres",
       "title": "Myko-Mentori",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/N'orr.jpg": {
       "back": "",
@@ -4051,25 +4219,52 @@
       "path": "Keleres/Heroes/Active/N'orr.jpg",
       "section": "keleres",
       "title": "N'orr",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Naaz-Rokha.jpg": {
-      "back": "",
+      "back": "Keleres/Heroes/Inactive/NRA.jpg",
+      "color": "",
       "component": "us-mini",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Naaz-Rokha Alliance",
       "faq": [],
       "filename": "Naaz-Rokha.jpg",
+      "flavour": "",
       "folder": "Keleres/Heroes/Active",
-      "group": "Heroes - Twilight Imperium",
+      "group": "Heroes - Prophecy of Kings",
       "hidden": false,
       "id": "Naaz-Rokha",
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Naaz-Rokha.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "keleres",
-      "title": "Naaz-Rokha",
-      "type": "Other Component"
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "Allied Synergy",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
+      "title": "Team Building Exercises",
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Nomad.jpg": {
       "back": "Keleres/Heroes/Inactive/Nomad.jpg",
@@ -4079,7 +4274,7 @@
       "component": "us-mini",
       "configured": true,
       "description": "**When another player scores a secret objective:**\nIf you fulfill the requirements of that objective, you may purge this card to draw 3 secret objectives.",
-      "faction": "The Council Keleres",
+      "faction": "The Nomad",
       "faq": [],
       "filename": "Nomad.jpg",
       "flavour": "",
@@ -4089,10 +4284,15 @@
       "id": "Nomad",
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Nomad.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "keleres",
       "source": {
         "enabled": false,
@@ -4101,6 +4301,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -4128,7 +4329,7 @@
       "path": "Keleres/Heroes/Active/Qhet.jpg",
       "section": "keleres",
       "title": "Qhet",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Ral-Nel.jpg": {
       "back": "",
@@ -4146,7 +4347,7 @@
       "path": "Keleres/Heroes/Active/Ral-Nel.jpg",
       "section": "keleres",
       "title": "Ral-Nel",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Roh'Dhna.jpg": {
       "back": "Keleres/Heroes/Inactive/Roh'Dhna.jpg",
@@ -4244,7 +4445,7 @@
       "path": "Keleres/Heroes/Active/Shipwrights.jpg",
       "section": "keleres",
       "title": "Shipwrights",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Sol.jpg": {
       "back": "",
@@ -4262,7 +4463,7 @@
       "path": "Keleres/Heroes/Active/Sol.jpg",
       "section": "keleres",
       "title": "Sol",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Toldar.jpg": {
       "back": "",
@@ -4280,7 +4481,7 @@
       "path": "Keleres/Heroes/Active/Toldar.jpg",
       "section": "keleres",
       "title": "Toldar",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Ul.jpg": {
       "back": "Keleres/Heroes/Inactive/Titans.jpg",
@@ -4288,20 +4489,25 @@
       "component": "us-mini",
       "configured": true,
       "description": "***ACTION***: Purge this card to replace up to 4 of your infantry with mechs, and then up to 4 of your mechs with PDS units.",
-      "faction": "The Council Keleres",
+      "faction": "The Titans of Ul",
       "faq": [],
       "filename": "Ul.jpg",
       "flavour": "",
       "folder": "Keleres/Heroes/Active",
-      "group": "Heroes - Twilight Imperium",
+      "group": "Heroes - Prophecy of Kings",
       "hidden": false,
       "id": "Ul",
       "orientation": "auto",
       "path": "Keleres/Heroes/Active/Ul.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "keleres",
       "source": {
         "enabled": false,
@@ -4310,6 +4516,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -4337,7 +4544,7 @@
       "path": "Keleres/Heroes/Active/Uydai.jpg",
       "section": "keleres",
       "title": "Uydai",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Veldyr.jpg": {
       "back": "",
@@ -4355,7 +4562,7 @@
       "path": "Keleres/Heroes/Active/Veldyr.jpg",
       "section": "keleres",
       "title": "Veldyr",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Winnu.jpg": {
       "back": "",
@@ -4373,7 +4580,7 @@
       "path": "Keleres/Heroes/Active/Winnu.jpg",
       "section": "keleres",
       "title": "Winnu",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Xxcha.jpg": {
       "back": "",
@@ -4391,7 +4598,7 @@
       "path": "Keleres/Heroes/Active/Xxcha.jpg",
       "section": "keleres",
       "title": "Xxcha",
-      "type": "Other Component"
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Zealots of Rhodun.jpg": {
       "back": "Keleres/Heroes/Inactive/Rhodun.jpg",
@@ -5967,30 +6174,76 @@
       "faq": [],
       "filename": "Creuss - Deal.jpg",
       "folder": "Pacts and Deals",
-      "group": "Other Components",
+      "group": "Pacts and Deals",
       "hidden": false,
       "id": "Creuss - Deal",
       "orientation": "landscape",
       "path": "Pacts and Deals/Creuss - Deal.jpg",
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
       "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Creuss - Deal",
       "type": "Other Component"
     },
     "Pacts and Deals/Crimson - Deal.jpg": {
       "back": "Drahn/Drahn Alliance Back.jpg",
+      "color": "",
       "component": "us-mini",
       "configured": true,
       "description": "",
-      "faction": "",
+      "faction": "The Crimson Rebellion",
       "faq": [],
       "filename": "Crimson - Deal.jpg",
+      "flavour": "",
       "folder": "Pacts and Deals",
-      "group": "Other Components",
+      "group": "Pacts and Deals",
       "hidden": false,
       "id": "Crimson - Deal",
       "orientation": "landscape",
       "path": "Pacts and Deals/Crimson - Deal.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
+      "prereq": {
+        "enabled": false,
+        "value": ""
+      },
+      "rotate": 0,
       "section": "drahn",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
+      },
+      "subtitle": "",
+      "synergy": {
+        "enabled": false,
+        "value": ""
+      },
       "title": "Crimson - Deal",
       "type": "Other Component"
     },
@@ -6003,7 +6256,7 @@
       "faq": [],
       "filename": "Nivyn - Deal.jpg",
       "folder": "Pacts and Deals",
-      "group": "Other Components",
+      "group": "Pacts and Deals",
       "hidden": false,
       "id": "Nivyn - Deal",
       "orientation": "landscape",
@@ -6066,7 +6319,7 @@
       "faq": [],
       "filename": "Zelian - Deal.jpg",
       "folder": "Pacts and Deals",
-      "group": "Other Components",
+      "group": "Pacts and Deals",
       "hidden": false,
       "id": "Zelian - Deal",
       "orientation": "landscape",

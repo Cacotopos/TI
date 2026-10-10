@@ -1,0 +1,1475 @@
+{
+  "sources": [
+    {
+      "label": "v3.0",
+      "path": "/Users/kangarootime/Documents/Gaming/Boardgames/Twilight Imperium 4/Expansions/Monuments/Printable Cards/v3"
+    },
+    {
+      "label": "v3.1",
+      "path": "/Users/kangarootime/Documents/Gaming/Boardgames/Twilight Imperium 4/Expansions/Monuments/Printable Cards/v3.1"
+    }
+  ],
+  "files": {
+    "Action Cards/Festival.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Action Cards/Festival.jpg",
+      "notes": "",
+      "right": "Action Cards/Festival.jpg",
+      "status": "changed"
+    },
+    "Action Cards/Rebel Bombing.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Action Cards/Rebel Bombing.jpg",
+      "notes": "",
+      "right": "Action Cards/Rebel Bombing.jpg",
+      "status": "changed"
+    },
+    "Action Cards/Renovation.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Action Cards/Renovation.jpg",
+      "notes": "",
+      "right": "Action Cards/Renovation.jpg",
+      "status": "changed"
+    },
+    "Action Cards/TF Dematerialize.jpg": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "",
+      "right": "Action Cards/TF Dematerialize.jpg",
+      "status": "added"
+    },
+    "Action Cards/TF Materialize.jpg": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "",
+      "right": "Action Cards/TF Materialize.jpg",
+      "status": "added"
+    },
+    "Agendas/Minister of Culture.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Agendas/Minister of Culture.jpg",
+      "notes": "",
+      "right": "Agendas/Minister of Culture.jpg",
+      "status": "changed"
+    },
+    "Backs/Action Card.jpg": {
+      "aspects": [],
+      "change_type": "replacement",
+      "false_positive": false,
+      "left": "Backs/Action Card.png",
+      "linked": true,
+      "notes": "Just replaced the file with a more efficient jpg.",
+      "right": "Backs/Action Card.jpg",
+      "status": "changed"
+    },
+    "Backs/Action Card.png": {
+      "linked_into": "Backs/Action Card.jpg"
+    },
+    "Backs/Agenda Back.jpg": {
+      "aspects": [
+        "art",
+        "layout"
+      ],
+      "change_type": "replacement",
+      "false_positive": false,
+      "left": "Backs/Agenda Back.png",
+      "linked": true,
+      "notes": "Just a format change and brighter back with better bleed.",
+      "right": "Backs/Agenda Back.jpg",
+      "status": "changed"
+    },
+    "Backs/Agenda Back.png": {
+      "linked_into": "Backs/Agenda Back.jpg"
+    },
+    "Backs/Faction Monument Backs/TF/King Black Back.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": null,
+      "notes": "",
+      "right": "Backs/Faction Monument Backs/TF/King Black Back.jpg",
+      "status": "added"
+    },
+    "Backs/Faction Monument Backs/TF/King Blue Back.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": null,
+      "notes": "",
+      "right": "Backs/Faction Monument Backs/TF/King Blue Back.jpg",
+      "status": "added"
+    },
+    "Backs/Faction Monument Backs/TF/King Green Back.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": null,
+      "notes": "",
+      "right": "Backs/Faction Monument Backs/TF/King Green Back.jpg",
+      "status": "added"
+    },
+    "Backs/Faction Monument Backs/TF/King Orange Back.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": null,
+      "notes": "",
+      "right": "Backs/Faction Monument Backs/TF/King Orange Back.jpg",
+      "status": "added"
+    },
+    "Backs/Faction Monument Backs/TF/King Pink Back.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": null,
+      "notes": "",
+      "right": "Backs/Faction Monument Backs/TF/King Pink Back.jpg",
+      "status": "added"
+    },
+    "Backs/Faction Monument Backs/TF/King Purple Back.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": null,
+      "notes": "",
+      "right": "Backs/Faction Monument Backs/TF/King Purple Back.jpg",
+      "status": "added"
+    },
+    "Backs/Faction Monument Backs/TF/King Red Back.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": null,
+      "notes": "",
+      "right": "Backs/Faction Monument Backs/TF/King Red Back.jpg",
+      "status": "added"
+    },
+    "Backs/Faction Monument Backs/TF/King White Back.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": null,
+      "notes": "",
+      "right": "Backs/Faction Monument Backs/TF/King White Back.jpg",
+      "status": "added"
+    },
+    "Backs/Faction Monument Backs/TF/King Yellow Back.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": null,
+      "notes": "",
+      "right": "Backs/Faction Monument Backs/TF/King Yellow Back.jpg",
+      "status": "added"
+    },
+    "Backs/Monument Funding Back.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": null,
+      "notes": "",
+      "right": "Backs/Monument Funding Back.jpg",
+      "status": "added"
+    },
+    "Backs/TF Action Card.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": null,
+      "notes": "",
+      "right": "Backs/TF Action Card.jpg",
+      "status": "added"
+    },
+    "Backs/TF Edict Card.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": null,
+      "notes": "",
+      "right": "Backs/TF Edict Card.jpg",
+      "status": "added"
+    },
+    "Backs/TF Monument Funding Back.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": null,
+      "notes": "",
+      "right": "Backs/TF Monument Funding Back.jpg",
+      "status": "added"
+    },
+    "Events/Cultural Monuments Event.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "replacement",
+      "false_positive": false,
+      "left": "Events/Cultural Monuments.jpg",
+      "linked": true,
+      "notes": "Adjusted the event card to simply use the funding card instead of putting the rule into an unintuitive rule change.",
+      "right": "Events/Cultural Monuments Event.jpg",
+      "status": "changed"
+    },
+    "Events/Cultural Monuments.jpg": {
+      "linked_into": "Events/Cultural Monuments Event.jpg"
+    },
+    "Monument Funding.jpg": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "",
+      "right": "Monument Funding.jpg",
+      "status": "added"
+    },
+    "Monuments Construction SC.png": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "",
+      "right": "Monuments Construction SC.png",
+      "status": "added"
+    },
+    "Monuments/BR/Atokera.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/BR/Atokera.jpg",
+      "notes": "",
+      "right": "Monuments/BR/Atokera.jpg",
+      "status": "changed"
+    },
+    "Monuments/BR/Belkosea.jpg": {
+      "aspects": [
+        "flavor",
+        "ability"
+      ],
+      "change_type": "major",
+      "false_positive": false,
+      "left": "Monuments/BR/Belkosea.jpg",
+      "notes": "Essentially the same, but now tracked and slowed down with a control token (so that Nekro can use it). Functionally it has slowed down.",
+      "right": "Monuments/BR/Belkosea.jpg",
+      "status": "changed"
+    },
+    "Monuments/BR/Kaltrim.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/BR/Kaltrim.jpg",
+      "notes": "",
+      "right": "Monuments/BR/Kaltrim.jpg",
+      "status": "changed"
+    },
+    "Monuments/BR/Pharad'n.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "replacement",
+      "false_positive": false,
+      "left": "Monuments/BR/Pharad'n.jpg",
+      "notes": "Basically an entirely new card.",
+      "right": "Monuments/BR/Pharad'n.jpg",
+      "status": "changed"
+    },
+    "Monuments/BR/Qhet.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/BR/Qhet.jpg",
+      "notes": "",
+      "right": "Monuments/BR/Qhet.jpg",
+      "status": "changed"
+    },
+    "Monuments/BR/Sarcosa.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "moderate",
+      "false_positive": false,
+      "left": "Monuments/BR/Sarcosa.jpg",
+      "notes": "",
+      "right": "Monuments/BR/Sarcosa.jpg",
+      "status": "changed"
+    },
+    "Monuments/BR/Toldar - Dishonor.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Monuments/BR/Toldar - Dishonor.jpg",
+      "notes": "Just a clean up on the ability.",
+      "right": "Monuments/BR/Toldar - Dishonor.jpg",
+      "status": "changed"
+    },
+    "Monuments/BR/Toldar - Honor.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/BR/Toldar - Honor.jpg",
+      "notes": "",
+      "right": "Monuments/BR/Toldar - Honor.jpg",
+      "status": "changed"
+    },
+    "Monuments/BR/Uydai.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/BR/Uydai.jpg",
+      "notes": "",
+      "right": "Monuments/BR/Uydai.jpg",
+      "status": "changed"
+    },
+    "Monuments/BR/Xin.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/BR/Xin.jpg",
+      "notes": "",
+      "right": "Monuments/BR/Xin.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base M/Creuss Base.jpg": {
+      "aspects": [],
+      "change_type": "removed",
+      "false_positive": false,
+      "left": "Monuments/Base M/Creuss Base.jpg",
+      "notes": "Monuments 1 has been moved into its own separate release to avoid this ongoing confusion.",
+      "right": null,
+      "status": "removed"
+    },
+    "Monuments/Base M/L1Z1X Base.jpg": {
+      "aspects": [],
+      "change_type": "removed",
+      "false_positive": false,
+      "left": "Monuments/Base M/L1Z1X Base.jpg",
+      "notes": "Monuments 1 has been moved into its own separate release to avoid this ongoing confusion.",
+      "right": null,
+      "status": "removed"
+    },
+    "Monuments/Base M/Saar Base.jpg": {
+      "aspects": [],
+      "change_type": "removed",
+      "false_positive": false,
+      "left": "Monuments/Base M/Saar Base.jpg",
+      "notes": "Monuments 1 has been moved into its own separate release to avoid this ongoing confusion.",
+      "right": null,
+      "status": "removed"
+    },
+    "Monuments/Base+PoK/Arborec.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Arborec.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Arborec.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Argent.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "moderate",
+      "false_positive": false,
+      "left": "Monuments/Base+PoK/Argent.jpg",
+      "notes": "Buffed it.",
+      "right": "Monuments/Base+PoK/Argent.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Creuss.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Creuss.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Creuss.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Empyrean.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Empyrean.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Empyrean.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Hacan.jpg": {
+      "aspects": [
+        "art"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Monuments/Base+PoK/Hacan.jpg",
+      "notes": "Basically, the same ability, but cleaned up.",
+      "right": "Monuments/Base+PoK/Hacan.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Jol-Nar.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Jol-Nar.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Jol-Nar.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/L1Z1X.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Monuments/Base+PoK/L1Z1X.jpg",
+      "notes": "Identical effect, just wording clarification.",
+      "right": "Monuments/Base+PoK/L1Z1X.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Letnev.jpg": {
+      "aspects": [
+        "layout"
+      ],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Letnev.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Letnev.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Mahact.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Monuments/Base+PoK/Mahact.jpg",
+      "notes": "Buffed a little bit so they can clear their own tokens.",
+      "right": "Monuments/Base+PoK/Mahact.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Mentak.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Mentak.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Mentak.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Muaat.jpg": {
+      "aspects": [
+        "art",
+        "ability"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Monuments/Base+PoK/Muaat.jpg",
+      "notes": "Just wording consistency for 'adjacency'.",
+      "right": "Monuments/Base+PoK/Muaat.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/N'Orr.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/N'Orr.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/N'Orr.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/NRA.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/NRA.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/NRA.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Naalu.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Naalu.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Naalu.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Nekro.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Nekro.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Nekro.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Nomad.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Nomad.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Nomad.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Saar.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Saar.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Saar.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Sol.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Sol.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Sol.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Titans.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Titans.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Titans.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Vuil'Raith.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Vuil'Raith.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Vuil'Raith.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Winnu.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Winnu.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Winnu.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Xxcha.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Xxcha.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Xxcha.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Yin.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Yin.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Yin.jpg",
+      "status": "changed"
+    },
+    "Monuments/Base+PoK/Yssaril.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Base+PoK/Yssaril.jpg",
+      "notes": "",
+      "right": "Monuments/Base+PoK/Yssaril.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Augurs.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Augurs.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Augurs.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Axis.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Axis.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Axis.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Bentor.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Monuments/DS/Bentor.jpg",
+      "notes": "To handle the change to the Event card that doesn't care about your turn placement anymore.",
+      "right": "Monuments/DS/Bentor.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Celdauri.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "major",
+      "false_positive": false,
+      "left": "Monuments/DS/Celdauri.jpg",
+      "notes": "Essentially the same but cleaned up majorly enough.",
+      "right": "Monuments/DS/Celdauri.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Cheiran.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Cheiran.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Cheiran.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Cymiae.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Cymiae.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Cymiae.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Dih-Mohn.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Dih-Mohn.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Dih-Mohn.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Edyn.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Edyn.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Edyn.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/FSC.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/FSC.jpg",
+      "notes": "",
+      "right": "Monuments/DS/FSC.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Florzen.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Florzen.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Florzen.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/GLEdge.jpg": {
+      "aspects": [
+        "title",
+        "art",
+        "flavor",
+        "ability",
+        "placement"
+      ],
+      "change_type": "replacement",
+      "false_positive": false,
+      "left": "Monuments/DS/GLEdge.jpg",
+      "notes": "A complete replacement.",
+      "right": "Monuments/DS/GLEdge.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Ghemina.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Ghemina.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Ghemina.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Ghoti.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "moderate",
+      "false_positive": false,
+      "left": "Monuments/DS/Ghoti.jpg",
+      "notes": "Clean up to avoid weird timings.",
+      "right": "Monuments/DS/Ghoti.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Khrask.jpg": {
+      "aspects": [],
+      "change_type": "replacement",
+      "false_positive": true,
+      "left": "Monuments/DS/L'tokk Khrask.jpg",
+      "linked": true,
+      "notes": "",
+      "right": "Monuments/DS/Khrask.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Kjalengard.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Kjalengard.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Kjalengard.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Kollecc.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Kollecc.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Kollecc.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Kolume.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "major",
+      "false_positive": false,
+      "left": "Monuments/DS/Kolume.jpg",
+      "notes": "Completely new ability, very whacky but more on theme for this faction.",
+      "right": "Monuments/DS/Kolume.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Kortali.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "major",
+      "false_positive": false,
+      "left": "Monuments/DS/Kortali.jpg",
+      "notes": "Just a new ability.",
+      "right": "Monuments/DS/Kortali.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Kyro.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Monuments/DS/Kyro.jpg",
+      "notes": "Just clarified 'adjacency'.",
+      "right": "Monuments/DS/Kyro.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/L'tokk Khrask.jpg": {
+      "linked_into": "Monuments/DS/Khrask.jpg"
+    },
+    "Monuments/DS/Lanefir.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Monuments/DS/Lanefir.jpg",
+      "notes": "Just a small buff.",
+      "right": "Monuments/DS/Lanefir.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Li-Zho.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Monuments/DS/Li-Zho.jpg",
+      "notes": "Just cleaned it up a little bit.",
+      "right": "Monuments/DS/Li-Zho.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Mirveda.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Mirveda.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Mirveda.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Mortheus.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "moderate",
+      "false_positive": false,
+      "left": "Monuments/DS/Mortheus.jpg",
+      "notes": "An extension of the previous ability.",
+      "right": "Monuments/DS/Mortheus.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Myko.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Myko.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Myko.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Nivyn.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Nivyn.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Nivyn.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Nokar.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Monuments/DS/Nokar.jpg",
+      "notes": "Clarified to avoid the transport units gap.",
+      "right": "Monuments/DS/Nokar.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Olradin.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Olradin.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Olradin.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Rhodun Back.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Rhodun Back.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Rhodun Back.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Rhodun Front.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Monuments/DS/Rhodun Front.jpg",
+      "notes": "Just a reword, the ability is the same.",
+      "right": "Monuments/DS/Rhodun Front.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Roh'Dhna.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Roh'Dhna.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Roh'Dhna.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Tnelis.jpg": {
+      "aspects": [
+        "flavor",
+        "ability"
+      ],
+      "change_type": "moderate",
+      "false_positive": false,
+      "left": "Monuments/DS/Tnelis.jpg",
+      "notes": "Added the anti-coexist ability.",
+      "right": "Monuments/DS/Tnelis.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Vaden.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Vaden.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Vaden.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Vaylerian.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Vaylerian.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Vaylerian.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Veldyr.jpg": {
+      "aspects": [
+        "flavor"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Monuments/DS/Veldyr.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Veldyr.jpg",
+      "status": "changed"
+    },
+    "Monuments/DS/Zelian.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/DS/Zelian.jpg",
+      "notes": "",
+      "right": "Monuments/DS/Zelian.jpg",
+      "status": "changed"
+    },
+    "Monuments/Other/Drahn.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/Other/Drahn.jpg",
+      "notes": "",
+      "right": "Monuments/Other/Drahn.jpg",
+      "status": "changed"
+    },
+    "Monuments/TE/Bastion.jpg": {
+      "aspects": [
+        "ability",
+        "placement"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Monuments/TE/Bastion.jpg",
+      "notes": "Cleaned up so that it is a little less restrictive.",
+      "right": "Monuments/TE/Bastion.jpg",
+      "status": "changed"
+    },
+    "Monuments/TE/Crimson Rebellion.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Monuments/TE/Crimson Rebellion.jpg",
+      "notes": "Same ability, just cleaned up a little to avoid questions.",
+      "right": "Monuments/TE/Crimson Rebellion.jpg",
+      "status": "changed"
+    },
+    "Monuments/TE/Deepwrought.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/TE/Deepwrought.jpg",
+      "notes": "",
+      "right": "Monuments/TE/Deepwrought.jpg",
+      "status": "changed"
+    },
+    "Monuments/TE/Firmament.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "replacement",
+      "false_positive": false,
+      "left": "Monuments/TE/Firmament.jpg",
+      "notes": "Completely new ability.",
+      "right": "Monuments/TE/Firmament.jpg",
+      "status": "changed"
+    },
+    "Monuments/TE/Keleres.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/TE/Keleres.jpg",
+      "notes": "",
+      "right": "Monuments/TE/Keleres.jpg",
+      "status": "changed"
+    },
+    "Monuments/TE/Obsidian.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Monuments/TE/Obsidian.jpg",
+      "notes": "",
+      "right": "Monuments/TE/Obsidian.jpg",
+      "status": "changed"
+    },
+    "Monuments/TE/Ral-Nel.jpg": {
+      "aspects": [
+        "ability"
+      ],
+      "change_type": "major",
+      "false_positive": false,
+      "left": "Monuments/TE/Ral-Nel.jpg",
+      "notes": "Essentially the same but a buff and quite a change.",
+      "right": "Monuments/TE/Ral-Nel.jpg",
+      "status": "changed"
+    },
+    "Monuments/TF/King Black.jpg": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "",
+      "right": "Monuments/TF/King Black.jpg",
+      "status": "added"
+    },
+    "Monuments/TF/King Blue.jpg": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "",
+      "right": "Monuments/TF/King Blue.jpg",
+      "status": "added"
+    },
+    "Monuments/TF/King Green.jpg": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "",
+      "right": "Monuments/TF/King Green.jpg",
+      "status": "added"
+    },
+    "Monuments/TF/King Orange.jpg": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "",
+      "right": "Monuments/TF/King Orange.jpg",
+      "status": "added"
+    },
+    "Monuments/TF/King Pink.jpg": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "",
+      "right": "Monuments/TF/King Pink.jpg",
+      "status": "added"
+    },
+    "Monuments/TF/King Purple.jpg": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "",
+      "right": "Monuments/TF/King Purple.jpg",
+      "status": "added"
+    },
+    "Monuments/TF/King Red.jpg": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "",
+      "right": "Monuments/TF/King Red.jpg",
+      "status": "added"
+    },
+    "Monuments/TF/King White.jpg": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "",
+      "right": "Monuments/TF/King White.jpg",
+      "status": "added"
+    },
+    "Monuments/TF/King Yellow.jpg": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "",
+      "right": "Monuments/TF/King Yellow.jpg",
+      "status": "added"
+    },
+    "Objectives/Defend a Great Work.jpg": {
+      "aspects": [
+        "title",
+        "ability"
+      ],
+      "change_type": "moderate",
+      "false_positive": false,
+      "left": "Objectives/Great Work.jpg",
+      "linked": true,
+      "notes": "Made the title more consistent with standard secret names, and amended the ability to handle 'in space' monuments.",
+      "right": "Objectives/Defend a Great Work.jpg",
+      "status": "changed"
+    },
+    "Objectives/Great Work.jpg": {
+      "linked_into": "Objectives/Defend a Great Work.jpg"
+    },
+    "Objectives/Topple Monument.jpg": {
+      "linked_into": "Objectives/Topple a Monument.jpg"
+    },
+    "Objectives/Topple a Monument.jpg": {
+      "aspects": [
+        "title"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Objectives/Topple Monument.jpg",
+      "linked": true,
+      "notes": "Just a title change to make for a more consistent secret name.",
+      "right": "Objectives/Topple a Monument.jpg",
+      "status": "changed"
+    },
+    "Reminders/Edyn Monument.jpg": {
+      "aspects": [
+        "art"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Reminders/Edyn Monument.jpg",
+      "notes": "Shows a Mech placement for consistency.",
+      "right": "Reminders/Edyn Monument.jpg",
+      "status": "changed"
+    },
+    "Reminders/Edyn Nekro Monument.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Reminders/Edyn Nekro Monument.jpg",
+      "notes": "",
+      "right": "Reminders/Edyn Nekro Monument.jpg",
+      "status": "changed"
+    },
+    "Reminders/Generic Front/Generic Monument Black.jpg": {
+      "aspects": [
+        "layout"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Reminders/Generic Front/Generic Monument Black.jpg",
+      "notes": "Added 'Relic' planet for full coverage of symbols used.",
+      "right": "Reminders/Generic Front/Generic Monument Black.jpg",
+      "status": "changed"
+    },
+    "Reminders/Generic Front/Generic Monument Blue.jpg": {
+      "aspects": [
+        "layout"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Reminders/Generic Front/Generic Monument Blue.jpg",
+      "notes": "Added 'Relic' planet for full coverage of symbols used.",
+      "right": "Reminders/Generic Front/Generic Monument Blue.jpg",
+      "status": "changed"
+    },
+    "Reminders/Generic Front/Generic Monument Green.jpg": {
+      "aspects": [
+        "layout"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Reminders/Generic Front/Generic Monument Green.jpg",
+      "notes": "Added 'Relic' planet for full coverage of symbols used.",
+      "right": "Reminders/Generic Front/Generic Monument Green.jpg",
+      "status": "changed"
+    },
+    "Reminders/Generic Front/Generic Monument Grey.jpg": {
+      "aspects": [
+        "layout"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Reminders/Generic Front/Generic Monument Grey.jpg",
+      "notes": "Added 'Relic' planet for full coverage of symbols used.",
+      "right": "Reminders/Generic Front/Generic Monument Grey.jpg",
+      "status": "changed"
+    },
+    "Reminders/Generic Front/Generic Monument Orange.jpg": {
+      "aspects": [
+        "layout"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Reminders/Generic Front/Generic Monument Orange.jpg",
+      "notes": "Added 'Relic' planet for full coverage of symbols used.",
+      "right": "Reminders/Generic Front/Generic Monument Orange.jpg",
+      "status": "changed"
+    },
+    "Reminders/Generic Front/Generic Monument Pink.jpg": {
+      "aspects": [
+        "layout"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Reminders/Generic Front/Generic Monument Pink.jpg",
+      "notes": "Added 'Relic' planet for full coverage of symbols used.",
+      "right": "Reminders/Generic Front/Generic Monument Pink.jpg",
+      "status": "changed"
+    },
+    "Reminders/Generic Front/Generic Monument Purple.jpg": {
+      "aspects": [
+        "layout"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Reminders/Generic Front/Generic Monument Purple.jpg",
+      "notes": "Added 'Relic' planet for full coverage of symbols used.",
+      "right": "Reminders/Generic Front/Generic Monument Purple.jpg",
+      "status": "changed"
+    },
+    "Reminders/Generic Front/Generic Monument Red.jpg": {
+      "aspects": [
+        "layout"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Reminders/Generic Front/Generic Monument Red.jpg",
+      "notes": "Added 'Relic' planet for full coverage of symbols used.",
+      "right": "Reminders/Generic Front/Generic Monument Red.jpg",
+      "status": "changed"
+    },
+    "Reminders/Generic Front/Generic Monument Yellow.jpg": {
+      "aspects": [
+        "layout"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Reminders/Generic Front/Generic Monument Yellow.jpg",
+      "notes": "Added 'Relic' planet for full coverage of symbols used.",
+      "right": "Reminders/Generic Front/Generic Monument Yellow.jpg",
+      "status": "changed"
+    },
+    "Reminders/Last Bastion Station Back.jpg": {
+      "aspects": [
+        "layout"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Reminders/Last Bastion Station Back.jpg",
+      "notes": "",
+      "right": "Reminders/Last Bastion Station Back.jpg",
+      "status": "changed"
+    },
+    "Reminders/Letnev Monument.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Reminders/Letnev Monument.jpg",
+      "notes": "",
+      "right": "Reminders/Letnev Monument.jpg",
+      "status": "changed"
+    },
+    "Reminders/Letnev Nekro Monument.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": "Reminders/Letnev Nekro Monument.jpg",
+      "notes": "",
+      "right": "Reminders/Letnev Nekro Monument.jpg",
+      "status": "changed"
+    },
+    "Reminders/Muaat Monument.jpg": {
+      "aspects": [
+        "art"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Reminders/Muaat Monument.jpg",
+      "notes": "",
+      "right": "Reminders/Muaat Monument.jpg",
+      "status": "changed"
+    },
+    "Reminders/Muaat Nekro Monument.jpg": {
+      "aspects": [
+        "art"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Reminders/Muaat Nekro Monument.jpg",
+      "notes": "",
+      "right": "Reminders/Muaat Nekro Monument.jpg",
+      "status": "changed"
+    },
+    "Reminders/Nekro Station Back.jpg": {
+      "aspects": [
+        "layout"
+      ],
+      "change_type": "minor",
+      "false_positive": false,
+      "left": "Reminders/Nekro Station Back.jpg",
+      "notes": "",
+      "right": "Reminders/Nekro Station Back.jpg",
+      "status": "changed"
+    },
+    "TF Monument Funding.jpg": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "",
+      "right": "TF Monument Funding.jpg",
+      "status": "added"
+    },
+    "TF Monuments Civitas SC.png": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "",
+      "right": "TF Monuments Civitas SC.png",
+      "status": "added"
+    },
+    "Tokens/Commodity Round Station Token.jpg": {
+      "aspects": [],
+      "change_type": "replacement",
+      "false_positive": true,
+      "left": "Tokens/Extra Commodity Station.jpg",
+      "linked": true,
+      "notes": "",
+      "right": "Tokens/Commodity Round Station Token.jpg",
+      "status": "changed"
+    },
+    "Tokens/Commodity Station Token.png": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "If you somehow can make the official shape tokens, this is for you.",
+      "right": "Tokens/Commodity Station Token.png",
+      "status": "added"
+    },
+    "Tokens/Creuss Back.png": {
+      "aspects": [],
+      "change_type": "removed",
+      "false_positive": false,
+      "left": "Tokens/Creuss Back.png",
+      "notes": "Monuments 1 has been moved into its own separate release to avoid this ongoing confusion.",
+      "right": null,
+      "status": "removed"
+    },
+    "Tokens/Delta wormhole.png": {
+      "aspects": [],
+      "change_type": "removed",
+      "false_positive": false,
+      "left": "Tokens/Delta wormhole.png",
+      "notes": "Monuments 1 has been moved into its own separate release to avoid this ongoing confusion.",
+      "right": null,
+      "status": "removed"
+    },
+    "Tokens/Extra Commodity Station.jpg": {
+      "linked_into": "Tokens/Commodity Round Station Token.jpg"
+    },
+    "Tokens/Last Bastion Station Back.jpg": {
+      "linked_into": "Tokens/Last Bastion Station Round Back.jpg"
+    },
+    "Tokens/Last Bastion Station Round Back.jpg": {
+      "aspects": [],
+      "change_type": "replacement",
+      "false_positive": true,
+      "left": "Tokens/Last Bastion Station Back.jpg",
+      "linked": true,
+      "notes": "",
+      "right": "Tokens/Last Bastion Station Round Back.jpg",
+      "status": "changed"
+    },
+    "Tokens/Last Bastion Station Token Back.png": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "If you somehow can make the official shape tokens, this is for you.",
+      "right": "Tokens/Last Bastion Station Token Back.png",
+      "status": "added"
+    },
+    "Tokens/Nekro Hazard Back.png": {
+      "aspects": [],
+      "change_type": "removed",
+      "false_positive": false,
+      "left": "Tokens/Nekro Hazard Back.png",
+      "notes": "Monuments 1 has been moved into its own separate release to avoid this ongoing confusion.",
+      "right": null,
+      "status": "removed"
+    },
+    "Tokens/Nekro Station Back.jpg": {
+      "linked_into": "Tokens/Nekro Station Round Back x2.jpg"
+    },
+    "Tokens/Nekro Station Round Back x2.jpg": {
+      "aspects": [],
+      "change_type": "replacement",
+      "false_positive": true,
+      "left": "Tokens/Nekro Station Back.jpg",
+      "linked": true,
+      "notes": "",
+      "right": "Tokens/Nekro Station Round Back x2.jpg",
+      "status": "changed"
+    },
+    "Tokens/Nekro Station Token Back x2.png": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "If you somehow can make the official shape tokens, this is for you.",
+      "right": "Tokens/Nekro Station Token Back x2.png",
+      "status": "added"
+    },
+    "Tokens/Saar Asteroid Belt.png": {
+      "aspects": [],
+      "change_type": "removed",
+      "false_positive": false,
+      "left": "Tokens/Saar Asteroid Belt.png",
+      "notes": "Monuments 1 has been moved into its own separate release to avoid this ongoing confusion.",
+      "right": null,
+      "status": "removed"
+    },
+    "Tokens/Saar Back.png": {
+      "aspects": [],
+      "change_type": "removed",
+      "false_positive": false,
+      "left": "Tokens/Saar Back.png",
+      "notes": "Monuments 1 has been moved into its own separate release to avoid this ongoing confusion.",
+      "right": null,
+      "status": "removed"
+    },
+    "Tokens/Vaylerian Commodity Token Back.png": {
+      "aspects": [],
+      "change_type": "new",
+      "false_positive": false,
+      "left": null,
+      "notes": "If you somehow can make the official shape tokens, this is for you.",
+      "right": "Tokens/Vaylerian Commodity Token Back.png",
+      "status": "added"
+    },
+    "banner.jpg": {
+      "aspects": [],
+      "change_type": "",
+      "false_positive": true,
+      "left": null,
+      "notes": "",
+      "right": "banner.jpg",
+      "status": "added"
+    }
+  }
+}

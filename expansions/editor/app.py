@@ -175,6 +175,9 @@ IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp"}
 # before changes.json has been saved.
 _CHANGELOG_SOURCE_CACHE: dict[str, list[str]] = {}
 
+# In-flight changelog compare progress per expansion: {stage, total, done, running}.
+_COMPARE_PROGRESS: dict[str, dict] = {}
+
 
 @app.route("/")
 def index():
@@ -544,16 +547,23 @@ def changelog_image(expansion_id: str, side: str, filename: str):
     return _send_image(src, root)
 
 
-def _scan_changelog_folder(root: Path) -> dict:
+def _scan_changelog_folder(root: Path, progress: dict | None = None) -> dict:
     """Return {rel_path: {name, dir, md5, size}} for image files under root."""
-    files = {}
+    if progress is not None:
+        progress["stage"] = f"listing {root.name or 'folder'}"
+    candidates = []
     for p in sorted(root.rglob("*")):
         if not p.is_file() or p.suffix.lower() not in IMAGE_EXTS:
             continue
         rel_path = p.relative_to(root)
         if any(part.startswith(".") for part in rel_path.parts):
             continue
-        rel = str(rel_path).replace("\\", "/")
+        candidates.append((p, str(rel_path).replace("\\", "/"), str(rel_path.parent).replace("\\", "/")))
+    if progress is not None:
+        progress["total"] += len(candidates)
+        progress["stage"] = "hashing"
+    files = {}
+    for p, rel, rel_dir in candidates:
         try:
             md5 = _md5(p)
         except OSError:
@@ -561,10 +571,12 @@ def _scan_changelog_folder(root: Path) -> dict:
         files[rel] = {
             "path": rel,
             "name": p.name,
-            "dir": str(rel_path.parent).replace("\\", "/"),
+            "dir": rel_dir,
             "md5": md5,
             "size": p.stat().st_size,
         }
+        if progress is not None:
+            progress["done"] += 1
     return files
 
 
@@ -587,12 +599,20 @@ def changelog_compare():
     if not right_root or not right_root.is_dir():
         return jsonify({"ok": False, "error": f"Right folder not found: {right_path}"}), 400
 
-    left_files = _scan_changelog_folder(left_root)
-    right_files = _scan_changelog_folder(right_root)
-
     expansion_id = (data.get("expansion_id") or "").strip()
+    progress = None
     if expansion_id:
         _CHANGELOG_SOURCE_CACHE[expansion_id] = [left_path, right_path]
+        progress = {"stage": "starting", "total": 0, "done": 0, "running": True}
+        _COMPARE_PROGRESS[expansion_id] = progress
+
+    try:
+        left_files = _scan_changelog_folder(left_root, progress)
+        right_files = _scan_changelog_folder(right_root, progress)
+    finally:
+        if progress is not None:
+            progress["running"] = False
+            progress["stage"] = "done"
 
     left_by_name: dict[str, list[str]] = {}
     for rel, f in left_files.items():
@@ -702,6 +722,12 @@ def changelog_compare():
         "unchanged": unchanged,
         "ambiguous": ambiguous,
     })
+
+
+@app.route("/api/changelog/compare-progress/<expansion_id>")
+def changelog_compare_progress(expansion_id: str):
+    """Live progress for an in-flight folder compare."""
+    return jsonify(_COMPARE_PROGRESS.get(expansion_id) or {"running": False})
 
 
 @app.route("/api/changes/<expansion_id>")

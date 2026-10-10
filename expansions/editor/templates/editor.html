@@ -244,12 +244,22 @@
   .cl-cell-badges { display: flex; flex-wrap: wrap; gap: 0.3rem; justify-content: center; padding-bottom: 0.5rem; }
   .cl-unchanged-list { font-size: 0.85rem; color: var(--muted); line-height: 1.6; max-height: 220px; overflow-y: auto; }
   .cl-unchanged-list .cl-unchanged-item { display: inline-block; margin: 0 0.5rem 0.25rem 0; }
+  .cl-unchanged-item.cl-fp { cursor: pointer; border-bottom: 1px dotted var(--accent); color: var(--text); }
+  .cl-unchanged-item.cl-fp:hover { color: var(--accent); }
+  .cl-note-icon { position: absolute; top: 0.35rem; right: 0.35rem; font-size: 0.8rem; color: var(--accent); line-height: 1; }
+  .cl-spinner { display: inline-block; width: 0.85rem; height: 0.85rem; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 0.35rem; }
   .cl-modal-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
   .cl-modal-images.single { grid-template-columns: 1fr; }
   .cl-modal-images figure { margin: 0; text-align: center; }
   .cl-modal-images img { max-width: 100%; max-height: 45vh; border-radius: 0.5rem; border: 1px solid var(--border); }
   .cl-modal-images figcaption { font-size: 0.8rem; color: var(--muted); margin-top: 0.35rem; }
   .cl-modal-status { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
+  #cl-selection-bar { display: none; align-items: center; gap: 0.75rem; margin-top: 0.5rem; padding: 0.5rem 0.75rem; border: 1px dashed #f59e0b; border-radius: 0.5rem; background: #1f1a0e; font-size: 0.85rem; }
+  #cl-selection-bar.visible { display: flex; }
+  #cl-selection-bar button:disabled { opacity: 0.5; cursor: not-allowed; }
+  #cl-link-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  #cl-link-cols.hidden { display: none; }
+  .cl-link-grid { grid-template-columns: repeat(2, 1fr) !important; }
 </style>
 </head>
 <body>
@@ -431,11 +441,32 @@
           </div>
         </div>
         <div class="toolbar" style="margin-top:0.5rem">
+          <select id="cl-filter" style="width:auto;min-width:10rem;margin-bottom:0">
+            <option value="all">All changes</option>
+            <option value="unreviewed">Unreviewed</option>
+            <option value="reviewed">Reviewed</option>
+            <option value="added-removed">Added &amp; Removed (link mode)</option>
+          </select>
           <button id="cl-compare-btn" type="button" class="secondary">Compare</button>
           <span id="cl-summary" class="text-muted" style="font-size:0.85rem;color:var(--muted)"></span>
         </div>
+        <div id="cl-selection-bar">
+          <span id="cl-selection-count">Pick one Added (new) and one Removed (old)</span>
+          <button type="button" id="cl-link-btn">Link pair</button>
+          <button type="button" class="secondary" id="cl-clear-selection-btn">Clear</button>
+        </div>
         <h3 id="cl-changes-title" class="hidden" style="margin-bottom:0.5rem;font-size:1rem">Changes detected</h3>
         <div id="cl-changes-grid" class="asset-grid"></div>
+        <div id="cl-link-cols" class="hidden">
+          <div>
+            <h3 style="margin-bottom:0.5rem;font-size:1rem">Added — new source</h3>
+            <div id="cl-link-added" class="asset-grid cl-link-grid"></div>
+          </div>
+          <div>
+            <h3 style="margin-bottom:0.5rem;font-size:1rem">Removed — old source</h3>
+            <div id="cl-link-removed" class="asset-grid cl-link-grid"></div>
+          </div>
+        </div>
         <h3 id="cl-unchanged-title" class="hidden" style="margin:1rem 0 0.5rem;font-size:1rem">Unchanged</h3>
         <div id="cl-unchanged-list" class="cl-unchanged-list"></div>
       </div>
@@ -1103,6 +1134,7 @@
           <label><input type="checkbox" value="layout"/>Layout</label>
           <label><input type="checkbox" value="flavor"/>Flavor</label>
           <label><input type="checkbox" value="ability"/>Ability</label>
+          <label><input type="checkbox" value="placement"/>Placement</label>
         </div>
       </div>
     </div>
@@ -3106,22 +3138,28 @@ function clStatusOf(e) {
   return 'removed';
 }
 
+function clIsReviewed(saved) {
+  return !!(saved.change_type || (saved.aspects && saved.aspects.length) || (saved.notes || '').trim());
+}
+
 function clEntries() {
   const entries = [];
   const seen = new Set();
   if (clDiff) {
     for (const e of [...(clDiff.changed || []), ...(clDiff.added || []), ...(clDiff.removed || [])]) {
       const saved = changelog.files[e.key] || {};
-      if (saved.false_positive) continue;
+      if (saved.false_positive || saved.linked_into) continue;
       seen.add(e.key);
+      const linked = !!(saved.left && saved.right);
       entries.push({
         key: e.key,
         name: e.name,
-        left: e.left || null,
-        right: e.right || null,
-        status: clStatusOf(e),
+        left: saved.left || e.left || null,
+        right: saved.right || e.right || null,
+        status: linked ? 'changed' : clStatusOf(e),
         ambiguous: !!e.ambiguous,
         moved: !!e.moved,
+        linked,
         saved,
       });
     }
@@ -3129,7 +3167,7 @@ function clEntries() {
   // Saved annotations with no matching diff entry (e.g. not yet compared, or
   // the file has since left both folders).
   for (const [key, saved] of Object.entries(changelog.files)) {
-    if (seen.has(key) || saved.false_positive || saved.status === 'unchanged') continue;
+    if (seen.has(key) || saved.false_positive || saved.linked_into || saved.status === 'unchanged') continue;
     entries.push({
       key,
       name: key.split('/').pop(),
@@ -3138,6 +3176,7 @@ function clEntries() {
       status: saved.status || 'changed',
       ambiguous: false,
       moved: false,
+      linked: !!(saved.left && saved.right),
       saved,
     });
   }
@@ -3147,52 +3186,135 @@ function clEntries() {
 function clUnchangedItems() {
   const items = [];
   if (clDiff) {
-    for (const e of clDiff.unchanged || []) items.push({ name: e.name, fp: false });
+    for (const e of clDiff.unchanged || []) items.push({ name: e.name, key: null, fp: false });
   }
   for (const [key, saved] of Object.entries(changelog.files)) {
-    if (saved.false_positive) items.push({ name: key.split('/').pop(), fp: true });
+    if (saved.false_positive) items.push({ name: key.split('/').pop(), key, fp: true });
   }
   items.sort((a, b) => a.name.localeCompare(b.name));
   return items;
 }
 
+function clSavedEntry(key) {
+  const saved = changelog.files[key];
+  if (!saved) return null;
+  return {
+    key,
+    name: key.split('/').pop(),
+    left: saved.left || null,
+    right: saved.right || null,
+    status: saved.status || 'changed',
+    ambiguous: false,
+    moved: false,
+    linked: !!saved.linked,
+    saved,
+  };
+}
+
+let clLinkAddedKey = null;
+let clLinkRemovedKey = null;
+let clProgressTimer = null;
+
+function clIsLinkMode() {
+  return document.getElementById('cl-filter').value === 'added-removed';
+}
+
+function clFilteredEntries() {
+  const filter = document.getElementById('cl-filter').value;
+  return clEntries().filter(e => {
+    if (filter === 'unreviewed') return !clIsReviewed(e.saved);
+    if (filter === 'reviewed') return clIsReviewed(e.saved);
+    return true;
+  });
+}
+
+function clCellHtml(e, selected) {
+  const thumbRel = e.right || e.left;
+  const side = e.right ? 'right' : 'left';
+  const reviewed = clIsReviewed(e.saved);
+  const badges = [`<span class="cl-badge ${e.status}">${e.status}</span>`];
+  if (e.saved.change_type) badges.push(`<span class="cl-badge reviewed">${escapeHtml(e.saved.change_type)}</span>`);
+  if (e.ambiguous) badges.push('<span class="cl-badge unpaired">unpaired</span>');
+  if (e.moved) badges.push('<span class="cl-badge unpaired">moved</span>');
+  if (e.linked) badges.push('<span class="cl-badge reviewed">linked</span>');
+  const img = thumbRel ? `<img src="${clImageUrl(side, thumbRel)}" alt="${escapeHtml(e.name)}" loading="lazy" style="width:100%;border-radius:0.4rem;margin-bottom:0.5rem"/>` : '';
+  const noteIcon = (e.saved.notes || '').trim() ? '<span class="cl-note-icon" title="has notes">&#9776;</span>' : '';
+  return `<div class="asset-cell ${reviewed ? 'configured' : ''} ${selected ? 'selected' : ''}" data-cl-key="${escapeHtml(e.key)}">
+    ${noteIcon}
+    ${img}
+    <div class="title" title="${escapeHtml(e.key)}">${escapeHtml(e.name)}</div>
+    <div class="cl-cell-badges">${badges.join('')}</div>
+  </div>`;
+}
+
 function renderChangelog() {
   const grid = document.getElementById('cl-changes-grid');
+  const linkCols = document.getElementById('cl-link-cols');
   const summary = document.getElementById('cl-summary');
   const changesTitle = document.getElementById('cl-changes-title');
   const unchangedTitle = document.getElementById('cl-unchanged-title');
   const unchangedList = document.getElementById('cl-unchanged-list');
-  const entries = clEntries();
+  const selBar = document.getElementById('cl-selection-bar');
+  const entries = clFilteredEntries();
   const unchanged = clUnchangedItems();
+  const fpCount = unchanged.filter(u => u.fp).length;
+  const linkMode = clIsLinkMode();
+  if (!linkMode) { clLinkAddedKey = null; clLinkRemovedKey = null; }
 
   if (clDiff) {
     const c = clDiff.counts;
-    summary.textContent = `${c.changed} changed · ${c.added} added · ${c.removed} removed · ${c.unchanged} unchanged` + (c.ambiguous ? ` · ${c.ambiguous} ambiguous` : '');
+    summary.textContent = `${c.changed} changed · ${c.added} added · ${c.removed} removed · ${c.unchanged + fpCount} unchanged` + (c.ambiguous ? ` · ${c.ambiguous} ambiguous` : '') + (fpCount ? ` · ${fpCount} false positive${fpCount === 1 ? '' : 's'}` : '');
   } else {
     summary.textContent = entries.length ? `${entries.length} annotated change${entries.length === 1 ? '' : 's'} (saved — run Compare to re-verify)` : '';
   }
 
-  changesTitle.classList.toggle('hidden', entries.length === 0);
-  grid.innerHTML = entries.map((e, i) => {
-    const thumbRel = e.right || e.left;
-    const side = e.right ? 'right' : 'left';
-    const reviewed = !!(e.saved.change_type || e.saved.aspects?.length || e.saved.notes);
-    const badges = [`<span class="cl-badge ${e.status}">${e.status}</span>`];
-    if (e.saved.change_type) badges.push(`<span class="cl-badge reviewed">${escapeHtml(e.saved.change_type)}</span>`);
-    if (e.ambiguous) badges.push('<span class="cl-badge unpaired">unpaired</span>');
-    if (e.moved) badges.push('<span class="cl-badge unpaired">moved</span>');
-    const img = thumbRel ? `<img src="${clImageUrl(side, thumbRel)}" alt="${escapeHtml(e.name)}" loading="lazy" style="width:100%;border-radius:0.4rem;margin-bottom:0.5rem"/>` : '';
-    return `<div class="asset-cell ${reviewed ? 'configured' : ''}" data-cl-index="${i}">
-      ${img}
-      <div class="title" title="${escapeHtml(e.key)}">${escapeHtml(e.name)}</div>
-      <div class="cl-cell-badges">${badges.join('')}</div>
-    </div>`;
-  }).join('');
+  selBar.classList.toggle('visible', linkMode);
+  const selAdded = clEntries().find(e => e.key === clLinkAddedKey);
+  const selRemoved = clEntries().find(e => e.key === clLinkRemovedKey);
+  if (linkMode) {
+    document.getElementById('cl-selection-count').textContent =
+      `Added: ${selAdded ? selAdded.name : 'none'} · Removed: ${selRemoved ? selRemoved.name : 'none'}`;
+  }
+  document.getElementById('cl-link-btn').disabled = !(selAdded && selRemoved);
+
+  changesTitle.classList.toggle('hidden', linkMode || entries.length === 0);
+  grid.classList.toggle('hidden', linkMode);
+  linkCols.classList.toggle('hidden', !linkMode);
+  if (linkMode) {
+    const addedEntries = entries.filter(e => e.status === 'added');
+    const removedEntries = entries.filter(e => e.status === 'removed');
+    document.getElementById('cl-link-added').innerHTML = addedEntries.map(e => clCellHtml(e, e.key === clLinkAddedKey)).join('') || '<span class="text-muted" style="font-size:0.85rem">None</span>';
+    document.getElementById('cl-link-removed').innerHTML = removedEntries.map(e => clCellHtml(e, e.key === clLinkRemovedKey)).join('') || '<span class="text-muted" style="font-size:0.85rem">None</span>';
+  } else {
+    grid.innerHTML = entries.map(e => clCellHtml(e, false)).join('');
+  }
 
   unchangedTitle.classList.toggle('hidden', unchanged.length === 0);
   unchangedList.innerHTML = unchanged.map(u =>
-    `<span class="cl-unchanged-item">${escapeHtml(u.name)}${u.fp ? ' <span class="cl-badge">false positive</span>' : ''}</span>`
+    `<span class="cl-unchanged-item ${u.fp ? 'cl-fp' : ''}" ${u.fp ? `data-cl-key="${escapeHtml(u.key)}" title="Click to re-review"` : ''}>${escapeHtml(u.name)}${u.fp ? ' <span class="cl-badge">false positive</span>' : ''}</span>`
   ).join('');
+}
+
+function linkClPair() {
+  const added = clEntries().find(e => e.key === clLinkAddedKey);
+  const removed = clEntries().find(e => e.key === clLinkRemovedKey);
+  if (!added || !removed) return;
+  // The added (new-source) file keeps its key and becomes the linked entry;
+  // the removed (old-source) entry is marked as merged into it.
+  const saved = changelog.files[added.key] || {};
+  saved.status = 'changed';
+  saved.left = removed.left;
+  saved.right = added.right;
+  saved.linked = true;
+  if (!saved.change_type) saved.change_type = 'replacement';
+  changelog.files[added.key] = saved;
+  changelog.files[removed.key] = Object.assign(changelog.files[removed.key] || {}, { linked_into: added.key });
+  clLinkAddedKey = null;
+  clLinkRemovedKey = null;
+  setDirty(true);
+  renderChangelog();
+  const entry = clEntries().find(e => e.key === added.key) || clSavedEntry(added.key);
+  if (entry) openClModalEntry(entry);
 }
 
 async function runChangelogCompare() {
@@ -3208,7 +3330,17 @@ async function runChangelogCompare() {
     summary.textContent = 'Both source folders are required.';
     return;
   }
-  summary.textContent = 'Comparing...';
+  summary.innerHTML = '<span class="cl-spinner"></span>Comparing...';
+  if (clProgressTimer) clearInterval(clProgressTimer);
+  clProgressTimer = setInterval(async () => {
+    try {
+      const pr = await fetch(`/api/changelog/compare-progress/${id}`).then(r => r.json());
+      if (pr && pr.running) {
+        const pct = pr.total ? ` ${Math.round((pr.done / pr.total) * 100)}%` : '';
+        summary.innerHTML = `<span class="cl-spinner"></span>${escapeHtml(pr.stage || 'working')} ${pr.done}/${pr.total}${pct}`;
+      }
+    } catch (e) { /* keep last status */ }
+  }, 400);
   try {
     const res = await fetch('/api/changelog/compare', {
       method: 'POST',
@@ -3224,6 +3356,9 @@ async function runChangelogCompare() {
     renderChangelog();
   } catch (e) {
     summary.textContent = `Error: ${e}`;
+  } finally {
+    clearInterval(clProgressTimer);
+    clProgressTimer = null;
   }
 }
 
@@ -3244,12 +3379,17 @@ async function pickChangelogFolder(inputId) {
 }
 
 function openClModal(key) {
-  const entry = clEntries().find(e => e.key === key);
+  const entry = clEntries().find(e => e.key === key) || clSavedEntry(key);
   if (!entry) return;
+  openClModalEntry(entry);
+}
+
+function openClModalEntry(entry) {
   clModalEntry = entry;
   const saved = entry.saved;
   document.getElementById('cl-modal-title').textContent = entry.name;
   const statusBadges = [`<span class="cl-badge ${entry.status}">${entry.status}</span>`];
+  if (entry.linked) statusBadges.push('<span class="cl-badge reviewed">linked</span>');
   if (entry.ambiguous) statusBadges.push('<span class="cl-badge unpaired">unpaired</span>');
   if (entry.moved) statusBadges.push(`<span class="cl-badge unpaired">moved folder</span>`);
   document.getElementById('cl-modal-status').innerHTML = statusBadges.join('');
@@ -3284,6 +3424,7 @@ function saveClModal() {
   if (!clModalEntry) return;
   const e = clModalEntry;
   changelog.files[e.key] = {
+    ...(changelog.files[e.key] || {}),
     status: e.status,
     left: e.left,
     right: e.right,
@@ -3298,13 +3439,34 @@ function saveClModal() {
 }
 
 document.getElementById('cl-compare-btn').addEventListener('click', runChangelogCompare);
+document.getElementById('cl-filter').addEventListener('change', renderChangelog);
 document.getElementById('cl-left-pick').addEventListener('click', () => pickChangelogFolder('cl-left-path'));
 document.getElementById('cl-right-pick').addEventListener('click', () => pickChangelogFolder('cl-right-path'));
+document.getElementById('cl-link-btn').addEventListener('click', linkClPair);
+document.getElementById('cl-clear-selection-btn').addEventListener('click', () => {
+  clLinkAddedKey = null;
+  clLinkRemovedKey = null;
+  renderChangelog();
+});
 document.getElementById('cl-changes-grid').addEventListener('click', e => {
-  const cell = e.target.closest('[data-cl-index]');
-  if (!cell) return;
-  const entry = clEntries()[parseInt(cell.dataset.clIndex)];
-  if (entry) openClModal(entry.key);
+  const cell = e.target.closest('[data-cl-key]');
+  if (!cell || clIsLinkMode()) return;
+  openClModal(cell.dataset.clKey);
+});
+for (const colId of ['cl-link-added', 'cl-link-removed']) {
+  document.getElementById(colId).addEventListener('click', e => {
+    const cell = e.target.closest('[data-cl-key]');
+    if (!cell) return;
+    const entry = clEntries().find(en => en.key === cell.dataset.clKey);
+    if (!entry) return;
+    if (entry.status === 'added') clLinkAddedKey = clLinkAddedKey === entry.key ? null : entry.key;
+    if (entry.status === 'removed') clLinkRemovedKey = clLinkRemovedKey === entry.key ? null : entry.key;
+    renderChangelog();
+  });
+}
+document.getElementById('cl-unchanged-list').addEventListener('click', e => {
+  const item = e.target.closest('.cl-fp[data-cl-key]');
+  if (item) openClModal(item.dataset.clKey);
 });
 document.getElementById('cl-modal-close').addEventListener('click', closeClModal);
 document.getElementById('cl-modal').addEventListener('click', e => {

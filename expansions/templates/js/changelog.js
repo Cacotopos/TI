@@ -10,7 +10,7 @@
   const entriesBox = document.getElementById('cl-entries');
 
   const TYPES = ['new', 'major', 'moderate', 'minor', 'replacement', 'removed', 'added', 'changed'];
-  const ASPECTS = ['title', 'art', 'layout', 'flavor', 'ability'];
+  const ASPECTS = ['title', 'art', 'layout', 'flavor', 'ability', 'placement'];
   const activeTypes = new Set(TYPES);
   const activeAspects = new Set();
 

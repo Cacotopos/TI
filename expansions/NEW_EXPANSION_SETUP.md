@@ -31,7 +31,11 @@ Open the Namecheap **Advanced DNS** page for `cacotopos.com` and add a record fo
 
 The CloudFront distribution hostname looks like `d39rtkg7d9lwsg.cloudfront.net`.
 
-## 4. (Optional) CloudFront alternate domain
+## 4. CloudFront invalidation (migrations only)
+
+If the subdomain previously served an older site (unhashed asset URLs), CloudFront edge caches will keep serving the old assets until they expire. After the first deploy, create an invalidation for `/*` on the distribution (CloudFront console → distribution → Invalidations). Safe to run — hashed assets are immutable, worst case is a cold fetch. Not needed for brand-new subdomains.
+
+## 5. (Optional) CloudFront alternate domain
 
 If the distribution does not already use a wildcard alternate domain (`*.cacotopos.com`), add `{subdomain}.cacotopos.com` to the distribution's **Alternate domain names (CNAMEs)** list and attach the ACM certificate.
 

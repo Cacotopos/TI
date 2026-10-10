@@ -35,8 +35,8 @@ the site nav (desktop menu and mobile dropdown).
    - Free-text input — the author manually describes the differences.
    - **Change type** dropdown (severity):
      `new / removed / minor / moderate / major / replacement`.
-   - **Aspects checklist**: `title`, `art`, `layout`, `flavor`, `ability` —
-     which facets of the file changed.
+   - **Aspects checklist**: `title`, `art`, `layout`, `flavor`, `ability`,
+     `placement` — which facets of the file changed.
    - **"Unchanged" checkbox** — marks a false positive and moves it back to
      the unchanged list.
 5. **Persistence** — changelog data is saved in a **separate `changes.json`**
