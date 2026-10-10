@@ -777,12 +777,12 @@
         "techSpeciality": "",
         "trait": []
       },
-      "title": "Networking Officer",
-      "type": "Promissory Note",
       "synergy": {
         "enabled": false,
         "value": ""
-      }
+      },
+      "title": "Networking Officer",
+      "type": "Promissory Note"
     },
     "Drahn/Drahn Reference.jpg": {
       "back": "",
@@ -1395,11 +1395,11 @@
       "component": "us-mini",
       "configured": true,
       "description": "**At any time**: Purge this card and 1 of your unsecured secret objectives, if able, to gain 1 victory point.",
-      "faction": "The Drahn Cartel",
+      "faction": "The Ghoti",
       "faq": [
         {
-          "a": "You don't start with any planets in your home system, it's fine.",
-          "q": "This seems really strong?"
+          "q": "This seems really strong?",
+          "a": "You don't start with any planets in your home system, it's fine."
         }
       ],
       "filename": "Ghoti.jpg",
@@ -1418,12 +1418,13 @@
       "source": {
         "enabled": false,
         "influence": 0,
-        "legendary": false,
-        "linkedAbility": "",
-        "relic": false,
         "resource": 0,
+        "trait": [],
+        "legendary": false,
+        "relic": false,
+        "station": false,
         "techSpeciality": "",
-        "trait": []
+        "linkedAbility": ""
       },
       "subtitle": "All-Mother's Hope",
       "synergy": {
@@ -1431,7 +1432,12 @@
         "value": ""
       },
       "title": "Objective Restoration",
-      "type": "Hero"
+      "type": "Hero",
+      "rotate": 0,
+      "placement": {
+        "enabled": false,
+        "rules": []
+      }
     },
     "Drahn/Heroes/Active/Gledge.jpg": {
       "back": "Drahn/Heroes/Inactive/Gledge.jpg",
@@ -1751,7 +1757,7 @@
       "component": "us-mini",
       "configured": true,
       "description": "**At the start of the status phase:**\nPurge this card and spend 1 command token from your strategy pool to score 1 public objective, if you fulfil its requirements.",
-      "faction": "The Drahn Cartel",
+      "faction": "The Naalu Collective",
       "faq": [],
       "filename": "Naalu.jpg",
       "flavour": "",
@@ -1761,10 +1767,15 @@
       "id": "Naalu",
       "orientation": "landscape",
       "path": "Drahn/Heroes/Active/Naalu.jpg",
+      "placement": {
+        "enabled": false,
+        "rules": []
+      },
       "prereq": {
         "enabled": false,
         "value": ""
       },
+      "rotate": 0,
       "section": "drahn",
       "source": {
         "enabled": false,
@@ -1773,6 +1784,7 @@
         "linkedAbility": "",
         "relic": false,
         "resource": 0,
+        "station": false,
         "techSpeciality": "",
         "trait": []
       },
@@ -4144,28 +4156,28 @@
       "id": "Mentak",
       "orientation": "landscape",
       "path": "Keleres/Heroes/Active/Mentak.jpg",
-      "section": "keleres",
-      "title": "Mentak",
-      "type": "Hero",
       "prereq": {
         "enabled": false,
         "value": ""
+      },
+      "section": "keleres",
+      "source": {
+        "enabled": false,
+        "influence": 0,
+        "legendary": false,
+        "linkedAbility": "",
+        "relic": false,
+        "resource": 0,
+        "station": false,
+        "techSpeciality": "",
+        "trait": []
       },
       "synergy": {
         "enabled": false,
         "value": ""
       },
-      "source": {
-        "enabled": false,
-        "influence": 0,
-        "resource": 0,
-        "trait": [],
-        "legendary": false,
-        "relic": false,
-        "station": false,
-        "techSpeciality": "",
-        "linkedAbility": ""
-      }
+      "title": "Mentak",
+      "type": "Hero"
     },
     "Keleres/Heroes/Active/Mirveda.jpg": {
       "back": "",
