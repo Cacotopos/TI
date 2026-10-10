@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Changelog | {{ config.name }} v{{ config.version }}{% endblock %}
+
+{% block body %}
+<header class="bg-panel border-b border-border p-6">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold">Changelog</h1>
+    <p class="text-muted mt-2">{{ site.changelog.left_label | e }} &rarr; {{ site.changelog.right_label | e }} &mdash; file-level changes between the two versions.</p>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto p-6 space-y-6">
+  <div class="bg-panel border border-border rounded-xl p-4 shadow-lg space-y-3">
+    <input id="cl-filter-text" type="text" placeholder="Filter by filename or notes..."
+           class="bg-bg border border-border rounded-lg px-4 py-2 w-full text-gray-100 focus:outline-none focus:border-accent"/>
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="text-xs text-muted uppercase tracking-wide">Severity</span>
+      <div id="cl-severity-filters" class="flex flex-wrap gap-2"></div>
+    </div>
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="text-xs text-muted uppercase tracking-wide">Aspects</span>
+      <div id="cl-aspect-filters" class="flex flex-wrap gap-2"></div>
+    </div>
+    <div id="cl-count" class="text-sm text-muted"></div>
+  </div>
+
+  <div id="cl-entries" class="space-y-5"
+       data-left-label="{{ site.changelog.left_label | e }}"
+       data-right-label="{{ site.changelog.right_label | e }}">
+    {% set badge_class = {
+      'new': 'bg-green-900 text-green-200',
+      'added': 'bg-green-900 text-green-200',
+      'removed': 'bg-red-900 text-red-200',
+      'minor': 'bg-slate-700 text-slate-200',
+      'moderate': 'bg-yellow-900 text-yellow-200',
+      'major': 'bg-orange-900 text-orange-200',
+      'replacement': 'bg-purple-900 text-purple-200',
+      'changed': 'bg-slate-700 text-slate-200'
+    } %}
+    {% set severity_order = ['new', 'major', 'moderate', 'minor', 'replacement', 'removed', 'added', 'changed'] %}
+    {% for sev in severity_order %}
+      {% set group = site.changelog.entries | selectattr('display_type', 'equalto', sev) | list %}
+      {% if group %}
+      <div class="cl-group" data-group="{{ sev }}">
+        <h2 class="text-lg font-semibold mb-2 capitalize">{{ sev }} <span class="text-sm text-muted font-normal">({{ group | length }})</span></h2>
+        <div class="space-y-2">
+          {% for e in group %}
+          <div class="cl-entry bg-panel border border-border rounded-lg px-4 py-3 flex items-center gap-3 cursor-pointer hover:border-accent transition-colors"
+               data-type="{{ e.display_type | e }}"
+               data-aspects="{{ e.aspects | join(' ') | e }}"
+               data-search="{{ (e.name ~ ' ' ~ e.key ~ ' ' ~ e.notes) | lower | e }}"
+               data-name="{{ e.name | e }}"
+               data-notes="{{ e.notes | e }}"
+               {% if e.left_image %}data-left="{{ e.left_image | bust | e }}"{% endif %}
+               {% if e.right_image %}data-right="{{ e.right_image | bust | e }}"{% endif %}>
+            <span class="text-xs font-bold uppercase px-2 py-1 rounded {{ badge_class.get(e.display_type, 'bg-slate-700 text-slate-200') }}">{{ e.display_type | e }}</span>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold truncate">{{ e.name | e }}</div>
+              {% if e.notes %}<div class="text-xs text-muted truncate">{{ e.notes | e }}</div>{% endif %}
+            </div>
+            <div class="flex gap-1 flex-none">
+              {% for a in e.aspects %}
+              <span class="text-[0.65rem] uppercase px-1.5 py-0.5 rounded bg-bg border border-border text-muted">{{ a | e }}</span>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <p id="cl-empty" class="hidden text-muted text-center">No changes match the current filters.</p>
+</main>
+
+<div id="changelog-modal" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-4">
+  <div class="bg-panel border border-border rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6">
+    <div class="flex justify-between items-start mb-2">
+      <h2 id="clm-title" class="text-xl font-bold flex-1 text-center"></h2>
+      <button id="clm-close" class="text-muted hover:text-white text-2xl flex-none">&times;</button>
+    </div>
+    <div id="clm-badges" class="flex flex-wrap justify-center gap-2 mb-4"></div>
+    <div id="clm-images" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"></div>
+    <div id="clm-notes" class="text-gray-100 whitespace-pre-wrap hidden"></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ 'assets/js/changelog.js' | bust }}"></script>
+{% endblock %}

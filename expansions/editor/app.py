@@ -153,6 +153,29 @@ def _save_config(expansion_id: str, data: dict) -> Path:
     return out_dir
 
 
+def _load_changes(expansion_id: str) -> dict:
+    """Load the changelog sidecar document (changes.json) for an expansion."""
+    path = DATA_DIR / expansion_id / "changes.json"
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _save_changes(expansion_id: str, data: dict) -> Path:
+    out_dir = DATA_DIR / expansion_id
+    out_dir.mkdir(parents=True, exist_ok=True)
+    path = out_dir / "changes.json"
+    path.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    return path
+
+
+IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp"}
+
+# Last-used changelog source folders per expansion, so preview images work
+# before changes.json has been saved.
+_CHANGELOG_SOURCE_CACHE: dict[str, list[str]] = {}
+
+
 @app.route("/")
 def index():
     return render_template("editor.html", git_commit=GIT_COMMIT)
@@ -449,21 +472,10 @@ def deploy(expansion_id: str):
     })
 
 
-@app.route("/api/image/<expansion_id>/<path:filename>")
-def serve_image(expansion_id: str, filename: str):
-    """Serve a source image file for preview, stripping EXIF orientation so the
+def _send_image(src: Path, root: Path):
+    """Serve an image file for preview, stripping EXIF orientation so the
     preview matches the generated site output.
     """
-    config = _load_config(expansion_id)
-    images_path = config.get("source", {}).get("images", "")
-    if not images_path:
-        return "", 404
-    images_src = ROOT / images_path
-    if not images_src.exists():
-        return "", 404
-    src = images_src / filename
-    if not src.exists():
-        return "", 404
     try:
         with Image.open(src) as img:
             fmt = img.format or "JPEG"
@@ -481,7 +493,227 @@ def serve_image(expansion_id: str, filename: str):
             mimetype = Image.MIME.get(fmt, "image/png")
             return send_file(buffer, mimetype=mimetype)
     except Exception:
-        return send_from_directory(images_src, filename)
+        return send_from_directory(root, src.name)
+
+
+def _resolve_under(root: Path, rel: str) -> Path | None:
+    """Resolve rel under root, returning None on missing file or traversal."""
+    try:
+        src = (root / rel).resolve()
+        if not src.is_file() or not src.is_relative_to(root.resolve()):
+            return None
+        return src
+    except (OSError, ValueError):
+        return None
+
+
+@app.route("/api/image/<expansion_id>/<path:filename>")
+def serve_image(expansion_id: str, filename: str):
+    """Serve a source image file for preview."""
+    config = _load_config(expansion_id)
+    images_path = config.get("source", {}).get("images", "")
+    if not images_path:
+        return "", 404
+    images_src = ROOT / images_path
+    if not images_src.exists():
+        return "", 404
+    src = _resolve_under(images_src, filename)
+    if src is None:
+        return "", 404
+    return _send_image(src, src.parent)
+
+
+@app.route("/api/changelog/image/<expansion_id>/<side>/<path:filename>")
+def changelog_image(expansion_id: str, side: str, filename: str):
+    """Serve an image from a changelog source folder (left=old, right=new)."""
+    if side not in ("left", "right"):
+        return "", 404
+    changes = _load_changes(expansion_id)
+    sources = _CHANGELOG_SOURCE_CACHE.get(expansion_id) or [
+        s.get("path", "") for s in (changes.get("sources") or [])
+    ]
+    idx = 0 if side == "left" else 1
+    if len(sources) <= idx:
+        return "", 404
+    root = Path(sources[idx] or "")
+    if not root.is_dir():
+        return "", 404
+    src = _resolve_under(root, filename)
+    if src is None:
+        return "", 404
+    return _send_image(src, root)
+
+
+def _scan_changelog_folder(root: Path) -> dict:
+    """Return {rel_path: {name, dir, md5, size}} for image files under root."""
+    files = {}
+    for p in sorted(root.rglob("*")):
+        if not p.is_file() or p.suffix.lower() not in IMAGE_EXTS:
+            continue
+        rel_path = p.relative_to(root)
+        if any(part.startswith(".") for part in rel_path.parts):
+            continue
+        rel = str(rel_path).replace("\\", "/")
+        try:
+            md5 = _md5(p)
+        except OSError:
+            continue
+        files[rel] = {
+            "path": rel,
+            "name": p.name,
+            "dir": str(rel_path.parent).replace("\\", "/"),
+            "md5": md5,
+            "size": p.stat().st_size,
+        }
+    return files
+
+
+@app.route("/api/changelog/compare", methods=["POST"])
+def changelog_compare():
+    """Diff two source folders by image content (MD5).
+
+    Files are matched primarily by filename; when a filename appears in
+    multiple subfolders, the relative directory disambiguates the pairing.
+    Anything that cannot be paired confidently is surfaced so human review
+    can mark false positives.
+    """
+    data = request.get_json(force=True) or {}
+    left_path = ((data.get("left") or {}).get("path") or "").strip()
+    right_path = ((data.get("right") or {}).get("path") or "").strip()
+    left_root = Path(left_path) if left_path else None
+    right_root = Path(right_path) if right_path else None
+    if not left_root or not left_root.is_dir():
+        return jsonify({"ok": False, "error": f"Left folder not found: {left_path}"}), 400
+    if not right_root or not right_root.is_dir():
+        return jsonify({"ok": False, "error": f"Right folder not found: {right_path}"}), 400
+
+    left_files = _scan_changelog_folder(left_root)
+    right_files = _scan_changelog_folder(right_root)
+
+    expansion_id = (data.get("expansion_id") or "").strip()
+    if expansion_id:
+        _CHANGELOG_SOURCE_CACHE[expansion_id] = [left_path, right_path]
+
+    left_by_name: dict[str, list[str]] = {}
+    for rel, f in left_files.items():
+        left_by_name.setdefault(f["name"], []).append(rel)
+    right_by_name: dict[str, list[str]] = {}
+    for rel, f in right_files.items():
+        right_by_name.setdefault(f["name"], []).append(rel)
+
+    pairs: list[tuple[str, str]] = []
+    ambiguous: list[dict] = []
+    left_only: list[str] = []
+    right_only: list[str] = []
+
+    for name in sorted(set(left_by_name) | set(right_by_name)):
+        lrels = left_by_name.get(name, [])
+        rrels = right_by_name.get(name, [])
+        if not lrels:
+            right_only.extend(rrels)
+            continue
+        if not rrels:
+            left_only.extend(lrels)
+            continue
+        if len(lrels) == 1 and len(rrels) == 1:
+            pairs.append((lrels[0], rrels[0]))
+            continue
+        # Filename collision: pair entries whose relative directory matches.
+        matched_l: set[str] = set()
+        matched_r: set[str] = set()
+        r_by_dir = {right_files[r]["dir"]: r for r in rrels}
+        for lrel in lrels:
+            rrel = r_by_dir.get(left_files[lrel]["dir"])
+            if rrel and rrel not in matched_r:
+                pairs.append((lrel, rrel))
+                matched_l.add(lrel)
+                matched_r.add(rrel)
+        rem_l = [r for r in lrels if r not in matched_l]
+        rem_r = [r for r in rrels if r not in matched_r]
+        if rem_l and rem_r:
+            ambiguous.append({"name": name, "left": rem_l, "right": rem_r})
+            # Err on the side of 'change': pair leftovers positionally so the
+            # author can mark false positives.
+            for i, lrel in enumerate(rem_l):
+                if i < len(rem_r):
+                    pairs.append((lrel, rem_r[i]))
+                else:
+                    left_only.append(lrel)
+            right_only.extend(rem_r[len(rem_l):])
+        else:
+            left_only.extend(rem_l)
+            right_only.extend(rem_r)
+
+    changed: list[dict] = []
+    unchanged: list[dict] = []
+    for lrel, rrel in pairs:
+        lf, rf = left_files[lrel], right_files[rrel]
+        item = {
+            "key": rrel,
+            "name": lf["name"],
+            "left": lrel,
+            "right": rrel,
+            "left_md5": lf["md5"],
+            "right_md5": rf["md5"],
+            "left_size": lf["size"],
+            "right_size": rf["size"],
+            "moved": lrel != rrel,
+            "ambiguous": any(lrel in a["left"] and rrel in a["right"] for a in ambiguous),
+        }
+        (unchanged if lf["md5"] == rf["md5"] else changed).append(item)
+
+    added = [
+        {
+            "key": r,
+            "name": right_files[r]["name"],
+            "right": r,
+            "right_md5": right_files[r]["md5"],
+            "right_size": right_files[r]["size"],
+        }
+        for r in sorted(right_only)
+    ]
+    removed = [
+        {
+            "key": r,
+            "name": left_files[r]["name"],
+            "left": r,
+            "left_md5": left_files[r]["md5"],
+            "left_size": left_files[r]["size"],
+        }
+        for r in sorted(left_only)
+    ]
+    changed.sort(key=lambda x: x["key"])
+    unchanged.sort(key=lambda x: x["key"])
+
+    return jsonify({
+        "ok": True,
+        "counts": {
+            "left": len(left_files),
+            "right": len(right_files),
+            "changed": len(changed),
+            "added": len(added),
+            "removed": len(removed),
+            "unchanged": len(unchanged),
+            "ambiguous": len(ambiguous),
+        },
+        "changed": changed,
+        "added": added,
+        "removed": removed,
+        "unchanged": unchanged,
+        "ambiguous": ambiguous,
+    })
+
+
+@app.route("/api/changes/<expansion_id>")
+def get_changes(expansion_id: str):
+    return jsonify(_load_changes(expansion_id))
+
+
+@app.route("/api/changes/<expansion_id>", methods=["POST"])
+def post_changes(expansion_id: str):
+    data = request.get_json(force=True) or {}
+    _save_changes(expansion_id, data)
+    return jsonify({"ok": True, "id": expansion_id})
 
 
 @app.route("/api/images/<expansion_id>")

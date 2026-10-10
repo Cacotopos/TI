@@ -215,6 +215,30 @@ Card images are cropped using the same mask as the `card_diff` project
 (`Icons/Card Mask.png`). The generator copies source images to the output site
 and applies the mask bounding box so cards render cleanly.
 
+## Changelog Page
+
+The editor's **Changelog Page** tab diffs two versions of an expansion's
+source folder to build a public changelog.
+
+1. Set the **old** and **new** source folders (local paths — a synced Google
+   Drive folder works too), each with a label like `Monuments v3.0`.
+2. Click **Compare** — files are matched by filename (the relative folder
+   disambiguates name collisions) and diffed by content hash. Results list
+   **Changes detected** (changed/added/removed) and **Unchanged** files.
+3. Click a changed file to open the annotation modal: side-by-side old/new
+   images, a change-type dropdown
+   (`new/removed/minor/moderate/major/replacement`), an aspects checklist
+   (`title/art/layout/flavor/ability`), a free-text description, and an
+   **Unchanged** checkbox for false positives.
+4. **Save Config** also writes `editor/data/<expansion>/changes.json`
+   alongside `config.json`.
+
+When `changes.json` has publishable entries, generation copies the paired
+old/new images into `assets/changelog/` and emits a `changelog.html` page
+(`Changelog <old> → <new>` in the nav, far right). The page supports text
+search and severity/aspect filtering, and clicking an entry compares the two
+images in a modal.
+
 ## Helper Scripts
 
 See `scripts/print_order.py` at the project root for generating a print-order CSV

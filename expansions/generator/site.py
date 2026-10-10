@@ -351,6 +351,80 @@ def _copy_source_images(config: dict, output_dir: Path) -> None:
                             dest.write_bytes(buffer.getvalue())
 
 
+def _load_changes(config_path: Path) -> dict:
+    """Load the changelog sidecar (changes.json) sitting next to config.json."""
+    path = config_path.parent / "changes.json"
+    if not path.exists():
+        return {}
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def _prepare_changelog(changes: dict, output_dir: Path) -> dict | None:
+    """Copy paired changelog images into the site and return page data.
+
+    Old-version images are not part of normal site assets, so both sides of
+    each published change are copied under assets/changelog/old|new/ — they
+    get content-hashed and deployed like every other asset.
+    """
+    sources = changes.get("sources") or []
+    files = changes.get("files") or {}
+    if len(sources) < 2 or not files:
+        return None
+    left_root = Path(sources[0].get("path") or "")
+    right_root = Path(sources[1].get("path") or "")
+
+    def _copy(root: Path, rel: str, side: str) -> str:
+        src = root / rel
+        if not src.is_file():
+            return ""
+        dest = output_dir / "assets" / "changelog" / side / rel
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(src, dest)
+        return str(Path("assets/changelog") / side / rel).replace("\\", "/")
+
+    entries = []
+    for key, f in sorted(files.items()):
+        if f.get("false_positive") or f.get("status") == "unchanged":
+            continue
+        left_rel = f.get("left") or ""
+        right_rel = f.get("right") or ""
+        if f.get("status"):
+            status = f["status"]
+        elif right_rel and not left_rel:
+            status = "added"
+        elif left_rel and not right_rel:
+            status = "removed"
+        else:
+            status = "changed"
+        entry = {
+            "key": key,
+            "name": Path(key).name,
+            "status": status,
+            "change_type": f.get("change_type", ""),
+            "display_type": f.get("change_type") or status,
+            "aspects": f.get("aspects") or [],
+            "notes": f.get("notes", ""),
+            "left": left_rel,
+            "right": right_rel,
+        }
+        if left_rel:
+            entry["left_image"] = _copy(left_root, left_rel, "old")
+        if right_rel:
+            entry["right_image"] = _copy(right_root, right_rel, "new")
+        entries.append(entry)
+
+    if not entries:
+        return None
+    return {
+        "left_label": sources[0].get("label") or "Old",
+        "right_label": sources[1].get("label") or "New",
+        "entries": entries,
+    }
+
+
 def _prepare_banner(config: dict, output_dir: Path) -> str | None:
     """Validate and return the output-relative path for the banner image.
 
@@ -516,7 +590,7 @@ def _bust_url(path: str, hashes: dict[str, str]) -> str:
     return path
 
 
-def _build_export(config: dict, images: list[dict], sections: list[dict]) -> dict:
+def _build_export(config: dict, images: list[dict], sections: list[dict], changelog: dict | None = None) -> dict:
     """Build a clean public JSON export from the generated image data."""
 
     def _truthy(value):
@@ -592,7 +666,7 @@ def _build_export(config: dict, images: list[dict], sections: list[dict]) -> dic
         return card
 
     overview = config.get("overview", "")
-    return {
+    export = {
         "id": config.get("id", ""),
         "name": config.get("name", ""),
         "version": config.get("version", ""),
@@ -605,6 +679,20 @@ def _build_export(config: dict, images: list[dict], sections: list[dict]) -> dic
         "groups": sorted({img.get("group", "") for img in images if img.get("group")}),
         "cards": [clean_card(img) for img in images if not img.get("hidden")],
     }
+    if changelog:
+        export["changelog"] = {
+            "left_label": changelog["left_label"],
+            "right_label": changelog["right_label"],
+            "entries": [
+                {
+                    k: e[k]
+                    for k in ("key", "name", "status", "change_type", "aspects", "notes", "left", "right")
+                    if e.get(k)
+                }
+                for e in changelog["entries"]
+            ],
+        }
+    return export
 
 
 def build_site(config_path: Path, output_dir: Path) -> None:
@@ -614,6 +702,10 @@ def build_site(config_path: Path, output_dir: Path) -> None:
 
     _copy_assets(output_dir)
     _copy_source_images(config, output_dir)
+
+    # Copy changelog source images (old + new versions) so they get
+    # content-hashed alongside the rest of the assets.
+    changelog = _prepare_changelog(_load_changes(config_path), output_dir)
 
     # Prepare the banner image so it gets content-hashed with the rest.
     banner_path = _prepare_banner(config, output_dir)
@@ -640,6 +732,7 @@ def build_site(config_path: Path, output_dir: Path) -> None:
         "sections": config.get("sections", []),
         "banner_path": banner_path,
         "banner_url": _bust_url(banner_path or "", asset_hashes),
+        "changelog": changelog,
     }
 
     # Write search-data.js before rendering HTML, then hash/rename it so the
@@ -654,7 +747,7 @@ def build_site(config_path: Path, output_dir: Path) -> None:
 
     # Write the clean public export data.json. It keeps its clean filename but
     # gets a query-string hash for the download link.
-    export_data = _build_export(config, images, site["sections"])
+    export_data = _build_export(config, images, site["sections"], changelog)
     data_json_path = output_dir / "data.json"
     data_json_path.write_text(json.dumps(export_data, indent=2), encoding="utf-8")
     asset_hashes.update(_hash_data_json(data_json_path))
@@ -686,6 +779,13 @@ def build_site(config_path: Path, output_dir: Path) -> None:
     (output_dir / "search.html").write_text(
         search.render(config=config, site=site), encoding="utf-8"
     )
+
+    # Changelog page (only when changes.json has publishable entries)
+    if changelog:
+        changelog_page = env.get_template("changelog.html")
+        (output_dir / "changelog.html").write_text(
+            changelog_page.render(config=config, site=site), encoding="utf-8"
+        )
 
 
 def main():

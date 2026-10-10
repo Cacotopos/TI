@@ -186,3 +186,13 @@ or marked unchanged as appropriate.
   visually identical files show as changed and are cleared with the
   Unchanged checkbox.
 - Multiple version pairs — v1 stores a single `v3.0 → v3.1` pair.
+
+## Outstanding tasks (unrelated findings)
+
+- **`data.json` image paths don't resolve.** `_build_export` emits clean
+  `front`/`back` paths (`assets/images/Foo.jpg`), but filename hashing
+  renames the deployed files (`Foo.v2-<hash>.jpg`), so every image
+  reference in the public `data.json` 404s. To be usable as a game-engine
+  export it should either emit resolved hashed URLs or ship a stable
+  un-hashed image path. Text fields (`overview`/`description`/`faq`) are
+  also rendered HTML — raw markdown would be more useful for ingestion.

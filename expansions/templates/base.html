@@ -38,9 +38,15 @@
         {% for sec in site.sections %}
         <option value="{{ sec.id }}.html">{{ sec.title }}</option>
         {% endfor %}
+        {% if site.changelog %}
+        <option value="changelog.html">Changelog</option>
+        {% endif %}
       </select>
     </div>
     <a href="search.html" class="px-3 py-1 rounded-lg bg-accent text-white text-sm font-semibold hover:bg-blue-600">Search</a>
+    {% if site.changelog %}
+    <a href="changelog.html" class="px-3 py-1 rounded-lg border border-border text-muted text-sm hover:text-gray-100 whitespace-nowrap hidden md:inline-block">Changelog {{ site.changelog.left_label }} &rarr; {{ site.changelog.right_label }}</a>
+    {% endif %}
     <a href="https://ko-fi.com/cacotopos" target="_blank" rel="noopener noreferrer" class="flex items-center ml-1" title="Support this project on Ko-fi">
       <img src="{{ 'assets/images/kofi.webp' | bust }}" alt="Support this project on Ko-fi" class="h-7 w-auto"/>
     </a>
